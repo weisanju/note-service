@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -373,7 +373,7 @@
 <div id="infisearch-mdbook-target"></div>
 <h1 id="概述"><a class="header" href="#概述">概述</a></h1>
 <p>sed命令应用广泛，使用简单，是快速文本处理的利器</p>
-<p><img src="https://weisanju.github.io/note/others/images/linux_sed.jfif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/linux_sed.jfif" alt="" /></p>
 <h1 id="参数"><a class="header" href="#参数">参数</a></h1>
 <p><code>-f</code></p>
 <p>参数指定一个sed脚本</p>
@@ -418,7 +418,7 @@ sed -n 'p' file
 <h1 id="替换模式"><a class="header" href="#替换模式">替换模式</a></h1>
 <p>以上是sed命令的常用匹配模式，但它还有一个强大的替换模式，意思就是查找替换其中的某些值，并输出结果。使用替换模式很少使用-n参数。</p>
 <h2 id="语法格式"><a class="header" href="#语法格式">语法格式</a></h2>
-<p><img src="https://weisanju.github.io/note/others/images/linux_sed_replace_mode.jfif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/linux_sed_replace_mode.jfif" alt="" /></p>
 <h2 id="参数解析"><a class="header" href="#参数解析">参数解析</a></h2>
 <p>替换模式的参数有点多，但第一部分和第五部分都是可以省略的。替换后会将<strong>整个文本</strong>输出出来。</p>
 <pre><code>sed 's/a/b/g' file
@@ -467,10 +467,10 @@ sed '/aaa/s!/etc!/usr!g' file
 <pre><code>ip route show | sed -n '/src/p' | sed -e 's/ */ /g' | cut -d' ' -f9
 </code></pre>
 <p>Do you want to proceed with the proposed reshard plan</p>
-<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/others/';
+const base_url = '/note-service/others/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -570,7 +570,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

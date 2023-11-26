@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -495,7 +495,7 @@ b -&gt;&gt;- b:执行写命令
 <p>4）Sentinel节点集合会将原来的主节点更新为从节点，并保持着对其关注，当其恢复后命令它去复制新的主节点</p>
 <h1 id="主从哨兵"><a class="header" href="#主从哨兵">主从+哨兵</a></h1>
 <h2 id="主从结构哨兵sentinel"><a class="header" href="#主从结构哨兵sentinel">主从结构+哨兵(sentinel)</a></h2>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-cluster-structure.jpeg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-cluster-structure.jpeg" alt="" /></p>
 <p>一个主节点(master)可拥有多个从节点(slave)，从节点实现对主节点的复制，保证数据同步。</p>
 <p>而哨兵(sentinel)则对各节点进行监控，主要包括主节点存活检测、主从运行情况检测等，一旦主节点宕机，哨兵可自动进行故障转移 (failover)、主从切换。接下来就开始搭建这样一个集群，首先是主从结构，然后是哨兵模式，接着往下看。</p>
 <h2 id="redis-主从配置及数据同步"><a class="header" href="#redis-主从配置及数据同步"><strong>Redis 主从配置及数据同步</strong></a></h2>
@@ -526,7 +526,7 @@ replicaof 192.168.231.130 6379
 <li>在一般情况下， 每个Sentinel会以每 10 秒一次的频率向它已知的所有主服务器和从服务器发送 INFO 命令。 当一个主服务器被Sentinel标记为客观下线时，Sentinel向下线主服务器的所有从服务器发送 INFO 命令的频率会从 10 秒一次改为每秒一次。</li>
 <li>当没有足够数量的Sentinel同意主服务器已经下线， 主服务器的客观下线状态就会被移除。 当主服务器重新向Sentinel的 PING 命令返回有效回复时， 主服务器的主关下线状态就会被移除。</li>
 </ul>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-cluster-sentinel.jpeg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-cluster-sentinel.jpeg" alt="" /></p>
 <h3 id="哨兵配置"><a class="header" href="#哨兵配置">哨兵配置</a></h3>
 <p><strong>基本信息配置</strong></p>
 <pre><code># 哨兵sentinel实例运行的端口，默认26379   
@@ -592,10 +592,10 @@ sentinel client-reconfig-script mymaster /var/redis/reconfig.sh
 <pre><code>redis-cli -p 26379 
 info sentinel 
 </code></pre>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -695,7 +695,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

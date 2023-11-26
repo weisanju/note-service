@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -383,7 +383,7 @@
 <p>计算机科学家们发现了事情的严重性后，于是就发明了 DMA 技术，也就是<strong>直接内存访问（Direct Memory Access）</strong> 技术。</p>
 <p>什么是 DMA 技术？简单理解就是，<strong>在进行 I/O 设备和内存的数据传输的时候，数据搬运的工作全部交给 DMA 控制器，而 CPU 不再参与任何与数据搬运相关的事情，这样 CPU 就可以去处理别的事务。</strong></p>
 <p>那使用 DMA 控制器进行数据传输的过程究竟是什么样的呢？下面我们来具体看看。</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy.png" alt="" /></p>
 <p>具体过程：</p>
 <ul>
 <li>用户进程调用 read 方法，向操作系统发出 I/O 请求，请求读取数据到自己的内存缓冲区中，进程进入阻塞状态；</li>
@@ -401,7 +401,7 @@
 <pre><code>read(file, tmp_buf, len);
 write(socket, tmp_buf, len);
 </code></pre>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_file_trans.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_file_trans.png" alt="" /></p>
 <p>其次，还<strong>发生了 4 次数据拷贝</strong>，其中两次是 DMA 的拷贝，另外两次则是通过 CPU 拷贝的，下面说一下这个过程：</p>
 <ul>
 <li><strong>第一次拷贝</strong>，把磁盘上的数据拷贝到操作系统内核的缓冲区里，这个拷贝的过程是通过 DMA 搬运的。</li>
@@ -436,7 +436,7 @@ write(socket, tmp_buf, len);
 <pre><code>buf = mmap(file, len);write(sockfd, buf, len);
 </code></pre>
 <p><strong>mmap</strong> 系统调用函数会直接把内核缓冲区里的数据**「映射」**到用户空间，这样，操作系统内核与用户空间就不需要再进行任何的数据拷贝操作。</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_nmap.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_nmap.png" alt="" /></p>
 <p>具体过程如下：</p>
 <ul>
 <li>应用进程调用了 <strong>mmap</strong> 后，DMA 会把磁盘的数据拷贝到内核的缓冲区里。接着，应用进程跟操作系统内核「共享」这个缓冲区；</li>
@@ -452,7 +452,7 @@ write(socket, tmp_buf, len);
 <p>它的前两个参数分别是目的端和源端的文件描述符，后面两个参数是源端的偏移量和复制数据的长度，返回值是实际复制数据的长度。</p>
 <p>首先，它可以替代前面的 <strong>read</strong>和<strong>write</strong>这两个系统调用，这样就可以减少一次系统调用，也就减少了 2 次上下文切换的开销。</p>
 <p>其次，该系统调用，可以直接把内核缓冲区里的数据拷贝到 socket 缓冲区里，不再拷贝到用户态，这样就只有 2 次上下文切换，和 3 次数据拷贝。如下图：</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_sendFile.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_sendFile.png" alt="" /></p>
 <p>但是这还不是真正的零拷贝技术，如果网卡支持 SG-DMA（<em>The Scatter-Gather Direct Memory Access</em>）技术（和普通的 DMA 有所不同），我们可以进一步减少通过 CPU 把内核缓冲区里的数据拷贝到 socket 缓冲区的过程。</p>
 <p>你可以在你的 Linux 系统通过下面这个命令，查看网卡是否支持 scatter-gather 特性：</p>
 <pre><code>$ ethtool -k eth0 | grep scatter-gather
@@ -464,7 +464,7 @@ scatter-gather: on
 <li>第二步，缓冲区描述符和数据长度传到 socket 缓冲区，这样网卡的 SG-DMA 控制器就可以直接将内核缓存中的数据拷贝到网卡的缓冲区里，此过程不需要将数据从操作系统内核缓冲区拷贝到 socket 缓冲区中，这样就减少了一次数据拷贝；</li>
 </ul>
 <p>所以，这个过程之中，只进行了 2 次数据拷贝，如下图：</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_sgdma.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_sgdma.png" alt="" /></p>
 <p>这就是所谓的零拷贝（<em>Zero-copy</em>）技术，因为我们没有在内存层面去拷贝数据，也就是说全程没有通过 CPU 来搬运数据，所有的数据都是通过 DMA 来进行传输的。</p>
 <p>零拷贝技术的文件传输方式相比传统文件传输的方式，减少了 2 次上下文切换和数据拷贝次数，<strong>只需要 2 次上下文切换和数据拷贝次数，就可以完成文件的传输，而且 2 次的数据拷贝过程，都不需要通过 CPU，2 次都是由 DMA 来搬运。</strong></p>
 <p>所以，总体来看，<strong>零拷贝技术可以把文件传输的性能提高至少一倍以上。</strong></p>
@@ -514,7 +514,7 @@ return fileChannel.transferTo(position, count, socketChannel);
 <h1 id="大文件传输用什么方式实现"><a class="header" href="#大文件传输用什么方式实现"><strong>大文件传输用什么方式实现？</strong></a></h1>
 <p>那针对大文件的传输，我们应该使用什么方式呢？</p>
 <p>我们先来看看最初的例子，当调用 read 方法读取文件时，进程实际上会阻塞在 read 方法调用，因为要等待磁盘数据的返回，如下图：</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_normal_read.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_normal_read.png" alt="" /></p>
 <p>具体过程：</p>
 <ul>
 <li>当调用 read 方法时，会阻塞着，此时内核会向磁盘发起 I/O 请求，磁盘收到请求后，便会寻址，当磁盘数据准备好后，就会向内核发起 I/O 中断，告知内核磁盘数据已经准备好；</li>
@@ -522,7 +522,7 @@ return fileChannel.transferTo(position, count, socketChannel);
 <li>最后，内核再把 PageCache 中的数据拷贝到用户缓冲区，于是 read 调用就正常返回了。</li>
 </ul>
 <p>对于阻塞的问题，可以用异步 I/O 来解决，它工作方式如下图：</p>
-<p><img src="https://weisanju.github.io/note/others/images/zero_copy_asynchronous.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_asynchronous.png" alt="" /></p>
 <p>它把读操作分为两部分：</p>
 <ul>
 <li>前半部分，内核向磁盘发起读请求，但是可以**不等待数据就位就可以返回，**于是进程此时可以处理其他任务；</li>
@@ -573,10 +573,10 @@ return fileChannel.transferTo(position, count, socketChannel);
 <h2 id="大文件传输的方法"><a class="header" href="#大文件传输的方法">大文件传输的方法</a></h2>
 <p>针对大文件使用异步 IO 和直接 IO，而对小文件使用零拷贝。</p>
 <p><a href="https://www.toutiao.com/i6879648629628502542/">CSDN零拷贝</a></p>
-<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/others/';
+const base_url = '/note-service/others/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -676,7 +676,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

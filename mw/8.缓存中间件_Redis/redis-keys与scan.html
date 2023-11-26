@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -415,7 +415,7 @@
 <p>为什么<code>Keys</code> 指令查询会这么慢？</p>
 <p>为什么<code>Scan</code> 指令就没有问题？</p>
 <h1 id="redis-执行命令的原理"><a class="header" href="#redis-执行命令的原理">Redis 执行命令的原理</a></h1>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-execute-cmd.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-execute-cmd.jpg" alt="" /></p>
 <p>由于 Redis 单线程执行命令，只能顺序从队列取出任务开始执行。</p>
 <p>只要 3 这个过程执行命令速度过慢，队列其他任务不得不进行等待，这对外部客户端看来，Redis 好像就被阻塞一样，一直得不到响应。</p>
 <h1 id="keys-原理"><a class="header" href="#keys-原理">KEYS 原理</a></h1>
@@ -443,10 +443,10 @@
 <h1 id="总结"><a class="header" href="#总结">总结</a></h1>
 <p>Redis 使用单线程执行操作命令，所有客户端发送过来命令，Redis 都会现放入队列，然后从队列中顺序取出执行相应的命令。</p>
 <p>所以不要在生产执行 <code>keys</code>、<code>smembers</code>、<code>hgetall</code>、<code>zrange</code>这类可能造成阻塞的指令，如果真需要执行，可以使用相应的<code>scan</code> 命令渐进式遍历，可以有效防止阻塞问题。</p>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -546,7 +546,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

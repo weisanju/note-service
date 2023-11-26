@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -396,10 +396,10 @@ GET index_1,index_2/_search
 <li>通常，查询将使用 “terms” 查询来列出感兴趣的层，但是您可以在重写为 “terms” 查询的任何查询中使用 “_tier” 字段，例如 “match”，“query_string”，“terms” 或 “simple_query_string” 查询，以及 “前缀” 和 “通配符” 查询。但是，它不支持 'regexp' 和 'fuzzy' 查询。</li>
 <li>索引的 “tier_preference” 设置是按优先顺序的层名称的逗号分隔列表，即首先列出用于托管索引的首选层，然后是潜在的许多 fall-back options 。查询匹配仅考虑第一个首选项 (列表的第一个值)。</li>
 </ol>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -499,7 +499,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

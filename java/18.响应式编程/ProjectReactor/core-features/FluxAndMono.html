@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -376,7 +376,7 @@
 <p>an Asynchronous Sequence of 0-N Items</p>
 </blockquote>
 <p>The following image shows how a <code>Flux</code> transforms items:</p>
-<p><img src="https://weisanju.github.io/note/java/images/flux.svg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/flux.svg" alt="" /></p>
 <ol>
 <li>Flux发出的元素</li>
 <li>水平线：从左到右的  flux 时间流 </li>
@@ -397,7 +397,7 @@
 <blockquote>
 <p>an Asynchronous 0-1 Result</p>
 </blockquote>
-<p><img src="https://weisanju.github.io/note/java/images/mono.svg" alt="Mono" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/mono.svg" alt="Mono" /></p>
 <p>A <code>Mono&lt;T&gt;</code> is a specialized <code>Publisher&lt;T&gt;</code> that emits at most one item <em>via</em> the <code>onNext</code> signal then terminates with an <code>onComplete</code> signal (successful <code>Mono</code>, with or without value), or only emits a single <code>onError</code> signal (failed <code>Mono</code>).</p>
 <p><code>Mono&lt;T&gt;</code> 是 <code>Publisher&lt;T&gt;</code> 的特化 ，通过 <em>onNext</em>  最多产生 一个 <em>item</em>  然后 使用 <em>onComplete</em> 终止，或者产生 <em>onEror</em> 信号</p>
 <p>在调用 <em>onNext</em> 之后 <em>Mono</em> 的实现应该 立即调用 <em>onComplete</em></p>
@@ -546,10 +546,10 @@ public class SampleSubscriber&lt;T&gt; extends BaseSubscriber&lt;T&gt; {
 <p>它加起来 请求 高达 N</p>
 <p>如果单个 请求 没有超过 N的 需求，则该请求  完全传播到 上游，在源发出该数量之后，</p>
 <p><code>limitRequest</code> 认为序列已完成，向下游发 <em>onComplete</em> 信号，并取消源</p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -649,7 +649,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

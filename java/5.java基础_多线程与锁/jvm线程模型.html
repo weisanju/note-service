@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -380,7 +380,7 @@
 <li>解释器、JIT编译器、GC是抽象出来执行某一具体任务的组件，这些组件执行任务时都需要依托线程。</li>
 </ul>
 <p>所以，为了管理这些五花八门的线程，虚拟机将它们的公有特性抽象出来构成一个<strong>线程模型</strong>，如图4-1所示。</p>
-<p><img src="https://weisanju.github.io/note/java/images/java_thread_structure.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/java_thread_structure.png" alt="" /></p>
 <p>1）Thread：线程基类，定义所有线程都具有的功能。</p>
 <p>2）JavaThread：Java线程在虚拟机层的实现。</p>
 <p>3）NonJavaThread：相比Thread只多了一个可以遍历所有NonJavaThread的能力。</p>
@@ -396,10 +396,10 @@
 <p>java启动器调用JavaMain完成一个程序的生命周期，如代码清单4-1所示，这其中涉及各种线程的创建与销毁：</p>
 <p>......</p>
 <p><a href="https://www.toutiao.com/i6934925749275394573/">建议了解文章</a></p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -499,7 +499,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -423,7 +423,7 @@ jedisCluster.publish(&quot;xjq&quot;,&quot;yes&quot;);
 <h3 id="redis-sentinel-节点发现"><a class="header" href="#redis-sentinel-节点发现">Redis Sentinel 节点发现</a></h3>
 <p><strong>Redis Sentinel</strong> 节点主要使用发布订阅机制，实现新节点的发现，以及交换主节点的之间的状态</p>
 <p>如下所示，每一个 <strong>Sentinel</strong> 节点将会定时向 <code>_sentinel_:hello</code> 频道发送消息，并且每个 <strong>Sentinel</strong> 都会订阅这个节点。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-sentinel-pub-sub.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-sentinel-pub-sub.jpg" alt="" /></p>
 <p>这样一旦有节点往这个频道发送消息，其他节点就可以立刻收到消息。</p>
 <p>这样一旦有的新节点加入，它往这个频道发送消息，其他节点收到之后，判断本地列表并没有这个节点，于是就可以当做新的节点加入本地节点列表。</p>
 <p>除此之外，每次往这个频道发送消息内容可以包含节点的状态信息，这样可以作为后面 <strong>Sentinel</strong> 领导者选举的依据。</p>
@@ -436,10 +436,10 @@ jedisCluster.publish(&quot;xjq&quot;,&quot;yes&quot;);
 <p>当线程加锁失败之后，线程将会订阅 <code>redisson_lock__channel_xxx</code>（xx 代表锁的名称） 频道，使用异步线程监听消息，然后利用 Java 中 <code>Semaphore</code> 使当前线程进入阻塞</p>
 <p>一旦其他客户端进行解锁，redission 就会往这个<code>redisson_lock__channel_xxx</code> 发送解锁消息。</p>
 <p>等异步线程收到消息，将会调用 <code>Semaphore</code> 释放信号量，从而让当前被阻塞的线程唤醒去加锁</p>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -539,7 +539,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -375,7 +375,7 @@
 <ul>
 <li>java.util.Map接口常用的实现类：HashMap、TreeMap、HashTable、SortedMap。这些实现中最常用的是HashMap。</li>
 <li>HashMap是存放键值对key-value的散列表，它的底层数据结构是数组+链表+红黑树。</li>
-<li><img src="https://weisanju.github.io/note/java/images/hashMap_structure.png" alt="hashMap结构图" /></li>
+<li><img src="https://weisanju.github.io/note-service/java/images/hashMap_structure.png" alt="hashMap结构图" /></li>
 </ul>
 <h1 id="核心参数"><a class="header" href="#核心参数">核心参数</a></h1>
 <ul>
@@ -403,7 +403,7 @@ static final int hash(Object key) {
 </code></pre>
 <h1 id="put方法"><a class="header" href="#put方法">PUT方法</a></h1>
 <h2 id="put方法流程图"><a class="header" href="#put方法流程图">PUT方法流程图</a></h2>
-<p><img src="https://weisanju.github.io/note/java/images/hashMap_put_value.png" alt="image-20210215151635333" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/hashMap_put_value.png" alt="image-20210215151635333" /></p>
 <h2 id="put_value-code"><a class="header" href="#put_value-code">PUT_VALUE CODE</a></h2>
 <pre><code class="language-java">    final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                    boolean evict) {
@@ -815,10 +815,10 @@ final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) {
 </ul>
 <p><strong>最重要的</strong></p>
 <p><strong>所有 新增，删除，扩容方法 都加了锁</strong></p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -918,7 +918,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

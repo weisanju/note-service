@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -384,10 +384,10 @@
 <p>The <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#data-node">data</a> role is not a valid data tier and cannot be used for data tier filtering. The frozen tier stores <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/searchable-snapshots.html#partially-mounted">partially mounted indices</a> exclusively.</p>
 <p><strong><code>index.routing.allocation.include._tier_preference</code></strong></p>
 <p>Assign the index to the first tier in the list that has an available node. This prevents indices from remaining unallocated if no nodes are available in the preferred tier. For example, if you set <code>index.routing.allocation.include._tier_preference</code> to <code>data_warm,data_hot</code>, the index is allocated to the warm tier if there are nodes with the <code>data_warm</code> role. If there are no nodes in the warm tier, but there are nodes with the <code>data_hot</code> role, the index is allocated to the hot tier.</p>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -487,7 +487,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

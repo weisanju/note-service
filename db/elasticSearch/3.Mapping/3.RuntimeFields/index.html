@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -421,10 +421,10 @@
 <li>使用 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/async-search.html">asynchronous search API</a>  运行包含运行时字段的搜索。这种搜索方法有助于抵消  在每个包含该字段的文档中  计算运行时字段值的性能影响。如果查询无法同步返回结果集，则当结果可用时，您将异步获得结果。</li>
 <li>针对运行时字段的查询被认为是昂贵的，如果 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl.html#query-dsl-allow-expensive-queries"><code>search.allow_expensive_queries</code></a> is set to <code>false</code>,不允许进行昂贵的查询，Elasticsearch将拒绝针对运行时字段的任何查询。 </li>
 </ol>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -524,7 +524,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

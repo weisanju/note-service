@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -375,7 +375,7 @@
 <h2 id="java内存模型是什么"><a class="header" href="#java内存模型是什么">Java内存模型是什么？</a></h2>
 <p>Java是跨平台的语言，因为JVM屏蔽了底层操作系统和物理计算机的差异，<strong>JMM也是JVM规范定义的一部分</strong>，JMM抽象地定义了JVM在计算机内存中的工作方式。</p>
 <p>JMM规定了所有的变量都存储在<strong>主内存（Main Memory）<strong>中。每个线程还有自己的</strong>工作内存（Working Memory）</strong>。</p>
-<p><img src="https://weisanju.github.io/note/java/images/jmm_thread_memory.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/jmm_thread_memory.jpg" alt="" /></p>
 <p>线程的工作内存中保存了该线程使用的主内存变量的副本拷贝，线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，而不能直接读写主内存中的变量。</p>
 <p>不同的线程之间无法直接访问对方工作内存中的变量，线程之间值的传递都需要通过主内存来完成。</p>
 <h2 id="线程的数据共享"><a class="header" href="#线程的数据共享">线程的数据共享</a></h2>
@@ -398,7 +398,7 @@
 <p>至此，两个线程完成了变量的传递。</p>
 </li>
 </ul>
-<p><img src="https://weisanju.github.io/note/java/images/jmm_thread_communication.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/jmm_thread_communication.jpg" alt="" /></p>
 <h2 id="jmm的三大特性"><a class="header" href="#jmm的三大特性">JMM的三大特性</a></h2>
 <p>JMM是一个抽象的概念，是围绕着并发编程中原子性、可见性、有序性这三个特性来建立的。上面介绍的Java 内存交互的8个基本操作，都遵循这三个特性。</p>
 <p><strong>原子性</strong></p>
@@ -422,10 +422,10 @@
 <h3 id="volatile-实现禁止重排序的原理"><a class="header" href="#volatile-实现禁止重排序的原理"><strong>volatile 实现禁止重排序的原理</strong></a></h3>
 <p>JMM的处理器重排序规则会要求Java编译器在生成指令序列时，插入特定类型的**内存屏障（Memory Barriers）**指令，通过内存屏障来禁止特定类型的处理器重排序。</p>
 <p>内存屏障类型包括下表列出的四种。</p>
-<p><img src="https://weisanju.github.io/note/java/images/volatile_memory_barrier.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/volatile_memory_barrier.jpg" alt="" /></p>
 <p>volatile实现禁止重排序的方式就是在编译生成字节码时，在对volatile变量的读写操作前后增加了内存屏障，以阻止和其他指令的执行顺序被重排。</p>
 <p><strong>操作之间的重排序规则</strong></p>
-<p><img src="https://weisanju.github.io/note/java/images/volatile_memory_operation.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/volatile_memory_operation.png" alt="" /></p>
 <ul>
 <li>只要第二个操作是volatile写，不管第一个操作是什么都不会重排序</li>
 <li>只要第一个操作是volatile读，不管第二个操作是什么都不会重排序</li>
@@ -433,10 +433,10 @@
 </ul>
 <p><strong>volatile 的使用场景</strong>总结起来，就是“一次写入，到处读取”</p>
 <p><strong>volatile不保证原子性</strong></p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -536,7 +536,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

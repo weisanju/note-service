@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -473,10 +473,10 @@
 <p>To account for this, you can use the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/analysis-truncate-tokenfilter.html"><code>truncate</code></a> filter with a search analyzer to shorten search terms to the <code>max_gram</code> character length. However, this could return irrelevant results.</p>
 <p>For example, if the <code>max_gram</code> is <code>3</code> and search terms are truncated to three characters, the search term <code>apple</code> is shortened to <code>app</code>. This means searches for <code>apple</code> return any indexed terms matching <code>app</code>, such as <code>apply</code>, <code>snapped</code>, and <code>apple</code>.</p>
 <p>We recommend testing both approaches to see which best fits your use case and desired search experience.</p>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -576,7 +576,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

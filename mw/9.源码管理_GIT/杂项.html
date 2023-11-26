@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -385,7 +385,7 @@
 <p>这个虚拟工作区的目录树中，记录了文件名、文件的状态信息（时间戳、文件长度等）</p>
 <p>文件的内容并不存储其中，而是保存在Git对象库<code>.git/objects</code>目录中，文件索引建立了文件和对象库中对象实体之间的对应</p>
 <p>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-stage.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-stage.png" alt="" /></p>
 <ul>
 <li>图中左侧为工作区，右侧为版本库。在版本库中标记为<code>index</code>的区域是暂存区（stage，亦称index），标记为<code>master</code>的是master分支所代表的目录树。</li>
 <li>图中可以看出此时HEAD实际是指向master分支的一个“游标”。所以图示的命令中出现HEAD的地方可以用master来替换。</li>
@@ -455,7 +455,7 @@ $ git ls-tree -l 9431f4a
 </code></pre>
 <h2 id="git-diff"><a class="header" href="#git-diff"><strong>Git diff</strong></a></h2>
 <p>比较图</p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-diff.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-diff.png" alt="" /></p>
 <h2 id="git对象"><a class="header" href="#git对象">GIT对象</a></h2>
 <h3 id="查看git对象结构"><a class="header" href="#查看git对象结构"><strong>查看GIT对象结构</strong></a></h3>
 <p><strong>查看git对象类型</strong></p>
@@ -493,7 +493,7 @@ weisanju@B-3BVVQ05P-2126 demo01 % ls -l  .git/objects/c8/6a7936f2a61955b463708ab
 -r--r--r--  1 weisanju  staff  28 11 20 20:18 .git/objects/c8/6a7936f2a61955b463708abdf29b7567124f27
 </code></pre>
 <p><strong>对象之间的关系</strong></p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-objects.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-objects.png" alt="" /></p>
 <h3 id="命名空间"><a class="header" href="#命名空间">命名空间</a></h3>
 <p><strong>head与master的关系</strong></p>
 <pre><code class="language-sh"># 以下三个命令有同样的输出,在当前版本库中，HEAD、master和refs/heads/master具有相同的指向。
@@ -542,7 +542,7 @@ e695606fc5e31b2ff9038a48a3d363f4c21a3d86
 $ git rev-parse HEAD
 e695606fc5e31b2ff9038a48a3d363f4c21a3d86
 </code></pre>
-<p><img src="https://weisanju.github.io/note/mw/images/git-repos-detail.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-repos-detail.png" alt="" /></p>
 <h3 id="sha1哈希值到底是什么如何生成的"><a class="header" href="#sha1哈希值到底是什么如何生成的">SHA1哈希值到底是什么，如何生成的？</a></h3>
 <p>哈希(hash)是一种数据摘要算法（或称散列算法），是信息安全领域当中重要的理论基石。</p>
 <p>该算法将任意长度的输入经过散列运算转换为固定长度的输出</p>
@@ -689,7 +689,7 @@ HEAD is now at 4902dc3 does master follow this new commit?
 <p>例如命令**git reset HEAD &lt;paths&gt;<strong>相当于取消之前执行的</strong>git add &lt;paths&gt;**命令时改变的暂存区。</p>
 <p>第二种用法（不使用路径<code>&lt;paths&gt;</code>的用法）则会<strong>重置引用</strong>。根据不同的选项，可以对暂存区或者工作区进行重置。参照下面的版本库模型图，来看一看不同的参数对第二种重置语法的影响。</p>
 <p><strong>重置选项</strong></p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-reset.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-reset.png" alt="" /></p>
 <p>命令格式: git reset [–soft | –mixed | –hard ] [<commit>]</p>
 <ul>
 <li>
@@ -840,10 +840,10 @@ git log --graph --pretty=raw  refs/stash -2
 <h4 id="提交本地test分支到远程的master分支"><a class="header" href="#提交本地test分支到远程的master分支">提交本地test分支到远程的master分支：</a></h4>
 <pre><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
 </code></pre>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -943,7 +943,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

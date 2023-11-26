@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/frontend/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -396,7 +396,7 @@
 <p>在实践中，因为你经常是在向用户展示 JSON 数据模型，所以如果你的模型设计得恰当</p>
 <p>UI（或者说组件结构）便会与数据模型一一对应，这是因为 UI 和数据模型都会倾向于遵守相同的<em>信息结构</em>。</p>
 <p>将 UI 分离为组件，其中每个组件需与数据模型的某部分匹配。</p>
-<p><img src="https://weisanju.github.io/note/others/images/thinking-in-react-components.png" alt="Component diagram" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/thinking-in-react-components.png" alt="Component diagram" /></p>
 <ol>
 <li><strong><code>FilterableProductTable</code> (橙色):</strong> 是整个示例应用的整体</li>
 <li><strong><code>SearchBar</code> (蓝色):</strong> 接受所有的<em>用户输入</em></li>
@@ -516,10 +516,10 @@
 <p><strong>使用事件回调函数更新状态</strong></p>
 <p>让我们重新梳理一下需要实现的功能：每当用户改变表单的值，我们需要改变 state 来反映用户的当前输入。</p>
 <p>由于 state 只能由拥有它们的组件进行更改，<code>FilterableProductTable</code> 必须将一个能够触发 state 改变的回调函数（callback）传递给 <code>SearchBar</code>。我们可以使用输入框的 <code>onChange</code> 事件来监视用户输入的变化，并通知 <code>FilterableProductTable</code> 传递给 <code>SearchBar</code> 的回调函数。然后该回调函数将调用 <code>setState()</code>，从而更新应用。</p>
-<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/frontend/';
+const base_url = '/note-service/frontend/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -619,7 +619,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

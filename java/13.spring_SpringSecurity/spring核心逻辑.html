@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -460,15 +460,15 @@ int vote(Authentication authentication, S object,
 <h1 id="springsecurity中的filter"><a class="header" href="#springsecurity中的filter">SpringSecurity中的Filter</a></h1>
 <p>除了认证和授权外，SpringSecurity的另外一个核心就是Servlet的Filter来实现的。先简单回顾下Servlet中Filter的调用原理。 下图展示了处理单个</p>
 <h2 id="servlet调用原理"><a class="header" href="#servlet调用原理"><strong>Servlet调用原理</strong></a></h2>
-<p><img src="https://weisanju.github.io/note/java/images/servlet_filter.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/servlet_filter.png" alt="" /></p>
 <h2 id="filterchainproxy以及其内部的filter"><a class="header" href="#filterchainproxy以及其内部的filter">FilterChainProxy以及其内部的Filter</a></h2>
 <p>SpringSecurity在过滤器链中扮演的就是一个Filter，其类型是FilterChainProxy。但它又不是一个普通的Filter，因为FilterChainProxy中包含了额外的过滤器，每个过滤器都发挥特殊的作用。下面用一张图展示下FliterChainProxy中包含的过滤器链。</p>
-<p><img src="https://weisanju.github.io/note/java/images/springSecurity_filterChain.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/springSecurity_filterChain.png" alt="" /></p>
 <p>SpringSecurity的FilterChainProxy是以bean的形式注入到Spring容器中的，并且它是默认配置，所以在每次请求中都会存在，所以在SpringSecurity保护的应用中，每次请求都会经过FilterChainProxy。</p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -568,7 +568,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

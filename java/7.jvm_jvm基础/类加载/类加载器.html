@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -406,7 +406,7 @@
 </li>
 </ul>
 <p>它根据 Java 应用的类路径（CLASSPATH）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 ClassLoader.getSystemClassLoader()来获取它。</p>
-<p><img src="https://weisanju.github.io/note/java/images/classload_hierarchy.png" alt="20201018105054" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/classload_hierarchy.png" alt="20201018105054" /></p>
 <h1 id="类加载器的代理模式"><a class="header" href="#类加载器的代理模式">类加载器的代理模式</a></h1>
 <blockquote>
 <p>类加载器在尝试自己去查找某个类的字节代码并定义它时，会先代理给其父类加载器，由父类加载器先去尝试加载这个类</p>
@@ -488,7 +488,7 @@ Class.forName(String className)。
 </code></pre>
 <h1 id="自定义文件系统类加载器"><a class="header" href="#自定义文件系统类加载器">自定义文件系统类加载器</a></h1>
 <h2 id="示例1"><a class="header" href="#示例1">示例1</a></h2>
-<p><img src="https://weisanju.github.io/note/java/images/classloader_selfdefine_fileSystem.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/classloader_selfdefine_fileSystem.png" alt="" /></p>
 <p>在开发自己的类加载器时，最好不要覆写 loadClass()方法，而是覆写 findClass()方法。</p>
 <h2 id="示例2"><a class="header" href="#示例2">示例2</a></h2>
 <pre><code class="language-java">import java.io.*;
@@ -551,7 +551,7 @@ public class MyCustomerLoader extends ClassLoader{
 <li>当出现找不到类的错误时，检查当前类的类加载器和当前线程的上下文类加载器是否正确。</li>
 </ul>
 <h2 id="tomcat-类加载机制"><a class="header" href="#tomcat-类加载机制">Tomcat 类加载机制</a></h2>
-<p><img src="https://weisanju.github.io/note/java/images/classload_tomcat.png" alt="tomcat类加载器" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/classload_tomcat.png" alt="tomcat类加载器" /></p>
 <h1 id="osgi"><a class="header" href="#osgi">OSGI</a></h1>
 <p>OSGi™是 Java 上的动态模块系统。它为开发人员提供了面向服务和基于组件的运行环境，并提供标准的方式用来管理软件的生命周期。OSGi 已经被实现和部署在很多产品上，在开源社区也得到了广泛的支持。Eclipse 就是基于 OSGi 技术来构建的。</p>
 <p>OSGi 中的每个模块（bundle）都包含 Java 包和类。模块可以声明它所依赖的需要导入（import）的其它模块的 Java 包和类（通过 Import-Package），也可以声明导出（export）自己的包和类，供其它模块使用（通过 Export-Package）。也就是说需要能够隐藏和共享一个模块中的某些 Java 包和类。这是通过 OSGi 特有的类加载器机制来实现的。OSGi 中的每个模块都有对应的一个类加载器。它负责加载模块自己包含的 Java 包和类。当它需要加载 Java 核心库的类时（以 java开头的包和类），它会代理给父类加载器（通常是启动类加载器）来完成。当它需要加载所导入的 Java 类时，它会代理给导出此 Java 类的模块来完成加载。模块也可以显式的声明某些 Java 包和类，必须由父类加载器来加载。只需要设置系统属性
@@ -564,10 +564,10 @@ org.osgi.framework.bootdelegation=com.example.core.*，那么对于包 com.examp
 <li>如果一个类库被多个模块共用，可以为这个类库单独的创建一个模块，把其它模块需要用到的 Java 包声明为导出的。其它模块声明导入这些类。</li>
 <li>如果类库提供了 SPI 接口，并且利用线程上下文类加载器来加载 SPI 实现的 Java 类，有可能会找不到 Java 类。如果出现了 NoClassDefFoundError异常，首先检查当前线程的上下文类加载器是否正确。通过 Thread.currentThread().getContextClassLoader()就可以得到该类加载器。该类加载器应该是该模块对应的类加载器。如果不是的话，可以首先通过 class.getClassLoader()来得到模块对应的类加载器，再通过 Thread.currentThread().setContextClassLoader()来设置当前线程的上下文类加载器。</li>
 </ul>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -667,7 +667,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

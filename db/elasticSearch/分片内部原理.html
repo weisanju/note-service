@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -450,7 +450,7 @@ the   |   X   |       |  X    | ...
 <p>Elasticsearch 基于 Lucene, 这个 java 库引入了 <em>按段搜索</em> 的概念：每段本身是一个倒排索引</p>
 <p>Luence 还增加了提交点的概念：列出了所有已知段的 文件</p>
 <p><strong>一个 Lucene 索引包含一个提交点和三个段</strong></p>
-<p><img src="https://weisanju.github.io/note/db/images/elas_1101.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/db/images/elas_1101.png" alt="" /></p>
 <p>每个段跟提交点 都是一个文件</p>
 <p>逐段搜索会以如下流程进行工作：</p>
 <ul>
@@ -613,10 +613,10 @@ POST /_flush?wait_for_ongoing
 <p>主要介绍了内部写入和删除的过程，需要了解 refresh、fsync、flush、.del、segment merge 等名词的具体含义</p>
 <p><img src="../images/es_docuement_to_disk_entir_flow.webp" alt="ES写入全过程" /></p>
 <p><a href="https://zhuanlan.zhihu.com/p/205211099">参考</a></p>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -716,7 +716,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -382,7 +382,7 @@
 <blockquote>
 <p>class文件中的常量池当然是位于class文件中，而<strong>class文件又是位于磁盘上</strong>。</p>
 </blockquote>
-<p><img src="https://weisanju.github.io/note/java/images/string_class_structure.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/string_class_structure.png" alt="" /></p>
 <p>常量池可以理解为class文件中资源仓库，它是class文件结构中与其它项目关联最多的数据类型，主要用于存放编译器生成的各种字面量(Literal)和符号引用(Symbolic References)。</p>
 <p>字面量就是我们所说的常量概念，如文本字符串、被声明为final的常量值等。</p>
 <p>符号引用是一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可（它与直接引用区分一下，直接引用一般是指向方法区的本地指针，相对偏移量或是一个能间接定位到目标的句柄）。一般包括下面三类常量：</p>
@@ -532,15 +532,15 @@ public native String intern();
 <li>jdk6 遇到字面量时，会 判断字面量 是否存在常量池中，是的话，就直接返回 常量池引用，否的话 从 方法区也就是永久代中 生成一份 字符串实例，并将引用指向 常量池</li>
 <li>jdk7 遇到字面量时，会 判断字面量 是否存在常量池中，是的话，就直接返回 常量池引用，否的话 直接再堆中成一份 字符串实例，并将引用指向 常量池</li>
 </ul>
-<p><img src="https://weisanju.github.io/note/java/images/string_jdk6.png" alt="" /></p>
-<p><img src="https://weisanju.github.io/note/java/images/LinkedHashMap_views_class.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/string_jdk6.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/LinkedHashMap_views_class.png" alt="" /></p>
 <h1 id="运行时常量池"><a class="header" href="#运行时常量池">运行时常量池</a></h1>
 <h2 id="位置在哪"><a class="header" href="#位置在哪">位置在哪？</a></h2>
 <p><strong>位于方法区中</strong>，1.6在永久代，1.7在元空间中，永久代跟元空间都是对方法区的实现</p>
 <h2 id="用来干什么"><a class="header" href="#用来干什么">用来干什么？</a></h2>
 <p>jvm在执行某个类的时候，必须经过加载、连接、初始化，而连接又包括验证、准备、解析三个阶段。而当类加载到内存中后，jvm就会将class常量池中的内容存放到运行时常量池中，由此可知，运行时常量池也是每个类都有一个。在上面我也说了，class常量池中存的是字面量和符号引用，也就是说他们存的并不是对象的实例，而是对象的符号引用值。而经过解析（resolve）之后，也就是把符号引用替换为直接引用，解析的过程会去查询全局字符串池，也就是我们上面所说的StringTable，以保证运行时常量池所引用的字符串与全局字符串池中所引用的是一致的。</p>
 <p>所以简单来说，<strong>运行时常量池就是用来存放class常量池中的内容的。</strong></p>
-<p><img src="https://weisanju.github.io/note/java/images/string_constant_structure.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/string_constant_structure.png" alt="" /></p>
 <h1 id="测试"><a class="header" href="#测试">测试</a></h1>
 <pre><code class="language-java">// 环境1.7及以上
 public class Clazz {
@@ -562,10 +562,10 @@ public class Clazz {
 }
 </code></pre>
 <p><a href="https://blog.csdn.net/qq_41907991/article/details/106799400">链接</a></p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -665,7 +665,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

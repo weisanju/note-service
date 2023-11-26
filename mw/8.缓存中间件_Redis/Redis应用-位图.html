@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -429,7 +429,7 @@
 <li>bitpos key bit [start] [end]：统计指定范围内 0 或 1 第一次出现的位置。</li>
 </ul>
 <p>需要注意的是，这里的索引值是以 byte 为单位的，不是以 bit 为单位。即是以字节为范围查找的，如果需要以位范围查找必须是 8 的倍数。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/redis_bit_map_example.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis_bit_map_example.png" alt="" /></p>
 <h2 id="批量操作-bitfield"><a class="header" href="#批量操作-bitfield">批量操作 bitfield</a></h2>
 <p>bitfield 有三个子指令 set、get、incrby。他们可以对执行片段进行读写自增，最多处理 64 个连续位。</p>
 <h1 id="使用场景"><a class="header" href="#使用场景">使用场景</a></h1>
@@ -449,10 +449,10 @@ value：是否上线标识位
 offset：天数，1 代表今年的第一天，一年就只占用了 365 个位
 value：是否签到标识
 </code></pre>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -552,7 +552,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

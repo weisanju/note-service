@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/frontend/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -432,10 +432,10 @@ setTimeout(myFunction, 1000)
 <p><code>setImmediate()</code> 与 <code>setTimeout(() =&gt; {}, 0)</code>（传入 0 毫秒的超时）、<code>process.nextTick()</code> 有何不同？</p>
 <p>传给 <code>process.nextTick()</code> 的函数会在事件循环的当前迭代中（当前操作结束之后）被执行。 这意味着它会始终在 <code>setTimeout</code> 和 <code>setImmediate</code> 之前执行。</p>
 <p>延迟 0 毫秒的 <code>setTimeout()</code> 回调与 <code>setImmediate()</code> 非常相似。 执行顺序取决于各种因素，但是它们都会在事件循环的下一个迭代中运行。</p>
-<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/frontend/';
+const base_url = '/note-service/frontend/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -535,7 +535,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

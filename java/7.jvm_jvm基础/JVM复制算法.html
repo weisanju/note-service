@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -375,9 +375,9 @@
 <h2 id="复制算法"><a class="header" href="#复制算法">复制算法</a></h2>
 <p>在复制算法中，回收器将堆空间划分为两个大小相等的半区 (semispace)，分别是 来源空间(fromspace) 和 目标空间(tospace) 。在进行垃圾回收时，回收器将存活对象从来源空间复制到目标空间，复制结束后，所有存活对象紧密排布在目标空间一端，最后将来源空间和目标空间互换。</p>
 <h3 id="复制前"><a class="header" href="#复制前"><strong>复制前</strong></a></h3>
-<p><img src="https://weisanju.github.io/note/java/images/jvm_gc_algorithm_copy.png" alt="20201024093037" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/jvm_gc_algorithm_copy.png" alt="20201024093037" /></p>
 <h3 id="复制后"><a class="header" href="#复制后"><strong>复制后</strong></a></h3>
-<p><img src="https://weisanju.github.io/note/java/images/jvm_gc_algorithm_copy_after.png" alt="20201024093052" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/jvm_gc_algorithm_copy_after.png" alt="20201024093052" /></p>
 <h3 id="代码段"><a class="header" href="#代码段"><strong>代码段</strong></a></h3>
 <pre><code>collect() {
 // 变量前面加*表示指针
@@ -492,10 +492,10 @@ returnobj.forwarding;
 <li>相互引用的对象并不是相邻的，就没办法充分利用缓存</li>
 </ul>
 <p><a href="https://www.toutiao.com/i6885208625674093059/">参考</a></p>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -595,7 +595,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

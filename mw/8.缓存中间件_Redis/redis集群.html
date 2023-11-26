@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -374,7 +374,7 @@
 <h1 id="概念"><a class="header" href="#概念"><strong>概念</strong></a></h1>
 <h2 id="主从哨兵的局限性"><a class="header" href="#主从哨兵的局限性"><strong>主从+哨兵的局限性</strong></a></h2>
 <p>之前介绍过Redis主从集群+哨兵的搭建，架构如下图所示</p>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-master-slaver-sentinel.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-master-slaver-sentinel.jpg" alt="" /></p>
 <p>这种集群模式下水平扩容和垂直扩容都可以实现，并且可以实现高可用性和易用性</p>
 <ul>
 <li>水平扩容：比如增加一套主从集群，在predixy代理处配置hash寻址，让部分数据可以被新加入的主从集群存储，水平扩容的实现强烈<strong>依赖于predixy代理</strong>。</li>
@@ -418,21 +418,21 @@
 <li>节点加入环：将节点通过hash(节点的信息如ip端口等) % 2^32-1取节点在环上位置</li>
 <li>数据读写：读写数据时同样取key的hash，即hash(key) % 2^32-1落到环上的某一位置，再<strong>顺时针</strong>找到离环最近的那个节点进行读写</li>
 </ul>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-hash-cycle.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-hash-cycle.jpg" alt="" /></p>
 <p><strong>新增与删除</strong></p>
 <p>新增一个节点4，只会影响到节点2到节点4之间的数据，其他的数据不会被影响到，这也是<strong>一致性</strong>的体现</p>
 <p>删除一个节点也是同样的道理，假设删除节点4，也只是会影响到节点2到原节点4之间的数据</p>
 <p><strong>缺点</strong></p>
 <p>假设节点分布不均匀（hash算法并不能保证绝对的平衡性），那么大部分数据都会落在一个节点上，导致请求和数据倾斜，这样就不能很好的保证负载均衡。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-hash-cycle-nonuniform.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-hash-cycle-nonuniform.jpg" alt="" /></p>
 <p>那么解决办法就是增加虚拟节点（注意，此时环上<strong>全部都是虚拟节点</strong>），对每一个节点计算多个hash，尽量保证环上的节点是均匀的，如下图</p>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-hash-cycle-uniform.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-hash-cycle-uniform.jpg" alt="" /></p>
 <h3 id="hash槽"><a class="header" href="#hash槽">hash槽</a></h3>
 <p>hash槽（hash slot）<strong>是redis中一致性hash的实</strong>现，很多文章将一致性hash环和hash槽分开来讲，其实hash槽也是一致性hash的一种实现。</p>
 <p>redis默认分配16384个hash槽位，然后将槽位均匀分配到不同的redis实例中去，找数据的时候通过CRC16算法计算后再取模找到对应的槽位（CRC16我们应该不陌生，这个winrar里面使用的CRC32是一样的，只是校验长度不一样而已），算法如下</p>
 <pre><code>CRC16(key) % 16384
 </code></pre>
-<p><img src="https://weisanju.github.io/note/mw/images/redis-hash-slot-algorithm.jpg" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/redis-hash-slot-algorithm.jpg" alt="" /></p>
 <p>使用槽位将具体的数据与redis实例解耦，当新增或者减少redis实例的时候用redis cluster总线通过Ping/Pong报文进行广播，告知整个redis集群新节点上线/下线，并迁移槽位和更新集群中的槽位映射表，整个过程尽量保证hash槽的平均分</p>
 <p><strong>那么是基于什么样的考虑，redis的作者没有用hash环呢？</strong></p>
 <p>redis的作者认为他的CRC16(key) mod 16384的效果已经不错了，虽然没有一致性hash灵活，但实现很简单，节点增删时处理起来也很方便</p>
@@ -1045,10 +1045,10 @@ get k1
 tar -xf redis-6.0.6.tar.gz
 cd redis-6.0.6
 </code></pre>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -1148,7 +1148,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -375,7 +375,7 @@
 <p>RocketMQ的消息投递分分为两种：一种是<code>生产者</code>往MQ Broker中投递</p>
 <p>另外一种则是MQ broker 往<code>消费者</code> 投递(这种<code>投递</code>的说法是从<strong>消息传递的角度阐述的</strong>，实际上底层是<code>消费者</code>从MQ broker 中Pull拉取的)</p>
 <h3 id="rocketmq的消息模型"><a class="header" href="#rocketmq的消息模型">RocketMQ的消息模型</a></h3>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-msg-structure.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq-msg-structure.png" alt="" /></p>
 <p>为了提高MQ的可用性和灵活性，一个Topic在实际存储的过程中，采用了多队列的方式</p>
 <p>每个消息队列在使用中应当保证<strong>先入先出</strong>（FIFO,First In First Out）的方式进行消费</p>
 <p>那么，基于这种模型，就会引申出两个问题：</p>
@@ -545,7 +545,7 @@ public interface AllocateMessageQueueStrategy {
 </tbody></table>
 </div>
 <h4 id="顺序-平均分配算法"><a class="header" href="#顺序-平均分配算法">顺序-平均分配算法</a></h4>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-order-allocation.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq-order-allocation.png" alt="" /></p>
 <p><strong>源码</strong></p>
 <pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
 import java.util.ArrayList;
@@ -606,7 +606,7 @@ public class AllocateMessageQueueAveragely implements AllocateMessageQueueStrate
 }
 </code></pre>
 <h4 id="环形平均算法"><a class="header" href="#环形平均算法">环形平均算法</a></h4>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-consumerqueue-cycle-selector.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq-consumerqueue-cycle-selector.png" alt="" /></p>
 <p><strong>环形顺序分配</strong></p>
 <p>这种算法最终分配的结果是： <code>consumer-1</code>: #0，#4，#8 <code>consumer-2</code>: #1,  #5, # 9 <code>consumer-3</code>: #2，#6 <code>consumer-4</code>: #3，#7</p>
 <pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
@@ -643,7 +643,7 @@ public class AllocateMessageQueueAveragelyByCircle implements AllocateMessageQue
 }
 </code></pre>
 <h4 id="基于机房临近原则算法"><a class="header" href="#基于机房临近原则算法">基于机房临近原则算法</a></h4>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-messagequeue-machine-rom-nearby.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq-messagequeue-machine-rom-nearby.png" alt="" /></p>
 <p>对于跨机房的场景，会存在网络、稳定性和隔离心的原因，该算法会根据<code>queue</code>的部署机房位置和<code>消费者consumer</code>的位置，过滤出当前<code>消费者consumer</code>相同机房的<code>queue队列</code>，然后再结合上述的算法，如基于平均分配算法在<code>queue队列</code>子集的基础上再挑选。相关代码实现如下：</p>
 <pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
 
@@ -929,10 +929,10 @@ public class AllocateMessageQueueConsistentHash implements AllocateMessageQueueS
 <pre><code>AllocateMessageQueueByConfig
 </code></pre>
 <h3 id="多个broker模式下同一个topic的分区是如何分配的"><a class="header" href="#多个broker模式下同一个topic的分区是如何分配的">多个broker模式下同一个Topic的分区是如何分配的</a></h3>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -1032,7 +1032,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -393,8 +393,8 @@
 <ul>
 <li><strong>阶码使用“移码”，基固定为2</strong></li>
 </ul>
-<p><img src="https://weisanju.github.io/note/others/images/float_component_float.png" alt="" /></p>
-<p><img src="https://weisanju.github.io/note/others/images/float_component_double.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/float_component_float.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/float_component_double.png" alt="" /></p>
 <p>至此，我们引入IEEE754 标准，该标准约束了浮点数的大部分使用设置：(尾数用原码；阶码用“移码”；基为2)</p>
 <ul>
 <li>Sign（1bit）：表示浮点数是正数还是负数。0表示正数，1表示负数。</li>
@@ -402,7 +402,7 @@
 <li>Mantissa（23bits）：基数部分。浮点数具体数值的实际表示。</li>
 </ul>
 <h1 id="单精度范围表示"><a class="header" href="#单精度范围表示">单精度范围表示</a></h1>
-<p><img src="https://weisanju.github.io/note/others/images/float_range.jfif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/float_range.jfif" alt="" /></p>
 <h1 id="389-用-浮点数表示"><a class="header" href="#389-用-浮点数表示">3.89 用 浮点数表示</a></h1>
 <p>$$
 转化为二进制为\
@@ -441,14 +441,14 @@ Infinity值，无限值 (当阶码全为1时)，符号位为1则是负无穷，�
 $$</p>
 <h1 id="浮点数的表示精度"><a class="header" href="#浮点数的表示精度"><strong>浮点数的表示精度</strong></a></h1>
 <p>一般提到浮点数的精度（有效位数）的时候，总是会出现 <strong>float的有效位为6~7位, double的有效位为15~16位</strong> 。</p>
-<p><img src="https://weisanju.github.io/note/others/images/float_range_specific.jfif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/others/images/float_range_specific.jfif" alt="" /></p>
 <p><strong>由上面的表格可以看出：</strong></p>
 <p>2−232−23 和 2−222−22 之间是存在间隔的，即0.0000001和0.0000002之间的小数我们是没有办法描述的，因此23位尾数最多只能描述到小数点后第7位；此外，我们通过四舍五入可以很容易发现0.0000003=0.0000004=2−23+2−220.0000003=0.0000004=2−23+2−22, 这表明第7位有效数字只是部分准确。而第6位及之前的都是可以准确描述的，因此我们说<strong>float的有效位为6~7位。</strong></p>
 <p><a href="https://www.toutiao.com/i6752086508737413643/">参考文档</a></p>
-<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/others/';
+const base_url = '/note-service/others/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -548,7 +548,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

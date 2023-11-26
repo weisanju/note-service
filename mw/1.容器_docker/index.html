@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -456,7 +456,7 @@ docker pull ubuntu
 <p>Docker 镜像存储在镜像仓库服务（Image Registry）当中。</p>
 <p>Docker 客户端的镜像仓库服务是可配置的，默认使用 Docker Hub。</p>
 <p>镜像仓库服务包含多个镜像仓库（Image Repository）。同样，一个镜像仓库中可以包含多个镜像。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-image-reposerver.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-image-reposerver.gif" alt="" /></p>
 <h4 id="官方和非官方镜像仓库"><a class="header" href="#官方和非官方镜像仓库">官方和非官方镜像仓库</a></h4>
 <p>Docker Hub 也分为官方仓库（Official Repository）和非官方仓库（Unofficial Repository）。</p>
 <p>官方仓库中的镜像是由 Docker 公司审查的。这意味着其中的镜像会及时更新，由高质量的代码构成，这些代码是安全的，有完善的文档和最佳实践。</p>
@@ -538,7 +538,7 @@ zzrot/alpine-caddy Caddy Server Docker.. [OK]
 <p>关于 <code>docker search</code> 需要注意的最后一点是，默认情况下，Docker 只返回 25 行结果。但是，可以通过指定 --limit 参数来增加返回内容行数，最多为 100 行。</p>
 <h2 id="镜像和分层"><a class="header" href="#镜像和分层">镜像和分层</a></h2>
 <p>Docker 镜像由一些松耦合的只读镜像层组成。如下图所示。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-image-layer.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-image-layer.gif" alt="" /></p>
 <p>Docker 负责堆叠这些镜像层，并且将它们表示为单个统一的对象。</p>
 <p>查看镜像分层的方式可以通过 docker image inspect 命令。下面同样以 ubuntu:latest 镜像为例。</p>
 <pre><code class="language-shell">$ docker image inspect ubuntu:latest
@@ -567,7 +567,7 @@ zzrot/alpine-caddy Caddy Server Docker.. [OK]
 <p><code>docker history</code> 命令显示了镜像的构建历史记录，但其并不是严格意义上的镜像分层。例如，有些 Dockerfile 中的指令并不会创建新的镜像层。比如 ENV、EXPOSE、CMD 以及 ENTRY- POINT。不过，这些命令会在镜像中添加元数据。</p>
 <p>所有的 Docker 镜像都起始于一个基础镜像层，当进行修改或增加新的内容时，就会在当前镜像层之上，创建新的镜像层。</p>
 <p>举一个简单的例子，假如基于 Ubuntu Linux 16.04 创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加 <a href="http://c.biancheng.net/python/">Python</a> 包，就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-image-layer-three-layer.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-image-layer-three-layer.gif" alt="" /></p>
 <p>在外部看来整个镜像只有 6 个文件，这是因为最上层中的文件 7 是文件 5 的一个更新版本。</p>
 <p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中。</p>
 <p>Docker 通过存储引擎（新版本采用快照机制）的方式来实现镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。</p>
@@ -653,7 +653,7 @@ alpine latest sha256:3dcd...f73a 4e38e38c8ce0 10 weeks ago 4.8 MB
 <p>Manifest 列表是指某个镜像标签支持的架构列表。其支持的每种架构，都有自己的 Mainfest 定义，其中列举了该镜像的构成。</p>
 <p>下图使用 Golang 官方镜像作为示例。图左侧是 Manifest 列表，其中包含了该镜像支持的每种架构。</p>
 <p>Manifest 列表的每一项都有一个箭头，指向具体的 Manifest，其中包含了镜像配置和镜像层数据。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-image-golang-multiarchitecture.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-image-golang-multiarchitecture.gif" alt="" /></p>
 <p>在具体操作之前，先来了解一下原理。</p>
 <p>假设要在 Raspberry Pi（基于 ARM 架构的 Linux）上运行 Docker。</p>
 <p>在拉取镜像的时候，Docker 客户端会调用 Docker Hub 镜像仓库服务相应的 API 完成拉取。</p>
@@ -698,13 +698,13 @@ docker container start
 <p>Hypervisor 接下来就会将这些物理资源划分为虚拟资源，并且看起来与真实物理资源完全一致。</p>
 <p>然后 Hypervisor 会将这些资源打包进一个叫作虚拟机（VM）的软件结构当中。这样用户就可以使用这些虚拟机，并在其中安装操作系统和应用。</p>
 <p>前面提到需要在物理机上运行 4 个应用，所以在 Hypervisor 之上需要创建 4 个虚拟机并安装 4 个操作系统，然后安装 4 个应用。当操作完成后，结构如下图所示。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/vm_structure.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/vm_structure.gif" alt="" /></p>
 <p>而容器模型则略有不同。</p>
 <p>服务器启动之后，所选择的操作系统会启动。在 Docker 世界中可以选择 Linux，或者内核支持内核中的容器原语的新版本 Windows。</p>
 <p>与虚拟机模型相同，OS 也占用了全部硬件资源。在 OS 层之上，需要安装容器引擎（如 Docker）。</p>
 <p>容器引擎可以获取系统资源，比如进程树、文件系统以及网络栈，接着将资源分割为安全的互相隔离的资源结构，称之为容器。</p>
 <p>每个容器看起来就像一个真实的操作系统，在其内部可以运行应用。按照前面的假设，需要在物理机上运行 4 个应用。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-structure.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-structure.gif" alt="" /></p>
 <p>从更高层面上来讲，Hypervisor 是硬件虚拟化（Hardware Virtualization）——Hypervisor 将硬件物理资源划分为虚拟资源。</p>
 <p>容器是操作系统虚拟化（OS Virtualization）——容器将系统资源划分为虚拟资源。</p>
 <h2 id="虚拟机的额外开销"><a class="header" href="#虚拟机的额外开销">虚拟机的额外开销</a></h2>
@@ -874,18 +874,18 @@ ENTRYPOINT [&quot;node&quot;, &quot;./app.js&quot;] #最后将 app.js 设置为�
 <p><strong>Example解读</strong></p>
 <p>本例中的应用基于 Linux 操作系统，所以在 FROM 指令当中所引用的也是一个 Linux 基础镜像；如果要容器化的应用是一个基于 Windows 操作系统的应用，就需要指定一个像 microsoft/aspnetcore-build 这样的 Windows 基础镜像了。</p>
 <p>截至目前，基础镜像的结构如下图所示。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-layer-basic-1.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-layer-basic-1.gif" alt="" /></p>
 <p>接下来，Dockerfile 中通过标签（LABLE）方式指定了当前镜像的维护者为“nigelpoulton@hotmail. com”。</p>
 <p>每个标签其实是一个键值对（Key-Value），在一个镜像当中可以通过增加标签的方式来为镜像添加自定义元数据。</p>
 <p><code>RUN apk add --update nodejs nodejs-npm</code> 指令使用 alpine 的 apk 包管理器将 nodejs 和 nodejs-npm 安装到当前镜像之中。</p>
 <p>RUN 指令会在 FROM 指定的 alpine 基础镜像之上，新建一个镜像层来存储这些安装内容。当前镜像的结构如下图所示。</p>
 <p>COPY. / src 指令将应用相关文件从构建上下文复制到了当前镜像中，并且新建一个镜像层来存储。COPY 执行结束之后，当前镜像共包含 3 层，如下图所示。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-layer-2.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-layer-2.gif" alt="" /></p>
 <p>下一步，Dockerfile 通过 WORKDIR 指令，为 Dockerfile 中尚未执行的指令设置工作目录。</p>
 <p>该目录与镜像相关，并且会作为元数据记录到镜像配置中，但不会创建新的镜像层。</p>
 <p>然后，<code>RUN npm install</code> 指令会根据 package.json 中的配置信息，使用 npm 来安装当前应用的相关依赖包。</p>
 <p>目前镜像一共包含 4 层，如下图所示。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-layer-3.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-layer-3.gif" alt="" /></p>
 <p>因为当前应用需要通过 TCP 端口 8080 对外提供一个 Web 服务，所以在 Dockerfile 中通过 EXPOSE 8080 指令来完成相应端口的设置。</p>
 <p>这个配置信息会作为镜像的元数据被保存下来，并不会产生新的镜像层。</p>
 <p>最终，通过 ENTRYPOINT 指令来指定当前镜像的入口程序。</p>
@@ -1025,7 +1025,7 @@ ENTRYPOINT [&quot;node&quot;, &quot;./app.js&quot;]
 <p>当镜像中层数太多时，合并是一个不错的优化方式。例如，当创建一个新的基础镜像，以便基于它来构建其他镜像的时候，这个基础镜像就最好被合并为一层。</p>
 <p>缺点是，合并的镜像将无法共享镜像层。这会导致存储空间的低效利用，而且 push 和 pull 操作的镜像体积更大。</p>
 <p>执行 <code>docker image build</code>命令时，可以通过增加 --squash 参数来创建一个合并的镜像。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/docker-image-merge.gif" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/docker-image-merge.gif" alt="" /></p>
 <p>两个镜像的内容是完全一样的，区别在于是否进行了合并。在使用 <code>docker image push</code> 命令发送镜像到 Docker Hub 时，合并的镜像需要发送全部字节，而不合并的镜像只需要发送不同的镜像层即可。</p>
 <h3 id="使用-no-install-recommends"><a class="header" href="#使用-no-install-recommends">使用 no-install-recommends</a></h3>
 <p>在构建 Linux 镜像时，若使用的是 APT 包管理器，则应该在执行 apt-get install 命令时增加 no-install-recommends 参数。</p>
@@ -1064,10 +1064,10 @@ ENTRYPOINT [&quot;node&quot;, &quot;./app.js&quot;]
 <p>Dockerfile 中的 ENTRYPOINT 指令用于指定镜像以容器方式启动后默认运行的程序。</p>
 <p>其他的 Dockerfile 指令还有 LABEL、ENV、ONBUILD、HEALTHCHECK、CMD 等。</p>
 <p>{% endraw %}</p>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -1167,7 +1167,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

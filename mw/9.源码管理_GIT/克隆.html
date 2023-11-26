@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -379,7 +379,7 @@
 <li>版本库A可以通过推送（PUSH）操作，将新提交传递给版本库B；</li>
 <li>版本库A可以通过拉回（PULL）操作，将版本库B中的新提交拉回到自身（A）。</li>
 </ul>
-<p><img src="https://weisanju.github.io/note/mw/images/git-clone-pull-push.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-clone-pull-push.png" alt="" /></p>
 <p>Git使用<strong>git clone</strong>命令实现版本库克隆，主要有如下三种用法：</p>
 <pre><code>用法1: git clone &lt;repository&gt; &lt;directory&gt;
 用法2: git clone --bare   &lt;repository&gt; &lt;directory.git&gt;
@@ -399,7 +399,7 @@ git pull [&lt;remote-repos&gt; [&lt;refspec&gt;]]
 <p>其中方括号的含义是参数可以省略，<code>&lt;remote-repos&gt;</code>是远程版本库的地址或名称，<code>&lt;refspec&gt;</code>是引用表达式，暂时理解为引用即可。在后面的章节再具体介绍PUSH和PULL命令的细节。</p>
 <h2 id="对等工作区"><a class="header" href="#对等工作区">对等工作区</a></h2>
 <p>不使用<code>--bare</code>或者<code>--mirror</code>创建出来的克隆包含工作区，这样就会产生两个包含工作区的版本库。这两个版本库是对等的</p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-clone-1.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-clone-1.png" alt="" /></p>
 <p>但是往往提交是在一个版本（A）中进行的，另外一个（B）作为备份。对于这种对等工作区模式，版本库的同步只有一种可行的操作模式</p>
 <p>就是在备份库（B）执行 git pull 命令从源版本库（A）拉回新的提交实现版本库同步</p>
 <p>为什么不能从版本库A向版本库B执行 git push 的推送操作呢？看看下面的操作。</p>
@@ -446,7 +446,7 @@ origin  /path/to/my/workspace/demo (push)
 <p>关于配置文件<code>[remote]</code>小节和<code>[branch]</code>小节的奥秘在后面的章节予以介绍。</p>
 <h2 id="克隆生成裸版本库"><a class="header" href="#克隆生成裸版本库">克隆生成裸版本库</a></h2>
 <p>上一节在对等工作区模式下，工作区之间执行推送，可能会引发大段的错误输出，如果采用裸版本库则没有相应的问题。这是因为裸版本库没有工作区。没有工作区还有一个好处就是空间占用会更小。</p>
-<p><img src="https://weisanju.github.io/note/mw/images/git-clone-2.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/git-clone-2.png" alt="" /></p>
 <p>使用<code>--bare</code>参数克隆demo版本库到<code>/path/to/repos/demo.git</code>，然后就可以从 demo 版本库向克隆的裸版本库执行推送操作了</p>
 <p>（为了说明方便，使用了<code>/path/to/repos/</code>作为Git裸版本的根路径，在后面的章节中这个目录也作为Git服务器端版本库的根路径。可以在磁盘中以root账户创建该路径并设置正确的权限。）</p>
 <pre><code>$ git clone --bare /path/to/my/workspace/demo /path/to/repos/demo.git
@@ -511,10 +511,10 @@ $ git commit --allow-empty -m &quot;sync test 6&quot;
 <pre><code>$ git push /path/to/repos/demo-init.git
 </code></pre>
 <p>为什么这次使用<strong>git push</strong>命令后面没有跟上分支名呢？这是因为远程版本库（demo-init.git）中已经不再是空版本库了，而且有名为master的分支。</p>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -614,7 +614,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

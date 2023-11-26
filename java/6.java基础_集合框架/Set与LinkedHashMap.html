@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -425,7 +425,7 @@ void afterNodeRemoval(Node&lt;K,V&gt; p) { } //结点被移除之后 维持 链�
 <h2 id="linkhashmap-的内部视图是如何实现的"><a class="header" href="#linkhashmap-的内部视图是如何实现的"><em>LinkHashMap</em> 的内部视图是如何实现的</a></h2>
 <p>都借助于迭代器，在内部进行了一个实现</p>
 <p>可以实现 访问与  删除 但不能新增</p>
-<p><img src="https://weisanju.github.io/note/java/images/LinkedHashMap_views_class.png" alt="image-20210321145129074" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/LinkedHashMap_views_class.png" alt="image-20210321145129074" /></p>
 <h2 id="如何用-linkhashmap使用-lru"><a class="header" href="#如何用-linkhashmap使用-lru">如何用 LinkHashMap使用 LRU</a></h2>
 <pre><code class="language-java">package com.example.demo;
 
@@ -574,10 +574,10 @@ public class LRU&lt;K,V&gt; extends LinkedHashMap&lt;K, V&gt; implements Map&lt;
     size = 0;
 }
 </code></pre>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -677,7 +677,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/mw/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -372,7 +372,7 @@
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
 <h1 id="技术架构"><a class="header" href="#技术架构">技术架构</a></h1>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_architecture_1.png" alt="/images/rocketmq_architecture_1.png" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_architecture_1.png" alt="/images/rocketmq_architecture_1.png" /></p>
 <p>RocketMQ架构上主要分为四部分，如上图所示:</p>
 <ul>
 <li><strong>Producer</strong>: 消息发布的角色，支持分布式集群方式部署,Producer通过MQ的负载均衡模块选择相应的Broker集群队列进行消息投递，投递的过程支持快速失败并且低延迟。</li>
@@ -397,10 +397,10 @@
 </ol>
 </li>
 </ul>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_architecture_2.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_architecture_2.png" alt="" /></p>
 <h1 id="部署架构"><a class="header" href="#部署架构">部署架构</a></h1>
 <h2 id="部署结构图"><a class="header" href="#部署结构图">部署结构图</a></h2>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_architecture_3.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_architecture_3.png" alt="" /></p>
 <h2 id="rocketmq-网络部署特点"><a class="header" href="#rocketmq-网络部署特点">RocketMQ 网络部署特点</a></h2>
 <ul>
 <li>
@@ -583,7 +583,7 @@
 <p>然后，调用updateProcessQueueTableInRebalance()方法，具体的做法是，先将分配到的消息队列集合（mqSet）与processQueueTable做一个过滤比对。</p>
 </li>
 </ul>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_design_9.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_design_9.png" alt="" /></p>
 <p>上图中processQueueTable标注的红色部分，表示与分配到的消息队列集合mqSet互不包含。将这些队列设置Dropped属性为true，然后查看这些队列是否可以移除出processQueueTable缓存变量，这里具体执行removeUnnecessaryMessageQueue()方法，即每隔1s 查看是否可以获取当前消费处理队列的锁，拿到的话返回true。如果等待1s后，仍然拿不到当前消费处理队列的锁则返回false。如果返回true，则从processQueueTable缓存变量中移除对应的Entry；</p>
 <p>上图中processQueueTable的绿色部分，表示与分配到的消息队列集合mqSet的交集。判断该ProcessQueue是否已经过期了，在Pull模式的不用管，如果是Push模式的，设置Dropped属性为true，并且调用removeUnnecessaryMessageQueue()方法，像上面一样尝试移除Entry；</p>
 <p><strong>拉取消息队列</strong></p>
@@ -596,7 +596,7 @@
 <li>同时增加一个补偿逻辑来处理二阶段超时或者失败的消息，</li>
 </ul>
 <p>如下图所示</p>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_design_10.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_design_10.png" alt="" /></p>
 <h3 id="rocketmq事务消息流程概要"><a class="header" href="#rocketmq事务消息流程概要">RocketMQ事务消息流程概要</a></h3>
 <h4 id="事务消息发送及提交"><a class="header" href="#事务消息发送及提交">事务消息发送及提交</a></h4>
 <ol>
@@ -624,7 +624,7 @@
 <li>然后RocketMQ会开启一个定时任务，从Topic为RMQ_SYS_TRANS_HALF_TOPIC中拉取消息进行消费，根据生产者组获取一个服务提供者发送<strong>回查事务状态请求</strong>，根据事务状态来决定是提交或回滚消息。</li>
 </ul>
 <p><strong>消息对应结构</strong></p>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_design_11.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_design_11.png" alt="" /></p>
 <p><strong>总结</strong></p>
 <p>RocketMQ的具体实现策略是：写入的如果事务消息，对消息的Topic和Queue等属性进行替换，同时将原来的Topic和Queue信息存储到消息的属性中，正因为消息主题被替换，故消息并不会转发到该原主题的消息消费队列，消费者无法感知消息的存在，不会消费。其<strong>实改变消息主题是RocketMQ的常用“套路”，回想一下延时消息的实现机制。</strong></p>
 <h4 id="commit和rollback操作以及op消息的引入"><a class="header" href="#commit和rollback操作以及op消息的引入">Commit和Rollback操作以及Op消息的引入</a></h4>
@@ -635,7 +635,7 @@
 <h4 id="op消息的存储和对应关系"><a class="header" href="#op消息的存储和对应关系">Op消息的存储和对应关系</a></h4>
 <p>RocketMQ将Op消息写入到全局一个特定的Topic中通过源码中的方法—TransactionalMessageUtil.buildOpTopic()；这个Topic是一个内部的Topic（像Half消息的Topic一样），不会被用户消费。<strong>Op消息的内容为对应的Half消息的存储的Offset</strong>，这样通过Op消息能索引到Half消息进行后续的回查操作。</p>
 <p><strong>Op消息存储对应图</strong></p>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_design_12.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_design_12.png" alt="" /></p>
 <h4 id="half消息的索引构建"><a class="header" href="#half消息的索引构建">Half消息的索引构建</a></h4>
 <p>在执行二阶段Commit操作时，需要构建出Half消息的索引。一阶段的Half消息由于是写到一个特殊的Topic，</p>
 <ol>
@@ -671,7 +671,7 @@
 <h3 id="按照message-key查询消息"><a class="header" href="#按照message-key查询消息">按照Message Key查询消息</a></h3>
 <p>“按照Message Key查询消息”，主要是基于RocketMQ的IndexFile索引文件来实现的。</p>
 <p>RocketMQ的索引文件逻辑结构，类似JDK中HashMap的实现。索引文件的具体结构如下：</p>
-<p><img src="https://weisanju.github.io/note/mw/images/rocketmq_design_13.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/mw/images/rocketmq_design_13.png" alt="" /></p>
 <p>IndexFile索引文件为用户提供通过“按照Message Key查询消息”的消息索引查询服务</p>
 <p><strong>索引文件</strong></p>
 <p>IndexFile文件的存储位置是：HOME\store\indexHOME\store\index{fileName}，文件名fileName是以创建时的时间戳命名的，文件大小是固定的，等于40+500W<em>4+2000W</em>20= 420000040个字节大小</p>
@@ -685,10 +685,10 @@
 <p>Timestamp记录的是消息storeTimestamp之间的差，并不是一个绝对的时间</p>
 <p><strong>按照Message Key查询消息</strong></p>
 <p>RocketMQ的具体做法是，主要通过Broker端的QueryMessageProcessor业务处理器来查询，读取消息的过程就是用topic和key找到IndexFile索引文件中的一条记录，根据其中的commitLog offset从CommitLog文件中读取消息的实体内容。</p>
-<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/mw/';
+const base_url = '/note-service/mw/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -788,7 +788,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

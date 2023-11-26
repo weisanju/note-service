@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -373,7 +373,7 @@
 <div id="infisearch-mdbook-target"></div>
 <h1 id="aqs框架"><a class="header" href="#aqs框架">AQS框架</a></h1>
 <h2 id="aqs数据结构图"><a class="header" href="#aqs数据结构图">AQS数据结构图</a></h2>
-<p><img src="https://weisanju.github.io/note/java/images/aqs_clh_queen.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/aqs_clh_queen.png" alt="" /></p>
 <p>它维护了一个volatile int state（代表共享资源）和一个FIFO线程等待队列（多线程争用资源被阻塞时会进入此队列）。</p>
 <h2 id="资源访问的两种方式"><a class="header" href="#资源访问的两种方式">资源访问的两种方式</a></h2>
 <p><strong>AQS定义两种资源共享方式</strong>：</p>
@@ -567,7 +567,7 @@
 <li>如果在整个等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt()，将中断补上。</li>
 </ul>
 <p><strong>流程图</strong></p>
-<p><img src="https://weisanju.github.io/note/java/images/aqs_clh_acquire.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/aqs_clh_acquire.png" alt="" /></p>
 <h2 id="释放独占锁"><a class="header" href="#释放独占锁">释放独占锁</a></h2>
 <blockquote>
 <p>此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。</p>
@@ -653,7 +653,7 @@
 }
 </code></pre>
 <h3 id="流程图"><a class="header" href="#流程图"><strong>流程图</strong></a></h3>
-<p><img src="https://weisanju.github.io/note/java/images/aqs_canceled.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/aqs_canceled.png" alt="" /></p>
 <h3 id="无效结点的移除逻辑"><a class="header" href="#无效结点的移除逻辑"><strong>无效结点的移除逻辑</strong></a></h3>
 <p><strong>分两步</strong></p>
 <ul>
@@ -882,10 +882,10 @@ if(h == head) break;保证了，只要在某个循环的过程中有线程刚获
 <li>成功获取 共享锁 时候，会尝试 唤醒其他线程来 抢占资源</li>
 <li>释放共享锁的时候 尝试唤醒其他线程来抢占资源</li>
 </ul>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -985,7 +985,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

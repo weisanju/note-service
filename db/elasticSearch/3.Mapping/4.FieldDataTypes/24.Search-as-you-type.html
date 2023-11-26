@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -523,10 +523,10 @@
 <h3 id="optimization-of-prefix-queries"><a class="header" href="#optimization-of-prefix-queries">Optimization of prefix queries</a></h3>
 <p>When making a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-prefix-query.html"><code>prefix</code></a> query to the root field or any of its subfields, the query will be rewritten to a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-term-query.html"><code>term</code></a> query on the <code>._index_prefix</code> subfield. This matches more efficiently than is typical of <code>prefix</code> queries on text fields, as prefixes up to a certain length of each shingle are indexed directly as terms in the <code>._index_prefix</code> subfield.</p>
 <p>The analyzer of the <code>._index_prefix</code> subfield slightly modifies the shingle-building behavior to also index prefixes of the terms at the end of the field’s value that normally would not be produced as shingles. For example, if the value <code>quick brown fox</code> is indexed into a <code>search_as_you_type</code> field with <code>max_shingle_size</code> of 3, prefixes for <code>brown fox</code> and <code>fox</code> are also indexed into the <code>._index_prefix</code> subfield even though they do not appear as terms in the <code>._3gram</code> subfield. This allows for completion of all the terms in the field’s input.</p>
-<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/db/';
+const base_url = '/note-service/db/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -626,7 +626,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 

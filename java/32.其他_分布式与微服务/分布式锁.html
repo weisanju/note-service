@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/note/favicon.svg">
-        <link rel="shortcut icon" href="/note/favicon.png">
-        <link rel="stylesheet" href="/note/css/variables.css">
-        <link rel="stylesheet" href="/note/css/general.css">
-        <link rel="stylesheet" href="/note/css/chrome.css">
+        <link rel="icon" href="/note-service/favicon.svg">
+        <link rel="shortcut icon" href="/note-service/favicon.png">
+        <link rel="stylesheet" href="/note-service/css/variables.css">
+        <link rel="stylesheet" href="/note-service/css/general.css">
+        <link rel="stylesheet" href="/note-service/css/chrome.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
@@ -129,7 +129,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+                        <link rel="stylesheet" href="/note-service/java/infisearch_assets/search-ui-light.css">
 <style>.light .infi-root,
 .rust .infi-root,
 .coal .infi-root,
@@ -531,7 +531,7 @@ return redis.call('pttl', KEYS[1]);
 </code></pre>
 <p><strong>当且仅当返回nil，才表示加锁成功</strong>，否则返回锁的超时时间</p>
 <p><strong>流程图</strong></p>
-<p><img src="https://weisanju.github.io/note/java/images/distribute-lock-lua-lock.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/distribute-lock-lua-lock.png" alt="" /></p>
 <h3 id="解锁lua脚本"><a class="header" href="#解锁lua脚本"><strong>解锁Lua脚本</strong></a></h3>
 <p><strong>脚本入参</strong></p>
 <div class="table-wrapper"><table><thead><tr><th>参数</th><th>示例值</th><th>含义</th></tr></thead><tbody>
@@ -571,7 +571,7 @@ end;
 return nil;
 </code></pre>
 <p><strong>流程</strong></p>
-<p><img src="https://weisanju.github.io/note/java/images/distribute-lock-lua-unlock.png" alt="" /></p>
+<p><img src="https://weisanju.github.io/note-service/java/images/distribute-lock-lua-unlock.png" alt="" /></p>
 <p><strong>广播解锁消息有什么用？</strong> </p>
 <ul>
 <li>是为了通知其他争抢锁阻塞住的线程，从阻塞中解除，并再次去争抢锁。</li>
@@ -652,10 +652,10 @@ end
 <li>锁定人</li>
 <li>锁定过期时间</li>
 </ul>
-<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
-<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-const base_url = '/note/java/';
+const base_url = '/note-service/java/';
 const mode = 'target';
 infisearch.init({
   searcherOptions: {
@@ -755,7 +755,7 @@ if (window.location.search) {
 
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
         <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note/book.js"></script>
+        <script src="/note-service/book.js"></script>
 
         <!-- Custom JS scripts -->
 
