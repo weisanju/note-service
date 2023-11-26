@@ -1,0 +1,909 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PatternLayout - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../../../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../../../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../../../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../../../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../../../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../../../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../../../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../../../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../../../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../../../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../../../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../../../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../../../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../../../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../../../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../../../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../../../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../../../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../../../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../../../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../../../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../../../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../../../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/PatternLayout.html" class="active">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../../../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../../../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../../../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../../../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../../../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../../../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../../../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../../../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../../../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item "><a href="../../../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../../../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../../../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../../../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../../../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../../../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../../../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../../../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../../../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../../../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../../../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../../../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../../../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../../../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../../../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../../../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../../../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../../../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../../../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../../../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../../../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../../../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../../../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="pattern-layout"><a class="header" href="#pattern-layout">Pattern Layout</a></h1>
+<p>使用模式字符串可配置的灵活布局。此类的目标是格式化 LogEvent 并返回结果。结果的格式取决于转换模式。</p>
+<p>转换模式与 C 中 printf 函数的转换模式密切相关。转换模式由称为转换说明符的文字文本和格式控制表达式组成。</p>
+<p>请注意，任何文字文本，包括特殊字符，都可以包含在转换模式中。特殊字符包括\t、\n、\r、\f。使用 \ 在输出中插入一个反斜杠。</p>
+<p>每个转换说明符都以百分号 (%) 开头，后跟可选的格式修饰符和转换字符。转换字符指定数据的类型，例如类别、优先级、日期、线程名称。格式修饰符控制诸如字段宽度、填充、左右对齐等内容。下面是一个简单的例子。</p>
+<p>让转换模式为 &quot;%-5p [%t]: %m%n&quot; 并假设 Log4j 环境设置为使用 PatternLayout。然后声明</p>
+<pre><code>Logger logger = LogManager.getLogger(&quot;MyLogger&quot;);
+logger.debug(&quot;Message 1&quot;);
+logger.warn(&quot;Message 2&quot;);
+
+DEBUG [main]: Message 1
+WARN  [main]: Message 2
+</code></pre>
+<p>请注意，文本和转换说明符之间没有明确的分隔符。模式解析器在读取转换字符时知道它何时到达转换说明符的末尾。在上面的例子中，转换说明符 %-5p 意味着记录事件的优先级应该左对齐到五个字符的宽度。</p>
+<p>如果模式字符串不包含处理正在记录的 Throwable 的说明符，则模式的解析将表现为“%xEx”说明符已添加到字符串的末尾。要完全抑制 Throwable 的格式，只需在模式字符串中添加“%ex{0}”作为说明符。</p>
+<h1 id="patternlayout-parameters"><a class="header" href="#patternlayout-parameters">PatternLayout Parameters</a></h1>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">charset</td><td style="text-align: left">String</td><td style="text-align: left">The character set to use when converting the syslog String to a byte array. The String must be a valid <a href="http://docs.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html">Charset</a>. If not specified, this layout uses the platform default character set.</td></tr>
+<tr><td style="text-align: left">pattern</td><td style="text-align: left">String</td><td style="text-align: left">A composite pattern string of one or more conversion patterns from the table below. Cannot be specified with a PatternSelector.</td></tr>
+<tr><td style="text-align: left">patternSelector</td><td style="text-align: left">PatternSelector</td><td style="text-align: left">一个组件，用于分析 LogEvent 中的信息并确定应使用哪种模式来格式化事件。 pattern 和 patternSelector 参数是互斥的</td></tr>
+<tr><td style="text-align: left">replace</td><td style="text-align: left">RegexReplacement</td><td style="text-align: left">允许替换部分结果字符串。如果已配置，replace 元素必须指定要匹配的正则表达式和替换。这执行类似于 RegexReplacement 转换器的功能，但适用于整个消息，而转换器仅适用于其模式生成的字符串。</td></tr>
+<tr><td style="text-align: left">alwaysWriteExceptions</td><td style="text-align: left">boolean</td><td style="text-align: left">If true (it is by default) exceptions are always written even if the pattern contains no exception conversions. This means that if you do not include a way to output exceptions in your pattern, the default exception formatter will be added to the end of the pattern. Setting this to false disables this behavior and allows you to exclude exceptions from your pattern output.</td></tr>
+<tr><td style="text-align: left">header</td><td style="text-align: left">String</td><td style="text-align: left">The optional header string to include at the top of each log file.</td></tr>
+<tr><td style="text-align: left">footer</td><td style="text-align: left">String</td><td style="text-align: left">The optional footer string to include at the bottom of each log file.</td></tr>
+<tr><td style="text-align: left">disableAnsi</td><td style="text-align: left">boolean</td><td style="text-align: left">If true (default is false), do not output ANSI escape codes.</td></tr>
+<tr><td style="text-align: left">noConsoleNoAnsi</td><td style="text-align: left">boolean</td><td style="text-align: left">If true (default is false) and System.console() is null, do not output ANSI escape codes.</td></tr>
+</tbody></table>
+</div>
+<h1 id="regexreplacement-parameters"><a class="header" href="#regexreplacement-parameters">RegexReplacement Parameters</a></h1>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">regex</td><td style="text-align: left">String</td><td style="text-align: left">A Java-compliant regular expression to match in the resulting string. See <a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">Pattern</a> .</td></tr>
+<tr><td style="text-align: left">replacement</td><td style="text-align: left">String</td><td style="text-align: left">The string to replace any matched sub-strings with.</td></tr>
+</tbody></table>
+</div>
+<h1 id="pattern表格汇总"><a class="header" href="#pattern表格汇总">Pattern表格汇总</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>转换符</th><th>说明</th><th>示例</th></tr></thead><tbody>
+<tr><td><strong>c</strong>{precision}<br/><strong>logger</strong>{precision}</td><td>日志名</td><td>%c{10}</td></tr>
+<tr><td><strong>C</strong>{precision}<br/><strong>class</strong>{precision}</td><td>调用者的全限定类名</td><td></td></tr>
+<tr><td><strong>d</strong>{pattern}<br/><strong>date</strong>{pattern}</td><td>日志事件的日期</td><td>%d{DEFAULT}、%d{HH:mm:ss,SSS}</td></tr>
+<tr><td><strong>F</strong><br/><strong>file</strong></td><td>目标输出文件名</td><td></td></tr>
+<tr><td><strong>K</strong>{key}<br/><strong>map</strong>{key}<br/><strong>MAP</strong>{key}</td><td>输出 MapMessage 的 <strong>entries</strong><br /><strong>%K{clientNumber}</strong></td><td>多key的输出格式为： {{key1,val1},{key2,val2}}</td></tr>
+<tr><td><strong>L</strong><br/><strong>line</strong></td><td>调用者的行号</td><td>耗时操作</td></tr>
+<tr><td><strong>m</strong>{nolookups}{ansi}<br/><strong>msg</strong>{nolookups}{ansi}<br/><strong>message</strong>{nolookups}{ansi}</td><td>输出程序提供的消息</td><td>两个选项：nolookups、ansi</td></tr>
+<tr><td><strong>M</strong><br/><strong>method</strong></td><td>发出日志请求的方法名</td><td></td></tr>
+<tr><td><strong>marker</strong></td><td>marker全名包括parentName</td><td></td></tr>
+<tr><td><strong>markerSimpleName</strong></td><td>简单名（不包括parentName）</td><td></td></tr>
+<tr><td><strong>maxLen</strong><br/><strong>maxLength</strong></td><td>限定日志的内容的最大最小</td><td>%maxLen{%m}{20}</td></tr>
+<tr><td>n</td><td>换行符</td><td></td></tr>
+<tr><td><strong>N</strong><br/><strong>nano</strong></td><td>日志事件产生时间</td><td></td></tr>
+<tr><td><strong>pid</strong>{[defaultValue]}<br/><strong>processId</strong>{[defaultValue]}</td><td>进程Id</td><td></td></tr>
+<tr><td><strong>p|level</strong></td><td>日志级别</td><td></td></tr>
+<tr><td><strong>x</strong><br/><strong>NDC</strong></td><td>NDC</td><td></td></tr>
+<tr><td><strong>X</strong>{key[,key2...]}<br/><strong>mdc</strong>{key[,key2...]}<br/><strong>MDC</strong>{key[,key2...]}</td><td>MDC</td><td></td></tr>
+<tr><td><strong>u</strong>{&quot;RANDOM&quot;|&quot;TIME&quot;}<br /><strong>uuid</strong></td><td>随机数</td><td></td></tr>
+<tr><td><strong>T</strong><br/><strong>tid</strong><br/><strong>threadId</strong></td><td>线程ID</td><td></td></tr>
+<tr><td><strong>t</strong><br/><strong>tn</strong><br/><strong>thread</strong><br/><strong>threadName</strong></td><td>线程名</td><td></td></tr>
+</tbody></table>
+</div>
+<h1 id="patterns详解"><a class="header" href="#patterns详解">Patterns详解</a></h1>
+<p>The conversions that are provided with Log4j are:</p>
+<h2 id="输出日志名称"><a class="header" href="#输出日志名称">输出日志名称</a></h2>
+<p><strong>c</strong>{precision}
+<strong>logger</strong>{precision}</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Conversion Pattern</th><th style="text-align: left">Logger Name</th><th style="text-align: left">Result</th></tr></thead><tbody>
+<tr><td style="text-align: left">%c{1}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">Foo</td></tr>
+<tr><td style="text-align: left">%c{2}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">commons.Foo</td></tr>
+<tr><td style="text-align: left">%c{10}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">org.apache.commons.Foo</td></tr>
+<tr><td style="text-align: left">%c{-1}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">apache.commons.Foo</td></tr>
+<tr><td style="text-align: left">%c{-2}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">commons.Foo</td></tr>
+<tr><td style="text-align: left">%c{-10}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">org.apache.commons.Foo</td></tr>
+<tr><td style="text-align: left">%c{1.}</td><td style="text-align: left">org.apache.commons.Foo</td><td style="text-align: left">o.a.c.Foo</td></tr>
+<tr><td style="text-align: left">%c{1.1.<del>.</del>}</td><td style="text-align: left">org.apache.commons.test.Foo</td><td style="text-align: left">o.a.<del>.</del>.Foo</td></tr>
+<tr><td style="text-align: left">%c{.}</td><td style="text-align: left">org.apache.commons.test.Foo</td><td style="text-align: left">....Foo</td></tr>
+</tbody></table>
+</div>
+<h2 id="输出调用类的全限定名"><a class="header" href="#输出调用类的全限定名">输出调用类的全限定名</a></h2>
+<p><strong>C</strong>{precision}
+<strong>class</strong>{precision}</p>
+<p>输出发出日志记录请求的调用者的完全限定类名。此转换说明符可以选择后跟精度说明符，其遵循与记录器名称转换器相同的规则。</p>
+<p>生成调用者的类名（位置信息）是一项代价高昂的操作，可能会影响性能。谨慎使用。</p>
+<h2 id="输出日志事件的日期"><a class="header" href="#输出日志事件的日期">输出日志事件的日期</a></h2>
+<p><strong>d</strong>{pattern}
+<strong>date</strong>{pattern}</p>
+<p>输出日志事件的日期。日期转换说明符后面可以跟一组包含每个 SimpleDateFormat 的日期和时间模式字符串的大括号。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Pattern</th><th style="text-align: left">Example</th></tr></thead><tbody>
+<tr><td style="text-align: left">%d{DEFAULT}</td><td style="text-align: left">2012-11-02 14:34:02,123</td></tr>
+<tr><td style="text-align: left">%d{DEFAULT_MICROS}</td><td style="text-align: left">2012-11-02 14:34:02,123456</td></tr>
+<tr><td style="text-align: left">%d{DEFAULT_NANOS}</td><td style="text-align: left">2012-11-02 14:34:02,123456789</td></tr>
+<tr><td style="text-align: left">%d{ISO8601}</td><td style="text-align: left">2012-11-02T14:34:02,781</td></tr>
+<tr><td style="text-align: left">%d{ISO8601_BASIC}</td><td style="text-align: left">20121102T143402,781</td></tr>
+<tr><td style="text-align: left">%d{ISO8601_OFFSET_DATE_TIME_HH}</td><td style="text-align: left">2012-11-02'T'14:34:02,781-07</td></tr>
+<tr><td style="text-align: left">%d{ISO8601_OFFSET_DATE_TIME_HHMM}</td><td style="text-align: left">2012-11-02'T'14:34:02,781-0700</td></tr>
+<tr><td style="text-align: left">%d{ISO8601_OFFSET_DATE_TIME_HHCMM}</td><td style="text-align: left">2012-11-02'T'14:34:02,781-07:00</td></tr>
+<tr><td style="text-align: left">%d{ABSOLUTE}</td><td style="text-align: left">14:34:02,781</td></tr>
+<tr><td style="text-align: left">%d{ABSOLUTE_MICROS}</td><td style="text-align: left">14:34:02,123456</td></tr>
+<tr><td style="text-align: left">%d{ABSOLUTE_NANOS}</td><td style="text-align: left">14:34:02,123456789</td></tr>
+<tr><td style="text-align: left">%d{DATE}</td><td style="text-align: left">02 Nov 2012 14:34:02,781</td></tr>
+<tr><td style="text-align: left">%d{COMPACT}</td><td style="text-align: left">20121102143402781</td></tr>
+<tr><td style="text-align: left">%d{UNIX}</td><td style="text-align: left">1351866842</td></tr>
+<tr><td style="text-align: left">%d{UNIX_MILLIS}</td><td style="text-align: left">1351866842781</td></tr>
+</tbody></table>
+</div>
+<p>您还可以使用一组包含每个 java.util.TimeZone.getTimeZone 的时区 ID 的大括号。如果未给出日期格式说明符，则使用 DEFAULT 格式。</p>
+<h3 id="预定义格式说明符"><a class="header" href="#预定义格式说明符">预定义格式说明符</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Pattern</th><th style="text-align: left">Example</th></tr></thead><tbody>
+<tr><td style="text-align: left">%d{HH:mm:ss,SSS}</td><td style="text-align: left">14:34:02,123</td></tr>
+<tr><td style="text-align: left">%d{HH:mm:ss,nnnn} to %d{HH:mm:ss,nnnnnnnnn}</td><td style="text-align: left">14:34:02,1234 to 14:34:02,123456789</td></tr>
+<tr><td style="text-align: left">%d{dd MMM yyyy HH:mm:ss,SSS}</td><td style="text-align: left">02 Nov 2012 14:34:02,123</td></tr>
+<tr><td style="text-align: left">%d{dd MMM yyyy HH:mm:ss,nnnn} to %d{dd MMM yyyy HH:mm:ss,nnnnnnnnn}</td><td style="text-align: left">02 Nov 2012 14:34:02,1234 to 02 Nov 2012 14:34:02,123456789</td></tr>
+<tr><td style="text-align: left">%d{HH:mm:ss}{GMT+0}</td><td style="text-align: left">18:34:02</td></tr>
+</tbody></table>
+</div>
+<p>%d{UNIX} 以秒为单位输出 UNIX 时间。</p>
+<p>%d{UNIX_MILLIS} 以毫秒为单位输出 UNIX 时间。 </p>
+<p>UNIX 时间是当前时间与 UTC 时间 1970 年 1 月 1 日午夜之间的差异，UNIX 以秒为单位，UNIX_MILLIS 以毫秒为单位。虽然时间单位是毫秒，但粒度取决于操作系统 (Windows)。这是输出事件时间的有效方法，因为只发生从 long 到 String 的转换，不涉及日期格式。</p>
+<p>在 Java 9 上运行时，Log4j 2.11 添加了对比毫秒更精确的时间戳的有限支持。请注意，并非所有 DateTimeFormatter 格式都受支持。只有上表中提到的格式的时间戳可以使用“nano-of-second”模式字母 n 而不是“fraction-of-second”模式字母 S。</p>
+<h2 id="编码和转义适合以特定标记语言输出的特殊字符"><a class="header" href="#编码和转义适合以特定标记语言输出的特殊字符">编码和转义适合以特定标记语言输出的特殊字符。</a></h2>
+<p><strong>enc</strong>{<em>pattern</em>}{[HTML|XML|JSON|CRLF]}
+<strong>encode</strong>{<em>pattern</em>}{[HTML|XML|JSON|CRLF]}</p>
+<p>默认情况下，如果只指定了一个选项，则此编码为 HTML。</p>
+<p>第二个选项用于指定应使用哪种编码格式。该转换器对于对用户提供的数据进行编码特别有用，这样输出数据就不会被错误地或不安全地写入。</p>
+<p>典型的用法是对消息 %enc{%m} 进行编码，但用户输入也可能来自其他位置，例如 MDC %enc{%mdc{key}}</p>
+<p>使用HTML编码格式，替换如下字符：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Character</th><th style="text-align: left">Replacement</th></tr></thead><tbody>
+<tr><td style="text-align: left">'\r', '\n'</td><td style="text-align: left">Converted into escaped strings &quot;\r&quot; and &quot;\n&quot; respectively</td></tr>
+<tr><td style="text-align: left">&amp;, &lt;, &gt;, &quot;, ', /</td><td style="text-align: left">Replaced with the corresponding HTML entity</td></tr>
+</tbody></table>
+</div>
+<p>使用 XML 编码格式，这遵循 XML 规范指定的转义规则：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Character</th><th style="text-align: left">Replacement</th></tr></thead><tbody>
+<tr><td style="text-align: left">&amp;, &lt;, &gt;, &quot;, '</td><td style="text-align: left">Replaced with the corresponding XML entity</td></tr>
+</tbody></table>
+</div>
+<p>使用 JSON 编码格式，这遵循 <a href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627 第 2.5 节</a>指定的转义规则：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Character</th><th style="text-align: left">Replacement</th></tr></thead><tbody>
+<tr><td style="text-align: left">U+0000 - U+001F</td><td style="text-align: left">\u0000 - \u001F</td></tr>
+<tr><td style="text-align: left">Any other control characters</td><td style="text-align: left">Encoded into its \uABCD equivalent escaped code point</td></tr>
+<tr><td style="text-align: left">&quot;</td><td style="text-align: left">&quot;</td></tr>
+<tr><td style="text-align: left">\</td><td style="text-align: left">\</td></tr>
+</tbody></table>
+</div>
+<p>例如，模式 {&quot;message&quot;: &quot;%enc{%m}{JSON}&quot;} 可用于输出包含作为字符串值的日志消息的有效 JSON 文档。使用CRLF编码格式，替换如下字符：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Character</th><th style="text-align: left">Replacement</th></tr></thead><tbody>
+<tr><td style="text-align: left">'\r', '\n'</td><td style="text-align: left">Converted into escaped strings &quot;\r&quot; and &quot;\n&quot; respectively</td></tr>
+</tbody></table>
+</div>
+<h2 id="等值替换"><a class="header" href="#等值替换">等值替换</a></h2>
+<p><strong>equals</strong>{pattern}{test}{substitution}
+<strong>equalsIgnoreCase</strong>{pattern}{test}{substitution}</p>
+<p>将字符串中出现的 'test' 替换为由模式评估产生的字符串中的替换 'substitution'。</p>
+<p>例如，&quot;%equals{[%marker]}{[]}{}&quot; 将用空字符串替换由没有标记的事件产生的 '[]' 字符串。模式可以是任意复杂的，特别是可以包含多个转换关键字。</p>
+<h2 id="throwable"><a class="header" href="#throwable">Throwable</a></h2>
+<p><strong>ex</strong>|<strong>exception</strong>|<strong>throwable</strong>
+{
+[ &quot;none&quot;
+| &quot;full&quot;
+| depth
+| &quot;short&quot;
+| &quot;short.className&quot;
+| &quot;short.fileName&quot;
+| &quot;short.lineNumber&quot;
+| &quot;short.methodName&quot;
+| &quot;short.message&quot;
+| &quot;short.localizedMessage&quot;]
+}
+{filters(package,package,...)}
+{suffix(<em>pattern</em>)}
+{separator(<em>separator</em>)}</p>
+<p>默认情况下，这将输出完整的跟踪，就像通常通过调用 Throwable.printStackTrace() 找到的那样。</p>
+<p>您可以使用 %throwable{option} 形式的选项跟随 throwable 转换词。</p>
+<p><code>%throwable{short}</code> outputs the first line of the Throwable.</p>
+<p><strong>%throwable{short.className}</strong> outputs the name of the class where the exception occurred.</p>
+<p><strong>%throwable{short.methodName}</strong> outputs the method name where the exception occurred.</p>
+<p><strong>%throwable{short.fileName}</strong> outputs the name of the class where the exception occurred.</p>
+<p><strong>%throwable{short.lineNumber}</strong> outputs the line number where the exception occurred.</p>
+<p><strong>%throwable{short.message}</strong> outputs the message.</p>
+<p><strong>%throwable{short.localizedMessage}</strong> outputs the localized message.</p>
+<p><strong>%throwable{n}</strong> outputs the first n lines of the stack trace.</p>
+<p><strong>%throwable{none}</strong> or <strong>%throwable{0}</strong> suppresses output of the exception.</p>
+<p>使用 {filters(packages)} ，其中包是包名称列表，以抑制来自堆栈跟踪的匹配堆栈帧。使用 {suffix(pattern)} 在每个堆栈帧的末尾添加模式的输出。使用 {separator(...)} 作为行尾字符串。例如：分隔符(|)。默认值是 line.separator 系统属性，它依赖于操作系统。</p>
+<h2 id="输出发出日志记录请求的文件名"><a class="header" href="#输出发出日志记录请求的文件名">输出发出日志记录请求的文件名。</a></h2>
+<p><strong>F</strong>
+<strong>file</strong></p>
+<p>生成文件信息（位置信息）是一项昂贵的操作，可能会影响性能。谨慎使用。</p>
+<h2 id="根据当前事件的日志记录级别将-ansi-颜色添加到封闭模式的结果中"><a class="header" href="#根据当前事件的日志记录级别将-ansi-颜色添加到封闭模式的结果中">根据当前事件的日志记录级别将 ANSI 颜色添加到封闭模式的结果中。</a></h2>
+<p>The default colors for each level are:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Level</th><th style="text-align: left">ANSI color</th></tr></thead><tbody>
+<tr><td style="text-align: left">FATAL</td><td style="text-align: left">Bright red</td></tr>
+<tr><td style="text-align: left">ERROR</td><td style="text-align: left">Bright red</td></tr>
+<tr><td style="text-align: left">WARN</td><td style="text-align: left">Yellow</td></tr>
+<tr><td style="text-align: left">INFO</td><td style="text-align: left">Green</td></tr>
+<tr><td style="text-align: left">DEBUG</td><td style="text-align: left">Cyan</td></tr>
+<tr><td style="text-align: left">TRACE</td><td style="text-align: left">Black (looks dark grey)</td></tr>
+</tbody></table>
+</div>
+<p>The color and attribute names and are standard, but the exact shade, hue, or value.</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Intensity Code</th><th style="text-align: left">0</th><th style="text-align: left">1</th><th style="text-align: left">2</th><th style="text-align: left">3</th><th style="text-align: left">4</th><th style="text-align: left">5</th><th style="text-align: left">6</th><th style="text-align: left">7</th></tr></thead><tbody>
+<tr><td style="text-align: left">Normal</td><td style="text-align: left">Black</td><td style="text-align: left">Red</td><td style="text-align: left">Green</td><td style="text-align: left">Yellow</td><td style="text-align: left">Blue</td><td style="text-align: left">Magenta</td><td style="text-align: left">Cyan</td><td style="text-align: left">White</td></tr>
+<tr><td style="text-align: left">Bright</td><td style="text-align: left">Black</td><td style="text-align: left">Red</td><td style="text-align: left">Green</td><td style="text-align: left">Yellow</td><td style="text-align: left">Blue</td><td style="text-align: left">Magenta</td><td style="text-align: left">Cyan</td><td style="text-align: left">White</td></tr>
+</tbody></table>
+</div>
+<p>You can use the default colors with:</p>
+<pre><code>%highlight{%d [%t] %-5level: %msg%n%throwable}
+</code></pre>
+<p>You can override the default colors in the optional {style} option. For example:</p>
+<pre><code>%highlight{%d [%t] %-5level: %msg%n%throwable}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}
+</code></pre>
+<p>You can highlight only the a portion of the log event:</p>
+<pre><code>%d [%t] %highlight{%-5level: %msg%n%throwable}
+</code></pre>
+<p>You can style one part of the message and highlight the rest the log event:</p>
+<pre><code>%style{%d [%t]}{black} %highlight{%-5level: %msg%n%throwable}
+</code></pre>
+<p>You can also use the STYLE key to use a predefined group of colors:</p>
+<pre><code>%highlight{%d [%t] %-5level: %msg%n%throwable}{STYLE=Logback}
+</code></pre>
+<p>The STYLE value can be one of:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Style</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">Default</td><td style="text-align: left">See above</td></tr>
+<tr><td style="text-align: left">Logback</td><td style="text-align: left">logback desciption</td></tr>
+</tbody></table>
+</div>
+<p><strong>logback desciption</strong></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Level</th><th style="text-align: left">ANSI color</th></tr></thead><tbody>
+<tr><td style="text-align: left">FATAL</td><td style="text-align: left">Blinking bright red</td></tr>
+<tr><td style="text-align: left">ERROR</td><td style="text-align: left">Bright red</td></tr>
+<tr><td style="text-align: left">WARN</td><td style="text-align: left">Red</td></tr>
+<tr><td style="text-align: left">INFO</td><td style="text-align: left">Blue</td></tr>
+<tr><td style="text-align: left">DEBUG</td><td style="text-align: left">Normal</td></tr>
+<tr><td style="text-align: left">TRACE</td><td style="text-align: left">Normal</td></tr>
+</tbody></table>
+</div>
+<h2 id="outputs-the-entries-in-a-mapmessage"><a class="header" href="#outputs-the-entries-in-a-mapmessage">Outputs the entries in a <a href="https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/message/MapMessage.html">MapMessage</a></a></h2>
+<p><strong>K</strong>{key}
+<strong>map</strong>{key}
+<strong>MAP</strong>{key}</p>
+<p>如果没有指定额外的子选项，则使用格式 {{key1,val1},{key2,val2}} 输出 Map 键值对集的全部内容</p>
+<h2 id="location-information"><a class="header" href="#location-information">location information</a></h2>
+<p><strong>l</strong>
+<strong>location</strong></p>
+<p>位置信息取决于 JVM 实现，但通常由调用方法的完全限定名称和调用者源文件名和括号之间的行号组成。</p>
+<p>Generating <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#LocationInformation">location information</a> is an expensive operation and may impact performance. Use with caution.</p>
+<h2 id="line-number"><a class="header" href="#line-number">line number</a></h2>
+<p><strong>L</strong>
+<strong>line</strong></p>
+<p>Outputs the line number from where the logging request was issued.</p>
+<p>Generating line number information (<a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#LocationInformation">location information</a>) is an expensive operation and may impact performance. Use with caution.</p>
+<h2 id="application-supplied-message"><a class="header" href="#application-supplied-message">application supplied message</a></h2>
+<p><strong>m</strong>{nolookups}{ansi}
+<strong>msg</strong>{nolookups}{ansi}
+<strong>message</strong>{nolookups}{ansi}</p>
+<p>Add {ansi} to render messages with ANSI escape codes (requires JAnsi, see <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#enable-jansi">configuration</a>.)</p>
+<p>The default syntax for embedded ANSI codes is:</p>
+<pre><code>@|code(,code)* text|@
+</code></pre>
+<p>For example, to render the message &quot;Hello&quot; in green, use:</p>
+<pre><code>@|green Hello|@
+</code></pre>
+<p>To render the message &quot;Hello&quot; in bold and red, use:</p>
+<pre><code>@|bold,red Warning!|@
+</code></pre>
+<p>You can also define custom style names in the configuration with the syntax:</p>
+<pre><code>%message{ansi}{StyleName=value(,value)*( StyleName=value(,value)*)*}%n
+</code></pre>
+<p>For example:</p>
+<pre><code>%message{ansi}{WarningStyle=red,bold KeyStyle=white ValueStyle=blue}%n
+</code></pre>
+<p>The call site can look like this:</p>
+<pre><code>logger.info(&quot;@|KeyStyle {}|@ = @|ValueStyle {}|@&quot;, entry.getKey(), entry.getValue());
+</code></pre>
+<p>Use {nolookups} to log messages like &quot;${date:YYYY-MM-dd}&quot; without using any lookups. Normally calling logger.info(&quot;Try ${date:YYYY-MM-dd}&quot;) would replace the date template ${date:YYYY-MM-dd} with an actual date. Using nolookups disables this feature and logs the message string untouched.</p>
+<h2 id="调用方法名"><a class="header" href="#调用方法名">调用方法名</a></h2>
+<p><strong>M</strong>
+<strong>method</strong></p>
+<p>生成调用者的方法名称（位置信息）是一项代价高昂的操作，可能会影响性能。谨慎使用。</p>
+<h2 id="marker"><a class="header" href="#marker"><strong>marker</strong></a></h2>
+<p>The full name of the marker, including parents, if one is present.</p>
+<h2 id="markersimplename"><a class="header" href="#markersimplename"><strong>markerSimpleName</strong></a></h2>
+<p>The simple name of the marker (not including parents), if one is present</p>
+<h2 id="限制输出内容"><a class="header" href="#限制输出内容">限制输出内容</a></h2>
+<p><strong>maxLen</strong>
+<strong>maxLength</strong></p>
+<p>如果长度大于 20，则输出将包含尾随省略号。如果提供的长度无效，则使用默认值 100。示例语法：%maxLen{%p: %c{1} - %m%notEmpty{ =&gt;%ex{short}}}{160} 将被限制为 160 个字符，并带有尾随省略号。</p>
+<p>另一个示例： %maxLen{%m}{20} 将被限制为 20 个字符并且没有尾随省略号。</p>
+<h2 id="平台无关的换行符"><a class="header" href="#平台无关的换行符">平台无关的换行符</a></h2>
+<p>n</p>
+<h2 id="log-event-cratedtime"><a class="header" href="#log-event-cratedtime">log event cratedTime</a></h2>
+<p><strong>N</strong>
+<strong>nano</strong></p>
+<p>Outputs the result of System.nanoTime() at the time the log event was created.</p>
+<h2 id="进程id"><a class="header" href="#进程id">进程ID</a></h2>
+<p><strong>pid</strong>{[defaultValue]}
+<strong>processId</strong>{[defaultValue]}</p>
+<p>Outputs the process ID if supported by the underlying platform. An optional default value may be specified to be shown if the platform does not support process IDs.</p>
+<h2 id="变量存在则打印"><a class="header" href="#变量存在则打印">变量存在则打印</a></h2>
+<p>Outputs the result of evaluating the pattern if and only if all variables in the pattern are not empty.</p>
+<pre><code>%notEmpty{[%marker]}
+</code></pre>
+<h2 id="日志级别"><a class="header" href="#日志级别">日志级别</a></h2>
+<p><strong>p</strong>|<strong>level</strong>{<em>level</em>=<em>label</em>, <em>level</em>=<em>label</em>, ...} </p>
+<p><strong>p</strong>|<strong>level</strong>{length=<em>n</em>} </p>
+<p><strong>p</strong>|<strong>level</strong>{lowerCase=<em>true</em>|<em>false</em>}</p>
+<p>输出日志事件的级别。您以“级别=值，级别=值”的形式提供级别名称映射，其中级别是级别的名称，值是应显示的值而不是级别的名称。</p>
+<pre><code>%level{WARN=Warning, DEBUG=Debug, ERROR=Error, TRACE=Trace, INFO=Info}
+
+</code></pre>
+<p>Alternatively, for the compact-minded:</p>
+<pre><code>%level{WARN=W, DEBUG=D, ERROR=E, TRACE=T, INFO=I}
+</code></pre>
+<p>更简洁地说，对于与上面相同的结果，您可以定义级别标签的长度：</p>
+<pre><code>%level{length=1}
+</code></pre>
+<p>如果长度大于级别名称长度，则布局使用普通级别名称。</p>
+<p>You can combine the two kinds of options:</p>
+<pre><code>%level{ERROR=Error, length=2}
+</code></pre>
+<p>这将为您提供错误级别名称和长度为 2 的所有其他级别名称。</p>
+<p>您可以输出小写级别的名称（默认为大写）：</p>
+<pre><code>%level{lowerCase=true}
+</code></pre>
+<h2 id="从jvm启动时--日志事件的创建时间"><a class="header" href="#从jvm启动时--日志事件的创建时间">从<strong>JVM</strong>启动时  日志事件的创建时间</a></h2>
+<p><strong>r</strong>
+<strong>relative</strong></p>
+<p>Outputs the number of milliseconds elapsed since the JVM was started until the creation of the logging event.</p>
+<h2 id="内容替换"><a class="header" href="#内容替换">内容替换</a></h2>
+<p>replace{pattern}{regex}{substitution}	</p>
+<p>用它在模式评估产生的字符串中的替换 'substitution' 替换正则表达式 'regex' 的出现。例如，“%replace{%msg}{\s}{}”将删除事件消息中包含的所有空格</p>
+<p>模式可以是任意复杂的，特别是可以包含多个转换关键字。例如，“%replace{%logger %msg}{.}{/}”将用正斜杠替换记录器或事件消息中的所有点。</p>
+<h2 id="rthrowable"><a class="header" href="#rthrowable">RThrowable</a></h2>
+<p><strong>rEx</strong>|<strong>rException</strong>|<strong>rThrowable</strong>
+{
+[&quot;none&quot; | &quot;short&quot; | &quot;full&quot; | depth]
+[,filters(package,package,...)]
+[,separator(<em>separator</em>)]
+}
+{ansi(
+Key=Value,Value,...
+Key=Value,Value,...
+...)
+}
+{suffix(<em>pattern</em>)}</p>
+<p>同 %throwable 转换字</p>
+<p>但是堆栈跟踪从抛出的第一个异常开始打印，然后是每个后续的包装异常</p>
+<p><strong>%rEx{short}</strong> </p>
+<p>输出异常栈的第一行</p>
+<p><strong>%rEx{n}</strong></p>
+<p>输出栈的前几行</p>
+<p><strong>%rEx{none} or %rEx{0}</strong> </p>
+<p>禁用异常打印</p>
+<p><strong>抑制栈帧</strong></p>
+<p><strong>filters(<em>packages</em>)</strong> </p>
+<p><em>packages</em> 是一个包名称列表，用于抑制来自堆栈跟踪的匹配堆栈帧。</p>
+<p><strong>separator(<em>separator</em>)</strong></p>
+<p>使用分隔符字符串来分隔堆栈跟踪的行。例如：分隔符(|)。默认值是 line.separator 系统属性，它依赖于操作系统。</p>
+<p><strong>rEx{suffix(<em>pattern</em>)</strong> </p>
+<p>to add the output of <em>pattern</em> to the output only when there is a throwable to print.</p>
+<h2 id="日志事件自增序列"><a class="header" href="#日志事件自增序列">日志事件自增序列</a></h2>
+<p>包括将在每个事件中递增的序列号。计数器是一个静态变量，因此仅在共享相同转换器类对象的应用程序中是唯一的。</p>
+<h2 id="线程id"><a class="header" href="#线程id">线程ID</a></h2>
+<p><strong>T</strong>
+<strong>tid</strong>
+<strong>threadId</strong></p>
+<p>Outputs the ID of the thread that generated the logging event.</p>
+<h2 id="线程名"><a class="header" href="#线程名">线程名</a></h2>
+<p><strong>t</strong>
+<strong>tn</strong>
+<strong>thread</strong>
+<strong>threadName</strong></p>
+<h2 id="线程优先级"><a class="header" href="#线程优先级">线程优先级</a></h2>
+<p><strong>tp</strong>
+<strong>threadPriority</strong></p>
+<h2 id="logger的全限定类名"><a class="header" href="#logger的全限定类名">logger的全限定类名</a></h2>
+<p><strong>fqcn</strong></p>
+<p>Outputs the fully qualified class name of the logger.</p>
+<h2 id="endofbatch"><a class="header" href="#endofbatch">EndOfBatch</a></h2>
+<p>Outputs the EndOfBatch status of the logging event, as &quot;true&quot; or &quot;false&quot;.</p>
+<h2 id="ndc"><a class="header" href="#ndc">NDC</a></h2>
+<p><strong>x</strong>
+<strong>NDC</strong></p>
+<p>Outputs the Thread Context Stack (also known as the Nested Diagnostic Context or NDC) associated with the thread that generated the logging event.</p>
+<h2 id="mdc"><a class="header" href="#mdc">MDC</a></h2>
+<p><strong>X</strong>{key[,key2...]}
+<strong>mdc</strong>{key[,key2...]}
+<strong>MDC</strong>{key[,key2...]}</p>
+<p>Outputs the Thread Context Map (also known as the Mapped Diagnostic Context or MDC) associated with the thread that generated the logging event. </p>
+<p>%X{clientNumber}</p>
+<p>%X{name, number} using the format {name=val1, number=val2}</p>
+<p>如果未指定子选项，则使用格式 {key1=val1, key2=val2} 输出 MDC 键值对集的全部内容。键/值对将按排序顺序打印。</p>
+<p>See the <a href="https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/ThreadContext.html">ThreadContext</a> class for more details.</p>
+<h2 id="随机值"><a class="header" href="#随机值">随机值</a></h2>
+<p><strong>u</strong>{&quot;RANDOM&quot; | &quot;TIME&quot;}
+<strong>uuid</strong></p>
+<p>包括随机或基于时间的 UUID。</p>
+<p>The time-based UUID is a Type 1 UUID 每毫秒最多可以生成 10,000 个唯一 ID，</p>
+<p>将使用每个主机的 MAC 地址，</p>
+<p>并尝试确保同一主机上多个 JVM 和/或类加载器的唯一性</p>
+<p>到 16,384 之间的随机数将与 UUID 生成器类的每个实例相关联，并包含在生成的每个基于时间的 UUID 中。</p>
+<p>由于基于时间的 UUID 包含 MAC 地址和时间戳，因此应谨慎使用，因为它们可能导致安全漏洞。</p>
+<h1 id="格式修饰符"><a class="header" href="#格式修饰符">格式修饰符</a></h1>
+<p>默认情况下，相关信息按原样输出。但是，借助格式修饰符，可以更改最小字段宽度、最大字段宽度和对齐方式。</p>
+<p>可选的格式修饰符位于百分号和转换字符之间。</p>
+<p>第一个可选的格式修饰符是<em>左对齐标志</em>，它只是减号 (-) 字符</p>
+<p>然后是可选的 <em>minimum field width</em> 修饰符</p>
+<p>这是一个十进制常量，表示要输出的最小字符数。</p>
+<p>如果数据项为较少的字符，则在左侧或右侧进行填充，直到达到最小宽度</p>
+<p>默认是在左侧填充（右对齐），但您可以使用左对齐标志指定右填充。</p>
+<p>填充字符是空格</p>
+<p>如果数据项大于最小字段宽度，则扩展字段以容纳数据该值永远不会被截断</p>
+<p>要使用零作为填充字符，请在 <em>minimum field width</em> 前面加上零。</p>
+<p>可以使用 <em>maximum field width</em> 修饰符更改此行为，该修饰符由句点后跟十进制常量指定。</p>
+<p>如果数据项比最大字段长，则从数据项的<em>开头</em>而不是结尾删除多余的字符。</p>
+<p>例如，最大字段宽度为 8，数据项长度为 10 个字符，则删除数据项的前两个字符。</p>
+<p>此行为不同于 C 中的 printf 函数，其中从末尾开始截断。</p>
+<p>通过在句点后附加一个减号，可以从末尾截断。</p>
+<p>在这种情况下，如果最大字段宽度为 8 且数据项长度为 10 个字符，则删除数据项的最后两个字符。</p>
+<p>以下是类别转换说明符的各种格式修饰符示例。</p>
+<p>Pattern Converters</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Format modifier</th><th style="text-align: left">left justify</th><th style="text-align: left">minimum width</th><th style="text-align: left">maximum width</th><th style="text-align: left">comment</th></tr></thead><tbody>
+<tr><td style="text-align: left">%20c</td><td style="text-align: left">false</td><td style="text-align: left">20</td><td style="text-align: left">none</td><td style="text-align: left">Left pad with spaces if the category name is less than 20 characters long.</td></tr>
+<tr><td style="text-align: left">%-20c</td><td style="text-align: left">true</td><td style="text-align: left">20</td><td style="text-align: left">none</td><td style="text-align: left">Right pad with spaces if the category name is less than 20 characters long.</td></tr>
+<tr><td style="text-align: left">%.30c</td><td style="text-align: left">NA</td><td style="text-align: left">none</td><td style="text-align: left">30</td><td style="text-align: left">Truncate from the beginning if the category name is longer than 30 characters.</td></tr>
+<tr><td style="text-align: left">%20.30c</td><td style="text-align: left">false</td><td style="text-align: left">20</td><td style="text-align: left">30</td><td style="text-align: left">Left pad with spaces if the category name is shorter than 20 characters. However, if category name is longer than 30 characters, then truncate from the beginning.</td></tr>
+<tr><td style="text-align: left">%-20.30c</td><td style="text-align: left">true</td><td style="text-align: left">20</td><td style="text-align: left">30</td><td style="text-align: left">Right pad with spaces if the category name is shorter than 20 characters. However, if category name is longer than 30 characters, then truncate from the beginning.</td></tr>
+<tr><td style="text-align: left">%-20.-30c</td><td style="text-align: left">true</td><td style="text-align: left">20</td><td style="text-align: left">30</td><td style="text-align: left">Right pad with spaces if the category name is shorter than 20 characters. However, if category name is longer than 30 characters, then truncate from the end.</td></tr>
+</tbody></table>
+</div><script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../19.日志/log4j2/layouts/JSONTemplateLayouts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../19.日志/log4j2/log4j2配置/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../19.日志/log4j2/layouts/JSONTemplateLayouts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../19.日志/log4j2/log4j2配置/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

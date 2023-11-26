@@ -1,0 +1,691 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>top命令 - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><div>UML</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html">UML</a></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/index.html">MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html">时序图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html">流程图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html">类图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html">语法总览</a></li></ol></li><li class="chapter-item "><div>Flowchart</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html">flowchart_fun</a></li></ol></li><li class="chapter-item "><div>PlantUml</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html">plantUML语法</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../4.模板引擎/index.html">模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/index.html">mustache</a></li></ol></li><li class="chapter-item "><div>常用软件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/Multipass.html">Multipass</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html">v2rayN代理</a></li></ol></li><li class="chapter-item "><div>生活事宜</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html">个人清算汇缴</a></li></ol></li><li class="chapter-item "><a href="../7.思考/index.html">思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html">学习总结</a></li><li class="chapter-item "><a href="../7.思考/杂项.html">杂项</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html">编程技巧</a></li></ol></li><li class="chapter-item "><div>学习</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html">概率论与数理统计</a></li></ol></li><li class="chapter-item "><div>数据格式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/XML.html">XML</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html">yaml</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html">CFSBandwidthControl</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html">LinuxFor</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html">LinuxWOL设置</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html">Linux条件测试</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html">Seed</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html">VIM</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html">caseIn</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html">cgroup</a></li><li class="chapter-item "><a href="../10.Linux/curl.html">curl</a></li><li class="chapter-item "><a href="../10.Linux/dd.html">dd</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html">diffPatch</a></li><li class="chapter-item "><a href="../10.Linux/find.html">find</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html">iptables</a></li><li class="chapter-item "><a href="../10.Linux/jq.html">jq</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html">lsof</a></li><li class="chapter-item "><a href="../10.Linux/ps.html">ps</a></li><li class="chapter-item "><a href="../10.Linux/read.html">read</a></li><li class="chapter-item "><a href="../10.Linux/scp.html">scp</a></li><li class="chapter-item "><a href="../10.Linux/select.html">select</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html">service脚本</a></li><li class="chapter-item "><a href="../10.Linux/set.html">set</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html">shell字符串</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html">shell脚本参数</a></li><li class="chapter-item "><a href="../10.Linux/stat.html">stat</a></li><li class="chapter-item "><a href="../10.Linux/tar.html">tar</a></li><li class="chapter-item expanded "><a href="../10.Linux/top命令.html" class="active">top命令</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html">uidGidSetUidSetGid</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html">wsl关闭提示音</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html">yum本地包依赖</a></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html">大端与小端</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html">确定Linux发行版本</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html">零拷贝</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html">默认值语法糖</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/index.html">algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html">Base64编码</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html">Huffman编码</a></li><li class="chapter-item "><a href="../11.algorithm/base64.html">base64</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html">fnv-hash算法</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html">二叉搜索平衡树</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html">位运算</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html">动态规划</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html">动态规划-新</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html">字符编码</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html">布隆过滤器</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html">浮点数</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html">红黑树</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html">贪心算法</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html">逆波兰表达式</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="介绍"><a class="header" href="#介绍">介绍</a></h1>
+<p>top 命令可以动态地持续监听进程地运行状态，与此同时，该命令还提供了一个交互界面，用户可以根据需要，人性化地定制自己的输出，进而更清楚地了进程的运行状态。</p>
+<h1 id="格式"><a class="header" href="#格式">格式</a></h1>
+<p><strong>基本格式</strong></p>
+<pre><code>top [选项]
+</code></pre>
+<p><strong>选项</strong></p>
+<ul>
+<li>-d 秒数：指定 top 命令每隔几秒更新。默认是 3 秒；</li>
+<li>-b：使用批处理模式输出。一般和&quot;-n&quot;选项合用，用于把 top 命令重定向到文件中；</li>
+<li>-n 次数：指定 top 命令执行的次数。</li>
+<li>-p 进程PID：仅查看指定 ID 的进程；</li>
+<li>-q 没有任何延迟的刷新</li>
+<li>-s：使 top 命令在安全模式中运行，避免在交互模式中出现错误；</li>
+<li>-u 用户名：只监听某个用户的进程；</li>
+<li>-i 不显示任何闲置进程或者僵尸进程</li>
+<li>-c 显示整个命令行</li>
+</ul>
+<p><strong>交互式命令选项</strong></p>
+<p>常用交互操作</p>
+<ul>
+<li>
+<p>基础操作</p>
+<ul>
+<li>1：显示CPU详细信息，每核显示一行</li>
+<li>d / s ：修改刷新频率，单位为秒</li>
+<li>h：可显示帮助界面</li>
+<li>n：指定进程列表显示行数，默认为满屏行数</li>
+<li>q：退出top</li>
+</ul>
+</li>
+<li>
+<p>面板隐藏显示</p>
+<ul>
+<li>l：隐藏/显示第1行负载信息；</li>
+<li>t：隐藏/显示第2~3行CPU信息；</li>
+<li>m：隐藏/显示第4~5行内存信息；</li>
+</ul>
+</li>
+<li>
+<p>进程列表排序</p>
+<ul>
+<li>M：根据驻留内存大小进行排序；</li>
+<li>P：根据CPU使用百分比大小进行排序；</li>
+<li>T：根据时间/累计时间进行排序；</li>
+</ul>
+</li>
+</ul>
+<h1 id="top-命令的执行结果"><a class="header" href="#top-命令的执行结果">top 命令的执行结果</a></h1>
+<pre><code>top - 12:26:46 up 1 day, 13:32, 2 users, load average: 0.00, 0.00, 0.00
+Tasks: 95 total, 1 running, 94 sleeping, 0 stopped, 0 zombie
+Cpu(s): 0.1%us, 0.1%sy, 0.0%ni, 99.7%id, 0.1%wa, 0.0%hi, 0.1%si, 0.0%st
+Mem: 625344k total, 571504k used, 53840k free, 65800k buffers
+Swap: 524280k total, 0k used, 524280k free, 409280k cached
+PID   USER PR NI VIRT  RES  SHR S %CPU %MEM   TIME+ COMMAND
+19002 root 20  0 2656 1068  856 R  0.3  0.2 0:01.87 top
+1     root 20  0 2872 1416 1200 S  0.0  0.2 0:02.55 init
+2     root 20  0    0    0    0 S  0.0  0.0 0:00.03 kthreadd
+3     root RT  0    0    0    0 S  0.0  0.0 0:00.00 migration/0
+4     root 20  0    0    0    0 S  0.0  0.0 0:00.15 ksoftirqd/0
+5     root RT  0    0    0    0 S  0.0  0.0 0:00.00 migration/0
+6     root RT  0    0    0    0 S  0.0  0.0 0:10.01 watchdog/0
+7     root 20  0    0    0    0 S  0.0  0.0 0:05.01 events/0
+8     root 20  0    0    0    0 S  0.0  0.0 0:00.00 cgroup
+9     root 20  0    0    0    0 S  0.0  0.0 0:00.00 khelper
+10    root 20  0    0    0    0 S  0.0  0.0 0:00.00 netns
+11    root 20  0    0    0    0 S  0.0  0.0 0:00.00 async/mgr
+12    root 20  0    0    0    0 S  0.0  0.0 0:00.00 pm
+13    root 20  0    0    0    0 S  0.0  0.0 0:01.70 sync_supers
+14    root 20  0    0    0    0 S  0.0  0.0 0:00.63 bdi-default
+15    root 20  0    0    0    0 S  0.0  0.0 0:00.00 kintegrityd/0
+16    root 20  0    0    0    0 S  0.0  0.0 0:02.52 kblockd/0
+17    root 20  0    0    0    0 S  0.0  0.0 0:00.00 kacpid
+18    root 20  0    0    0    0 S  0.0  0.0 0:00.00 kacpi_notify
+</code></pre>
+<ol>
+<li>第一部分是前五行，显示的是整个系统的资源使用状况，我们就是通过这些输出来判断服务器的资源使用状态的；</li>
+</ol>
+<p><strong>第一行</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>内 容</th><th>说 明</th></tr></thead><tbody>
+<tr><td>12:26:46</td><td>系统当前时间</td></tr>
+<tr><td>up 1 day, 13:32</td><td>系统的运行时间.本机己经运行 1 天 13 小时 32 分钟</td></tr>
+<tr><td>2 users</td><td>当前登录了两个用户</td></tr>
+<tr><td>load average: 0.00,0.00，0.00</td><td>系统在之前 1 分钟、5 分钟、15 分钟的平均负载。如果 CPU 是单核的，则这个数值超过 1 就是高负载：如果 CPU 是四核的，则这个数值超过 4 就是高负载 （这个平均负载完全是依据个人经验来进行判断的，一般认为不应该超过服务器 CPU 的核数）</td></tr>
+</tbody></table>
+</div>
+<p><strong>第二行</strong></p>
+<blockquote>
+<p>系统进程统计信息</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>内 容</th><th>说 明</th></tr></thead><tbody>
+<tr><td>Tasks: 95 total</td><td>系统中的进程总数</td></tr>
+<tr><td>1 running</td><td>正在运行的进程数</td></tr>
+<tr><td>94 sleeping</td><td>睡眠的进程数</td></tr>
+<tr><td>0 stopped</td><td>正在停止的进程数</td></tr>
+<tr><td>0 zombie</td><td>僵尸进程数。如果不是 0，则需要手工检查僵尸进程</td></tr>
+</tbody></table>
+</div>
+<p><strong>第三行</strong></p>
+<blockquote>
+<p>CPU 信息</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>内 容</th><th>说 明</th></tr></thead><tbody>
+<tr><td>Cpu(s): 0.1 %us</td><td>用户模式占用的 CPU 百分比</td></tr>
+<tr><td>0.1%sy</td><td>系统模式占用的 CPU 百分比</td></tr>
+<tr><td>0.0%ni</td><td>改变过优先级的用户进程占用的 CPU 百分比</td></tr>
+<tr><td>99.7%id</td><td>空闲 CPU 占用的 CPU 百分比</td></tr>
+<tr><td>0.1%wa</td><td>等待输入/输出的进程占用的 CPU 百分比</td></tr>
+<tr><td>0.0%hi</td><td>硬中断请求服务占用的 CPU 百分比</td></tr>
+<tr><td>0.1%si</td><td>软中断请求服务占用的 CPU 百分比</td></tr>
+<tr><td>0.0%st</td><td>st（steal time）意为虚拟时间百分比，当有虚拟机时，虚拟机被hypervisor偷去的CPU时间（如果当前处于一个hypervisor下的vm，实际上hypervisor也是要消耗一部分CPU处理时间的）</td></tr>
+</tbody></table>
+</div>
+<p>第四行</p>
+<blockquote>
+<p>物理内存信息</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>内 容</th><th>说 明</th></tr></thead><tbody>
+<tr><td>Mem: 625344k total</td><td>物理内存的总量，单位为KB</td></tr>
+<tr><td>571504k used</td><td>己经使用的物理内存数量</td></tr>
+<tr><td>53840k free</td><td>空闲的物理内存数量。我们使用的是虚拟机，共分配了 628MB内存，所以只有53MB的空闲内存</td></tr>
+<tr><td>65800k buffers</td><td>用作内核缓冲的内存量</td></tr>
+</tbody></table>
+</div>
+<p>第五行</p>
+<blockquote>
+<p>交换分区（swap）信息</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>内 容</th><th>说 明</th></tr></thead><tbody>
+<tr><td>Swap: 524280k total</td><td>交换分区（虚拟内存）的总大小</td></tr>
+<tr><td>O k used</td><td>已经使用的交换分区的大小</td></tr>
+<tr><td>524280 k free</td><td>空闲交换分区的大小</td></tr>
+<tr><td>409280k cached</td><td>作为缓存的交换分区的大小</td></tr>
+</tbody></table>
+</div>
+<p>如果 1 分钟、5 分钟、15 分钟的平均负载高于 1，则证明系统压力较大。如果 CPU 的使用率过高或空闲率过低，则证明系统压力较大。如果物理内存的空闲内存过小，则也证明系统压力较大。</p>
+<p>第二部分从第六行开始，显示的是系统中<strong>进程的信息</strong>；</p>
+<p><strong>显示字段管理面板</strong></p>
+<p>在top命令中按f按可以查看显示的列信息，按对应字母来开启/关闭列，大写字母表示开启，小写字母表示关闭。带*号的是默认列。</p>
+<div class="table-wrapper"><table><thead><tr><th>英文名</th><th>解释</th></tr></thead><tbody>
+<tr><td>PID</td><td>Process Id</td></tr>
+<tr><td>USER</td><td>Effective User Name</td></tr>
+<tr><td>PR</td><td>Priority（进程优先级，不可更改）</td></tr>
+<tr><td>NI</td><td>Nice Value（进程优先级，可更改，负值表示高优先级，正值表示低优先级）</td></tr>
+<tr><td>VIRT</td><td>Virtual Image (KiB) 。进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</td></tr>
+<tr><td>RES</td><td>Resident Size (KiB)，进程占用的物理内存，单位kb。RES=CODE+DATA</td></tr>
+<tr><td>SHR</td><td>Shared Memory (KiB)，共享内存大小</td></tr>
+<tr><td>S</td><td>Process Status，进程状态。D=不可中断的睡眠状态,R=运行,S=睡眠,T=跟踪/停止,Z=僵尸进程</td></tr>
+<tr><td>%CPU</td><td>上次更新到现在的CPU时间占用百分比</td></tr>
+<tr><td>%MEM</td><td>进程使用的物理内存百分比</td></tr>
+<tr><td>TIME+</td><td>(CPU Time, hundredths) 进程使用的CPU时间总计，单位1/100秒</td></tr>
+<tr><td>COMMAND</td><td>(Command name/line) 命令名/命令行</td></tr>
+<tr><td>PPID</td><td>(Parent Process Pid)</td></tr>
+<tr><td>UID</td><td>Effective User Id</td></tr>
+<tr><td>RUID</td><td>Real User Id</td></tr>
+<tr><td>RUSER</td><td>Real User Name</td></tr>
+<tr><td>SUID</td><td>Saved User Id</td></tr>
+<tr><td>SUSER</td><td>Saved User Name</td></tr>
+<tr><td>GID</td><td>Group Id</td></tr>
+<tr><td>GROUP</td><td>Group Name</td></tr>
+<tr><td>PGRP</td><td>Process Group Id</td></tr>
+<tr><td>TTY</td><td>Controlling Tty，启动进程的终端名。不是从终端启动的进程则显示为 ?</td></tr>
+<tr><td>TPGID</td><td>Tty Process Grp Id</td></tr>
+<tr><td>SID</td><td>Session Id</td></tr>
+<tr><td>nTH</td><td>Number of Threads</td></tr>
+<tr><td>P</td><td>(Last used cpu (SMP)) 最后使用的CPU，仅在多CPU环境下有意义</td></tr>
+<tr><td>TIME</td><td>进程使用的CPU时间总计，单位秒</td></tr>
+<tr><td>SWAP</td><td>(Swapped size (kb)) 进程使用的虚拟内存中</td></tr>
+<tr><td>CODE</td><td>(Code size (kb)) 可执行代码占用的物理内存大小，单位kb</td></tr>
+<tr><td>DATA</td><td>可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb</td></tr>
+<tr><td>WCHAN</td><td>(Sleeping in Function) 若该进程在睡眠，则显示睡眠中的系统函数名</td></tr>
+</tbody></table>
+</div>
+<h1 id="具体交互性命令"><a class="header" href="#具体交互性命令">具体交互性命令</a></h1>
+<pre><code> Z,B       Global: 'Z' change color mappings; 'B' disable/enable bold
+            Z：修改颜色配置；B：关闭/开启粗体
+  l,t,m     Toggle Summaries: 'l' load avg; 't' task/cpu stats; 'm' mem info
+            l：隐藏/显示第1行负载信息；t：隐藏/显示第2~3行CPU信息；m：隐藏/显示第4~5行内存信息；
+  1,I       Toggle SMP view: '1' single/separate states; 'I' Irix/Solaris mode
+            1：单行/多行显示CPU信息；I：Irix/Solaris模式切换
+  f,o     . Fields/Columns: 'f' add or remove; 'o' change display order
+            f：列显示控制；o：列排序控制，按字母进行调整
+  F or O  . Select sort field  选择排序列
+  &lt;,&gt;     . Move sort field: '&lt;' next col left; '&gt;' next col right 上下移动内容
+  R,H     . Toggle: 'R' normal/reverse sort; 'H' show threads
+            R：内容排序；H：显示线程
+  c,i,S   . Toggle: 'c' cmd name/line; 'i' idle tasks; 'S' cumulative time
+            c：COMMAND列命令名称与完整命令行路径切换；i：忽略闲置和僵死进程开关；S：累计模式切换
+  x,y     . Toggle highlights: 'x' sort field; 'y' running tasks
+            x：列排序；y：运行任务
+  z,b     . Toggle: 'z' color/mono; 'b' bold/reverse (only if 'x' or 'y')
+            z：颜色模式；b：粗体开关 仅适用于x，y模式中
+  u       . Show specific user only 按用户进行过滤，当输入错误可按Ctrl + Backspace进行删除
+  n or #  . Set maximum tasks displayed 设置进程最大显示条数
+
+  k,r       Manipulate tasks: 'k' kill; 'r' renice
+            k：终止一个进程；r：重新设置一个进程的优先级别
+  d or s    Set update interval  改变两次刷新之间的延迟时间（单位为s），如果有小数，就换算成ms。输入0值则系统将不断刷新，默认值是5s；
+  W         Write configuration file 将当前设置写入~/.toprc文件中
+  q         Quit       退出
+          ( commands shown with '.' require a visible task display window )
+            注意：带.的命令需要一个可见的任务显示窗口
+</code></pre>
+<h1 id="批处理-获取进程信息"><a class="header" href="#批处理-获取进程信息">批处理 获取进程信息</a></h1>
+<pre><code> top -b -n 10 &gt; /root/top.log
+</code></pre>
+<p><strong>会产生 10次 top调用并输出</strong></p>
+<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../10.Linux/tar.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../10.Linux/uidGidSetUidSetGid.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../10.Linux/tar.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../10.Linux/uidGidSetUidSetGid.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

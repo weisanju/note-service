@@ -1,0 +1,1599 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>开发工具类 - 各项编程语言</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>C++</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.C++/C++与C的区别.html">C++与C的区别</a></li><li class="chapter-item "><a href="../1.C++/C++面向对象.html">C++面向对象</a></li><li class="chapter-item "><a href="../1.C++/泛型编程.html">泛型编程</a></li><li class="chapter-item "><a href="../1.C++/cmake/index.html">cmake</a></li></ol></li><li class="chapter-item "><a href="../2.LUA/index.html">LUA</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.LUA/基本语法.html">基本语法</a></li><li class="chapter-item "><a href="../2.LUA/高级语法.html">高级语法</a></li></ol></li><li class="chapter-item "><div>rust</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.rust/1常见编程概念.html">1常见编程概念</a></li><li class="chapter-item "><a href="../3.rust/2所有权.html">2所有权</a></li><li class="chapter-item "><a href="../3.rust/ConstantsAndVariables.html">ConstantsAndVariables</a></li><li class="chapter-item "><a href="../3.rust/Rust中的Sizedness.html">Rust中的Sizedness</a></li><li class="chapter-item "><a href="../3.rust/Rust库API设计文档规范.html">Rust库API设计文档规范</a></li><li class="chapter-item "><a href="../3.rust/const类型与函数.html">const类型与函数</a></li><li class="chapter-item "><a href="../3.rust/newType模式.html">newType模式</a></li><li class="chapter-item "><a href="../3.rust/rust执行shell命令.html">rust执行shell命令</a></li><li class="chapter-item "><a href="../3.rust/rust指针.html">rust指针</a></li><li class="chapter-item "><a href="../3.rust/rust面向对象特性.html">rust面向对象特性</a></li><li class="chapter-item "><a href="../3.rust/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../3.rust/函数式编程.html">函数式编程</a></li><li class="chapter-item "><a href="../3.rust/宏.html">宏</a></li><li class="chapter-item "><a href="../3.rust/常见集合.html">常见集合</a></li><li class="chapter-item "><a href="../3.rust/模式匹配.html">模式匹配</a></li><li class="chapter-item "><a href="../3.rust/泛型与trait.html">泛型与trait</a></li><li class="chapter-item "><a href="../3.rust/结构体.html">结构体</a></li><li class="chapter-item "><a href="../3.rust/迭代与闭包.html">迭代与闭包</a></li><li class="chapter-item "><div>rfcs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.rust/rfcs/0195_associated-items.html">0195_associated-items</a></li><li class="chapter-item "><a href="../3.rust/rfcs/0911-const-fn.html">0911-const-fn</a></li></ol></li></ol></li><li class="chapter-item expanded "><div>groovy</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.groovy/RuntimeAndCompile-timeMetaprogramming.html">RuntimeAndCompile-timeMetaprogramming</a></li><li class="chapter-item "><a href="../4.groovy/基础语法.html">基础语法</a></li><li class="chapter-item expanded "><a href="../4.groovy/开发工具类.html" class="active">开发工具类</a></li><li class="chapter-item "><a href="../4.groovy/操作符.html">操作符</a></li><li class="chapter-item "><a href="../4.groovy/编程结构.html">编程结构</a></li></ol></li><li class="chapter-item "><a href="../5.typescript/index.html">typescript</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.typescript/1.基础类型.html">基础类型</a></li><li class="chapter-item "><a href="../5.typescript/2.变量声明.html">变量声明</a></li><li class="chapter-item "><a href="../5.typescript/3.接口.html">接口</a></li><li class="chapter-item "><a href="../5.typescript/4.模块.html">模块</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/index.html">jtest测试框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Except.html">Except</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Globals.html">Globals</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Hook顺序.html">Hook顺序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/index.html">AppleScript</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/CommonUse.html">CommonUse</a></li><li class="chapter-item "><a href="../6.AppleScript/1.AppleScriptLexicalConventions/index.html">1.AppleScriptLexicalConventions</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/index.html">2.AppleScriptFundamentals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/1.ObjectSpecifiers.html">ObjectSpecifiers</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/2.Coercion(ObjectConversion).html">Coercion(ObjectConversion)</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/3.ScriptingAdditions.html">ScriptingAdditions</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/4.CommandsOverview.html">CommandsOverview</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/5.GlobalConstantsInAppleScript.html">GlobalConstantsInAppleScript</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/6.ITAndMe.html">ITAndMe</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/7.AliasesAndFiles.html">AliasesAndFiles</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/8.RemoteApplications.html">RemoteApplications</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/9.ErrorHanding.html">ErrorHanding</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/10.DebuggingAppleScripts.html">DebuggingAppleScripts</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/index.html">3.VariablesAndProperties</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/1.DefiningProperties.html">DefiningProperties</a></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/2.DeclaringVariables.html">DeclaringVariables</a></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/3.ScopeOfVariablesAndProperties.html">ScopeOfVariablesAndProperties</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/index.html">4.ScriptObjects</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/1.DefiningScriptObjects.html">DefiningScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/2.InitializingScriptObjects.html">InitializingScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/3.SendingCommandsToScriptObjects.html">SendingCommandsToScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/4.ScriptLibraries.html">ScriptLibraries</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/5.InheritanceInScriptObjects.html">InheritanceInScriptObjects</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/index.html">5.AboutHandlers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/1.HandlerBasics.html">HandlerBasics</a></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/2.HandlersInScriptApplications.html">HandlersInScriptApplications</a></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/3.CallingAScriptApplicationFromAScript.html">CallingAScriptApplicationFromAScript</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/index.html">6.ClassReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/1.alias.html">alias</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/2.application.html">application</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/3.boolean.html">boolean</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/4.class.html">class</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/5.constant.html">constant</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/6.date.html">date</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/7.file.html">file</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/8.integer.html">integer</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/9.list.html">list</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/10.number.html">number</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/11.POSIXfile.html">POSIXfile</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/12.real.html">real</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/13.record.html">record</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/14.reference.html">reference</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/15.RGBcolor.html">RGBcolor</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/16.script.html">script</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/17.text.html">text</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/18.unitTypes.html">unitTypes</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/7.CommandsReference/index.html">7.CommandsReference</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/index.html">8.ReferenceForms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/1.Arbitrary.html">Arbitrary</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/2.Every.html">Every</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/3.Filter.html">Filter</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/4.ID.html">ID</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/5.Index.html">Index</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/6.Middle.html">Middle</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/7.Name.html">Name</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/8.Property.html">Property</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/9.Range.html">Range</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/10.Relative.html">Relative</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/9.OperatorsReference/index.html">9.OperatorsReference</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">各项编程语言</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/programs/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="io"><a class="header" href="#io">IO</a></h1>
+<h2 id="读文件"><a class="header" href="#读文件">读文件</a></h2>
+<p><strong>读文件</strong></p>
+<pre><code class="language-groovy">new File(baseDir, 'haiku.txt').eachLine { line -&gt;
+    println line
+}
+</code></pre>
+<p><strong>行号与line</strong></p>
+<pre><code class="language-groovy">new File(baseDir, 'haiku.txt').eachLine { line, nb -&gt;
+    println &quot;Line $nb: $line&quot;
+}
+</code></pre>
+<p><strong>自定义reader</strong></p>
+<blockquote>
+<p>会自动关闭流</p>
+</blockquote>
+<pre><code class="language-groovy">def count = 0, MAXSIZE = 3
+new File(baseDir,&quot;haiku.txt&quot;).withReader { reader -&gt;
+    while (reader.readLine()) {
+        if (++count &gt; MAXSIZE) {
+            throw new RuntimeException('Haiku should only have 3 verses')
+        }
+    }
+}
+</code></pre>
+<p><strong>转list</strong></p>
+<pre><code class="language-sh">def list = new File(baseDir, 'haiku.txt').collect {it}
+</code></pre>
+<p>或者您甚至可以利用 as 运算符将文件的内容放入行数组：</p>
+<pre><code class="language-groovy">def array = new File(baseDir, 'haiku.txt') as String[]
+</code></pre>
+<p><strong>转换字节数组</strong></p>
+<pre><code class="language-groovy">byte[] contents = file.bytes
+</code></pre>
+<p><strong>获取输入流</strong></p>
+<pre><code class="language-groovy">def is = new File(baseDir,'haiku.txt').newInputStream()
+// do something ...
+is.close()
+</code></pre>
+<p><strong>自动关闭流</strong></p>
+<pre><code class="language-groovy">new File(baseDir,'haiku.txt').withInputStream { stream -&gt;
+    // do something ...
+}
+</code></pre>
+<h2 id="写文件"><a class="header" href="#写文件">写文件</a></h2>
+<p><strong>闭包写文件</strong></p>
+<pre><code class="language-groovy">new File(baseDir,'haiku.txt').withWriter('utf-8') { writer -&gt;
+    writer.writeLine 'Into the ancient pond'
+    writer.writeLine 'A frog jumps'
+    writer.writeLine 'Water’s sound!'
+}
+</code></pre>
+<p><strong>重定向符写文件</strong></p>
+<pre><code class="language-groovy">new File(baseDir,'haiku.txt') &lt;&lt; '''Into the ancient pond
+A frog jumps
+Water’s sound!'''
+</code></pre>
+<p><strong>直接写字节数组</strong></p>
+<pre><code class="language-sh">file.bytes = [66,22,11]
+</code></pre>
+<p>直接使用 <strong>outputstream</strong></p>
+<pre><code class="language-groovy">def os = new File(baseDir,'data.bin').newOutputStream()
+// do something ...
+os.close()
+</code></pre>
+<p>闭包使用<strong>outputstream</strong></p>
+<pre><code class="language-sh">new File(baseDir,'data.bin').withOutputStream { stream -&gt;
+    // do something ...
+}
+</code></pre>
+<h2 id="遍历文件树"><a class="header" href="#遍历文件树">遍历文件树</a></h2>
+<pre><code class="language-groovy">dir.eachFile { file -&gt;                      
+    println file.name
+}
+dir.eachFileMatch(~/.*\.txt/) { file -&gt;     
+    println file.name
+}
+//递归
+dir.eachFileRecurse { file -&gt;                      
+    println file.name
+}
+
+dir.eachFileRecurse(FileType.FILES) { file -&gt;      
+    println file.name
+}
+</code></pre>
+<p><strong>手动控制递归</strong></p>
+<pre><code class="language-groovy">dir.traverse { file -&gt;
+    if (file.directory &amp;&amp; file.name=='bin') {
+        FileVisitResult.TERMINATE                   
+    } else {
+        println file.name
+        FileVisitResult.CONTINUE                    
+    }
+
+}
+</code></pre>
+<h2 id="数据和对象"><a class="header" href="#数据和对象">数据和对象</a></h2>
+<p>在Java中很少使用 java.io.DataOutputStream<code>and</code>java.io.DataInputStream</p>
+<pre><code class="language-groovy">boolean b = true
+String message = 'Hello from Groovy'
+// Serialize data into a file
+file.withDataOutputStream { out -&gt;
+    out.writeBoolean(b)
+    out.writeUTF(message)
+}
+// ...
+// Then read it back
+file.withDataInputStream { input -&gt;
+    assert input.readBoolean() == b
+    assert input.readUTF() == message
+}
+</code></pre>
+<p>同样，如果要序列化的数据实现了 Serializable 接口，则可以继续使用对象输出流，</p>
+<pre><code class="language-groovy">Person p = new Person(name:'Bob', age:76)
+// Serialize data into a file
+file.withObjectOutputStream { out -&gt;
+    out.writeObject(p)
+}
+// ...
+// Then read it back
+file.withObjectInputStream { input -&gt;
+    def p2 = input.readObject()
+    assert p2.name == p.name
+    assert p2.age == p.age
+}
+</code></pre>
+<p><strong>执行外部程序</strong></p>
+<pre><code class="language-groovy">// 执行外部命令
+def process = &quot;ls -l&quot;.execute()             
+// 获取外部命令的输出，返回值类型 java.lang.Process
+println &quot;Found text ${process.text}&quot;        
+</code></pre>
+<p><strong>处理 输入流</strong></p>
+<pre><code class="language-groovy">def process = &quot;ls -l&quot;.execute()             
+process.in.eachLine { line -&gt;               
+    println line                            
+}
+</code></pre>
+<p><strong>windows命令</strong></p>
+<pre><code class="language-groovy">//这会直接报错，因为 dir是 windows shell自带命令，不能使用可执行路径执行，
+def process = &quot;dir&quot;.execute()
+println &quot;${process.text}&quot;
+
+def process = &quot;cmd /c dir&quot;.execute()
+println &quot;${process.text}&quot;
+</code></pre>
+<p>由于一些原生平台只为标准的输入输出流提供有限的缓冲区大小，未能及时写入输入流或读取子进程的输出流可能会导致子进程阻塞，甚至死锁</p>
+<p>因此，Groovy 提供了一些额外的辅助方法，使流程的流处理更容易。</p>
+<p>以下是如何从您的过程中 获取所有输出（包括错误流输出）：</p>
+<pre><code class="language-groovy">def p = &quot;rm -f foo.tmp&quot;.execute([], tmpDir)
+p.consumeProcessOutput()
+p.waitFor()
+</code></pre>
+<p>也有使用 StringBuffer、InputStream、OutputStream 等的消耗进程输出的变体......有关完整列表，请阅读 java.lang.Process 的 GDK API</p>
+<p>此外，这是一个 pipeTo 命令（映射到 | 以允许重载），它允许一个进程的输出流被馈送到另一个进程的输入流中。</p>
+<pre><code class="language-groovy">proc1 = 'ls'.execute()
+proc2 = 'tr -d o'.execute()
+proc3 = 'tr -d e'.execute()
+proc4 = 'tr -d i'.execute()
+proc1 | proc2 | proc3 | proc4
+proc4.waitFor()
+if (proc4.exitValue()) {
+    println proc4.err.text
+} else {
+    println proc4.text
+}
+</code></pre>
+<pre><code class="language-groovy">def sout = new StringBuilder()
+def serr = new StringBuilder()
+proc2 = 'tr -d o'.execute()
+proc3 = 'tr -d e'.execute()
+proc4 = 'tr -d i'.execute()
+proc4.consumeProcessOutput(sout, serr)
+proc2 | proc3 | proc4
+[proc2, proc3].each { it.consumeProcessErrorStream(serr) }
+proc2.withWriter { writer -&gt;
+    writer &lt;&lt; 'testfile.groovy'
+}
+proc4.waitForOrKill(1000)
+println &quot;Standard output: $sout&quot;
+println &quot;Standard error: $serr&quot;
+</code></pre>
+<h1 id="集合"><a class="header" href="#集合">集合</a></h1>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<h3 id="定义与取值"><a class="header" href="#定义与取值"><strong>定义与取值</strong></a></h3>
+<pre><code class="language-groovy">#定义
+def list = [5, 6, 7, 8]
+# 取值
+assert list.get(2) == 7
+# 取值
+assert list[2] == 7
+# 类型比较
+assert list instanceof java.util.List
+# 空集合
+def emptyList = []
+# 集合大小
+assert emptyList.size() == 0
+# 添加集合
+emptyList.add(5)
+assert emptyList.size() == 1
+</code></pre>
+<h3 id="arraylist构造"><a class="header" href="#arraylist构造"><strong>ArrayList构造</strong></a></h3>
+<pre><code class="language-groovy">def list1 = ['a', 'b', 'c']
+//construct a new list, seeded with the same items as in list1
+def list2 = new ArrayList&lt;String&gt;(list1)
+
+assert list2 == list1 // == checks that each corresponding element is the same
+
+// clone() can also be called
+def list3 = list1.clone()
+assert list3 == list1
+</code></pre>
+<h3 id="getat-putat"><a class="header" href="#getat-putat"><strong>getAt putAt</strong></a></h3>
+<pre><code class="language-groovy">def list = [5, 6, 7, 8]
+assert list.size() == 4
+assert list.getClass() == ArrayList     // the specific kind of list being used
+
+assert list[2] == 7                     // indexing starts at 0
+assert list.getAt(2) == 7               // equivalent method to subscript operator []
+assert list.get(2) == 7                 // alternative method
+
+list[2] = 9
+assert list == [5, 6, 9, 8,]           // trailing comma OK
+
+list.putAt(2, 10)                       // equivalent method to [] when value being changed
+assert list == [5, 6, 10, 8]
+assert list.set(2, 11) == 10            // alternative method that returns old value
+assert list == [5, 6, 11, 8]
+
+assert ['a', 1, 'a', 'a', 2.5, 2.5f, 2.5d, 'hello', 7g, null, 9 as byte]
+//objects can be of different types; duplicates allowed
+
+assert [1, 2, 3, 4, 5][-1] == 5             // use negative indices to count from the end
+assert [1, 2, 3, 4, 5][-2] == 4
+assert [1, 2, 3, 4, 5].getAt(-2) == 4       // getAt() available with negative index...
+try {
+    [1, 2, 3, 4, 5].get(-2)                 // but negative index not allowed with get()
+    assert false
+} catch (e) {
+    assert e instanceof IndexOutOfBoundsException
+}
+</code></pre>
+<p><strong>迭代</strong></p>
+<pre><code class="language-groovy">[1, 2, 3].each {
+    println &quot;Item: $it&quot; // `it` is an implicit parameter corresponding to the current element
+}
+['a', 'b', 'c'].eachWithIndex { it, i -&gt; // `it` is the current element, while `i` is the index
+    println &quot;$i: $it&quot;
+}
+</code></pre>
+<h3 id="转换"><a class="header" href="#转换"><strong>转换</strong></a></h3>
+<pre><code class="language-groovy">assert [1, 2, 3].collect { it * 2 } == [2, 4, 6]
+
+// shortcut syntax instead of collect
+assert [1, 2, 3]*.multiply(2) == [1, 2, 3].collect { it.multiply(2) }
+
+def list = [0]
+// it is possible to give `collect` the list which collects the elements
+assert [1, 2, 3].collect(list) { it * 2 } == [0, 2, 4, 6]
+assert list == [0, 2, 4, 6]
+</code></pre>
+<h3 id="修改集合-搜索过滤"><a class="header" href="#修改集合-搜索过滤"><strong>修改集合-搜索过滤</strong></a></h3>
+<pre><code class="language-groovy">assert [1, 2, 3].find { it &gt; 1 } == 2           // find 1st element matching criteria
+assert [1, 2, 3].findAll { it &gt; 1 } == [2, 3]   // find all elements matching critieria
+assert ['a', 'b', 'c', 'd', 'e'].findIndexOf {      // find index of 1st element matching criteria
+    it in ['c', 'e', 'g']
+} == 2
+
+assert ['a', 'b', 'c', 'd', 'c'].indexOf('c') == 2  // index returned
+assert ['a', 'b', 'c', 'd', 'c'].indexOf('z') == -1 // index -1 means value not in list
+assert ['a', 'b', 'c', 'd', 'c'].lastIndexOf('c') == 4
+
+assert [1, 2, 3].every { it &lt; 5 }               // returns true if all elements match the predicate
+assert ![1, 2, 3].every { it &lt; 3 }
+assert [1, 2, 3].any { it &gt; 2 }                 // returns true if any element matches the predicate
+assert ![1, 2, 3].any { it &gt; 3 }
+
+assert [1, 2, 3, 4, 5, 6].sum() == 21                // sum anything with a plus() method
+assert ['a', 'b', 'c', 'd', 'e'].sum {
+    it == 'a' ? 1 : it == 'b' ? 2 : it == 'c' ? 3 : it == 'd' ? 4 : it == 'e' ? 5 : 0
+    // custom value to use in sum
+} == 15
+assert ['a', 'b', 'c', 'd', 'e'].sum { ((char) it) - ((char) 'a') } == 10
+assert ['a', 'b', 'c', 'd', 'e'].sum() == 'abcde'
+assert [['a', 'b'], ['c', 'd']].sum() == ['a', 'b', 'c', 'd']
+
+// an initial value can be provided
+assert [].sum(1000) == 1000
+assert [1, 2, 3].sum(1000) == 1006
+
+assert [1, 2, 3].join('-') == '1-2-3'           // String joining
+assert [1, 2, 3].inject('counting: ') {
+    str, item -&gt; str + item                     // reduce operation
+} == 'counting: 123'
+assert [1, 2, 3].inject(0) { count, item -&gt;
+    count + item
+} == 6
+</code></pre>
+<h3 id="最大值最小值"><a class="header" href="#最大值最小值"><strong>最大值最小值</strong></a></h3>
+<pre><code class="language-groovy">def list = [9, 4, 2, 10, 5]
+assert list.max() == 10
+assert list.min() == 2
+
+// we can also compare single characters, as anything comparable
+assert ['x', 'y', 'a', 'z'].min() == 'a'
+
+// we can use a closure to specify the sorting behaviour
+def list2 = ['abc', 'z', 'xyzuvw', 'Hello', '321']
+assert list2.max { it.size() } == 'xyzuvw'
+assert list2.min { it.size() } == 'z'
+</code></pre>
+<h3 id="定义排序器"><a class="header" href="#定义排序器"><strong>定义排序器</strong></a></h3>
+<pre><code class="language-groovy">Comparator mc = { a, b -&gt; a == b ? 0 : (a &lt; b ? -1 : 1) }
+
+def list = [7, 4, 9, -6, -1, 11, 2, 3, -9, 5, -13]
+assert list.max(mc) == 11
+assert list.min(mc) == -13
+
+Comparator mc2 = { a, b -&gt; a == b ? 0 : (Math.abs(a) &lt; Math.abs(b)) ? -1 : 1 }
+
+
+assert list.max(mc2) == -13
+assert list.min(mc2) == -1
+
+assert list.max { a, b -&gt; a.equals(b) ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1 } == -13
+assert list.min { a, b -&gt; a.equals(b) ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1 } == -1
+</code></pre>
+<h3 id="移除元素"><a class="header" href="#移除元素"><strong>移除元素</strong></a></h3>
+<pre><code class="language-groovy">def list = []
+assert list.empty
+
+list &lt;&lt; 5
+assert list.size() == 1
+
+list &lt;&lt; 7 &lt;&lt; 'i' &lt;&lt; 11
+assert list == [5, 7, 'i', 11]
+
+list &lt;&lt; ['m', 'o']
+assert list == [5, 7, 'i', 11, ['m', 'o']]
+
+//first item in chain of &lt;&lt; is target list
+assert ([1, 2] &lt;&lt; 3 &lt;&lt; [4, 5] &lt;&lt; 6) == [1, 2, 3, [4, 5], 6]
+
+//using leftShift is equivalent to using &lt;&lt;
+assert ([1, 2, 3] &lt;&lt; 4) == ([1, 2, 3].leftShift(4))
+</code></pre>
+<h3 id="集合加减与展开"><a class="header" href="#集合加减与展开"><strong>集合加减与展开</strong></a></h3>
+<pre><code class="language-groovy"># 连加
+assert [1, 2] + 3 + [4, 5] + 6 == [1, 2, 3, 4, 5, 6]
+
+//API连＋ equivalent to calling the `plus` method
+assert [1, 2].plus(3).plus([4, 5]).plus(6) == [1, 2, 3, 4, 5, 6]
+# +=，每次都会建一个新的集合
+def a = [1, 2, 3]
+a += 4      // creates a new list and assigns it to `a`
+a += [5, 6]
+assert a == [1, 2, 3, 4, 5, 6]
+
+# 平铺符
+assert [1, *[222, 333], 456] == [1, 222, 333, 456]
+assert [*[1, 2, 3]] == [1, 2, 3]
+# 展开符
+assert [1, [2, 3, [4, 5], 6], 7, [8, 9]].flatten() == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def list = [1, 2]
+list.add(3)
+list.addAll([5, 4])
+assert list == [1, 2, 3, 5, 4]
+
+list = [1, 2]
+list.add(1, 3) // add 3 just before index 1
+assert list == [1, 3, 2]
+
+list.addAll(2, [5, 4]) //add [5,4] just before index 2
+assert list == [1, 3, 5, 4, 2]
+
+list = ['a', 'b', 'z', 'e', 'u', 'v', 'g']
+list[8] = 'x' // the [] operator is growing the list as needed
+// nulls inserted if required
+assert list == ['a', 'b', 'z', 'e', 'u', 'v', 'g', null, 'x']
+</code></pre>
+<pre><code class="language-groovy">assert ['a','b','c','b','b'] - 'c' == ['a','b','b','b']
+assert ['a','b','c','b','b'] - 'b' == ['a','c']
+assert ['a','b','c','b','b'] - ['b','c'] == ['a']
+
+def list = [1,2,3,4,3,2,1]
+list -= 3           // creates a new list by removing `3` from the original one
+assert list == [1,2,4,2,1]
+assert ( list -= [2,4] ) == [1,1]
+</code></pre>
+<pre><code class="language-groovy">def list = ['a','b','c','d','e','f','b','b','a']
+assert list.remove(2) == 'c'        // remove the third element, and return it
+assert list == ['a','b','d','e','f','b','b','a']
+</code></pre>
+<h3 id="set-操作"><a class="header" href="#set-操作"><strong>set 操作</strong></a></h3>
+<pre><code class="language-groovy">assert 'a' in ['a','b','c']             // returns true if an element belongs to the list
+assert ['a','b','c'].contains('a')      // equivalent to the `contains` method in Java
+assert [1,3,4].containsAll([1,4])       // `containsAll` will check that all elements are found
+
+assert [1,2,3,3,3,3,4,5].count(3) == 4  // count the number of elements which have some value
+assert [1,2,3,3,3,3,4,5].count {
+    it%2==0                             // count the number of elements which match the predicate
+} == 2
+
+assert [1,2,4,6,8,10,12].intersect([1,3,6,9,12]) == [1,6,12]
+
+assert [1,2,3].disjoint( [4,6,9] )
+assert ![1,2,3].disjoint( [2,4,6] )
+</code></pre>
+<h3 id="排序"><a class="header" href="#排序"><strong>排序</strong></a></h3>
+<pre><code class="language-groovy">assert [6, 3, 9, 2, 7, 1, 5].sort() == [1, 2, 3, 5, 6, 7, 9]
+
+def list = ['abc', 'z', 'xyzuvw', 'Hello', '321']
+assert list.sort {
+    it.size()
+} == ['z', 'abc', '321', 'Hello', 'xyzuvw']
+
+def list2 = [7, 4, -6, -1, 11, 2, 3, -9, 5, -13]
+assert list2.sort { a, b -&gt; a == b ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1 } ==
+        [-1, 2, 3, 4, 5, -6, 7, -9, 11, -13]
+
+Comparator mc = { a, b -&gt; a == b ? 0 : Math.abs(a) &lt; Math.abs(b) ? -1 : 1 }
+
+// JDK 8+ only
+// list2.sort(mc)
+// assert list2 == [-1, 2, 3, 4, 5, -6, 7, -9, 11, -13]
+
+def list3 = [6, -3, 9, 2, -7, 1, 5]
+
+Collections.sort(list3)
+assert list3 == [-7, -3, 1, 2, 5, 6, 9]
+
+Collections.sort(list3, mc)
+assert list3 == [1, 2, -3, 5, 6, -7, 9]
+</code></pre>
+<p><strong>复制元素</strong></p>
+<pre><code class="language-groovy">assert [1, 2, 3] * 3 == [1, 2, 3, 1, 2, 3, 1, 2, 3]
+assert [1, 2, 3].multiply(2) == [1, 2, 3, 1, 2, 3]
+assert Collections.nCopies(3, 'b') == ['b', 'b', 'b']
+
+// nCopies from the JDK has different semantics than multiply for lists
+assert Collections.nCopies(2, [1, 2]) == [[1, 2], [1, 2]] //not [1,2,1,2]
+</code></pre>
+<h2 id="maps"><a class="header" href="#maps">Maps</a></h2>
+<h3 id="字面量map"><a class="header" href="#字面量map"><strong>字面量Map</strong></a></h3>
+<pre><code class="language-groovy">//定义
+def map = [name: 'Gromit', likes: 'cheese', id: 1234]
+#取值
+assert map.get('name') == 'Gromit'
+assert map.get('id') == 1234
+assert map['name'] == 'Gromit'
+assert map['id'] == 1234
+# 判断类型
+assert map instanceof java.util.Map
+# 空Map
+def emptyMap = [:]
+
+assert emptyMap.size() == 0
+emptyMap.put(&quot;foo&quot;, 5)
+assert emptyMap.size() == 1
+assert emptyMap.get(&quot;foo&quot;) == 5
+</code></pre>
+<blockquote>
+<p>Map keys are strings by default: <code>[a:1]</code> is equivalent to <code>['a':1]</code></p>
+</blockquote>
+<h3 id="浅拷贝"><a class="header" href="#浅拷贝"><strong>浅拷贝</strong></a></h3>
+<pre><code class="language-groovy">def map = [
+        simple : 123,
+        complex: [a: 1, b: 2]
+]
+def map2 = map.clone()
+assert map2.get('simple') == map.get('simple')
+assert map2.get('complex') == map.get('complex')
+map2.get('complex').put('c', 3)
+assert map.get('complex').get('c') == 3
+</code></pre>
+<h3 id="属性符号"><a class="header" href="#属性符号">属性符号</a></h3>
+<blockquote>
+<p>Maps 也像 bean 一样，所以你可以使用属性符号来获取/设置 Map 内的项目，只要键是有效的 Groovy 标识符的字符串</p>
+</blockquote>
+<pre><code class="language-groovy">def map = [name: 'Gromit', likes: 'cheese', id: 1234]
+assert map.name == 'Gromit'     // can be used instead of map.get('name')
+assert map.id == 1234
+
+def emptyMap = [:]
+assert emptyMap.size() == 0
+emptyMap.foo = 5
+assert emptyMap.size() == 1
+assert emptyMap.foo == 5
+</code></pre>
+<p><strong>字符串不能 与保留字相同</strong></p>
+<pre><code class="language-groovy">def map = [name: 'Gromit', likes: 'cheese', id: 1234]
+assert map.class == null
+assert map.get('class') == null
+assert map.getClass() == LinkedHashMap // this is probably what you want
+
+map = [1      : 'a',
+       (true) : 'p',
+       (false): 'q',
+       (null) : 'x',
+       'null' : 'z']
+assert map.containsKey(1) // 1 is not an identifier so used as is
+assert map.true == null
+assert map.false == null
+assert map.get(true) == 'p'
+assert map.get(false) == 'q'
+assert map.null == 'z'
+assert map.get(null) == 'x'
+</code></pre>
+<h3 id="迭代"><a class="header" href="#迭代">迭代</a></h3>
+<pre><code class="language-groovy">def map = [
+        Bob  : 42,
+        Alice: 54,
+        Max  : 33
+]
+
+// `entry` is a map entry
+map.each { entry -&gt;
+    println &quot;Name: $entry.key Age: $entry.value&quot;
+}
+
+// `entry` is a map entry, `i` the index in the map
+map.eachWithIndex { entry, i -&gt;
+    println &quot;$i - Name: $entry.key Age: $entry.value&quot;
+}
+
+// Alternatively you can use key and value directly
+map.each { key, value -&gt;
+    println &quot;Name: $key Age: $value&quot;
+}
+
+// Key, value and i as the index in the map
+map.eachWithIndex { key, value, i -&gt;
+    println &quot;$i - Name: $key Age: $value&quot;
+}
+</code></pre>
+<h3 id="修改map"><a class="header" href="#修改map">修改Map</a></h3>
+<pre><code class="language-groovy">def defaults = [1: 'a', 2: 'b', 3: 'c', 4: 'd']
+def overrides = [2: 'z', 5: 'x', 13: 'x']
+
+def result = new LinkedHashMap(defaults)
+result.put(15, 't')
+result[17] = 'u'
+result.putAll(overrides)
+assert result == [1: 'a', 2: 'z', 3: 'c', 4: 'd', 5: 'x', 13: 'x', 15: 't', 17: 'u']
+</code></pre>
+<p><strong>清空</strong></p>
+<pre><code class="language-groovy">def m = [1:'a', 2:'b']
+assert m.get(1) == 'a'
+m.clear()
+assert m == [:]
+</code></pre>
+<p><strong>注意：GString 的hashCode与String的HashCode值不一样</strong></p>
+<pre><code class="language-groovy">def key = 'some key'
+def map = [:]
+def gstringKey = &quot;${key.toUpperCase()}&quot;
+map.put(gstringKey,'value')
+assert map.get('SOME KEY') == null
+</code></pre>
+<p><strong>key视图，value视图</strong></p>
+<pre><code class="language-groovy">def map = [1:'a', 2:'b', 3:'c']
+
+def entries = map.entrySet()
+entries.each { entry -&gt;
+  assert entry.key in [1,2,3]
+  assert entry.value in ['a','b','c']
+}
+
+def keys = map.keySet()
+assert keys == [1,2,3] as Set
+</code></pre>
+<h3 id="过滤和排序"><a class="header" href="#过滤和排序">过滤和排序</a></h3>
+<pre><code class="language-groovy">def people = [
+    1: [name:'Bob', age: 32, gender: 'M'],
+    2: [name:'Johnny', age: 36, gender: 'M'],
+    3: [name:'Claire', age: 21, gender: 'F'],
+    4: [name:'Amy', age: 54, gender:'F']
+]
+
+def bob = people.find { it.value.name == 'Bob' } // find a single entry
+def females = people.findAll { it.value.gender == 'F' }
+
+// both return entries, but you can use collect to retrieve the ages for example
+def ageOfBob = bob.value.age
+def agesOfFemales = females.collect {
+    it.value.age
+}
+
+assert ageOfBob == 32
+assert agesOfFemales == [21,54]
+
+// but you could also use a key/pair value as the parameters of the closures
+def agesOfMales = people.findAll { id, person -&gt;
+    person.gender == 'M'
+}.collect { id, person -&gt;
+    person.age
+}
+assert agesOfMales == [32, 36]
+
+// `every` returns true if all entries match the predicate
+assert people.every { id, person -&gt;
+    person.age &gt; 18
+}
+
+// `any` returns true if any entry matches the predicate
+
+assert people.any { id, person -&gt;
+    person.age == 54
+}
+</code></pre>
+<p><strong>分组</strong></p>
+<pre><code class="language-groovy">assert ['a', 7, 'b', [2, 3]].groupBy {
+    it.class
+} == [(String)   : ['a', 'b'],
+      (Integer)  : [7],
+      (ArrayList): [[2, 3]]
+]
+
+assert [
+        [name: 'Clark', city: 'London'], [name: 'Sharma', city: 'London'],
+        [name: 'Maradona', city: 'LA'], [name: 'Zhang', city: 'HK'],
+        [name: 'Ali', city: 'HK'], [name: 'Liu', city: 'HK'],
+].groupBy { it.city } == [
+        London: [[name: 'Clark', city: 'London'],
+                 [name: 'Sharma', city: 'London']],
+        LA    : [[name: 'Maradona', city: 'LA']],
+        HK    : [[name: 'Zhang', city: 'HK'],
+                 [name: 'Ali', city: 'HK'],
+                 [name: 'Liu', city: 'HK']],
+]
+</code></pre>
+<h2 id="序列"><a class="header" href="#序列">序列</a></h2>
+<h3 id="定义序列"><a class="header" href="#定义序列">定义序列</a></h3>
+<blockquote>
+<p>用 <code>..</code> 符号定义的范围是包含的（即列表包含 from 和 to 值）。</p>
+<p>用 ..&lt; 符号定义的范围是半开的，它们包括第一个值但不包括最后一个值。</p>
+</blockquote>
+<pre><code class="language-groovy">// an inclusive range
+def range = 5..8
+assert range.size() == 4
+assert range.get(2) == 7
+assert range[2] == 7
+assert range instanceof java.util.List
+assert range.contains(5)
+assert range.contains(8)
+
+// lets use a half-open range
+range = 5..&lt;8
+assert range.size() == 3
+assert range.get(2) == 7
+assert range[2] == 7
+assert range instanceof java.util.List
+assert range.contains(5)
+assert !range.contains(8)
+
+//get the end points of the range without using indexes
+range = 1..10
+assert range.from == 1
+assert range.to == 10
+</code></pre>
+<p><strong>自定义序列</strong></p>
+<p>只要实现 <em>Comparable</em> <em>next()</em> <em>previoust()</em> 就能创建序列</p>
+<pre><code class="language-groovy">// an inclusive range
+def range = 'a'..'d'
+assert range.size() == 4
+assert range.get(2) == 'c'
+assert range[2] == 'c'
+assert range instanceof java.util.List
+assert range.contains('a')
+assert range.contains('d')
+assert !range.contains('e')
+</code></pre>
+<h3 id="迭代-1"><a class="header" href="#迭代-1"><strong>迭代</strong></a></h3>
+<p><strong>for循环</strong></p>
+<pre><code class="language-groovy">for (i in 1..10) {
+    println &quot;Hello ${i}&quot;
+}
+</code></pre>
+<pre><code class="language-groovy">(1..10).each { i -&gt;
+    println &quot;Hello ${i}&quot;
+}
+</code></pre>
+<pre><code class="language-groovy">switch (years) {
+    case 1..10: interestRate = 0.076; break;
+    case 11..25: interestRate = 0.052; break;
+    default: interestRate = 0.037;
+}
+</code></pre>
+<h2 id="集合语法增强"><a class="header" href="#集合语法增强">集合语法增强</a></h2>
+<h3 id="gpath支持"><a class="header" href="#gpath支持">GPath支持</a></h3>
+<ul>
+<li>dot 从集合中的每个元素上取 属性为a的对象，如果取不到则过滤</li>
+<li>*dot  从集合中的每个元素上取 属性为a的对象，如果取不到则赋值为空</li>
+</ul>
+<p>由于对 list 和 map 的属性表示法的支持，Groovy 提供了语法糖，使得处理嵌套集合非常容易</p>
+<pre><code class="language-groovy">def listOfMaps = [['a': 11, 'b': 12], ['a': 21, 'b': 22]]
+assert listOfMaps.a == [11, 21] //GPath notation
+assert listOfMaps*.a == [11, 21] //spread dot notation
+
+listOfMaps = [['a': 11, 'b': 12], ['a': 21, 'b': 22], null]
+assert listOfMaps*.a == [11, 21, null] // caters for null values
+assert listOfMaps*.a == listOfMaps.collect { it?.a } //equivalent notation
+// But this will only collect non-null values
+assert listOfMaps.a == [11,21]
+</code></pre>
+<h3 id="集合展开"><a class="header" href="#集合展开">集合展开</a></h3>
+<pre><code class="language-groovy"># 类似于 调用   putAll,但是已有的同名key不会更新
+assert [ 'z': 900,
+         *: ['a': 100, 'b': 200], 'a': 300] == ['a': 300, 'b': 200, 'z': 900]
+//spread map notation in map definition
+assert [*: [3: 3, *: [5: 5]], 7: 7] == [3: 3, 5: 5, 7: 7]
+//定义闭包返回Map
+def f = { [1: 'u', 2: 'v', 3: 'w'] }
+assert [*: f(), 10: 'zz'] == [1: 'u', 10: 'zz', 2: 'v', 3: 'w']
+//spread map notation in function arguments
+f = { map -&gt; map.c }
+assert f(*: ['a': 10, 'b': 20, 'c': 30], 'e': 50) == 30
+
+f = { m, i, j, k -&gt; [m, i, j, k] }
+//using spread map notation with mixed unnamed and named arguments
+assert f('e': 100, *[4, 5], *: ['a': 10, 'b': 20, 'c': 30], 6) ==
+        [[&quot;e&quot;: 100, &quot;b&quot;: 20, &quot;c&quot;: 30, &quot;a&quot;: 10], 4, 5, 6]
+</code></pre>
+<h3 id="点运算符"><a class="header" href="#点运算符">*点运算符</a></h3>
+<p>“星点”运算符是一个快捷运算符，允许您调用集合中所有元素的方法或属性：</p>
+<pre><code class="language-groovy">assert [1, 3, 5] == ['a', 'few', 'words']*.size()
+
+class Person {
+    String name
+    int age
+}
+def persons = [new Person(name:'Hugo', age:17), new Person(name:'Sandra',age:19)]
+assert [17, 19] == persons*.age
+</code></pre>
+<h3 id="使用下标运算符切片"><a class="header" href="#使用下标运算符切片">使用下标运算符切片</a></h3>
+<p>您可以使用下标表达式对列表、数组、映射进行索引。有趣的是，在这种情况下，字符串被视为特殊类型的集合：</p>
+<pre><code class="language-groovy">def text = 'nice cheese gromit!'
+def x = text[2]
+
+assert x == 'c'
+assert x.class == String
+
+def sub = text[5..10]
+assert sub == 'cheese'
+
+def list = [10, 11, 12, 13]
+def answer = list[2,3]
+assert answer == [12,13]
+</code></pre>
+<p><strong>断点切片</strong></p>
+<pre><code class="language-groovy">list = 100..200
+sub = list[1, 3, 20..25, 33]
+assert sub == [101, 103, 120, 121, 122, 123, 124, 125, 133]
+</code></pre>
+<p><strong>下标运算符可用于更新现有集合（对于可变的集合类型）：</strong></p>
+<pre><code class="language-groovy">list = ['a','x','x','d']
+list[1..2] = ['b','c']
+assert list == ['a','b','c','d']
+</code></pre>
+<p>值得注意的是，允许使用负索引，以便更轻松地从集合的末尾提取：</p>
+<pre><code class="language-groovy">text = &quot;nice cheese gromit!&quot;
+x = text[-1]
+assert x == &quot;!&quot;
+</code></pre>
+<p>您可以使用负索引从列表、数组、字符串等的末尾开始计数。</p>
+<pre><code class="language-groovy">def name = text[-7..-2]
+assert name == &quot;gromit&quot;
+</code></pre>
+<p>如果您使用反向索引（起始索引大于结束索引），则答案相反。</p>
+<pre><code class="language-groovy">text = &quot;nice cheese gromit!&quot;
+name = text[3..1]
+assert name == &quot;eci&quot;
+</code></pre>
+<h1 id="java18日期类"><a class="header" href="#java18日期类">java1.8日期类</a></h1>
+<p>groovy-datetime 模块支持许多扩展以使用 Java 8 中引入的日期/时间 API。本文档将此 API 定义的数据类型称为“JSR 310 类型”。</p>
+<h2 id="formatting-and-parsing"><a class="header" href="#formatting-and-parsing">Formatting and parsing</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Method</th><th style="text-align: left">Description</th><th style="text-align: left">Example</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>getDateString()</code></td><td style="text-align: left">针对于 LocalDate LocalDateTime 日期或时间类型转 string,</td><td style="text-align: left"><code>2018-03-10</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"><code>OffsetDateTime</code>, <code>DateTimeFormatter.ISO_OFFSET_DATE</code></td><td style="text-align: left"><code>2018-03-10+04:00</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>ZonedDateTime</code>, formats with DateTimeFormatter.ISO_LOCAL_DAT  and appends the <code>ZoneId</code> short name</td><td style="text-align: left"><code>2018-03-10EST</code></td></tr>
+<tr><td style="text-align: left"><code>getDateTimeString()</code></td><td style="text-align: left">For <code>LocalDateTime</code>, formats with DateTimeFormatter.ISO_LOCAL_DATE_TIME</td><td style="text-align: left"><code>2018-03-10T20:30:45</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>OffsetDateTime</code>, formats with DateTimeFormatter.ISO_OFFSET_DATE_TIME</td><td style="text-align: left"><code>2018-03-10T20:30:45+04:00</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>ZonedDateTime</code>, formats with DateTimeFormatter.ISO_LOCAL_DATE_TIME and appends the <code>ZoneId</code> short name</td><td style="text-align: left"><code>2018-03-10T20:30:45EST</code></td></tr>
+<tr><td style="text-align: left"><code>getTimeString()</code></td><td style="text-align: left">For <code>LocalTime</code> and <code>LocalDateTime</code>, formats with DateTimeFormatter.ISO_LOCAL_TIME</td><td style="text-align: left"><code>20:30:45</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>OffsetTime</code> and <code>OffsetDateTime</code>, formats with DateTimeFormatter.ISO_OFFSET_TIME formatter</td><td style="text-align: left"><code>20:30:45+04:00</code></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>ZonedDateTime</code>, formats with DateTimeFormatter.ISO_LOCAL_TIME and appends the <code>ZoneId</code> short name</td><td style="text-align: left"><code>20:30:45EST</code></td></tr>
+<tr><td style="text-align: left"><code>format(FormatStyle style)</code></td><td style="text-align: left">For <code>LocalTime</code> and <code>OffsetTime</code>, formats with DateTimeFormatter.ofLocalizedTime(style)</td><td style="text-align: left"><code>4:30 AM</code> (with style <code>FormatStyle.SHORT</code>, e.g.)</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>LocalDate</code>, formats with DateTimeFormatter.ofLocalizedDate(style)</td><td style="text-align: left"><code>Saturday, March 10, 2018</code> (with style <code>FormatStyle.FULL</code>, e.g.)</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">For <code>LocalDateTime</code>, <code>OffsetDateTime</code>, and <code>ZonedDateTime</code> formats with DateTimeFormatter.ofLocalizedDateTime(style)</td><td style="text-align: left"><code>Mar 10, 2019 4:30:45 AM</code> (with style <code>FormatStyle.MEDIUM</code>, e.g.)</td></tr>
+<tr><td style="text-align: left"><code>format(String pattern)</code></td><td style="text-align: left">Formats with DateTimeFormatter.ofPattern(pattern)</td><td style="text-align: left"><code>03/10/2018</code> (with pattern ’MM/dd/yyyy', e.g.)</td></tr>
+</tbody></table>
+</div>
+<h2 id="修改时间"><a class="header" href="#修改时间">修改时间</a></h2>
+<h3 id="加减"><a class="header" href="#加减">加减</a></h3>
+<pre><code class="language-groovy">def aprilFools = LocalDate.of(2018, Month.APRIL, 1)
+
+def nextAprilFools = aprilFools + Period.ofDays(365) // add 365 days
+assert nextAprilFools.year == 2019
+
+def idesOfMarch = aprilFools - Period.ofDays(17) // subtract 17 days
+assert idesOfMarch.dayOfMonth == 15
+assert idesOfMarch.month == Month.MARCH
+</code></pre>
+<pre><code class="language-groovy">def nextAprilFools = aprilFools + 365 // add 365 days
+def idesOfMarch = aprilFools - 17 // subtract 17 days
+</code></pre>
+<p>这些整数的单位取决于 JSR 310 类型操作数</p>
+<pre><code class="language-groovy">//整形以秒为单位
+def mars = LocalTime.of(12, 34, 56) // 12:34:56 pm
+
+def thirtySecondsToMars = mars - 30 // go back 30 seconds
+assert thirtySecondsToMars.second == 26
+</code></pre>
+<h3 id="乘除"><a class="header" href="#乘除">乘除</a></h3>
+<p>乘法运算符可用于将 Period 和 Duration 实例乘以整数值； </p>
+<p>除法运算符可用于将 Duration 实例除以整数值。</p>
+<pre><code class="language-groovy">def period = Period.ofMonths(1) * 2 // a 1-month period times 2
+assert period.months == 2
+
+def duration = Duration.ofSeconds(10) / 5// a 10-second duration divided by 5
+assert duration.seconds == 2
+</code></pre>
+<p><strong>递增递减</strong></p>
+<pre><code class="language-groovy">def year = Year.of(2000)
+--year // decrement by one year
+assert year.value == 1999
+
+def offsetTime = OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC) // 00:00:00.000 UTC
+offsetTime++ // increment by one second
+assert offsetTime.second == 1
+</code></pre>
+<h3 id="negation"><a class="header" href="#negation">Negation</a></h3>
+<pre><code class="language-groovy">def duration = Duration.ofSeconds(-15)
+def negated = -duration
+assert negated.seconds == 15
+</code></pre>
+<h2 id="与日期时间值交互"><a class="header" href="#与日期时间值交互">与日期/时间值交互</a></h2>
+<h3 id="直接属性访问"><a class="header" href="#直接属性访问"><strong>直接属性访问</strong></a></h3>
+<pre><code class="language-groovy">def date = LocalDate.of(2018, Month.MARCH, 12)
+assert date[ChronoField.YEAR] == 2018
+assert date[ChronoField.MONTH_OF_YEAR] == Month.MARCH.value
+assert date[ChronoField.DAY_OF_MONTH] == 12
+assert date[ChronoField.DAY_OF_WEEK] == DayOfWeek.MONDAY.value
+
+def period = Period.ofYears(2).withMonths(4).withDays(6)
+assert period[ChronoUnit.YEARS] == 2
+assert period[ChronoUnit.MONTHS] == 4
+assert period[ChronoUnit.DAYS] == 6
+</code></pre>
+<h3 id="ranges-upto-and-downto"><a class="header" href="#ranges-upto-and-downto">Ranges, <code>upto</code>, and <code>downto</code></a></h3>
+<p><strong>时间范围迭代</strong></p>
+<pre><code class="language-groovy">def start = LocalDate.now()
+def end = start + 6 // 6 days later
+(start..end).each { date -&gt;
+    println date.dayOfWeek
+}
+</code></pre>
+<p><strong>同上述</strong></p>
+<pre><code class="language-groovy">def start = LocalDate.now()
+def end = start + 6 // 6 days later
+start.upto(end) { next -&gt;
+    println next.dayOfWeek
+}
+</code></pre>
+<p>upto、downto、ranges 的迭代单位与加减法的单位相同：LocalDate 一次迭代一天，YearMonth 迭代一个月，Year 迭代一年，其他时间迭代一秒。</p>
+<p>这两种方法还支持可选的 TemporalUnit 参数来更改迭代单位。</p>
+<pre><code class="language-groovy">//按月迭代
+def start = LocalDate.of(2018, Month.MARCH, 1)
+def end = start + 1 // 1 day later
+
+int iterationCount = 0
+start.upto(end, ChronoUnit.MONTHS) { next -&gt;
+    println next
+    ++iterationCount
+}
+
+assert iterationCount == 1
+</code></pre>
+<h3 id="combining-datetime-values"><a class="header" href="#combining-datetime-values">Combining date/time values</a></h3>
+<p>左移运算符 (&lt;&lt;) 可用于将两个 JSR 310 类型组合成一个聚合类型。</p>
+<p>例如，可以将 LocalDate 左移到 LocalTime 以生成复合 LocalDateTime 实例。</p>
+<pre><code class="language-groovy">MonthDay monthDay = Month.JUNE &lt;&lt; 3 // June 3rd
+LocalDate date = monthDay &lt;&lt; Year.of(2015) // 3-Jun-2015
+LocalDateTime dateTime = date &lt;&lt; LocalTime.NOON // 3-Jun-2015 @ 12pm
+OffsetDateTime offsetDateTime = dateTime &lt;&lt; ZoneOffset.ofHours(-5) // 3-Jun-2015 @ 12pm UTC-5
+</code></pre>
+<p>左移运算符是自反的；</p>
+<p>操作数的顺序无关紧要。</p>
+<pre><code class="language-groovy">def year = Year.of(2000)
+def month = Month.DECEMBER
+
+YearMonth a = year &lt;&lt; month
+YearMonth b = month &lt;&lt; year
+assert a == b
+</code></pre>
+<h3 id="创建时间段和持续时间"><a class="header" href="#创建时间段和持续时间">创建时间段和持续时间</a></h3>
+<p>右移运算符 (&gt;&gt;) 生成一个值，表示操作数之间的周期或持续时间。</p>
+<p>对于 ChronoLocalDate、YearMonth 和 Year，该运算符生成一个 Period 实例：</p>
+<pre><code class="language-groovy">def newYears = LocalDate.of(2018, Month.JANUARY, 1)
+def aprilFools = LocalDate.of(2018, Month.APRIL, 1)
+
+def period = newYears &gt;&gt; aprilFools
+assert period instanceof Period
+assert period.months == 3
+</code></pre>
+<p>The operator produces a <code>Duration</code> for the time-aware JSR types:</p>
+<pre><code class="language-groovy">def duration = LocalTime.NOON &gt;&gt; (LocalTime.NOON + 30)
+assert duration instanceof Duration
+assert duration.seconds == 30
+</code></pre>
+<p>如果运算符左侧的值早于右侧的值，则结果为正。</p>
+<p>如果左侧晚于右侧，则结果为负：</p>
+<h3 id="在传统和-jsr-310-类型之间转换"><a class="header" href="#在传统和-jsr-310-类型之间转换">在传统和 JSR 310 类型之间转换</a></h3>
+<p>尽管 java.util 包中的 Date、Calendar 和 TimeZone 类型存在缺陷，但它们在 Java API 中非常常见（至少在 Java 8 之前的 API 中）。</p>
+<p>为了适应此类 API 的使用，Groovy 提供了在 JSR 310 类型和遗留类型之间进行转换的方法。</p>
+<p>大多数 JSR 类型都配备了 toDate() 和 toCalendar() 方法，用于转换为相对等效的 java.util.Date 和 java.util.Calendar 值。 </p>
+<p>ZoneId 和 ZoneOffset 都被赋予了一个 toTimeZone() 方法来转换为 java.util.TimeZone。</p>
+<pre><code class="language-groovy">/ LocalDate to java.util.Date
+def valentines = LocalDate.of(2018, Month.FEBRUARY, 14)
+assert valentines.toDate().format('MMMM dd, yyyy') == 'February 14, 2018'
+
+// LocalTime to java.util.Date
+def noon = LocalTime.of(12, 0, 0)
+assert noon.toDate().format('HH:mm:ss') == '12:00:00'
+
+// ZoneId to java.util.TimeZone
+def newYork = ZoneId.of('America/New_York')
+assert newYork.toTimeZone() == TimeZone.getTimeZone('America/New_York')
+
+// ZonedDateTime to java.util.Calendar
+def valAtNoonInNY = ZonedDateTime.of(valentines, noon, newYork)
+assert valAtNoonInNY.toCalendar().getTimeZone().toZoneId() == newYork
+</code></pre>
+<p>请注意，在转换为旧类型时：</p>
+<ul>
+<li>
+<p><strong>纳秒值被截断为毫秒。</strong></p>
+<p>例如，一个 LocalTime 的 ChronoUnit.NANOS 值为 999,999,999 纳秒转换为 999 毫秒。</p>
+</li>
+<li>
+<p>转换“本地”类型（LocalDate、LocalTime 和 LocalDateTime）时，返回的 Date 或 Calendar 的时区将是系统默认值</p>
+</li>
+<li>
+<p>转换仅时间类型（LocalTime 或 OffsetTime）时，Date 或 Calendar 的年/月/日设置为当前日期。</p>
+</li>
+<li>
+<p>转换仅日期类型（LocalDate）时，Date 或 Calendar 的时间值将被清除，即 00:00:00.000。</p>
+</li>
+<li>
+<p>将 OffsetDateTime 转换为 Calendar 时，只有 ZoneOffset 的小时和分钟传送到相应的 TimeZone。</p>
+<p>幸运的是，非零秒的区域偏移很少见。</p>
+</li>
+</ul>
+<p>Groovy 向 Date 和 Calendar 添加了许多方法，用于转换为各种 JSR 310 类型：</p>
+<pre><code class="language-groovy">Date legacy = Date.parse('yyyy-MM-dd HH:mm:ss.SSS', '2010-04-03 10:30:58.999')
+
+assert legacy.toLocalDate() == LocalDate.of(2010, 4, 3)
+assert legacy.toLocalTime() == LocalTime.of(10, 30, 58, 999_000_000) // 999M ns = 999ms
+assert legacy.toOffsetTime().hour == 10
+assert legacy.toYear() == Year.of(2010)
+assert legacy.toMonth() == Month.APRIL
+assert legacy.toDayOfWeek() == DayOfWeek.SATURDAY
+assert legacy.toMonthDay() == MonthDay.of(Month.APRIL, 3)
+assert legacy.toYearMonth() == YearMonth.of(2010, Month.APRIL)
+assert legacy.toLocalDateTime().year == 2010
+assert legacy.toOffsetDateTime().dayOfMonth == 3
+assert legacy.toZonedDateTime().zone == ZoneId.systemDefault()
+</code></pre>
+<h1 id="有用的工具类"><a class="header" href="#有用的工具类">有用的工具类</a></h1>
+<h2 id="configslurper"><a class="header" href="#configslurper">ConfigSlurper</a></h2>
+<p>ConfigSlurper 是一个实用程序类，用于读取以 Groovy 脚本形式定义的配置文件。</p>
+<p>就像 Java *.properties 文件的情况一样，ConfigSlurper 允许使用点符号。</p>
+<p>但此外，它允许闭包范围的配置值和任意对象类型。</p>
+<pre><code class="language-groovy">def config = new ConfigSlurper().parse('''
+//点表示
+app.date = new Date()  
+    app.age  = 42
+    //使用闭包作用域替代点表示法
+    app {                  
+        name = &quot;Test${42}&quot;
+    }
+''')
+
+assert config.app.date instanceof Date
+assert config.app.age == 42
+assert config.app.name == 'Test42'
+</code></pre>
+<p>从上面的例子中可以看出，parse 方法可用于检索 groovy.util.ConfigObject 实例。 </p>
+<p>ConfigObject 是一个专门的 java.util.Map 实现，它要么返回配置的值，要么返回一个新的 ConfigObject 实例，但永远不会为空。</p>
+<pre><code class="language-groovy">def config = new ConfigSlurper().parse('''
+    app.date = new Date()
+    app.age  = 42
+    app.name = &quot;Test${42}&quot;
+''')
+
+assert config.test != null   
+</code></pre>
+<p>如果点是配置变量名称的一部分，则可以使用单引号或双引号对其进行转义</p>
+<pre><code class="language-groovy">def config = new ConfigSlurper().parse('''
+    app.&quot;person.age&quot;  = 42
+''')
+
+assert config.app.&quot;person.age&quot; == 42
+</code></pre>
+<p><strong>环境变量</strong></p>
+<pre><code class="language-groovy">def config = new ConfigSlurper('development').parse('''
+  environments {
+       development {
+           app.port = 8080
+       }
+
+       test {
+           app.port = 8082
+       }
+
+       production {
+           app.port = 80
+       }
+  }
+''')
+
+assert config.app.port == 8080
+</code></pre>
+<p>环境方法是内置的，但 registerConditionalBlock 方法可用于注册除环境名称之外的其他方法名称。</p>
+<pre><code class="language-groovy">def slurper = new ConfigSlurper()
+slurper.registerConditionalBlock('myProject', 'developers')   
+
+def config = slurper.parse('''
+  sendMail = true
+
+  myProject {
+       developers {
+           sendMail = false
+       }
+  }
+''')
+
+assert !config.sendMail
+</code></pre>
+<p>出于 Java 集成的目的，可以使用 toProperties 方法将 ConfigObject 转换为 java.util.Properties 对象，该对象可能存储到 *.properties 文本文件中。</p>
+<p>请注意，在将配置值添加到新创建的 Properties 实例期间，它们会转换为 String 实例。</p>
+<pre><code class="language-groovy">def config = new ConfigSlurper().parse('''
+    app.date = new Date()
+    app.age  = 42
+    app {
+        name = &quot;Test${42}&quot;
+    }
+''')
+
+def properties = config.toProperties()
+
+assert properties.&quot;app.date&quot; instanceof String
+assert properties.&quot;app.age&quot; == '42'
+assert properties.&quot;app.name&quot; == 'Test42'
+</code></pre>
+<h2 id="expando"><a class="header" href="#expando">Expando</a></h2>
+<p>Expando 类可用于创建动态可扩展对象。每个 Expando 对象都代表一个独立的、动态制作的实例，可以在运行时使用属性（或方法）进行扩展。</p>
+<pre><code class="language-groovy">def expando = new Expando()
+expando.name = 'John'
+
+assert expando.name == 'John'
+</code></pre>
+<p>当动态属性注册一个闭包代码块时会发生一种特殊情况。</p>
+<p>一旦注册，就可以像调用方法一样调用它。</p>
+<pre><code class="language-groovy">def expando = new Expando()
+expando.toString = { -&gt; 'John' }
+expando.say = { String s -&gt; &quot;John says: ${s}&quot; }
+
+assert expando as String == 'John'
+assert expando.say('Hi') == 'John says: Hi'
+</code></pre>
+<h2 id="observable-list-map-and-set"><a class="header" href="#observable-list-map-and-set">Observable list, map and set</a></h2>
+<p>当添加、删除或更改元素时，这些集合中的每一个都会触发 java.beans.PropertyChangeEvent 事件。</p>
+<p>请注意，PropertyChangeEvent 不仅表示某个事件已发生，而且还保存有关属性名称和某个属性已更改为的旧/新值的信息。</p>
+<pre><code class="language-groovy">def event                                       
+def listener = {
+    if (it instanceof ObservableList.ElementEvent)  {  
+        event = it
+    }
+} as PropertyChangeListener
+
+
+def observable = [1, 2, 3] as ObservableList    
+observable.addPropertyChangeListener(listener)  
+
+observable.add 42                               
+
+assert event instanceof ObservableList.ElementAddedEvent
+
+def elementAddedEvent = event as ObservableList.ElementAddedEvent
+assert elementAddedEvent.changeType == ObservableList.ChangeType.ADDED
+assert elementAddedEvent.index == 3
+assert elementAddedEvent.oldValue == null
+assert elementAddedEvent.newValue == 42
+</code></pre>
+<pre><code class="language-groovy">def event
+def listener = {
+    if (it instanceof ObservableList.ElementEvent)  {
+        event = it
+    }
+} as PropertyChangeListener
+
+
+def observable = [1, 2, 3] as ObservableList
+observable.addPropertyChangeListener(listener)
+
+observable.clear()
+
+assert event instanceof ObservableList.ElementClearedEvent
+
+def elementClearedEvent = event as ObservableList.ElementClearedEvent
+assert elementClearedEvent.values == [1, 2, 3]
+assert observable.size() == 0
+</code></pre>
+<script src="/note/programs/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/programs/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/programs/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../4.groovy/基础语法.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../4.groovy/操作符.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../4.groovy/基础语法.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../4.groovy/操作符.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

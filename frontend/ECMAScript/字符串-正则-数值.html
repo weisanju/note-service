@@ -1,0 +1,1482 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>字符串-正则-数值 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item expanded "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item expanded "><a href="../ECMAScript/字符串-正则-数值.html" class="active">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="字符串的扩展"><a class="header" href="#字符串的扩展">字符串的扩展</a></h1>
+<h2 id="字符的unicode的表示法"><a class="header" href="#字符的unicode的表示法">字符的Unicode的表示法</a></h2>
+<p>​	ES6 加强了对 Unicode 的支持，允许采用<code>\uxxxx</code>形式表示一个字符，其中<code>xxxx</code>表示字符的 Unicode 码点。</p>
+<pre><code class="language-javascript">&quot;\u0061&quot;
+// &quot;a&quot;
+</code></pre>
+<p>​	但是，这种表示法只限于码点在<code>\u0000</code>~<code>\uFFFF</code>之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。</p>
+<pre><code class="language-javascript">&quot;\uD842\uDFB7&quot;
+// &quot;𠮷&quot;
+
+&quot;\u20BB7&quot;
+// &quot; 7&quot;
+</code></pre>
+<p>​	上面代码表示，如果直接在<code>\u</code>后面跟上超过<code>0xFFFF</code>的数值（比如<code>\u20BB7</code>），JavaScript 会理解成<code>\u20BB+7</code>。由于<code>\u20BB</code>是一个不可打印字符，所以只会显示一个空格，后面跟着一个<code>7</code>。</p>
+<p>ES6 对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
+<pre><code class="language-javascript">&quot;\u{20BB7}&quot;
+// &quot;𠮷&quot;
+
+&quot;\u{41}\u{42}\u{43}&quot;
+// &quot;ABC&quot;
+
+let hello = 123;
+hell\u{6F} // 123
+
+'\u{1F680}' === '\uD83D\uDE80'
+// true
+</code></pre>
+<p><strong>JavaScript 共有 6 种方法可以表示一个字符</strong></p>
+<pre><code class="language-javascript">'\z' === 'z'  // true 字符
+'\172' === 'z' // true ascii
+'\x7A' === 'z' // true ascii十六进制
+'\u007A' === 'z' // true unicode 
+'\u{7A}' === 'z' // true 优化过的unicode
+</code></pre>
+<h2 id="字符串的遍历"><a class="header" href="#字符串的遍历">字符串的遍历</a></h2>
+<pre><code class="language-javascript">for (let codePoint of 'foo') {
+  console.log(codePoint)
+}
+// &quot;f&quot;
+// &quot;o&quot;
+// &quot;o&quot;
+</code></pre>
+<p>这个遍历器最大的优点是可以识别大于<code>0xFFFF</code>的码点，传统的<code>for</code>循环无法识别这样的码点。</p>
+<p>上面代码中，字符串<code>text</code>只有一个字符，但是<code>for</code>循环会认为它包含两个字符（都不可打印），而<code>for...of</code>循环会正确识别出这一个字符。</p>
+<h2 id="直接输入u2028u2029"><a class="header" href="#直接输入u2028u2029">直接输入U+2028,U+2029</a></h2>
+<p>JavaScript 字符串允许直接输入字符，以及输入字符的转义形式。</p>
+<p>“中”的 Unicode 码点是 U+4e2d,你可以直接在字符串里面输入这个汉字，也可以输入它的转义形式<code>\u4e2d</code>，两者是等价的。</p>
+<pre><code class="language-javascript">'中' === '\u4e2d' // true
+</code></pre>
+<p>JavaScript 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。</p>
+<ul>
+<li>U+005C：反斜杠（reverse solidus)</li>
+<li>U+000D：回车（carriage return）</li>
+<li>U+2028：行分隔符（line separator）</li>
+<li>U+2029：段分隔符（paragraph separator）</li>
+<li>U+000A：换行符（line feed）</li>
+</ul>
+<p>举例来说，字符串里面不能直接包含反斜杠，一定要转义写成<code>\\</code>或者<code>\u005c</code>。</p>
+<p>这个规定本身没有问题，麻烦在于 JSON 格式允许字符串里面直接使用 U+2028（行分隔符）和 U+2029（段分隔符）。这样一来，服务器输出的 JSON 被<code>JSON.parse</code>解析，就有可能直接报错。</p>
+<p>JSON 格式已经冻结（RFC 7159），没法修改了。为了消除这个报错，<a href="https://github.com/tc39/proposal-json-superset">ES2019</a> 允许 JavaScript 字符串直接输入 U+2028（行分隔符）和 U+2029（段分隔符）。</p>
+<pre><code class="language-javascript">const PS = eval(&quot;'\u2029'&quot;);
+</code></pre>
+<h2 id="jsonstringify改造"><a class="header" href="#jsonstringify改造">Json.stringify改造</a></h2>
+<p>​	根据标准，JSON 数据必须是 UTF-8 编码。但是，现在的<code>JSON.stringify()</code>方法有可能返回不符合 UTF-8 标准的字符串。</p>
+<p>​	UTF-8 标准规定，<code>0xD800</code>到<code>0xDFFF</code>之间的码点，不能单独使用，必须配对使用。比如，<code>\uD834\uDF06</code>是两个码点，但是必须放在一起配对使用，代表字符<code>𝌆</code>。这是为了表示码点大于<code>0xFFFF</code>的字符的一种变通方法。单独使用<code>\uD834</code>和<code>\uDFO6</code>这两个码点是不合法的，或者颠倒顺序也不行，因为<code>\uDF06\uD834</code>并没有对应的字符。</p>
+<p>​	<code>JSON.stringify()</code>的问题在于，它可能返回<code>0xD800</code>到<code>0xDFFF</code>之间的单个码点。</p>
+<pre><code class="language-javascript">JSON.stringify('\u{D834}') // &quot;\u{D834}&quot;
+</code></pre>
+<p>为了确保返回的是合法的 UTF-8 字符，<a href="https://github.com/tc39/proposal-well-formed-stringify">ES2019</a> 改变了<code>JSON.stringify()</code>的行为。如果遇到<code>0xD800</code>到<code>0xDFFF</code>之间的单个码点，或者不存在的配对形式，它会返回转义字符串，留给应用自己决定下一步的处理。</p>
+<pre><code class="language-javascript">JSON.stringify('\u{D834}') // &quot;&quot;\\uD834&quot;&quot;
+JSON.stringify('\uDF06\uD834') // &quot;&quot;\\udf06\\ud834&quot;&quot;
+</code></pre>
+<h2 id="模板字符串"><a class="header" href="#模板字符串">模板字符串</a></h2>
+<pre><code class="language-javascript">$('#result').append(`
+  There are &lt;b&gt;${basket.count}&lt;/b&gt; items
+   in your basket, &lt;em&gt;${basket.onSale}&lt;/em&gt;
+  are on sale!
+`);
+</code></pre>
+<h3 id="示例"><a class="header" href="#示例">示例</a></h3>
+<p>模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</p>
+<pre><code class="language-javascript">// 普通字符串
+`In JavaScript '\n' is a line-feed.`
+
+// 多行字符串
+`In JavaScript this is
+ not legal.`
+
+console.log(`string text line 1
+string text line 2`);
+
+// 字符串中嵌入变量
+let name = &quot;Bob&quot;, time = &quot;today&quot;;
+`Hello ${name}, how are you ${time}?`
+</code></pre>
+<h3 id="反引号转义"><a class="header" href="#反引号转义">反引号转义</a></h3>
+<p>上面代码中的模板字符串，都是用反引号表示。如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。</p>
+<pre><code class="language-javascript">let greeting = `\`Yo\` World!`;
+</code></pre>
+<h3 id="保留缩进与换行"><a class="header" href="#保留缩进与换行">保留缩进与换行</a></h3>
+<p>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。</p>
+<pre><code class="language-javascript">$('#list').html(`
+&lt;ul&gt;
+  &lt;li&gt;first&lt;/li&gt;
+  &lt;li&gt;second&lt;/li&gt;
+&lt;/ul&gt;
+`);
+</code></pre>
+<p>上面代码中，所有模板字符串的空格和换行，都是被保留的，比如<code>&lt;ul&gt;</code>标签前面会有一个换行。如果你不想要这个换行，可以使用<code>trim</code>方法消除它。</p>
+<pre><code class="language-javascript">$('#list').html(`
+&lt;ul&gt;
+  &lt;li&gt;first&lt;/li&gt;
+  &lt;li&gt;second&lt;/li&gt;
+&lt;/ul&gt;
+`.trim());
+</code></pre>
+<h3 id="变量嵌入"><a class="header" href="#变量嵌入">变量嵌入</a></h3>
+<p>模板字符串中嵌入变量，需要将变量名写在<code>${}</code>之中。</p>
+<pre><code class="language-javascript">function authorize(user, action) {
+  if (!user.hasPrivilege(action)) {
+    throw new Error(
+      // 传统写法为
+      // 'User '
+      // + user.name
+      // + ' is not authorized to do '
+      // + action
+      // + '.'
+      `User ${user.name} is not authorized to do ${action}.`);
+  }
+}
+</code></pre>
+<p><code>{}</code>放任意表达式</p>
+<p>大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。</p>
+<pre><code class="language-javascript">let x = 1;
+let y = 2;
+
+`${x} + ${y} = ${x + y}`
+// &quot;1 + 2 = 3&quot;
+
+`${x} + ${y * 2} = ${x + y * 2}`
+// &quot;1 + 4 = 5&quot;
+
+let obj = {x: 1, y: 2};
+`${obj.x + obj.y}`
+// &quot;3&quot;
+</code></pre>
+<h3 id="调用函数"><a class="header" href="#调用函数">调用函数</a></h3>
+<p>模板字符串之中还能调用函数。</p>
+<pre><code class="language-javascript">function fn() {
+  return &quot;Hello World&quot;;
+}
+
+`foo ${fn()} bar`
+// foo Hello World bar
+如果大括号中的值不是字符串，将按照一般的规则转为字符串。比如，大括号中是一个对象，将默认调用对象的toString方法。
+
+如果模板字符串中的变量没有声明，将报错。
+</code></pre>
+<h3 id="原始字符串"><a class="header" href="#原始字符串">原始字符串	</a></h3>
+<p>由于模板字符串的大括号内部，就是执行 JavaScript 代码，因此如果大括号内部是一个字符串，将会原样输出。</p>
+<pre><code class="language-javascript">`Hello ${'World'}`
+// &quot;Hello World&quot;
+</code></pre>
+<h3 id="嵌套"><a class="header" href="#嵌套">嵌套</a></h3>
+<p>模板字符串甚至还能嵌套。</p>
+<pre><code class="language-javascript">const tmpl = addrs =&gt; `
+  &lt;table&gt;
+  ${addrs.map(addr =&gt; `
+    &lt;tr&gt;&lt;td&gt;${addr.first}&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;${addr.last}&lt;/td&gt;&lt;/tr&gt;
+  `).join('')}
+  &lt;/table&gt;
+`;
+</code></pre>
+<h3 id="用变量接收模板"><a class="header" href="#用变量接收模板">用变量接收模板</a></h3>
+<pre><code class="language-javascript">//定义模板
+const tmpl = addrs =&gt; `
+  &lt;table&gt;
+  ${addrs.map(addr =&gt; `
+    &lt;tr&gt;&lt;td&gt;${addr.first}&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;${addr.last}&lt;/td&gt;&lt;/tr&gt;
+  `).join('')}
+  &lt;/table&gt;
+`;
+</code></pre>
+<pre><code class="language-javascript">//使用模板
+const data = [
+    { first: '&lt;Jane&gt;', last: 'Bond' },
+    { first: 'Lars', last: '&lt;Croft&gt;' },
+];
+
+console.log(tmpl(data));
+</code></pre>
+<p>//模板的变量使用字符串</p>
+<pre><code class="language-javascript">let func = (name) =&gt; `Hello ${name}!`;
+func('Jack') // &quot;Hello Jack!&quot;
+</code></pre>
+<h3 id="模板编译"><a class="header" href="#模板编译">模板编译</a></h3>
+<h3 id="实例模板编译--"><a class="header" href="#实例模板编译--">实例：模板编译 <a href="https://es6.ruanyifeng.com/#docs/string#%E5%AE%9E%E4%BE%8B%EF%BC%9A%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91">§</a> <a href="https://es6.ruanyifeng.com/#docs/string">⇧</a></a></h3>
+<h3 id="标签模板"><a class="header" href="#标签模板">标签模板</a></h3>
+<pre><code class="language-javascript">alert`hello`
+// 等同于
+alert(['hello'])
+</code></pre>
+<p>标签模板其实不是模板，而是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。</p>
+<p>但是，如果模板字符里面有变量，就不是简单的调用了，而是会将模板字符串先处理成多个参数，再调用函数。</p>
+<pre><code class="language-javascript">let a = 5;
+let b = 10;
+
+tag`Hello ${ a + b } world ${ a * b }`;
+// 等同于
+tag(['Hello ', ' world ', ''], 15, 50);
+</code></pre>
+<p>标签模板的重要作用 是将参数 与 字符串分离 对用户输入进行过滤</p>
+<p>参数访问可以通过arguments 获取</p>
+<pre><code class="language-javascript">let total = 30;
+let msg = passthru`The total is ${total} (${total*1.05} with tax)`;
+
+function passthru(literals) {
+  let result = '';
+  let i = 0;
+
+  while (i &lt; literals.length) {
+    result += literals[i++];
+    if (i &lt; arguments.length) {
+      result += arguments[i];
+    }
+  }
+
+  return result;
+}
+
+msg // &quot;The total is 30 (31.5 with tax)&quot;
+</code></pre>
+<pre><code class="language-javascript">function passthru(literals, ...values) {
+  let output = &quot;&quot;;
+  let index;
+  for (index = 0; index &lt; values.length; index++) {
+    output += literals[index] + values[index];
+  }
+
+  output += literals[index]
+  return output;
+}
+</code></pre>
+<p>标签模板的另一个应用，就是多语言转换（国际化处理）。</p>
+<pre><code class="language-javascript">i18n`Welcome to ${siteName}, you are visitor number ${visitorNumber}!`
+</code></pre>
+<p>获取原始字符串,<code>strings</code>数组是<code>[&quot;First line\nSecond line&quot;]</code>，那么<code>strings.raw</code>数组就是<code>[&quot;First line\\nSecond line&quot;]</code>。</p>
+<p>因为在模板字符串中 会对关键字进行转义</p>
+<pre><code class="language-javascript">tag`First line\nSecond line`
+
+function tag(strings) {
+  console.log(strings.raw[0]);
+  // strings.raw[0] 为 &quot;First line\\nSecond line&quot;
+  // 打印输出 &quot;First line\nSecond line&quot;
+}
+</code></pre>
+<h3 id="标签模板个人理解"><a class="header" href="#标签模板个人理解">标签模板个人理解</a></h3>
+<pre><code>tag`xxx`
+会将 字符串, 变量分开传给tag函数
+</code></pre>
+<h2 id="字符串新增的方法"><a class="header" href="#字符串新增的方法">字符串新增的方法</a></h2>
+<h3 id="unicode码获取"><a class="header" href="#unicode码获取">unicode码获取</a></h3>
+<p>​	ES5 提供<code>String.fromCharCode()</code>方法，用于从 Unicode 码点返回对应字符，但是这个方法不能识别码点大于<code>0xFFFF</code>的字符。</p>
+<p><em>String.fromCharCode(0x20BB7)</em></p>
+<p>​	ES6 提供了<code>String.fromCodePoint()</code>方法，可以识别大于<code>0xFFFF</code>的字符，弥补了<code>String.fromCharCode()</code>方法的不足。在作用上，正好与下面的<code>codePointAt()</code>方法相反。</p>
+<h3 id="stringraw"><a class="header" href="#stringraw"><em>String.raw()</em></a></h3>
+<ul>
+<li>ES6 还为原生的 String 对象，提供了一个<code>raw()</code>方法。该方法返回一个斜杠都被转义（即斜杠前面再加一个斜杠）的字符串，往往用于模板字符串的处理方法。</li>
+</ul>
+<pre><code class="language-javascript">String.raw`Hi\n${2+3}!`
+// 实际返回 &quot;Hi\\n5!&quot;，显示的是转义后的结果 &quot;Hi\n5!&quot;
+
+String.raw`Hi\u000A!`;
+// 实际返回 &quot;Hi\\u000A!&quot;，显示的是转义后的结果 &quot;Hi\u000A!&quot;
+
+等价
+
+String.raw({ raw: ['foo', 'bar'] }, 1 + 2) // &quot;foo3bar&quot;
+</code></pre>
+<h3 id="codepointat"><a class="header" href="#codepointat">codePointAt</a></h3>
+<p>JavaScript 内部，字符以 UTF-16 的格式储存，每个字符固定为<code>2</code>个字节。对于那些需要<code>4</code>个字节储存的字符（Unicode 码点大于<code>0xFFFF</code>的字符），JavaScript 会认为它们是两个字符。</p>
+<pre><code class="language-javascript">var s = &quot;𠮷&quot;;
+
+s.length // 2
+s.charAt(0) // ''
+s.charAt(1) // ''
+s.charCodeAt(0) // 55362
+s.charCodeAt(1) // 57271
+</code></pre>
+<p>上面代码中，汉字“𠮷”（注意，这个字不是“吉祥”的“吉”）的码点是<code>0x20BB7</code>，UTF-16 编码为<code>0xD842 0xDFB7</code>（十进制为<code>55362 57271</code>），需要<code>4</code>个字节储存。对于这种<code>4</code>个字节的字符，JavaScript 不能正确处理，字符串长度会误判为<code>2</code>，而且<code>charAt()</code>方法无法读取整个字符，<code>charCodeAt()</code>方法只能分别返回前两个字节和后两个字节的值。</p>
+<p>ES6 提供了<code>codePointAt()</code>方法，能够正确处理 4 个字节储存的字符，返回一个字符的码点。</p>
+<pre><code class="language-javascript">let s = '𠮷a';
+
+s.codePointAt(0).toString(16) // &quot;20bb7&quot;
+s.codePointAt(2).toString(16) // &quot;61&quot;
+</code></pre>
+<p>你可能注意到了，<code>codePointAt()</code>方法的参数，仍然是不正确的。比如，上面代码中，字符<code>a</code>在字符串<code>s</code>的正确位置序号应该是 1，但是必须向<code>codePointAt()</code>方法传入 2。解决这个问题的一个办法是使用<code>for...of</code>循环，因为它会正确识别 32 位的 UTF-16 字符。</p>
+<pre><code class="language-javascript">let s = '𠮷a';
+for (let ch of s) {
+  console.log(ch.codePointAt(0).toString(16));
+}
+// 20bb7
+// 61
+</code></pre>
+<p>另一种方法也可以，使用扩展运算符（<code>...</code>）进行展开运算。</p>
+<pre><code class="language-javascript">let arr = [...'𠮷a']; // arr.length === 2
+arr.forEach(
+  ch =&gt; console.log(ch.codePointAt(0).toString(16))
+);
+// 20bb7
+// 61
+</code></pre>
+<pre><code class="language-javascript">function is32Bit(c) {
+  return c.codePointAt(0) &gt; 0xFFFF;
+}
+
+is32Bit(&quot;𠮷&quot;) // true
+is32Bit(&quot;a&quot;) // false
+</code></pre>
+<p>​</p>
+<h3 id="示例方法normalize"><a class="header" href="#示例方法normalize">示例方法:<em>normalize</em></a></h3>
+<p>许多欧洲语言有语调符号和重音符号。</p>
+<h3 id="实例方法includes-startswith-endswith"><a class="header" href="#实例方法includes-startswith-endswith">实例方法：includes(), startsWith(), endsWith()</a></h3>
+<ul>
+<li><strong>includes()</strong>：返回布尔值，表示是否找到了参数字符串。</li>
+<li><strong>startsWith()</strong>：返回布尔值，表示参数字符串是否在原字符串的头部。</li>
+<li><strong>endsWith()</strong>：返回布尔值，表示参数字符串是否在原字符串的尾部。</li>
+</ul>
+<h3 id="实例方法repeat"><a class="header" href="#实例方法repeat">实例方法：repeat()</a></h3>
+<p><code>repeat</code>方法返回一个新字符串，表示将原字符串重复<code>n</code>次。</p>
+<pre><code class="language-javascript">'x'.repeat(3) // &quot;xxx&quot;
+'hello'.repeat(2) // &quot;hellohello&quot;
+'na'.repeat(0) // &quot;&quot;
+</code></pre>
+<p>参数如果是小数，会被取整。</p>
+<pre><code class="language-javascript">'na'.repeat(2.9) // &quot;nana&quot;
+</code></pre>
+<p>如果<code>repeat</code>的参数是负数或者<code>Infinity</code>，会报错。</p>
+<pre><code class="language-javascript">'na'.repeat(Infinity)
+// RangeError
+'na'.repeat(-1)
+// RangeError
+</code></pre>
+<p>但是，如果参数是 0 到-1 之间的小数，则等同于 0，这是因为会先进行取整运算。0 到-1 之间的小数，取整以后等于<code>-0</code>，<code>repeat</code>视同为 0。</p>
+<pre><code class="language-javascript">'na'.repeat(-0.9) // &quot;&quot;
+</code></pre>
+<p>参数<code>NaN</code>等同于 0。</p>
+<pre><code class="language-javascript">'na'.repeat(NaN) // &quot;&quot;
+</code></pre>
+<p>如果<code>repeat</code>的参数是字符串，则会先转换成数字。</p>
+<pre><code class="language-javascript">'na'.repeat('na') // &quot;&quot;
+'na'.repeat('3') // &quot;nanana&quot;
+</code></pre>
+<h3 id="实例方法padstartpadend"><a class="header" href="#实例方法padstartpadend">实例方法：padStart()，padEnd()</a></h3>
+<pre><code class="language-javascript">'x'.padStart(5, 'ab') // 'ababx'
+'x'.padStart(4, 'ab') // 'abax'
+
+'x'.padEnd(5, 'ab') // 'xabab'
+'x'.padEnd(4, 'ab') // 'xaba'
+</code></pre>
+<p>上面代码中，<code>padStart()</code>和<code>padEnd()</code>一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串。</p>
+<p>如果原字符串的长度，等于或大于最大长度，则字符串补全不生效，返回原字符串。</p>
+<pre><code class="language-javascript">'xxx'.padStart(2, 'ab') // 'xxx'
+'xxx'.padEnd(2, 'ab') // 'xxx'
+</code></pre>
+<p>如果用来补全的字符串与原字符串，两者的长度之和超过了最大长度，则会截去超出位数的补全字符串。</p>
+<pre><code class="language-javascript">'abc'.padStart(10, '0123456789')
+// '0123456abc'
+</code></pre>
+<p>如果省略第二个参数，默认使用空格补全长度。</p>
+<pre><code class="language-javascript">'x'.padStart(4) // '   x'
+'x'.padEnd(4) // 'x   '
+</code></pre>
+<p><code>padStart()</code>的常见用途是为数值补全指定位数。下面代码生成 10 位的数值字符串。</p>
+<pre><code class="language-javascript">'1'.padStart(10, '0') // &quot;0000000001&quot;
+'12'.padStart(10, '0') // &quot;0000000012&quot;
+'123456'.padStart(10, '0') // &quot;0000123456&quot;
+</code></pre>
+<p>另一个用途是提示字符串格式。</p>
+<pre><code class="language-javascript">'12'.padStart(10, 'YYYY-MM-DD') // &quot;YYYY-MM-12&quot;
+'09-12'.padStart(10, 'YYYY-MM-DD') // &quot;YYYY-09-12&quot;
+</code></pre>
+<h3 id="实例方法trimstarttrimend"><a class="header" href="#实例方法trimstarttrimend">实例方法：trimStart()，trimEnd()</a></h3>
+<pre><code class="language-javascript">const s = '  abc  ';
+
+s.trim() // &quot;abc&quot;
+s.trimStart() // &quot;abc  &quot;
+s.trimEnd() // &quot;  abc&quot;
+</code></pre>
+<h1 id="正则扩展"><a class="header" href="#正则扩展">正则扩展</a></h1>
+<p><a href="https://es6.ruanyifeng.com/#docs/regex">正则扩展</a></p>
+<h2 id="regexp-构造函数httpses6ruanyifengcomdocsregexregexp-构造函数"><a class="header" href="#regexp-构造函数httpses6ruanyifengcomdocsregexregexp-构造函数">[RegExp 构造函数](https://es6.ruanyifeng.com/#docs/regex#RegExp 构造函数)</a></h2>
+<pre><code class="language-javascript">var regex = new RegExp(/xyz/i);
+// 等价于
+var regex = /xyz/i;
+#ES6新增第三种构造
+var regex = new RegExp(/xyz/, 'i');
+#且ig选项会被 i覆盖
+new RegExp(/abc/ig, 'i').flags
+</code></pre>
+<h2 id="字符串的正则方法"><a class="header" href="#字符串的正则方法"><a href="https://es6.ruanyifeng.com/#docs/regex#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95">字符串的正则方法</a></a></h2>
+<p>字符串对象共有 4 个方法，可以使用正则表达式</p>
+<p><code>match()</code></p>
+<p><code>replace()</code></p>
+<p><code>search()</code></p>
+<p><code>split()</code></p>
+<p>ES6 将这 4 个方法，在语言内部全部调用<code>RegExp</code>的实例方法，从而做到所有与正则相关的方法，全都定义在<code>RegExp</code>对象上。</p>
+<ul>
+<li><code>String.prototype.match</code> 调用 <code>RegExp.prototype[Symbol.match]</code></li>
+<li><code>String.prototype.replace</code> 调用 <code>RegExp.prototype[Symbol.replace]</code></li>
+<li><code>String.prototype.search</code> 调用 <code>RegExp.prototype[Symbol.search]</code></li>
+<li><code>String.prototype.split</code> 调用 <code>RegExp.prototype[Symbol.split]</code></li>
+</ul>
+<h2 id="u-修饰符httpses6ruanyifengcomdocsregexu-修饰符"><a class="header" href="#u-修饰符httpses6ruanyifengcomdocsregexu-修饰符">[u 修饰符](https://es6.ruanyifeng.com/#docs/regex#u 修饰符)</a></h2>
+<p>含义为“Unicode 模式”，用来正确处理大于<code>\uFFFF</code>的 Unicode 字符。也就是说，会正确处理四个字节的 UTF-16 编码。</p>
+<pre><code class="language-javascript">/^\uD83D/u.test('\uD83D\uDC2A') // false
+/^\uD83D/.test('\uD83D\uDC2A') // true
+//上面代码中，\uD83D\uDC2A是一个四个字节的 UTF-16 编码，代表一个字符。
+//但是，ES5 不支持四个字节的 UTF-16 编码，会将其识别为两个字符，导致第二行代码结果为true。加了u修饰符以后，ES6 就会识别其为一个字符，所以第一行代码结果为false。
+</code></pre>
+<p><strong>一旦加上<code>u</code>修饰符号，就会修改下面这些正则表达式的行为。</strong></p>
+<ul>
+<li><strong>点字符</strong></li>
+</ul>
+<p>点（<code>.</code>）字符在正则表达式中，含义是除了换行符以外的任意单个字符。对于码点大于<code>0xFFFF</code>的 Unicode 字符，点字符不能识别，必须加上<code>u</code>修饰符。</p>
+<pre><code class="language-javascript">var s = '𠮷';
+
+/^.$/.test(s) // false
+/^.$/u.test(s) // true
+</code></pre>
+<ul>
+<li>
+<p><strong>Unicode 字符表示法</strong></p>
+<p>ES6 新增了使用大括号表示 Unicode 字符，这种表示法在正则表达式中必须加上<code>u</code>修饰符，才能识别当中的大括号，否则会被解读为量词。</p>
+<pre><code class="language-javascript">/\u{61}/.test('a') // false
+/\u{61}/u.test('a') // true
+/\u{20BB7}/u.test('𠮷') // true
+</code></pre>
+</li>
+<li>
+<p><strong>量词</strong></p>
+</li>
+</ul>
+<p>使用<code>u</code>修饰符后，所有量词都会正确识别码点大于<code>0xFFFF</code>的 Unicode 字符。</p>
+<pre><code class="language-javascript">/a{2}/.test('aa') // true
+/a{2}/u.test('aa') // true
+/𠮷{2}/.test('𠮷𠮷') // false
+/𠮷{2}/u.test('𠮷𠮷') // true
+</code></pre>
+<ul>
+<li><strong>预定义模式</strong></li>
+</ul>
+<p><code>u</code>修饰符也影响到预定义模式，能否正确识别码点大于<code>0xFFFF</code>的 Unicode 字符。</p>
+<pre><code class="language-javascript">/^\S$/.test('𠮷') // false
+/^\S$/u.test('𠮷') // true
+</code></pre>
+<p>上面代码的<code>\S</code>是预定义模式，匹配所有非空白字符。只有加了<code>u</code>修饰符，它才能正确匹配码点大于<code>0xFFFF</code>的 Unicode 字符。</p>
+<p>利用这一点，可以写出一个正确返回字符串长度的函数。</p>
+<pre><code class="language-javascript">function codePointLength(text) {
+  var result = text.match(/[\s\S]/gu);
+  return result ? result.length : 0;
+}
+
+var s = '𠮷𠮷';
+
+s.length // 4
+codePointLength(s) // 2
+</code></pre>
+<ul>
+<li>
+<p>i 修饰符</p>
+<p>有些 Unicode 字符的编码不同，但是字型很相近，比如，<code>\u004B</code>与<code>\u212A</code>都是大写的<code>K</code></p>
+</li>
+</ul>
+<pre><code class="language-javascript">/[a-z]/i.test('\u212A') // false
+/[a-z]/iu.test('\u212A') // true
+</code></pre>
+<ul>
+<li>
+<p>转义</p>
+<p>没有<code>u</code>修饰符的情况下，正则中没有定义的转义（如逗号的转义<code>\,</code>）无效，而在<code>u</code>模式会报错。</p>
+<p>上面代码中，没有<code>u</code>修饰符时，逗号前面的反斜杠是无效的，加了<code>u</code>修饰符就报错。</p>
+</li>
+</ul>
+<p>[RegExp.prototype.unicode 属性](https://es6.ruanyifeng.com/#docs/regex#RegExp.prototype.unicode 属性)</p>
+<p>正则实例对象新增<code>unicode</code>属性，表示是否设置了<code>u</code>修饰符。</p>
+<h2 id="y-修饰符httpses6ruanyifengcomdocsregexy-修饰符"><a class="header" href="#y-修饰符httpses6ruanyifengcomdocsregexy-修饰符">[y 修饰符](https://es6.ruanyifeng.com/#docs/regex#y 修饰符)</a></h2>
+<p>ES6 还为正则表达式添加了<code>y</code>修饰符，叫做“粘连”（sticky）修饰符</p>
+<p>​	<code>y</code>修饰符的作用与<code>g</code>修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code>g</code>修饰符只要剩余位置中存在匹配就可，而<code>y</code>修饰符确保匹配必须从剩余的第一个位置开始，这也就是“粘连”的涵义。</p>
+<pre><code class="language-javascript">var s = 'aaa_aa_a';
+var r1 = /a+/g;
+var r2 = /a+/y;
+
+r1.exec(s) // [&quot;aaa&quot;]
+r2.exec(s) // [&quot;aaa&quot;]
+
+r1.exec(s) // [&quot;aa&quot;]
+r2.exec(s) // null
+</code></pre>
+<p>​	上面代码有两个正则表达式，一个使用<code>g</code>修饰符，另一个使用<code>y</code>修饰符。这两个正则表达式各执行了两次，第一次执行的时候，两者行为相同，剩余字符串都是<code>_aa_a</code>。由于<code>g</code>修饰没有位置要求，所以第二次执行会返回结果，而<code>y</code>修饰符要求匹配必须从头部开始，所以返回<code>null</code>。</p>
+<p>如果改一下正则表达式，保证每次都能头部匹配，<code>y</code>修饰符就会返回结果了。</p>
+<pre><code class="language-javascript">var s = 'aaa_aa_a';
+var r = /a+_/y;
+
+r.exec(s) // [&quot;aaa_&quot;]
+r.exec(s) // [&quot;aa_&quot;]
+</code></pre>
+<p>使用<code>lastIndex</code>属性，可以更好地说明<code>y</code>修饰符。</p>
+<pre><code class="language-javascript">const REGEX = /a/g;
+
+// 指定从2号位置（y）开始匹配
+REGEX.lastIndex = 2;
+
+// 匹配成功
+const match = REGEX.exec('xaya');
+
+// 在3号位置匹配成功
+match.index // 3
+
+// 下一次匹配从4号位开始
+REGEX.lastIndex // 4
+
+// 4号位开始匹配失败
+REGEX.exec('xaya') // null
+</code></pre>
+<p><strong>y修饰符原理</strong></p>
+<ul>
+<li>隐含了头部匹配的标志<code>^</code></li>
+<li>y修饰符 只会匹配一次,需要手动调用</li>
+<li>y修饰符 遇到错误会立即停止</li>
+</ul>
+<p>[RegExp.prototype.sticky 属性](https://es6.ruanyifeng.com/#docs/regex#RegExp.prototype.sticky 属性)</p>
+<p>与<code>y</code>修饰符相匹配，ES6 的正则实例对象多了<code>sticky</code>属性，表示是否设置了<code>y</code>修饰符。</p>
+<h2 id="regexpprototypeflags-属性httpses6ruanyifengcomdocsregexregexpprototypeflags-属性"><a class="header" href="#regexpprototypeflags-属性httpses6ruanyifengcomdocsregexregexpprototypeflags-属性">[RegExp.prototype.flags 属性](https://es6.ruanyifeng.com/#docs/regex#RegExp.prototype.flags 属性)</a></h2>
+<p>ES6 为正则表达式新增了<code>flags</code>属性，会返回正则表达式的修饰符。</p>
+<pre><code class="language-javascript">// ES5 的 source 属性
+// 返回正则表达式的正文
+/abc/ig.source
+// &quot;abc&quot;
+
+// ES6 的 flags 属性
+// 返回正则表达式的修饰符
+/abc/ig.flags
+// 'gi'
+</code></pre>
+<h2 id="s-修饰符dotall-模式httpses6ruanyifengcomdocsregexs-修饰符dotall-模式"><a class="header" href="#s-修饰符dotall-模式httpses6ruanyifengcomdocsregexs-修饰符dotall-模式">[s 修饰符：dotAll 模式](https://es6.ruanyifeng.com/#docs/regex#s 修饰符：dotAll 模式)</a></h2>
+<p>​	正则表达式中，点（<code>.</code>）是一个特殊字符，代表任意的单个字符，但是有两个例外。一个是四个字节的 UTF-16 字符，这个可以用<code>u</code>修饰符解决；另一个是行终止符（line terminator character）。</p>
+<p>所谓行终止符，就是该字符表示一行的终结。以下四个字符属于“行终止符”。</p>
+<ul>
+<li>U+000A 换行符（<code>\n</code>）</li>
+<li>U+000D 回车符（<code>\r</code>）</li>
+<li>U+2028 行分隔符（line separator）</li>
+<li>U+2029 段分隔符（paragraph separator）</li>
+</ul>
+<pre><code class="language-javascript">//因为`.`不匹配`\n`，所以正则表达式返回`false`。
+/foo.bar/.test('foo\nbar')
+// false
+</code></pre>
+<p>但是，很多时候我们希望匹配的是任意单个字符，这时有一种变通的写法。</p>
+<pre><code class="language-javascript">/foo[^]bar/.test('foo\nbar')
+// true
+</code></pre>
+<p>这种解决方案毕竟不太符合直觉，ES2018 <a href="https://github.com/tc39/proposal-regexp-dotall-flag">引入</a><code>s</code>修饰符，使得<code>.</code>可以匹配任意单个字符。</p>
+<pre><code class="language-javascript">/foo.bar/s.test('foo\nbar') // true
+</code></pre>
+<p>这被称为<code>dotAll</code>模式，即点（dot）代表一切字符。所以，正则表达式还引入了一个<code>dotAll</code>属性，返回一个布尔值，表示该正则表达式是否处在<code>dotAll</code>模式。</p>
+<pre><code class="language-javascript">const re = /foo.bar/s;
+// 另一种写法
+// const re = new RegExp('foo.bar', 's');
+
+re.test('foo\nbar') // true
+re.dotAll // true
+re.flags // 's'
+</code></pre>
+<h2 id="后行断言"><a class="header" href="#后行断言"><a href="https://es6.ruanyifeng.com/#docs/regex#%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80">后行断言</a></a></h2>
+<blockquote>
+<p>JavaScript 语言的正则表达式，只支持先行断言（lookahead）和先行否定断言（negative lookahead），不支持后行断言（lookbehind）和后行否定断言（negative lookbehind）。ES2018 引入<a href="https://github.com/tc39/proposal-regexp-lookbehind">后行断言</a>，V8 引擎 4.9 版（Chrome 62）已经支持。</p>
+</blockquote>
+<p><strong>先行断言</strong></p>
+<pre><code class="language-javascript">/x(?=y)/
+/\d+(?!%)/
+
+     搜索顺序是从左到右
+</code></pre>
+<p><strong>后行断言</strong></p>
+<pre><code class="language-javascript">/(?&lt;=\$)\d+/
+/(?&lt;!\$)\d+/
+
+
+</code></pre>
+<p><strong>后行断言搜索顺序是从右到左</strong></p>
+<pre><code class="language-javascript">/(?&lt;=(\d+)(\d+))$/.exec('1053') // [&quot;&quot;, &quot;1&quot;, &quot;053&quot;]
+/^(\d+)(\d+)$/.exec('1053') // [&quot;1053&quot;, &quot;105&quot;, &quot;3&quot;]
+</code></pre>
+<p>上面代码中，需要捕捉两个组匹配。没有“后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是<code>105</code>和<code>3</code>。而“后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是<code>1</code>和<code>053</code>。</p>
+<p><strong>后向引用捕获的组顺序也是相反的</strong></p>
+<pre><code class="language-javascript">/(?&lt;=(o)d\1)r/.exec('hodor')  // null
+/(?&lt;=\1d(o))r/.exec('hodor')  // [&quot;r&quot;, &quot;o&quot;]
+</code></pre>
+<p>上面代码中，如果后行断言的反斜杠引用（<code>\1</code>）放在括号的后面，就不会得到匹配结果，必须放在前面才可以。因为后行断言是先从左到右扫描，发现匹配以后再回过头，从右到左完成反斜杠引用。</p>
+<h2 id="unicode-属性类httpses6ruanyifengcomdocsregexunicode-属性类"><a class="header" href="#unicode-属性类httpses6ruanyifengcomdocsregexunicode-属性类">[Unicode 属性类](https://es6.ruanyifeng.com/#docs/regex#Unicode 属性类)</a></h2>
+<p>​	ES2018 <a href="https://github.com/tc39/proposal-regexp-unicode-property-escapes">引入</a>了一种新的类的写法<code>\p{...}</code>和<code>\P{...}</code>，允许正则表达式匹配符合 Unicode 某种属性的所有字符。</p>
+<pre><code class="language-javascript">const regexGreekSymbol = /\p{Script=Greek}/u;
+regexGreekSymbol.test('π') // true
+</code></pre>
+<p>上面代码中，<code>\p{Script=Greek}</code>指定匹配一个希腊文字母，所以匹配<code>π</code>成功。</p>
+<p>Unicode 属性类要指定属性名和属性值。</p>
+<pre><code class="language-javascript">\p{UnicodePropertyName=UnicodePropertyValue}
+</code></pre>
+<p>对于某些属性，可以只写属性名，或者只写属性值。</p>
+<pre><code class="language-javascript">\p{UnicodePropertyName}
+\p{UnicodePropertyValue}
+</code></pre>
+<p><code>\P{…}</code>是<code>\p{…}</code>的反向匹配，即匹配不满足条件的字符。</p>
+<p>由于 Unicode 的各种属性非常多，所以这种新的类的表达能力非常强。</p>
+<pre><code class="language-javascript">const regex = /^\p{Decimal_Number}+$/u;
+regex.test('𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺𝟻𝟼') // true
+</code></pre>
+<p>上面代码中，属性类指定匹配所有十进制字符，可以看到各种字型的十进制字符都会匹配成功。</p>
+<p><code>\p{Number}</code>甚至能匹配罗马数字。</p>
+<pre><code class="language-javascript">// 匹配所有数字
+const regex = /^\p{Number}+$/u;
+regex.test('²³¹¼½¾') // true
+regex.test('㉛㉜㉝') // true
+regex.test('ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ') // true
+</code></pre>
+<p>下面是其他一些例子。</p>
+<pre><code class="language-javascript">// 匹配所有空格
+\p{White_Space}
+
+// 匹配各种文字的所有字母，等同于 Unicode 版的 \w
+[\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]
+
+// 匹配各种文字的所有非字母的字符，等同于 Unicode 版的 \W
+[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]
+
+// 匹配 Emoji
+/\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu
+
+// 匹配所有的箭头字符
+const regexArrows = /^\p{Block=Arrows}+$/u;
+regexArrows.test('←↑→↓↔↕↖↗↘↙⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇧⇩') // true
+</code></pre>
+<h2 id="命名-组匹配"><a class="header" href="#命名-组匹配"><a href="https://es6.ruanyifeng.com/#docs/regex#%E5%85%B7%E5%90%8D%E7%BB%84%E5%8C%B9%E9%85%8D">命名 组匹配</a></a></h2>
+<p>正则表达式使用圆括号进行组匹配。</p>
+<pre><code class="language-javascript">const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+</code></pre>
+<pre><code class="language-javascript">const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+
+const matchObj = RE_DATE.exec('1999-12-31');
+const year = matchObj[1]; // 1999
+const month = matchObj[2]; // 12
+const day = matchObj[3]; // 31
+// or
+const [,year,month,day] = RE_DATE.exec('1999-12-31');
+</code></pre>
+<p>组匹配的一个问题是，每一组的匹配含义不容易看出来，而且只能用数字序号（比如<code>matchObj[1]</code>）引用，要是组的顺序变了，引用的时候就必须修改序号。</p>
+<p>ES2018 引入了<a href="https://github.com/tc39/proposal-regexp-named-groups">具名组匹配</a>（Named Capture Groups），允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用。</p>
+<pre><code class="language-javascript">const RE_DATE = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/;
+
+const matchObj = RE_DATE.exec('1999-12-31');
+const year = matchObj.groups.year; // 1999
+const month = matchObj.groups.month; // 12
+const day = matchObj.groups.day; // 31
+</code></pre>
+<p>​	上面代码中，“具名组匹配”在圆括号内部，模式的头部添加“问号 + 尖括号 + 组名”（<code>?&lt;year&gt;</code>），然后就可以在<code>exec</code>方法返回结果的<code>groups</code>属性上引用该组名。同时，数字序号（<code>matchObj[1]</code>）依然有效。</p>
+<p>具名组匹配等于为每一组匹配加上了 ID，便于描述匹配的目的。如果组的顺序变了，也不用改变匹配后的处理代码。</p>
+<pre><code class="language-javascript">const RE_DATE = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/;
+
+const matchObj = RE_DATE.exec('1999-12-31');
+const year = matchObj.groups.year; // 1999
+const month = matchObj.groups.month; // 12
+const day = matchObj.groups.day; // 31
+// or
+const {groups:{year,month,day}} = res;
+</code></pre>
+<p><strong>解构赋值和替换</strong></p>
+<pre><code class="language-javascript">let {groups: {one, two}} = /^(?&lt;one&gt;.*):(?&lt;two&gt;.*)$/u.exec('foo:bar');
+one  // foo
+two  // bar
+</code></pre>
+<p>引用具名组</p>
+<pre><code class="language-javascript">let re = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;
+
+'2015-01-02'.replace(re, '$&lt;day&gt;/$&lt;month&gt;/$&lt;year&gt;')
+// '02/01/2015'
+</code></pre>
+<p><code>replace</code>方法的第二个参数也可以是函数，该函数的参数序列如下。</p>
+<pre><code class="language-javascript">'2015-01-02'.replace(re, (
+   matched, // 整个匹配结果 2015-01-02
+   capture1, // 第一个组匹配 2015
+   capture2, // 第二个组匹配 01
+   capture3, // 第三个组匹配 02
+   position, // 匹配开始的位置 0
+   S, // 原字符串 2015-01-02
+   groups // 具名组构成的一个对象 {year, month, day}
+ ) =&gt; {
+ let {day, month, year} = groups;
+ return `${day}/${month}/${year}`;
+});
+</code></pre>
+<p>​	具名组匹配在原来的基础上，新增了最后一个函数参数：具名组构成的一个对象。函数内部可以直接对这个对象进行解构赋值。</p>
+<p><strong>引用</strong></p>
+<p>如果要在正则表达式内部引用某个“具名组匹配”，可以使用<code>\k&lt;组名&gt;</code>的写法。</p>
+<pre><code class="language-javascript">const RE_TWICE = /^(?&lt;word&gt;[a-z]+)!\k&lt;word&gt;$/;
+RE_TWICE.test('abc!abc') // true
+RE_TWICE.test('abc!ab') // false
+</code></pre>
+<p>数字引用（<code>\1</code>）依然有效。</p>
+<pre><code class="language-javascript">const RE_TWICE = /^(?&lt;word&gt;[a-z]+)!\1$/;
+RE_TWICE.test('abc!abc') // true
+RE_TWICE.test('abc!ab') // false
+</code></pre>
+<pre><code class="language-javascript">const RE_TWICE = /^(?&lt;word&gt;[a-z]+)!\k&lt;word&gt;!\1$/;
+RE_TWICE.test('abc!abc!abc') // true
+RE_TWICE.test('abc!abc!ab') // false
+</code></pre>
+<h2 id="正则匹配索引"><a class="header" href="#正则匹配索引"><a href="https://es6.ruanyifeng.com/#docs/regex#%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E7%B4%A2%E5%BC%95">正则匹配索引</a></a></h2>
+<p>​	正则匹配结果的开始位置和结束位置，目前获取并不是很方便。正则实例的<code>exec()</code>方法，返回结果有一个<code>index</code>属性，可以获取整个匹配结果的开始位置，但是如果包含组匹配，每个组匹配的开始位置，很难拿到。</p>
+<p>​	现在有一个<a href="https://github.com/tc39/proposal-regexp-match-Indices">第三阶段提案</a>，为<code>exec()</code>方法的返回结果加上<code>indices</code>属性，在这个属性上面可以拿到匹配的开始位置和结束位置。</p>
+<pre><code class="language-javascript">const text = 'zabbcdef';
+const re = /ab/;
+const result = re.exec(text);
+
+result.index // 1
+result.indices // [ [1, 3] ]
+</code></pre>
+<p>上面例子中，<code>exec()</code>方法的返回结果<code>result</code>，它的<code>index</code>属性是整个匹配结果（<code>ab</code>）的开始位置，而它的<code>indices</code>属性是一个数组，成员是每个匹配的开始位置和结束位置的数组。由于该例子的正则表达式没有组匹配，所以<code>indices</code>数组只有一个成员，表示整个匹配的开始位置是<code>1</code>，结束位置是<code>3</code>。</p>
+<p>注意，开始位置包含在匹配结果之中，但是结束位置不包含在匹配结果之中。比如，匹配结果为<code>ab</code>，分别是原始字符串的第1位和第2位，那么结束位置就是第3位。</p>
+<p>如果正则表达式包含组匹配，那么<code>indices</code>属性对应的数组就会包含多个成员，提供每个组匹配的开始位置和结束位置。</p>
+<p>如果正则表达式包含具名组匹配，<code>indices</code>属性数组还会有一个<code>groups</code>属性。该属性是一个对象，可以从该对象获取具名组匹配的开始位置和结束位置。</p>
+<pre><code class="language-javascript">const text = 'zabbcdef';
+const re = /ab+(?&lt;Z&gt;cd)/;
+const result = re.exec(text);
+
+result.indices.groups // { Z: [ 4, 6 ] }
+</code></pre>
+<h2 id="stringprototypematchall"><a class="header" href="#stringprototypematchall"><a href="https://es6.ruanyifeng.com/#docs/regex#String.prototype.matchAll()">String.prototype.matchAll()</a></a></h2>
+<p><a href="https://github.com/tc39/proposal-string-matchall">ES2020</a> 增加了<code>String.prototype.matchAll()</code>方法，可以一次性取出所有匹配。不过，它返回的是一个遍历器（Iterator），而不是数组。</p>
+<pre><code class="language-javascript">const string = 'test1test2test3';
+const regex = /t(e)(st(\d?))/g;
+
+for (const match of string.matchAll(regex)) {
+  console.log(match);
+}
+// [&quot;test1&quot;, &quot;e&quot;, &quot;st1&quot;, &quot;1&quot;, index: 0, input: &quot;test1test2test3&quot;]
+// [&quot;test2&quot;, &quot;e&quot;, &quot;st2&quot;, &quot;2&quot;, index: 5, input: &quot;test1test2test3&quot;]
+// [&quot;test3&quot;, &quot;e&quot;, &quot;st3&quot;, &quot;3&quot;, index: 10, input: &quot;test1test2test3&quot;]
+</code></pre>
+<p>上面代码中，由于<code>string.matchAll(regex)</code>返回的是遍历器，所以可以用<code>for...of</code>循环取出。相对于返回数组，返回遍历器的好处在于，如果匹配结果是一个很大的数组，那么遍历器比较节省资源。</p>
+<p>遍历器转为数组是非常简单的，使用<code>...</code>运算符和<code>Array.from()</code>方法就可以了。</p>
+<pre><code class="language-javascript">// 转为数组的方法一
+[...string.matchAll(regex)]
+
+// 转为数组的方法二
+Array.from(string.matchAll(regex))
+</code></pre>
+<h1 id="数值的扩展"><a class="header" href="#数值的扩展">数值的扩展</a></h1>
+<h2 id="二进制和八进制表示法"><a class="header" href="#二进制和八进制表示法">二进制和八进制表示法</a></h2>
+<p>ES6 提供了二进制和八进制数值的新的写法，分别用前缀<code>0b</code>（或<code>0B</code>）和<code>0o</code>（或<code>0O</code>）表示。</p>
+<pre><code class="language-javascript">0b111110111 === 503 // true
+0o767 === 503 // true
+</code></pre>
+<p>从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀<code>0</code>表示，ES6 进一步明确，要使用前缀<code>0o</code>表示。</p>
+<pre><code class="language-javascript">// 非严格模式
+(function(){
+  console.log(0o11 === 011);
+})() // true
+
+// 严格模式
+(function(){
+  'use strict';
+  console.log(0o11 === 011);
+})() // Uncaught SyntaxError: Octal literals are not allowed in strict mode.
+</code></pre>
+<p>如果要将<code>0b</code>和<code>0o</code>前缀的字符串数值转为十进制，要使用<code>Number</code>方法。</p>
+<pre><code class="language-javascript">Number('0b111')  // 7
+Number('0o10')  // 8
+</code></pre>
+<h2 id="数值函数"><a class="header" href="#数值函数">数值函数</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>函数名</th><th>说明</th></tr></thead><tbody>
+<tr><td>Number.isFinite()</td><td>检查一个数值是否为有限的</td></tr>
+<tr><td>Number.isNaN()</td><td>参数类型不是一个数值类型</td></tr>
+<tr><td>Number.parseInt()<br />Number.parseFloat()<br />Number.isInteger()</td><td>将全局方法,移植到<code>Number</code>对象上面，行为完全保持不变。</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>JavaScript 内部，整数和浮点数采用的是同样的储存方法，所以 25 和 25.0 被视为同一个值。</p>
+</blockquote>
+<pre><code class="language-javascript">(3.0000000000000002) // true
+</code></pre>
+<p>上面代码中，<code>Number.isInteger</code>的参数明明不是整数，但是会返回<code>true</code>。原因就是这个小数的精度达到了小数点后16个十进制位，转成二进制位超过了53个二进制位，导致最后的那个<code>2</code>被丢弃了。</p>
+<h2 id="numberepsilon"><a class="header" href="#numberepsilon">Number.EPSILON</a></h2>
+<p><strong>精度</strong></p>
+<ul>
+<li>
+<p>ES6 在<code>Number</code>对象上面，新增一个极小的常量<code>Number.EPSILON</code></p>
+</li>
+<li>
+<p>根据规格，它表示 1 与大于 1 的最小浮点数之间的差</p>
+</li>
+<li>
+<p>对于 64 位浮点数来说，大于 1 的最小浮点数相当于二进制的<code>1.00..001</code>，小数点后面有连续 51 个零。这个值减去 1 之后，就等于 2 的 -52 次方。</p>
+</li>
+</ul>
+<p><strong>案例</strong></p>
+<p>类似的情况还有，如果一个数值的绝对值小于<code>Number.MIN_VALUE</code>（5E-324），即小于 JavaScript 能够分辨的最小值，会被自动转为 0。这时，<code>Number.isInteger</code>也会误判。</p>
+<pre><code class="language-javascript">Number.isInteger(5E-324) // false
+Number.isInteger(5E-325) // true
+</code></pre>
+<p>上面代码中，<code>5E-325</code>由于值太小，会被自动转为0，因此返回<code>true</code>。</p>
+<p>总之，如果对数据精度的要求较高，不建议使用<code>Number.isInteger()</code>判断一个数值是否为整数。</p>
+<p><strong>案例2</strong></p>
+<hr />
+<pre><code class="language-javascript">Number.EPSILON === Math.pow(2, -52)
+// true
+Number.EPSILON
+// 2.220446049250313e-16
+Number.EPSILON.toFixed(20)
+// &quot;0.00000000000000022204&quot;
+</code></pre>
+<pre><code class="language-javascript">0.1 + 0.2
+// 0.30000000000000004
+
+0.1 + 0.2 - 0.3
+// 5.551115123125783e-17
+
+5.551115123125783e-17.toFixed(20)
+// '0.00000000000000005551'
+</code></pre>
+<p>上面代码解释了，为什么比较<code>0.1 + 0.2</code>与<code>0.3</code>得到的结果是<code>false</code>。</p>
+<p><code>Number.EPSILON</code>可以用来设置“能够接受的误差范围”。比如，误差范围设为 2 的-50 次方（即<code>Number.EPSILON * Math.pow(2, 2)</code>），即如果两个浮点数的差小于这个值，我们就认为这两个浮点数相等。</p>
+<p><strong>可以接受的最小误差范围</strong></p>
+<pre><code class="language-javascript">function withinErrorMargin (left, right) {
+  return Math.abs(left - right) &lt; Number.EPSILON * Math.pow(2, 2);
+}
+
+0.1 + 0.2 === 0.3 // false
+withinErrorMargin(0.1 + 0.2, 0.3) // true
+
+1.1 + 1.3 === 2.4 // false
+withinErrorMargin(1.1 + 1.3, 2.4) // true
+</code></pre>
+<h2 id="安全整数和-numberissafeinteger"><a class="header" href="#安全整数和-numberissafeinteger">安全整数和 Number.isSafeInteger()</a></h2>
+<p>JavaScript 能够准确表示的整数范围在<code>-2^53</code>到<code>2^53</code>之间（不含两个端点），超过这个范围，无法精确表示这个值。</p>
+<pre><code class="language-javascript">Math.pow(2, 53) // 9007199254740992
+
+9007199254740992  // 9007199254740992
+9007199254740993  // 9007199254740992
+
+Math.pow(2, 53) === Math.pow(2, 53) + 1
+// true
+</code></pre>
+<p>ES6 引入了<code>Number.MAX_SAFE_INTEGER</code>和<code>Number.MIN_SAFE_INTEGER</code>这两个常量，用来表示这个范围的上下限。</p>
+<pre><code class="language-javascript">Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1
+// true
+Number.MAX_SAFE_INTEGER === 9007199254740991
+// true
+
+Number.MIN_SAFE_INTEGER === -Number.MAX_SAFE_INTEGER
+// true
+Number.MIN_SAFE_INTEGER === -9007199254740991
+</code></pre>
+<p><code>Number.isSafeInteger()</code>则是用来判断一个整数是否落在这个范围之内。</p>
+<pre><code class="language-javascript">Number.isSafeInteger('a') // false
+Number.isSafeInteger(null) // false
+Number.isSafeInteger(NaN) // false
+Number.isSafeInteger(Infinity) // false
+Number.isSafeInteger(-Infinity) // false
+
+Number.isSafeInteger(3) // true
+Number.isSafeInteger(1.2) // false
+Number.isSafeInteger(9007199254740990) // true
+Number.isSafeInteger(9007199254740992) // false
+
+Number.isSafeInteger(Number.MIN_SAFE_INTEGER - 1) // false
+Number.isSafeInteger(Number.MIN_SAFE_INTEGER) // true
+Number.isSafeInteger(Number.MAX_SAFE_INTEGER) // true
+Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1) // false
+</code></pre>
+<p>这个函数的实现很简单，就是跟安全整数的两个边界值比较一下。</p>
+<pre><code class="language-javascript">Number.isSafeInteger = function (n) {
+  return (typeof n === 'number' &amp;&amp;
+    Math.round(n) === n &amp;&amp;
+    Number.MIN_SAFE_INTEGER &lt;= n &amp;&amp;
+    n &lt;= Number.MAX_SAFE_INTEGER);
+}
+</code></pre>
+<p>​	实际使用这个函数时，需要注意。验证运算结果是否落在安全整数的范围内，不要只验证运算结果，而要同时验证参与运算的每个值。</p>
+<h2 id="math-对象的扩展"><a class="header" href="#math-对象的扩展">Math 对象的扩展</a></h2>
+<p>ES6 在 Math 对象上新增了 17 个与数学相关的方法。所有这些方法都是静态方法，只能在 Math 对象上调用。</p>
+<h3 id="mathtrunc"><a class="header" href="#mathtrunc">Math.trunc()</a></h3>
+<p>去除一个数的小数部分，返回整数部分</p>
+<pre><code class="language-javascript">Math.trunc(4.1) // 4
+Math.trunc(4.9) // 4
+Math.trunc(-4.1) // -4
+Math.trunc(-4.9) // -4
+Math.trunc(-0.1234) // -0
+</code></pre>
+<p>对于非数值，<code>Math.trunc</code>内部使用<code>Number</code>方法将其先转为数值。</p>
+<pre><code class="language-javascript">Math.trunc('123.456') // 123
+Math.trunc(true) //1
+Math.trunc(false) // 0
+Math.trunc(null) // 0
+</code></pre>
+<p>对于空值和无法截取整数的值，返回<code>NaN</code>。</p>
+<pre><code class="language-javascript">Math.trunc(NaN);      // NaN
+Math.trunc('foo');    // NaN
+Math.trunc();         // NaN
+Math.trunc(undefined) // NaN
+</code></pre>
+<p>对于没有部署这个方法的环境，可以用下面的代码模拟。</p>
+<pre><code class="language-javascript">Math.trunc = Math.trunc || function(x) {
+  return x &lt; 0 ? Math.ceil(x) : Math.floor(x);
+};
+</code></pre>
+<h3 id="mathsign"><a class="header" href="#mathsign">Math.sign()</a></h3>
+<p><code>Math.sign</code>方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。</p>
+<p>它会返回五种值。</p>
+<ul>
+<li>参数为正数，返回<code>+1</code>；</li>
+<li>参数为负数，返回<code>-1</code>；</li>
+<li>参数为 0，返回<code>0</code>；</li>
+<li>参数为-0，返回<code>-0</code>;</li>
+<li>其他值，返回<code>NaN</code>。</li>
+</ul>
+<p>如果参数是非数值，会自动转为数值。对于那些无法转为数值的值，会返回<code>NaN</code>。</p>
+<pre><code class="language-javascript">Math.sign('')  // 0
+Math.sign(true)  // +1
+Math.sign(false)  // 0
+Math.sign(null)  // 0
+Math.sign('9')  // +1
+Math.sign('foo')  // NaN
+Math.sign()  // NaN
+Math.sign(undefined)  // NaN
+</code></pre>
+<pre><code class="language-javascript">Math.sign = Math.sign || function(x) {
+  x = +x; // convert to a number
+  if (x === 0 || isNaN(x)) {
+    return x;
+  }
+  return x &gt; 0 ? 1 : -1;
+};
+</code></pre>
+<h3 id="mathcbrt"><a class="header" href="#mathcbrt">Math.cbrt()</a></h3>
+<p><code>Math.cbrt()</code>方法用于计算一个数的立方根。</p>
+<pre><code class="language-javascript">Math.cbrt(-1) // -1
+Math.cbrt(0)  // 0
+Math.cbrt(1)  // 1
+Math.cbrt(2)  // 1.2599210498948732
+</code></pre>
+<p>对于非数值，<code>Math.cbrt()</code>方法内部也是先使用<code>Number()</code>方法将其转为数值。</p>
+<pre><code class="language-javascript">Math.cbrt('8') // 2
+Math.cbrt('hello') // NaN
+</code></pre>
+<p>对于没有部署这个方法的环境，可以用下面的代码模拟。</p>
+<pre><code class="language-javascript">Math.cbrt = Math.cbrt || function(x) {
+  var y = Math.pow(Math.abs(x), 1/3);
+  return x &lt; 0 ? -y : y;
+};
+</code></pre>
+<h3 id="mathclz32"><a class="header" href="#mathclz32">Math.clz32()</a></h3>
+<p><code>Math.clz32()</code>方法将参数转为 32 位无符号整数的形式，然后返回这个 32 位值里面有多少个前导 0。</p>
+<pre><code class="language-javascript">Math.clz32(0) // 32
+Math.clz32(1) // 31
+Math.clz32(1000) // 22
+Math.clz32(0b01000000000000000000000000000000) // 1
+Math.clz32(0b00100000000000000000000000000000) // 2
+
+clz32这个函数名就来自”count leading zero bits in 32-bit binary
+</code></pre>
+<p>对于小数，<code>Math.clz32</code>方法只考虑整数部分。</p>
+<p>对于空值或其他类型的值，<code>Math.clz32</code>方法会将它们先转为数值，然后再计算。</p>
+<pre><code class="language-javascript">Math.clz32() // 32
+Math.clz32(NaN) // 32
+Math.clz32(Infinity) // 32
+Math.clz32(null) // 32
+Math.clz32('foo') // 32
+Math.clz32([]) // 32
+Math.clz32({}) // 32
+Math.clz32(true) // 31
+</code></pre>
+<h3 id="mathimul"><a class="header" href="#mathimul">Math.imul()</a></h3>
+<p><code>Math.imul</code>方法返回两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数。</p>
+<pre><code class="language-javascript">Math.imul(2, 4)   // 8
+Math.imul(-1, 8)  // -8
+Math.imul(-2, -2) // 4
+</code></pre>
+<p>如果只考虑最后 32 位，大多数情况下，<code>Math.imul(a, b)</code>与<code>a * b</code>的结果是相同的，即该方法等同于<code>(a * b)|0</code>的效果（超过 32 位的部分溢出）。之所以需要部署这个方法，是因为 JavaScript 有精度限制，超过 2 的 53 次方的值无法精确表示。这就是说，对于那些很大的数的乘法，低位数值往往都是不精确的，<code>Math.imul</code>方法可以返回正确的低位数值。</p>
+<pre><code class="language-javascript">(0x7fffffff * 0x7fffffff)|0 // 0
+</code></pre>
+<p>上面这个乘法算式，返回结果为 0。但是由于这两个二进制数的最低位都是 1，所以这个结果肯定是不正确的，因为根据二进制乘法，计算结果的二进制最低位应该也是 1。这个错误就是因为它们的乘积超过了 2 的 53 次方，JavaScript 无法保存额外的精度，就把低位的值都变成了 0。<code>Math.imul</code>方法可以返回正确的值 1。</p>
+<pre><code class="language-javascript">Math.imul(0x7fffffff, 0x7fffffff) // 1
+</code></pre>
+<h2 id="指数运算符--"><a class="header" href="#指数运算符--">指数运算符 <a href="https://es6.ruanyifeng.com/#docs/number#%E6%8C%87%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6">§</a> <a href="https://es6.ruanyifeng.com/#docs/number">⇧</a></a></h2>
+<h2 id="bigint-数据类型--"><a class="header" href="#bigint-数据类型--">BigInt 数据类型 <a href="https://es6.ruanyifeng.com/#docs/number#BigInt-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">§</a> <a href="https://es6.ruanyifeng.com/#docs/number">⇧</a></a></h2>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ECMAScript/函数.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ECMAScript/对象.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ECMAScript/函数.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ECMAScript/对象.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Base64编码 - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><div>UML</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html">UML</a></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/index.html">MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html">时序图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html">流程图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html">类图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html">语法总览</a></li></ol></li><li class="chapter-item "><div>Flowchart</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html">flowchart_fun</a></li></ol></li><li class="chapter-item "><div>PlantUml</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html">plantUML语法</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../4.模板引擎/index.html">模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/index.html">mustache</a></li></ol></li><li class="chapter-item "><div>常用软件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/Multipass.html">Multipass</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html">v2rayN代理</a></li></ol></li><li class="chapter-item "><div>生活事宜</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html">个人清算汇缴</a></li></ol></li><li class="chapter-item "><a href="../7.思考/index.html">思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html">学习总结</a></li><li class="chapter-item "><a href="../7.思考/杂项.html">杂项</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html">编程技巧</a></li></ol></li><li class="chapter-item "><div>学习</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html">概率论与数理统计</a></li></ol></li><li class="chapter-item "><div>数据格式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/XML.html">XML</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html">yaml</a></li></ol></li><li class="chapter-item "><div>Linux</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html">CFSBandwidthControl</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html">LinuxFor</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html">LinuxWOL设置</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html">Linux条件测试</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html">Seed</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html">VIM</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html">caseIn</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html">cgroup</a></li><li class="chapter-item "><a href="../10.Linux/curl.html">curl</a></li><li class="chapter-item "><a href="../10.Linux/dd.html">dd</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html">diffPatch</a></li><li class="chapter-item "><a href="../10.Linux/find.html">find</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html">iptables</a></li><li class="chapter-item "><a href="../10.Linux/jq.html">jq</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html">lsof</a></li><li class="chapter-item "><a href="../10.Linux/ps.html">ps</a></li><li class="chapter-item "><a href="../10.Linux/read.html">read</a></li><li class="chapter-item "><a href="../10.Linux/scp.html">scp</a></li><li class="chapter-item "><a href="../10.Linux/select.html">select</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html">service脚本</a></li><li class="chapter-item "><a href="../10.Linux/set.html">set</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html">shell字符串</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html">shell脚本参数</a></li><li class="chapter-item "><a href="../10.Linux/stat.html">stat</a></li><li class="chapter-item "><a href="../10.Linux/tar.html">tar</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html">top命令</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html">uidGidSetUidSetGid</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html">wsl关闭提示音</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html">yum本地包依赖</a></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html">大端与小端</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html">确定Linux发行版本</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html">零拷贝</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html">默认值语法糖</a></li></ol></li><li class="chapter-item expanded "><a href="../11.algorithm/index.html">algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../11.algorithm/Base64编码.html" class="active">Base64编码</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html">Huffman编码</a></li><li class="chapter-item "><a href="../11.algorithm/base64.html">base64</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html">fnv-hash算法</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html">二叉搜索平衡树</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html">位运算</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html">动态规划</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html">动态规划-新</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html">字符编码</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html">布隆过滤器</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html">浮点数</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html">红黑树</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html">贪心算法</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html">逆波兰表达式</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="base64编码"><a class="header" href="#base64编码">Base64编码</a></h1>
+<h2 id="原理"><a class="header" href="#原理">原理</a></h2>
+<ol>
+<li>将二进制数据编码成字符串</li>
+<li>操作说明
+<ol>
+<li>每6位二进制 当作一个 字节 的 低字节位, 高位补0</li>
+<li>根据 转换来的字节的十进制 在 码表中找对应的字符</li>
+<li>如果最后 还剩 4位二进制则, 则补 二个 '=' 号,如果还剩2位二进制则补一个'='</li>
+</ol>
+</li>
+</ol>
+<h2 id="数据量比对"><a class="header" href="#数据量比对">数据量比对</a></h2>
+<p>设源文件的字节数为  a</p>
+<p>$$
+\frac{编码后的数据量}{源数据量} =  \frac{a * 8 }{(a*8/6)*8} = \frac{4}{3}
+$$</p>
+<h2 id="码表"><a class="header" href="#码表">码表</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>码值</th><th>字符</th><th>码值</th><th>字符</th><th>码值</th><th>字符</th></tr></thead><tbody>
+<tr><td>0</td><td>A</td><td>26</td><td>a</td><td>52</td><td>0</td></tr>
+<tr><td>1</td><td>B</td><td>27</td><td>b</td><td>53</td><td>1</td></tr>
+<tr><td>2</td><td>C</td><td>28</td><td>c</td><td>54</td><td>2</td></tr>
+<tr><td>3</td><td>D</td><td>29</td><td>d</td><td>55</td><td>3</td></tr>
+<tr><td>4</td><td>E</td><td>30</td><td>e</td><td>56</td><td>4</td></tr>
+<tr><td>5</td><td>F</td><td>31</td><td>f</td><td>57</td><td>5</td></tr>
+<tr><td>6</td><td>G</td><td>32</td><td>g</td><td>58</td><td>6</td></tr>
+<tr><td>7</td><td>H</td><td>33</td><td>h</td><td>59</td><td>7</td></tr>
+<tr><td>8</td><td>I</td><td>34</td><td>i</td><td>60</td><td>8</td></tr>
+<tr><td>9</td><td>J</td><td>35</td><td>j</td><td>61</td><td>9</td></tr>
+<tr><td>10</td><td>K</td><td>36</td><td>k</td><td>62</td><td>+</td></tr>
+<tr><td>11</td><td>L</td><td>37</td><td>l</td><td>63</td><td>/</td></tr>
+<tr><td>12</td><td>M</td><td>38</td><td>m</td><td></td><td></td></tr>
+<tr><td>13</td><td>N</td><td>39</td><td>n</td><td></td><td></td></tr>
+<tr><td>14</td><td>O</td><td>40</td><td>o</td><td></td><td></td></tr>
+<tr><td>15</td><td>P</td><td>41</td><td>p</td><td></td><td></td></tr>
+<tr><td>16</td><td>Q</td><td>42</td><td>q</td><td></td><td></td></tr>
+<tr><td>17</td><td>R</td><td>43</td><td>r</td><td></td><td></td></tr>
+<tr><td>18</td><td>S</td><td>44</td><td>s</td><td></td><td></td></tr>
+<tr><td>19</td><td>T</td><td>45</td><td>t</td><td></td><td></td></tr>
+<tr><td>20</td><td>U</td><td>46</td><td>u</td><td></td><td></td></tr>
+<tr><td>21</td><td>V</td><td>47</td><td>v</td><td></td><td></td></tr>
+<tr><td>22</td><td>W</td><td>48</td><td>w</td><td></td><td></td></tr>
+<tr><td>23</td><td>X</td><td>49</td><td>x</td><td></td><td></td></tr>
+<tr><td>24</td><td>Y</td><td>50</td><td>y</td><td></td><td></td></tr>
+<tr><td>25</td><td>Z</td><td>51</td><td>z</td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<h2 id="代码实现"><a class="header" href="#代码实现">代码实现</a></h2>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+//编码
+void encodeToBase64(const char *buf, int len);
+//解码
+void decodeBase64(const char *buf, int len);
+void reverseBase64();
+
+// 编码码表
+char codeTable[64] = {
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    '+', '/'};
+
+//解码码表
+char reverseTable[255];
+
+
+int main(int argc, char const *argv[])
+{
+    if (argc != 3)
+    {
+        printf(&quot;缺少参数\n&quot;);
+        return -1;
+    }
+    reverseBase64();
+    switch (argv[1][0])
+    {
+        // d 为解码
+    case 'd':
+         decodeBase64(argv[2], strlen(argv[2]));
+        break;
+        //  e为编码
+    case 'e':
+         encodeToBase64(argv[2],strlen(argv[2]));
+    default:
+        break;
+    }
+    return 0;
+}
+
+
+void reverseBase64()
+{
+    for (size_t i = 0; i &lt; sizeof(codeTable); i++)
+    {
+        reverseTable[codeTable[i]] = i;
+    }
+}
+//  原理: 从高位到低位 每次取前六位二进制的 值相加
+void doEncodeToBase64(const char *buf, int len)
+{
+    int i = 6;
+    int j = 8;
+    int k = 0;
+    int rest = 0;
+    int sum = 0;
+    char c = buf[0];
+    while (k &lt; len)
+    {
+        // 如果当前字节的位数都已处理完毕,则切换到下一个字节,并恢复标识
+        if (j == 0)
+        {
+            j = 8;
+            c = buf[++k];
+        }
+
+        // 如果已取满 六位 二进制,则将该 低六位二进制对应的 值 根据码表转换成字符,并恢复标识
+        if (i == 0)
+        {
+            i = 6;
+            printf(&quot;%c&quot;, codeTable[sum]);
+            sum = 0;
+        }
+
+        /*
+            1. 判断当前字节 c, 当前处理 位置 j , 的二进制是 0 或 1
+               (c &gt;&gt; (j - 1) &amp; 1
+            2. 计算 6 -&gt; 8 位转换时 位置j 所处的 权重 
+                1 &lt;&lt; (i - 1)
+            3. 两者相乘
+        */     
+        sum += ((c &gt;&gt; (j - 1)) &amp; 1) * (1 &lt;&lt; (i - 1));
+        i--;
+        j--;
+    }
+    // 补 = 号
+    if ((rest = len % 3) == 1)
+    {
+        printf(&quot;%c==\n&quot;, codeTable[sum]);
+    }
+    else if (rest == 2)
+    {
+        printf(&quot;%c=\n&quot;, codeTable[sum]);
+    }
+}
+// 解码原理 同上
+void decodeBase64(const char *buf, int len)
+{
+    int i = 6;
+    int j = 8;
+    int k = 0;
+    int rest = 0;
+    int codeInt = reverseTable[buf[k]];
+    int sum = 0;
+
+    while (k &lt; len &amp;&amp; buf[k] != '=')
+    {
+        if (i == 0)
+        {
+            i = 6;
+            codeInt = reverseTable[buf[++k]];
+        }
+        if (j == 0)
+        {
+            j = 8;
+            printf(&quot;%c&quot;, sum);
+            sum = 0;
+        }
+
+        sum += ((codeInt &gt;&gt; (i - 1)) &amp; 1) * (1 &lt;&lt; (j - 1));
+
+        i--;
+        j--;
+    }
+}
+
+void encodeToBase64(const char *argv, int len)
+{
+
+
+    char buf[3072];
+    FILE *file;
+    if (file = fopen(argv, &quot;rb&quot;))
+    {
+        while ((len = fread(buf, sizeof(char), sizeof(buf), file)) &gt; 0)
+        {
+            doEncodeToBase64(buf, len);
+        }
+    }
+    else
+    {
+        // 当 输入的字符串 不为文件时, 直接当作字符串处理
+        doEncodeToBase64(argv, len);
+    }
+}
+</code></pre>
+<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../11.algorithm/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../11.algorithm/Huffman编码.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../11.algorithm/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../11.algorithm/Huffman编码.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

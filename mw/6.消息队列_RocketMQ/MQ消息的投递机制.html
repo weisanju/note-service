@@ -1,0 +1,1042 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MQ消息的投递机制 - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item "><a href="../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-compose.html">docker-compose</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item expanded "><a href="../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6.消息队列_RocketMQ/MQ消息的投递机制.html" class="active">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item "><a href="../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/基本数据结构.html">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item "><a href="../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/Git库管理.html">Git库管理</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/远程版本库.html">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h3 id="前言"><a class="header" href="#前言">前言</a></h3>
+<p>RocketMQ的消息投递分分为两种：一种是<code>生产者</code>往MQ Broker中投递</p>
+<p>另外一种则是MQ broker 往<code>消费者</code> 投递(这种<code>投递</code>的说法是从<strong>消息传递的角度阐述的</strong>，实际上底层是<code>消费者</code>从MQ broker 中Pull拉取的)</p>
+<h3 id="rocketmq的消息模型"><a class="header" href="#rocketmq的消息模型">RocketMQ的消息模型</a></h3>
+<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-msg-structure.png" alt="" /></p>
+<p>为了提高MQ的可用性和灵活性，一个Topic在实际存储的过程中，采用了多队列的方式</p>
+<p>每个消息队列在使用中应当保证<strong>先入先出</strong>（FIFO,First In First Out）的方式进行消费</p>
+<p>那么，基于这种模型，就会引申出两个问题：</p>
+<p><strong>生产者</strong> 在发送相同Topic的消息时，消息体应当被放置到哪一个消息队列(MessageQueue)中?</p>
+<p><strong>消费者</strong> 在消费消息时，应当从哪些消息队列中拉取消息?</p>
+<h3 id="生产者producer投递消息的策略"><a class="header" href="#生产者producer投递消息的策略">生产者(Producer)投递消息的策略</a></h3>
+<h4 id="默认投递方式基于queue队列轮询算法投递"><a class="header" href="#默认投递方式基于queue队列轮询算法投递">默认投递方式：基于<code>Queue队列</code>轮询算法投递</a></h4>
+<p>默认情况下，采用了最简单的轮询算法，这种算法有个很好的特性就是，保证每一个<code>Queue队列</code>的消息投递数量尽可能均匀，算法如下所示：</p>
+<pre><code class="language-java">/**
+*  根据 TopicPublishInfo Topic发布信息对象中维护的index，每次选择队列时，都会递增
+*  然后根据 index % queueSize 进行取余，达到轮询的效果
+*
+*/
+public MessageQueue selectOneMessageQueue(final TopicPublishInfo tpInfo, final String lastBrokerName) {
+        return tpInfo.selectOneMessageQueue(lastBrokerName);
+}
+
+/**
+*  TopicPublishInfo Topic发布信息对象中
+*/
+public class TopicPublishInfo {
+    //基于线程上下文的计数递增，用于轮询目的
+    private volatile ThreadLocalIndex sendWhichQueue = new ThreadLocalIndex();
+   
+
+    public MessageQueue selectOneMessageQueue(final String lastBrokerName) {
+        if (lastBrokerName == null) {
+            return selectOneMessageQueue();
+        } else {
+            int index = this.sendWhichQueue.getAndIncrement();
+            for (int i = 0; i &lt; this.messageQueueList.size(); i++) {
+                //轮询计算
+                int pos = Math.abs(index++) % this.messageQueueList.size();
+                if (pos &lt; 0)
+                    pos = 0;
+                MessageQueue mq = this.messageQueueList.get(pos);
+                if (!mq.getBrokerName().equals(lastBrokerName)) {
+                    return mq;
+                }
+            }
+            return selectOneMessageQueue();
+        }
+    }
+
+    public MessageQueue selectOneMessageQueue() {
+        int index = this.sendWhichQueue.getAndIncrement();
+        int pos = Math.abs(index) % this.messageQueueList.size();
+        if (pos &lt; 0)
+            pos = 0;
+        return this.messageQueueList.get(pos);
+    }
+}
+</code></pre>
+<h4 id="消息投递延迟最小"><a class="header" href="#消息投递延迟最小">消息投递延迟最小</a></h4>
+<p>默认的投递方式比较简单，但是也暴露了一个问题，就是有些<code>Queue队列</code>可能由于自身数量积压等原因，可能在投递的过程比较长，对于这样的<code>Queue队列</code>会影响后续投递的效果。</p>
+<p>基于这种现象，RocketMQ在每发送一个MQ消息后，都会统计一下消息投递的<code>时间延迟</code>，根据这个<code>时间延迟</code>，可以知道往哪些<code>Queue队列</code>投递的速度快</p>
+<p>在这种场景下，会优先使用<code>消息投递延迟最小</code>的策略，如果没有生效，再使用<code>Queue队列轮询</code>的方式。</p>
+<pre><code class="language-java">public class MQFaultStrategy {
+    /**
+     * 根据 TopicPublishInfo 内部维护的index,在每次操作时，都会递增，
+     * 然后根据 index % queueList.size(),使用了轮询的基础算法
+     *
+     */
+    public MessageQueue selectOneMessageQueue(final TopicPublishInfo tpInfo, final String lastBrokerName) {
+        if (this.sendLatencyFaultEnable) {
+            try {
+                // 从queueid 为 0 开始，依次验证broker 是否有效，如果有效
+                int index = tpInfo.getSendWhichQueue().getAndIncrement();
+                for (int i = 0; i &lt; tpInfo.getMessageQueueList().size(); i++) {
+                    //基于index和队列数量取余，确定位置
+                    int pos = Math.abs(index++) % tpInfo.getMessageQueueList().size();
+                    if (pos &lt; 0)
+                        pos = 0;
+                    MessageQueue mq = tpInfo.getMessageQueueList().get(pos);
+                    if (latencyFaultTolerance.isAvailable(mq.getBrokerName())) {
+                        if (null == lastBrokerName || mq.getBrokerName().equals(lastBrokerName))
+                            return mq;
+                    }
+                }
+                
+                // 从延迟容错broker列表中挑选一个容错性最好的一个 broker
+                final String notBestBroker = latencyFaultTolerance.pickOneAtLeast();
+                int writeQueueNums = tpInfo.getQueueIdByBroker(notBestBroker);
+                if (writeQueueNums &gt; 0) {
+                     // 取余挑选其中一个队列
+                    final MessageQueue mq = tpInfo.selectOneMessageQueue();
+                    if (notBestBroker != null) {
+                        mq.setBrokerName(notBestBroker);
+                        mq.setQueueId(tpInfo.getSendWhichQueue().getAndIncrement() % writeQueueNums);
+                    }
+                    return mq;
+                } else {
+                    latencyFaultTolerance.remove(notBestBroker);
+                }
+            } catch (Exception e) {
+                log.error(&quot;Error occurred when selecting message queue&quot;, e);
+            }
+          // 取余挑选其中一个队列
+            return tpInfo.selectOneMessageQueue();
+        }
+
+        return tpInfo.selectOneMessageQueue(lastBrokerName);
+    }
+}
+</code></pre>
+<h4 id="顺序消息的投递方式"><a class="header" href="#顺序消息的投递方式">顺序消息的投递方式</a></h4>
+<p><strong>上述两种投递方式属于对消息投递的时序性没有要求的场景，这种投递的速度和效率比较高。而在有些场景下，需要保证同类型消息投递和消费的顺序性。</strong></p>
+<pre><code>这种情况下，我们希望消费者消费消息的顺序和我们发送是一致的，然而，有上述MQ的投递和消费机制，我们无法保证顺序是正确的，对于顺序异常的消息，消费者 即使有一定的状态容错，也不能完全处理好这么多种随机出现组合情况。
+</code></pre>
+<p>基于上述的情况，RockeMQ采用了这种实现方案：<strong>对于相同订单号的消息，通过一定的策略，将其放置在一个 queue队列中</strong>，然后消费者再采用一定的策略(一个线程独立处理一个queue,保证处理消息的顺序性)，能够保证消费的顺序性</p>
+<h5 id="消息投递队列选择"><a class="header" href="#消息投递队列选择">消息投递队列选择</a></h5>
+<p><code>生产者</code>是如何能将相同订单号的消息发送到同一个<code>queue队列</code>的：</p>
+<p>默认实现：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">投递策略</th><th style="text-align: left">策略实现类</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">随机分配策略</td><td style="text-align: left">SelectMessageQueueByRandom</td><td style="text-align: left">使用了简单的随机数选择算法</td></tr>
+<tr><td style="text-align: left">基于Hash分配策略</td><td style="text-align: left">SelectMessageQueueByHash</td><td style="text-align: left">根据附加参数的Hash值，按照消息队列列表的大小取余数，得到消息队列的index</td></tr>
+<tr><td style="text-align: left">基于机器机房位置分配策略</td><td style="text-align: left">SelectMessageQueueByMachineRoom</td><td style="text-align: left">开源的版本没有具体的实现，基本的目的应该是机器的就近原则分配</td></tr>
+</tbody></table>
+</div>
+<h3 id="如何为消费者分配queue队列"><a class="header" href="#如何为消费者分配queue队列">如何为消费者分配<code>queue队列</code></a></h3>
+<p>RocketMQ对于消费者消费消息有两种形式：</p>
+<ul>
+<li><code>BROADCASTING</code>:广播式消费，这种模式下，一个消息会被通知到每一个<code>消费者</code></li>
+<li><code>CLUSTERING</code>: 集群式消费，这种模式下，一个消息最多只会被投递到一个<code>消费者</code>上进行消费 模式如下：</li>
+</ul>
+<h4 id="基于queue队列的分配"><a class="header" href="#基于queue队列的分配"><strong>基于queue队列的分配</strong></a></h4>
+<p>在RoketMQ底层，消息指定分配给消费者的实现，是通过<code>queue队列</code>分配给<code>消费者</code>的方式完成的：也就是说，<code>消息</code>分配的单位是消息所在的<code>queue队列</code></p>
+<p>将<code>queue队列</code>指定给特定的<code>消费者</code>后，<code>queue队列</code>内的所有消息将会被指定到<code>消费者</code>进行消费。</p>
+<p>RocketMQ定义了策略接口<code>AllocateMessageQueueStrategy</code>，对于给定的<code>消费者分组</code>,和<code>消息队列列表</code>、<code>消费者列表</code>，<code>当前消费者</code>应当被分配到哪些<code>queue队列</code></p>
+<pre><code class="language-java">/**
+ * 为消费者分配queue的策略算法接口
+ */
+public interface AllocateMessageQueueStrategy {
+
+    /**
+     * Allocating by consumer id
+     *
+     * @param consumerGroup 当前 consumer群组
+     * @param currentCID 当前consumer id
+     * @param mqAll 当前topic的所有queue实例引用
+     * @param cidAll 当前 consumer群组下所有的consumer id set集合
+     * @return 根据策略给当前consumer分配的queue列表
+     */
+    List&lt;MessageQueue&gt; allocate(
+        final String consumerGroup,
+        final String currentCID,
+        final List&lt;MessageQueue&gt; mqAll,
+        final List&lt;String&gt; cidAll
+    );
+
+    /**
+     * 算法名称
+     *
+     * @return The strategy name
+     */
+    String getName();
+}
+</code></pre>
+<h4 id="消费队列分配算法"><a class="header" href="#消费队列分配算法"><strong>消费队列分配算法</strong></a></h4>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">算法名称</th><th style="text-align: left">含义</th></tr></thead><tbody>
+<tr><td style="text-align: left">AllocateMessageQueueAveragely</td><td style="text-align: left">平均分配算法</td></tr>
+<tr><td style="text-align: left">AllocateMessageQueueAveragelyByCircle</td><td style="text-align: left">基于环形平均分配算法</td></tr>
+<tr><td style="text-align: left">AllocateMachineRoomNearby</td><td style="text-align: left">基于机房临近原则算法</td></tr>
+<tr><td style="text-align: left">AllocateMessageQueueByMachineRoom</td><td style="text-align: left">基于机房分配算法</td></tr>
+<tr><td style="text-align: left">AllocateMessageQueueConsistentHash</td><td style="text-align: left">基于一致性hash算法</td></tr>
+<tr><td style="text-align: left">AllocateMessageQueueByConfig</td><td style="text-align: left">基于配置分配算法</td></tr>
+</tbody></table>
+</div>
+<h4 id="顺序-平均分配算法"><a class="header" href="#顺序-平均分配算法">顺序-平均分配算法</a></h4>
+<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-order-allocation.png" alt="" /></p>
+<p><strong>源码</strong></p>
+<pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.rocketmq.client.consumer.AllocateMessageQueueStrategy;
+import org.apache.rocketmq.client.log.ClientLogger;
+import org.apache.rocketmq.logging.InternalLogger;
+import org.apache.rocketmq.common.message.MessageQueue;
+/**
+ * Average Hashing queue algorithm
+ */
+public class AllocateMessageQueueAveragely implements AllocateMessageQueueStrategy {
+    private final InternalLogger log = ClientLogger.getLog();
+
+    @Override
+    public List&lt;MessageQueue&gt; allocate(String consumerGroup, String currentCID, List&lt;MessageQueue&gt; mqAll,
+        List&lt;String&gt; cidAll) {
+        if (currentCID == null || currentCID.length() &lt; 1) {
+            throw new IllegalArgumentException(&quot;currentCID is empty&quot;);
+        }
+        if (mqAll == null || mqAll.isEmpty()) {
+            throw new IllegalArgumentException(&quot;mqAll is null or mqAll empty&quot;);
+        }
+        if (cidAll == null || cidAll.isEmpty()) {
+            throw new IllegalArgumentException(&quot;cidAll is null or cidAll empty&quot;);
+        }
+
+        List&lt;MessageQueue&gt; result = new ArrayList&lt;MessageQueue&gt;();
+        if (!cidAll.contains(currentCID)) {
+            log.info(&quot;[BUG] ConsumerGroup: {} The consumerId: {} not in cidAll: {}&quot;,
+                consumerGroup,
+                currentCID,
+                cidAll);
+            return result;
+        }
+				//当前消费者
+        int index = cidAll.indexOf(currentCID);
+        //获取多余的消费队列
+        int mod = mqAll.size() % cidAll.size();
+        //计算 当前消费者 应该所得的 消费队列的 个数
+        int averageSize =
+            mqAll.size() &lt;= cidAll.size() ? 1 : (mod &gt; 0 &amp;&amp; index &lt; mod ? mqAll.size() / cidAll.size()
+                + 1 : mqAll.size() / cidAll.size());
+        //计算 当前消费者所位于 消费队列 列表中的起点
+        int startIndex = (mod &gt; 0 &amp;&amp; index &lt; mod) ? index * averageSize : index * averageSize + mod;
+        //如果 消费者过多，mqAll.size() - startIndex可能会 为负数，这就可能导致 后续的消费者无法获取到队列
+        int range = Math.min(averageSize, mqAll.size() - startIndex);
+        for (int i = 0; i &lt; range; i++) {
+            result.add(mqAll.get((startIndex + i) % mqAll.size()));
+        }
+        return result;
+    }
+
+    @Override
+    public String getName() {
+        return &quot;AVG&quot;;
+    }
+}
+</code></pre>
+<h4 id="环形平均算法"><a class="header" href="#环形平均算法">环形平均算法</a></h4>
+<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-consumerqueue-cycle-selector.png" alt="" /></p>
+<p><strong>环形顺序分配</strong></p>
+<p>这种算法最终分配的结果是： <code>consumer-1</code>: #0，#4，#8 <code>consumer-2</code>: #1,  #5, # 9 <code>consumer-3</code>: #2，#6 <code>consumer-4</code>: #3，#7</p>
+<pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.rocketmq.client.consumer.AllocateMessageQueueStrategy;
+import org.apache.rocketmq.client.log.ClientLogger;
+import org.apache.rocketmq.logging.InternalLogger;
+import org.apache.rocketmq.common.message.MessageQueue;
+
+/**
+ * Cycle average Hashing queue algorithm
+ */
+public class AllocateMessageQueueAveragelyByCircle implements AllocateMessageQueueStrategy {
+    private final InternalLogger log = ClientLogger.getLog();
+
+    @Override
+    public List&lt;MessageQueue&gt; allocate(String consumerGroup, String currentCID, List&lt;MessageQueue&gt; mqAll,
+        List&lt;String&gt; cidAll) {
+     		......	
+        int index = cidAll.indexOf(currentCID);
+        for (int i = index; i &lt; mqAll.size(); i++) {
+            if (i % cidAll.size() == index) {
+                result.add(mqAll.get(i));
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public String getName() {
+        return &quot;AVG_BY_CIRCLE&quot;;
+    }
+}
+</code></pre>
+<h4 id="基于机房临近原则算法"><a class="header" href="#基于机房临近原则算法">基于机房临近原则算法</a></h4>
+<p><img src="https://weisanju.github.io/note/mw/images/rocketmq-messagequeue-machine-rom-nearby.png" alt="" /></p>
+<p>对于跨机房的场景，会存在网络、稳定性和隔离心的原因，该算法会根据<code>queue</code>的部署机房位置和<code>消费者consumer</code>的位置，过滤出当前<code>消费者consumer</code>相同机房的<code>queue队列</code>，然后再结合上述的算法，如基于平均分配算法在<code>queue队列</code>子集的基础上再挑选。相关代码实现如下：</p>
+<pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.client.consumer.AllocateMessageQueueStrategy;
+import org.apache.rocketmq.client.log.ClientLogger;
+import org.apache.rocketmq.common.message.MessageQueue;
+import org.apache.rocketmq.logging.InternalLogger;
+
+/**
+ * An allocate strategy proxy for based on machine room nearside priority. An actual allocate strategy can be
+ * specified.
+ *
+ * If any consumer is alive in a machine room, the message queue of the broker which is deployed in the same machine
+ * should only be allocated to those. Otherwise, those message queues can be shared along all consumers since there are
+ * no alive consumer to monopolize them.
+ */
+public class AllocateMachineRoomNearby implements AllocateMessageQueueStrategy {
+    private final InternalLogger log = ClientLogger.getLog();
+
+    private final AllocateMessageQueueStrategy allocateMessageQueueStrategy;//actual allocate strategy
+    private final MachineRoomResolver machineRoomResolver;
+
+    public AllocateMachineRoomNearby(AllocateMessageQueueStrategy allocateMessageQueueStrategy,
+        MachineRoomResolver machineRoomResolver) throws NullPointerException {
+        if (allocateMessageQueueStrategy == null) {
+            throw new NullPointerException(&quot;allocateMessageQueueStrategy is null&quot;);
+        }
+
+        if (machineRoomResolver == null) {
+            throw new NullPointerException(&quot;machineRoomResolver is null&quot;);
+        }
+
+        this.allocateMessageQueueStrategy = allocateMessageQueueStrategy;
+        this.machineRoomResolver = machineRoomResolver;
+    }
+
+    @Override
+    public List&lt;MessageQueue&gt; allocate(String consumerGroup, String currentCID, List&lt;MessageQueue&gt; mqAll,
+        List&lt;String&gt; cidAll) {
+        ......
+        //group mq by machine room: broker部署机房
+        Map&lt;String/*machine room */, List&lt;MessageQueue&gt;&gt; mr2Mq = new TreeMap&lt;String, List&lt;MessageQueue&gt;&gt;();
+        for (MessageQueue mq : mqAll) {
+            String brokerMachineRoom = machineRoomResolver.brokerDeployIn(mq);
+            if (StringUtils.isNoneEmpty(brokerMachineRoom)) {
+                if (mr2Mq.get(brokerMachineRoom) == null) {
+                    mr2Mq.put(brokerMachineRoom, new ArrayList&lt;MessageQueue&gt;());
+                }
+                mr2Mq.get(brokerMachineRoom).add(mq);
+            } else {
+                throw new IllegalArgumentException(&quot;Machine room is null for mq &quot; + mq);
+            }
+        }
+
+        //group consumer by machine room，consumer部署机房
+        Map&lt;String/*machine room */, List&lt;String/*clientId*/&gt;&gt; mr2c = new TreeMap&lt;String, List&lt;String&gt;&gt;();
+        for (String cid : cidAll) {
+            String consumerMachineRoom = machineRoomResolver.consumerDeployIn(cid);
+            if (StringUtils.isNoneEmpty(consumerMachineRoom)) {
+                if (mr2c.get(consumerMachineRoom) == null) {
+                    mr2c.put(consumerMachineRoom, new ArrayList&lt;String&gt;());
+                }
+                mr2c.get(consumerMachineRoom).add(cid);
+            } else {
+                throw new IllegalArgumentException(&quot;Machine room is null for consumer id &quot; + cid);
+            }
+        }
+
+        List&lt;MessageQueue&gt; allocateResults = new ArrayList&lt;MessageQueue&gt;();
+
+        //1.allocate the mq that deploy in the same machine room with the current consumer
+        String currentMachineRoom = machineRoomResolver.consumerDeployIn(currentCID);
+        List&lt;MessageQueue&gt; mqInThisMachineRoom = mr2Mq.remove(currentMachineRoom);
+        List&lt;String&gt; consumerInThisMachineRoom = mr2c.get(currentMachineRoom);
+      	//当前存在 borker 与 consumer部署在同一机房，则使用其余分配算法继续分配
+        if (mqInThisMachineRoom != null &amp;&amp; !mqInThisMachineRoom.isEmpty()) {
+            allocateResults.addAll(allocateMessageQueueStrategy.allocate(consumerGroup, currentCID, mqInThisMachineRoom, consumerInThisMachineRoom));
+        }
+
+      	//broker没有对应的 consumer部署的 集群 共享所有的 message queue
+        //2.allocate the rest mq to each machine room if there are no consumer alive in that machine room
+        for (String machineRoom : mr2Mq.keySet()) {
+            if (!mr2c.containsKey(machineRoom)) { // no alive consumer in the corresponding machine room, so all consumers share these queues
+                allocateResults.addAll(allocateMessageQueueStrategy.allocate(consumerGroup, currentCID, mr2Mq.get(machineRoom), cidAll));
+            }
+        }
+
+        return allocateResults;
+    }
+
+    @Override
+    public String getName() {
+        return &quot;MACHINE_ROOM_NEARBY&quot; + &quot;-&quot; + allocateMessageQueueStrategy.getName();
+    }
+
+    /**
+     * A resolver object to determine which machine room do the message queues or clients are deployed in.
+     *
+     * AllocateMachineRoomNearby will use the results to group the message queues and clients by machine room.
+     *
+     * The result returned from the implemented method CANNOT be null.
+     */
+    public interface MachineRoomResolver {
+        String brokerDeployIn(MessageQueue messageQueue);
+
+        String consumerDeployIn(String clientID);
+    }
+}
+
+</code></pre>
+<h4 id="基于机房分配算法"><a class="header" href="#基于机房分配算法">基于机房分配算法</a></h4>
+<pre><code>该算法适用于属于同一个机房内部的消息，去分配queue。这种方式非常明确，基于上面的机房临近分配算法的场景，这种更彻底，直接指定基于机房消费的策略。这种方式具有强约定性，比如broker名称按照机房的名称进行拼接，在算法中通过约定解析进行分配。
+</code></pre>
+<pre><code class="language-java">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.rocketmq.client.consumer.rebalance;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import org.apache.rocketmq.client.consumer.AllocateMessageQueueStrategy;
+import org.apache.rocketmq.common.message.MessageQueue;
+
+/**
+ * Computer room Hashing queue algorithm, such as Alipay logic room
+ */
+public class AllocateMessageQueueByMachineRoom implements AllocateMessageQueueStrategy {
+    private Set&lt;String&gt; consumeridcs;
+
+    @Override
+    public List&lt;MessageQueue&gt; allocate(String consumerGroup, String currentCID, List&lt;MessageQueue&gt; mqAll,
+        List&lt;String&gt; cidAll) {
+        List&lt;MessageQueue&gt; result = new ArrayList&lt;MessageQueue&gt;();
+        int currentIndex = cidAll.indexOf(currentCID);
+        if (currentIndex &lt; 0) {
+            return result;
+        }
+        List&lt;MessageQueue&gt; premqAll = new ArrayList&lt;MessageQueue&gt;();
+      	//挑选配置的 IDC
+        for (MessageQueue mq : mqAll) {
+            String[] temp = mq.getBrokerName().split(&quot;@&quot;);
+            if (temp.length == 2 &amp;&amp; consumeridcs.contains(temp[0])) {
+                premqAll.add(mq);
+            }
+        }
+
+        int mod = premqAll.size() / cidAll.size();
+        int rem = premqAll.size() % cidAll.size();
+        int startIndex = mod * currentIndex;
+        int endIndex = startIndex + mod;
+      	//根据 mod rem 挑选队列
+        for (int i = startIndex; i &lt; endIndex; i++) {
+            result.add(premqAll.get(i));
+        }
+      	//如果 currentIndex在当前 rem的覆盖范围中
+        if (rem &gt; currentIndex) {
+            result.add(premqAll.get(currentIndex + mod * cidAll.size()));
+        }
+        return result;
+    }
+
+    @Override
+    public String getName() {
+        return &quot;MACHINE_ROOM&quot;;
+    }
+
+    public Set&lt;String&gt; getConsumeridcs() {
+        return consumeridcs;
+    }
+
+    public void setConsumeridcs(Set&lt;String&gt; consumeridcs) {
+        this.consumeridcs = consumeridcs;
+    }
+}
+</code></pre>
+<h4 id="基于一致性hash算法"><a class="header" href="#基于一致性hash算法">基于一致性hash算法</a></h4>
+<p>使用这种算法，会将<code>consumer消费者</code>作为Node节点构造成一个hash环，然后<code>queue队列</code>通过这个hash环来决定被分配给哪个<code>consumer消费者</code>。</p>
+<p><strong>什么是一致性hash 算法</strong> ? 一致性hash算法用于在分布式系统中，保证数据的一致性而提出的一种基于hash环实现的算法，：<a href="https://www.cnblogs.com/lpfuture/p/5796398.html">一致性哈希算法原理</a></p>
+<p>代码实现原理：<a href="MQ%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html">MQ的一致性算法实现原理</a></p>
+<pre><code class="language-java">package org.apache.rocketmq.client.consumer.rebalance;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import org.apache.rocketmq.client.consumer.AllocateMessageQueueStrategy;
+import org.apache.rocketmq.client.log.ClientLogger;
+import org.apache.rocketmq.common.consistenthash.ConsistentHashRouter;
+import org.apache.rocketmq.common.consistenthash.HashFunction;
+import org.apache.rocketmq.common.consistenthash.Node;
+import org.apache.rocketmq.logging.InternalLogger;
+import org.apache.rocketmq.common.message.MessageQueue;
+
+/**
+ * Consistent Hashing queue algorithm
+ */
+public class AllocateMessageQueueConsistentHash implements AllocateMessageQueueStrategy {
+    private final InternalLogger log = ClientLogger.getLog();
+
+    private final int virtualNodeCnt;
+    private final HashFunction customHashFunction;
+
+    public AllocateMessageQueueConsistentHash() {
+        this(10);
+    }
+
+    public AllocateMessageQueueConsistentHash(int virtualNodeCnt) {
+        this(virtualNodeCnt, null);
+    }
+
+    public AllocateMessageQueueConsistentHash(int virtualNodeCnt, HashFunction customHashFunction) {
+        if (virtualNodeCnt &lt; 0) {
+            throw new IllegalArgumentException(&quot;illegal virtualNodeCnt :&quot; + virtualNodeCnt);
+        }
+        this.virtualNodeCnt = virtualNodeCnt;
+        this.customHashFunction = customHashFunction;
+    }
+
+    @Override
+    public List&lt;MessageQueue&gt; allocate(String consumerGroup, String currentCID, List&lt;MessageQueue&gt; mqAll,
+        List&lt;String&gt; cidAll) {
+
+        Collection&lt;ClientNode&gt; cidNodes = new ArrayList&lt;ClientNode&gt;();
+        for (String cid : cidAll) {
+            cidNodes.add(new ClientNode(cid));
+        }
+
+        final ConsistentHashRouter&lt;ClientNode&gt; router; //for building hash ring
+        if (customHashFunction != null) {
+            router = new ConsistentHashRouter&lt;ClientNode&gt;(cidNodes, virtualNodeCnt, customHashFunction);
+        } else {
+            router = new ConsistentHashRouter&lt;ClientNode&gt;(cidNodes, virtualNodeCnt);
+        }
+
+        List&lt;MessageQueue&gt; results = new ArrayList&lt;MessageQueue&gt;();
+        for (MessageQueue mq : mqAll) {
+            ClientNode clientNode = router.routeNode(mq.toString());
+            if (clientNode != null &amp;&amp; currentCID.equals(clientNode.getKey())) {
+                results.add(mq);
+            }
+        }
+        return results;
+    }
+
+    @Override
+    public String getName() {
+        return &quot;CONSISTENT_HASH&quot;;
+    }
+
+    private static class ClientNode implements Node {
+        private final String clientID;
+
+        public ClientNode(String clientID) {
+            this.clientID = clientID;
+        }
+
+        @Override
+        public String getKey() {
+            return clientID;
+        }
+    }
+}
+</code></pre>
+<h4 id="基于配置分配算法"><a class="header" href="#基于配置分配算法">基于配置分配算法</a></h4>
+<pre><code>AllocateMessageQueueByConfig
+</code></pre>
+<h3 id="多个broker模式下同一个topic的分区是如何分配的"><a class="header" href="#多个broker模式下同一个topic的分区是如何分配的">多个broker模式下同一个Topic的分区是如何分配的</a></h3>
+<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="消息队列"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../6.消息队列_RocketMQ/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../6.消息队列_RocketMQ/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

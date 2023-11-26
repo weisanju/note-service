@@ -1,0 +1,931 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>基本视觉格式化 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item expanded "><a href="../CSS知识/基本视觉格式化.html" class="active">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="basic-boxes"><a class="header" href="#basic-boxes">Basic Boxes</a></h2>
+<ol>
+<li>
+<p><strong>CSS 的核心是假设每个元素都生成一个或多个矩形框，称为元素框</strong>。（该规范的未来版本可能允许使用非矩形框，并且确实有人提议更改此内容，但目前所有内容都是矩形的)</p>
+</li>
+<li>
+<p>每个元素框的中心都有一个内容区。</p>
+</li>
+<li>
+<p>此内容区域由可选数量的padding（填充）、borders（边框）、outlines（轮廓）和外边距（margins）包围。</p>
+</li>
+<li>
+<p>这些区域是可选的，因为它们都可以设置为零的宽度，从而将它们从元素框中删除。</p>
+</li>
+<li>
+<p><em>margins</em>, <em>borders</em>,  <em>padding</em> 可以使用 特定于 某一边的 属性设置值 例如 <em>margin-left</em> <em>border-bottom</em></p>
+</li>
+<li>
+<p><em>outline</em>没有 特定于某一边的 属性</p>
+</li>
+<li>
+<p>默认情况下，内容的背景（例如彩色或平铺图像）包含 <em>padding</em>部分</p>
+</li>
+<li>
+<p><em>margins</em> 始终是 透明的 ，以使得 父元素的背景可见</p>
+</li>
+<li>
+<p><em>padding</em> 不能有负长度，<em>margins</em> 可以</p>
+</li>
+<li>
+<p><em>border</em> </p>
+<ol>
+<li>需要定义 颜色 跟 宽度。</li>
+<li>如果没有定义颜色 则取元素的前景色作为颜色，</li>
+<li>如果边框有某种间隙的样式，则默认在 间隙之间会 显示 元素的背景色</li>
+<li>边框的宽度不能为负值</li>
+</ol>
+</li>
+</ol>
+<h2 id="a-quick-refresher"><a class="header" href="#a-quick-refresher">A Quick Refresher</a></h2>
+<p>Let’s quickly review the kinds of boxes we’ll be discussing, </p>
+<p>让我们快速回顾一下我们将要讨论的盒子种类，以及一些需要解释的重要术语</p>
+<h3 id="normal-flow"><a class="header" href="#normal-flow">Normal flow</a></h3>
+<p>这是西方语言中文本的从左到右，从上到下的渲染方式，以及传统HTML文档熟悉的文本布局。.</p>
+<blockquote>
+<p>请注意，在非西方语言中，流向可能会改变。</p>
+</blockquote>
+<p>大多数元素都处于 <em>normal flow</em>  中，元素离开  <em>normal flow</em>  的唯一方法是浮动、定位或成为弹性盒子或者成为网格布局元素。</p>
+<p>请记住，本章中的讨论仅涵盖 <em>normal flow</em> 中的元素。</p>
+<h3 id="nonreplaced-element"><a class="header" href="#nonreplaced-element">Nonreplaced element</a></h3>
+<p>内容即元素 这是其内容包含在文档中的元素。</p>
+<p>例如：段落 （p） 是非替换元素，因为它的文本内容位于元素本身内</p>
+<h3 id="replaced-element"><a class="header" href="#replaced-element">Replaced element</a></h3>
+<p>占位符元素，会被渲染成其他内容</p>
+<p>例如：<em>img</em>标签，只是简单的 指向 一个图像文件，然后在图片文件被找到时插入文档流中,大多数表单元素也是替换元素</p>
+<h3 id="root-element"><a class="header" href="#root-element">Root element</a></h3>
+<p>文档的根元素，在HTML文档中是 <em>html</em>，在<em>xml</em>中是任何元素</p>
+<h3 id="block-box"><a class="header" href="#block-box">Block box</a></h3>
+<p>这是一个框，由元素（如paragraph(段落)、heading(标题)或 div）生成</p>
+<ol>
+<li>这些元素在 <em>normal flow</em> 中  在它本身前面、后面产生新行，这使得 <em>normal flow</em> 中 的块盒一个接一个地垂直堆叠。</li>
+<li>任何元素可以 通过声明 <em>display: block</em> 使之产生 <em>block box</em></li>
+<li>支持全部的样式</li>
+<li>如果没有设置宽度，默认的宽度为父级宽度100%</li>
+<li>盒子占据一行、即使设置了宽度</li>
+</ol>
+<h3 id="inline-box"><a class="header" href="#inline-box">Inline box</a></h3>
+<p>这是 <em>strong</em> 或 <em>span</em> 等元素生成的框。</p>
+<ol>
+<li>不产生换行</li>
+<li>Any element can be made to generate an inline box by declaring. </li>
+<li>任何元素都可以通过声明  <em>display: inline</em> 来生成</li>
+<li>内联元素只能容纳文本或者其他内联元素</li>
+<li>如果包含了块元素，则块元素会将该内联元素分割成好几部分</li>
+<li>宽高由内容决定</li>
+<li>代码换行，盒子之间会产生间距</li>
+<li>子元素是内联元素，父元素可以用text-align属性设置子元素水平对齐方式</li>
+</ol>
+<h4 id="内联元素的间隙问题"><a class="header" href="#内联元素的间隙问题">内联元素的间隙问题</a></h4>
+<p><strong>内联元素之间有空白区域</strong></p>
+<p>空白区域的形成是因为<code>&lt;span&gt;</code>之间有回车，在html中，空格、制表符、回车都属于空白符，多个空白符都会视为一个空格，</p>
+<p>空格的大小由父级<code>&lt;div&gt;</code>的font-size决定。
+注意：只有内联(内联块)与内联(内联块)之间的空白符才会形成一个空格，文本元素(除空白符)也是属于内联元素</p>
+<p><strong>解决办法</strong></p>
+<ul>
+<li>给<code>&lt;div&gt;</code>设置<code>font-size: 0;</code>，在<code>&lt;span&gt;</code>上把<code>font-size</code>设置回去</li>
+<li>将空白符注释掉</li>
+<li>把span排列在同一行，并紧贴在一起</li>
+<li>使用浮动<code>float</code></li>
+</ul>
+<h3 id="inline-block"><a class="header" href="#inline-block">Inline-block</a></h3>
+<p>这是一个在内部类似于 block box ，但在外部充当内联框。</p>
+<p>它的作用类似于替换的元素，但并不完全相同。</p>
+<p>想象一下，拿起一个div并将其粘贴到一行文本中，就好像它是内联图像一样，您就明白了。</p>
+<p>还有几种其他类型的盒子，例如表格单元格盒子，但由于各种原因，它们不会在本书中介绍 - 其中最重要的是它们的复杂性需要单独开一本书来讲</p>
+<h2 id="the-containing-block"><a class="header" href="#the-containing-block">The Containing Block</a></h2>
+<p>包含块 很重要，需要重点讲</p>
+<p>Every element’s box is laid out with respect to its containing block;</p>
+<p>每个元素的盒子都相对于其包含块进行布局</p>
+<p>以非常真实的方式（ in a very real way,），包含块是盒的&quot;布局上下文&quot;。</p>
+<p>CSS 定义了一系列用于确定盒的包含块的规则</p>
+<p>我们将只介绍与本书中涵盖的概念相关的规则，以保持我们的重点。</p>
+<pre><code> For an element in the normal, Western-style flow of text, the containing block forms from the content edge of the nearest ancestor that generated a list item or block box, which includes all table-related boxes (e.g., those generated by table cells)
+</code></pre>
+<p>对于普通西式文本流中的元素，包含块从生成列表项或块框的最近祖先的内容边缘形成，其中包括所有与表相关的框</p>
+<pre><code>This is a paragraph.
+</code></pre>
+<ul>
+<li>
+<p>在这个非常简单的标记中，p 元素的块框的包含块是 div 元素的块框，因为这是最接近的祖先元素框，它是块或列表项（在本例中，它是一个块框）。</p>
+</li>
+<li>
+<p>同样，div的包含块是 body。因此，p 的布局依赖于 div 的布局，而 div 又依赖于 body 元素的布局。</p>
+</li>
+<li>
+<p>在此之上，body 元素的布局取决于 html 元素的布局，html元素框创建了所谓的初始包含块（initial containing block）。</p>
+</li>
+<li>
+<p>html的独特之处在于，视口（屏幕媒体中的浏览器窗口或打印媒体中页面的可打印区域）决定了其尺寸，而不是根元素内容的大小。这是一个微妙的区别，通常不是一个非常重要的区别，但它确实存在。</p>
+</li>
+</ul>
+<h2 id="altering-element-display"><a class="header" href="#altering-element-display">Altering Element Display</a></h2>
+<h3 id="display"><a class="header" href="#display">DISPLAY</a></h3>
+<p><strong>Values</strong></p>
+<pre><code>[ &lt;display-outside&gt; ǁ &lt;display-inside&gt; ] | &lt;display-listitem&gt; | &lt;displayinternal&gt; | &lt;display-box&gt; | &lt;display-legacy&gt;
+</code></pre>
+<p><strong>Initial value</strong> </p>
+<p>inline</p>
+<p><strong>Applies to All</strong> </p>
+<p>elements</p>
+<p><strong>Computed value</strong> </p>
+<p>As specified</p>
+<p><strong>Inherited</strong></p>
+<p>No</p>
+<p><strong>Animatable</strong> </p>
+<p>No</p>
+<p><strong>Definitions</strong></p>
+<p><code>&lt;display-outside&gt;</code></p>
+<p><em>block | inline | run-in</em></p>
+<p><code>&lt;display-inside&gt;</code></p>
+<p><em>flow | flow-root | table | flex | grid | ruby</em> </p>
+<p><code>&lt;display-listitem&gt;</code></p>
+<p><em>list-item &amp;&amp; <code>&lt;display-outside&gt;</code> ? &amp;&amp; [ flow | flow-root ]?</em> </p>
+<p><code>&lt;display-internal&gt;</code></p>
+<p><em>table-row-group | table-header-group | table-footer-group | table-row | table- cell | table-column-group | table-column | table-caption | ruby-base | ruby-text | ruby-base-container | ruby-text-container</em></p>
+<p><code>&lt;display-box&gt;</code></p>
+<p><em>contents | none</em> </p>
+<p><code>&lt;display-legacy&gt;</code></p>
+<p><em>inline-block | inline-list-item | inline-table | inline-flex | inline-grid</em></p>
+<p>我们将忽略与  <em>ruby- and table-related</em>相 关的值，因为它们对于本章来说太复杂了，我们也会忽略值 <em>list-item</em> 项，因为它与块框非常相似。我们已经花了相当多的时间来讨论块和内联框，但在我们查看内联块之前，让我们花点时间讨论一下 如何通过更改元素的显示角色 来改变布局。</p>
+<h3 id="changing-roles"><a class="header" href="#changing-roles">Changing Roles</a></h3>
+<p>在设置文档样式时，能够更改元素生成的框的类型非常方便。例如，假设导航中有一系列链接，我们希望将其布局为垂直侧边栏：</p>
+<pre><code>[WidgetCo Home](index.html) [Products](products.html) [Services](services.html) [Widgety Fun!](fun.html) [Support](support.html) [About Us](about.html) [Contact](contact.html)
+</code></pre>
+<p>We could put all the links into table cells, or wrap each one in its own nav—or we could just make them all block-level elements, like this: nav a {display: block;} </p>
+<p>This will make every a element within the navigation nav a block-level element.</p>
+<p>Changing display roles can be useful in cases where you want non-CSS browsers to get the navigation links as inline elements but to lay out the same links as block-level elements. </p>
+<p>如果希望非 CSS 浏览器将导航链接作为内联元素获取，但将链接布局为块级元素，则更改显示角色可能很有用。将链接作为块使用时，您可以像使用 div 或 p 元素一样设置它们的样式，其优点是整个元素框将成为链接的一部分。因此，如果用户的鼠标指针悬停在元素框中的任意位置，她就可以单击该链接。</p>
+<p>您可能还想获取元素并使其内联。假设我们有一个无序的名称列表</p>
+<pre><code class="language-html">&lt;ul id=&quot;rollcall&quot;&gt;
+    &lt;li&gt;Bob C.&lt;/li&gt;
+    &lt;li&gt;Marcio G.&lt;/li&gt;
+    &lt;li&gt;Eric M.&lt;/li&gt;
+    &lt;li&gt;Kat M.&lt;/li&gt;
+    &lt;li&gt;Tristan N.&lt;/li&gt;
+    &lt;li&gt;Arun R.&lt;/li&gt;
+    &lt;li&gt;Doron R.&lt;/li&gt;
+    &lt;li&gt;Susie W.&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>给定此标记，假设我们要将这些名称制作成一系列内联名称，并在它们之间（以及列表的每一端）使用竖线。执行此操作的唯一方法是更改其显示角色</p>
+<pre><code class="language-css">#rollcall li 
+	{display: inline; border-right: 1px solid; padding: 0 0.33em;}
+#rollcall li:first-child {border-left: 1px solid;}
+</code></pre>
+<p>你正在更改元素的显示角色，而不是更改其固有性质（ inherent nature）。</p>
+<p>换言之，使段落生成内联框不会将该段落转换为内联元素。</p>
+<p>例如，在 HTML 中，某些元素是块元素，而其他元素是内联的。（还有一些是&quot;流动&quot;元素，但我们现在先忽略它们）。</p>
+<p>内联元素可以是块元素的后代，但反之通常不行。</p>
+<p>虽然 <em>span</em> 可以放在段落内，但 span 不能环绕 <em>paragraph</em>。  无论您如何设置相关元素的样式，这都适用。</p>
+<p>请考虑以下标记：</p>
+<pre><code class="language-html">&lt;span style=&quot;display: block;&quot;&gt;
+&lt;p style=&quot;display: inline;&quot;&gt;this is wrong!&lt;/p&gt;
+&lt;/span&gt;
+</code></pre>
+<p>这个标记不合法，因为块元素 （p） 嵌套在内联元素 （span） </p>
+<p>The changing of display roles does nothing to change this.</p>
+<p>更改显示角色不会改变这一点。</p>
+<p>display 之所以有它的名字，是因为它会影响元素的显示方式，而不是因为它改变了元素的类型</p>
+<p>话虽如此，让我们深入了解不同类型框的详细信息：块框，内联框，内联块框和列表项框（<em>block boxes, inline boxes, inline-block boxes, and list-item boxes</em>）</p>
+<h3 id="block-boxes"><a class="header" href="#block-boxes">Block Boxes</a></h3>
+<blockquote>
+<p>块框</p>
+</blockquote>
+<p>块框的行为有时是可预测的，有时是令人惊讶的。</p>
+<p>沿水平轴和垂直轴放置块框的处理方式不同，</p>
+<p>例如。为了充分了解块框的处理方式，您必须清楚地了解许多边界和区域。完整盒模型示意图如下</p>
+<p><img src="https://weisanju.github.io/note/others/images/complete_box_model.png" alt="image-20220308004504113" /></p>
+<p>​	默认情况下，块框的宽度定义为从左内边到右内边的距离，高度是从内顶到内底的距离。这两个属性都可以应用于生成块框的元素。我们也可以使用属性来改变这些属性的处理方式。</p>
+<h4 id="box-sizing"><a class="header" href="#box-sizing">BOX-SIZING</a></h4>
+<p><strong>Values</strong></p>
+<p><em>content-box | padding-box | border-box</em></p>
+<p><strong>Initial value</strong></p>
+<p><em>content-box</em></p>
+<p><strong>Applies</strong></p>
+<p><em>to All elements that accept width or height values</em></p>
+<p><strong>Computed value</strong></p>
+<p>As specified</p>
+<p><strong>Inherited</strong></p>
+<p>No</p>
+<p><strong>Animatable</strong> </p>
+<p>No</p>
+<p>此属性是更改宽度和高度值实际执行的操作的方式。</p>
+<ul>
+<li>
+<p>如果您声明宽度：400px并且没有声明为 <em>box-sizing</em>，则元素的内容框就是400像素宽;任何填充，边框等都将添加到其中使其实际大小大于400</p>
+</li>
+<li>
+<p>另一方面，如果您声明了  <em>box-sizing</em>：<em>border-box</em>，则元素框将从左外边框边缘到右外边框边缘为400像素;任何边框或填充都将放置在该距离内，从而缩小内容区域的宽度。</p>
+</li>
+</ul>
+<p>我们在这里谈论 <em>box-size</em> 属性，因为如前所述，它适用于&quot;接受宽度或高度值的所有元素。</p>
+<p>这通常是生成块框的元素，尽管它也适用于替换的内联元素（如图像）以及内联块框。</p>
+<p>各种宽度、高度、填充和边距都组合在一起，以确定文档的布局方式。在大多数情况下，文档的高度和宽度由浏览器自动确定，基于可用的显示区域以及其他因素。使用 CSS，您可以断言对元素大小和显示方式的更直接的控制</p>
+<h3 id="horizontal-formatting"><a class="header" href="#horizontal-formatting">Horizontal Formatting</a></h3>
+<p>水平格式通常比您想象的要复杂得多。部分复杂性与框大小的默认行为有关。</p>
+<p>使用默认值 <em>content-box</em> 时，宽度指定的是 内容区的宽度，而不是整个可见元素框</p>
+<p><strong>可视区</strong></p>
+<p>不包括边框的以外的区域，包括 <em>content area+padding</em></p>
+<p><strong>整体区域</strong></p>
+<p>可视区+外边距</p>
+<p><strong>example1</strong></p>
+<pre><code>&lt;p style=&quot;width: 200px;&quot;&gt;wideness?&lt;/p&gt;
+</code></pre>
+<ul>
+<li>可视区的宽度是200px</li>
+<li>整体区域的宽度是 200px</li>
+</ul>
+<p><strong>example2</strong></p>
+<pre><code>&lt;p style=&quot;width: 200px; padding: 10px; margin: 20px;&quot;&gt;wideness?&lt;/p&gt;
+</code></pre>
+<ul>
+<li>可视区的宽度是 220px</li>
+<li>整体区域的宽度是 260px</li>
+</ul>
+<p><strong>example3</strong></p>
+<p>如果改变example2的 <em>border-box:box-sizing</em> </p>
+<ul>
+<li>则可视区的内容始终为200px</li>
+<li>内容宽度为180px</li>
+<li>整体区域宽度为 260px</li>
+</ul>
+<p>有一个恒定的规则：</p>
+<p><strong>在正常流中， 块框的 水平分量的总和始终等于 包含块的宽度</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+	&lt;style&gt;
+        div p {
+            margin:1em;
+        }
+        div{
+            width:30em;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;div&gt;
+    &lt;p&gt;1&lt;/p&gt;
+    &lt;p&gt;2&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="horizontal-properties"><a class="header" href="#horizontal-properties">Horizontal Properties</a></h3>
+<p>水平格式化的七个属性是： <em>margin-left, border-left, padding-left, width, padding-right, border-right, and margin-right.</em> </p>
+<p>这些属性与块框的水平布局相关，如图 7-9 所示。这七个属性的值必须加起来等于元素的包含块的宽度，这通常是块元素父元素的宽度值（因为块级元素几乎总是具有父级的块级元素）。在这七个属性中，只有三个可以设置为自动：<strong>元素内容的宽度以及左右边距</strong>。<strong>其余属性必须设置为特定值或默认为零的宽度</strong>。下图显示了盒子的哪些部分可以采用 auto 值，哪些部分不能。</p>
+<p><img src="https://weisanju.github.io/note/others/images/horizonal_auto_properties.png" alt="image-20220308203310216" /></p>
+<p>width 必须设置为 auto 或某种类型的非负值。</p>
+<p>在水平格式中使用 auto 时，可能会出现不同的效果</p>
+<h3 id="using-auto"><a class="header" href="#using-auto">Using auto</a></h3>
+<h4 id="0个atuo"><a class="header" href="#0个atuo">0个atuo</a></h4>
+<p>在CSS术语中 称之为 ：<em>overconstrained</em></p>
+<p><em>margin-right</em>会强制成为 <em>auto</em></p>
+<h4 id="一个auto"><a class="header" href="#一个auto">一个auto</a></h4>
+<p>如果 <em>width</em> 、<em>margin-left</em>、<em>margin-right</em> 三者有一个是<em>auto</em> 其他是精确值 那么auto会自适应 使之 等于 包含快的宽度</p>
+<h4 id="margin二个auto"><a class="header" href="#margin二个auto">margin二个auto</a></h4>
+<p>如果<em>margin</em> 属性都是 <em>auto</em>  width是指定宽度。则 左右两个 会平分 宽度</p>
+<h4 id="一个margin-auto一个-内容区auto"><a class="header" href="#一个margin-auto一个-内容区auto">一个margin auto一个 内容区auto</a></h4>
+<p>则 margin auto那个 会被设置成 0。内容区宽度会尽可能大</p>
+<h4 id="三个都是auto"><a class="header" href="#三个都是auto">三个都是auto</a></h4>
+<p>默认的表现形式，如果没有指定，则全部是auto</p>
+<p>此时 外边距会全部归0，内容区宽度尽可能大</p>
+<h3 id="negative-margins"><a class="header" href="#negative-margins">Negative Margins</a></h3>
+<p>可以为边距设置负值。设置负边距可能会导致一些有趣的效果。请记住，七个水平属性的总和始终等于父元素的宽度。只要所有属性都为零或更大，元素就永远不能大于其父级的内容区域</p>
+<p>如果七个属性和 大于了 包含块的宽度 则 调整 <em>margin-right</em> 甚至为负值</p>
+<h3 id="percentages"><a class="header" href="#percentages">Percentages</a></h3>
+<p>百分比跟 指定宽度值没什么区别</p>
+<p>边界不能接受百分比值，只能接受长度值。</p>
+<h3 id="replaced-elements"><a class="header" href="#replaced-elements">Replaced Elements</a></h3>
+<p>到目前为止，我们一直在处理正常文本流中非替换块框的水平格式。</p>
+<p>块级替换元素更易于管理，适用于 非替换块 提供的所有规则都成立，但有一个例外：</p>
+<ul>
+<li><em>width</em> 为 <em>auto</em> 时，则元素的宽度是内容的固有宽度。</li>
+<li>以下示例中的图像宽度为 20 像素，因为这是原始图像的宽度：</li>
+</ul>
+<pre><code class="language-html">&lt;img src=&quot;smile.svg&quot; style=&quot;display: block; width: auto; margin: 0;&quot;&gt;
+
+</code></pre>
+<p>可以手动指定 宽度值</p>
+<pre><code class="language-html">&lt;img src=&quot;smile.svg&quot; style=&quot;display: block; width: 25px; margin: 0;&quot;&gt;
+&lt;img src=&quot;smile.svg&quot; style=&quot;display: block; width: 50px; margin: 0;&quot;&gt;
+&lt;img src=&quot;smile.svg&quot; style=&quot;display: block; width: 100px; margin: 0;&quot;&gt;
+</code></pre>
+<p>请注意，元素的高度也会增加</p>
+<p>当替换元素的宽度从其固有宽度更改时，高度值将缩放以匹配，除非高度其自身 已设置为显式值</p>
+<p>反之亦然：如果设置了高度，但宽度保留为自动，则宽度将按比例缩放到高度的变化中。</p>
+<h3 id="vertical-formatting"><a class="header" href="#vertical-formatting">Vertical Formatting</a></h3>
+<p>元素的内容决定了 元素的默认宽度</p>
+<p>内容的宽度也会影响高度</p>
+<p>例如，段落越窄，它必须越高才能包含其中的所有内联内容。</p>
+<p>在CSS中，可以在任何块级元素上设置显式高度。如果这样做，则结果行为取决于其他几个因素。</p>
+<p>假定指定的高度大于显示内容所需的高度：</p>
+<pre><code>&lt;p style=&quot;height: 10em;&quot;&gt;
+</code></pre>
+<p>在这种情况下，额外的高度具有类似于额外padding 的视觉效果</p>
+<p>但假设高度小于显示内容所需的高度</p>
+<pre><code class="language-html">&lt;p style=&quot;height: 3.33em;&quot;&gt;
+</code></pre>
+<p>浏览器应该提供一种在不增加元素框高度的情况下查看所有内容的方法。</p>
+<p>如果元素的内容高于其框的高度，则用户代理的实际行为将取决于 <em>overflow</em>属性</p>
+<p>在 CSS1 下，如果元素不是替换的元素（如图像），则用户代理可以忽略除 auto 以外的任何高度值。</p>
+<p>在 CSS2 及更高版本中，不能忽略高度值，除非在涉及特定百分比值的情况下。</p>
+<p>.我们稍后会讨论这个问题。与宽度一样，默认情况下，高度定义内容区域的高度，而不是可见元素框的高度。元素框顶部或底部的任何填充、边框或边距都将添加到高度值中，除非 <em>box-sizing</em> 的值不是 <em>content-box</em></p>
+<h3 id="vertical-properties"><a class="header" href="#vertical-properties">Vertical Properties</a></h3>
+<p>和水平格式化属性一样，垂直格式化属性也有同样的属性: <em>margin-top, border-top, padding-top, height, padding-bottom, borderbottom, and margin-bottom</em>. </p>
+<p>这些属性的值的总和 必须等于 块框包含快的 高度</p>
+<p>这通常是块元素的 父元素（因为块级元素最近的 父级元素总是  块级元素）</p>
+<p>只有 三个属性能被设置为 <em>auto</em>:  the height of the element, and the top and bottom margins. </p>
+<p>If border-style has been set, then the thickness of the borders is set to be the vaguely defined value medium. </p>
+<p>有趣的是，如果将正常流中的 将上边距或下边距设置为 <em>auto</em>，则它们都会自动计算为 0。</p>
+<p>这也意味着，如果将元素的上边距和下边距设置为 <em>auto</em>，则它们实际上会重置为 0 并从元素框中删除。</p>
+<h3 id="percentage-heights"><a class="header" href="#percentage-heights">Percentage Heights</a></h3>
+<p>您已经了解了如何处理高度的长度值，因此让我们花点时间讨论一下百分比。如果正常流块框的高度设置为百分比值，则该值被设置为 块框包含块的高度的百分比。给定以下标记，生成的段落将是 3 em 高</p>
+<pre><code>&lt;div style=&quot;height: 6em;&quot;&gt;
+&lt;p style=&quot;height: 50%;&quot;&gt;Half as tall&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>由于将上边距和下边距设置为 <em>auto</em> 会使它们具有零高度，因此在这种特殊情况下，<strong>垂直居中元素的唯一方法是将它们都设置为 25%</strong>，即使这样，框也会居中，而不是其中的内容。</p>
+<p>但是，如果未显式声明包含块的高度，则百分比高度将重置为 <em>auto</em>。</p>
+<p>如果我们更改了前面的示例，使 div 的高度是自动的，则该段落现在将与 div 本身一样高：</p>
+<pre><code class="language-html">&lt;div style=&quot;height: auto;&quot;&gt;
+&lt;p style=&quot;height: 50%;&quot;&gt;NOT half as tall; height reset to auto&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在我们继续前进之前，仔细看下 half-as-tall段落 ，它不是垂直居中的。因为 包含块的高度 是 6em 段落高度是3em 存在 上下 1em的<em>margin</em> 所以它的整体 框的高度是 <em>5em</em> 这意味着 还有  在段落可视区 到 div底部 还有 2em的 空白 </p>
+<h3 id="auto-heights"><a class="header" href="#auto-heights">Auto Heights</a></h3>
+<p><strong>块级子元素外边距合并</strong></p>
+<p>在最简单的情况下，具有高度的正常流动块框：&quot;auto&quot; 被呈现得刚好足够高，以包含其内联内容（包括文本）的行框。</p>
+<p>如果  <em>auto-height,</em>、正常流的块框只有块级子级，则其默认高度将是从最顶层块级子级外边框边缘的顶部到最底部子级的外底边界边缘的底部的距离。因此，子元素的边距将&quot;突出&quot;包含它们的元素。</p>
+<p>但是，如果块级元素具有顶部或底部<em>padding</em>，或者具有顶部或底部边框，则其高度将是其最上层子元素的上边距边缘的顶部与其最底部子元素的外下边距边缘的距离：</p>
+<pre><code class="language-html">&lt;div style=&quot;height: auto;
+background: silver;&quot;&gt;
+&lt;p style=&quot;margin-top: 2em; margin-bottom: 2em;&quot;&gt;A paragraph!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&quot;height: auto; border-top: 1px solid; border-bottom: 1px solid;
+background: silver;&quot;&gt;
+&lt;p style=&quot;margin-top: 2em; margin-bottom: 2em;&quot;&gt;Another paragraph!&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>If we changed the borders in the previous example to padding, the effect on the height of the div would be the same: it would still enclose the paragraph’s margins within it</p>
+<p>如果我们将上一示例中的边框更改为填充，则对 div 高度的影响将是相同的：它仍将段落的边距包含在其中</p>
+<h1 id="块布局"><a class="header" href="#块布局">块布局</a></h1>
+<h2 id="水平格式化"><a class="header" href="#水平格式化"><strong>水平格式化</strong></a></h2>
+<p><strong>水平格式化七大属性</strong></p>
+<p>水平格式化的“7大属性”是：<code>margin-left</code>、<code>border-left</code>, <code>padding-left</code>、<code>width</code>、 <code>padding-right</code>、<code>border-right</code>和<code>margin-right</code></p>
+<p>这7个属性的值加在一起<strong>必须是元素包含块的宽度</strong>，这往往是块元素的父元素的width 值（因为块级元素的父元素几乎都是块级元素。</p>
+<p><strong>三大属性使用auto</strong></p>
+<ul>
+<li>
+<p>只有<strong>width</strong>、<strong>margin-left</strong>或<strong>margin-right</strong>值可以设置为auto，而余下两个属性指定为特定的值，那么设置为auto的属性会确定所需的长度，从而使元素框的宽度等于父元素的width</p>
+</li>
+<li>
+<p>auto使用规则表</p>
+<ul>
+<li>固定值 的优先级 &gt; auto</li>
+<li>都为固定值时 ,  margin-right 最小优先级</li>
+<li>width的auto总是把自己撑到最大,  且优先级大于 &gt; lr的auto</li>
+</ul>
+</li>
+<li>
+<p>如果七大属性的值 大于了父元素的宽度 </p>
+</li>
+</ul>
+<h2 id="垂直格式化"><a class="header" href="#垂直格式化"><strong>垂直格式化</strong></a></h2>
+<p><strong>垂直格式化七大属性</strong></p>
+<p><code>margin-top</code>、<code>border-top</code>, <code>padding-top</code>、<code>height</code>、 <code>padding-bottmon</code>、<code>border-bottmon</code>和<code>margin-bottom</code></p>
+<ul>
+<li>
+<p>没有显示的申明 <code>包含块</code> (父元素)的 <em>height</em>  那么 子元素的百分数高度 会被重置为<em>auto</em></p>
+</li>
+<li>
+<p>使子元素 垂直居中的唯一方式是 使 上下外边距 25%</p>
+</li>
+<li>
+<p>默认情况下, 上下外边距 <em>height</em> 均为auto, 且 元素的高度为 内容的高度</p>
+</li>
+</ul>
+<p><strong>合并垂直外边距</strong></p>
+<ul>
+<li>
+<p>邻块元素垂直方向上的外边距会合并,  取其中的最大的一个</p>
+</li>
+<li>
+<p><strong>因为外边距的目的是为了防止 不让元素间的边框 相接触, 而外边距是可以重合的</strong></p>
+</li>
+<li>
+<p>负的外边距会把元素拉近</p>
+</li>
+</ul>
+<h1 id="行布局"><a class="header" href="#行布局">行布局</a></h1>
+<h2 id="基本术语"><a class="header" href="#基本术语"><strong>基本术语</strong></a></h2>
+<p><strong>匿名文本</strong></p>
+<p>HTML中的不含标签的文本内容</p>
+<p><strong>em框</strong>(字符框)</p>
+<p>字体定义的大小</p>
+<p><strong>内容区</strong></p>
+<p>元素中各个字符的EM框构成的框</p>
+<p><strong>在替换元素中, 内容区就是 元素的固有高度, 加上 内外边距,边框等</strong></p>
+<p><strong>行间距</strong></p>
+<p>(<em>half-leading</em>) <em>font-size</em> 和<em>line-height</em> 值只差 除以2</p>
+<p><strong>行内框</strong></p>
+<p>内容区的高度 + 行间距 的高度  = 行高 <em>line-heigh</em></p>
+<p><strong>行框</strong></p>
+<p>该行中出现的行 的最高点 和最低点的 最小框</p>
+<h2 id="行为定义"><a class="header" href="#行为定义">行为定义</a></h2>
+<ul>
+<li>内容区类似于一个块级元素的 内容框</li>
+<li>行内元素的背景 应用于 内容区+ 内边距</li>
+<li>行内元素的边框 要包围内容区及内边距</li>
+<li>非替换元素的内边距,边框,外边距 不会影响行内框的高度</li>
+</ul>
+<h3 id="块状元素与内联行内元素的嵌套规则"><a class="header" href="#块状元素与内联行内元素的嵌套规则">块状元素与内联（行内）元素的嵌套规则</a></h3>
+<p><strong>什么是嵌套规则</strong></p>
+<p>如果不按照HTML规则书写代码时，浏览器就不会正确解析，会将<strong>不符合嵌套规则的节点放到目标节点的下面</strong>，或者变成纯文本HTML存在许多种类型的标签，有的标签下面只允许特定的标签存在，这就是HTML嵌套规则。</p>
+<p><strong>具体规则</strong></p>
+<ul>
+<li>内联元素不可包含块元素，只能包含内联元素，块状元素没有这些限制</li>
+<li>有几个特殊块级元素只能包含内联元素，不能包含块级元素。这几个特殊标签是 <code>h1~h6、p、dt</code></li>
+<li><em>li</em> 内可包含 div 标签</li>
+<li>块级元素与块级元素并列、内联元素与内联元素并列</li>
+</ul>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../CSS知识/内联元素垂直居中的方式.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../CSS知识/基本视觉格式化-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../CSS知识/内联元素垂直居中的方式.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../CSS知识/基本视觉格式化-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

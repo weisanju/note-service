@@ -1,0 +1,886 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>docker-compose - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item expanded "><a href="../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item expanded "><a href="../1.容器_docker/docker-compose.html" class="active">docker-compose</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.消息队列_RocketMQ/MQ消息的投递机制.html">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item "><a href="../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/基本数据结构.html">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item "><a href="../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/Git库管理.html">Git库管理</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/远程版本库.html">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="docker-compose简介"><a class="header" href="#docker-compose简介">Docker-Compose简介</a></h1>
+<p>Compose允许用户通过一个docker-compose.yml模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）。</p>
+<p>Compose模板文件是一个定义服务、网络和卷的YAML文件</p>
+<p>Compose模板文件默认路径是当前目录下的docker-compose.yml</p>
+<p>Docker-Compose标准模板文件应该包含version、services、networks 三大部分，最关键的是services和networks两个部分。</p>
+<p><strong>example</strong></p>
+<pre><code class="language-yml">version: '2'
+services:
+  web:
+    image: dockercloud/hello-world
+    ports:
+      - 8080
+    networks:
+      - front-tier
+      - back-tier
+
+  redis:
+    image: redis
+    links:
+      - web
+    networks:
+      - back-tier
+
+  lb:
+    image: dockercloud/haproxy
+    ports:
+      - 80:80
+    links:
+      - web
+    networks:
+      - front-tier
+      - back-tier
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
+</code></pre>
+<p>Compose目前有三个版本分别为Version 1，Version 2，Version 3，Compose区分Version 1和Version 2（Compose 1.6.0+，Docker Engine 1.10.0+）。Version 2支持更多的指令。Version 1将来会被弃用。</p>
+<h1 id="指令"><a class="header" href="#指令">指令</a></h1>
+<h2 id="image"><a class="header" href="#image">image</a></h2>
+<blockquote>
+<p>image是指定服务的镜像名称或镜像ID。如果镜像在本地不存在，Compose将会尝试拉取镜像。</p>
+</blockquote>
+<pre><code>services: 
+    web: 
+        image: hello-world
+        
+</code></pre>
+<h2 id="build"><a class="header" href="#build">build</a></h2>
+<p>服务除了可以基于指定的镜像，还可以基于一份Dockerfile，在使用up启动时执行构建任务，构建标签是build，可以指定Dockerfile所在文件夹的路径。Compose将会利用Dockerfile自动构建镜像，然后使用镜像启动服务容器。</p>
+<pre><code>build:
+  context: ../
+  dockerfile: path/of/Dockerfile
+</code></pre>
+<h2 id="context"><a class="header" href="#context">context</a></h2>
+<p>context选项可以是Dockerfile的文件路径，也可以是到链接到git仓库的url，当提供的值是相对路径时，被解析为相对于撰写文件的路径，此目录也是发送到Docker守护进程的context</p>
+<h2 id="dockerfile"><a class="header" href="#dockerfile">dockerfile</a></h2>
+<p>使用dockerfile文件来构建，必须指定构建路径</p>
+<pre><code>build:
+  context: .
+  dockerfile: Dockerfile-alternate
+</code></pre>
+<h2 id="command"><a class="header" href="#command">command</a></h2>
+<pre><code class="language-sh">#使用command可以覆盖容器启动后默认执行的命令。
+command: bundle exec thin -p 3000
+</code></pre>
+<h2 id="container_name"><a class="header" href="#container_name">container_name</a></h2>
+<p>Compose的容器名称格式是：&lt;项目名称&gt;&lt;服务名称&gt;&lt;序号&gt;
+可以自定义项目名称、服务名称，但如果想完全控制容器的命名，可以使用标签指定：
+<code>container_name: app</code></p>
+<h2 id="depends_on"><a class="header" href="#depends_on">depends_on</a></h2>
+<p>在使用Compose时，最大的好处就是少打启动命令，但一般项目容器启动的顺序是有要求的，如果直接从上到下启动容器，必然会因为容器依赖问题而启动失败。例如在没启动数据库容器的时候启动应用容器，应用容器会因为找不到数据库而退出。depends_on标签用于解决容器的依赖、启动先后的问题。</p>
+<pre><code>version: '2'
+services:
+  web:
+    build: .
+    depends_on:
+      - db
+      - redis
+  redis:
+    image: redis
+  db:
+    image: postgres
+</code></pre>
+<p>上述YAML文件定义的容器会先启动redis和db两个服务，最后才启动web 服务。</p>
+<h2 id="pid"><a class="header" href="#pid">pid</a></h2>
+<p><code>pid: &quot;host&quot;</code>
+将PID模式设置为主机PID模式，跟主机系统共享进程命名空间。容器使用pid标签将能够访问和操纵其他容器和宿主机的名称空间。</p>
+<h2 id="ports"><a class="header" href="#ports">ports</a></h2>
+<p>ports用于映射端口的标签。
+使用HOST:CONTAINER格式或者只是指定容器的端口，宿主机会随机映射端口。</p>
+<pre><code>ports:
+ - &quot;3000&quot;
+ - &quot;8000:8000&quot;
+ - &quot;49100:22&quot;
+ - &quot;127.0.0.1:8001:8001&quot;
+</code></pre>
+<p>当使用HOST:CONTAINER格式来映射端口时，如果使用的容器端口小于60可能会得到错误得结果，因为YAML将会解析xx:yy这种数字格式为60进制。所以建议采用字符串格式。</p>
+<h2 id="extra_hosts"><a class="header" href="#extra_hosts">extra_hosts	</a></h2>
+<p>添加主机名的标签，会在/etc/hosts文件中添加一些记录。</p>
+<pre><code>extra_hosts:
+ - &quot;somehost:162.242.195.82&quot;
+ - &quot;otherhost:50.31.209.229&quot;
+</code></pre>
+<p>启动后查看容器内部hosts：</p>
+<pre><code>162.242.195.82  somehost
+50.31.209.229   otherhost
+</code></pre>
+<h2 id="volumes"><a class="header" href="#volumes">volumes</a></h2>
+<p>挂载一个目录或者一个已存在的数据卷容器，可以直接使用 [HOST:CONTAINER]格式，或者使用[HOST:CONTAINER:ro]格式，后者对于容器来说，数据卷是只读的，可以有效保护宿主机的文件系统。
+Compose的数据卷指定路径可以是相对路径，使用 . 或者 .. 来指定相对目录。
+数据卷的格式可以是下面多种形式：</p>
+<pre><code>volumes:
+  // 只是指定一个路径，Docker 会自动在创建一个数据卷（这个路径是容器内部的）。
+  - /var/lib/mysql
+  // 使用绝对路径挂载数据卷
+  - /opt/data:/var/lib/mysql
+  // 以 Compose 配置文件为中心的相对路径作为数据卷挂载到容器。
+  - ./cache:/tmp/cache
+  // 使用用户的相对路径（~/ 表示的目录是 /home/&lt;用户目录&gt;/ 或者 /root/）。
+  - ~/configs:/etc/configs/:ro
+  // 已经存在的命名的数据卷。
+  - datavolume:/var/lib/mysql
+</code></pre>
+<p>如果不使用宿主机的路径，可以指定一个volume_driver。
+<code>volume_driver: mydriver</code></p>
+<h2 id="volumes_from"><a class="header" href="#volumes_from">volumes_from</a></h2>
+<p>从另一个服务或容器挂载其数据卷：</p>
+<pre><code>volumes_from:
+   - service_name    
+     - container_name
+</code></pre>
+<h2 id="dns"><a class="header" href="#dns">dns</a></h2>
+<p>自定义DNS服务器。可以是一个值，也可以是一个列表。</p>
+<pre><code>dns：8.8.8.8
+dns：
+    - 8.8.8.8    
+      - 9.9.9.9
+</code></pre>
+<h2 id="dns_search"><a class="header" href="#dns_search">dns_search</a></h2>
+<p>配置DNS搜索域。可以是一个值，也可以是一个列表。</p>
+<pre><code>dns_search：example.com
+dns_search：
+    - domain1.example.com
+    - domain2.example.com
+</code></pre>
+<h2 id="entrypoint"><a class="header" href="#entrypoint">entrypoint</a></h2>
+<p>在Dockerfile中有一个指令叫做ENTRYPOINT指令，用于指定接入点。
+在docker-compose.yml中可以定义接入点，覆盖Dockerfile中的定义：
+<code>entrypoint: /code/entrypoint.sh</code></p>
+<h2 id="env_file"><a class="header" href="#env_file">env_file</a></h2>
+<p>在docker-compose.yml中可以定义一个专门存放变量的文件。
+如果通过docker-compose -f FILE指定配置文件，则env_file中路径会使用配置文件路径。
+如果有变量名称与environment指令冲突，则以后者为准。格式如下：
+<code>env_file: .env</code></p>
+<p>或者根据docker-compose.yml设置多个：</p>
+<pre><code>env_file:
+  - ./common.env
+  - ./apps/web.env
+  - /opt/secrets.env
+</code></pre>
+<p>如果在配置文件中有build操作，变量并不会进入构建过程中。</p>
+<h2 id="expose"><a class="header" href="#expose">expose</a></h2>
+<p>暴露端口，但不映射到宿主机，只允许能被连接的服务访问。仅可以指定内部端口为参数，如下所示：</p>
+<pre><code>expose:
+    - &quot;3000&quot;
+    - &quot;8000&quot;
+</code></pre>
+<h2 id="extends"><a class="header" href="#extends">extends</a></h2>
+<p>例如，对于webapp服务定义了一个基础模板文件为common.yml：</p>
+<pre><code># common.yml
+webapp:
+    build: ./webapp
+    environment:
+        - DEBUG=false
+        - SEND_EMAILS=false
+</code></pre>
+<p>再编写一个新的development.yml文件，使用common.yml中的webapp服务进行扩展：</p>
+<pre><code># development.yml
+web:
+    extends:
+        file: common.yml
+        service: webapp
+    ports:
+        - &quot;8000:8000&quot;
+    links:
+        - db
+    environment:
+        - DEBUG=true
+db:
+    image: mysql
+</code></pre>
+<p>后者会自动继承common.yml中的webapp服务及环境变量定义。
+extends限制如下：
+A、要避免出现循环依赖
+B、extends不会继承links和volumes_from中定义的容器和数据卷资源
+推荐在基础模板中只定义一些可以共享的镜像和环境变量，在扩展模板中具体指定应用变量、链接、数据卷等信息</p>
+<h2 id="labels"><a class="header" href="#labels">labels</a></h2>
+<p>为容器添加Docker元数据（metadata）信息。例如，可以为容器添加辅助说明信息：</p>
+<pre><code>labels：
+    com.startupteam.description: &quot;webapp for a strtup team&quot;
+</code></pre>
+<h2 id="links"><a class="header" href="#links">links</a></h2>
+<p>链接到其它服务中的容器。使用服务名称（同时作为别名），或者“服务名称:服务别名”（如 SERVICE:ALIAS），例如：</p>
+<pre><code>links:
+    - db
+    - db:database
+    - redis
+</code></pre>
+<p>使用别名将会自动在服务容器中的/etc/hosts里创建。例如：</p>
+<pre><code>172.17.2.186  db
+172.17.2.186  database
+172.17.2.187  redis
+</code></pre>
+<h2 id="log_driver"><a class="header" href="#log_driver">log_driver</a></h2>
+<p>指定日志驱动类型。目前支持三种日志驱动类型：</p>
+<pre><code>log_driver: &quot;json-file&quot;
+log_driver: &quot;syslog&quot;
+log_driver: &quot;none&quot;
+</code></pre>
+<h2 id="net"><a class="header" href="#net">net</a></h2>
+<p>设置网络模式。</p>
+<pre><code>net: &quot;bridge&quot;
+net: &quot;none&quot;
+net: &quot;host&quot;
+</code></pre>
+<h2 id="环境变量"><a class="header" href="#环境变量">环境变量</a></h2>
+<p>环境变量可以用来配置Docker-Compose的行为。
+<strong>COMPOSE_PROJECT_NAME</strong>
+设置通过Compose启动的每一个容器前添加的项目名称，默认是当前工作目录的名字。
+<strong>COMPOSE_FILE</strong>
+设置docker-compose.yml模板文件的路径。默认路径是当前工作目录。
+<strong>DOCKER_HOST</strong>
+设置Docker daemon的地址。默认使用unix:///var/run/docker.sock。 DOCKER_TLS_VERIFY
+如果设置不为空，则与Docker daemon交互通过TLS进行。
+<strong>DOCKER_CERT_PATH</strong>
+配置TLS通信所需要的验证(ca.pem、cert.pem 和 key.pem)文件的路径，默认是 ~/.docker 。</p>
+<h1 id="命令行"><a class="header" href="#命令行">命令行</a></h1>
+<h2 id="docker-compose命令格式"><a class="header" href="#docker-compose命令格式">Docker-Compose命令格式</a></h2>
+<pre><code>docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...]
+</code></pre>
+<p>命令选项如下：
+-f，–file FILE指定Compose模板文件，默认为docker-compose.yml，可以多次指定。
+-p，–project-name NAME指定项目名称，默认将使用所在目录名称作为项目名。
+-x-network-driver 使用Docker的可拔插网络后端特性（需要Docker 1.9+版本）
+-x-network-driver DRIVER指定网络后端的驱动，默认为bridge（需要Docker 1.9+版本）
+-verbose输出更多调试信息
+-v，–version打印版本并退出</p>
+<h2 id="docker-compose-up"><a class="header" href="#docker-compose-up">docker-compose up</a></h2>
+<pre><code>docker-compose up [options] [--scale SERVICE=NUM...] [SERVICE...]
+</code></pre>
+<pre><code>选项包括：
+-d 在后台运行服务容器
+–no-color 不使用颜色来区分不同的服务的控制输出
+–no-deps 不启动服务所链接的容器
+–force-recreate 强制重新创建容器，不能与–no-recreate同时使用
+–no-recreate 如果容器已经存在，则不重新创建，不能与–force-recreate同时使用
+–no-build 不自动构建缺失的服务镜像
+–build 在启动容器前构建服务镜像
+–abort-on-container-exit 停止所有容器，如果任何一个容器被停止，不能与-d同时使用
+-t, –timeout TIMEOUT 停止容器时候的超时（默认为10秒）
+–remove-orphans 删除服务中没有在compose文件中定义的容器
+–scale SERVICE=NUM 设置服务运行容器的个数，将覆盖在compose中通过scale指定的参数
+`docker-compose up`
+启动所有服务
+`docker-compose up -d`
+在后台所有启动服务
+-f 指定使用的Compose模板文件，默认为docker-compose.yml，可以多次指定。
+`docker-compose -f docker-compose.yml up -d`
+</code></pre>
+<h2 id="docker-compose-ps"><a class="header" href="#docker-compose-ps">docker-compose ps</a></h2>
+<pre><code>`docker-compose ps [options] [SERVICE...]`
+`docker-compose ps`
+列出项目中目前的所有容器
+</code></pre>
+<h2 id="docker-compose-stop"><a class="header" href="#docker-compose-stop">docker-compose stop</a></h2>
+<pre><code class="language-sh">docker-compose stop [options] [SERVICE...]
+选项包括：
+-t, –timeout TIMEOUT 停止容器时候的超时（默认为10秒）
+docker-compose stop
+停止正在运行的容器，可以通过docker-compose start 再次启动
+</code></pre>
+<h2 id="docker-compose--h"><a class="header" href="#docker-compose--h">docker-compose -h</a></h2>
+<p><code>docker-compose -h</code>
+查看帮助</p>
+<h2 id="docker-compose-down"><a class="header" href="#docker-compose-down">docker-compose down</a></h2>
+<p>停止和删除容器、网络、卷、镜像。
+选项包括：
+–rmi type，删除镜像，类型必须是：all，删除compose文件中定义的所有镜像；local，删除镜像名为空的镜像
+-v, –volumes，删除已经在compose文件中定义的和匿名的附在容器上的数据卷
+–remove-orphans，删除服务中没有在compose中定义的容器
+<code>docker-compose down</code>
+停用移除所有容器以及网络相关</p>
+<h2 id="docker-compose-logs"><a class="header" href="#docker-compose-logs">docker-compose logs</a></h2>
+<p><code>docker-compose logs [options] [SERVICE...]</code>
+查看服务容器的输出。默认情况下，docker-compose将对不同的服务输出使用不同的颜色来区分。可以通过–no-color来关闭颜色。
+<code>docker-compose logs</code>
+查看服务容器的输出</p>
+<h2 id="docker-compose-build"><a class="header" href="#docker-compose-build">docker-compose build</a></h2>
+<p><code>docker-compose build [options] [--build-arg key=val...] [SERVICE...]</code>
+构建（重新构建）项目中的服务容器。
+选项包括：
+–compress 通过gzip压缩构建上下环境
+–force-rm 删除构建过程中的临时容器
+–no-cache 构建镜像过程中不使用缓存
+–pull 始终尝试通过拉取操作来获取更新版本的镜像
+-m, –memory MEM为构建的容器设置内存大小
+–build-arg key=val为服务设置build-time变量
+服务容器一旦构建后，将会带上一个标记名。可以随时在项目目录下运行docker-compose build来重新构建服务</p>
+<h2 id="docker-compose-pull"><a class="header" href="#docker-compose-pull">docker-compose pull</a></h2>
+<p><code>docker-compose pull [options] [SERVICE...]</code>
+拉取服务依赖的镜像。
+选项包括：
+–ignore-pull-failures，忽略拉取镜像过程中的错误
+–parallel，多个镜像同时拉取
+–quiet，拉取镜像过程中不打印进度信息
+<code>docker-compose pull</code>
+拉取服务依赖的镜像</p>
+<h2 id="docker-compose-restart"><a class="header" href="#docker-compose-restart">docker-compose restart</a></h2>
+<p><code>docker-compose restart [options] [SERVICE...]</code>
+重启项目中的服务。
+选项包括：
+-t, –timeout TIMEOUT，指定重启前停止容器的超时（默认为10秒）
+<code>docker-compose restart</code>
+重启项目中的服务</p>
+<h2 id="docker-compose-rm"><a class="header" href="#docker-compose-rm">docker-compose rm</a></h2>
+<p><code>docker-compose rm [options] [SERVICE...]</code>
+删除所有（停止状态的）服务容器。
+选项包括：
+–f, –force，强制直接删除，包括非停止状态的容器
+-v，删除容器所挂载的数据卷
+<code>docker-compose rm</code>
+删除所有（停止状态的）服务容器。推荐先执行docker-compose stop命令来停止容器。</p>
+<h2 id="docker-compose-start"><a class="header" href="#docker-compose-start">docker-compose start</a></h2>
+<p><code>docker-compose start [SERVICE...]</code>
+<code>docker-compose start</code>
+启动已经存在的服务容器。</p>
+<h2 id="docker-compose-run"><a class="header" href="#docker-compose-run">docker-compose run</a></h2>
+<p><code>docker-compose run [options] [-v VOLUME...] [-p PORT...] [-e KEY=VAL...] SERVICE [COMMAND] [ARGS...]</code>
+在指定服务上执行一个命令。
+<code>docker-compose run ubuntu ping www.baidu.com</code>
+在指定容器上执行一个ping命令。</p>
+<h2 id="docker-compose-scale"><a class="header" href="#docker-compose-scale">docker-compose scale</a></h2>
+<p><code>docker-compose scale web=3 db=2</code>
+设置指定服务运行的容器个数。通过service=num的参数来设置数量</p>
+<h2 id="docker-compose-pause"><a class="header" href="#docker-compose-pause">docker-compose pause</a></h2>
+<p><code>docker-compose pause [SERVICE...]</code>
+暂停一个服务容器</p>
+<h2 id="docker-compose-kill"><a class="header" href="#docker-compose-kill">docker-compose kill</a></h2>
+<pre><code>docker-compose kill [options] [SERVICE...]`
+通过发送SIGKILL信号来强制停止服务容器。 
+支持通过-s参数来指定发送的信号，例如通过如下指令发送SIGINT信号：
+`docker-compose kill -s SIGINT
+</code></pre>
+<h2 id="dokcer-compose-config"><a class="header" href="#dokcer-compose-config">dokcer-compose config</a></h2>
+<p><code>docker-compose config [options]</code>
+验证并查看compose文件配置。
+选项包括：
+–resolve-image-digests 将镜像标签标记为摘要
+-q, –quiet 只验证配置，不输出。 当配置正确时，不输出任何内容，当文件配置错误，输出错误信息
+–services 打印服务名，一行一个
+–volumes 打印数据卷名，一行一个</p>
+<h2 id="docker-compose-create"><a class="header" href="#docker-compose-create">docker-compose create</a></h2>
+<p><code>docker-compose create [options] [SERVICE...]</code>
+为服务创建容器。
+选项包括：
+–force-recreate：重新创建容器，即使配置和镜像没有改变，不兼容–no-recreate参数
+–no-recreate：如果容器已经存在，不需要重新创建，不兼容–force-recreate参数
+–no-build：不创建镜像，即使缺失
+–build：创建容器前，生成镜像</p>
+<h2 id="docker-compose-exec"><a class="header" href="#docker-compose-exec">docker-compose exec</a></h2>
+<p><code>docker-compose exec [options] SERVICE COMMAND [ARGS...]</code>
+选项包括：
+-d 分离模式，后台运行命令。
+–privileged 获取特权。
+–user USER 指定运行的用户。
+-T 禁用分配TTY，默认docker-compose exec分配TTY。
+–index=index，当一个服务拥有多个容器时，可通过该参数登陆到该服务下的任何服务，例如：docker-compose exec –index=1 web /bin/bash ，web服务中包含多个容器</p>
+<h2 id="docker-compose-port"><a class="header" href="#docker-compose-port">docker-compose port</a></h2>
+<p><code>docker-compose port [options] SERVICE PRIVATE_PORT</code>
+显示某个容器端口所映射的公共端口。
+选项包括：
+–protocol=proto，指定端口协议，TCP（默认值）或者UDP
+–index=index，如果同意服务存在多个容器，指定命令对象容器的序号（默认为1）</p>
+<h2 id="docker-compose-push"><a class="header" href="#docker-compose-push">docker-compose push</a></h2>
+<p><code>docker-compose push [options] [SERVICE...]</code>
+推送服务依的镜像。
+选项包括：
+–ignore-push-failures 忽略推送镜像过程中的错误</p>
+<h2 id="docker-compose-show"><a class="header" href="#docker-compose-show">docker-compose show</a></h2>
+<p><code>docker-compose stop [options] [SERVICE...]</code>
+暂停</p>
+<h2 id="docker-compose-unpause"><a class="header" href="#docker-compose-unpause">docker-compose unpause</a></h2>
+<p><code>docker-compose unpause [SERVICE...]</code>
+恢复处于暂停状态中的服务。</p>
+<h2 id="docker-compose-version"><a class="header" href="#docker-compose-version">docker-compose version</a></h2>
+<p><code>docker-compose version</code>
+打印版本信息。</p>
+<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="容器"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1.容器_docker/dockcer-swarm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../1.容器_docker/docker-swarm集群搭建实例.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1.容器_docker/dockcer-swarm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../1.容器_docker/docker-swarm集群搭建实例.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

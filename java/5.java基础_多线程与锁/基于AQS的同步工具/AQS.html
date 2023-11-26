@@ -1,0 +1,995 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AQS - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item expanded "><a href="../../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item expanded "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html" class="active">AQS</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item "><a href="../../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="aqs框架"><a class="header" href="#aqs框架">AQS框架</a></h1>
+<h2 id="aqs数据结构图"><a class="header" href="#aqs数据结构图">AQS数据结构图</a></h2>
+<p><img src="https://weisanju.github.io/note/java/images/aqs_clh_queen.png" alt="" /></p>
+<p>它维护了一个volatile int state（代表共享资源）和一个FIFO线程等待队列（多线程争用资源被阻塞时会进入此队列）。</p>
+<h2 id="资源访问的两种方式"><a class="header" href="#资源访问的两种方式">资源访问的两种方式</a></h2>
+<p><strong>AQS定义两种资源共享方式</strong>：</p>
+<ul>
+<li>
+<p>Exclusive（独占，只有一个线程能执行，如ReentrantLock）和</p>
+</li>
+<li>
+<p>Share（共享，多个线程可同时执行，如Semaphore/CountDownLatch）。</p>
+</li>
+</ul>
+<p><strong>自定义同步器实现</strong></p>
+<blockquote>
+<p>不同的自定义同步器争用共享资源的方式也不同。<strong>自定义同步器在实现时只需要实现共享资源state的获取与释放方式即可</strong>, 至于具体线程等待队列的维护（ 如获取资源失败入队/唤醒出队等），AQS已经在顶层实现好了。自定义同步器实现时主要实现以下几种方法：</p>
+</blockquote>
+<ul>
+<li>isHeldExclusively()：该线程是否正在独占资源。只有用到condition才需要去实现它。</li>
+<li>tryAcquire(int)：独占方式。尝试获取资源，成功则返回true，失败则返回false。</li>
+<li>tryRelease(int)：独占方式。尝试释放资源，成功则返回true，失败则返回false。</li>
+<li>tryAcquireShared(int)：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。</li>
+<li>tryReleaseShared(int)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false。</li>
+</ul>
+<p>一般来说，自定义同步器要么是独占方法，要么是共享方式，他们也只需实现tryAcquire-tryRelease、tryAcquireShared-tryReleaseShared中的一种即可。但AQS也支持自定义同步器同时实现独占和共享两种方式，如ReentrantReadWriteLock。</p>
+<p><strong>示例</strong></p>
+<p><strong>ReentrantLock</strong></p>
+<pre><code>state初始化为0，表示未锁定状态。A线程lock()时，会调用tryAcquire()独占该锁并将state+1。此后，其他线程再tryAcquire()时就会失败，直到A线程unlock()到state=0（即释放锁）为止，其它线程才有机会获取该锁。当然，释放锁之前，A线程自己是可以重复获取此锁的（state会累加），这就是可重入的概念。但要注意，获取多少次就要释放多么次，这样才能保证state是能回到零态的。
+</code></pre>
+<p><strong>CountDownLatch</strong>	</p>
+<pre><code>任务分为N个子线程去执行，state也初始化为N（注意N要与线程个数一致）。这N个子线程是并行执行的，每个子线程执行完后countDown()一次，state会CAS减1。等到所有子线程都执行完后(即state=0)，会unpark()主调用线程，然后主调用线程就会从await()函数返回，继续后余动作。
+</code></pre>
+<h1 id="源码解析"><a class="header" href="#源码解析">源码解析</a></h1>
+<h2 id="结点状态"><a class="header" href="#结点状态">结点状态</a></h2>
+<blockquote>
+<p>Node结点是对每一个等待获取资源的线程的封装，其包含了需要同步的线程本身及其等待状态，如是否被阻塞、是否等待唤醒、是否已经被取消等。</p>
+</blockquote>
+<p>变量 <em>waitStatus</em> 则表示当前Node结点的等待状态，共有5种取值CANCELLED、SIGNAL、CONDITION、PROPAGATE、0。</p>
+<ul>
+<li><strong>CANCELLED</strong>(1)：表示当前结点已取消调度。当timeout或被中断（响应中断的情况下），会触发变更为此状态，进入该状态后的结点将不会再变化。</li>
+<li><strong>SIGNAL</strong>(-1)：表示后继结点在等待当前结点唤醒。后继结点入队时，会将前继结点的状态更新为SIGNAL。</li>
+<li><strong>CONDITION</strong>(-2)：表示结点等待在Condition上，当其他线程调用了Condition的signal()方法后，CONDITION状态的结点将<strong>从等待队列转移到同步队列中</strong>，等待获取同步锁。</li>
+<li><strong>PROPAGATE</strong>(-3)：共享模式下，前继结点不仅会唤醒其后继结点，同时也可能会唤醒后继的后继结点。</li>
+<li><strong>0</strong>：新结点入队时的默认状态。</li>
+</ul>
+<p>注意，<strong>负值表示结点处于有效等待状态，而正值表示结点已被取消。所以源码中很多地方用&gt;0、&lt;0来判断结点的状态是否正常</strong>。</p>
+<h2 id="获取独占锁入口"><a class="header" href="#获取独占锁入口">获取独占锁入口</a></h2>
+<h3 id="方法体"><a class="header" href="#方法体">方法体</a></h3>
+<blockquote>
+<p><em>acquire</em> 方法是在独占模式下线程获取共享资源的顶层入口。如果获取到资源，线程直接返回，否则进入等待队列，直到获取到资源为止，且整个过程忽略中断的影响。这也正是lock()的语义，当然不仅仅只限于lock()。获取到资源后，线程就可以去执行其临界区代码了。下面是acquire()的源码：</p>
+</blockquote>
+<pre><code class="language-java">    public final void acquire(int arg) {
+        if (!tryAcquire(arg) &amp;&amp;
+            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+            selfInterrupt();
+    }
+</code></pre>
+<p>函数流程如下：</p>
+<ol>
+<li><em>tryAcquire()</em> 尝试直接去获取资源，如果成功则直接返回（这里体现了<strong>非公平锁</strong>，每个线程获取锁时会尝试直接抢占加塞一次，而CLH队列中可能还有别的线程在等待）；</li>
+<li><em>addWaiter()</em> 将该线程加入等待队列的尾部，并标记为独占模式；</li>
+<li><em>acquireQueued()</em> 使线程阻塞在等待队列中获取资源，一直获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。</li>
+<li>如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt()，将中断补上。</li>
+</ol>
+<h3 id="tryacquireint"><a class="header" href="#tryacquireint"><em>tryAcquire(int)</em></a></h3>
+<ul>
+<li>
+<p>此方法尝试去获取独占资源。如果获取成功，则直接返回true，否则直接返回false</p>
+</li>
+<li>
+<p>具体资源的获取交由自定义同步器去实现了（通过state的get/set/CAS）至于能不能重入，能不能加塞，交由实现决定</p>
+</li>
+<li>
+<p>之所以没有定义成abstract，是因为独占模式下只用实现tryAcquire-tryRelease，而共享模式下只用实现tryAcquireShared-tryReleaseShared</p>
+</li>
+</ul>
+<h3 id="addwaiternode"><a class="header" href="#addwaiternode"><em>addWaiter(Node)</em></a></h3>
+<blockquote>
+<p>此方法用于将当前线程加入到等待队列的队尾，并返回当前线程所在的结点</p>
+</blockquote>
+<pre><code class="language-java">private Node addWaiter(Node mode) {
+    //以给定模式构造结点。mode有两种：EXCLUSIVE（独占）和SHARED（共享）
+    Node node = new Node(Thread.currentThread(), mode);
+
+    //尝试快速方式直接放到队尾。
+    Node pred = tail;
+    if (pred != null) {
+        node.prev = pred;
+        if (compareAndSetTail(pred, node)) {
+            pred.next = node;
+            return node;
+        }
+    }
+
+    //上一步失败则通过enq入队。
+    enq(node);
+    return node;
+}
+//循环取 tail，设置值
+    private Node enq(final Node node) {
+        for (;;) {
+            Node t = tail;
+            if (t == null) { // Must initialize
+                if (compareAndSetHead(new Node()))
+                    tail = head;
+            } else {
+                node.prev = t;
+                if (compareAndSetTail(t, node)) {
+                    t.next = node;
+                    return t;
+                }
+            }
+        }
+    }
+</code></pre>
+<h3 id="acquirequeuednode-int"><a class="header" href="#acquirequeuednode-int"><em>acquireQueued(Node, int)</em></a></h3>
+<blockquote>
+<p>获取锁失败，入队列，进入等待状态休息，直到其他线程彻底释放资源后唤醒自己</p>
+</blockquote>
+<pre><code class="language-java">    final boolean acquireQueued(final Node node, int arg) {
+        boolean failed = true;
+        try {
+            boolean interrupted = false;
+            for (;;) {//自旋
+                final Node p = node.predecessor();//拿到前驱
+                //如果前驱是head，即该结点已成老二，那么便有资格去尝试获取资源（可能是老大释放完资源唤醒自己的，当然也可能被interrupt了）。
+                if (p == head &amp;&amp; tryAcquire(arg)) {
+                    setHead(node); //拿到资源后，将head指向该结点。所以head所指的结点，就是当前获取到资源的那个结点或null。
+                    p.next = null; // help GC，setHead中node.prev已置为null，此处再将head.next置为null，就是为了方便GC回收以前的head结点。也就意味着之前拿完资源的结点出队了！
+                    failed = false; //成功获取资源标识
+                    return interrupted; //返回等待过程中是否被中断过
+                }
+                //如果自己可以休息了，就通过park()进入waiting状态，直到被unpark()。如果不可中断的情况下被中断了，那么会从park()中醒过来，发现拿不到资源，从而继续进入park()等待。
+                if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                    parkAndCheckInterrupt())
+                    interrupted = true;
+            }
+        } finally {
+            if (failed) // 如果等待过程中没有成功获取资源（如timeout，或者可中断的情况下被中断了），那么取消结点在队列中的等待。
+                cancelAcquire(node);
+        }
+    }
+</code></pre>
+<h3 id="shouldparkafterfailedacquire"><a class="header" href="#shouldparkafterfailedacquire"><em>shouldParkAfterFailedAcquire</em></a></h3>
+<blockquote>
+<p>此方法主要用于检查状态，看看自己是否真的可以去休息了，要是 队列前边的线程都放弃了 那么当前线程可以尝试 竞争下</p>
+</blockquote>
+<p><strong>如果前驱结点的状态不是SIGNAL，那么自己就不能安心去休息，需要去找个安心的休息点，同时可以再尝试下看有没有机会轮到自己拿号。</strong></p>
+<pre><code class="language-java">private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
+    int ws = pred.waitStatus;//拿到前驱的状态
+    if (ws == Node.SIGNAL)
+        //如果已经告诉前驱拿完号后通知自己一下，那就可以安心休息了
+        return true;
+    if (ws &gt; 0) {
+        /*
+         * 如果前驱放弃了，那就一直往前找，直到找到最近一个正常等待的状态，并排在它的后边。
+         * 注意：那些放弃的结点，由于被自己“加塞”到它们前边，它们相当于形成一个无引用链，稍后就会被保安大叔赶走了(GC回收)！
+         * 回收已经处于  CANCELLED 状态的 等待线程结点
+         */
+        do {
+            node.prev = pred = pred.prev;
+        } while (pred.waitStatus &gt; 0);
+        pred.next = node;
+    } else {
+         //如果前驱正常，那就把前驱的状态设置成SIGNAL，告诉它拿完号后通知自己一下。有可能失败，可能前驱刚刚释放锁完毕
+        compareAndSetWaitStatus(pred, ws, Node.SIGNAL);
+    }
+    return false;
+}
+</code></pre>
+<h3 id="parkandcheckinterrupt"><a class="header" href="#parkandcheckinterrupt"><em>parkAndCheckInterrupt()</em></a></h3>
+<blockquote>
+<p>如果线程找好安全休息点后，那就可以安心去休息了。此方法就是让线程去休息，真正进入等待状态。</p>
+</blockquote>
+<pre><code class="language-java">private final boolean parkAndCheckInterrupt() {
+     LockSupport.park(this);//调用park()使线程进入waiting状态
+     return Thread.interrupted();//如果被唤醒，查看自己是不是被中断的。
+}
+</code></pre>
+<p><strong>park()会让当前线程进入waiting状态。在此状态下，有两种途径可以唤醒该线程：1）被unpark()；2）被interrupt()。</strong></p>
+<h3 id="小结"><a class="header" href="#小结">小结</a></h3>
+<h4 id="入队列流程"><a class="header" href="#入队列流程">入队列流程</a></h4>
+<ol>
+<li>结点进入队尾后，检查状态，找到安全休息点；</li>
+<li>调用park()进入waiting状态，等待unpark()或interrupt()唤醒自己；</li>
+<li>被唤醒后，看自己是不是有资格能拿到号。如果拿到，head指向当前结点，并返回从入队到拿到号的整个过程中是否被中断过；如果没拿到，继续流程1。</li>
+</ol>
+<h4 id="获取独占锁总体流程"><a class="header" href="#获取独占锁总体流程"><strong>获取独占锁总体流程</strong></a></h4>
+<ul>
+<li>调用自定义同步器的tryAcquire()尝试直接去获取资源，如果成功则直接返回；</li>
+<li>没成功，则addWaiter()将该线程加入等待队列的尾部，并标记为独占模式；</li>
+<li>acquireQueued()使线程在等待队列中休息，有机会时（轮到自己，会被unpark()）会去尝试获取资源。获取到资源后才返回。</li>
+<li>如果在整个等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt()，将中断补上。</li>
+</ul>
+<p><strong>流程图</strong></p>
+<p><img src="https://weisanju.github.io/note/java/images/aqs_clh_acquire.png" alt="" /></p>
+<h2 id="释放独占锁"><a class="header" href="#释放独占锁">释放独占锁</a></h2>
+<blockquote>
+<p>此方法是独占模式下线程释放共享资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即state=0）,它会唤醒等待队列里的其他线程来获取资源。</p>
+</blockquote>
+<pre><code class="language-java">public final boolean release(int arg) {
+    if (tryRelease(arg)) {
+        Node h = head;//找到头结点
+        if (h != null &amp;&amp; h.waitStatus != 0)
+            unparkSuccessor(h);//唤醒等待队列里的下一个线程
+        return true;
+    }
+    return false;
+}
+</code></pre>
+<h3 id="unparksuccessor"><a class="header" href="#unparksuccessor"><em>unparkSuccessor</em></a></h3>
+<blockquote>
+<p>此方法用于唤醒等待队列中下一个线程,用unpark()唤醒等待队列中最前边的那个未放弃线程</p>
+</blockquote>
+<pre><code class="language-java">private void unparkSuccessor(Node node) {
+    //这里，node一般为当前线程所在的结点。
+    int ws = node.waitStatus;
+    if (ws &lt; 0)//置零当前线程所在的结点状态，允许失败。
+        compareAndSetWaitStatus(node, ws, 0);
+
+    Node s = node.next;//找到下一个需要唤醒的结点s
+    if (s == null || s.waitStatus &gt; 0) {//如果为空或已取消
+        s = null;
+        for (Node t = tail; t != null &amp;&amp; t != node; t = t.prev) // 从后向前找。
+            if (t.waitStatus &lt;= 0)//从这里可以看出，&lt;=0的结点，都是还有效的结点。
+                s = t;
+    }
+    if (s != null)
+        LockSupport.unpark(s.thread);//唤醒
+}
+</code></pre>
+<h2 id="取消结点"><a class="header" href="#取消结点">取消结点</a></h2>
+<blockquote>
+<p>因为中断和超时导致的 结点取消</p>
+</blockquote>
+<h3 id="code"><a class="header" href="#code">Code</a></h3>
+<pre><code class="language-java">private void cancelAcquire(Node node) {
+    // Ignore if node doesn't exist
+    if (node == null)
+        return;
+
+    node.thread = null;
+
+    // Skip cancelled predecessors
+    Node pred = node.prev;
+    while (pred.waitStatus &gt; 0)
+        node.prev = pred = pred.prev;
+
+    // predNext is the apparent node to unsplice. CASes below will
+    // fail if not, in which case, we lost race vs another cancel
+    // or signal, so no further action is necessary.
+    Node predNext = pred.next;
+
+    // Can use unconditional write instead of CAS here.
+    // After this atomic step, other Nodes can skip past us.
+    // Before, we are free of interference from other threads.
+    node.waitStatus = Node.CANCELLED;
+
+    // If we are the tail, remove ourselves.
+    if (node == tail &amp;&amp; compareAndSetTail(node, pred)) {
+        compareAndSetNext(pred, predNext, null);
+    } else {
+        // If successor needs signal, try to set pred's next-link
+        // so it will get one. Otherwise wake it up to propagate.
+        int ws;
+        if (pred != head &amp;&amp;
+            ((ws = pred.waitStatus) == Node.SIGNAL ||
+             (ws &lt;= 0 &amp;&amp; compareAndSetWaitStatus(pred, ws, Node.SIGNAL))) &amp;&amp;
+            pred.thread != null) {
+            Node next = node.next;
+            if (next != null &amp;&amp; next.waitStatus &lt;= 0)
+                compareAndSetNext(pred, predNext, next);
+        } else {
+            unparkSuccessor(node);
+        }
+
+        node.next = node; // help GC
+    }
+}
+</code></pre>
+<h3 id="流程图"><a class="header" href="#流程图"><strong>流程图</strong></a></h3>
+<p><img src="https://weisanju.github.io/note/java/images/aqs_canceled.png" alt="" /></p>
+<h3 id="无效结点的移除逻辑"><a class="header" href="#无效结点的移除逻辑"><strong>无效结点的移除逻辑</strong></a></h3>
+<p><strong>分两步</strong></p>
+<ul>
+<li>第一步 将 当前结点 前驱的 后继 指向 当前结点的后继</li>
+</ul>
+<p><strong>伪代码</strong></p>
+<pre><code class="language-c">Node prev = current.prev;
+Node next = current.next;
+prev.next = next;
+</code></pre>
+<p>这一步可能会产生冲突</p>
+<p>如果前驱被取消，则唤醒后继</p>
+<p>如果后继被取消，不做任何处理</p>
+<ul>
+<li>第二步 每个结点各自 维护自己 的<em>prev</em> 指针</li>
+</ul>
+<p><strong>伪代码</strong></p>
+<p><strong>在调用取消结点时</strong></p>
+<pre><code class="language-java">private void cancelAcquire(Node node){
+    ...
+    Node pred = node.prev;
+	while (pred.waitStatus &gt; 0)
+		node.prev = pred = pred.prev;
+    ...
+}
+
+</code></pre>
+<p><strong>结点入队列 结点被唤醒时，且没有获取到锁</strong></p>
+<pre><code class="language-java">//判断是否应该阻塞
+shouldParkAfterFailedAcquire(){
+    ...
+    do {
+	node.prev = pred = pred.prev;
+	} while (pred.waitStatus &gt; 0);
+	pred.next = node;
+    ...
+}
+//入队列
+acquireQueued(){
+    ...
+    for (;;) {
+        final Node p = node.predecessor();
+        if (p == head &amp;&amp; tryAcquire(arg)) {
+            setHead(node);
+            p.next = null; // help GC
+            failed = false;
+            return interrupted;
+        }
+        if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+            parkAndCheckInterrupt())
+            interrupted = true;
+        }
+    ...
+}
+
+</code></pre>
+<h2 id="获取共享锁入口"><a class="header" href="#获取共享锁入口">获取共享锁入口</a></h2>
+<blockquote>
+<p>它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止.整个过程忽略中断</p>
+</blockquote>
+<pre><code class="language-java">public final void acquireShared(int arg) {
+    if (tryAcquireShared(arg) &lt; 0)
+        doAcquireShared(arg);
+}
+</code></pre>
+<h3 id="tryacquireshared"><a class="header" href="#tryacquireshared"><em>tryAcquireShared</em></a></h3>
+<ul>
+<li>
+<p>该方法由子类实现</p>
+</li>
+<li>
+<p><strong>获取指定量的共享锁</strong></p>
+</li>
+<li>
+<p>返回值负值代表获取失败；0代表获取成功，但没有剩余资源；正数表示获取成功，还有剩余资源</p>
+</li>
+</ul>
+<h3 id="doacquireshared"><a class="header" href="#doacquireshared"><em>doAcquireShared</em></a></h3>
+<pre><code class="language-java">private void doAcquireShared(int arg) {
+    final Node node = addWaiter(Node.SHARED); //加入队列尾部
+    boolean failed = true; //是否成功标志
+    try {
+        boolean interrupted = false; //等待过程中是否被中断过的标志
+        for (;;) {
+            final Node p = node.predecessor(); //前驱
+            if (p == head) { //如果到head的下一个，因为head是拿到资源的线程，此时node被唤醒，很可能是head用完资源来唤醒自己的
+                int r = tryAcquireShared(arg);  //尝试获取资源
+                if (r &gt;= 0) { //获取资源成功
+                    setHeadAndPropagate(node, r);  //将head指向自己，还有剩余资源可以再唤醒之后的线程
+                    p.next = null; // help GC
+                    if (interrupted) //如果等待过程中被打断过，此时将中断补上。
+                        selfInterrupt();
+                    failed = false;
+                    return;
+                }
+            }
+            //判断状态，寻找安全点，进入waiting状态，等着被unpark()或interrupt()
+            if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                parkAndCheckInterrupt())
+                interrupted = true;
+        }
+    } finally {
+        if (failed)
+            cancelAcquire(node);
+    }
+}
+</code></pre>
+<h3 id="setheadandpropagate"><a class="header" href="#setheadandpropagate"><em>setHeadAndPropagate</em></a></h3>
+<pre><code class="language-java">private void setHeadAndPropagate(Node node, int propagate) {
+    Node h = head; // Record old head for check below,记录唤醒当前结点的前驱结点，也就是头结点
+    setHead(node);
+    /*
+     * Try to signal next queued node if:
+     *   Propagation was indicated by caller,
+     *     or was recorded (as h.waitStatus either before
+     *     or after setHead) by a previous operation
+     *     (note: this uses sign-check of waitStatus because
+     *      PROPAGATE status may transition to SIGNAL.)
+     * and
+     *   The next node is waiting in shared mode,
+     *     or we don't know, because it appears null
+     *
+     * The conservatism in both of these checks may cause
+     * unnecessary wake-ups, but only when there are multiple
+     * racing acquires/releases, so most need signals now or soon
+     * anyway.
+     */
+    if (propagate &gt; 0 || h == null || h.waitStatus &lt; 0 ||
+        (h = head) == null || h.waitStatus &lt; 0) {
+        Node s = node.next;
+        if (s == null || s.isShared())
+            doReleaseShared();
+    }
+}
+</code></pre>
+<ul>
+<li>
+<p>如果 propagate 大于0，说明资源仍有余量 可以唤醒</p>
+</li>
+<li>
+<p>如果 <em>propagate = 0</em>，但 头节点的状态 小于0，说明此时处于 <em>PROPAGATE</em>  状态 或者   <em>SIGNAL</em> 状态 也可以释放资源</p>
+</li>
+</ul>
+<h2 id="释放共享锁入口"><a class="header" href="#释放共享锁入口">释放共享锁入口</a></h2>
+<blockquote>
+<p>它会释放指定量的资源，如果成功释放且允许唤醒等待线程，它会唤醒等待队列里的其他线程来获取资源</p>
+</blockquote>
+<pre><code class="language-java">public final boolean releaseShared(int arg) {
+    if (tryReleaseShared(arg)) {//尝试释放资源
+        doReleaseShared();//唤醒后继结点
+        return true;
+    }
+    return false;
+}
+</code></pre>
+<ul>
+<li>
+<p>一句话总结：<strong>释放掉资源后，唤醒后继</strong>。</p>
+</li>
+<li>
+<p>跟独占模式下的release()区别：独占模式下的tryRelease()在完全释放掉资源（state=0）后，才会返回true去唤醒其他线程，这主要是基于独占下可重入的考量；</p>
+</li>
+<li>
+<p>例如，资源总量是13，A（5）和B（7）分别获取到资源并发运行，C（4）来时只剩1个资源就需要等待。A在运行过程中释放掉2个资源量，然后tryReleaseShared(2)返回true唤醒C，C一看只有3个仍不够继续等待；随后B又释放2个，tryReleaseShared(2)返回true唤醒C，C一看有5个够自己用了，然后C就可以跟A和B一起运行。而ReentrantReadWriteLock读锁的tryReleaseShared()只有在完全释放掉资源（state=0）才返回true，所以自定义同步器可以根据需要决定tryReleaseShared()的返回值。</p>
+</li>
+</ul>
+<h3 id="doreleaseshared"><a class="header" href="#doreleaseshared"><em>doReleaseShared</em></a></h3>
+<p><strong>分析</strong></p>
+<p>每次循环中重新读取一次head，配合<em>if(h == head) break;</em>，循环检测到head没有变化时就会退出循环</p>
+<p>head变化一定是因为：acquire thread被唤醒，之后它成功获取锁，然后setHead设置了新head。</p>
+<pre><code>所以设置这种中间状态的head的status为PROPAGATE，让其status又变成负数，这样可能被 被唤醒线程
+（因为正常来讲，被唤醒线程的前驱，也就是head会被设置为0的，所以被唤醒线程发现head不为0，就会知道自己应该去唤醒自己的后继了） 检测到。
+如果状态为PROPAGATE，直接判断head是否变化。
+两个continue保证了进入那两个分支后，只有当CAS操作成功后，才可能去执行if(h == head) break;，才可能退出循环。
+if(h == head) break;保证了，只要在某个循环的过程中有线程刚获取了锁且设置了新head，就会再次循环。目的当然是为了再次执行unparkSuccessor(h)，即唤醒队列中第一个等待的线程。
+</code></pre>
+<p><strong>代码</strong></p>
+<ul>
+<li>如果头节点为 SIGNAL，说明后继结点在等候，则先将自身结点置为0，然后唤醒后继</li>
+<li>如果头结点为 0，说明h的后继所代表的线程已经被唤醒或即将被唤醒，这种状态是一个中间状态，</li>
+</ul>
+<pre><code class="language-java">private void doReleaseShared() {
+    for (;;) {
+        Node h = head; //循环中重新读取一次head
+        if (h != null &amp;&amp; h != tail) { //判断队列是否至少有两个node，如果队列从来没有初始化过（head为null），或者head就是tail，那么中间逻辑直接不走
+            int ws = h.waitStatus;
+            if (ws == Node.SIGNAL) { //如果状态为SIGNAL,说明h的后继是需要被通知的
+                if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))//只要head成功得从SIGNAL修改为0，那么head的后继的代表线程肯定会被唤醒了。
+                    continue;
+                unparkSuccessor(h);//唤醒后继
+            }
+            // 如果状态为0，说明h的后继所代表的线程已经被唤醒或即将被唤醒，并且这个中间状态即将消失,要么由于acquire thread获取锁失败再次设置head为 SIGNAL并再次阻塞,要么由于acquire thread获取锁成功而将自己（head后继）设置为新head并且只要head后继不是队尾，那么新head肯定为SIGNAL。
+            else if (ws == 0 &amp;&amp;
+                     !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
+                continue;
+        }
+        if (h == head)// head发生变化
+           break;
+    }
+}
+</code></pre>
+<h1 id="个人理解"><a class="header" href="#个人理解">个人理解</a></h1>
+<h2 id="aqs为什么要用双向队列"><a class="header" href="#aqs为什么要用双向队列">AQS为什么要用双向队列？</a></h2>
+<ul>
+<li>
+<p>如果 不需要支持 中断或超时，则可以使用 单向队列，所有线程入队列之后，只可能会被阻塞直到获取锁时被唤醒</p>
+</li>
+<li>
+<p>但如果需要支持中断或超时，则会造成链条中 出现许多 无效结点，如果使用单向链表，很难凭借无锁设计 实现原子的 结点的移除，而且被取消的结点 查找自己的前驱比较 麻烦</p>
+</li>
+<li>
+<p><strong>AQS 使用双向队列 处理 无效结点的移除</strong></p>
+</li>
+<li>
+<p><strong>移除无效结点</strong> 重要原则：断开其他结点对当前结点的引用 ： 前驱的引用，断开后继的引用, 而 prev结点由各个结点各自维护</p>
+</li>
+</ul>
+<p><strong>使用双向队列的优点</strong></p>
+<p><strong>减少数据竞争</strong> 取消结点时，在 维护 前驱的 next引用时，不影响 prev 引用的 使用，在决定下一个被唤醒者时， 只将 next结点作为一种优化路径，next为空或者 已取消 则使用prev结点查找 下一个候选者。</p>
+<h2 id="aqs的核心"><a class="header" href="#aqs的核心">AQS的核心</a></h2>
+<blockquote>
+<p>AQS的核心在于 如何 原子的或者 保证队列结构安全的情况 下  将  取消的 结点 及时的 移出队列</p>
+</blockquote>
+<h2 id="aqs共享锁工作机制"><a class="header" href="#aqs共享锁工作机制">AQS共享锁工作机制</a></h2>
+<ul>
+<li>成功获取 共享锁 时候，会尝试 唤醒其他线程来 抢占资源</li>
+<li>释放共享锁的时候 尝试唤醒其他线程来抢占资源</li>
+</ul>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="java基础"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../5.java基础_多线程与锁/线程池.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../5.java基础_多线程与锁/线程池.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

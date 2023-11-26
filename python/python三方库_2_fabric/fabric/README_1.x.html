@@ -1,0 +1,749 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>README_1.x - Python</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item "><a href="../../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item expanded "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/README_1.x.html" class="active">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Python</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/python/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="fabric-是什么"><a class="header" href="#fabric-是什么">Fabric 是什么？</a></h2>
+<p>Python部署工具</p>
+<blockquote>
+<p>Fabric 是一个 Python (2.5-2.7) 的库和命令行工具，用来提高基于 SSH 的应用部署和系统管理效率。</p>
+</blockquote>
+<h2 id="hello-fab"><a class="header" href="#hello-fab">Hello, <code>fab</code></a></h2>
+<pre><code class="language-python">def hello():
+    print(&quot;Hello world!&quot;)
+</code></pre>
+<p>把上述代码放在你当前的工作目录中一个名为 <code>fabfile.py</code> 的 Python 模块文件中。</p>
+<p>然后这个 <code>hello</code> 函数就可以用 <code>fab</code> 工具（随 Fabric 一并安装的命令）来执行了，输出的结果会是这样：</p>
+<pre><code class="language-shell">$ fab hello
+Hello world!
+
+Done.
+</code></pre>
+<p>把上述代码放在你当前的工作目录中一个名为 <code>fabfile.py</code> 的 Python 模块文件中。然后这个 <code>hello</code> 函数就可以用 <code>fab</code> 工具（随 Fabric 一并安装的命令）来执行了，输出的结果会是这样：</p>
+<p><code>fab</code> 工具所做的只是导入 fabfile 并执行了相应一个或多个的函数，这里并没有任何魔法——任何你能在一个普通 Python 模块中做的事情同样可以在一个 fabfile 中完成。</p>
+<h2 id="任务参数"><a class="header" href="#任务参数">任务参数</a></h2>
+<p>和你平时的 Python 编程一样，给任务函数传递参数很有必要``。Fabric 支持 Shell 兼容的参数用法： <code>&lt;任务名&gt;:&lt;参数&gt;, &lt;关键字参数名&gt;=&lt;参数值&gt;,...</code> 用起来就是这样，下面我们用一个 say hello 的实例来展开说明一下：</p>
+<pre><code>def hello(name=&quot;world&quot;):
+    print(&quot;Hello %s!&quot; % name)
+</code></pre>
+<pre><code class="language-python">$ fab hello:name=Jeff
+Hello Jeff!
+
+Done.
+</code></pre>
+<h2 id="本地命令"><a class="header" href="#本地命令">本地命令</a></h2>
+<p>Fabric 的设计目的更是为了使用它自己的 API，包括执行 Shell 命令、传送文件等函数（或操作）接口。</p>
+<p>假设我们需要为一个 web 应用创建 fabfile 。具体的情景如下：这个 web 应用的代码使用 git 托管在一台远程服务器 <code>vcshost</code> 上，我们把它的代码库克隆到了本地 <code>localhost</code> 中。</p>
+<p>我们希望在我们把修改后的代码 push 回 vcshost 时，自动把新的版本安装到另一台远程服务器 <code>my_server</code> 上</p>
+<p>我们将通过自动化本地和远程 git 命令来完成这些工作。</p>
+<p>关于 fabfile 文件放置位置的最佳时间是项目的根目录：</p>
+<pre><code class="language-python">.
+|-- __init__.py
+|-- app.wsgi
+|-- fabfile.py &lt;-- our fabfile!
+|-- manage.py
+`-- my_app
+    |-- __init__.py
+    |-- models.py
+    |-- templates
+    |   `-- index.html
+    |-- tests.py
+    |-- urls.py
+    `-- views.py
+</code></pre>
+<p>作为起步，我们希望先执行测试准备好部署后，再提交到 VCS（版本控制系统）：</p>
+<pre><code class="language-python">from fabric.api import local
+
+def prepare_deploy():
+    local(&quot;./manage.py test my_app&quot;)
+    local(&quot;git add -p &amp;&amp; git commit&quot;)
+    local(&quot;git push&quot;)
+</code></pre>
+<p>这段代码很简单，导入一个 Fabric API： <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> ，然后用它执行本地 Shell 命令并与之交互，剩下的 Fabric API 也都类似——它们都只是 Python。</p>
+<h2 id="用你的方式来组织"><a class="header" href="#用你的方式来组织">用你的方式来组织</a></h2>
+<p>比如说，把任务分割成多个子任务：</p>
+<pre><code class="language-Python">from fabric.api import local
+
+def test():
+    local(&quot;./manage.py test my_app&quot;)
+
+def commit():
+    local(&quot;git add -p &amp;&amp; git commit&quot;)
+
+def push():
+    local(&quot;git push&quot;)
+
+def prepare_deploy():
+    test()
+    commit()
+    push()
+</code></pre>
+<p>这个 <code>prepare_deploy</code> 任务仍可以像之前那样调用，但现在只要你愿意，就可以调用更细粒度的子任务。</p>
+<h2 id="故障"><a class="header" href="#故障">故障</a></h2>
+<p>我们的基本案例已经可以正常工作了，但如果测试失败了会怎样？我们应该抓住机会即使停下任务，并在部署之前修复这些失败的测试。</p>
+<p>Fabric 会检查被调用程序的返回值，如果这些程序没有干净地退出，Fabric 会终止操作。下面我们就来看看如果一个测试用例遇到错误时会发生什么：</p>
+<pre><code class="language-shell">$ fab prepare_deploy
+[localhost] run: ./manage.py test my_app
+Creating test database...
+Creating tables
+Creating indexes
+.............E............................
+======================================================================
+ERROR: testSomething (my_project.my_app.tests.MainTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+[...]
+
+----------------------------------------------------------------------
+Ran 42 tests in 9.138s
+
+FAILED (errors=1)
+Destroying test database...
+
+Fatal error: local() encountered an error (return code 2) while executing './manage.py test my_app'
+
+Aborting.
+</code></pre>
+<p>但如果我们想更加灵活，给用户另一个选择，该怎么办？一个名为 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/env.html#warn-only">warn_only</a> 的设置（或着说 <strong>环境变量</strong> ，通常缩写为 <strong>env var</strong> ）可以把退出换为警告，以提供更灵活的错误处理。</p>
+<p>让我们把这个设置丢到 <code>test</code> 函数中，然后注意这个 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 调用的结果：</p>
+<pre><code class="language-python">from __future__ import with_statement
+from fabric.api import local, settings, abort
+from fabric.contrib.console import confirm
+
+def test():
+    with settings(warn_only=True):
+        result = local('./manage.py test my_app', capture=True)
+    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
+        abort(&quot;Aborting at user request.&quot;)
+
+[...]
+</code></pre>
+<pre><code class="language-python">from __future__ import with_statement
+from fabric.api import local, settings, abort
+from fabric.contrib.console import confirm
+
+def test():
+    with settings(warn_only=True):
+        result = local('./manage.py test my_app', capture=True)
+    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
+        abort(&quot;Aborting at user request.&quot;)
+
+[...]
+</code></pre>
+<p>为了引入这个新特性，我们需要添加一些新东西：</p>
+<ul>
+<li>在 Python 2.5 中，需要从 <code>__future__</code> 中导入 <code>with</code> ；</li>
+<li>Fabric <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/contrib/console.html#module-fabric.contrib.console"><code>contrib.console</code></a> 子模块提供了 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/contrib/console.html#fabric.contrib.console.confirm"><code>confirm</code></a> 函数，用于简单的 yes/no 提示。</li>
+<li><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/context_managers.html#fabric.context_managers.settings"><code>settings</code></a> 上下文管理器提供了特定代码块特殊设置的功能。</li>
+<li><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 这样运行命令的操作会返回一个包含执行结果（ <code>.failed</code> 或 <code>.return_code</code> 属性）的对象。</li>
+<li><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/utils.html#fabric.utils.abort"><code>abort</code></a> 函数用于手动停止任务的执行。</li>
+</ul>
+<h2 id="建立连接"><a class="header" href="#建立连接">建立连接</a></h2>
+<p>让我们回到 fabfile 的主旨：定义一个 <code>deploy</code> 任务，让它在一台或多台远程服务器上运行，并保证代码是最新的：</p>
+<pre><code class="language-python">def deploy():
+    code_dir = '/srv/django/myproject'
+    with cd(code_dir):
+        run(&quot;git pull&quot;)
+        run(&quot;touch app.wsgi&quot;)
+</code></pre>
+<p>这里再次引入了一些新的概念：</p>
+<ul>
+<li>Fabric 是 Python——所以我们可以自由地使用变量、字符串等常规的 Python 代码；</li>
+<li><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/context_managers.html#fabric.context_managers.cd"><code>cd</code></a> 函数是一个简易的前缀命令，相当于运行 <code>cd /to/some/directory</code> ，和 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/context_managers.html#fabric.context_managers.lcd"><code>lcd</code></a> 函数类似，只不过后者是在本地执行。</li>
+<li>~fabric.operations.run和 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 类似，不过是在 <strong>远程</strong> 而非本地执行。</li>
+</ul>
+<p>我们还需要保证在文件顶部导入了这些新函数：</p>
+<pre><code class="language-python">from __future__ import with_statement
+from fabric.api import local, settings, abort, run, cd
+from fabric.contrib.console import confirm
+</code></pre>
+<pre><code class="language-python">$ fab deploy
+No hosts found. Please specify (single) host string for connection: my_server
+[my_server] run: git pull
+[my_server] out: Already up-to-date.
+[my_server] out:
+[my_server] run: touch app.wsgi
+
+Done.
+</code></pre>
+<p>我们并没有在 fabfile 中指定任何连接信息，所以 Fabric 依旧不知道该在哪里运行这些远程命令。遇到这种情况时，Fabric 会在运行时提示我们。连接的定义使用 SSH 风格的“主机串”（例如： <a href="mailto:user@host">user@host</a>:port ），默认使用你的本地用户名——所以在这个例子中，我们只需要指定主机名 <code>my_server</code> 。</p>
+<h3 id="与远程交互"><a class="header" href="#与远程交互">与远程交互</a></h3>
+<p>如果你已经得到了代码，说明 <code>git pull</code> 执行非常顺利——但如果这是第一次部署呢？最好也能应付这样的情况，这时应该使用 <code>git clone</code> 来初始化代码库：</p>
+<pre><code class="language-python">def deploy():
+    code_dir = '/srv/django/myproject'
+    with settings(warn_only=True):
+        if run(&quot;test -d %s&quot; % code_dir).failed:
+            run(&quot;git clone user@vcshost:/path/to/repo/.git %s&quot; % code_dir)
+    with cd(code_dir):
+        run(&quot;git pull&quot;)
+        run(&quot;touch app.wsgi&quot;)
+</code></pre>
+<p>和上面调用 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 一样， <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.run"><code>run</code></a> 也提供基于 Shell 命令构建干净的 Python 逻辑。</p>
+<p><strong>git交互</strong></p>
+<p>这里最有趣的部分是 <code>git clone</code> ：因为我们是用 git 的 SSH 方法来访问 git 服务器上的代码库，这意味着我们远程执行的 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.run"><code>run</code></a> 需要自己提供身份验证。</p>
+<p>旧版本的 Fabric（和其他类似的高层次 SSH 库）像在监狱里一样运行远程命令，无法提供本地交互。当你迫切需要输入密码或者与远程程序交互时，这就很成问题。</p>
+<p>Fabric 1.0 和后续的版本突破了这个限制，并保证你和另一端的会话交互。让我们看看当我们在一台没有 git checkout 的新服务器上运行更新后的 deploy 任务时会发生什么：</p>
+<pre><code class="language-shell">$ fab deploy
+No hosts found. Please specify (single) host string for connection: my_server
+[my_server] run: test -d /srv/django/myproject
+
+Warning: run() encountered an error (return code 1) while executing 'test -d /srv/django/myproject'
+
+[my_server] run: git clone user@vcshost:/path/to/repo/.git /srv/django/myproject
+[my_server] out: Cloning into /srv/django/myproject...
+[my_server] out: Password: &lt;enter password&gt;
+[my_server] out: remote: Counting objects: 6698, done.
+[my_server] out: remote: Compressing objects: 100% (2237/2237), done.
+[my_server] out: remote: Total 6698 (delta 4633), reused 6414 (delta 4412)
+[my_server] out: Receiving objects: 100% (6698/6698), 1.28 MiB, done.
+[my_server] out: Resolving deltas: 100% (4633/4633), done.
+[my_server] out:
+[my_server] run: git pull
+[my_server] out: Already up-to-date.
+[my_server] out:
+[my_server] run: touch app.wsgi
+
+Done.
+</code></pre>
+<p>注意那个 <code>Password:</code> 提示——那就是我们在 web 服务器上的远程 <code>git</code> 应用在请求 git 密码。我们可以在本地输入密码，然后像往常一样继续克隆。</p>
+<p>参见</p>
+<p><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/interactivity.html"><em>与远程程序集成</em></a></p>
+<h3 id="预定义连接"><a class="header" href="#预定义连接">预定义连接</a></h3>
+<p>在运行输入连接信息已经是非常古老的做法了，Fabric 提供了一套在 fabfile 或命令行中指定服务器信息的简单方法</p>
+<p>这里我们不展开说明，但是会展示最常用的方法：设置全局主机列表 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/env.html#hosts">env.hosts</a> 。</p>
+<p><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/env.html"><em>env</em></a> 是一个全局的类字典对象，是 Fabric 很多设置的基础，也能在 with 表达式中使用（事实上，前面见过的 <code>~fabric.context_managers.settings</code> 就是它的一个简单封装）。因此，我们可以在模块层次上，在 fabfile 的顶部附近修改它，就像这样：</p>
+<pre><code class="language-python">from __future__ import with_statement
+from fabric.api import *
+from fabric.contrib.console import confirm
+
+env.hosts = ['my_server']
+
+def test():
+    do_test_stuff()
+</code></pre>
+<p>当 <code>fab</code> 加载 fabfile 时，将会执行我们对 <code>env</code> 的修改并保存设置的变化。最终结果如上所示：我们的 <code>deploy</code> 任务将在 <code>my_server</code> 上运行。</p>
+<p>这就是如何指定 Fabric 一次性控制多台远程服务器的方法： <code>env.hosts</code> 是一个列表， <code>fab</code> 对它迭代，对每个连接运行指定的任务。</p>
+<p>参见</p>
+<p><a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/env.html"><em>环境字典 env</em></a>, <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/execution.html#host-lists">How host lists are constructed</a></p>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
+<p>虽然经历了很多，我们的 fabfile 文件仍然相当短。下面是它的完整内容：</p>
+<pre><code class="language-python">from __future__ import with_statement
+from fabric.api import *
+from fabric.contrib.console import confirm
+
+env.hosts = ['my_server']
+
+def test():
+    with settings(warn_only=True):
+        result = local('./manage.py test my_app', capture=True)
+    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
+        abort(&quot;Aborting at user request.&quot;)
+
+def commit():
+    local(&quot;git add -p &amp;&amp; git commit&quot;)
+
+def push():
+    local(&quot;git push&quot;)
+
+def prepare_deploy():
+    test()
+    commit()
+    push()
+
+def deploy():
+    code_dir = '/srv/django/myproject'
+    with settings(warn_only=True):
+        if run(&quot;test -d %s&quot; % code_dir).failed:
+            run(&quot;git clone user@vcshost:/path/to/repo/.git %s&quot; % code_dir)
+    with cd(code_dir):
+        run(&quot;git pull&quot;)
+        run(&quot;touch app.wsgi&quot;)
+</code></pre>
+<p>但它已经涉及到了 Fabric 中的很多功能：</p>
+<ul>
+<li>定义 fabfile 任务，并用 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/usage/fab.html"><em>fab</em></a> 执行；</li>
+<li>用 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 调用本地 shell 命令；</li>
+<li>通过 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/context_managers.html#fabric.context_managers.settings"><code>settings</code></a> 修改 env 变量；</li>
+<li>处理失败命令、提示用户、手动取消任务；</li>
+<li>以及定义主机列表、使用 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.run"><code>run</code></a> 来执行远程命令。</li>
+</ul>
+<p>还有更多这里没有涉及到的内容，你还可以看看所有“参见”中的链接，以及 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/index.html"><em>索引页</em></a> 的内容表。</p>
+<script src="/note/python/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/python/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/python/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="python三方库"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../python三方库_2_fabric/fabric/Configuration.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../python三方库_2_fabric/invoke/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../python三方库_2_fabric/fabric/Configuration.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../python三方库_2_fabric/invoke/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

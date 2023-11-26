@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>LinuxIO模型演变 - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item expanded "><a href="../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../23.IO/Channel.html">Channel</a></li><li class="chapter-item expanded "><a href="../23.IO/LinuxIO模型演变.html" class="active">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<p>在互联网中提起网络，我们都会避免不了讨论高并发、百万连接。而此处的百万连接的实现，脱离不了网络 IO 的选择，因此本文作为一篇个人学习的笔记，特此进行记录一下整个网络 IO 的发展演变过程。以及目前广泛使用的网络模型。</p>
+<h3 id="1网络-io-的发展"><a class="header" href="#1网络-io-的发展"><strong>1.网络 IO 的发展</strong></a></h3>
+<p>在本节内容中，我们将一步一步介绍网络 IO 的演变发展过程。介绍完发展过程后，再对网络 IO 中几组容易混淆的概念进行对比、分析。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HETu42nzJ6nvmrltaxMIlZJdXr2TaY9pPbZoSMASuG5NhCh4sQzIXPDA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<h4 id="11-网络-io-的各个发展阶段"><a class="header" href="#11-网络-io-的各个发展阶段">1.1 网络 IO 的各个发展阶段</a></h4>
+<p>通常，我们在此讨论的网络 IO 一般都是针对 linux 操作系统而言。网络 IO 的发展过程是随着 linux 的内核演变而变化，因此网络 IO 大致可以分为如下几个阶段：</p>
+<p><strong>1. 阻塞 IO(BIO)</strong>
+<strong>2. 非阻塞 IO(NIO)</strong>
+<strong>3. IO 多路复用第一版(select/poll)</strong>
+<strong>4. IO 多路复用第二版(epoll)</strong>
+<strong>5. 异步 IO(AIO)</strong></p>
+<p>而每一个阶段，都是因为当前的网络有一些缺陷，因此又在不断改进该缺陷。这是<strong>网络 IO 一直演变过程中的本质</strong>。下面将对上述几个阶段进行介绍，并对每个阶段的网络 IO 解决了哪些问题、优点、缺点进行剖析。</p>
+<p><strong>1.2 网络的两个阶段</strong></p>
+<p>在网络中，我们通常可以将其广义上划分为以下两个阶段：</p>
+<p><strong>第一阶段：硬件接口到内核态</strong>
+<strong>第二阶段：内核态到用户态</strong></p>
+<p>本人理解：我们通常上网，大部分数据都是通过网线传递的。因此对于两台计算机而言，要进行网络通信，其数据都是先从应用程序传递到传输层(TCP/UDP)到达内核态，然后再到网络层、数据链路层、物理层，接着数据传递到硬件网卡，最后通过网络传输介质传递到对端机器的网卡，然后再一步一步数据从网卡传递到内核态，最后再拷贝到用户态。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEZDwwibVibDL8RCj0Vhia4xMMbO5FqvRcdIEicjYyjQSpBe4kanbfFbRrRg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<h4 id="13-阻塞-io-和非阻塞-io-的区别"><a class="header" href="#13-阻塞-io-和非阻塞-io-的区别">1.3 阻塞 IO 和非阻塞 IO 的区别</a></h4>
+<p>根据 1.2 节的内容，我们可以知道，网络中的数据传输从网络传输介质到达目的机器，需要如上两个阶段。此处我们把从<strong>硬件到内核态</strong>这一阶段，是否发生阻塞等待，可以将网络分为<strong>阻塞 IO</strong>和<strong>非阻塞 IO</strong>。如果用户发起了读写请求，但内核态数据还未准备就绪，该阶段不会阻塞用户操作，内核立马返回，则称为非阻塞 IO。如果该阶段一直阻塞用户操作。直到内核态数据准备就绪，才返回。这种方式称为阻塞 IO。</p>
+<p>因此，区分阻塞 IO 和非阻塞 IO 主要看第一阶段是否阻塞用户操作。</p>
+<h4 id="14-同步-io-和异步-io-的区别"><a class="header" href="#14-同步-io-和异步-io-的区别">1.4 同步 IO 和异步 IO 的区别</a></h4>
+<p>从前面我们知道了，数据的传递需要两个阶段，在此处只要任何一个阶段会阻塞用户请求，都将其称为同步 IO，两个阶段都不阻塞，则称为异步 IO。</p>
+<p>在目前所有的操作系统中，linux 中的 epoll、mac 的 kqueue 都属于同步 IO，因为其在第二阶段(数据从内核态到用户态)都会发生拷贝阻塞。而只有 windows 中的 IOCP 才真正属于异步 IO，即 AIO。</p>
+<h3 id="2阻塞-io"><a class="header" href="#2阻塞-io"><strong>2.阻塞 IO</strong></a></h3>
+<p>在本节，我们将介绍最初的阻塞 IO，阻塞 IO 英文为 blocking IO，又称为 BIO。根据前面的介绍，阻塞 IO 主要指的是第一阶段(硬件网卡到内核态)。</p>
+<h4 id="21-阻塞-io-的概念"><a class="header" href="#21-阻塞-io-的概念">2.1 阻塞 IO 的概念</a></h4>
+<p>阻塞 IO，顾名思义当用户发生了系统调用后，如果数据未从网卡到达内核态，内核态数据未准备好，此时会一直阻塞。直到数据就绪，然后从内核态拷贝到用户态再返回。具体过程可以参考 2.2 的图示。</p>
+<h4 id="22-阻塞-io-的过程"><a class="header" href="#22-阻塞-io-的过程">2.2 阻塞 IO 的过程</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEGibuyiacHXVXK7gdQ95jEUAwSuy3s6G5v61Tms5R368FXesWOhiajiaq4A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<h4 id="23-阻塞-io-的缺点"><a class="header" href="#23-阻塞-io-的缺点">2.3 阻塞 IO 的缺点</a></h4>
+<p>在一般使用阻塞 IO 时，都需要配置多线程来使用，最常见的模型是<strong>阻塞 IO+多线程</strong>，每个连接一个单独的线程进行处理。</p>
+<p><strong>我们知道，一般一个程序可以开辟的线程是有限的，而且开辟线程的开销也是比较大的。也正是这种方式，会导致一个应用程序可以处理的客户端请求受限。面对百万连接的情况，是无法处理。</strong></p>
+<p>既然发现了问题，分析了问题，那就得解决问题。既然阻塞 IO 有问题，本质是由于其阻塞导致的，因此自然而然引出了下面即将介绍的主角：<strong>非阻塞 IO</strong></p>
+<h3 id="3非阻塞-io"><a class="header" href="#3非阻塞-io"><strong>3.非阻塞 IO</strong></a></h3>
+<p>非阻塞 IO 是为了解决前面提到的阻塞 IO 的缺陷而引出的，下面我们将介绍非阻塞 IO 的过程。</p>
+<h4 id="31-非阻塞-io-的概念"><a class="header" href="#31-非阻塞-io-的概念">3.1 非阻塞 IO 的概念</a></h4>
+<p>非阻塞 IO：见名知意，就是在第一阶段(网卡-内核态)数据未到达时不等待，然后直接返回。因此非阻塞 IO 需要不断的用户发起请求，询问内核数据好了没，好了没。</p>
+<h4 id="32-非阻塞-io-的过程"><a class="header" href="#32-非阻塞-io-的过程">3.2 非阻塞 IO 的过程</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HESdhj8nSKbRFuZ6U6GuoT5gnyttj1uic3YcC0LQy2kHC45s3jSC82aXA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<p>非阻塞 IO 是需要系统内核支持的，在创建了连接后，可以调用 setsockop 设置 noblocking</p>
+<h4 id="33-非阻塞-io-的优点"><a class="header" href="#33-非阻塞-io-的优点">3.3 非阻塞 IO 的优点</a></h4>
+<p>正如前面提到的，非阻塞 IO 解决了阻塞 IO<strong>每个连接一个线程处理的问题</strong>，所以其最大的优点就是 <strong>一个线程可以处理多个连接</strong>，这也是其非阻塞决定的。</p>
+<h4 id="34-非阻塞-io-的缺点"><a class="header" href="#34-非阻塞-io-的缺点">3.4 非阻塞 IO 的缺点</a></h4>
+<p>但这种模式，也有一个问题，就是需要用户多次发起系统调用。<strong>频繁的系统调用</strong>是比较消耗系统资源的。</p>
+<p>因此，既然存在这样的问题，那么自然而然我们就需要解决该问题：<strong>保留非阻塞 IO 的优点的前提下，减少系统调用</strong></p>
+<h3 id="4io-多路复用第一版"><a class="header" href="#4io-多路复用第一版"><strong>4.IO 多路复用第一版</strong></a></h3>
+<p>为了解决非阻塞 IO 存在的频繁的系统调用这个问题，随着内核的发展，出现了 IO 多路复用模型。那么我们就需要搞懂几个问题：</p>
+<ol>
+<li>IO 多路复用到底复用什么？</li>
+<li>IO 多路复用如何复用？</li>
+</ol>
+<p><strong>IO 多路复用：</strong> 很多人都说，IO 多路复用是用一个线程来管理多个网络连接，但本人不太认可，因为在非阻塞 IO 时，就已经可以实现一个线程处理多个网络连接了，这个是由于其非阻塞而决定的。</p>
+<p><strong>在此处，个人观点，多路复用主要复用的是通过有限次的系统调用来实现管理多个网络连接。最简单来说，我目前有 10 个连接，我可以通过一次系统调用将这 10 个连接都丢给内核，让内核告诉我，哪些连接上面数据准备好了，然后我再去读取每个就绪的连接上的数据。因此，IO 多路复用，复用的是系统调用。通过有限次系统调用判断海量连接是否数据准备好了</strong></p>
+<p><strong>无论下面的 select、poll、epoll，其都是这种思想实现的，不过在实现上，select/poll 可以看做是第一版，而 epoll 是第二版</strong></p>
+<h4 id="41io-多路复用第一版的概念"><a class="header" href="#41io-多路复用第一版的概念">4.1IO 多路复用第一版的概念</a></h4>
+<p><strong>IO 多路复用第一版，这个概念是本人想出来的，主要是方便将 select/poll 和 epoll 进行区分</strong></p>
+<p>所以此处 IO 多路复用第一版，主要特指 select 和 poll 这两个。</p>
+<p>select 的 api</p>
+<pre><code>// readfds:关心读的fd集合；writefds：关心写的fd集合；excepttfds：异常的fd集合
+int select (int n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+</code></pre>
+<blockquote>
+<p>select 函数监视的文件描述符分 3 类，分别是 writefds、readfds、和 exceptfds。调用后 select 函数会阻塞，直到有描述副就绪（有数据 可读、可写、或者有 except），或者超时（timeout 指定等待时间，如果立即返回设为 null 即可），函数返回。当 select 函数返回后，可以 通过遍历 fdset，来找到就绪的描述符。</p>
+</blockquote>
+<blockquote>
+<p>select 目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点。select 的一 个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在 Linux 上一般为 1024，可以通过修改宏定义甚至重新编译内核的方式提升这一限制，但 是这样也会造成效率的降低。</p>
+</blockquote>
+<p>poll 的 api</p>
+<pre><code>int poll (struct pollfd *fds, unsigned int nfds, int timeout);
+
+struct pollfd {
+    int fd; /* file descriptor */
+    short events; /* requested events to watch */
+    short revents; /* returned events witnessed */
+};
+</code></pre>
+<blockquote>
+<p>pollfd 结构包含了要监视的 event 和发生的 event，不再使用 select“参数-值”传递的方式。同时，pollfd 并没有最大数量限制（但是数量过大后性能也是会下降）。和 select 函数一样，poll 返回后，需要轮询 pollfd 来获取就绪的描述符。</p>
+</blockquote>
+<blockquote>
+<p>从上面看，select 和 poll 都需要在返回后，通过遍历文件描述符来获取已经就绪的 socket。事实上，同时连接的大量客户端在一时刻可能只有很少的处于就绪状态，因此随着监视的描述符数量的增长，其效率也会线性下降。</p>
+</blockquote>
+<p><strong>从本质来说：IO 多路复用中，select()/poll()/epoll_wait()这几个函数对应第一阶段；read()/recvfrom()对应第二阶段</strong></p>
+<h4 id="42io-多路复用第一版的过程"><a class="header" href="#42io-多路复用第一版的过程">4.2IO 多路复用第一版的过程</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEbPaUbbrbibQsCw9xPib0FfZXfOKQ6OdekEicBSyr5micL6iaUAIQqRrDqAA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<h4 id="43io-多路复用第一版的优点"><a class="header" href="#43io-多路复用第一版的优点">4.3IO 多路复用第一版的优点</a></h4>
+<p><strong>IO 多路复用，主要在于复用，通过 select()或者 poll()将多个 socket fds 批量通过系统调用传递给内核，由内核进行循环遍历判断哪些 fd 上数据就绪了，然后将就绪的 readyfds 返回给用户。再由用户进行挨个遍历就绪好的 fd，读取或者写入数据。</strong></p>
+<p><strong>所以通过 IO 多路复用+非阻塞 IO，一方面降低了系统调用次数，另一方面可以用极少的线程来处理多个网络连接。</strong></p>
+<h4 id="44io-多路复用第一版的缺点"><a class="header" href="#44io-多路复用第一版的缺点">4.4IO 多路复用第一版的缺点</a></h4>
+<p>虽然第一版 IO 多路复用解决了之前提到的频繁的系统调用次数，但同时引入了新的问题：<strong>用户需要每次将海量的 socket fds 集合从用户态传递到内核态，让内核态去检测哪些网络连接数据就绪了</strong></p>
+<p><strong>但这个地方会出现频繁的将海量 fd 集合从用户态传递到内核态，再从内核态拷贝到用户态。所以，这个地方开销也挺大。</strong></p>
+<p>既然还有这个问题，那我们继续开始解决这个问题，因此就引出了第二版的 IO 多路复用。</p>
+<p><strong>其实思路也挺简单，既然需要拷贝，那就想办法，不拷贝。既然不拷贝，那就在内核开辟一段区域咯</strong></p>
+<h4 id="45io-多路复用第一版的区别"><a class="header" href="#45io-多路复用第一版的区别">4.5IO 多路复用第一版的区别</a></h4>
+<p><strong>select 和 poll 的区别</strong></p>
+<ol>
+<li>select 能处理的最大连接，默认是 1024 个，可以通过修改配置来改变，但终究是有限个；而 poll 理论上可以支持无限个</li>
+<li>select 和 poll 在管理海量的连接时，会频繁的从用户态拷贝到内核态，比较消耗资源。</li>
+</ol>
+<h3 id="5io-多路复用第二版"><a class="header" href="#5io-多路复用第二版"><strong>5.IO 多路复用第二版</strong></a></h3>
+<p>IO 多路复用第二版主要指 epoll，epoll 的出现也是随着内核版本迭代才诞生的，在网上到处看到，epoll 是内核 2.6 以后开始支持的</p>
+<p><strong>epoll 的出现是为了解决前面提到的 IO 多路复用第一版的问题</strong></p>
+<h4 id="51io-多路复用第二版的概念"><a class="header" href="#51io-多路复用第二版的概念">5.1IO 多路复用第二版的概念</a></h4>
+<p>epoll 提供的 api</p>
+<pre><code>//创建epollFd，底层是在内核态分配一段区域，底层数据结构红黑树+双向链表
+int epoll_create(int size)；//创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大
+
+//往红黑树中增加、删除、更新管理的socket fd
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；
+
+//这个api是用来在第一阶段阻塞，等待就绪的fd。
+int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);
+1. int epoll_create(int size);
+创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大，这个参数不同于select()中的第一个参数，给出最大监听的fd+1的值，参数size并不是限制了epoll所能监听的描述符最大个数，只是对内核初始分配内部数据结构的一个建议。
+当创建好epoll句柄后，它就会占用一个fd值，在linux下如果查看/proc/进程id/fd/，是能够看到这个fd的，所以在使用完epoll后，必须调用close()关闭，否则可能导致fd被耗尽。
+
+2. int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；
+函数是对指定描述符fd执行op操作。
+- epfd：是epoll_create()的返回值。
+- op：表示op操作，用三个宏来表示：添加EPOLL_CTL_ADD，删除EPOLL_CTL_DEL，修改EPOLL_CTL_MOD。分别添加、删除和修改对fd的监听事件。
+- fd：是需要监听的fd（文件描述符）
+- epoll_event：是告诉内核需要监听什么事，struct epoll_event结构如下：
+
+struct epoll_event {
+  __uint32_t events;  /* Epoll events */
+  epoll_data_t data;  /* User data variable */
+};
+
+//events可以是以下几个宏的集合：
+EPOLLIN ：表示对应的文件描述符可以读（包括对端SOCKET正常关闭）；
+EPOLLOUT：表示对应的文件描述符可以写；
+EPOLLPRI：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）；
+EPOLLERR：表示对应的文件描述符发生错误；
+EPOLLHUP：表示对应的文件描述符被挂断；
+EPOLLET： 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的。
+EPOLLONESHOT：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里
+
+3. int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);
+等待epfd上的io事件，最多返回maxevents个事件。
+参数events用来从内核得到事件的集合，maxevents告之内核这个events有多大，这个maxevents的值不能大于创建epoll_create()时的size，参数timeout是超时时间（毫秒，0会立即返回，-1将不确定，也有说法说是永久阻塞）。该函数返回需要处理的事件数目，如返回0表示已超时。
+</code></pre>
+<p>二 工作模式</p>
+<p>epoll 对文件描述符的操作有两种模式：LT（level trigger）和 ET（edge trigger）。LT 模式是默认模式，LT 模式与 ET 模式的区别如下：　　 LT 模式：当 epoll_wait 检测到描述符事件发生并将此事件通知应用程序，应用程序可以不立即处理该事件。下次调用 epoll_wait 时，会再次响应应用程序并通知此事件。　　 ET 模式：当 epoll_wait 检测到描述符事件发生并将此事件通知应用程序，应用程序必须立即处理该事件。如果不处理，下次调用 epoll_wait 时，不会再次响应应用程序并通知此事件。</p>
+<ol>
+<li>LT 模式</li>
+</ol>
+<p>LT(level triggered)是缺省的工作方式，并且同时支持 block 和 no-block socket.在这种做法中，内核告诉你一个文件描述符是否就绪了，然后你可以对这个就绪的 fd 进行 IO 操作。如果你不作任何操作，内核还是会继续通知你的。</p>
+<ol>
+<li>ET 模式</li>
+</ol>
+<p>ET(edge-triggered)是高速工作方式，只支持 no-block socket。在这种模式下，当描述符从未就绪变为就绪时，内核通过 epoll 告诉你。然后它会假设你知道文件描述符已经就绪，并且不会再为那个文件描述符发送更多的就绪通知，直到你做了某些操作导致那个文件描述符不再为就绪状态了(比如，你在发送，接收或者接收请求，或者发送接收的数据少于一定量时导致了一个 EWOULDBLOCK 错误）。但是请注意，如果一直不对这个 fd 作 IO 操作(从而导致它再次变成未就绪)，内核不会发送更多的通知(only once)</p>
+<p>ET 模式在很大程度上减少了 epoll 事件被重复触发的次数，因此效率要比 LT 模式高。epoll 工作在 ET 模式的时候，必须使用非阻塞套接口，以避免由于一个文件句柄的阻塞读/阻塞写操作把处理多个文件描述符的任务饿死。</p>
+<h4 id="52io-多路复用第二版的过程"><a class="header" href="#52io-多路复用第二版的过程">5.2IO 多路复用第二版的过程</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEbPaUbbrbibQsCw9xPib0FfZXfOKQ6OdekEicBSyr5micL6iaUAIQqRrDqAA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<p>当 epoll_wait()调用后会阻塞，然后完了当返回时，会返回了哪些 fd 的数据就绪了，用户只需要遍历就绪的 fd 进行读写即可。</p>
+<h4 id="53io-多路复用第二版的优点"><a class="header" href="#53io-多路复用第二版的优点">5.3IO 多路复用第二版的优点</a></h4>
+<p><strong>IO 多路复用第二版 epoll 的优点在于：</strong></p>
+<p>一开始就在内核态分配了一段空间，来存放管理的 fd,所以在每次连接建立后，交给 epoll 管理时，需要将其添加到原先分配的空间中，后面再管理时就不需要频繁的从用户态拷贝管理的 fd 集合。通通过这种方式大大的提升了性能。</p>
+<p>所以现在的 IO 多路复用主要指 epoll</p>
+<h4 id="54io-多路复用第二版的缺点"><a class="header" href="#54io-多路复用第二版的缺点">5.4IO 多路复用第二版的缺点</a></h4>
+<p><strong>个人猜想：</strong> 如何降低占用的空间</p>
+<h3 id="6异步-io"><a class="header" href="#6异步-io"><strong>6.异步 IO</strong></a></h3>
+<h4 id="61-异步-io-的过程"><a class="header" href="#61-异步-io-的过程">6.1 异步 IO 的过程</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEXGYke8ibPkbXEkaQ861CSg8YvQ3qFdvGcXicAicyrD9Vaicx77liakCLBnA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<p>前面介绍的所有网络 IO 都是同步 IO，因为当数据在内核态就绪时，在内核态拷贝用用户态的过程中，仍然会有短暂时间的阻塞等待。而异步 IO 指：<strong>内核态拷贝数据到用户态这种方式也是交给系统线程来实现，不由用户线程完成</strong>，目前只有 windows 系统的 IOCP 是属于异步 IO。</p>
+<h3 id="7网络-io-各种模型"><a class="header" href="#7网络-io-各种模型"><strong>7.网络 IO 各种模型</strong></a></h3>
+<h4 id="71-reactor-模型"><a class="header" href="#71-reactor-模型">7.1 reactor 模型</a></h4>
+<p>目前 reactor 模型有以下几种实现方案：</p>
+<p><strong>1. 单 reactor 单线程模型</strong>
+<strong>2. 单 reactor 多线程模型</strong>
+<strong>3. multi-reactor 多进程模型</strong></p>
+<blockquote>
+<p>下文网络模型的图，均摘自<a href="https://zhuanlan.zhihu.com/p/95662364">这篇文章</a></p>
+</blockquote>
+<h5 id="711-单-reactor-单线程模型"><a class="header" href="#711-单-reactor-单线程模型"><strong>7.1.1 单 reactor 单线程模型</strong></a></h5>
+<p>此种模型，通常是只有一个 epoll 对象，所有的<strong>接收客户端连接</strong>、<strong>客户端读取</strong>、<strong>客户端写入</strong>操作都包含在一个线程内。该种模型也有一些中间件在用，比如 redis</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEibnlbqiclVmzSkNpIym8ibYaXOAAnn2cZSibDr7fiaHXGjypWk0iacO7kkdA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<blockquote>
+<p>但在目前的单线程 Reactor 模式中，不仅 I/O 操作在该 Reactor 线程上，连非 I/O 的业务操作也在该线程上进行处理了，这可能会大大延迟 I/O 请求的响应。所以我们应该将非 I/O 的业务逻辑操作从 Reactor 线程上卸载，以此来加速 Reactor 线程对 I/O 请求的响应。</p>
+</blockquote>
+<h5 id="712-单-reactor-多线程模型"><a class="header" href="#712-单-reactor-多线程模型"><strong>7.1.2 单 reactor 多线程模型</strong></a></h5>
+<p>该模型主要是通过将，前面的模型进行改造，将读写的业务逻辑交给具体的线程池来实现，这样可以显示 reactor 线程对 IO 的响应，以此提升系统性能<img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEvzbIZnWXH0HUWLgUZTRzHGzNsRK0F2JC0bxHmia6XG02wocUUvianoIQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<blockquote>
+<p>在工作者线程池模式中，虽然非 I/O 操作交给了线程池来处理，但是所有的 I/O 操作依然由 Reactor 单线程执行，在高负载、高并发或大数据量的应用场景，依然较容易成为瓶颈。所以，对于 Reactor 的优化，又产生出下面的多线程模式。</p>
+</blockquote>
+<h5 id="713-multi-reactor-多线程模型"><a class="header" href="#713-multi-reactor-多线程模型"><strong>7.1.3 multi-reactor 多线程模型</strong></a></h5>
+<p>在这种模型中，主要分为两个部分：mainReactor、subReactors。mainReactor 主要负责接收客户端的连接，然后将建立的客户端连接通过负载均衡的方式分发给 subReactors，</p>
+<p>subReactors 来负责具体的每个连接的读写</p>
+<p>对于非 IO 的操作，依然交给工作线程池去做，对逻辑进行解耦</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEJ1BVQvZoIJB0xqBLxNvCOcOWkTknoMP4t1XkUgHfsoN7J2jzClJuaw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<blockquote>
+<p>mainReactor 对应 Netty 中配置的 BossGroup 线程组，主要负责接受客户端连接的建立。一般只暴露一个服务端口，BossGroup 线程组一般一个线程工作即可 subReactor 对应 Netty 中配置的 WorkerGroup 线程组，BossGroup 线程组接受并建立完客户端的连接后，将网络 socket 转交给 WorkerGroup 线程组，然后在 WorkerGroup 线程组内选择一个线程，进行 I/O 的处理。WorkerGroup 线程组主要处理 I/O，一般设置 2*CPU 核数个线程</p>
+</blockquote>
+<h4 id="72-proactor-模型"><a class="header" href="#72-proactor-模型">7.2 proactor 模型</a></h4>
+<p>proactor 主要是通过对异步 IO 的封装的一种模型，它需要底层操作系统的支持，目前只有 windows 的 IOCP 支持的比较好。详细的介绍可以参考<a href="https://zhuanlan.zhihu.com/p/95662364">这篇文章</a></p>
+<h4 id="73-主流的中间件所采用的网络模型"><a class="header" href="#73-主流的中间件所采用的网络模型">7.3 主流的中间件所采用的网络模型</a></h4>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvauhvQxpibL7I3CeEZPcaA1HEiaTnSvliaMcYCEDmUiaDlbRQTlURhaKHY8N0qwsgLuXZpkOgeJ3UtXMlQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" /></p>
+<h4 id="74-主流网络框架"><a class="header" href="#74-主流网络框架">7.4 主流网络框架</a></h4>
+<ul>
+<li>netty</li>
+<li>gnet</li>
+<li>libevent</li>
+<li>evio(golang)</li>
+<li>ACE(c++)</li>
+<li>boost::asio(c++)</li>
+<li>muduo （linux only)</li>
+</ul>
+<p>关于c++和c的上述几个库对比，感兴趣的话大家可以自行搜索资料或者阅读<a href="https://www.cnblogs.com/leijiangtao/p/5197566.html">这篇文章</a>。</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODYwMjI2MA==&amp;mid=2649756681&amp;idx=1&amp;sn=b9ce565bedca42cd824d3414bc01d98e">原文</a></p>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../23.IO/Channel.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../23.IO/Selector（选择器）.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../23.IO/Channel.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../23.IO/Selector（选择器）.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

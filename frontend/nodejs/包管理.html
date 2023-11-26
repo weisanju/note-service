@@ -1,0 +1,996 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>包管理 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item expanded "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item expanded "><a href="../nodejs/包管理.html" class="active">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="包管理简介"><a class="header" href="#包管理简介">包管理简介</a></h2>
+<p><code>npm</code> 是 Node.js 标准的软件包管理器。</p>
+<h3 id="安装所有依赖"><a class="header" href="#安装所有依赖">安装所有依赖</a></h3>
+<pre><code class="language-bash">npm install
+</code></pre>
+<h3 id="安装某个软件包"><a class="header" href="#安装某个软件包">安装某个软件包</a></h3>
+<pre><code class="language-bash">npm install &lt;package-name&gt;
+</code></pre>
+<p>通常会在此命令中看到更多标志：</p>
+<ul>
+<li><code>--save</code> 安装并添加条目到 <code>package.json</code> 文件的 dependencies。</li>
+<li><code>--save-dev</code> 安装并添加条目到 <code>package.json</code> 文件的 devDependencies。</li>
+</ul>
+<p>区别主要是，<code>devDependencies</code> 通常是开发的工具（例如测试的库），而 <code>dependencies</code> 则是与生产环境中的应用程序相关。</p>
+<h3 id="更新软件包"><a class="header" href="#更新软件包">更新软件包</a></h3>
+<pre><code class="language-console">npm update
+npm update &lt;package-name&gt;
+
+</code></pre>
+<h3 id="版本控制"><a class="header" href="#版本控制">版本控制</a></h3>
+<p>在所有这些情况中，版本控制都有很大的帮助，<code>npm</code> 遵循语义版本控制标准。</p>
+<h3 id="运行任务"><a class="header" href="#运行任务">运行任务</a></h3>
+<p>package.json 文件支持一种用于指定命令行任务（可通过使用以下方式运行）的格式：</p>
+<pre><code class="language-console">npm run &lt;task-name&gt;
+</code></pre>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;start-dev&quot;: &quot;node lib/server-development&quot;,
+    &quot;start&quot;: &quot;node lib/server-production&quot;
+  },
+}
+</code></pre>
+<p>使用此特性运行 Webpack 是很常见的：</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;watch&quot;: &quot;webpack --watch --progress --colors --config webpack.conf.js&quot;,
+    &quot;dev&quot;: &quot;webpack --progress --colors --config webpack.conf.js&quot;,
+    &quot;prod&quot;: &quot;NODE_ENV=production webpack -p --config webpack.conf.js&quot;,
+  },
+}
+</code></pre>
+<h2 id="npm-将软件包安装到哪里"><a class="header" href="#npm-将软件包安装到哪里">npm 将软件包安装到哪里</a></h2>
+<p>当使用 <code>npm</code> 安装软件包时，可以执行两种安装类型：</p>
+<ul>
+<li>本地安装</li>
+<li>全局安装</li>
+</ul>
+<p>默认情况下，当输入 <code>npm install</code> 命令时，例如：</p>
+<pre><code class="language-bash">npm install lodash
+</code></pre>
+<p>软件包会被安装到当前文件树中的 <code>node_modules</code> 子文件夹下。</p>
+<p>在这种情况下，<code>npm</code> 还会在当前文件夹中存在的 <code>package.json</code> 文件的 <code>dependencies</code> 属性中添加 <code>lodash</code> 条目。</p>
+<p>使用 <code>-g</code> 标志可以执行全局安装：</p>
+<pre><code class="language-bash">npm install -g lodash
+</code></pre>
+<p>在这种情况下，<code>npm</code> 不会将软件包安装到本地文件夹下，而是使用全局的位置。</p>
+<p>全局的位置到底在哪里？</p>
+<p><code>npm root -g</code> 命令会告知其在计算机上的确切位置</p>
+<p>但是，如果使用 <code>nvm</code> 管理 Node.js 版本，则该位置会有所不同。</p>
+<p>例如，使用 <code>nvm</code>，则软件包的位置可能为 <code>/Users/joe/.nvm/versions/node/v8.9.0/lib/node_modules</code>。</p>
+<h2 id="如何使用或执行-npm-安装的软件包"><a class="header" href="#如何使用或执行-npm-安装的软件包">如何使用或执行 npm 安装的软件包</a></h2>
+<p>当使用 <code>npm</code> 将软件包安装到 <code>node_modules</code> 文件夹中或全局安装时，如何在 Node.js 代码中使用它？</p>
+<p>假设使用以下命令安装了流行的 JavaScript 实用工具库 <code>lodash</code>：</p>
+<pre><code class="language-bash">npm install lodash
+</code></pre>
+<p>这会把软件包安装到本地的 <code>node_modules</code> 文件夹中。</p>
+<p>若要在代码中使用它，则只需使用 <code>require</code> 将其导入到程序中：</p>
+<pre><code class="language-js">const _ = require('lodash')
+</code></pre>
+<p>如果软件包是可执行文件，该怎么办？</p>
+<p>在这种情况下，它会把可执行文件放到 <code>node_modules/.bin/</code> 文件夹下。</p>
+<p>验证这一点的简单示例是 <a href="https://www.npmjs.com/package/cowsay">cowsay</a>。</p>
+<p>cowsay 软件包提供了一个命令行程序，可以执行该程序以使母牛说些话（以及其他动物也可以说话）。</p>
+<p>当使用 <code>npm install cowsay</code> 安装软件包时，它会在 node_modules 文件夹中安装自身以及一些依赖包：</p>
+<p>有一个隐藏的 .bin 文件夹，其中包含指向 cowsay 二进制文件的符号链接：</p>
+<p>如何执行这些文件？</p>
+<p>可以输入 <code>./node_modules/.bin/cowsay</code> 来运行它，但是最新版本的 npm（自 5.2 起）中包含的 npx 是更好的选择。 只需运行：</p>
+<pre><code class="language-bash">npx cowsay
+</code></pre>
+<h2 id="packagejson-指南"><a class="header" href="#packagejson-指南">package.json 指南</a></h2>
+<h3 id="实例文件"><a class="header" href="#实例文件">实例文件</a></h3>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;test-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A Vue.js project&quot;,
+  &quot;main&quot;: &quot;src/main.js&quot;,
+  &quot;private&quot;: true,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+    &quot;start&quot;: &quot;npm run dev&quot;,
+    &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,
+    &quot;test&quot;: &quot;npm run unit&quot;,
+    &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^2.5.2&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;autoprefixer&quot;: &quot;^7.1.2&quot;,
+    &quot;babel-core&quot;: &quot;^6.22.1&quot;,
+    &quot;babel-eslint&quot;: &quot;^8.2.1&quot;,
+    &quot;babel-helper-vue-jsx-merge-props&quot;: &quot;^2.0.3&quot;,
+    &quot;babel-jest&quot;: &quot;^21.0.2&quot;,
+    &quot;babel-loader&quot;: &quot;^7.1.1&quot;,
+    &quot;babel-plugin-dynamic-import-node&quot;: &quot;^1.2.0&quot;,
+    &quot;babel-plugin-syntax-jsx&quot;: &quot;^6.18.0&quot;,
+    &quot;babel-plugin-transform-es2015-modules-commonjs&quot;: &quot;^6.26.0&quot;,
+    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,
+    &quot;babel-plugin-transform-vue-jsx&quot;: &quot;^3.5.0&quot;,
+    &quot;babel-preset-env&quot;: &quot;^1.3.2&quot;,
+    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,
+    &quot;chalk&quot;: &quot;^2.0.1&quot;,
+    &quot;copy-webpack-plugin&quot;: &quot;^4.0.1&quot;,
+    &quot;css-loader&quot;: &quot;^0.28.0&quot;,
+    &quot;eslint&quot;: &quot;^4.15.0&quot;,
+    &quot;eslint-config-airbnb-base&quot;: &quot;^11.3.0&quot;,
+    &quot;eslint-friendly-formatter&quot;: &quot;^3.0.0&quot;,
+    &quot;eslint-import-resolver-webpack&quot;: &quot;^0.8.3&quot;,
+    &quot;eslint-loader&quot;: &quot;^1.7.1&quot;,
+    &quot;eslint-plugin-import&quot;: &quot;^2.7.0&quot;,
+    &quot;eslint-plugin-vue&quot;: &quot;^4.0.0&quot;,
+    &quot;extract-text-webpack-plugin&quot;: &quot;^3.0.0&quot;,
+    &quot;file-loader&quot;: &quot;^1.1.4&quot;,
+    &quot;friendly-errors-webpack-plugin&quot;: &quot;^1.6.1&quot;,
+    &quot;html-webpack-plugin&quot;: &quot;^2.30.1&quot;,
+    &quot;jest&quot;: &quot;^22.0.4&quot;,
+    &quot;jest-serializer-vue&quot;: &quot;^0.3.0&quot;,
+    &quot;node-notifier&quot;: &quot;^5.1.2&quot;,
+    &quot;optimize-css-assets-webpack-plugin&quot;: &quot;^3.2.0&quot;,
+    &quot;ora&quot;: &quot;^1.2.0&quot;,
+    &quot;portfinder&quot;: &quot;^1.0.13&quot;,
+    &quot;postcss-import&quot;: &quot;^11.0.0&quot;,
+    &quot;postcss-loader&quot;: &quot;^2.0.8&quot;,
+    &quot;postcss-url&quot;: &quot;^7.2.1&quot;,
+    &quot;rimraf&quot;: &quot;^2.6.0&quot;,
+    &quot;semver&quot;: &quot;^5.3.0&quot;,
+    &quot;shelljs&quot;: &quot;^0.7.6&quot;,
+    &quot;uglifyjs-webpack-plugin&quot;: &quot;^1.1.1&quot;,
+    &quot;url-loader&quot;: &quot;^0.5.8&quot;,
+    &quot;vue-jest&quot;: &quot;^1.0.2&quot;,
+    &quot;vue-loader&quot;: &quot;^13.3.0&quot;,
+    &quot;vue-style-loader&quot;: &quot;^3.0.1&quot;,
+    &quot;vue-template-compiler&quot;: &quot;^2.5.2&quot;,
+    &quot;webpack&quot;: &quot;^3.6.0&quot;,
+    &quot;webpack-bundle-analyzer&quot;: &quot;^2.9.0&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^2.9.1&quot;,
+    &quot;webpack-merge&quot;: &quot;^4.1.0&quot;
+  },
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,
+    &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;
+  },
+  &quot;browserslist&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;]
+}
+</code></pre>
+<p>这里有很多东西：</p>
+<ul>
+<li><code>version</code> 表明了当前的版本。</li>
+<li><code>name</code> 设置了应用程序/软件包的名称。</li>
+<li><code>description</code> 是应用程序/软件包的简短描述。</li>
+<li><code>main</code> 设置了应用程序的入口点。</li>
+<li><code>private</code> 如果设置为 <code>true</code>，则可以防止应用程序/软件包被意外地发布到 <code>npm</code>。</li>
+<li><code>scripts</code> 定义了一组可以运行的 node 脚本。</li>
+<li><code>dependencies</code> 设置了作为依赖安装的 <code>npm</code> 软件包的列表。</li>
+<li><code>devDependencies</code> 设置了作为开发依赖安装的 <code>npm</code> 软件包的列表。</li>
+<li><code>engines</code> 设置了此软件包/应用程序在哪个版本的 Node.js 上运行。</li>
+<li><code>browserslist</code> 用于告知要支持哪些浏览器（及其版本）。</li>
+</ul>
+<p>以上所有的这些属性都可被 <code>npm</code> 或其他工具使用。</p>
+<h3 id="属性分类"><a class="header" href="#属性分类">属性分类</a></h3>
+<h4 id="name"><a class="header" href="#name">name</a></h4>
+<p>名称必须少于 214 个字符，且不能包含空格，只能包含小写字母、连字符（<code>-</code>）或下划线（<code>_</code>）。</p>
+<p>这是因为当软件包在 <code>npm</code> 上发布时，它会基于此属性获得自己的 URL。</p>
+<p>如果在 GitHub 上公开地发布此软件包，则 GitHub 仓库的名称是作为此属性的不错选择。</p>
+<h4 id="author"><a class="header" href="#author">author</a></h4>
+<p>列出软件包的作者名称。</p>
+<p>示例：</p>
+<pre><code class="language-json">{
+  &quot;author&quot;: &quot;NodeJS中文网 &lt;mail@nodejs.cn&gt; (http://nodejs.cn)&quot;
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;author&quot;: {
+    &quot;name&quot;: &quot;NodeJS中文网&quot;,
+    &quot;email&quot;: &quot;mail@nodejs.cn&quot;,
+    &quot;url&quot;: &quot;http://nodejs.cn&quot;
+  }
+}
+</code></pre>
+<h4 id="contributors"><a class="header" href="#contributors">contributors</a></h4>
+<pre><code class="language-json">{
+  &quot;contributors&quot;: [&quot;NodeJS中文网 &lt;mail@nodejs.cn&gt; (http://nodejs.cn))&quot;]
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;contributors&quot;: [
+    {
+      &quot;name&quot;: &quot;NodeJS中文网&quot;,
+      &quot;email&quot;: &quot;mail@nodejs.cn&quot;,
+      &quot;url&quot;: &quot;http://nodejs.cn&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="bugs"><a class="header" href="#bugs">bugs</a></h4>
+<p>链接到软件包的问题跟踪器，最常用的是 GitHub 的 issues 页面。</p>
+<pre><code class="language-json">{
+  &quot;bugs&quot;: &quot;https://github.com/nodejscn/node-api-cn/issues&quot;
+}
+</code></pre>
+<h4 id="homepage"><a class="header" href="#homepage">homepage</a></h4>
+<pre><code class="language-json">{
+  &quot;homepage&quot;: &quot;http://nodejs.cn&quot;
+}
+</code></pre>
+<h4 id="version"><a class="header" href="#version">version</a></h4>
+<pre><code class="language-json">&quot;version&quot;: &quot;1.0.0&quot;
+</code></pre>
+<h4 id="license"><a class="header" href="#license">license</a></h4>
+<p>指定软件包的许可证。</p>
+<pre><code class="language-json">&quot;license&quot;: &quot;MIT&quot;
+</code></pre>
+<h4 id="keywords"><a class="header" href="#keywords">keywords</a></h4>
+<p>此属性包含与软件包功能相关的关键字数组。</p>
+<pre><code class="language-json">&quot;keywords&quot;: [
+  &quot;email&quot;,
+  &quot;machine learning&quot;,
+  &quot;ai&quot;
+]
+</code></pre>
+<p>这有助于人们在浏览相似的软件包或浏览 https://www.npmjs.com/ 网站时找到你的软件包。</p>
+<h4 id="description"><a class="header" href="#description">description</a></h4>
+<p>如果要将软件包发布到 <code>npm</code>，则这个属性特别有用，人们可以知道该软件包是干啥用的。</p>
+<pre><code class="language-json">&quot;description&quot;: &quot;NodeJS中文网入门教程&quot;
+</code></pre>
+<h4 id="repository"><a class="header" href="#repository">repository</a></h4>
+<p>此属性指定了此程序包仓库所在的位置。</p>
+<pre><code class="language-json">&quot;repository&quot;: &quot;github:nodejscn/node-api-cn&quot;,
+</code></pre>
+<p>注意 <code>github</code> 前缀。 其他流行的服务商还包括：</p>
+<pre><code class="language-json">&quot;repository&quot;: &quot;gitlab:nodejscn/node-api-cn&quot;,
+&quot;repository&quot;: &quot;bitbucket:nodejscn/node-api-cn&quot;,
+
+</code></pre>
+<p>可以显式地设置版本控制系统：</p>
+<pre><code class="language-json">&quot;repository&quot;: {
+  &quot;type&quot;: &quot;git&quot;,
+  &quot;url&quot;: &quot;https://github.com/nodejscn/node-api-cn.git&quot;
+}
+&quot;repository&quot;: {
+  &quot;type&quot;: &quot;svn&quot;,
+  &quot;url&quot;: &quot;...&quot;
+}
+</code></pre>
+<h4 id="main"><a class="header" href="#main">main</a></h4>
+<p>设置软件包的入口点。</p>
+<p>当在应用程序中导入此软件包时，应用程序会在该位置搜索模块的导出。</p>
+<pre><code class="language-json">&quot;main&quot;: &quot;src/main.js&quot;
+</code></pre>
+<h4 id="private"><a class="header" href="#private">private</a></h4>
+<p>如果设置为 <code>true</code>，则可以防止应用程序/软件包被意外发布到 <code>npm</code> 上。</p>
+<h4 id="scripts"><a class="header" href="#scripts">scripts</a></h4>
+<p>可以定义一组可以运行的 node 脚本。</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+  &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+  &quot;start&quot;: &quot;npm run dev&quot;,
+  &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,
+  &quot;test&quot;: &quot;npm run unit&quot;,
+  &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,
+  &quot;build&quot;: &quot;node build/build.js&quot;
+}
+</code></pre>
+<p>这些脚本是命令行应用程序。 可以通过调用 <code>npm run XXXX</code> 或 <code>yarn XXXX</code> 来运行它们，其中 <code>XXXX</code> 是命令的名称。 例如：<code>npm run dev</code>。</p>
+<p>可以为命令使用任何的名称，脚本也可以是任何操作。</p>
+<h4 id="dependencies"><a class="header" href="#dependencies">dependencies</a></h4>
+<p>设置作为依赖安装的 <code>npm</code> 软件包的列表。</p>
+<p>当使用 npm 或 yarn 安装软件包时：</p>
+<pre><code class="language-bash">npm install &lt;PACKAGENAME&gt;
+yarn add &lt;PACKAGENAME&gt;
+</code></pre>
+<pre><code class="language-json">&quot;dependencies&quot;: {
+  &quot;vue&quot;: &quot;^2.5.2&quot;
+}
+</code></pre>
+<h4 id="devdependencies"><a class="header" href="#devdependencies">devDependencies</a></h4>
+<p>设置作为开发依赖安装的 <code>npm</code> 软件包的列表。</p>
+<p>它们不同于 <code>dependencies</code>，因为它们只需安装在开发机器上，而无需在生产环境中运行代码。</p>
+<p>当使用 npm 或 yarn 安装软件包时：</p>
+<pre><code class="language-bash">npm install --save-dev &lt;PACKAGENAME&gt;
+yarn add --dev &lt;PACKAGENAME&gt;
+</code></pre>
+<h4 id="engines"><a class="header" href="#engines">engines</a></h4>
+<pre><code class="language-json">&quot;engines&quot;: {
+  &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,
+  &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;,
+  &quot;yarn&quot;: &quot;^0.13.0&quot;
+}
+</code></pre>
+<h4 id="browserslist"><a class="header" href="#browserslist">browserslist</a></h4>
+<p>用于告知要支持哪些浏览器（及其版本）。 Babel、Autoprefixer 和其他工具会用到它，以将所需的 polyfill 和 fallback 添加到目标浏览器。</p>
+<pre><code class="language-json">&quot;browserslist&quot;: [
+  &quot;&gt; 1%&quot;,
+  &quot;last 2 versions&quot;,
+  &quot;not ie &lt;= 8&quot;
+]
+</code></pre>
+<p>此配置意味着需要支持使用率超过 1％（来自 <a href="https://caniuse.com/">CanIUse.com</a> 的统计信息）的所有浏览器的最新的 2 个主版本，但不含 IE8 及更低的版本。</p>
+<h3 id="命令特有的属性"><a class="header" href="#命令特有的属性">命令特有的属性</a></h3>
+<p><code>package.json</code> 文件还可以承载命令特有的配置，例如 Babel、ESLint 等。</p>
+<p>每个都有特有的属性，例如 <code>eslintConfig</code>、<code>babel</code> 等。 它们是命令特有的，可以在相应的命令/项目文档中找到如何使用它们。</p>
+<h3 id="软件包版本"><a class="header" href="#软件包版本">软件包版本</a></h3>
+<p>在上面的描述中，已经看到类似以下的版本号：<code>〜3.0.0</code> 或 <code>^0.13.0</code>。 它们是什么意思，还可以使用哪些其他的版本说明符？</p>
+<p>该符号指定了软件包能从该依赖接受的更新。</p>
+<p>鉴于使用了 semver（语义版本控制），所有的版本都有 3 个数字，第一个是主版本，第二个是次版本，第三个是补丁版本，详见<a href="http://nodejs.cn/website2.nodejs.cn/learn/semantic-versioning-using-npm/">规则</a>。</p>
+<p>还可以在范围内组合以上大部分内容，例如：<code>1.0.0 || &gt;=1.1.0 &lt;1.2.0</code>，即使用 1.0.0 或从 1.1.0 开始但低于 1.2.0 的版本。</p>
+<h2 id="package-lockjson-文件"><a class="header" href="#package-lockjson-文件">package-lock.json 文件</a></h2>
+<p>在版本 5 中，npm 引入了 <code>package-lock.json</code> 文件。</p>
+<p>该文件旨在跟踪被安装的每个软件包的确切版本，以便产品可以以相同的方式被 100％ 复制（即使软件包的维护者更新了软件包）。</p>
+<p>这解决了 <code>package.json</code> 一直尚未解决的特殊问题。 在 package.json 中，可以使用 semver 表示法设置要升级到的版本（补丁版本或次版本），例如：</p>
+<ul>
+<li>如果写入的是 <code>〜0.13.0</code>，则只更新补丁版本：即 <code>0.13.1</code> 可以，但 <code>0.14.0</code> 不可以。</li>
+<li>如果写入的是 <code>^0.13.0</code>，则要更新补丁版本和次版本：即 <code>0.13.1</code>、<code>0.14.0</code>、依此类推。</li>
+<li>如果写入的是 <code>0.13.0</code>，则始终使用确切的版本。</li>
+</ul>
+<p>无需将 node_modules 文件夹（该文件夹通常很大）提交到 Git，当尝试使用 <code>npm install</code> 命令在另一台机器上复制项目时，如果指定了 <code>〜</code> 语法并且软件包发布了补丁版本，则该软件包会被安装。 <code>^</code> 和次版本也一样。</p>
+<p>因此，原始的项目和新初始化的项目实际上是不同的。 即使补丁版本或次版本不应该引入重大的更改，但还是可能引入缺陷。</p>
+<p><code>package-lock.json</code> 会固化当前安装的每个软件包的版本，当运行 <code>npm install</code>时，<code>npm</code> 会使用这些确切的版本。</p>
+<p>这个概念并不新鲜，其他编程语言的软件包管理器（例如 PHP 中的 Composer）使用类似的系统已有多年。</p>
+<p><code>package-lock.json</code> 文件需要被提交到 Git 仓库，以便被其他人获取（如果项目是公开的或有合作者，或者将 Git 作为部署源）。</p>
+<p>当运行 <code>npm update</code> 时，<code>package-lock.json</code> 文件中的依赖的版本会被更新。</p>
+<h2 id="查看-npm-包安装的版本"><a class="header" href="#查看-npm-包安装的版本">查看 npm 包安装的版本</a></h2>
+<p>若要查看所有已安装的 npm 软件包（包括它们的依赖包）的最新版本，则：</p>
+<pre><code class="language-bash">npm list
+</code></pre>
+<p><code>npm list -g</code> 也一样，但适用于全局安装的软件包。</p>
+<p>若要仅获取顶层的软件包（基本上就是告诉 npm 要安装并在 <code>package.json</code> 中列出的软件包），则运行 <code>npm list --depth=0</code>：</p>
+<pre><code class="language-bash">npm list --depth=0
+</code></pre>
+<p>也可以通过指定名称来获取特定软件包的版本：</p>
+<pre><code class="language-bash">❯ npm list cowsay
+/Users/joe/dev/node/cowsay
+└── cowsay@1.3.1
+
+</code></pre>
+<p>这也适用于安装的软件包的依赖：</p>
+<pre><code class="language-bash">❯ npm list minimist
+/Users/joe/dev/node/cowsay
+└─┬ cowsay@1.3.1
+  └─┬ optimist@0.6.1
+    └── minimist@0.0.10
+</code></pre>
+<p>如果要查看软件包在 npm 仓库上最新的可用版本，则运行 <code>npm view [package_name] version</code>：</p>
+<pre><code class="language-bash">❯ npm view cowsay version
+1.3.1
+
+</code></pre>
+<h2 id="安装-npm-包的旧版本"><a class="header" href="#安装-npm-包的旧版本">安装 npm 包的旧版本</a></h2>
+<pre><code class="language-bash">npm install &lt;package&gt;@&lt;version&gt;
+npm install cowsay
+npm install cowsay@1.2.0
+npm install -g webpack@4.16.4
+
+//可能还有需要列出软件包所有的以前的版本。 可以使用
+npm view &lt;package&gt; versions：
+</code></pre>
+<p>若要发现软件包的新版本，则运行 <code>npm outdated</code>。</p>
+<p>以下是一个仓库中一些过时的软件包的列表，该仓库已很长时间没有更新：</p>
+<p>这些更新中有些是主版本。 运行 <code>npm update</code> 不会更新那些版本。 主版本永远不会被这种方式更新</p>
+<p>若要将所有软件包更新到新的主版本，则全局地安装 <code>npm-check-updates</code> 软件包：</p>
+<pre><code class="language-bash">npm install -g npm-check-updates
+ncu -u
+
+//这会升级 package.json 文件的 dependencies 和 devDependencies 中的所有版本，以便 npm 可以安装新的主版本。
+npm update
+npm install
+</code></pre>
+<h2 id="npm-的语义版本控制"><a class="header" href="#npm-的语义版本控制">npm 的语义版本控制</a></h2>
+<p>语义版本控制的概念很简单：所有的版本都有 3 个数字：<code>x.y.z</code>。</p>
+<ul>
+<li>第一个数字是主版本。</li>
+<li>第二个数字是次版本。</li>
+<li>第三个数字是补丁版本。</li>
+</ul>
+<p>当发布新的版本时，不仅仅是随心所欲地增加数字，还要遵循以下规则：</p>
+<ul>
+<li>当进行不兼容的 API 更改时，则升级主版本。</li>
+<li>当以向后兼容的方式添加功能时，则升级次版本。</li>
+<li>当进行向后兼容的缺陷修复时，则升级补丁版本。</li>
+</ul>
+<p>该约定在所有编程语言中均被采用，每个 <code>npm</code> 软件包都必须遵守该约定，这一点非常重要，因为整个系统都依赖于此。</p>
+<p>因为 <code>npm</code> 设置了一些规则，可用于在 <code>package.json</code> 文件中选择要将软件包更新到的版本（当运行 <code>npm update</code> 时）。</p>
+<p>规则使用了这些符号：</p>
+<ul>
+<li><code>^</code> : 自动执行补丁版本的升级</li>
+<li><code>~</code>：自动执行 补丁版本、次版本的升级</li>
+<li><code>&gt;</code>：接受高于指定版本的任何版本</li>
+<li><code>&gt;=</code> 接受等于或高于指定版本的任何版本。</li>
+<li><code>&lt;</code>接受低于指定版本的任何版本。</li>
+<li><code>&lt;=</code>接受等于或低于指定版本的任何版本。</li>
+<li><code>=</code>接受确切的版本。</li>
+<li><code>-</code> 接受一定范围的版本。例如：<code>2.1.0 - 2.6.2</code>。</li>
+<li><code>||</code> 组合集合。例如 <code>&lt; 2.1 || &gt; 2.6</code>。</li>
+</ul>
+<p>可以合并其中的一些符号，例如 <code>1.0.0 || &gt;=1.1.0 &lt;1.2.0</code>，即使用 1.0.0 或从 1.1.0 开始但低于 1.2.0 的版本。</p>
+<ul>
+<li>无符号: 仅接受指定的特定版本（例如 <code>1.2.1</code>）。</li>
+<li><code>latest</code>: 使用可用的最新版本。</li>
+</ul>
+<h2 id="卸载-npm-软件包"><a class="header" href="#卸载-npm-软件包">卸载 npm 软件包</a></h2>
+<p>若要卸载之前在本地安装（在 <code>node_modules</code> 文件夹使用 <code>npm install &lt;package-name&gt;</code>）的软件包，则从项目的根文件夹（包含 <code>node_modules</code> 文件夹的文件夹）中运行：</p>
+<pre><code class="language-bash">npm uninstall &lt;package-name&gt;
+</code></pre>
+<p>如果使用 <code>-S</code> 或 <code>--save</code> 标志，则此操作还会移除 <code>package.json</code> 文件中的引用。</p>
+<p>如果程序包是开发依赖项（列出在 <code>package.json</code> 文件的 devDependencies 中），则必须使用 <code>-D</code> 或 <code>--save-dev</code> 标志从文件中移除：</p>
+<pre><code class="language-bash">npm uninstall -S &lt;package-name&gt;
+npm uninstall -D &lt;package-name&gt;
+</code></pre>
+<p>如果该软件包是全局安装的，则需要添加 <code>-g</code> 或 <code>--global</code> 标志：</p>
+<pre><code class="language-bash">npm uninstall -g &lt;package-name&gt;
+</code></pre>
+<h2 id="npm-全局或本地的软件包"><a class="header" href="#npm-全局或本地的软件包">npm 全局或本地的软件包</a></h2>
+<p>本地和全局的软件包之间的主要区别是：</p>
+<ul>
+<li><strong>本地的软件包</strong> 安装在运行 <code>npm install &lt;package-name&gt;</code> 的目录中，并且放置在此目录下的 <code>node_modules</code> 文件夹中。</li>
+<li><strong>全局的软件包</strong> 放在系统中的单独位置（确切的位置取决于设置），无论在何处运行 <code>npm install -g &lt;package-name&gt;</code>。</li>
+</ul>
+<p>在代码中，应该只引入本地的软件包：</p>
+<pre><code class="language-js">require('package-name')
+
+</code></pre>
+<p>所以何时应该以一种或另一种方式安装？</p>
+<p>通常，所有的软件包都应本地安装。</p>
+<p>这样可以确保计算机中可以有数十个应用程序，并且如果需要，每个应用程序都可以运行不同的版本。</p>
+<p>更新全局软件包会使所有的项目都使用新的版本，这可能会导致维护方面的噩梦，因为某些软件包可能会破坏与其他依赖项的兼容性等。</p>
+<p>所有的项目都有自己的软件包本地版本，即使这看起来有点浪费资源，但与可能产生的负面影响相比也很小。</p>
+<p>当程序包提供了可从 shell（CLI）运行的可执行命令、且可在项目间复用时，则该程序包应被全局安装。</p>
+<p>也可以在本地安装可执行命令并使用 npx 运行，但是某些软件包最好在全局安装。</p>
+<p>一些流行的全局软件包的示例有：</p>
+<ul>
+<li><code>npm</code></li>
+<li><code>create-react-app</code></li>
+<li><code>vue-cli</code></li>
+<li><code>grunt-cli</code></li>
+<li><code>mocha</code></li>
+<li><code>react-native-cli</code></li>
+<li><code>gatsby-cli</code></li>
+<li><code>forever</code></li>
+<li><code>nodemon</code></li>
+</ul>
+<pre><code class="language-bash">npm list -g --depth 0
+</code></pre>
+<h2 id="npm-依赖与开发依赖"><a class="header" href="#npm-依赖与开发依赖">npm 依赖与开发依赖</a></h2>
+<p>当使用 <code>npm install &lt;package-name&gt;</code> 安装 npm 软件包时，是将其安装为依赖项。</p>
+<p>该软件包会被自动地列出在 package.json 文件中的 <code>dependencies</code> 列表下（在 npm 5 之前：必须手动指定 <code>--save</code>）。</p>
+<p>当添加了 <code>-D</code> 或 <code>--save-dev</code> 标志时，则会将其安装为开发依赖项（会被添加到 <code>devDependencies</code> 列表）。</p>
+<p>开发依赖是仅用于开发的程序包，在生产环境中并不需要。 例如测试的软件包、webpack 或 Babel。</p>
+<p>当投入生产环境时，如果输入 <code>npm install</code> 且该文件夹包含 <code>package.json</code> 文件时，则会安装它们，因为 npm 会假定这是开发部署。</p>
+<p>需要设置 <code>--production</code> 标志（<code>npm install --production</code>），以避免安装这些开发依赖项。</p>
+<h2 id="nodejs-包运行器-npx"><a class="header" href="#nodejs-包运行器-npx">Node.js 包运行器 npx</a></h2>
+<p><code>npx</code> 是一个非常强大的命令，从 <strong>npm</strong> 的 5.2 版本（发布于 2017 年 7 月）开始可用。</p>
+<blockquote>
+<p>如果不想安装 npm，则可以<a href="https://www.npmjs.com/package/npx">安装 npx 为独立的软件包</a>。</p>
+</blockquote>
+<p><strong><code>**npx</code> 可以运行使用 Node.js 构建并通过 npm 仓库发布的代码。</strong>**</p>
+<h3 id="轻松地运行本地命令"><a class="header" href="#轻松地运行本地命令">轻松地运行本地命令</a></h3>
+<p>Node.js 开发者过去通常将大多数可执行命令发布为全局的软件包，以使它们处于路径中且可被立即地执行。</p>
+<p>这很痛苦，因为无法真正地安装同一命令的不同版本。</p>
+<p>运行 <code>npx commandname</code> 会自动地在项目的 <code>node_modules</code> 文件夹中找到命令的正确引用，而无需知道确切的路径，也不需要在全局和用户路径中安装软件包。</p>
+<h3 id="无需安装的命令执行"><a class="header" href="#无需安装的命令执行">无需安装的命令执行</a></h3>
+<p><code>npx</code> 的另一个重要的特性是，无需先安装命令即可运行命令。</p>
+<p>这非常有用，主要是因为：</p>
+<ol>
+<li>不需要安装任何东西。</li>
+<li>可以使用 @version 语法运行同一命令的不同版本。</li>
+</ol>
+<p>使用 <code>npx</code> 的一个典型演示是使用 <code>cowsay</code> 命令。 <code>cowsay</code> 会打印一头母牛，并在命令中说出你写的内容。 例如：</p>
+<p><code>cowsay &quot;你好&quot;</code> 会打印：</p>
+<pre><code class="language-console">CONSOLEcopy
+ _______
+&lt; 你好 &gt;
+ -------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code></pre>
+<p>只有之前已从 npm 全局安装了 <code>cowsay</code> 命令，才可以这样做，否则，当尝试运行该命令时会获得错误。</p>
+<p><code>npx</code> 可以运行该 npm 命令，而无需在本地安装：</p>
+<pre><code class="language-bash">npx cowsay &quot;你好&quot;
+</code></pre>
+<p>会执行这个工作。</p>
+<p>这是一个有趣但无用的命令。 其他场景有：</p>
+<ul>
+<li>运行 <code>vue</code> CLI 工具以创建新的应用程序并运行它们：<code>npx @vue/cli create my-vue-app</code>。</li>
+<li>使用 <code>create-react-app</code> 创建新的 <code>React</code> 应用：<code>npx create-react-app my-react-app</code>。</li>
+</ul>
+<p>还有更多其他的场景。</p>
+<p>当被下载完，则下载的代码会被擦除。</p>
+<h3 id="使用不同的-nodejs-版本运行代码"><a class="header" href="#使用不同的-nodejs-版本运行代码">使用不同的 Node.js 版本运行代码</a></h3>
+<p>使用 <code>@</code> 指定版本，并将其与 <a href="https://www.npmjs.com/package/node"><code>node</code> npm 软件包</a> 结合使用：</p>
+<pre><code class="language-bash">npx node@10 -v #v10.18.1
+npx node@12 -v #v12.14.1
+</code></pre>
+<p>这有助于避免使用 <code>nvm</code> 之类的工具或其他 Node.js 版本管理工具。</p>
+<h3 id="直接从-url-运行任意代码片段"><a class="header" href="#直接从-url-运行任意代码片段">直接从 URL 运行任意代码片段</a></h3>
+<p><code>npx</code> 并不限制使用 npm 仓库上发布的软件包。</p>
+<p>可以运行位于 GitHub gist 中的代码，例如：</p>
+<pre><code class="language-bash">npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32
+</code></pre>
+<p>当然，当运行不受控制的代码时，需要格外小心，因为强大的功能带来了巨大的责任。</p>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../nodejs/入门.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../nodejs/定时器.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../nodejs/入门.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../nodejs/定时器.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

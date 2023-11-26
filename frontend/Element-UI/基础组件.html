@@ -1,0 +1,791 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>基础组件 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item expanded "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item expanded "><a href="../Element-UI/基础组件.html" class="active">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="布局"><a class="header" href="#布局">布局</a></h1>
+<h2 id="基础示例"><a class="header" href="#基础示例">基础示例</a></h2>
+<pre><code class="language-html">&lt;el-row&gt;
+  &lt;el-col :span=&quot;24&quot;&gt;&lt;div class=&quot;grid-content bg-purple-dark&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row&gt;
+  &lt;el-col :span=&quot;12&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;12&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row&gt;
+  &lt;el-col :span=&quot;8&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;8&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;8&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="分栏间隔"><a class="header" href="#分栏间隔">分栏间隔</a></h2>
+<pre><code class="language-html">&lt;el-row :gutter=&quot;20&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="对齐"><a class="header" href="#对齐">对齐</a></h2>
+<p>将 <code>type</code> 属性赋值为 'flex'，可以启用 flex 布局，并可通过 <code>justify</code> 属性来指定 start, center, end, space-between, space-around 其中的值来定义子元素的排版方式。</p>
+<pre><code class="language-html">&lt;el-row type=&quot;flex&quot; class=&quot;row-bg&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row type=&quot;flex&quot; class=&quot;row-bg&quot; justify=&quot;center&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row type=&quot;flex&quot; class=&quot;row-bg&quot; justify=&quot;end&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row type=&quot;flex&quot; class=&quot;row-bg&quot; justify=&quot;space-between&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;el-row type=&quot;flex&quot; class=&quot;row-bg&quot; justify=&quot;space-around&quot;&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :span=&quot;6&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="响应式布局"><a class="header" href="#响应式布局">响应式布局</a></h2>
+<p>参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：<code>xs</code>、<code>sm</code>、<code>md</code>、<code>lg</code> 和 <code>xl</code>。</p>
+<pre><code class="language-html">&lt;el-row :gutter=&quot;10&quot;&gt;
+  &lt;el-col :xs=&quot;8&quot; :sm=&quot;6&quot; :md=&quot;4&quot; :lg=&quot;3&quot; :xl=&quot;1&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :xs=&quot;4&quot; :sm=&quot;6&quot; :md=&quot;8&quot; :lg=&quot;9&quot; :xl=&quot;11&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :xs=&quot;4&quot; :sm=&quot;6&quot; :md=&quot;8&quot; :lg=&quot;9&quot; :xl=&quot;11&quot;&gt;&lt;div class=&quot;grid-content bg-purple&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+  &lt;el-col :xs=&quot;8&quot; :sm=&quot;6&quot; :md=&quot;4&quot; :lg=&quot;3&quot; :xl=&quot;1&quot;&gt;&lt;div class=&quot;grid-content bg-purple-light&quot;&gt;&lt;/div&gt;&lt;/el-col&gt;
+&lt;/el-row&gt;
+
+</code></pre>
+<h2 id="基于断点的隐藏类"><a class="header" href="#基于断点的隐藏类">基于断点的隐藏类</a></h2>
+<p>Element 额外提供了一系列类名，用于在某些条件下隐藏元素。这些类名可以添加在任何 DOM 元素或自定义组件上。如果需要，请自行引入以下文件：</p>
+<pre><code>import 'element-ui/lib/theme-chalk/display.css';
+</code></pre>
+<p>包含的类名及其含义为：</p>
+<ul>
+<li><code>hidden-xs-only</code> - 当视口在 <code>xs</code> 尺寸时隐藏</li>
+<li><code>hidden-sm-only</code> - 当视口在 <code>sm</code> 尺寸时隐藏</li>
+<li><code>hidden-sm-and-down</code> - 当视口在 <code>sm</code> 及以下尺寸时隐藏</li>
+<li><code>hidden-sm-and-up</code> - 当视口在 <code>sm</code> 及以上尺寸时隐藏</li>
+<li><code>hidden-md-only</code> - 当视口在 <code>md</code> 尺寸时隐藏</li>
+<li><code>hidden-md-and-down</code> - 当视口在 <code>md</code> 及以下尺寸时隐藏</li>
+<li><code>hidden-md-and-up</code> - 当视口在 <code>md</code> 及以上尺寸时隐藏</li>
+<li><code>hidden-lg-only</code> - 当视口在 <code>lg</code> 尺寸时隐藏</li>
+<li><code>hidden-lg-and-down</code> - 当视口在 <code>lg</code> 及以下尺寸时隐藏</li>
+<li><code>hidden-lg-and-up</code> - 当视口在 <code>lg</code> 及以上尺寸时隐藏</li>
+<li><code>hidden-xl-only</code> - 当视口在 <code>xl</code> 尺寸时隐藏</li>
+</ul>
+<h2 id="属性总览"><a class="header" href="#属性总览">属性总览</a></h2>
+<h3 id="row-attributes"><a class="header" href="#row-attributes">Row Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">gutter</td><td style="text-align: left">栅格间隔</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">type</td><td style="text-align: left">布局模式，可选 flex，现代浏览器下有效</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">justify</td><td style="text-align: left">flex 布局下的水平排列方式</td><td style="text-align: left">string</td><td style="text-align: left">start/end/center/space-around/space-between</td><td style="text-align: left">start</td></tr>
+<tr><td style="text-align: left">align</td><td style="text-align: left">flex 布局下的垂直排列方式</td><td style="text-align: left">string</td><td style="text-align: left">top/middle/bottom</td><td style="text-align: left">top</td></tr>
+<tr><td style="text-align: left">tag</td><td style="text-align: left">自定义元素标签</td><td style="text-align: left">string</td><td style="text-align: left">*</td><td style="text-align: left">div</td></tr>
+</tbody></table>
+</div>
+<h3 id="col-attributes"><a class="header" href="#col-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/layout#col-attributes">¶</a>Col Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">span</td><td style="text-align: left">栅格占据的列数</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">24</td></tr>
+<tr><td style="text-align: left">offset</td><td style="text-align: left">栅格左侧的间隔格数</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">push</td><td style="text-align: left">栅格向右移动格数</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">pull</td><td style="text-align: left">栅格向左移动格数</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">xs</td><td style="text-align: left"><code>&lt;768px</code> 响应式栅格数或者栅格属性对象</td><td style="text-align: left">number/object (例如： {span: 4, offset: 4})</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">sm</td><td style="text-align: left"><code>≥768px</code> 响应式栅格数或者栅格属性对象</td><td style="text-align: left">number/object (例如： {span: 4, offset: 4})</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">md</td><td style="text-align: left"><code>≥992px</code> 响应式栅格数或者栅格属性对象</td><td style="text-align: left">number/object (例如： {span: 4, offset: 4})</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">lg</td><td style="text-align: left"><code>≥1200px</code> 响应式栅格数或者栅格属性对象</td><td style="text-align: left">number/object (例如： {span: 4, offset: 4})</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">xl</td><td style="text-align: left"><code>≥1920px</code> 响应式栅格数或者栅格属性对象</td><td style="text-align: left">number/object (例如： {span: 4, offset: 4})</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">tag</td><td style="text-align: left">自定义元素标签</td><td style="text-align: left">string</td><td style="text-align: left">*</td><td style="text-align: left">div</td></tr>
+</tbody></table>
+</div>
+<h1 id="布局容器"><a class="header" href="#布局容器">布局容器</a></h1>
+<h2 id="容器组件"><a class="header" href="#容器组件">容器组件</a></h2>
+<p><code>&lt;el-container&gt;</code>：外层容器。当子元素中包含 <code>&lt;el-header&gt;</code> 或 <code>&lt;el-footer&gt;</code> 时，全部子元素会垂直上下排列，否则会水平左右排列。</p>
+<p><code>&lt;el-header&gt;</code>：顶栏容器。</p>
+<p><code>&lt;el-aside&gt;</code>：侧边栏容器。</p>
+<p><code>&lt;el-main&gt;</code>：主要区域容器。</p>
+<p><code>&lt;el-footer&gt;</code>：底栏容器。</p>
+<blockquote>
+<p>以上组件采用了 flex 布局，使用前请确定目标浏览器是否兼容。此外，<code>&lt;el-container&gt;</code> 的子元素只能是后四者，后四者的父元素也只能是 <code>&lt;el-container&gt;</code>。</p>
+</blockquote>
+<p><a href="https://element.eleme.cn/#/zh-CN/component/container#shi-li">常见页面布局</a></p>
+<h2 id="header-attributes"><a class="header" href="#header-attributes">Header Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">height</td><td style="text-align: left">顶栏高度</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">60px</td></tr>
+</tbody></table>
+</div>
+<h2 id="aside-attributes"><a class="header" href="#aside-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/container#aside-attributes">¶</a>Aside Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">width</td><td style="text-align: left">侧边栏宽度</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">300px</td></tr>
+</tbody></table>
+</div>
+<h2 id="footer-attributes"><a class="header" href="#footer-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/container#footer-attributes">¶</a>Footer Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">height</td><td style="text-align: left">底栏高度</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">60px</td></tr>
+</tbody></table>
+</div>
+<h1 id="border-边框"><a class="header" href="#border-边框">Border 边框</a></h1>
+<p>我们对边框进行统一规范，可用于按钮、卡片、弹窗等组件里。</p>
+<h3 id="边框"><a class="header" href="#边框">边框</a></h3>
+<p>实线,虚线</p>
+<h3 id="圆角"><a class="header" href="#圆角">圆角</a></h3>
+<p><strong>无圆角</strong></p>
+<p>border-radius: 0px</p>
+<p><strong>小圆角</strong></p>
+<p>border-radius: 2px</p>
+<p><strong>大圆角</strong></p>
+<p>border-radius: 4px</p>
+<p><strong>圆形圆角</strong></p>
+<p>border-radius: 30px</p>
+<h3 id="投影"><a class="header" href="#投影">投影</a></h3>
+<p>基础投影 box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)</p>
+<p>浅色投影 box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)</p>
+<h1 id="图标"><a class="header" href="#图标">图标</a></h1>
+<p>直接通过设置类名为 <code>el-icon-iconName</code> 来使用即可。例如：</p>
+<p><a href="https://element.eleme.cn/#/zh-CN/component/icon#tu-biao-ji-he">图标集合</a></p>
+<h1 id="按钮"><a class="header" href="#按钮">按钮</a></h1>
+<h2 id="type-plainroundcircle"><a class="header" href="#type-plainroundcircle">type, plain,round,circle</a></h2>
+<p>使用<code>type</code>、<code>plain</code>、<code>round</code>和<code>circle</code>属性来定义 Button 的样式。</p>
+<h2 id="默认按钮"><a class="header" href="#默认按钮">默认按钮</a></h2>
+<pre><code class="language-html">&lt;el-row&gt;
+  &lt;el-button&gt;默认按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot;&gt;主要按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot;&gt;成功按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot;&gt;信息按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot;&gt;警告按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot;&gt;危险按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="朴素按钮"><a class="header" href="#朴素按钮">朴素按钮</a></h2>
+<pre><code class="language-html">
+
+&lt;el-row&gt;
+  &lt;el-button plain&gt;朴素按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; plain&gt;主要按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot; plain&gt;成功按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot; plain&gt;信息按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot; plain&gt;警告按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot; plain&gt;危险按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="圆角按钮"><a class="header" href="#圆角按钮">圆角按钮</a></h2>
+<pre><code class="language-html">&lt;el-row&gt;
+  &lt;el-button round&gt;圆角按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; round&gt;主要按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot; round&gt;成功按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot; round&gt;信息按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot; round&gt;警告按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot; round&gt;危险按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="圆形按钮"><a class="header" href="#圆形按钮">圆形按钮</a></h2>
+<pre><code>&lt;el-row&gt;
+  &lt;el-button icon=&quot;el-icon-search&quot; circle&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-edit&quot; circle&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot; icon=&quot;el-icon-check&quot; circle&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot; icon=&quot;el-icon-message&quot; circle&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot; icon=&quot;el-icon-star-off&quot; circle&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot; icon=&quot;el-icon-delete&quot; circle&gt;&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="禁用"><a class="header" href="#禁用">禁用</a></h2>
+<pre><code class="language-html">&lt;el-row&gt;
+  &lt;el-button disabled&gt;默认按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; disabled&gt;主要按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot; disabled&gt;成功按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot; disabled&gt;信息按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot; disabled&gt;警告按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot; disabled&gt;危险按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="文字按钮"><a class="header" href="#文字按钮">文字按钮</a></h2>
+<pre><code class="language-html">
+&lt;el-button type=&quot;text&quot;&gt;文字按钮&lt;/el-button&gt;
+&lt;el-button type=&quot;text&quot; disabled&gt;文字按钮&lt;/el-button&gt;
+</code></pre>
+<h2 id="图标按钮"><a class="header" href="#图标按钮">图标按钮</a></h2>
+<pre><code class="language-html">
+&lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-edit&quot;&gt;&lt;/el-button&gt;
+&lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-share&quot;&gt;&lt;/el-button&gt;
+&lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-delete&quot;&gt;&lt;/el-button&gt;
+&lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-search&quot;&gt;搜索&lt;/el-button&gt;
+&lt;el-button type=&quot;primary&quot;&gt;上传&lt;i class=&quot;el-icon-upload el-icon--right&quot;&gt;&lt;/i&gt;&lt;/el-button&gt;
+</code></pre>
+<h2 id="按钮组"><a class="header" href="#按钮组">按钮组</a></h2>
+<pre><code class="language-html">&lt;el-button-group&gt;
+  &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-arrow-left&quot;&gt;上一页&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot;&gt;下一页&lt;i class=&quot;el-icon-arrow-right el-icon--right&quot;&gt;&lt;/i&gt;&lt;/el-button&gt;
+&lt;/el-button-group&gt;
+&lt;el-button-group&gt;
+  &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-edit&quot;&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-share&quot;&gt;&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot; icon=&quot;el-icon-delete&quot;&gt;&lt;/el-button&gt;
+&lt;/el-button-group&gt;
+</code></pre>
+<h2 id="加载中"><a class="header" href="#加载中">加载中</a></h2>
+<pre><code class="language-html">
+&lt;el-button type=&quot;primary&quot; :loading=&quot;true&quot;&gt;加载中&lt;/el-button&gt;
+
+</code></pre>
+<h2 id="按钮大小"><a class="header" href="#按钮大小">按钮大小</a></h2>
+<pre><code class="language-html">&lt;el-row&gt;
+  &lt;el-button&gt;默认按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;medium&quot;&gt;中等按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;small&quot;&gt;小型按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;mini&quot;&gt;超小按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+&lt;el-row&gt;
+  &lt;el-button round&gt;默认按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;medium&quot; round&gt;中等按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;small&quot; round&gt;小型按钮&lt;/el-button&gt;
+  &lt;el-button size=&quot;mini&quot; round&gt;超小按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+</code></pre>
+<h2 id="attributes"><a class="header" href="#attributes">Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">size</td><td style="text-align: left">尺寸</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">type</td><td style="text-align: left">类型</td><td style="text-align: left">string</td><td style="text-align: left">primary / success / warning / danger / info / text</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">plain</td><td style="text-align: left">是否朴素按钮</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">round</td><td style="text-align: left">是否圆角按钮</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">circle</td><td style="text-align: left">是否圆形按钮</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">loading</td><td style="text-align: left">是否加载中状态</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用状态</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">icon</td><td style="text-align: left">图标类名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">autofocus</td><td style="text-align: left">是否默认聚焦</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">native-type</td><td style="text-align: left">原生 type 属性</td><td style="text-align: left">string</td><td style="text-align: left">button / submit / reset</td><td style="text-align: left">button</td></tr>
+</tbody></table>
+</div>
+<h1 id="link-文字链接"><a class="header" href="#link-文字链接">Link 文字链接</a></h1>
+<h2 id="基础用法"><a class="header" href="#基础用法">基础用法</a></h2>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;el-link href=&quot;https://element.eleme.io&quot; target=&quot;_blank&quot;&gt;默认链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;primary&quot;&gt;主要链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;success&quot;&gt;成功链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;warning&quot;&gt;警告链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;danger&quot;&gt;危险链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;info&quot;&gt;信息链接&lt;/el-link&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="禁用状态"><a class="header" href="#禁用状态">禁用状态</a></h2>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;el-link disabled&gt;默认链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;primary&quot; disabled&gt;主要链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;success&quot; disabled&gt;成功链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;warning&quot; disabled&gt;警告链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;danger&quot; disabled&gt;危险链接&lt;/el-link&gt;
+  &lt;el-link type=&quot;info&quot; disabled&gt;信息链接&lt;/el-link&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="下划线"><a class="header" href="#下划线">下划线</a></h2>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;el-link :underline=&quot;false&quot;&gt;无下划线&lt;/el-link&gt;
+  &lt;el-link&gt;有下划线&lt;/el-link&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="图标-1"><a class="header" href="#图标-1">图标</a></h2>
+<pre><code>&lt;div&gt;
+  &lt;el-link icon=&quot;el-icon-edit&quot;&gt;编辑&lt;/el-link&gt;
+  &lt;el-link&gt;查看&lt;i class=&quot;el-icon-view el-icon--right&quot;&gt;&lt;/i&gt; &lt;/el-link&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="attributes-1"><a class="header" href="#attributes-1">Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">type</td><td style="text-align: left">类型</td><td style="text-align: left">string</td><td style="text-align: left">primary / success / warning / danger / info</td><td style="text-align: left">default</td></tr>
+<tr><td style="text-align: left">underline</td><td style="text-align: left">是否下划线</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">true</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用状态</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">href</td><td style="text-align: left">原生 href 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">icon</td><td style="text-align: left">图标类名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left"></td></tr>
+</tbody></table>
+</div><script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Element-UI/分页.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Element-UI/头像.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Element-UI/分页.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Element-UI/头像.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

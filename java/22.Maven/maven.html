@@ -1,0 +1,1783 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>maven - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item expanded "><a href="../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item expanded "><a href="../22.Maven/maven.html" class="active">maven</a></li><li class="chapter-item "><a href="../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item "><a href="../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="maven功能"><a class="header" href="#maven功能">maven功能</a></h1>
+<p>构建项目</p>
+<p>文档生成</p>
+<p>报告</p>
+<p>依赖</p>
+<p>SCMS</p>
+<p>发布</p>
+<p>分发</p>
+<p>邮件列表</p>
+<h1 id="约定配置"><a class="header" href="#约定配置">约定配置</a></h1>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">目录</th><th style="text-align: left">目的</th></tr></thead><tbody>
+<tr><td style="text-align: left">${basedir}</td><td style="text-align: left">存放pom.xml和所有的子目录</td></tr>
+<tr><td style="text-align: left">${basedir}/src/main/java</td><td style="text-align: left">项目的java源代码</td></tr>
+<tr><td style="text-align: left">${basedir}/src/main/resources</td><td style="text-align: left">项目的资源，比如说property文件，springmvc.xml</td></tr>
+<tr><td style="text-align: left">${basedir}/src/test/java</td><td style="text-align: left">项目的测试类，比如说Junit代码</td></tr>
+<tr><td style="text-align: left">${basedir}/src/test/resources</td><td style="text-align: left">测试用的资源</td></tr>
+<tr><td style="text-align: left">${basedir}/src/main/webapp/WEB-INF</td><td style="text-align: left">web应用文件目录，web项目的信息，比如存放web.xml、本地图片、jsp视图页面</td></tr>
+<tr><td style="text-align: left">${basedir}/target</td><td style="text-align: left">打包输出目录</td></tr>
+<tr><td style="text-align: left">${basedir}/target/classes</td><td style="text-align: left">编译输出目录</td></tr>
+<tr><td style="text-align: left">${basedir}/target/test-classes</td><td style="text-align: left">测试编译输出目录</td></tr>
+<tr><td style="text-align: left">Test.java</td><td style="text-align: left">Maven只会自动运行符合该命名规则的测试类</td></tr>
+<tr><td style="text-align: left">~/.m2/repository</td><td style="text-align: left">Maven默认的本地仓库目录位置</td></tr>
+</tbody></table>
+</div>
+<h1 id="pom文件"><a class="header" href="#pom文件">POM文件</a></h1>
+<h2 id="可以指定的配置类型"><a class="header" href="#可以指定的配置类型">可以指定的配置类型</a></h2>
+<p>项目自身信息</p>
+<ul>
+<li>modelVersion</li>
+<li>groupId,artifactId,version</li>
+</ul>
+<p>项目依赖</p>
+<p>插件</p>
+<p>执行目标</p>
+<p>项目构建profile</p>
+<p>项目版本</p>
+<p>项目开发者列表</p>
+<p>邮件列表信息</p>
+<h2 id="父pom"><a class="header" href="#父pom">父POM</a></h2>
+<p>父（Super）POM是 Maven 默认的 POM,所有的 POM 都继承自一个父 POM</p>
+<p>包含了一些可以被继承的默认设置</p>
+<h2 id="effectivepom"><a class="header" href="#effectivepom">EffectivePOM</a></h2>
+<pre><code>mvn help:effective-pom
+</code></pre>
+<p>经过继承、插值,变量替换之后的有效配置</p>
+<h1 id="pom标签大全"><a class="header" href="#pom标签大全">POM标签大全</a></h1>
+<h2 id="父pom-1"><a class="header" href="#父pom-1">父POM</a></h2>
+<pre><code class="language-xml">&lt;parent&gt;
+    &lt;!--被继承的父项目的构件标识符 --&gt;
+    &lt;artifactId /&gt;
+    &lt;!--被继承的父项目的全球唯一标识符 --&gt;
+    &lt;groupId /&gt;
+    &lt;!--被继承的父项目的版本 --&gt;
+    &lt;version /&gt;
+    &lt;!-- 父项目的pom.xml文件的相对路径。相对路径允许你选择一个不同的路径。默认值是../pom.xml。Maven首先在构建当前项目的地方寻找父项 
+        目的pom，其次在文件系统的这个位置（relativePath位置），然后在本地仓库，最后在远程仓库寻找父项目的pom。 --&gt;
+    &lt;relativePath /&gt;
+&lt;/parent&gt;
+</code></pre>
+<h2 id="项目标识"><a class="header" href="#项目标识">项目标识</a></h2>
+<pre><code class="language-xml">&lt;!--声明项目描述符遵循哪一个POM模型版本。模型本身的版本很少改变，虽然如此，但它仍然是必不可少的，这是为了当Maven引入了新的特性或者其他模型变更的时候，确保稳定性。 --&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;!--项目的全球唯一标识符，通常使用全限定的包名区分该项目和其他项目。并且构建时生成的路径也是由此生成， 如com.mycompany.app生成的相对路径为：/com/mycompany/app --&gt;
+&lt;groupId&gt;asia.banseon&lt;/groupId&gt;
+&lt;!-- 构件的标识符，它和group ID一起唯一标识一个构件。换句话说，你不能有两个不同的项目拥有同样的artifact ID和groupID；在某个 
+    特定的group ID下，artifact ID也必须是唯一的。构件是项目产生的或使用的一个东西，Maven为项目产生的构件包括：JARs，源 码，二进制发布和WARs等。 --&gt;
+&lt;artifactId&gt;banseon-maven2&lt;/artifactId&gt;
+&lt;!--项目当前版本，格式为:主版本.次版本.增量版本-限定版本号 --&gt;
+&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+</code></pre>
+<h2 id="项目构建信息"><a class="header" href="#项目构建信息">项目构建信息</a></h2>
+<pre><code class="language-xml">&lt;!--项目产生的构件类型，例如jar、war、ear、pom。插件可以创建他们自己的构件类型，所以前面列的不是全部构件类型 --&gt;
+&lt;packaging&gt;jar&lt;/packaging&gt;
+</code></pre>
+<h2 id="项目文档描述"><a class="header" href="#项目文档描述">项目文档描述</a></h2>
+<pre><code class="language-xml">&lt;!--项目的名称, Maven产生的文档用 --&gt;
+&lt;name&gt;banseon-maven&lt;/name&gt;
+&lt;!--项目主页的URL, Maven产生的文档用 --&gt;
+&lt;url&gt;http://www.baidu.com/banseon&lt;/url&gt;
+&lt;!-- 项目的详细描述, Maven 产生的文档用。 当这个元素能够用HTML格式描述时（例如，CDATA中的文本会被解析器忽略，就可以包含HTML标 
+    签）， 不鼓励使用纯文本描述。如果你需要修改产生的web站点的索引页面，你应该修改你自己的索引页文件，而不是调整这里的文档。 --&gt;
+&lt;description&gt;A maven project to study maven.&lt;/description&gt;
+</code></pre>
+<h2 id="配置项目的问题管理系统"><a class="header" href="#配置项目的问题管理系统">配置项目的问题管理系统</a></h2>
+<pre><code class="language-xml">&lt;!--项目的问题管理系统(Bugzilla, Jira, Scarab,或任何你喜欢的问题管理系统)的名称和URL，本例为 jira --&gt;
+    &lt;issueManagement&gt;
+        &lt;!--问题管理系统（例如jira）的名字， --&gt;
+        &lt;system&gt;jira&lt;/system&gt;
+        &lt;!--该项目使用的问题管理系统的URL --&gt;
+        &lt;url&gt;http://jira.baidu.com/banseon&lt;/url&gt;
+    &lt;/issueManagement&gt;
+</code></pre>
+<h2 id="项目持续集成信息"><a class="header" href="#项目持续集成信息">项目持续集成信息</a></h2>
+<pre><code>&lt;!--项目持续集成信息 --&gt;
+    &lt;ciManagement&gt;
+        &lt;!--持续集成系统的名字，例如continuum --&gt;
+        &lt;system /&gt;
+        &lt;!--该项目使用的持续集成系统的URL（如果持续集成系统有web接口的话）。 --&gt;
+        &lt;url /&gt;
+        &lt;!--构建完成时，需要通知的开发者/用户的配置项。包括被通知者信息和通知条件（错误，失败，成功，警告） --&gt;
+        &lt;notifiers&gt;
+            &lt;!--配置一种方式，当构建中断时，以该方式通知用户/开发者 --&gt;
+            &lt;notifier&gt;
+                &lt;!--传送通知的途径 --&gt;
+                &lt;type /&gt;
+                &lt;!--发生错误时是否通知 --&gt;
+                &lt;sendOnError /&gt;
+                &lt;!--构建失败时是否通知 --&gt;
+                &lt;sendOnFailure /&gt;
+                &lt;!--构建成功时是否通知 --&gt;
+                &lt;sendOnSuccess /&gt;
+                &lt;!--发生警告时是否通知 --&gt;
+                &lt;sendOnWarning /&gt;
+                &lt;!--不赞成使用。通知发送到哪里 --&gt;
+                &lt;address /&gt;
+                &lt;!--扩展配置项 --&gt;
+                &lt;configuration /&gt;
+            &lt;/notifier&gt;
+        &lt;/notifiers&gt;
+    &lt;/ciManagement&gt;
+</code></pre>
+<h2 id="项目创建年份"><a class="header" href="#项目创建年份">项目创建年份</a></h2>
+<pre><code>&lt;!--项目创建年份，4位数字。当产生版权信息时需要使用这个值。 --&gt;
+&lt;inceptionYear /&gt;
+</code></pre>
+<h2 id="项目相关邮件列表信息"><a class="header" href="#项目相关邮件列表信息">项目相关邮件列表信息</a></h2>
+<pre><code>&lt;mailingLists&gt;
+        &lt;!--该元素描述了项目相关的所有邮件列表。自动产生的网站引用这些信息。 --&gt;
+        &lt;mailingList&gt;
+            &lt;!--邮件的名称 --&gt;
+            &lt;name&gt;Demo&lt;/name&gt;
+            &lt;!--发送邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 --&gt;
+            &lt;post&gt;banseon@126.com&lt;/post&gt;
+            &lt;!--订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 --&gt;
+            &lt;subscribe&gt;banseon@126.com&lt;/subscribe&gt;
+            &lt;!--取消订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 --&gt;
+            &lt;unsubscribe&gt;banseon@126.com&lt;/unsubscribe&gt;
+            &lt;!--你可以浏览邮件信息的URL --&gt;
+            &lt;archive&gt;http:/hi.baidu.com/banseon/demo/dev/&lt;/archive&gt;
+        &lt;/mailingList&gt;
+    &lt;/mailingLists&gt;
+</code></pre>
+<h2 id="项目开发者列表"><a class="header" href="#项目开发者列表">项目开发者列表</a></h2>
+<pre><code class="language-xml">&lt;!--项目开发者列表 --&gt;
+    &lt;developers&gt;
+        &lt;!--某个项目开发者的信息 --&gt;
+        &lt;developer&gt;
+            &lt;!--SCM里项目开发者的唯一标识符 --&gt;
+            &lt;id&gt;HELLO WORLD&lt;/id&gt;
+            &lt;!--项目开发者的全名 --&gt;
+            &lt;name&gt;banseon&lt;/name&gt;
+            &lt;!--项目开发者的email --&gt;
+            &lt;email&gt;banseon@126.com&lt;/email&gt;
+            &lt;!--项目开发者的主页的URL --&gt;
+            &lt;url /&gt;
+            &lt;!--项目开发者在项目中扮演的角色，角色元素描述了各种角色 --&gt;
+            &lt;roles&gt;
+                &lt;role&gt;Project Manager&lt;/role&gt;
+                &lt;role&gt;Architect&lt;/role&gt;
+            &lt;/roles&gt;
+            &lt;!--项目开发者所属组织 --&gt;
+            &lt;organization&gt;demo&lt;/organization&gt;
+            &lt;!--项目开发者所属组织的URL --&gt;
+            &lt;organizationUrl&gt;http://hi.baidu.com/banseon&lt;/organizationUrl&gt;
+            &lt;!--项目开发者属性，如即时消息如何处理等 --&gt;
+            &lt;properties&gt;
+                &lt;dept&gt;No&lt;/dept&gt;
+            &lt;/properties&gt;
+            &lt;!--项目开发者所在时区， -11到12范围内的整数。 --&gt;
+            &lt;timezone&gt;-5&lt;/timezone&gt;
+        &lt;/developer&gt;
+    &lt;/developers&gt;
+</code></pre>
+<h2 id="项目的其他贡献者列表"><a class="header" href="#项目的其他贡献者列表">项目的其他贡献者列表</a></h2>
+<pre><code class="language-xml">&lt;contributors&gt;
+    &lt;!--项目的其他贡献者。参见developers/developer元素 --&gt;
+    &lt;contributor&gt;
+        &lt;name /&gt;
+        &lt;email /&gt;
+        &lt;url /&gt;
+        &lt;organization /&gt;
+        &lt;organizationUrl /&gt;
+        &lt;roles /&gt;
+        &lt;timezone /&gt;
+        &lt;properties /&gt;
+    &lt;/contributor&gt;
+&lt;/contributors&gt;
+</code></pre>
+<pre><code class="language-xml"> &lt;licenses&gt;
+        &lt;!--描述了项目的license，用于生成项目的web站点的license页面，其他一些报表和validation也会用到该元素。 --&gt;
+        &lt;license&gt;
+            &lt;!--license用于法律上的名称 --&gt;
+            &lt;name&gt;Apache 2&lt;/name&gt;
+            &lt;!--官方的license正文页面的URL --&gt;
+            &lt;url&gt;http://www.baidu.com/banseon/LICENSE-2.0.txt&lt;/url&gt;
+            &lt;!--项目分发的主要方式： repo，可以从Maven库下载 manual， 用户必须手动下载和安装依赖 --&gt;
+            &lt;distribution&gt;repo&lt;/distribution&gt;
+            &lt;!--关于license的补充信息 --&gt;
+            &lt;comments&gt;A business-friendly OSS license&lt;/comments&gt;
+        &lt;/license&gt;
+    &lt;/licenses&gt;
+</code></pre>
+<h2 id="scm配置你的代码库"><a class="header" href="#scm配置你的代码库">SCM配置你的代码库</a></h2>
+<pre><code>&lt;scm&gt;
+        &lt;!--SCM的URL,该URL描述了版本库和如何连接到版本库。欲知详情，请看SCMs提供的URL格式和列表。该连接只读。 --&gt;
+        &lt;connection&gt;
+            scm:svn:http://svn.baidu.com/banseon/maven/banseon/banseon-maven2-trunk(dao-trunk)
+        &lt;/connection&gt;
+        &lt;!--给开发者使用的，类似connection元素。即该连接不仅仅只读 --&gt;
+        &lt;developerConnection&gt;
+            scm:svn:http://svn.baidu.com/banseon/maven/banseon/dao-trunk
+        &lt;/developerConnection&gt;
+        &lt;!--当前代码的标签，在开发阶段默认为HEAD --&gt;
+        &lt;tag /&gt;
+        &lt;!--指向项目的可浏览SCM库（例如ViewVC或者Fisheye）的URL。 --&gt;
+        &lt;url&gt;http://svn.baidu.com/banseon&lt;/url&gt;
+    &lt;/scm&gt;
+</code></pre>
+<h2 id="项目所属组织"><a class="header" href="#项目所属组织">项目所属组织</a></h2>
+<pre><code class="language-xml">&lt;!--描述项目所属组织的各种属性。Maven产生的文档用 --&gt;
+&lt;organization&gt;
+    &lt;!--组织的全名 --&gt;
+    &lt;name&gt;demo&lt;/name&gt;
+    &lt;!--组织主页的URL --&gt;
+    &lt;url&gt;http://www.baidu.com/banseon&lt;/url&gt;
+&lt;/organization&gt;
+</code></pre>
+<h2 id="构建项目所需要的信息"><a class="header" href="#构建项目所需要的信息">构建项目所需要的信息</a></h2>
+<pre><code class="language-xml">&lt;build&gt;
+        &lt;!--该元素设置了项目源码目录，当构建项目的时候，构建系统会编译目录里的源码。该路径是相对于pom.xml的相对路径。 --&gt;
+        &lt;sourceDirectory /&gt;
+        &lt;!--该元素设置了项目脚本源码目录，该目录和源码目录不同：绝大多数情况下，该目录下的内容 会被拷贝到输出目录(因为脚本是被解释的，而不是被编译的)。 --&gt;
+        &lt;scriptSourceDirectory /&gt;
+        &lt;!--该元素设置了项目单元测试使用的源码目录，当测试项目的时候，构建系统会编译目录里的源码。该路径是相对于pom.xml的相对路径。 --&gt;
+        &lt;testSourceDirectory /&gt;
+        &lt;!--被编译过的应用程序class文件存放的目录。 --&gt;
+        &lt;outputDirectory /&gt;
+        &lt;!--被编译过的测试class文件存放的目录。 --&gt;
+        &lt;testOutputDirectory /&gt;
+        &lt;!--使用来自该项目的一系列构建扩展 --&gt;
+        &lt;extensions&gt;
+            &lt;!--描述使用到的构建扩展。 --&gt;
+            &lt;extension&gt;
+                &lt;!--构建扩展的groupId --&gt;
+                &lt;groupId /&gt;
+                &lt;!--构建扩展的artifactId --&gt;
+                &lt;artifactId /&gt;
+                &lt;!--构建扩展的版本 --&gt;
+                &lt;version /&gt;
+            &lt;/extension&gt;
+        &lt;/extensions&gt;
+        &lt;!--当项目没有规定目标（Maven2 叫做阶段）时的默认值 --&gt;
+        &lt;defaultGoal /&gt;
+        &lt;!--这个元素描述了项目相关的所有资源路径列表，例如和项目相关的属性文件，这些资源被包含在最终的打包文件里。 --&gt;
+        &lt;resources&gt;
+            &lt;!--这个元素描述了项目相关或测试相关的所有资源路径 --&gt;
+            &lt;resource&gt;
+                &lt;!-- 描述了资源的目标路径。该路径相对target/classes目录（例如${project.build.outputDirectory}）。举个例 
+                    子，如果你想资源在特定的包里(org.apache.maven.messages)，你就必须该元素设置为org/apache/maven /messages。然而，如果你只是想把资源放到源码目录结构里，就不需要该配置。 --&gt;
+                &lt;targetPath /&gt;
+                &lt;!--是否使用参数值代替参数名。参数值取自properties元素或者文件里配置的属性，文件在filters元素里列出。 --&gt;
+                &lt;filtering /&gt;
+                &lt;!--描述存放资源的目录，该路径相对POM路径 --&gt;
+                &lt;directory /&gt;
+                &lt;!--包含的模式列表，例如**/*.xml. --&gt;
+                &lt;includes /&gt;
+                &lt;!--排除的模式列表，例如**/*.xml --&gt;
+                &lt;excludes /&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+        &lt;!--这个元素描述了单元测试相关的所有资源路径，例如和单元测试相关的属性文件。 --&gt;
+        &lt;testResources&gt;
+            &lt;!--这个元素描述了测试相关的所有资源路径，参见build/resources/resource元素的说明 --&gt;
+            &lt;testResource&gt;
+                &lt;targetPath /&gt;
+                &lt;filtering /&gt;
+                &lt;directory /&gt;
+                &lt;includes /&gt;
+                &lt;excludes /&gt;
+            &lt;/testResource&gt;
+        &lt;/testResources&gt;
+        &lt;!--构建产生的所有文件存放的目录 --&gt;
+        &lt;directory /&gt;
+        &lt;!--产生的构件的文件名，默认值是${artifactId}-${version}。 --&gt;
+        &lt;finalName /&gt;
+        &lt;!--当filtering开关打开时，使用到的过滤器属性文件列表 --&gt;
+        &lt;filters /&gt;
+        &lt;!--子项目可以引用的默认插件信息。该插件配置项直到被引用时才会被解析或绑定到生命周期。给定插件的任何本地配置都会覆盖这里的配置 --&gt;
+        &lt;pluginManagement&gt;
+            &lt;!--使用的插件列表 。 --&gt;
+            &lt;plugins&gt;
+                &lt;!--plugin元素包含描述插件所需要的信息。 --&gt;
+                &lt;plugin&gt;
+                    &lt;!--插件在仓库里的group ID --&gt;
+                    &lt;groupId /&gt;
+                    &lt;!--插件在仓库里的artifact ID --&gt;
+                    &lt;artifactId /&gt;
+                    &lt;!--被使用的插件的版本（或版本范围） --&gt;
+                    &lt;version /&gt;
+                    &lt;!--是否从该插件下载Maven扩展（例如打包和类型处理器），由于性能原因，只有在真需要下载时，该元素才被设置成enabled。 --&gt;
+                    &lt;extensions /&gt;
+                    &lt;!--在构建生命周期中执行一组目标的配置。每个目标可能有不同的配置。 --&gt;
+                    &lt;executions&gt;
+                        &lt;!--execution元素包含了插件执行需要的信息 --&gt;
+                        &lt;execution&gt;
+                            &lt;!--执行目标的标识符，用于标识构建过程中的目标，或者匹配继承过程中需要合并的执行目标 --&gt;
+                            &lt;id /&gt;
+                            &lt;!--绑定了目标的构建生命周期阶段，如果省略，目标会被绑定到源数据里配置的默认阶段 --&gt;
+                            &lt;phase /&gt;
+                            &lt;!--配置的执行目标 --&gt;
+                            &lt;goals /&gt;
+                            &lt;!--配置是否被传播到子POM --&gt;
+                            &lt;inherited /&gt;
+                            &lt;!--作为DOM对象的配置 --&gt;
+                            &lt;configuration /&gt;
+                        &lt;/execution&gt;
+                    &lt;/executions&gt;
+                    &lt;!--项目引入插件所需要的额外依赖 --&gt;
+                    &lt;dependencies&gt;
+                        &lt;!--参见dependencies/dependency元素 --&gt;
+                        &lt;dependency&gt;
+                            ......
+                        &lt;/dependency&gt;
+                    &lt;/dependencies&gt;
+                    &lt;!--任何配置是否被传播到子项目 --&gt;
+                    &lt;inherited /&gt;
+                    &lt;!--作为DOM对象的配置 --&gt;
+                    &lt;configuration /&gt;
+                &lt;/plugin&gt;
+            &lt;/plugins&gt;
+        &lt;/pluginManagement&gt;
+        &lt;!--使用的插件列表 --&gt;
+        &lt;plugins&gt;
+            &lt;!--参见build/pluginManagement/plugins/plugin元素 --&gt;
+            &lt;plugin&gt;
+                &lt;groupId /&gt;
+                &lt;artifactId /&gt;
+                &lt;version /&gt;
+                &lt;extensions /&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id /&gt;
+                        &lt;phase /&gt;
+                        &lt;goals /&gt;
+                        &lt;inherited /&gt;
+                        &lt;configuration /&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;dependencies&gt;
+                    &lt;!--参见dependencies/dependency元素 --&gt;
+                    &lt;dependency&gt;
+                        ......
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+                &lt;goals /&gt;
+                &lt;inherited /&gt;
+                &lt;configuration /&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre>
+<h2 id="项目构建profile"><a class="header" href="#项目构建profile">项目构建profile</a></h2>
+<pre><code class="language-xml">&lt;profiles&gt;
+        &lt;!--根据环境参数或命令行参数激活某个构建处理 --&gt;
+        &lt;profile&gt;
+            &lt;!--构建配置的唯一标识符。即用于命令行激活，也用于在继承时合并具有相同标识符的profile。 --&gt;
+            &lt;id /&gt;
+            &lt;!--自动触发profile的条件逻辑。Activation是profile的开启钥匙。profile的力量来自于它 能够在某些特定的环境中自动使用某些特定的值；这些环境通过activation元素指定。activation元素并不是激活profile的唯一方式。 --&gt;
+            &lt;activation&gt;
+                &lt;!--profile默认是否激活的标志 --&gt;
+                &lt;activeByDefault /&gt;
+                &lt;!--当匹配的jdk被检测到，profile被激活。例如，1.4激活JDK1.4，1.4.0_2，而!1.4激活所有版本不是以1.4开头的JDK。 --&gt;
+                &lt;jdk /&gt;
+                &lt;!--当匹配的操作系统属性被检测到，profile被激活。os元素可以定义一些操作系统相关的属性。 --&gt;
+                &lt;os&gt;
+                    &lt;!--激活profile的操作系统的名字 --&gt;
+                    &lt;name&gt;Windows XP&lt;/name&gt;
+                    &lt;!--激活profile的操作系统所属家族(如 'windows') --&gt;
+                    &lt;family&gt;Windows&lt;/family&gt;
+                    &lt;!--激活profile的操作系统体系结构 --&gt;
+                    &lt;arch&gt;x86&lt;/arch&gt;
+                    &lt;!--激活profile的操作系统版本 --&gt;
+                    &lt;version&gt;5.1.2600&lt;/version&gt;
+                &lt;/os&gt;
+                &lt;!--如果Maven检测到某一个属性（其值可以在POM中通过${名称}引用），其拥有对应的名称和值，Profile就会被激活。如果值 字段是空的，那么存在属性名称字段就会激活profile，否则按区分大小写方式匹配属性值字段 --&gt;
+                &lt;property&gt;
+                    &lt;!--激活profile的属性的名称 --&gt;
+                    &lt;name&gt;mavenVersion&lt;/name&gt;
+                    &lt;!--激活profile的属性的值 --&gt;
+                    &lt;value&gt;2.0.3&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;!--提供一个文件名，通过检测该文件的存在或不存在来激活profile。missing检查文件是否存在，如果不存在则激活 profile。另一方面，exists则会检查文件是否存在，如果存在则激活profile。 --&gt;
+                &lt;file&gt;
+                    &lt;!--如果指定的文件存在，则激活profile。 --&gt;
+                    &lt;exists&gt;/usr/local/hudson/hudson-home/jobs/maven-guide-zh-to-production/workspace/
+                    &lt;/exists&gt;
+                    &lt;!--如果指定的文件不存在，则激活profile。 --&gt;
+                    &lt;missing&gt;/usr/local/hudson/hudson-home/jobs/maven-guide-zh-to-production/workspace/
+                    &lt;/missing&gt;
+                &lt;/file&gt;
+            &lt;/activation&gt;
+            &lt;!--构建项目所需要的信息。参见build元素 --&gt;
+            &lt;build&gt;
+                &lt;defaultGoal /&gt;
+                &lt;resources&gt;
+                    &lt;resource&gt;
+                        &lt;targetPath /&gt;
+                        &lt;filtering /&gt;
+                        &lt;directory /&gt;
+                        &lt;includes /&gt;
+                        &lt;excludes /&gt;
+                    &lt;/resource&gt;
+                &lt;/resources&gt;
+                &lt;testResources&gt;
+                    &lt;testResource&gt;
+                        &lt;targetPath /&gt;
+                        &lt;filtering /&gt;
+                        &lt;directory /&gt;
+                        &lt;includes /&gt;
+                        &lt;excludes /&gt;
+                    &lt;/testResource&gt;
+                &lt;/testResources&gt;
+                &lt;directory /&gt;
+                &lt;finalName /&gt;
+                &lt;filters /&gt;
+                &lt;pluginManagement&gt;
+                    &lt;plugins&gt;
+                        &lt;!--参见build/pluginManagement/plugins/plugin元素 --&gt;
+                        &lt;plugin&gt;
+                            &lt;groupId /&gt;
+                            &lt;artifactId /&gt;
+                            &lt;version /&gt;
+                            &lt;extensions /&gt;
+                            &lt;executions&gt;
+                                &lt;execution&gt;
+                                    &lt;id /&gt;
+                                    &lt;phase /&gt;
+                                    &lt;goals /&gt;
+                                    &lt;inherited /&gt;
+                                    &lt;configuration /&gt;
+                                &lt;/execution&gt;
+                            &lt;/executions&gt;
+                            &lt;dependencies&gt;
+                                &lt;!--参见dependencies/dependency元素 --&gt;
+                                &lt;dependency&gt;
+                                    ......
+                                &lt;/dependency&gt;
+                            &lt;/dependencies&gt;
+                            &lt;goals /&gt;
+                            &lt;inherited /&gt;
+                            &lt;configuration /&gt;
+                        &lt;/plugin&gt;
+                    &lt;/plugins&gt;
+                &lt;/pluginManagement&gt;
+                &lt;plugins&gt;
+                    &lt;!--参见build/pluginManagement/plugins/plugin元素 --&gt;
+                    &lt;plugin&gt;
+                        &lt;groupId /&gt;
+                        &lt;artifactId /&gt;
+                        &lt;version /&gt;
+                        &lt;extensions /&gt;
+                        &lt;executions&gt;
+                            &lt;execution&gt;
+                                &lt;id /&gt;
+                                &lt;phase /&gt;
+                                &lt;goals /&gt;
+                                &lt;inherited /&gt;
+                                &lt;configuration /&gt;
+                            &lt;/execution&gt;
+                        &lt;/executions&gt;
+                        &lt;dependencies&gt;
+                            &lt;!--参见dependencies/dependency元素 --&gt;
+                            &lt;dependency&gt;
+                                ......
+                            &lt;/dependency&gt;
+                        &lt;/dependencies&gt;
+                        &lt;goals /&gt;
+                        &lt;inherited /&gt;
+                        &lt;configuration /&gt;
+                    &lt;/plugin&gt;
+                &lt;/plugins&gt;
+            &lt;/build&gt;
+            &lt;!--模块（有时称作子项目） 被构建成项目的一部分。列出的每个模块元素是指向该模块的目录的相对路径 --&gt;
+            &lt;modules /&gt;
+            &lt;!--发现依赖和扩展的远程仓库列表。 --&gt;
+            &lt;repositories&gt;
+                &lt;!--参见repositories/repository元素 --&gt;
+                &lt;repository&gt;
+                    &lt;releases&gt;
+                        &lt;enabled /&gt;
+                        &lt;updatePolicy /&gt;
+                        &lt;checksumPolicy /&gt;
+                    &lt;/releases&gt;
+                    &lt;snapshots&gt;
+                        &lt;enabled /&gt;
+                        &lt;updatePolicy /&gt;
+                        &lt;checksumPolicy /&gt;
+                    &lt;/snapshots&gt;
+                    &lt;id /&gt;
+                    &lt;name /&gt;
+                    &lt;url /&gt;
+                    &lt;layout /&gt;
+                &lt;/repository&gt;
+            &lt;/repositories&gt;
+            &lt;!--发现插件的远程仓库列表，这些插件用于构建和报表 --&gt;
+            &lt;pluginRepositories&gt;
+                &lt;!--包含需要连接到远程插件仓库的信息.参见repositories/repository元素 --&gt;
+                &lt;pluginRepository&gt;
+                    &lt;releases&gt;
+                        &lt;enabled /&gt;
+                        &lt;updatePolicy /&gt;
+                        &lt;checksumPolicy /&gt;
+                    &lt;/releases&gt;
+                    &lt;snapshots&gt;
+                        &lt;enabled /&gt;
+                        &lt;updatePolicy /&gt;
+                        &lt;checksumPolicy /&gt;
+                    &lt;/snapshots&gt;
+                    &lt;id /&gt;
+                    &lt;name /&gt;
+                    &lt;url /&gt;
+                    &lt;layout /&gt;
+                &lt;/pluginRepository&gt;
+            &lt;/pluginRepositories&gt;
+            &lt;!--该元素描述了项目相关的所有依赖。 这些依赖组成了项目构建过程中的一个个环节。它们自动从项目定义的仓库中下载。要获取更多信息，请看项目依赖机制。 --&gt;
+            &lt;dependencies&gt;
+                &lt;!--参见dependencies/dependency元素 --&gt;
+                &lt;dependency&gt;
+                    ......
+                &lt;/dependency&gt;
+            &lt;/dependencies&gt;
+            &lt;!--不赞成使用. 现在Maven忽略该元素. --&gt;
+            &lt;reports /&gt;
+            &lt;!--该元素包括使用报表插件产生报表的规范。当用户执行&quot;mvn site&quot;，这些报表就会运行。 在页面导航栏能看到所有报表的链接。参见reporting元素 --&gt;
+            &lt;reporting&gt;
+                ......
+            &lt;/reporting&gt;
+            &lt;!--参见dependencyManagement元素 --&gt;
+            &lt;dependencyManagement&gt;
+                &lt;dependencies&gt;
+                    &lt;!--参见dependencies/dependency元素 --&gt;
+                    &lt;dependency&gt;
+                        ......
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+            &lt;/dependencyManagement&gt;
+            &lt;!--参见distributionManagement元素 --&gt;
+            &lt;distributionManagement&gt;
+                ......
+            &lt;/distributionManagement&gt;
+            &lt;!--参见properties元素 --&gt;
+            &lt;properties /&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;
+</code></pre>
+<h2 id="模块依赖配置"><a class="header" href="#模块依赖配置">模块依赖配置</a></h2>
+<pre><code> &lt;!--模块（有时称作子项目） 被构建成项目的一部分。列出的每个模块元素是指向该模块的目录的相对路径 --&gt;
+    &lt;modules /&gt;
+</code></pre>
+<h2 id="项目依赖的远程仓库"><a class="header" href="#项目依赖的远程仓库">项目依赖的远程仓库</a></h2>
+<pre><code class="language-xml"> &lt;repositories&gt;
+        &lt;!--包含需要连接到远程仓库的信息 --&gt;
+        &lt;repository&gt;
+            &lt;!--如何处理远程仓库里发布版本的下载 --&gt;
+            &lt;releases&gt;
+                &lt;!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。 --&gt;
+                &lt;enabled /&gt;
+                &lt;!--该元素指定更新发生的频率。Maven会比较本地POM和远程POM的时间戳。这里的选项是：always（一直），daily（默认，每日），interval：X（这里X是以分钟为单位的时间间隔），或者never（从不）。 --&gt;
+                &lt;updatePolicy /&gt;
+                &lt;!--当Maven验证构件校验文件失败时该怎么做：ignore（忽略），fail（失败），或者warn（警告）。 --&gt;
+                &lt;checksumPolicy /&gt;
+            &lt;/releases&gt;
+            &lt;!-- 如何处理远程仓库里快照版本的下载。有了releases和snapshots这两组配置，POM就可以在每个单独的仓库中，为每种类型的构件采取不同的 
+                策略。例如，可能有人会决定只为开发目的开启对快照版本下载的支持。参见repositories/repository/releases元素 --&gt;
+            &lt;snapshots&gt;
+                &lt;enabled /&gt;
+                &lt;updatePolicy /&gt;
+                &lt;checksumPolicy /&gt;
+            &lt;/snapshots&gt;
+            &lt;!--远程仓库唯一标识符。可以用来匹配在settings.xml文件里配置的远程仓库 --&gt;
+            &lt;id&gt;banseon-repository-proxy&lt;/id&gt;
+            &lt;!--远程仓库名称 --&gt;
+            &lt;name&gt;banseon-repository-proxy&lt;/name&gt;
+            &lt;!--远程仓库URL，按protocol://hostname/path形式 --&gt;
+            &lt;url&gt;http://192.168.1.169:9999/repository/&lt;/url&gt;
+            &lt;!-- 用于定位和排序构件的仓库布局类型-可以是default（默认）或者legacy（遗留）。Maven 2为其仓库提供了一个默认的布局；然 
+                而，Maven 1.x有一种不同的布局。我们可以使用该元素指定布局是default（默认）还是legacy（遗留）。 --&gt;
+            &lt;layout&gt;default&lt;/layout&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+</code></pre>
+<h2 id="插件的远程仓库"><a class="header" href="#插件的远程仓库">插件的远程仓库</a></h2>
+<pre><code class="language-xml">&lt;pluginRepositories&gt;
+        &lt;!--包含需要连接到远程插件仓库的信息.参见repositories/repository元素 --&gt;
+        &lt;pluginRepository&gt;
+            ......
+        &lt;/pluginRepository&gt;
+    &lt;/pluginRepositories&gt;
+</code></pre>
+<h2 id="项目相关的所有依赖"><a class="header" href="#项目相关的所有依赖">项目相关的所有依赖</a></h2>
+<pre><code class="language-xml">&lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;!--依赖的group ID --&gt;
+            &lt;groupId&gt;org.apache.maven&lt;/groupId&gt;
+            &lt;!--依赖的artifact ID --&gt;
+            &lt;artifactId&gt;maven-artifact&lt;/artifactId&gt;
+            &lt;!--依赖的版本号。 在Maven 2里, 也可以配置成版本号的范围。 --&gt;
+            &lt;version&gt;3.8.1&lt;/version&gt;
+            &lt;!-- 依赖类型，默认类型是jar。它通常表示依赖的文件的扩展名，但也有例外。一个类型可以被映射成另外一个扩展名或分类器。类型经常和使用的打包方式对应， 
+                尽管这也有例外。一些类型的例子：jar，war，ejb-client和test-jar。如果设置extensions为 true，就可以在 plugin里定义新的类型。所以前面的类型的例子不完整。 --&gt;
+            &lt;type&gt;jar&lt;/type&gt;
+            &lt;!-- 依赖的分类器。分类器可以区分属于同一个POM，但不同构建方式的构件。分类器名被附加到文件名的版本号后面。例如，如果你想要构建两个单独的构件成 
+                JAR，一个使用Java 1.4编译器，另一个使用Java 6编译器，你就可以使用分类器来生成两个单独的JAR构件。 --&gt;
+            &lt;classifier&gt;&lt;/classifier&gt;
+            &lt;!--依赖范围。在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。 - compile ：默认范围，用于编译 - provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath 
+                - runtime: 在执行时需要使用 - test: 用于test任务时使用 - system: 需要外在提供相应的元素。通过systemPath来取得 
+                - systemPath: 仅用于范围为system。提供相应的路径 - optional: 当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用 --&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+            &lt;!--仅供system范围使用。注意，不鼓励使用这个元素，并且在新的版本中该元素可能被覆盖掉。该元素为依赖规定了文件系统上的路径。需要绝对路径而不是相对路径。推荐使用属性匹配绝对路径，例如${java.home}。 --&gt;
+            &lt;systemPath&gt;&lt;/systemPath&gt;
+            &lt;!--当计算传递依赖时， 从依赖构件列表里，列出被排除的依赖构件集。即告诉maven你只依赖指定的项目，不依赖项目的依赖。此元素主要用于解决版本冲突问题 --&gt;
+            &lt;exclusions&gt;
+                &lt;exclusion&gt;
+                    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+                    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+                &lt;/exclusion&gt;
+            &lt;/exclusions&gt;
+            &lt;!--可选依赖，如果你在项目B中把C依赖声明为可选，你就需要在依赖于B的项目（例如项目A）中显式的引用对C的依赖。可选依赖阻断依赖的传递性。 --&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+<h2 id="使用报表插件产生报表的规范"><a class="header" href="#使用报表插件产生报表的规范">使用报表插件产生报表的规范</a></h2>
+<pre><code class="language-xml">&lt;reporting&gt;
+        &lt;!--true，则，网站不包括默认的报表。这包括&quot;项目信息&quot;菜单中的报表。 --&gt;
+        &lt;excludeDefaults /&gt;
+        &lt;!--所有产生的报表存放到哪里。默认值是${project.build.directory}/site。 --&gt;
+        &lt;outputDirectory /&gt;
+        &lt;!--使用的报表插件和他们的配置。 --&gt;
+        &lt;plugins&gt;
+            &lt;!--plugin元素包含描述报表插件需要的信息 --&gt;
+            &lt;plugin&gt;
+                &lt;!--报表插件在仓库里的group ID --&gt;
+                &lt;groupId /&gt;
+                &lt;!--报表插件在仓库里的artifact ID --&gt;
+                &lt;artifactId /&gt;
+                &lt;!--被使用的报表插件的版本（或版本范围） --&gt;
+                &lt;version /&gt;
+                &lt;!--任何配置是否被传播到子项目 --&gt;
+                &lt;inherited /&gt;
+                &lt;!--报表插件的配置 --&gt;
+                &lt;configuration /&gt;
+                &lt;!--一组报表的多重规范，每个规范可能有不同的配置。一个规范（报表集）对应一个执行目标 。例如，有1，2，3，4，5，6，7，8，9个报表。1，2，5构成A报表集，对应一个执行目标。2，5，8构成B报表集，对应另一个执行目标 --&gt;
+                &lt;reportSets&gt;
+                    &lt;!--表示报表的一个集合，以及产生该集合的配置 --&gt;
+                    &lt;reportSet&gt;
+                        &lt;!--报表集合的唯一标识符，POM继承时用到 --&gt;
+                        &lt;id /&gt;
+                        &lt;!--产生报表集合时，被使用的报表的配置 --&gt;
+                        &lt;configuration /&gt;
+                        &lt;!--配置是否被继承到子POMs --&gt;
+                        &lt;inherited /&gt;
+                        &lt;!--这个集合里使用到哪些报表 --&gt;
+                        &lt;reports /&gt;
+                    &lt;/reportSet&gt;
+                &lt;/reportSets&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/reporting&gt;
+</code></pre>
+<h2 id="继承自该项目的所有子项目的默认依赖信息"><a class="header" href="#继承自该项目的所有子项目的默认依赖信息">继承自该项目的所有子项目的默认依赖信息</a></h2>
+<pre><code class="language-xml">这部分的依赖信息不会被立即解析,而是当子项目声明一个依赖（必须描述group ID和 artifact ID信息)
+如果group ID和artifact ID以外的一些信息没有描述，则通过group ID和artifact ID 匹配到这里的依赖，并使用这里的依赖信息
+&lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;!--参见dependencies/dependency元素 --&gt;
+            &lt;dependency&gt;
+                ......
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+</code></pre>
+<h2 id="项目分发信息"><a class="header" href="#项目分发信息">项目分发信息</a></h2>
+<pre><code class="language-xml">&lt;!--项目分发信息，在执行mvn deploy后表示要发布的位置。有了这些信息就可以把网站部署到远程服务器或者把构件部署到远程仓库。 --&gt;
+    &lt;distributionManagement&gt;
+        &lt;!--部署项目产生的构件到远程仓库需要的信息 --&gt;
+        &lt;repository&gt;
+            &lt;!--是分配给快照一个唯一的版本号（由时间戳和构建流水号）？还是每次都使用相同的版本号？参见repositories/repository元素 --&gt;
+            &lt;uniqueVersion /&gt;
+            &lt;id&gt;banseon-maven2&lt;/id&gt;
+            &lt;name&gt;banseon maven2&lt;/name&gt;
+            &lt;url&gt;file://${basedir}/target/deploy&lt;/url&gt;
+            &lt;layout /&gt;
+        &lt;/repository&gt;
+        &lt;!--构件的快照部署到哪里？如果没有配置该元素，默认部署到repository元素配置的仓库，参见distributionManagement/repository元素 --&gt;
+        &lt;snapshotRepository&gt;
+            &lt;uniqueVersion /&gt;
+            &lt;id&gt;banseon-maven2&lt;/id&gt;
+            &lt;name&gt;Banseon-maven2 Snapshot Repository&lt;/name&gt;
+            &lt;url&gt;scp://svn.baidu.com/banseon:/usr/local/maven-snapshot&lt;/url&gt;
+            &lt;layout /&gt;
+        &lt;/snapshotRepository&gt;
+        &lt;!--部署项目的网站需要的信息 --&gt;
+        &lt;site&gt;
+            &lt;!--部署位置的唯一标识符，用来匹配站点和settings.xml文件里的配置 --&gt;
+            &lt;id&gt;banseon-site&lt;/id&gt;
+            &lt;!--部署位置的名称 --&gt;
+            &lt;name&gt;business api website&lt;/name&gt;
+            &lt;!--部署位置的URL，按protocol://hostname/path形式 --&gt;
+            &lt;url&gt;
+                scp://svn.baidu.com/banseon:/var/www/localhost/banseon-web
+            &lt;/url&gt;
+        &lt;/site&gt;
+        &lt;!--项目下载页面的URL。如果没有该元素，用户应该参考主页。使用该元素的原因是：帮助定位那些不在仓库里的构件（由于license限制）。 --&gt;
+        &lt;downloadUrl /&gt;
+        &lt;!--如果构件有了新的group ID和artifact ID（构件移到了新的位置），这里列出构件的重定位信息。 --&gt;
+        &lt;relocation&gt;
+            &lt;!--构件新的group ID --&gt;
+            &lt;groupId /&gt;
+            &lt;!--构件新的artifact ID --&gt;
+            &lt;artifactId /&gt;
+            &lt;!--构件新的版本号 --&gt;
+            &lt;version /&gt;
+            &lt;!--显示给用户的，关于移动的额外信息，例如原因。 --&gt;
+            &lt;message /&gt;
+        &lt;/relocation&gt;
+        &lt;!-- 给出该构件在远程仓库的状态。不得在本地项目中设置该元素，因为这是工具自动更新的。有效的值有：none（默认），converted（仓库管理员从 
+            Maven 1 POM转换过来），partner（直接从伙伴Maven 2仓库同步过来），deployed（从Maven 2实例部 署），verified（被核实时正确的和最终的）。 --&gt;
+        &lt;status /&gt;
+    &lt;/distributionManagement&gt;
+</code></pre>
+<pre><code class="language-xml">&lt;!--以值替代名称，Properties可以在整个POM中使用，也可以作为触发条件（见settings.xml配置文件里activation元素的说明）。格式是&lt;name&gt;value&lt;/name&gt;。 --&gt;
+&lt;properties /&gt;
+</code></pre>
+<h1 id="maven-构建生命周期"><a class="header" href="#maven-构建生命周期">Maven 构建生命周期</a></h1>
+<h2 id="典型的项目周期"><a class="header" href="#典型的项目周期">典型的项目周期</a></h2>
+<p>一个典型的 Maven 构建（build）生命周期是由以下几个阶段的序列组成的</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">阶段</th><th style="text-align: left">处理</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">验证 validate</td><td style="text-align: left">验证项目</td><td style="text-align: left">验证项目是否正确且所有必须信息是可用的</td></tr>
+<tr><td style="text-align: left">编译 compile</td><td style="text-align: left">执行编译</td><td style="text-align: left">源代码编译在此阶段完成</td></tr>
+<tr><td style="text-align: left">测试 Test</td><td style="text-align: left">测试</td><td style="text-align: left">使用适当的单元测试框架（例如JUnit）运行测试。</td></tr>
+<tr><td style="text-align: left">包装 package</td><td style="text-align: left">打包</td><td style="text-align: left">创建JAR/WAR包如在 pom.xml 中定义提及的包</td></tr>
+<tr><td style="text-align: left">检查 verify</td><td style="text-align: left">检查</td><td style="text-align: left">对集成测试的结果进行检查，以保证质量达标</td></tr>
+<tr><td style="text-align: left">安装 install</td><td style="text-align: left">安装</td><td style="text-align: left">安装打包的项目到本地仓库，以供其他项目使用</td></tr>
+<tr><td style="text-align: left">部署 deploy</td><td style="text-align: left">部署</td><td style="text-align: left">拷贝最终的工程包到远程仓库中，以共享给其他开发人员和工程</td></tr>
+</tbody></table>
+</div>
+<h2 id="三个标准的生命周期"><a class="header" href="#三个标准的生命周期">三个标准的生命周期</a></h2>
+<ul>
+<li><strong>clean</strong>：项目清理的处理</li>
+<li><strong>default(或 build)</strong>：项目部署的处理</li>
+<li><strong>site</strong>：项目站点文档创建的处理</li>
+</ul>
+<h2 id="构建阶段由插件目标构成"><a class="header" href="#构建阶段由插件目标构成">构建阶段由插件目标构成</a></h2>
+<ol>
+<li>
+<p>一个插件目标代表一个特定的任务（比构建阶段更为精细）</p>
+</li>
+<li>
+<p>这些目标可能被绑定到多个阶段或者无绑定</p>
+</li>
+<li>
+<p>不绑定到任何构建阶段的目标可以在构建生命周期之外通过直接调用执行</p>
+</li>
+<li>
+<p>这些目标的执行顺序取决于调用目标和构建阶段的顺序</p>
+</li>
+</ol>
+<pre><code>clean 和 pakage 是构建阶段，dependency:copy-dependencies 是目标
+
+mvn clean dependency:copy-dependencies package
+</code></pre>
+<h2 id="clean-生命周期"><a class="header" href="#clean-生命周期">Clean 生命周期</a></h2>
+<ul>
+<li>pre-clean：执行一些需要在clean之前完成的工作</li>
+<li>clean：移除所有上一次构建生成的文件</li>
+<li>post-clean：执行一些需要在clean之后立刻完成的工作</li>
+</ul>
+<p>在一个生命周期中，运行某个阶段的时候，它之前的所有阶段都会被运行，也就是说，如果执行 mvn clean 将运行以下两个生命周期阶段：</p>
+<pre><code class="language-xml">当我们执行 mvn post-clean 命令时，Maven 调用 clean 生命周期
+pre-clean, clean
+
+如果我们运行 mvn post-clean ，则运行以下三个生命周期阶段：
+pre-clean, clean, post-clean
+</code></pre>
+<ul>
+<li>example</li>
+</ul>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;groupId&gt;com.companyname.projectgroup&lt;/groupId&gt;
+&lt;artifactId&gt;project&lt;/artifactId&gt;
+&lt;version&gt;1.0&lt;/version&gt;
+&lt;build&gt;
+&lt;plugins&gt;
+   &lt;plugin&gt;
+   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+   &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+   &lt;version&gt;1.1&lt;/version&gt;
+   &lt;executions&gt;
+      &lt;execution&gt;
+         &lt;id&gt;id.pre-clean&lt;/id&gt;
+         &lt;phase&gt;pre-clean&lt;/phase&gt;
+         &lt;goals&gt;
+            &lt;goal&gt;run&lt;/goal&gt;
+         &lt;/goals&gt;
+         &lt;configuration&gt;
+            &lt;tasks&gt;
+               &lt;echo&gt;pre-clean phase&lt;/echo&gt;
+            &lt;/tasks&gt;
+         &lt;/configuration&gt;
+      &lt;/execution&gt;
+      &lt;execution&gt;
+         &lt;id&gt;id.clean&lt;/id&gt;
+         &lt;phase&gt;clean&lt;/phase&gt;
+         &lt;goals&gt;
+          &lt;goal&gt;run&lt;/goal&gt;
+         &lt;/goals&gt;
+         &lt;configuration&gt;
+            &lt;tasks&gt;
+               &lt;echo&gt;clean phase&lt;/echo&gt;
+            &lt;/tasks&gt;
+         &lt;/configuration&gt;
+      &lt;/execution&gt;
+      &lt;execution&gt;
+         &lt;id&gt;id.post-clean&lt;/id&gt;
+         &lt;phase&gt;post-clean&lt;/phase&gt;
+         &lt;goals&gt;
+            &lt;goal&gt;run&lt;/goal&gt;
+         &lt;/goals&gt;
+         &lt;configuration&gt;
+            &lt;tasks&gt;
+               &lt;echo&gt;post-clean phase&lt;/echo&gt;
+            &lt;/tasks&gt;
+         &lt;/configuration&gt;
+      &lt;/execution&gt;
+   &lt;/executions&gt;
+   &lt;/plugin&gt;
+&lt;/plugins&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="default-build-生命周期"><a class="header" href="#default-build-生命周期">Default (Build) 生命周期</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">生命周期阶段</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">validate（校验）</td><td style="text-align: left">校验项目是否正确并且所有必要的信息可以完成项目的构建过程。</td></tr>
+<tr><td style="text-align: left">initialize（初始化）</td><td style="text-align: left">初始化构建状态，比如设置属性值。</td></tr>
+<tr><td style="text-align: left">generate-sources（生成源代码）</td><td style="text-align: left">生成包含在编译阶段中的任何源代码。</td></tr>
+<tr><td style="text-align: left">process-sources（处理源代码）</td><td style="text-align: left">处理源代码，比如说，过滤任意值。</td></tr>
+<tr><td style="text-align: left">generate-resources（生成资源文件）</td><td style="text-align: left">生成将会包含在项目包中的资源文件。</td></tr>
+<tr><td style="text-align: left">process-resources （处理资源文件）</td><td style="text-align: left">复制和处理资源到目标目录，为打包阶段最好准备。</td></tr>
+<tr><td style="text-align: left">compile（编译）</td><td style="text-align: left">编译项目的源代码。</td></tr>
+<tr><td style="text-align: left">process-classes（处理类文件）</td><td style="text-align: left">处理编译生成的文件，比如说对Java class文件做字节码改善优化。</td></tr>
+<tr><td style="text-align: left">generate-test-sources（生成测试源代码）</td><td style="text-align: left">生成包含在编译阶段中的任何测试源代码。</td></tr>
+<tr><td style="text-align: left">process-test-sources（处理测试源代码）</td><td style="text-align: left">处理测试源代码，比如说，过滤任意值。</td></tr>
+<tr><td style="text-align: left">generate-test-resources（生成测试资源文件）</td><td style="text-align: left">为测试创建资源文件。</td></tr>
+<tr><td style="text-align: left">process-test-resources（处理测试资源文件）</td><td style="text-align: left">复制和处理测试资源到目标目录。</td></tr>
+<tr><td style="text-align: left">test-compile（编译测试源码）</td><td style="text-align: left">编译测试源代码到测试目标目录.</td></tr>
+<tr><td style="text-align: left">process-test-classes（处理测试类文件）</td><td style="text-align: left">处理测试源码编译生成的文件。</td></tr>
+<tr><td style="text-align: left">test（测试）</td><td style="text-align: left">使用合适的单元测试框架运行测试（Juint是其中之一）。</td></tr>
+<tr><td style="text-align: left">prepare-package（准备打包）</td><td style="text-align: left">在实际打包之前，执行任何的必要的操作为打包做准备。</td></tr>
+<tr><td style="text-align: left">package（打包）</td><td style="text-align: left">将编译后的代码打包成可分发格式的文件，比如JAR、WAR或者EAR文件。</td></tr>
+<tr><td style="text-align: left">pre-integration-test（集成测试前）</td><td style="text-align: left">在执行集成测试前进行必要的动作。比如说，搭建需要的环境。</td></tr>
+<tr><td style="text-align: left">integration-test（集成测试）</td><td style="text-align: left">处理和部署项目到可以运行集成测试环境中。</td></tr>
+<tr><td style="text-align: left">post-integration-test（集成测试后）</td><td style="text-align: left">在执行集成测试完成后进行必要的动作。比如说，清理集成测试环境。</td></tr>
+<tr><td style="text-align: left">verify （验证）</td><td style="text-align: left">运行任意的检查来验证项目包有效且达到质量标准。</td></tr>
+<tr><td style="text-align: left">install（安装）</td><td style="text-align: left">安装项目包到本地仓库，这样项目包可以用作其他本地项目的依赖。</td></tr>
+<tr><td style="text-align: left">deploy（部署）</td><td style="text-align: left">将最终的项目包复制到远程仓库中与其他开发者和项目共享。</td></tr>
+</tbody></table>
+</div>
+<pre><code>mvn clean deploy可以用来干净的构建项目
+</code></pre>
+<h2 id="site-生命周期"><a class="header" href="#site-生命周期">Site 生命周期</a></h2>
+<ul>
+<li>pre-site：执行一些需要在生成站点文档之前完成的工作</li>
+<li>site：生成项目的站点文档</li>
+<li>post-site： 执行一些需要在生成站点文档之后完成的工作，并且为部署做准备</li>
+<li>site-deploy：将生成的站点文档部署到特定的服务器上</li>
+</ul>
+<h1 id="maven设置多环境"><a class="header" href="#maven设置多环境">maven设置多环境</a></h1>
+<p><a href="maven-profile.html">多环境设置</a></p>
+<h1 id="maven-仓库"><a class="header" href="#maven-仓库">Maven 仓库</a></h1>
+<h2 id="三种类型maven-仓库"><a class="header" href="#三种类型maven-仓库">三种类型Maven 仓库</a></h2>
+<ul>
+<li>本地（local）</li>
+<li>中央（central）</li>
+<li>远程（remote）</li>
+</ul>
+<h2 id="本地仓库"><a class="header" href="#本地仓库">本地仓库</a></h2>
+<ul>
+<li>
+<p>每个用户在自己的用户目录下都有一个路径名为 .m2/respository/ 的仓库目录。</p>
+</li>
+<li>
+<p>要修改默认位置，在 %M2_HOME%\conf 目录中的 Maven 的 settings.xml 文件中定义另一个路径。</p>
+</li>
+<li>
+<p><code>&lt;localRepository&gt;C:/MyLocalRepository&lt;/localRepository&gt;</code></p>
+</li>
+</ul>
+<h2 id="中央仓库"><a class="header" href="#中央仓库">中央仓库</a></h2>
+<ul>
+<li>这个仓库由 Maven 社区管理。</li>
+<li>不需要配置。</li>
+<li>需要通过网络才能访问。</li>
+</ul>
+<h2 id="远程仓库"><a class="header" href="#远程仓库">远程仓库</a></h2>
+<pre><code class="language-xml">   &lt;repositories&gt;
+      &lt;repository&gt;
+         &lt;id&gt;companyname.lib1&lt;/id&gt;
+         &lt;url&gt;http://download.companyname.org/maven2/lib1&lt;/url&gt;
+      &lt;/repository&gt;
+      &lt;repository&gt;
+         &lt;id&gt;companyname.lib2&lt;/id&gt;
+         &lt;url&gt;http://download.companyname.org/maven2/lib2&lt;/url&gt;
+      &lt;/repository&gt;
+   &lt;/repositories&gt;
+</code></pre>
+<h2 id="maven-依赖搜索顺序"><a class="header" href="#maven-依赖搜索顺序">Maven 依赖搜索顺序</a></h2>
+<ul>
+<li><strong>步骤 1</strong> － 在本地仓库中搜索，如果找不到，执行步骤 2，如果找到了则执行其他操作。</li>
+<li><strong>步骤 2</strong> － 在中央仓库中搜索，如果找不到，并且有一个或多个远程仓库已经设置，则执行步骤 4，如果找到了则下载到本地仓库中以备将来引用。</li>
+<li><strong>步骤 3</strong> － 如果远程仓库没有被设置，Maven 将简单的停滞处理并抛出错误（无法找到依赖的文件）。</li>
+<li><strong>步骤 4</strong> － 在一个或多个远程仓库中搜索依赖的文件，如果找到则下载到本地仓库以备将来引用，否则 Maven 将停止处理并抛出错误（无法找到依赖的文件）。</li>
+</ul>
+<pre><code class="language-xml">&lt;repositories&gt;  
+        &lt;repository&gt;  
+            &lt;id&gt;alimaven&lt;/id&gt;  
+            &lt;name&gt;aliyun maven&lt;/name&gt;  
+            &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  
+            &lt;releases&gt;  
+                &lt;enabled&gt;true&lt;/enabled&gt;  
+            &lt;/releases&gt;  
+            &lt;snapshots&gt;  
+                &lt;enabled&gt;false&lt;/enabled&gt;  
+            &lt;/snapshots&gt;  
+        &lt;/repository&gt;  
+&lt;/repositories&gt;
+</code></pre>
+<h1 id="maven-插件"><a class="header" href="#maven-插件">Maven 插件</a></h1>
+<p>Maven 生命周期的每一个阶段的具体实现都是由 Maven 插件实现的。</p>
+<p>Maven 实际上是一个依赖插件执行的框架，每个任务实际上是由插件完成。Maven 插件通常被用来：</p>
+<ul>
+<li>创建 jar 文件</li>
+<li>创建 war 文件</li>
+<li>编译代码文件</li>
+<li>代码单元测试</li>
+<li>创建工程文档</li>
+<li>创建工程报告</li>
+</ul>
+<h2 id="插件执行命令"><a class="header" href="#插件执行命令">插件执行命令</a></h2>
+<pre><code>mvn [plugin-name]:[goal-name]
+
+mvn compiler:compile
+</code></pre>
+<h2 id="插件类型"><a class="header" href="#插件类型">插件类型</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">类型</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">Build plugins</td><td style="text-align: left">在构建时执行，并在 pom.xml 的 元素中配置。</td></tr>
+<tr><td style="text-align: left">Reporting plugins</td><td style="text-align: left">在网站生成过程中执行，并在 pom.xml 的 元素中配置。</td></tr>
+</tbody></table>
+</div>
+<h2 id="常用插件列表"><a class="header" href="#常用插件列表">常用插件列表</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">插件</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">clean</td><td style="text-align: left">构建之后清理目标文件。删除目标目录。</td></tr>
+<tr><td style="text-align: left">compiler</td><td style="text-align: left">编译 Java 源文件。</td></tr>
+<tr><td style="text-align: left">surefile</td><td style="text-align: left">运行 JUnit 单元测试。创建测试报告。</td></tr>
+<tr><td style="text-align: left">jar</td><td style="text-align: left">从当前工程中构建 JAR 文件。</td></tr>
+<tr><td style="text-align: left">war</td><td style="text-align: left">从当前工程中构建 WAR 文件。</td></tr>
+<tr><td style="text-align: left">javadoc</td><td style="text-align: left">为工程生成 Javadoc。</td></tr>
+<tr><td style="text-align: left">antrun</td><td style="text-align: left">从构建过程的任意一个阶段中运行一个 ant 任务的集合。</td></tr>
+</tbody></table>
+</div>
+<h2 id="插件使用example"><a class="header" href="#插件使用example">插件使用example</a></h2>
+<pre><code class="language-xml">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;groupId&gt;com.companyname.projectgroup&lt;/groupId&gt;
+&lt;artifactId&gt;project&lt;/artifactId&gt;
+&lt;version&gt;1.0&lt;/version&gt;
+&lt;build&gt;
+&lt;plugins&gt;
+   &lt;plugin&gt;
+   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+   &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+   &lt;version&gt;1.1&lt;/version&gt;
+   &lt;executions&gt;
+      &lt;execution&gt;
+         &lt;id&gt;id.clean&lt;/id&gt;
+         &lt;phase&gt;clean&lt;/phase&gt;
+         &lt;goals&gt;
+            &lt;goal&gt;run&lt;/goal&gt;
+         &lt;/goals&gt;
+         &lt;configuration&gt;
+            &lt;tasks&gt;
+               &lt;echo&gt;clean phase&lt;/echo&gt;
+            &lt;/tasks&gt;
+         &lt;/configuration&gt;
+      &lt;/execution&gt;     
+   &lt;/executions&gt;
+   &lt;/plugin&gt;
+&lt;/plugins&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+
+</code></pre>
+<h1 id="maven-项目模板"><a class="header" href="#maven-项目模板">Maven 项目模板</a></h1>
+<p>Maven 使用 archetype(原型) 来创建自定义的项目结构，形成 Maven 项目模板</p>
+<pre><code>mvn archetype:generate
+按下 Enter 选择默认选项 (6:maven-archetype-quickstart:1.1)
+
+mvn archetype:generate -DgroupId=com.companyname.bank -DartifactId=consumerBanking -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</code></pre>
+<h1 id="maven文档生成"><a class="header" href="#maven文档生成">Maven文档生成</a></h1>
+<pre><code class="language-xml"> &lt;plugin&gt;
+          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-site-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.3&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-project-info-reports-plugin&lt;/artifactId&gt;
+          &lt;version&gt;2.7&lt;/version&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p><strong>mvn site</strong> <em>命令时出现</em> <strong>java.lang.NoClassDefFoundError: org/apache/maven/doxia/siterenderer/DocumentContent</strong> <em>的问题， 这是由于 maven-site-plugin 版本过低，升级到 3.3+ 即可。</em></p>
+<p>Maven 使用一个名为 <a href="http://maven.apache.org/doxia/index.html">Doxia</a>的文档处理引擎来创建文档，它能将多种格式的源码读取成一种通用的文档模型。要为你的项目撰写文档，你可以将内容写成下面几种常用的，可被 Doxia 转化的格式。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">格式名</th><th style="text-align: left">描述</th><th style="text-align: left">参考</th></tr></thead><tbody>
+<tr><td style="text-align: left">Apt</td><td style="text-align: left">纯文本文档格式</td><td style="text-align: left">http://maven.apache.org/doxia/references/apt-format.html</td></tr>
+<tr><td style="text-align: left">Xdoc</td><td style="text-align: left">Maven 1.x 的一种文档格式</td><td style="text-align: left">http://jakarta.apache.org/site/jakarta-site2.html</td></tr>
+<tr><td style="text-align: left">FML</td><td style="text-align: left">FAQ 文档适用</td><td style="text-align: left">http://maven.apache.org/doxia/references/fml-format.html</td></tr>
+<tr><td style="text-align: left">XHTML</td><td style="text-align: left">可扩展的 HTML 文档</td><td style="text-align: left">http://en.wikipedia.org/wiki/XHTML</td></tr>
+</tbody></table>
+</div>
+<h1 id="maven-快照snapshot"><a class="header" href="#maven-快照snapshot">Maven 快照(SNAPSHOT)</a></h1>
+<p>快照是一种特殊的版本，指定了某个当前的开发进度的副本</p>
+<p>不同于常规的版本，Maven 每次构建都会在远程仓库中检查新的快照</p>
+<p>每次发布更新代码的快照到仓库中，比如说 data-service:1.0-SNAPSHOT 来替代旧的快照 jar 包</p>
+<h1 id="自动化构建"><a class="header" href="#自动化构建">自动化构建?</a></h1>
+<h1 id="maven自动化部署"><a class="header" href="#maven自动化部署">maven自动化部署</a></h1>
+<h2 id="部署的过程包含需如下步骤"><a class="header" href="#部署的过程包含需如下步骤">部署的过程包含需如下步骤：</a></h2>
+<ul>
+<li>将所的项目代码提交到 SVN 或者代码库中并打上标签。</li>
+<li>从 SVN 上下载完整的源代码。</li>
+<li>构建应用。</li>
+<li>存储构建输出的 WAR 或者 EAR 文件到一个常用的网络位置下。</li>
+<li>从网络上获取文件并且部署文件到生产站点上。</li>
+<li>更新文档并且更新应用的版本号。</li>
+</ul>
+<h2 id="解决方案"><a class="header" href="#解决方案">解决方案</a></h2>
+<ul>
+<li>使用 Maven 构建和发布项目</li>
+<li>使用 SubVersion， 源码仓库来管理源代码</li>
+<li>使用远程仓库管理软件（Jfrog或者Nexus） 来管理项目二进制文件。</li>
+</ul>
+<h2 id="配置案例"><a class="header" href="#配置案例">配置案例</a></h2>
+<pre><code class="language-xml">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; 
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 
+   http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+   &lt;groupId&gt;bus-core-api&lt;/groupId&gt;
+   &lt;artifactId&gt;bus-core-api&lt;/artifactId&gt;
+   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+   &lt;packaging&gt;jar&lt;/packaging&gt; 
+   &lt;scm&gt;
+      &lt;url&gt;http://www.svn.com&lt;/url&gt;
+      &lt;connection&gt;scm:svn:http://localhost:8080/svn/jrepo/trunk/
+      Framework&lt;/connection&gt;
+      &lt;developerConnection&gt;scm:svn:${username}/${password}@localhost:8080:
+      common_core_api:1101:code&lt;/developerConnection&gt;
+   &lt;/scm&gt;
+   &lt;distributionManagement&gt;
+      &lt;repository&gt;
+         &lt;id&gt;Core-API-Java-Release&lt;/id&gt;
+         &lt;name&gt;Release repository&lt;/name&gt;
+         &lt;url&gt;http://localhost:8081/nexus/content/repositories/
+         Core-Api-Release&lt;/url&gt;
+      &lt;/repository&gt;
+   &lt;/distributionManagement&gt;
+   &lt;build&gt;
+      &lt;plugins&gt;
+         &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.0-beta-9&lt;/version&gt;
+            &lt;configuration&gt;
+               &lt;useReleaseProfile&gt;false&lt;/useReleaseProfile&gt;
+               &lt;goals&gt;deploy&lt;/goals&gt;
+               &lt;scmCommentPrefix&gt;[bus-core-api-release-checkin]-&lt;
+               /scmCommentPrefix&gt;
+            &lt;/configuration&gt;
+         &lt;/plugin&gt;
+      &lt;/plugins&gt;
+   &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">元素节点</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">SCM</td><td style="text-align: left">配置 SVN 的路径，Maven 将从该路径下将代码取下来。</td></tr>
+<tr><td style="text-align: left">repository</td><td style="text-align: left">构建的 WAR 或 EAR 或JAR 文件的位置，或者其他源码构建成功后生成的构件的存储位置。</td></tr>
+<tr><td style="text-align: left">Plugin</td><td style="text-align: left">配置 maven-release-plugin 插件来实现自动部署过程。</td></tr>
+</tbody></table>
+</div>
+<h2 id="maven-release-插件"><a class="header" href="#maven-release-插件">Maven Release 插件</a></h2>
+<pre><code>mvn release:clean
+mvn release:rollback
+</code></pre>
+<p>mvn release:prepare 执行多种操作：</p>
+<ul>
+<li>检查本地是否存在还未提交的修改</li>
+<li>确保没有快照的依赖</li>
+<li>改变应用程序的版本信息用以发布</li>
+<li>更新 POM 文件到 SVN</li>
+<li>运行测试用例</li>
+<li>提交修改后的 POM 文件</li>
+<li>为代码在 SVN 上做标记</li>
+<li>增加版本号和附加快照以备将来发布</li>
+<li>提交修改后的 POM 文件到 SVN</li>
+</ul>
+<pre><code>mvn release:perform
+将代码切换到之前做标记的地方，运行 Maven 部署目标来部署 WAR 文件或者构建相应的结构到仓库里。
+
+</code></pre>
+<h1 id="maven使用案例"><a class="header" href="#maven使用案例">maven使用案例</a></h1>
+<h2 id="maven配置-mybatis--逆向工程"><a class="header" href="#maven配置-mybatis--逆向工程"><em>maven</em>配置 <em>mybatis</em>  逆向工程</a></h2>
+<pre><code>&lt;finalName&gt;ase&lt;/finalName&gt;
+&lt;plugin&gt;
+                &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;1.3.2&lt;/version&gt;
+                   &lt;configuration&gt;
+                    &lt;configurationFile&gt;src/main/resources/generatorConfig.xml&lt;/configurationFile&gt;
+                    &lt;verbose&gt;true&lt;/verbose&gt;
+                    &lt;overwrite&gt;true&lt;/overwrite&gt;
+                &lt;/configuration&gt;
+
+                &lt;dependencies&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
+                        &lt;artifactId&gt;mybatis-generator-core&lt;/artifactId&gt;
+                        &lt;version&gt;1.3.2&lt;/version&gt;
+                    &lt;/dependency&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;mysql&lt;/groupId&gt;
+                        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+                        &lt;version&gt;${mysql-connector-java.version}&lt;/version&gt;&lt;!--$NO-MVN-MAN-VER$--&gt;
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p>不要压制所有注释</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE generatorConfiguration
+        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
+
+
+&lt;generatorConfiguration&gt;
+    &lt;context id=&quot;default&quot; targetRuntime=&quot;MyBatis3&quot;&gt;
+
+        &lt;plugin type=&quot;org.mybatis.generator.plugins.ToStringPlugin&quot;/&gt;
+        &lt;plugin type=&quot;org.mybatis.generator.plugins.SerializablePlugin&quot; /&gt;
+        &lt;!-- optional，旨在创建class时，对注释进行控制 --&gt;
+        &lt;commentGenerator&gt;
+            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;
+            &lt;!-- &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;/&gt;--&gt;
+            &lt;property name=&quot;javaFileEncoding&quot; value=&quot;UTF-8&quot;/&gt;
+            &lt;property name=&quot;addRemarkComments&quot; value=&quot;true&quot;/&gt;
+        &lt;/commentGenerator&gt;
+
+        &lt;!--jdbc的数据库连接，直接写死也可以 --&gt;
+        &lt;jdbcConnection
+                userId=&quot;root&quot;
+                connectionURL=&quot;jdbc:mysql://localhost:3306/myapp?characterEncoding=utf-8&amp;amp;serverTimezone=UTC&amp;amp;useSSL=false&quot;
+                driverClass=&quot;com.mysql.cj.jdbc.Driver&quot;
+                password=&quot;root&quot;
+        &gt;
+        &lt;/jdbcConnection&gt;
+
+        &lt;!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制--&gt;
+        &lt;javaTypeResolver&gt;
+            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;
+            &lt;property name=&quot;useJSR310Types&quot; value=&quot;true&quot;/&gt;
+        &lt;/javaTypeResolver&gt;
+
+
+        &lt;!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+            targetPackage     指定生成的model生成所在的包名
+            targetProject     指定在该项目下所在的路径
+        --&gt;
+        &lt;javaModelGenerator targetPackage=&quot;com.weisanju.web.orm.entity&quot; targetProject=&quot;src/main/java&quot;&gt;
+            &lt;!-- 是否允许子包，即targetPackage.schemaName.tableName --&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot;/&gt;
+            &lt;!-- 是否对model添加 构造函数 --&gt;
+            &lt;property name=&quot;constructorBased&quot; value=&quot;false&quot;/&gt;
+            &lt;!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 --&gt;
+            &lt;property name=&quot;immutable&quot; value=&quot;false&quot;/&gt;
+            &lt;!-- 设置是否在getter方法中，对String类型字段调用trim()方法 --&gt;
+            &lt;property name=&quot;trimStrings&quot; value=&quot;false&quot;/&gt;
+        &lt;/javaModelGenerator&gt;
+
+        &lt;!--mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 --&gt;
+        &lt;sqlMapGenerator targetPackage=&quot;xml&quot; targetProject=&quot;src/main/resources&quot;&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot;/&gt;
+        &lt;/sqlMapGenerator&gt;
+
+        &lt;!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                type=&quot;ANNOTATEDMAPPER&quot;,生成Java Model 和基于注解的Mapper对象
+                type=&quot;MIXEDMAPPER&quot;,生成基于注解的Java Model 和相应的Mapper对象
+                type=&quot;XMLMAPPER&quot;,生成SQLMap XML文件和独立的Mapper接口
+        --&gt;
+
+        &lt;!-- targetPackage：mapper接口dao生成的位置 --&gt;
+        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.weisanju.web.orm.mapper&quot; targetProject=&quot;src/main/java&quot;&gt;
+            &lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot; /&gt;
+        &lt;/javaClientGenerator&gt;
+
+
+        &lt;table  tableName=&quot;h3c_schedule_data&quot;
+                domainObjectName=&quot;H3cScheduleData&quot;
+                enableCountByExample=&quot;true&quot;
+                enableUpdateByExample=&quot;true&quot;
+                enableDeleteByExample=&quot;true&quot;
+                enableSelectByExample=&quot;true&quot;
+                selectByExampleQueryId=&quot;true&quot;&gt;
+            &lt;!-- 上面的属性都可以使用子标签形式表示 --&gt;
+            &lt;!-- 是否使用真实字段名，设置为false将自动驼峰转换 --&gt;
+            &lt;property name=&quot;useActualColumnNames&quot; value=&quot;false&quot; /&gt;
+            &lt;generatedKey column=&quot;id&quot; sqlStatement=&quot;MySql&quot; identity=&quot;true&quot;/&gt;
+            &lt;!-- 还可以对表中的字段进行类型转换 --&gt;
+            &lt;!-- 这里转换的原因是会自动将个位的int值自动转化为Boolean，所以指定为Integer --&gt;
+            &lt;!--   &lt;columnOverride column=&quot;sex&quot; javaType=&quot;Integer&quot;/&gt;--&gt;
+        &lt;/table&gt;
+        &lt;!--
+                &lt;table tableName=&quot;tb_item&quot; domainObjectName=&quot;Item&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot; enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;&lt;/table&gt;
+                &lt;table tableName=&quot;tb_order&quot; domainObjectName=&quot;Order&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot; enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;&lt;/table&gt;
+                &lt;table tableName=&quot;tb_orderdetail&quot; domainObjectName=&quot;OrderDetail&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot; enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;&lt;/table&gt;
+
+        --&gt;
+
+        &lt;!-- geelynote mybatis插件的搭建 --&gt;
+    &lt;/context&gt;
+&lt;/generatorConfiguration&gt;
+</code></pre>
+<h2 id="maven多模块配置"><a class="header" href="#maven多模块配置">maven多模块配置</a></h2>
+<pre><code>父模块指定子模块
+	&lt;modules&gt;
+		&lt;module&gt;xxl-job-core&lt;/module&gt;
+		&lt;module&gt;xxl-job-admin&lt;/module&gt;
+		&lt;module&gt;xxl-job-executor-samples&lt;/module&gt;
+    &lt;/modules&gt;
+子模块指定父模块
+	&lt;parent&gt;
+		&lt;groupId&gt;com.xuxueli&lt;/groupId&gt;
+		&lt;artifactId&gt;xxl-job&lt;/artifactId&gt;
+		&lt;version&gt;2.2.1-SNAPSHOT&lt;/version&gt;
+	&lt;/parent&gt;
+</code></pre>
+<h2 id="maven中的dependencymanagement"><a class="header" href="#maven中的dependencymanagement">Maven中的dependencyManagement</a></h2>
+<pre><code>//只是对版本进行管理，不会实际引入jar  
+&lt;dependencyManagement&gt;  
+      &lt;dependencies&gt;  
+            &lt;dependency&gt;  
+                &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+                &lt;artifactId&gt;spring-core&lt;/artifactId&gt;  
+                &lt;version&gt;3.2.7&lt;/version&gt;  
+            &lt;/dependency&gt;  
+    &lt;/dependencies&gt;  
+&lt;/dependencyManagement&gt;  
+  
+//会实际下载jar包  
+&lt;dependencies&gt;  
+       &lt;dependency&gt;  
+                &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+                &lt;artifactId&gt;spring-core&lt;/artifactId&gt;  
+       &lt;/dependency&gt;  
+&lt;/dependencies&gt;  
+</code></pre>
+<h2 id="maven编译-java源码等级"><a class="header" href="#maven编译-java源码等级">maven编译 java源码等级</a></h2>
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.3&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<h2 id="maven运行本地模板"><a class="header" href="#maven运行本地模板">maven运行本地模板</a></h2>
+<p>运行 MVN 命令的时候加上 <strong>-DarchetypeCatalog=local</strong> 这个参数。在 IDEA 中：</p>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../22.Maven/MavenArcheType.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../22.Maven/maven-Maven_Resources_Plugin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../22.Maven/MavenArcheType.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../22.Maven/maven-Maven_Resources_Plugin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

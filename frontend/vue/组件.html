@@ -1,0 +1,1407 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>组件 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item expanded "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item expanded "><a href="../vue/组件.html" class="active">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<p>{% raw %}</p>
+<h1 id="组件基础"><a class="header" href="#组件基础">组件基础</a></h1>
+<h2 id="基本示例"><a class="header" href="#基本示例">基本示例</a></h2>
+<pre><code>// 定义一个名为 button-counter 的新组件
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '&lt;button v-on:click=&quot;count++&quot;&gt;You clicked me {{ count }} times.&lt;/button&gt;'
+})
+</code></pre>
+<h2 id="组件的复用"><a class="header" href="#组件的复用">组件的复用</a></h2>
+<p>你可以将组件进行任意次数的复用,因为组件是可复用的 Vue 实例，所以它们与 <code>new Vue</code> 接收相同的选项，例如 <code>data</code>、<code>computed</code>、<code>watch</code>、<code>methods</code> 以及生命周期钩子等。仅有的例外是像 <code>el</code> 这样根实例特有的选项。</p>
+<pre><code class="language-html">&lt;div id=&quot;components-demo&quot;&gt;
+  &lt;button-counter&gt;&lt;/button-counter&gt;
+  &lt;button-counter&gt;&lt;/button-counter&gt;
+  &lt;button-counter&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+</code></pre>
+<p>​ 注意当点击按钮时，每个组件都会各自独立维护它的 <code>count</code>。因为你每用一次组件，就会有一个它的新<strong>实例</strong>被创建。</p>
+<p>​ data 必须是一个函数,当我们定义这个 <code>&lt;button-counter&gt;</code> 组件时，你可能会发现它的 <code>data</code> 并不是像这样直接提供一个对象：</p>
+<h2 id="组件的组织"><a class="header" href="#组件的组织">组件的组织</a></h2>
+<p>例如，你可能会有页头、侧边栏、内容区等组件，每个组件又包含了其它的像导航链接、博文之类的组件。</p>
+<p>有两种组件的注册类型</p>
+<ul>
+<li>全局注册</li>
+<li>局部注册</li>
+</ul>
+<h1 id="通过-prop-向子组件传递数据"><a class="header" href="#通过-prop-向子组件传递数据">通过 Prop 向子组件传递数据</a></h1>
+<pre><code>Vue.component('blog-post', {
+  props: ['title'],
+  template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'
+})
+</code></pre>
+<h3 id="组件-prop-传递示例"><a class="header" href="#组件-prop-传递示例">组件 prop 传递示例</a></h3>
+<pre><code>定义组件
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'
+})
+
+新建VUE实例
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+  }
+})
+
+渲染组件
+&lt;blog-post
+  v-for=&quot;post in posts&quot;
+  v-bind:key=&quot;post.id&quot;
+  v-bind:title=&quot;post.title&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre>
+<h2 id="单根元素"><a class="header" href="#单根元素">单根元素</a></h2>
+<p>每个组件必须只有一个根元素,可以使用其他元素包裹</p>
+<pre><code>&lt;div class=&quot;blog-post&quot;&gt;
+  &lt;h3&gt;{{ title }}&lt;/h3&gt;
+  &lt;div v-html=&quot;content&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="使用-prop-接受单独对象"><a class="header" href="#使用-prop-接受单独对象">使用 prop 接受单独对象</a></h2>
+<pre><code>&lt;blog-post
+  v-for=&quot;post in posts&quot;
+  v-bind:key=&quot;post.id&quot;
+  v-bind:post=&quot;post&quot;
+&gt;&lt;/blog-post&gt;
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    &lt;div class=&quot;blog-post&quot;&gt;
+      &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+      &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+
+
+
+
+
+
+## 在组件上使用 v-model
+
+</code></pre>
+<input v-model="searchText">
+<p>等价于：</p>
+<input v-bind:value="searchText"  v-on:input="searchText = $event.target.value">
+<p>为了让它正常工作，这个组件内的 <input> 必须：
+将其 value attribute 绑定到一个名叫 value 的 prop 上
+在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出</p>
+<p>Vue.component('custom-input', {
+props: ['value'],
+template: <code>&lt;input v-bind:value=&quot;value&quot; v-on:input=&quot;$emit('input', $event.target.value)&quot; &gt;</code>
+})</p>
+<pre><code>
+现在 `v-model` 就应该可以在这个组件上完美地工作起来了：
+
+</code></pre>
+<p><custom-input v-model="searchText"></custom-input></p>
+<pre><code>
+## 通过插槽分发内容
+
+</code></pre>
+<p>Vue.component('alert-box', {
+template: <code>&lt;div class=&quot;demo-alert-box&quot;&gt; &lt;strong&gt;Error!&lt;/strong&gt; &lt;slot&gt;&lt;/slot&gt; &lt;/div&gt;</code>
+})</p>
+<alert-box>
+  Something bad happened.
+</alert-box>
+```
+<p>如你所见，我们只要在需要的地方加入插槽就行了——就这么简单！</p>
+<p>.</p>
+<h2 id="动态组件"><a class="header" href="#动态组件">动态组件</a></h2>
+<p>有的时候，在不同组件之间进行动态切换是非常有用的，比如在一个多标签的界面里：</p>
+<p>上述内容可以通过 Vue 的 <code>&lt;component&gt;</code> 元素加一个特殊的 <code>is</code> attribute 来实现：</p>
+<pre><code>&lt;!-- 组件会在 `currentTabComponent` 改变时改变 --&gt;
+&lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;
+</code></pre>
+<p>在上述示例中，<code>currentTabComponent</code> 可以包括</p>
+<ul>
+<li>已注册组件的名字，或</li>
+<li>一个组件的选项对象</li>
+</ul>
+<h2 id="解析-dom-模板时的注意事项"><a class="header" href="#解析-dom-模板时的注意事项">解析 DOM 模板时的注意事项</a></h2>
+<p>​ 有些 HTML 元素，诸如 <code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>、<code>&lt;table&gt;</code> 和 <code>&lt;select&gt;</code>，对于哪些元素可以出现在其内部是有严格限制的。而有些元素，诸如 <code>&lt;li&gt;</code>、<code>&lt;tr&gt;</code> 和 <code>&lt;option&gt;</code>，只能出现在其它某些特定的元素内部。</p>
+<p>​ 这会导致我们使用这些有约束条件的元素时遇到一些问题。例如：</p>
+<pre><code>&lt;table&gt;
+  &lt;blog-post-row&gt;&lt;/blog-post-row&gt;
+&lt;/table&gt;
+</code></pre>
+<p>​ 这个自定义组件 <code>&lt;blog-post-row&gt;</code> 会被作为无效的内容提升到外部，并导致最终渲染结果出错。幸好这个特殊的 <code>is</code> attribute 给了我们一个变通的办法：</p>
+<pre><code>&lt;table&gt;
+  &lt;tr is=&quot;blog-post-row&quot;&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>​ 需要注意的是<strong>如果我们从以下来源使用模板的话，这条限制是*不存在*的</strong></p>
+<ul>
+<li>
+<p>字符串 (例如：<code>template: '...'</code>)</p>
+</li>
+<li>
+<p>单文件组件 (.vue)</p>
+</li>
+<li>
+<p><code>&lt;script type=&quot;text/x-template&quot;&gt;</code></p>
+</li>
+</ul>
+<h1 id="组件注册"><a class="header" href="#组件注册">组件注册</a></h1>
+<h2 id="组件名"><a class="header" href="#组件名">组件名</a></h2>
+<p>​ 在注册一个组件的时候，我们始终需要给它一个名字。比如在全局注册的时候我们已经看到了：</p>
+<pre><code>Vue.component('my-component-name', { /* ... */ })
+</code></pre>
+<h2 id="全局注册"><a class="header" href="#全局注册">全局注册</a></h2>
+<pre><code>Vue.component('component-a', { /* ... */ })
+Vue.component('component-b', { /* ... */ })
+Vue.component('component-c', { /* ... */ })
+
+new Vue({ el: '#app' })
+</code></pre>
+<p>这些组件是<strong>全局注册的</strong>。也就是说它们在注册之后可以用在任何新创建的 Vue 根实例 (<code>new Vue</code>) 的模板中。比如：</p>
+<h2 id="局部注册"><a class="header" href="#局部注册">局部注册</a></h2>
+<pre><code>var ComponentA = { /* ... */ }
+var ComponentB = { /* ... */ }
+var ComponentC = { /* ... */ }
+</code></pre>
+<pre><code>new Vue({
+  el: '#app',
+  components: {
+    'component-a': ComponentA,
+    'component-b': ComponentB
+  }
+})
+</code></pre>
+<p>​ 注意<strong>局部注册的组件在其子组件中*不可用*</strong>。例如，如果你希望 <code>ComponentA</code> 在 <code>ComponentB</code> 中可用，则你需要这样写：</p>
+<pre><code>var ComponentA = { /* ... */ }
+
+var ComponentB = {
+  components: {
+    'component-a': ComponentA
+  },
+  // ...
+}
+</code></pre>
+<h1 id="prop"><a class="header" href="#prop">Prop</a></h1>
+<h2 id="命名"><a class="header" href="#命名">命名</a></h2>
+<p>​ HTML 中的 attribute 名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：</p>
+<h2 id="类型"><a class="header" href="#类型">类型</a></h2>
+<p>​ 到这里，我们只看到了以字符串数组形式列出的 prop：</p>
+<pre><code>props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
+</code></pre>
+<p>​ 但是，通常你希望每个 prop 都有指定的值类型。这时，你可以以对象形式列出 prop，这些 property 的名称和值分别是 prop 各自的名称和类型：</p>
+<pre><code>props: {
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object,
+  callback: Function,
+  contactsPromise: Promise // or any other constructor
+}
+</code></pre>
+<h2 id="传递静态或动态-prop"><a class="header" href="#传递静态或动态-prop">传递静态或动态 Prop</a></h2>
+<p>像这样，你已经知道了可以像这样给 prop 传入一个静态的值：</p>
+<pre><code>&lt;blog-post title=&quot;My journey with Vue&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p>你也知道 prop 可以通过 <code>v-bind</code> 动态赋值，例如：</p>
+<pre><code>&lt;!-- 动态赋予一个变量的值 --&gt;
+&lt;blog-post v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;
+
+&lt;!-- 动态赋予一个复杂表达式的值 --&gt;
+&lt;blog-post
+  v-bind:title=&quot;post.title + ' by ' + post.author.name&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre>
+<h2 id="传入一个数字"><a class="header" href="#传入一个数字">传入一个数字</a></h2>
+<pre><code>&lt;!-- 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post v-bind:likes=&quot;42&quot;&gt;&lt;/blog-post&gt;
+
+&lt;!-- 用一个变量进行动态赋值。--&gt;
+&lt;blog-post v-bind:likes=&quot;post.likes&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<h2 id="传入一个布尔值"><a class="header" href="#传入一个布尔值">传入一个布尔值</a></h2>
+<pre><code>&lt;!-- 包含该 prop 没有值的情况在内，都意味着 `true`。--&gt;
+&lt;blog-post is-published&gt;&lt;/blog-post&gt;
+
+&lt;!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post v-bind:is-published=&quot;false&quot;&gt;&lt;/blog-post&gt;
+
+&lt;!-- 用一个变量进行动态赋值。--&gt;
+&lt;blog-post v-bind:is-published=&quot;post.isPublished&quot;&gt;&lt;/blog-pos
+</code></pre>
+<h2 id="传入一个对象"><a class="header" href="#传入一个对象">传入一个对象</a></h2>
+<pre><code>&lt;!-- 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post
+  v-bind:author=&quot;{
+    name: 'Veronica',
+    company: 'Veridian Dynamics'
+  }&quot;
+&gt;&lt;/blog-post&gt;
+
+&lt;!-- 用一个变量进行动态赋值。--&gt;
+&lt;blog-post v-bind:author=&quot;post.author&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<h2 id="传入一个对象的所有-property"><a class="header" href="#传入一个对象的所有-property">传入一个对象的所有 property</a></h2>
+<p>如果你想要将一个对象的所有 property 都作为 prop 传入，你可以使用不带参数的 <code>v-bind</code> (取代 <code>v-bind:prop-name</code>)。例如，对于一个给定的对象 <code>post</code>：</p>
+<pre><code>post: {
+  id: 1,
+  title: 'My Journey with Vue'
+}
+
+下面的模板：
+
+&lt;blog-post v-bind=&quot;post&quot;&gt;&lt;/blog-post&gt;
+等价于：
+
+&lt;blog-post
+  v-bind:id=&quot;post.id&quot;
+  v-bind:title=&quot;post.title&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre>
+<h2 id="单向数据流"><a class="header" href="#单向数据流">单向数据流</a></h2>
+<p>​ 所有的 prop 都使得其父子 prop 之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行</p>
+<h2 id="prop-验证"><a class="header" href="#prop-验证">Prop 验证</a></h2>
+<p>​ 我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个需求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。</p>
+<p>​ 为了定制 prop 的验证方式，你可以为 <code>props</code> 中的值提供一个带有验证需求的对象，而不是一个字符串数组。例如：</p>
+<pre><code>Vue.component('my-component', {
+  props: {
+    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 带有默认值的数字
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 带有默认值的对象
+    propE: {
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+})
+</code></pre>
+<blockquote>
+<p>注意那些 prop 会在一个组件实例创建<strong>之前</strong>进行验证，所以实例的 property (如 <code>data</code>、<code>computed</code> 等) 在 <code>default</code> 或 <code>validator</code> 函数中是不可用的。</p>
+</blockquote>
+<h3 id="类型检查"><a class="header" href="#类型检查">类型检查</a></h3>
+<p><code>type</code> 可以是下列原生构造函数中的一个：</p>
+<ul>
+<li><code>String</code></li>
+<li><code>Number</code></li>
+<li><code>Boolean</code></li>
+<li><code>Array</code></li>
+<li><code>Object</code></li>
+<li><code>Date</code></li>
+<li><code>Function</code></li>
+<li><code>Symbol</code></li>
+</ul>
+<p>额外的，<code>type</code> 还可以是一个自定义的构造函数，并且通过 <code>instanceof</code> 来进行检查确认。例如，给定下列现成的构造函数：</p>
+<pre><code>function Person (firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+
+Vue.component('blog-post', {
+  props: {
+    author: Person
+  }
+})
+
+来验证 author prop 的值是否是通过 new Person 创建的。
+</code></pre>
+<h2 id="非-prop-的-attribute"><a class="header" href="#非-prop-的-attribute">非 Prop 的 Attribute</a></h2>
+<p>一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 prop 定义的 attribute。</p>
+<p>​ 因为显式定义的 prop 适用于向一个子组件传入信息，然而组件库的作者并不总能预见组件会被用于怎样的场景。这也是为什么组件可以接受任意的 attribute，而这些 attribute 会被添加到这个组件的根元素上。</p>
+<p>​ 例如，想象一下你通过一个 Bootstrap 插件使用了一个第三方的 <code>&lt;bootstrap-date-input&gt;</code> 组件，这个插件需要在其 <code>&lt;input&gt;</code> 上用到一个 <code>data-date-picker</code> attribute。我们可以将这个 attribute 添加到你的组件实例上：</p>
+<pre><code>&lt;bootstrap-date-input data-date-picker=&quot;activated&quot;&gt;&lt;/bootstrap-date-input&gt;
+</code></pre>
+<p>​ 然后这个 <code>data-date-picker=&quot;activated&quot;</code> attribute 就会自动添加到 <code>&lt;bootstrap-date-input&gt;</code> 的根元素上。</p>
+<h3 id="替换合并已有的-attribute"><a class="header" href="#替换合并已有的-attribute">替换/合并已有的 Attribute</a></h3>
+<p>想象一下 <code>&lt;bootstrap-date-input&gt;</code> 的模板是这样的：</p>
+<pre><code>&lt;input type=&quot;date&quot; class=&quot;form-control&quot;&gt;
+</code></pre>
+<p>为了给我们的日期选择器插件定制一个主题，我们可能需要像这样添加一个特别的类名：</p>
+<pre><code>&lt;bootstrap-date-input
+  data-date-picker=&quot;activated&quot;
+  class=&quot;date-picker-theme-dark&quot;
+&gt;&lt;/bootstrap-date-input&gt;
+</code></pre>
+<p>在这种情况下，我们定义了两个不同的 <code>class</code> 的值：</p>
+<ul>
+<li><code>form-control</code>，这是在组件的模板内设置好的</li>
+<li><code>date-picker-theme-dark</code>，这是从组件的父级传入的</li>
+</ul>
+<p>对于绝大多数 attribute 来说，从外部提供给组件的值会替换掉组件内部设置好的值。所以如果传入 <code>type=&quot;text&quot;</code> 就会替换掉 <code>type=&quot;date&quot;</code> 并把它破坏！庆幸的是，</p>
+<p><code>class</code> 和 <code>style</code> attribute 会稍微智能一些，即两边的值会被合并起来，从而得到最终的值：<code>form-control date-picker-theme-dark</code>。</p>
+<h3 id="禁用-attribute-继承"><a class="header" href="#禁用-attribute-继承">禁用 Attribute 继承</a></h3>
+<p>如果你<strong>不</strong>希望组件的根元素继承 attribute，你可以在组件的选项中设置 <code>inheritAttrs: false</code>。例如：</p>
+<pre><code>Vue.component('my-component', {
+  inheritAttrs: false,
+  // ...
+})
+</code></pre>
+<p>这尤其适合配合实例的 <code>$attrs</code> property 使用，该 property 包含了传递给一个组件的 attribute 名和 attribute 值，例如：</p>
+<pre><code>{
+  required: true,
+  placeholder: 'Enter your username'
+}
+
+</code></pre>
+<p>有了 <code>inheritAttrs: false</code> 和 <code>$attrs</code>，你就可以手动决定这些 attribute 会被赋予哪个元素。在撰写<a href="https://vuejs.bootcss.com/style-guide/#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E5%90%8D-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90">基础组件</a>的时候是常会用到的：</p>
+<pre><code>Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  template: `
+    &lt;label&gt;
+      {{ label }}
+      &lt;input
+        v-bind=&quot;$attrs&quot;
+        v-bind:value=&quot;value&quot;
+        v-on:input=&quot;$emit('input', $event.target.value)&quot;
+      &gt;
+    &lt;/label&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; d9cb737ee9bc8daae6ce407dd99325fad6096657
+  `
+})
+</code></pre>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+现在，不论何时为 <code>post</code> 对象添加一个新的 property，它都会自动地在 <code>&lt;blog-post&gt;</code> 内可用。</p>
+<h2 id="监听子组件事件"><a class="header" href="#监听子组件事件">监听子组件事件</a></h2>
+<pre><code>定义组件
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    &lt;div class=&quot;blog-post&quot;&gt;
+      &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+      &lt;button&gt;
+        Enlarge text
+      &lt;/button&gt;
+      &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+
+使用组件
+&lt;div id=&quot;blog-posts-events-demo&quot;&gt;
+  &lt;div :style=&quot;{ fontSize: postFontSize + 'em' }&quot;&gt;
+    &lt;blog-post
+      v-for=&quot;post in posts&quot;
+      v-bind:key=&quot;post.id&quot;
+      v-bind:post=&quot;post&quot;
+    &gt;&lt;/blog-post&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;blog-post
+  ...
+  v-on:enlarge-text=&quot;postFontSize += 0.1&quot;
+&gt;&lt;/blog-post&gt;
+
+触发事件
+&lt;button v-on:click=&quot;$emit('enlarge-text')&quot;&gt;
+  Enlarge text
+&lt;/button&gt;
+
+</code></pre>
+<p>=======</p>
+<blockquote>
+<p>注意 <code>inheritAttrs: false</code> 选项<strong>不会</strong>影响 <code>style</code> 和 <code>class</code> 的绑定。</p>
+</blockquote>
+<p>这个模式允许你在使用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是真正的根元素：</p>
+<pre><code>&lt;base-input
+  v-model=&quot;username&quot;
+  required
+  placeholder=&quot;Enter your username&quot;
+&gt;&lt;/base-input&gt;
+</code></pre>
+<h1 id="自定义事件"><a class="header" href="#自定义事件">自定义事件</a></h1>
+<h2 id="事件名"><a class="header" href="#事件名">事件名</a></h2>
+<p>不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。举个例子，如果触发一个 camelCase 名字的事件：</p>
+<pre><code>this.$emit('myEvent')
+</code></pre>
+<p>则监听这个名字的 kebab-case 版本是不会有任何效果的：</p>
+<pre><code class="language-.">&lt;!-- 没有效果 --&gt;
+&lt;my-component v-on:my-event=&quot;doSomething&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+<p>不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或 property 名，所以就没有理由使用 camelCase 或 PascalCase 了。并且 <code>v-on</code> 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 <code>v-on:myEvent</code> 将会变成 <code>v-on:myevent</code>——导致 <code>myEvent</code> 不可能被监听到。</p>
+<p>因此，我们推荐你<strong>始终使用 kebab-case 的事件名</strong>。</p>
+<h2 id="自定义组件的-v-model"><a class="header" href="#自定义组件的-v-model">自定义组件的 v-model</a></h2>
+<p>一个组件上的 <code>v-model</code> 默认会利用名为 <code>value</code> 的 prop 和名为 <code>input</code> 的事件，但是像单选框、复选框等类型的输入控件可能会将 <code>value</code> attribute 用于<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value">不同的目的</a>。<code>model</code> 选项可以用来避免这样的冲突：</p>
+<pre><code>Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
+  template: `
+    &lt;input
+      type=&quot;checkbox&quot;
+      v-bind:checked=&quot;checked&quot;
+      v-on:change=&quot;$emit('change', $event.target.checked)&quot;
+    &gt;
+  `
+})
+
+&lt;base-checkbox v-model=&quot;lovingVue&quot;&gt;&lt;/base-checkbox&gt;
+</code></pre>
+<h2 id="将原生事件绑定到组件"><a class="header" href="#将原生事件绑定到组件">将原生事件绑定到组件</a></h2>
+<p>你可能有很多次想要在一个组件的根元素上直接监听一个原生事件。这时，你可以使用 <code>v-on</code> 的 <code>.native</code> 修饰符：</p>
+<pre><code>&lt;base-input v-on:focus.native=&quot;onFocus&quot;&gt;&lt;/base-input&gt;
+</code></pre>
+<p>在有的时候这是很有用的，不过在你尝试监听一个类似 <code>&lt;input&gt;</code> 的非常特定的元素时，这并不是个好主意。比如上述 <code>&lt;base-input&gt;</code> 组件可能做了如下重构，所以根元素实际上是一个 <code>&lt;label&gt;</code> 元素：</p>
+<pre><code>&lt;label&gt;
+  {{ label }}
+  &lt;input
+    v-bind=&quot;$attrs&quot;
+    v-bind:value=&quot;value&quot;
+    v-on:input=&quot;$emit('input', $event.target.value)&quot;
+  &gt;
+&lt;/label&gt;
+</code></pre>
+<p>这时，父级的 <code>.native</code> 监听器将静默失败。它不会产生任何报错，但是 <code>onFocus</code> 处理函数不会如你预期地被调用。</p>
+<p>为了解决这个问题，Vue 提供了一个 <code>$listeners</code> property，它是一个对象，里面包含了作用在这个组件上的所有监听器。例如：</p>
+<pre><code>{
+  focus: function (event) { /* ... */ }
+  input: function (value) { /* ... */ },
+}
+</code></pre>
+<p>有了这个 <code>$listeners</code> property，你就可以配合 <code>v-on=&quot;$listeners&quot;</code> 将所有的事件监听器指向这个组件的某个特定的子元素。对于类似 <code>&lt;input&gt;</code> 的你希望它也可以配合 <code>v-model</code> 工作的组件来说，为这些监听器创建一个类似下述 <code>inputListeners</code> 的计算属性通常是非常有用的：</p>
+<pre><code>Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  computed: {
+    inputListeners: function () {
+      var vm = this
+      // `Object.assign` 将所有的对象合并为一个新对象
+      return Object.assign({},
+        // 我们从父级添加所有的监听器
+        this.$listeners,
+        // 然后我们添加自定义监听器，
+        // 或覆写一些监听器的行为
+        {
+          // 这里确保组件配合 `v-model` 的工作
+          input: function (event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
+  },
+  template: `
+    &lt;label&gt;
+      {{ label }}
+      &lt;input
+        v-bind=&quot;$attrs&quot;
+        v-bind:value=&quot;value&quot;
+        v-on=&quot;inputListeners&quot;
+      &gt;
+    &lt;/label&gt;
+  `
+})
+</code></pre>
+<p>现在 <code>&lt;base-input&gt;</code> 组件是一个<strong>完全透明的包裹器</strong>了，也就是说它可以完全像一个普通的 <code>&lt;input&gt;</code> 元素一样使用了：所有跟它相同的 attribute 和监听器都可以工作。</p>
+<h2 id="sync-修饰符"><a class="header" href="#sync-修饰符">.sync 修饰符</a></h2>
+<p>在有些情况下，我们可能需要对一个 prop 进行“双向绑定”。不幸的是，真正的双向绑定会带来维护上的问题，因为子组件可以变更父组件，且在父组件和子组件都没有明显的变更来源。</p>
+<p>这也是为什么我们推荐以 <code>update:myPropName</code> 的模式触发事件取而代之。举个例子，在一个包含 <code>title</code> prop 的假设的组件中，我们可以用以下方法表达对其赋新值的意图：</p>
+<pre><code>this.$emit('update:title', newTitle)
+</code></pre>
+<p>然后父组件可以监听那个事件并根据需要更新一个本地的数据 property。例如：</p>
+<pre><code>&lt;text-document
+  v-bind:title=&quot;doc.title&quot;
+  v-on:update:title=&quot;doc.title = $event&quot;
+&gt;&lt;/text-document&gt;
+</code></pre>
+<p>为了方便起见，我们为这种模式提供一个缩写，即 <code>.sync</code> 修饰符：</p>
+<pre><code>&lt;text-document v-bind:title.sync=&quot;doc.title&quot;&gt;&lt;/text-document&gt;
+</code></pre>
+<p>注意带有 <code>.sync</code> 修饰符的 <code>v-bind</code> <strong>不能</strong>和表达式一起使用 (例如 <code>v-bind:title.sync=”doc.title + ‘!’”</code> 是无效的)。取而代之的是，你只能提供你想要绑定的 property 名，类似 <code>v-model</code>。</p>
+<p>当我们用一个对象同时设置多个 prop 的时候，也可以将这个 <code>.sync</code> 修饰符和 <code>v-bind</code> 配合使用：</p>
+<pre><code>&lt;text-document v-bind.sync=&quot;doc&quot;&gt;&lt;/text-document&gt;
+</code></pre>
+<blockquote>
+<p>将 <code>v-bind.sync</code> 用在一个字面量的对象上，例如 <code>v-bind.sync=”{ title: doc.title }”</code>，是无法正常工作的，因为在解析一个像这样的复杂表达式的时候，有很多边缘情况需要考虑。</p>
+</blockquote>
+<h1 id="插槽"><a class="header" href="#插槽">插槽</a></h1>
+<h2 id="插槽内容"><a class="header" href="#插槽内容">插槽内容</a></h2>
+<p>​ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 <a href="https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md">Web Components 规范草案</a>，将 <code>&lt;slot&gt;</code> 元素作为承载分发内容的出口。</p>
+<p>它允许你像这样合成组件：</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  Your Profile
+&lt;/navigation-link&gt;
+</code></pre>
+<p>然后你在 <code>&lt;navigation-link&gt;</code> 的模板中可能会写为：</p>
+<pre><code>&lt;a
+  v-bind:href=&quot;url&quot;
+  class=&quot;nav-link&quot;
+&gt;
+  &lt;slot&gt;&lt;/slot&gt;
+&lt;/a&gt;
+</code></pre>
+<p>当组件渲染的时候，<code>&lt;slot&gt;&lt;/slot&gt;</code> 将会被替换为“Your Profile”。插槽内可以包含任何模板代码，包括 HTML：</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  &lt;!-- 添加一个 Font Awesome 图标 --&gt;
+  &lt;span class=&quot;fa fa-user&quot;&gt;&lt;/span&gt;
+  Your Profile
+&lt;/navigation-link&gt;
+</code></pre>
+<p>甚至其它的组件：</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  &lt;!-- 添加一个图标的组件 --&gt;
+  &lt;font-awesome-icon name=&quot;user&quot;&gt;&lt;/font-awesome-icon&gt;
+  Your Profile
+&lt;/navigation-link&gt;
+</code></pre>
+<p>如果 <code>&lt;navigation-link&gt;</code> <strong>没有</strong>包含一个 <code>&lt;slot&gt;</code> 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。</p>
+<h2 id="编译作用域"><a class="header" href="#编译作用域">编译作用域</a></h2>
+<p>当你想在一个插槽中使用数据时，例如：</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  Logged in as {{ user.name }}
+&lt;/navigation-link&gt;
+</code></pre>
+<p>该插槽跟模板的其它地方一样可以访问相同的实例 property (也就是相同的“作用域”)，而<strong>不能</strong>访问 <code>&lt;navigation-link&gt;</code> 的作用域。例如 <code>url</code> 是访问不到的：</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  Clicking here will send you to: {{ url }}
+  &lt;!--
+  这里的 `url` 会是 undefined，因为其 (指该插槽的) 内容是
+  _传递给_ &lt;navigation-link&gt; 的而不是
+  在 &lt;navigation-link&gt; 组件*内部*定义的。
+  --&gt;
+&lt;/navigation-link&gt;
+</code></pre>
+<p>作为一条规则，请记住：</p>
+<blockquote>
+<p>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</p>
+</blockquote>
+<h2 id="后备内容"><a class="header" href="#后备内容">后备内容</a></h2>
+<p>有时为一个插槽设置具体的后备 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。例如在一个</p>
+<p><code>&lt;submit-button&gt;</code> 组件中：</p>
+<pre><code>&lt;button type=&quot;submit&quot;&gt;
+  &lt;slot&gt;&lt;/slot&gt;
+&lt;/button&gt;
+</code></pre>
+<p>我们可能希望这个 <code>&lt;button&gt;</code> 内绝大多数情况下都渲染文本“Submit”。为了将“Submit”作为后备内容，我们可以将它放在 <code>&lt;slot&gt;</code> 标签内：</p>
+<pre><code>&lt;button type=&quot;submit&quot;&gt;
+  &lt;slot&gt;Submit&lt;/slot&gt;
+&lt;/button&gt;
+</code></pre>
+<p>现在当我在一个父级组件中使用 <code>&lt;submit-button&gt;</code> 并且不提供任何插槽内容时：</p>
+<pre><code>&lt;submit-button&gt;&lt;/submit-button&gt;
+</code></pre>
+<p>后备内容“Submit”将会被渲染：</p>
+<pre><code>&lt;button type=&quot;submit&quot;&gt;
+  Submit
+&lt;/button&gt;
+</code></pre>
+<p>但是如果我们提供内容：</p>
+<pre><code>&lt;submit-button&gt;
+  Save
+&lt;/submit-button&gt;
+</code></pre>
+<p>则这个提供的内容将会被渲染从而取代后备内容：</p>
+<pre><code>&lt;button type=&quot;submit&quot;&gt;
+  Save
+&lt;/button&gt;
+</code></pre>
+<h2 id="具名插槽"><a class="header" href="#具名插槽">具名插槽</a></h2>
+<p>有时我们需要多个插槽。例如对于一个带有如下模板的 <code>&lt;base-layout&gt;</code> 组件：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;header&gt;
+    &lt;!-- 我们希望把页头放这里 --&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;!-- 我们希望把主要内容放这里 --&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;!-- 我们希望把页脚放这里 --&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+</code></pre>
+<p>对于这样的情况，<code>&lt;slot&gt;</code> 元素有一个特殊的 attribute：<code>name</code>。这个 attribute 可以用来定义额外的插槽：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;header&gt;
+    &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<p>一个不带 <code>name</code> 的 <code>&lt;slot&gt;</code> 出口会带有隐含的名字“default”。</p>
+<p>在向具名插槽提供内容的时候，我们可以在一个 <code>&lt;template&gt;</code> 元素上使用 <code>v-slot</code> 指令，并以 <code>v-slot</code> 的参数的形式提供其名称：</p>
+<pre><code>&lt;base-layout&gt;
+  &lt;template v-slot:header&gt;
+    &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+  &lt;/template&gt;
+
+  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+  &lt;p&gt;And another one.&lt;/p&gt;
+
+  &lt;template v-slot:footer&gt;
+    &lt;p&gt;Here's some contact info&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<p>在向具名插槽提供内容的时候，我们可以在一个 <code>&lt;template&gt;</code> 元素上使用 <code>v-slot</code> 指令，并以 <code>v-slot</code> 的参数的形式提供其名称：</p>
+<pre><code>&lt;base-layout&gt;
+  &lt;template v-slot:header&gt;
+    &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+  &lt;/template&gt;
+
+  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+  &lt;p&gt;And another one.&lt;/p&gt;
+
+  &lt;template v-slot:footer&gt;
+    &lt;p&gt;Here's some contact info&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<p>现在 <code>&lt;template&gt;</code> 元素中的所有内容都将会被传入相应的插槽。任何没有被包裹在带有 <code>v-slot</code> 的 <code>&lt;template&gt;</code> 中的内容都会被视为默认插槽的内容。</p>
+<p>然而，如果你希望更明确一些，仍然可以在一个 <code>&lt;template&gt;</code> 中包裹默认插槽的内容：</p>
+<pre><code>&lt;base-layout&gt;
+  &lt;template v-slot:header&gt;
+    &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+  &lt;/template&gt;
+
+  &lt;template v-slot:default&gt;
+    &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+    &lt;p&gt;And another one.&lt;/p&gt;
+  &lt;/template&gt;
+
+  &lt;template v-slot:footer&gt;
+    &lt;p&gt;Here's some contact info&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<p>注意 <strong><code>v-slot</code> 只能添加在 <code>&lt;template&gt;</code> 上</strong> (只有<a href="https://vuejs.bootcss.com/guide/components-slots.html#%E7%8B%AC%E5%8D%A0%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD%E7%9A%84%E7%BC%A9%E5%86%99%E8%AF%AD%E6%B3%95">一种例外情况</a>)，这一点和已经废弃的 <a href="https://vuejs.bootcss.com/guide/components-slots.html#%E5%BA%9F%E5%BC%83%E4%BA%86%E7%9A%84%E8%AF%AD%E6%B3%95"><code>slot</code> attribute</a> 不同。</p>
+<h2 id="作用域插槽"><a class="header" href="#作用域插槽">作用域插槽</a></h2>
+<p>有时让插槽内容能够访问子组件中才有的数据是很有用的。例如，设想一个带有如下模板的 <code>&lt;current-user&gt;</code> 组件：</p>
+<pre><code>&lt;span&gt;
+  &lt;slot&gt;{{ user.lastName }}&lt;/slot&gt;
+&lt;/span&gt;
+</code></pre>
+<p>我们可能想换掉备用内容，用名而非姓来显示。如下：</p>
+<pre><code>&lt;current-user&gt;
+  {{ user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>为了让 <code>user</code> 在父级的插槽内容中可用，我们可以将 <code>user</code> 作为 <code>&lt;slot&gt;</code> 元素的一个 attribute 绑定上去：</p>
+<pre><code>&lt;span&gt;
+  &lt;slot v-bind:user=&quot;user&quot;&gt;
+    {{ user.lastName }}
+  &lt;/slot&gt;
+&lt;/span&gt;
+</code></pre>
+<p>绑定在 <code>&lt;slot&gt;</code> 元素上的 attribute 被称为<strong>插槽 prop</strong>。现在在父级作用域中，我们可以使用带值的 <code>v-slot</code> 来定义我们提供的插槽 prop 的名字：</p>
+<pre><code>&lt;current-user&gt;
+  &lt;template v-slot:default=&quot;slotProps&quot;&gt;
+    {{ slotProps.user.firstName }}
+  &lt;/template&gt;
+&lt;/current-user&gt;
+</code></pre>
+<p>在这个例子中，我们选择将包含所有插槽 prop 的对象命名为 <code>slotProps</code>，但你也可以使用任意你喜欢的名字。</p>
+<h3 id="独占默认插槽的缩写语法"><a class="header" href="#独占默认插槽的缩写语法">独占默认插槽的缩写语法</a></h3>
+<p>在上述情况下，当被提供的内容<em>只有</em>默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 <code>v-slot</code> 直接用在组件上：</p>
+<pre><code>&lt;current-user v-slot:default=&quot;slotProps&quot;&gt;
+  {{ slotProps.user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>这种写法还可以更简单。就像假定未指明的内容对应默认插槽一样，不带参数的 <code>v-slot</code> 被假定对应默认插槽：</p>
+<pre><code>&lt;current-user v-slot=&quot;slotProps&quot;&gt;
+  {{ slotProps.user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>注意默认插槽的缩写语法<strong>不能</strong>和具名插槽混用，因为它会导致作用域不明确：</p>
+<pre><code>&lt;!-- 无效，会导致警告 --&gt;
+&lt;current-user v-slot=&quot;slotProps&quot;&gt;
+  {{ slotProps.user.firstName }}
+  &lt;template v-slot:other=&quot;otherSlotProps&quot;&gt;
+    slotProps is NOT available here
+  &lt;/template&gt;
+&lt;/current-user&gt;
+</code></pre>
+<p>只要出现多个插槽，请始终为<em>所有的</em>插槽使用完整的基于 <code>&lt;template&gt;</code> 的语法：</p>
+<pre><code>&lt;current-user&gt;
+  &lt;template v-slot:default=&quot;slotProps&quot;&gt;
+    {{ slotProps.user.firstName }}
+  &lt;/template&gt;
+
+  &lt;template v-slot:other=&quot;otherSlotProps&quot;&gt;
+    ...
+  &lt;/template&gt;
+&lt;/current-user&gt;
+</code></pre>
+<h3 id="解构插槽-prop"><a class="header" href="#解构插槽-prop">解构插槽 Prop</a></h3>
+<p>作用域插槽的内部工作原理是将你的插槽内容包括在一个传入单个参数的函数里：</p>
+<pre><code>function (slotProps) {
+  // 插槽内容
+}
+</code></pre>
+<p>这意味着 <code>v-slot</code> 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。所以在支持的环境下 (<a href="https://vuejs.bootcss.com/guide/single-file-components.html">单文件组件</a>或<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9">现代浏览器</a>)，你也可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E8%A7%A3%E6%9E%84%E5%AF%B9%E8%B1%A1">ES2015 解构</a>来传入具体的插槽 prop，如下：</p>
+<pre><code>&lt;current-user v-slot=&quot;{ user }&quot;&gt;
+  {{ user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>这样可以使模板更简洁，尤其是在该插槽提供了多个 prop 的时候。它同样开启了 prop 重命名等其它可能，例如将 <code>user</code> 重命名为 <code>person</code>：</p>
+<pre><code>&lt;current-user v-slot=&quot;{ user: person }&quot;&gt;
+  {{ person.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>你甚至可以定义后备内容，用于插槽 prop 是 undefined 的情形：</p>
+<pre><code>&lt;current-user v-slot=&quot;{ user = { firstName: 'Guest' } }&quot;&gt;
+  {{ user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<h2 id="动态插槽名"><a class="header" href="#动态插槽名">动态插槽名</a></h2>
+<p><a href="https://vuejs.bootcss.com/guide/syntax.html#%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0">动态指令参数</a>也可以用在 <code>v-slot</code> 上，来定义动态的插槽名：</p>
+<pre><code>&lt;base-layout&gt;
+  &lt;template v-slot:[dynamicSlotName]&gt;
+    ...
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<h2 id="具名插槽的缩写"><a class="header" href="#具名插槽的缩写">具名插槽的缩写</a></h2>
+<p>跟 <code>v-on</code> 和 <code>v-bind</code> 一样，<code>v-slot</code> 也有缩写，即把参数之前的所有内容 (<code>v-slot:</code>) 替换为字符 <code>#</code>。例如 <code>v-slot:header</code> 可以被重写为 <code>#header</code>：</p>
+<pre><code>&lt;base-layout&gt;
+  &lt;template #header&gt;
+    &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+  &lt;/template&gt;
+
+  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+  &lt;p&gt;And another one.&lt;/p&gt;
+
+  &lt;template #footer&gt;
+    &lt;p&gt;Here's some contact info&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<p>然而，和其它指令一样，该缩写只在其有参数的时候才可用。这意味着以下语法是无效的：</p>
+<pre><code>&lt;!-- 这样会触发一个警告 --&gt;
+&lt;current-user #=&quot;{ user }&quot;&gt;
+  {{ user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<p>如果你希望使用缩写的话，你必须始终以明确插槽名取而代之：</p>
+<pre><code>&lt;current-user #default=&quot;{ user }&quot;&gt;
+  {{ user.firstName }}
+&lt;/current-user&gt;
+</code></pre>
+<h2 id="其它示例"><a class="header" href="#其它示例">其它示例</a></h2>
+<p>**插槽 prop 允许我们将插槽转换为可复用的模板，这些模板可以基于输入的 prop 渲染出不同的内容。**这在设计封装数据逻辑同时允许父级组件自定义部分布局的可复用组件时是最有用的。</p>
+<p>例如，我们要实现一个 <code>&lt;todo-list&gt;</code> 组件，它是一个列表且包含布局和过滤逻辑：</p>
+<pre><code>&lt;ul&gt;
+  &lt;li
+    v-for=&quot;todo in filteredTodos&quot;
+    v-bind:key=&quot;todo.id&quot;
+  &gt;
+    {{ todo.text }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>我们可以将每个 todo 作为父级组件的插槽，以此通过父级组件对其进行控制，然后将 <code>todo</code> 作为一个插槽 prop 进行绑定：</p>
+<pre><code>&lt;ul&gt;
+  &lt;li
+    v-for=&quot;todo in filteredTodos&quot;
+    v-bind:key=&quot;todo.id&quot;
+  &gt;
+    &lt;!--
+    我们为每个 todo 准备了一个插槽，
+    将 `todo` 对象作为一个插槽的 prop 传入。
+    --&gt;
+    &lt;slot name=&quot;todo&quot; v-bind:todo=&quot;todo&quot;&gt;
+      &lt;!-- 后备内容 --&gt;
+      {{ todo.text }}
+    &lt;/slot&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>现在当我们使用 <code>&lt;todo-list&gt;</code> 组件的时候，我们可以选择为 todo 定义一个不一样的 <code>&lt;template&gt;</code> 作为替代方案，并且可以从子组件获取数据：</p>
+<pre><code>&lt;todo-list v-bind:todos=&quot;todos&quot;&gt;
+  &lt;template v-slot:todo=&quot;{ todo }&quot;&gt;
+    &lt;span v-if=&quot;todo.isComplete&quot;&gt;✓&lt;/span&gt;
+    {{ todo.text }}
+  &lt;/template&gt;
+&lt;/todo-list&gt;
+</code></pre>
+<h1 id="动态组件--异步组件"><a class="header" href="#动态组件--异步组件">动态组件 &amp; 异步组件</a></h1>
+<h2 id="在动态组件上使用-keep-alive"><a class="header" href="#在动态组件上使用-keep-alive">在动态组件上使用 <code>keep-alive</code></a></h2>
+<p>我们之前曾经在一个多标签的界面中使用 <code>is</code> attribute 来切换不同的组件：</p>
+<pre><code>&lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;
+</code></pre>
+<p>当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题。例如我们来展开说一说这个多标签界面：</p>
+<p>你会注意到，如果你选择了一篇文章，切换到 <em>Archive</em> 标签，然后再切换回 <em>Posts</em>，是不会继续展示你之前选择的文章的。这是因为你每次切换新标签的时候，Vue 都创建了一个新的 <code>currentTabComponent</code> 实例。</p>
+<p>重新创建动态组件的行为通常是非常有用的，但是在这个案例中，我们更希望那些标签的组件实例能够被在它们第一次被创建的时候缓存下来。为了解决这个问题，我们可以用一个 <code>&lt;keep-alive&gt;</code> 元素将其动态组件包裹起来。</p>
+<pre><code>&lt;!-- 失活的组件将会被缓存！--&gt;
+&lt;keep-alive&gt;
+  &lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;
+&lt;/keep-alive&gt;
+</code></pre>
+<p>注意这个 <code>&lt;keep-alive&gt;</code> 要求被切换到的组件都有自己的名字，不论是通过组件的 <code>name</code> 选项还是局部/全局注册。</p>
+<h2 id="异步组件"><a class="header" href="#异步组件">异步组件</a></h2>
+<p>在大型应用中，我们可能需要将应用分割成小一些的代码块，并且只在需要的时候才从服务器加载一个模块。为了简化，Vue 允许你以一个工厂函数的方式定义你的组件，这个工厂函数会异步解析你的组件定义。Vue 只有在这个组件需要被渲染的时候才会触发该工厂函数，且会把结果缓存起来供未来重渲染。例如：</p>
+<pre><code>Vue.component('async-example', function (resolve, reject) {
+  setTimeout(function () {
+    // 向 `resolve` 回调传递组件定义
+    resolve({
+      template: '&lt;div&gt;I am async!&lt;/div&gt;'
+    })
+  }, 1000)
+})
+</code></pre>
+<p>如你所见，这个工厂函数会收到一个 <code>resolve</code> 回调，这个回调函数会在你从服务器得到组件定义的时候被调用。你也可以调用 <code>reject(reason)</code> 来表示加载失败。这里的 <code>setTimeout</code> 是为了演示用的，如何获取组件取决于你自己。一个推荐的做法是将异步组件和 <a href="https://webpack.js.org/guides/code-splitting/">webpack 的 code-splitting 功能</a>一起配合使用：</p>
+<pre><code>Vue.component('async-webpack-example', function (resolve) {
+  // 这个特殊的 `require` 语法将会告诉 webpack
+  // 自动将你的构建代码切割成多个包，这些包
+  // 会通过 Ajax 请求加载
+  require(['./my-async-component'], resolve)
+})
+</code></pre>
+<p>你也可以在工厂函数中返回一个 <code>Promise</code>，所以把 webpack 2 和 ES2015 语法加在一起，我们可以写成这样：</p>
+<pre><code>Vue.component(
+  'async-webpack-example',
+  // 这个 `import` 函数会返回一个 `Promise` 对象。
+  () =&gt; import('./my-async-component')
+)
+</code></pre>
+<p>当使用<a href="https://vuejs.bootcss.com/guide/components-registration.html#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C">局部注册</a>的时候，你也可以直接提供一个返回 <code>Promise</code> 的函数：</p>
+<pre><code>new Vue({
+  // ...
+  components: {
+    'my-component': () =&gt; import('./my-async-component')
+  }
+})
+</code></pre>
+<h2 id="处理加载状态"><a class="header" href="#处理加载状态">处理加载状态</a></h2>
+<p>这里的异步组件工厂函数也可以返回一个如下格式的对象：</p>
+<pre><code>const AsyncComponent = () =&gt; ({
+  // 需要加载的组件 (应该是一个 `Promise` 对象)
+  component: import('./MyComponent.vue'),
+  // 异步组件加载时使用的组件
+  loading: LoadingComponent,
+  // 加载失败时使用的组件
+  error: ErrorComponent,
+  // 展示加载时组件的延时时间。默认值是 200 (毫秒)
+  delay: 200,
+  // 如果提供了超时时间且组件加载也超时了，
+  // 则使用加载失败时使用的组件。默认值是：`Infinity`
+  timeout: 3000
+})
+</code></pre>
+<p>{% endraw %}</p>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../vue/模板语法.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../vue/表单输入绑定.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../vue/模板语法.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../vue/表单输入绑定.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

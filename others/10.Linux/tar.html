@@ -1,0 +1,985 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>tar - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><div>UML</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html">UML</a></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/index.html">MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html">时序图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html">流程图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html">类图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html">语法总览</a></li></ol></li><li class="chapter-item "><div>Flowchart</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html">flowchart_fun</a></li></ol></li><li class="chapter-item "><div>PlantUml</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html">plantUML语法</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../4.模板引擎/index.html">模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/index.html">mustache</a></li></ol></li><li class="chapter-item "><div>常用软件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/Multipass.html">Multipass</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html">v2rayN代理</a></li></ol></li><li class="chapter-item "><div>生活事宜</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html">个人清算汇缴</a></li></ol></li><li class="chapter-item "><a href="../7.思考/index.html">思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html">学习总结</a></li><li class="chapter-item "><a href="../7.思考/杂项.html">杂项</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html">编程技巧</a></li></ol></li><li class="chapter-item "><div>学习</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html">概率论与数理统计</a></li></ol></li><li class="chapter-item "><div>数据格式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/XML.html">XML</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html">yaml</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html">CFSBandwidthControl</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html">LinuxFor</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html">LinuxWOL设置</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html">Linux条件测试</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html">Seed</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html">VIM</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html">caseIn</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html">cgroup</a></li><li class="chapter-item "><a href="../10.Linux/curl.html">curl</a></li><li class="chapter-item "><a href="../10.Linux/dd.html">dd</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html">diffPatch</a></li><li class="chapter-item "><a href="../10.Linux/find.html">find</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html">iptables</a></li><li class="chapter-item "><a href="../10.Linux/jq.html">jq</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html">lsof</a></li><li class="chapter-item "><a href="../10.Linux/ps.html">ps</a></li><li class="chapter-item "><a href="../10.Linux/read.html">read</a></li><li class="chapter-item "><a href="../10.Linux/scp.html">scp</a></li><li class="chapter-item "><a href="../10.Linux/select.html">select</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html">service脚本</a></li><li class="chapter-item "><a href="../10.Linux/set.html">set</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html">shell字符串</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html">shell脚本参数</a></li><li class="chapter-item "><a href="../10.Linux/stat.html">stat</a></li><li class="chapter-item expanded "><a href="../10.Linux/tar.html" class="active">tar</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html">top命令</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html">uidGidSetUidSetGid</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html">wsl关闭提示音</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html">yum本地包依赖</a></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html">大端与小端</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html">确定Linux发行版本</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html">零拷贝</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html">默认值语法糖</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/index.html">algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html">Base64编码</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html">Huffman编码</a></li><li class="chapter-item "><a href="../11.algorithm/base64.html">base64</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html">fnv-hash算法</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html">二叉搜索平衡树</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html">位运算</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html">动态规划</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html">动态规划-新</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html">字符编码</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html">布隆过滤器</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html">浮点数</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html">红黑树</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html">贪心算法</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html">逆波兰表达式</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="语法"><a class="header" href="#语法">语法</a></h1>
+<pre><code>tar [OPTION...] [FILE]...
+</code></pre>
+<p>DESCRIPTION</p>
+<h1 id="简述"><a class="header" href="#简述">简述</a></h1>
+<p>​       GNU `tar' saves many files together into a single tape or disk archive, and can restore individual files from the archive.</p>
+<p>将多个文件 保存成一个文件，并且可以复原</p>
+<p>请注意，本手册页仅包含非常简短的描述（或更像是可能的功能列表），该描述最初是由help2man程序生成的，</p>
+<p>tar的完整文档保留为Texinfo手册，如果在您的站点上正确安装了info和tar程序，则可以使用“ info tar”命令来访问完整的手册。</p>
+<h1 id="例子"><a class="header" href="#例子">例子</a></h1>
+<pre><code class="language-sh"># Create archive.tar from files foo and bar.
+tar -cf archive.tar foo bar
+# List all files in archive.tar verbosely.
+tar -tvf archive.tar
+# Extract all files from archive.tar.
+tar -xf archive.tar
+</code></pre>
+<h1 id="操作模式"><a class="header" href="#操作模式">操作模式</a></h1>
+<pre><code>-A, --catenate, --concatenate
+              append tar files to an archive
+-c, --create
+          create a new archive
+
+-d, --diff, --compare
+          find differences between archive and file system
+
+--delete
+          delete from the archive (not on mag tapes!)
+
+-r, --append
+          append files to the end of an archive
+
+-t, --list
+          list the contents of an archive
+
+--test-label
+          test the archive volume label and exit
+
+-u, --update
+          only append files newer than copy in archive
+
+-x, --extract, --get
+          extract files from an archive
+</code></pre>
+<h1 id="通用选项"><a class="header" href="#通用选项">通用选项</a></h1>
+<pre><code>    -C, --directory=DIR
+              change to directory DIR
+ 	-f, --file=ARCHIVE
+          use archive file or device ARCHIVE
+
+   -j, --bzip2
+          filter the archive through bzip2
+
+    -J, --xz
+          filter the archive through xz
+
+   -p, --preserve-permissions
+          extract  information  about  file permissions (default for superuser)
+
+   -v, --verbose
+          verbosely list files processed
+
+   -z, --gzip
+          filter the archive through gzip
+</code></pre>
+<h1 id="操作修饰符"><a class="header" href="#操作修饰符">操作修饰符</a></h1>
+<pre><code>	--check-device
+    	  check device numbers when creating incremental archives (default)
+	-g, --listed-incremental=FILE
+          handle new GNU-format incremental backup
+
+   -G, --incremental
+          handle old GNU-format incremental backup
+
+   --ignore-failed-read
+          do not exit with nonzero on unreadable files
+
+   --level=NUMBER
+          dump level for created listed-incremental archive
+
+   -n, --seek
+          archive is seekable
+
+   --no-check-device
+          do not check device numbers when creating incremental archives
+
+   --no-seek
+          archive is not seekable
+
+   --occurrence[=NUMBER]
+          process only the NUMBERth occurrence of each file in the archive; this option is valid only in conjunction with one of the subcommands --delete, --diff, --extract or --list and when a list of files is given either on the command line or via  the  -T
+          option; NUMBER defaults to 1
+
+   --sparse-version=MAJOR[.MINOR]
+          set version of the sparse format to use (implies --sparse)
+
+   -S, --sparse
+          handle sparse files efficiently
+</code></pre>
+<h1 id="覆盖控制"><a class="header" href="#覆盖控制">覆盖控制</a></h1>
+<pre><code>	-k, --keep-old-files
+              don't replace existing files when extracting, treat them as errors
+	--keep-newer-files
+          don't replace existing files that are newer than their archive copies
+
+   --keep-directory-symlink
+          Don't replace existing symlinks to directories when extracting.
+
+   --no-overwrite-dir
+          preserve metadata of existing directories
+
+   --overwrite
+          overwrite existing files when extracting
+
+   --overwrite-dir
+          overwrite metadata of existing directories when extracting (default)
+
+   --recursive-unlink
+          empty hierarchies prior to extracting directory
+
+   --remove-files
+          remove files after adding them to the archive
+
+   --skip-old-files
+          don't replace existing files when extracting, silently skip over them
+
+   -U, --unlink-first
+          remove each file prior to extracting over it
+
+   -W, --verify
+          attempt to verify the archive after writing it
+</code></pre>
+<h1 id="重定向输出"><a class="header" href="#重定向输出">重定向输出</a></h1>
+<pre><code>--ignore-command-error ignore exit codes of children
+--no-ignore-command-error
+          treat non-zero exit codes of children as error
+
+   -O, --to-stdout
+          extract files to standard output
+
+   --to-command=COMMAND
+          pipe extracted files to another program
+</code></pre>
+<h1 id="处理文件属性"><a class="header" href="#处理文件属性">处理文件属性</a></h1>
+<pre><code>      --atime-preserve[=METHOD]
+              preserve access times on dumped files, either by restoring the times after reading (METHOD='replace'; default) or by not setting the times in the first place (METHOD='system')
+   --delay-directory-restore
+          delay setting modification times and permissions of extracted directories until the end of extraction
+
+   --group=NAME
+          force NAME as group for added files
+
+   --mode=CHANGES
+          force (symbolic) mode CHANGES for added files
+
+   --mtime=DATE-OR-FILE
+          set mtime for added files from DATE-OR-FILE
+
+   -m, --touch
+          don't extract file modified time
+
+   --no-delay-directory-restore
+          cancel the effect of --delay-directory-restore option
+
+   --no-same-owner
+          extract files as yourself (default for ordinary users)
+
+   --no-same-permissions
+          apply the user's umask when extracting permissions from the archive (default for ordinary users)
+
+   --numeric-owner
+          always use numbers for user/group names
+
+   --owner=NAME
+          force NAME as owner for added files
+
+   -p, --preserve-permissions, --same-permissions
+          extract information about file permissions (default for superuser)
+
+   --preserve
+          same as both -p and -s
+
+   --same-owner
+          try extracting files with the same ownership as exists in the archive (default for superuser)
+
+   -s, --preserve-order, --same-order
+          sort names to extract to match archive
+</code></pre>
+<h1 id="处理文件扩展属性"><a class="header" href="#处理文件扩展属性">处理文件扩展属性</a></h1>
+<pre><code>          --acls Enable the POSIX ACLs support
+   --no-acls
+          Disable the POSIX ACLs support
+
+   --no-selinux
+          Disable the SELinux context support
+
+   --no-xattrs
+          Disable extended attributes support
+
+   --selinux
+          Enable the SELinux context support
+
+   --xattrs
+          Enable extended attributes support
+
+   --xattrs-exclude=MASK
+          specify the exclude pattern for xattr keys
+
+   --xattrs-include=MASK
+          specify the include pattern for xattr keys
+</code></pre>
+<h1 id="设备选择和切换"><a class="header" href="#设备选择和切换">设备选择和切换</a></h1>
+<pre><code>   -f, --file=ARCHIVE
+              use archive file or device ARCHIVE
+  --force-local
+          archive file is local even if it has a colon
+
+   -F, --info-script=NAME, --new-volume-script=NAME
+          run script at end of each tape (implies -M)
+
+   -L, --tape-length=NUMBER
+          change tape after writing NUMBER x 1024 bytes
+
+   -M, --multi-volume
+          create/list/extract multi-volume archive
+
+   --rmt-command=COMMAND
+          use given rmt COMMAND instead of rmt
+
+   --rsh-command=COMMAND
+          use remote COMMAND instead of rsh
+
+   --volno-file=FILE
+          use/update the volume number in FILE
+</code></pre>
+<h1 id="块设备"><a class="header" href="#块设备">块设备</a></h1>
+<pre><code>  -b, --blocking-factor=BLOCKS
+              BLOCKS x 512 bytes per record
+-B, --read-full-records
+          reblock as we read (for 4.2BSD pipes)
+
+   -i, --ignore-zeros
+          ignore zeroed blocks in archive (means EOF)
+
+   --record-size=NUMBER
+          NUMBER of bytes per record, multiple of 512
+</code></pre>
+<h1 id="archive-format-selection"><a class="header" href="#archive-format-selection">Archive format selection</a></h1>
+<pre><code>      -H, --format=FORMAT
+              create archive of the given format
+	 FORMAT is one of the following:
+
+                 gnu    GNU tar 1.13.x format
+
+                 oldgnu GNU format as per tar &lt;= 1.12
+
+                 pax    POSIX 1003.1-2001 (pax) format
+
+                 posix  same as pax
+
+                 ustar  POSIX 1003.1-1988 (ustar) format
+
+                 v7     old V7 tar format
+
+   --old-archive, --portability
+          same as --format=v7
+
+   --pax-option=keyword[[:]=value][,keyword[[:]=value]]...
+          control pax keywords
+
+   --posix
+          same as --format=posix
+
+   -V, --label=TEXT
+          create archive with volume name TEXT; at list/extract time, use TEXT as a globbing pattern for volume name
+</code></pre>
+<h1 id="压缩选项"><a class="header" href="#压缩选项">压缩选项</a></h1>
+<pre><code>    -a, --auto-compress
+              use archive suffix to determine the compression program
+   -I, --use-compress-program=PROG
+          filter through PROG (must accept -d)
+
+   -j, --bzip2
+          filter the archive through bzip2
+
+   -J, --xz
+          filter the archive through xz
+
+   --lzip filter the archive through lzip
+
+   --lzma filter the archive through lzma
+
+   --lzop
+
+   --no-auto-compress
+          do not use archive suffix to determine the compression program
+
+   -z, --gzip, --gunzip, --ungzip
+          filter the archive through gzip
+
+   -Z, --compress, --uncompress
+          filter the archive through compress
+
+   Note: You might need to install external program (lzip/ncompress/lzma...) to use some of these compression options
+</code></pre>
+<h1 id="本地文件选择"><a class="header" href="#本地文件选择">本地文件选择</a></h1>
+<pre><code>  --add-file=FILE
+              add given FILE to the archive (useful if its name starts with a dash)
+ --backup[=CONTROL]
+          backup before removal, choose version CONTROL
+
+   -C, --directory=DIR
+          change to directory DIR
+
+   --exclude=PATTERN
+          exclude files, given as a PATTERN
+
+   --exclude-backups
+          exclude backup and lock files
+
+   --exclude-caches
+          exclude contents of directories containing CACHEDIR.TAG, except for the tag file itself
+
+   --exclude-caches-all
+          exclude directories containing CACHEDIR.TAG
+
+   --exclude-caches-under exclude everything under directories containing
+          CACHEDIR.TAG
+
+   --exclude-tag=FILE
+          exclude contents of directories containing FILE, except for FILE itself
+
+   --exclude-tag-all=FILE exclude directories containing FILE
+
+   --exclude-tag-under=FILE
+          exclude everything under directories containing FILE
+
+   --exclude-vcs
+          exclude version control system directories
+
+   -h, --dereference
+          follow symlinks; archive and dump the files they point to
+
+   --hard-dereference
+          follow hard links; archive and dump the files they refer to
+
+   -K, --starting-file=MEMBER-NAME
+          begin at member MEMBER-NAME in the archive
+
+   --newer-mtime=DATE
+          compare date and time when data changed only
+
+   --no-null
+          disable the effect of the previous --null option
+
+   --no-recursion
+          avoid descending automatically in directories
+
+   --no-unquote
+          do not unquote filenames read with -T
+
+   --null                 -T reads null-terminated names, disable -C
+
+   -N, --newer=DATE-OR-FILE, --after-date=DATE-OR-FILE
+          only store files newer than DATE-OR-FILE
+
+   --one-file-system
+          stay in local file system when creating archive
+
+   -P, --absolute-names
+          don't strip leading `/'s from file names
+
+   --recursion
+          recurse into directories (default)
+
+   --suffix=STRING
+          backup before removal, override usual suffix ('~' unless overridden by environment variable SIMPLE_BACKUP_SUFFIX)
+
+   -T, --files-from=FILE
+          get names to extract or create from FILE
+
+   --unquote
+          unquote filenames read with -T (default)
+
+   -X, --exclude-from=FILE
+          exclude patterns listed in FILE
+</code></pre>
+<h1 id="文件名转换"><a class="header" href="#文件名转换">文件名转换</a></h1>
+<pre><code>      --strip-components=NUMBER
+              strip NUMBER leading components from file names on extraction
+  --transform=EXPRESSION, --xform=EXPRESSION
+          use sed replace EXPRESSION to transform file names
+
+          File name matching options (affect both exclude and include patterns):
+
+   --anchored
+          patterns match file name start
+
+   --ignore-case
+          ignore case
+
+   --no-anchored
+          patterns match after any `/' (default for exclusion)
+
+   --no-ignore-case
+          case sensitive matching (default)
+
+   --no-wildcards
+          verbatim string matching
+
+   --no-wildcards-match-slash
+          wildcards do not match `/'
+
+   --wildcards
+          use wildcards (default)
+
+   --wildcards-match-slash
+          wildcards match `/' (default for exclusion)
+</code></pre>
+<h1 id="信息输出"><a class="header" href="#信息输出">信息输出</a></h1>
+<pre><code>    --checkpoint[=NUMBER]
+              display progress messages every NUMBERth record (default 10)
+ --checkpoint-action=ACTION
+          execute ACTION on each checkpoint
+
+   --full-time
+          print file time to its full resolution
+
+   --index-file=FILE
+          send verbose output to FILE
+
+   -l, --check-links
+          print a message if not all links are dumped
+
+   --no-quote-chars=STRING
+          disable quoting for characters from STRING
+
+   --quote-chars=STRING
+          additionally quote characters from STRING
+
+   --quoting-style=STYLE
+          set name quoting style; see below for valid STYLE values
+
+   -R, --block-number
+          show block number within archive with each message
+
+   --show-defaults
+          show tar defaults
+
+   --show-omitted-dirs
+          when listing or extracting, list each directory that does not match search criteria
+
+   --show-transformed-names, --show-stored-names
+          show file or archive names after transformation
+
+   --totals[=SIGNAL]
+          print total bytes after processing the archive; with an argument - print total bytes when this SIGNAL is delivered; Allowed signals are: SIGHUP, SIGQUIT, SIGINT, SIGUSR1 and SIGUSR2; the names without SIG prefix are also accepted
+
+   --utc  print file modification dates in UTC
+
+   -v, --verbose
+          verbosely list files processed
+
+   --warning=KEYWORD
+          warning control
+
+   -w, --interactive, --confirmation
+          ask for confirmation for every action
+</code></pre>
+<h1 id="其他选项"><a class="header" href="#其他选项">其他选项</a></h1>
+<pre><code>        -?, --help
+              give this help list
+ --restrict
+          disable use of some potentially harmful options
+
+   --usage
+          give a short usage message
+
+   --version
+          print program version
+
+   Mandatory or optional arguments to long options are also mandatory or optional for any corresponding short options.
+
+   The backup suffix is `~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.  The version control may be set with --backup or VERSION_CONTROL, values are:
+
+   none, off
+          never make backups
+
+   t, numbered
+          make numbered backups
+
+   nil, existing
+          numbered if numbered backups exist, simple otherwise
+
+   never, simple
+          always make simple backups
+
+   Valid arguments for the --quoting-style option are:
+
+          literal shell shell-always c c-maybe escape locale clocale
+</code></pre>
+<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../10.Linux/stat.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../10.Linux/top命令.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../10.Linux/stat.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../10.Linux/top命令.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>quasar选项和辅助 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item expanded "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item expanded "><a href="../quasar/quasar选项和辅助.html" class="active">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="vue原型注入"><a class="header" href="#vue原型注入">Vue原型注入</a></h1>
+<p>Quasar用<code>$q</code>对象注入Vue原型：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">注入</th><th style="text-align: left">类型</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>$q.version</code></td><td style="text-align: left">字符串</td><td style="text-align: left">quasar版本。</td></tr>
+<tr><td style="text-align: left"><code>$q.platform</code></td><td style="text-align: left">对象</td><td style="text-align: left">从Quasar导入与<a href="http://www.quasarchs.com/options/platform-detection">平台</a>相同的对象。</td></tr>
+<tr><td style="text-align: left"><code>$q.screen</code></td><td style="text-align: left">对象</td><td style="text-align: left"><a href="http://www.quasarchs.com/options/screen-plugin">屏幕插件</a>提供的对象。</td></tr>
+<tr><td style="text-align: left"><code>$q.lang</code></td><td style="text-align: left">对象</td><td style="text-align: left">Quasar语言包管理，包含标签等（<a href="https://github.com/quasarframework/quasar/tree/dev/ui/lang">语言文件</a>之一）。 专为Quasar组件设计，但您也可以在您的应用组件中使用。更多信息: <a href="http://www.quasarchs.com/options/quasar-language-packs">Quasar语言包</a>.</td></tr>
+<tr><td style="text-align: left"><code>$q.iconSet</code></td><td style="text-align: left">Object</td><td style="text-align: left">Quasar图标集管理 (<a href="https://github.com/quasarframework/quasar/tree/dev/ui/icon-set">图标集文件</a>之一). 专为Quasar组件设计，但您也可以在您的应用组件中使用。更多信息: <a href="http://www.quasarchs.com/options/quasar-icon-sets">Quasar图标集</a>.</td></tr>
+<tr><td style="text-align: left"><code>$q.cordova</code></td><td style="text-align: left">对象</td><td style="text-align: left">引用Cordova全局对象。 只有在Cordova应用程序下运行时才可用。</td></tr>
+<tr><td style="text-align: left"><code>$q.capacitor</code></td><td style="text-align: left">对象</td><td style="text-align: left">(@quasar/app v1.2+) 引用Capacitor全局对象。 只有在Capacitor应用程序下运行时才可用。</td></tr>
+<tr><td style="text-align: left"><code>$q.electron</code></td><td style="text-align: left">对象</td><td style="text-align: left">参考Electron全局对象。 仅在Electron应用程序下运行和<strong>如果<a href="http://www.quasarchs.com/quasar-cli/developing-electron-apps/node-integration">Node集成</a>未关闭</strong>时才可用。</td></tr>
+</tbody></table>
+</div>
+<h2 id="例子"><a class="header" href="#例子">例子</a></h2>
+<p>判断是否是IOS</p>
+<pre><code class="language-vue">&lt;!-- 在Vue模板中 --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;div v-if=&quot;$q.platform.is.ios&quot;&gt;
+      Gets rendered only on iOS platform.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+// 在export以外不可用
+
+export default {
+  // 在一个Vue组件脚本中
+  ...,
+
+  // 显示一个方法的例子，但是
+  // 可以是Vue脚本的任何部分
+  methods: {
+    show () {
+      // 打印出Quasar版本
+      console.log(this.$q.version)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h1 id="应用图标"><a class="header" href="#应用图标">应用图标</a></h1>
+<h2 id="icon-genie"><a class="header" href="#icon-genie">Icon Genie</a></h2>
+<p>查看<a href="https://github.com/quasarframework/app-extension-icon-genie/blob/dev/README.md">Icon Genie存储库</a>，了解有关工作原理的详细信息，或者深入了解并如<a href="http://www.quasarchs.com/app-extensions/introduction">任何应用扩展</a>一样在你的项目安装它：</p>
+<pre><code class="language-bash">$ quasar ext add @quasar/icon-genie
+</code></pre>
+<p>它会要求您告诉它在哪里可以找到源图像（1240x1240）以及您要使用的缩小策略。 然后当你运行<code>$ quasar dev</code>时 - 它会生成正确的图标并将它们放在适合你的所有位置，无论你使用什么样的<code>--mode</code>; 如果您只是在本地提供HMR服务或使用<code>build</code>生成最终资产。</p>
+<h2 id="尚未使用quasar-cli"><a class="header" href="#尚未使用quasar-cli">尚未使用Quasar CLI</a></h2>
+<p>您必须转换、调整大小、命名和放置文件(无论它们在哪里)，并且取决于您构建应用（可在任何地方）的方式。</p>
+<p>对于这种情况下的开发人员，我们提供了一个选项，您可以全局安装Icon Genie作为npm模块，并使用它来生成您需要的图标：</p>
+<pre><code class="language-bash">$ npm install --global @quasar/app-extension-icon-genie
+$ icongenie -p=kitchensink -s=icon-1280x1280.png -t=./outputFolder -m=pngquant
+</code></pre>
+<p>有关此类用法的完整详细信息，请访问app-extension存储库。</p>
+<h1 id="quasar框架的seo"><a class="header" href="#quasar框架的seo">Quasar框架的SEO</a></h1>
+<h2 id="quasar-meta插件"><a class="header" href="#quasar-meta插件">Quasar Meta插件</a></h2>
+<p><a href="http://www.quasarchs.com/quasar-plugins/meta">Quasar Meta插件</a> 可以动态更改页面标题、管理<code>&lt;meta&gt;</code>标签、管理<code>&lt;html&gt;</code>和<code>&lt;body&gt;</code>DOM元素属性、添加/删除/更改文档头部的<code>&lt;style&gt;</code>和<code>&lt;script&gt;</code>标签（例如用于CDN样式表或json-ld标记）或管理<code>&lt;noscript&gt;</code>标签。</p>
+<p>使用<strong>Quasar CLI</strong>，特别是<strong>用于SSR（服务器端渲染）构建</strong>时，充分利用此功能。 将它用于SPA（单页应用程序）是没有意义的，因为在这种情况下，元信息将在运行时添加，而不是由Web服务器直接提供（如在SSR构建中）。</p>
+<blockquote>
+<p>这个Quasar插件与Quasar的集成最紧密，因此它具有与任何其他类似解决方案相比的最佳性能。</p>
+</blockquote>
+<h1 id="quasar语言包"><a class="header" href="#quasar语言包">Quasar语言包</a></h1>
+<p>Quasar语言包作用于Quasar自己组件的国际化，其中一些组件具有标签。</p>
+<blockquote>
+<p>应该注意，下面描述的仅是Quasar组件的国际化。 如果您需要国际化自己的组件，请阅读<a href="http://www.quasarchs.com/options/app-internationalization">应用国际化</a> 文档页面。</p>
+</blockquote>
+<h2 id="配置默认语言包"><a class="header" href="#配置默认语言包">配置默认语言包</a></h2>
+<p>除非另有配置（见下文），否则Quasar默认使用<code>en-us</code>语言包。</p>
+<h3 id="硬编码默认语言包"><a class="header" href="#硬编码默认语言包">硬编码默认语言包</a></h3>
+<p>如果未动态确定默认的Quasar语言包（例如，不依赖于cookie），则可以：</p>
+<h4 id="quasar-cli"><a class="header" href="#quasar-cli">Quasar CLI</a></h4>
+<p>编辑<code>/quasar.conf.js</code>:</p>
+<pre><code class="language-js">framework: {
+  lang: 'de'
+}
+</code></pre>
+<h4 id="vue-cli"><a class="header" href="#vue-cli">Vue CLI</a></h4>
+<p>编辑你的<code>main.js</code>:</p>
+<pre><code class="language-js">import langDe from 'quasar/lang/de'
+// ...
+
+// when not selecting to import all Quasar components:
+import { Quasar } from 'quasar'
+// OTHERWISE:
+import Quasar from 'quasar'
+
+// ...
+Vue.use(Quasar, {
+  // ...,
+  lang: langDe
+})
+</code></pre>
+<h4 id="quasar-umd"><a class="header" href="#quasar-umd">Quasar UMD</a></h4>
+<p>包含你的Quasar版本的语言包JS标签，并告诉Quasar使用它。 例：</p>
+<pre><code class="language-html">&lt;!-- 在Quasar JS之后包含这个标签 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/quasar@v1.0.0/dist/lang/de.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  Quasar.lang.set(Quasar.lang.de)
+&lt;/script&gt;
+</code></pre>
+<h3 id="动态选择默认语言"><a class="header" href="#动态选择默认语言">动态选择默认语言</a></h3>
+<p>Quasar CLI：如果必须动态选择所需的Quasar语言包（例如：依赖于cookie），则需要创建一个启动文件：<code>$ quasar new boot quasar-lang-pack</code>。 这将创建``/src/boot/quasar-lang-pack.js` 文件。 编辑为：</p>
+<pre><code class="language-js">// for when you don't specify quasar.conf.js &gt; framework: 'all'
+import { Quasar } from 'quasar'
+// OTHERWISE:
+import Quasar from 'quasar'
+
+export default async () =&gt; {
+  const langIso = 'de' // ... some logic to determine it (use Cookies Plugin?)
+
+  try {
+    await import(
+      /* webpackInclude: /(de|en-us)\.js$/ */
+      `quasar/lang/${langIso}`
+      )
+      .then(lang =&gt; {
+        Quasar.lang.set(lang.default)
+      })
+  }
+  catch (err) {
+    // Requested Quasar Language Pack does not exist,
+    // let's not break the app, so catching error
+  }
+}
+</code></pre>
+<p>然后将此启动文件注册到<code>/quasar.conf.js</code>：</p>
+<pre><code class="language-js">boot: [
+  'quasar-lang-pack'
+]
+</code></pre>
+<h2 id="在运行时更改quasar语言包"><a class="header" href="#在运行时更改quasar语言包">在运行时更改Quasar语言包</a></h2>
+<p>使用QSelect动态更改Quasar组件语言的示例：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;q-select
+    v-model=&quot;lang&quot;
+    :options=&quot;langOptions&quot;
+    label=&quot;Quasar Language&quot;
+    dense
+    borderless
+    emit-value
+    map-options
+    options-dense
+    style=&quot;min-width: 150px&quot;
+  /&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import languages from 'quasar/lang/index.json'
+const appLanguages = languages.filter(lang =&gt;
+  [ 'de', 'en-us' ].includes(lang.isoName)
+)
+
+export default {
+  data () {
+    return {
+      lang: this.$q.lang.isoName
+    }
+  },
+
+  watch: {
+    lang (lang) {
+      // dynamic import, so loading on demand only
+      import(
+        /* webpackInclude: /(de|en-us)\.js$/ */
+        `quasar/lang/${lang}`
+        ).then(lang =&gt; {
+        this.$q.lang.set(lang.default)
+      })
+    }
+  },
+
+  created () {
+    this.langOptions = appLanguages.map(lang =&gt; ({
+      label: lang.nativeName, value: lang.isoName
+    }))
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2 id="在app-space中使用quasar语言包"><a class="header" href="#在app-space中使用quasar语言包">在App Space中使用Quasar语言包</a></h2>
+<p>虽然Quasar语言包<strong>仅适用于Quasar组件内部使用</strong>，但您仍可以将其标签用于您自己的网站/应用程序组件。</p>
+<pre><code class="language-html">当前Quasar语言包中的“Close”标签是：
+{{ $q.lang.label.close }}
+</code></pre>
+<p>查看[GitHub]（https://github.com/quasarframework/quasar/tree/dev/ui/lang）上的Quasar语言包，查看<code>$q.lang</code>的结构。</p>
+<h2 id="检测区域设置"><a class="header" href="#检测区域设置">检测区域设置</a></h2>
+<p>还有一种Quasar提供的开箱即用的方法可以确定用户区域设置：</p>
+<pre><code class="language-js">// outside of a Vue file
+
+// for when you don't specify quasar.conf.js &gt; framework: 'all'
+import { Quasar } from 'quasar'
+// OTHERWISE:
+import Quasar from 'quasar'
+
+Quasar.lang.getLocale() // returns a string
+
+// inside of a Vue file
+this.$q.lang.getLocale() // returns a string
+</code></pre>
+<h1 id="应用国际化-i18n"><a class="header" href="#应用国际化-i18n"><a href="http://www.quasarchs.com/options/app-internationalization#Introduction">应用国际化 (I18n)</a></a></h1>
+<p>国际化是一个设计过程，可确保产品（网站或应用程序）可适应各种语言和地区，而无需对源代码进行工程更改。将国际化视为本土化的准备。</p>
+<h1 id="rtl支持"><a class="header" href="#rtl支持"><a href="http://www.quasarchs.com/options/rtl-support#Introduction">RTL</a>支持</a></h1>
+<p>RTL指的是需要“从右到左”展示的语言的UI。</p>
+<h1 id="安装图标库"><a class="header" href="#安装图标库"><a href="http://www.quasarchs.com/options/installing-icon-libraries#Introduction">安装图标库</a></a></h1>
+<p><strong>此页面仅指使用<a href="http://www.quasarchs.com/vue-components/icon#Webfont-icons">webfont图标</a>。</strong> SVG图标不需要任何安装步骤。</p>
+<p>您很可能想要在您的网站/应用中使用图标，而Quasar提供了一个开箱即用的简单方法，用于以下图标库： <a href="https://material.io/icons/">Material Icons</a> 、 <a href="http://fontawesome.io/icons/">Font Awesome</a>、 <a href="http://ionicons.com/">Ionicons</a>, <a href="https://materialdesignicons.com/">MDI</a>、 <a href="https://akveo.github.io/eva-icons">Eva Icons</a> 和 <a href="https://themify.me/themify-icons">Themify Icons</a>。</p>
+<p>TIP</p>
+<p>关于webfont图标，您可以选择安装一个或多个这些图标库。</p>
+<h1 id="quasar图标集"><a class="header" href="#quasar图标集"><a href="http://www.quasarchs.com/options/quasar-icon-sets#Introduction">Quasar</a>图标集</a></h1>
+<p>Quasar组件有自己的图标。 Quasar并不强迫您特别使用一个图标库（以便它们可以正确显示），而允许您选择<strong>应该用于其组件的图标</strong>。 这被称为“Quasar图标集”。</p>
+<p>您可以安装多个图标库，但必须只选择一个用于Quasar组件的图标库。</p>
+<p>Quasar当前支持: <a href="https://material.io/icons/">Material Icons</a>、 <a href="http://fontawesome.io/icons/">Font Awesome</a>、 <a href="http://ionicons.com/">Ionicons</a>、 <a href="https://materialdesignicons.com/">MDI</a>、 <a href="https://akveo.github.io/eva-icons">Eva Icons</a>和<a href="https://themify.me/themify-icons">Themify Icons</a>。</p>
+<p>也可以将自己的图标（作为自定义svg或任何格式的图像）与任何Quasar组件一起使用，有关更多信息，请参见<a href="http://www.quasarchs.com/vue-components/icon#Image-icons">QIcon</a>页面。</p>
+<p>TIP</p>
+<p>相关页面： <a href="http://www.quasarchs.com/options/installing-icon-libraries">安装图标库</a> and <a href="http://www.quasarchs.com/vue-components/icon">QIcon组件</a>.</p>
+<h1 id="平台检测"><a class="header" href="#平台检测"><a href="http://www.quasarchs.com/options/platform-detection#Introduction">平台检测</a></a></h1>
+<p>辅助程序内置于Quasar中，用于在运行代码的上下文中检测平台（及其功能）。</p>
+<p>TIP</p>
+<p>根据您的需要，您可能还需要查看<a href="http://www.quasarchs.com/style/visibility">风格&amp;特性 &gt; 可见性</a> 页面以了解如何仅使用CSS来实现相同的效果。后一种方法将渲染您的DOM元素或组件，而不管平台如何，所以基于应用程序的性能做出明智的选择 。</p>
+<h2 id="用法"><a class="header" href="#用法">用法</a></h2>
+<p>Vue组件JS中的用法：</p>
+<pre><code class="language-js">this.$q.platform.is.mobile
+</code></pre>
+<p>Vue组件模板中的用法：</p>
+<pre><code class="language-js">$q.platform.is.cordova
+</code></pre>
+<p>在Vue组件之外使用它时必须导入它：</p>
+<pre><code class="language-js">import { Platform } from 'quasar'
+</code></pre>
+<p><code>Platform.is</code>本身返回一个包含当前平台详细信息的对象。 例如，在MacOS桌面计算机上运行Chrome时，<code>Platform.is</code>会返回类似以下信息：</p>
+<pre><code class="language-js">{
+  chrome: true,
+  desktop: true,
+  mac: true,
+  name: &quot;chrome&quot;,
+  platform: &quot;mac&quot;,
+  version: &quot;70.0.3538.110&quot;,
+  versionNumber: 70,
+  webkit: true
+}
+</code></pre>
+<p>现在，假设我们想要根据代码运行的平台呈现不同的组件或DOM元素。 我们想在桌面上展示一些东西，在移动设备上展示其他东西，我们会这样做：</p>
+<pre><code class="language-html">&lt;div v-if=&quot;$q.platform.is.desktop&quot;&gt;
+  I'm only rendered on desktop!
+&lt;/div&gt;
+
+&lt;div v-if=&quot;$q.platform.is.mobile&quot;&gt;
+  I'm only rendered on mobile!
+&lt;/div&gt;
+
+&lt;div v-if=&quot;$q.platform.is.electron&quot;&gt;
+  I'm only rendered on Electron!
+&lt;/div&gt;
+</code></pre>
+<h2 id="属性"><a class="header" href="#属性">属性</a></h2>
+<p>Platform对象可以使用以下属性。 尽管如此，这并不是一个详尽的清单。 有关详细信息，请参阅下面的API部分。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">属性</th><th style="text-align: left">类型</th><th style="text-align: left">含义</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>Platform.is.mobile</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在移动设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.cordova</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Cordova内运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.capacitor</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否与Capacitor一起运行？ （需要@quasar/app v1.2 +）</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.electron</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Electron内运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.desktop</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在桌面浏览器上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.bex</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在浏览器扩展中运行？ （需要@quasar/app v1.2 +）</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.android</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在Android设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.blackberry</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在Blackberry设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.cros</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在具有Chrome OS操作系统的设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.ios</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在iOS设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.ipad</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在iPad上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.iphone</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在iPhone上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.ipod</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在iPod上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.kindle</code></td><td style="text-align: left">布尔</td><td style="text-align: left">应用是否在Kindle设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.linux</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在具有Linux操作系统的设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.mac</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在具有MacOS操作系统的设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.win</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在具有Windows操作系统的设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.winphone</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Windows Phone设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.playbook</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Blackberry Playbook设备上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.silk</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Kindle Silk浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.chrome</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Google Chrome浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.opera</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Opera Phone浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.safari</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Apple Safari浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.edge</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Microsoft Edge浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.is.ie</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在Microsoft Internet Explorer浏览器中运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.has.touch</code></td><td style="text-align: left">布尔</td><td style="text-align: left">代码是否在支持触摸的屏幕上运行？</td></tr>
+<tr><td style="text-align: left"><code>Platform.within.iframe</code></td><td style="text-align: left">布尔</td><td style="text-align: left">该应用是否在IFRAME内运行？</td></tr>
+</tbody></table>
+</div>
+<h1 id="屏幕插件"><a class="header" href="#屏幕插件"><a href="http://www.quasarchs.com/options/screen-plugin#Introduction">屏幕插件</a></a></h1>
+<p>Quasar屏幕插件允许您在处理Javascript代码时拥有动态且响应迅速的UI。 如果可能，出于性能原因，建议使用<a href="http://www.quasarchs.com/style/visibility#Window-Width-Related">响应式CSS类</a> 。</p>
+<h2 id="安装"><a class="header" href="#安装">安装</a></h2>
+<p>你不需要做任何事情。屏幕插件会自动安装。</p>
+<h2 id="用法-1"><a class="header" href="#用法-1">用法</a></h2>
+<p>请注意下面的<code>$q.screen</code>。 这只是一个简单的用法示例。</p>
+<pre><code class="language-html">&lt;q-list :dense=&quot;$q.screen.lt.md&quot;&gt;
+  &lt;q-item&gt;
+    &lt;q-item-section&gt;John Doe&lt;/q-item-section&gt;
+  &lt;/q-item&gt;
+
+  &lt;q-item&gt;
+    &lt;q-item-section&gt;Jane Doe&lt;/q-item-section&gt;
+  &lt;/q-item&gt;
+&lt;/q-list&gt;
+// Vue组件的脚本部分
+export default {
+  computed: {
+    buttonColor () {
+      return this.$q.screen.lt.md
+        ? 'primary'
+        : 'secondary'
+    }
+  }
+}
+</code></pre>
+<p>我们也可以在Vue组件之外使用屏幕插件：</p>
+<pre><code class="language-js">import { Screen } from 'quasar'
+
+// Screen.gt.md
+// Screen.md
+// Screen.name ('xs', 'sm', ...; Quasar v1.5.2+)
+</code></pre>
+<h1 id="动画"><a class="header" href="#动画"><a href="http://www.quasarchs.com/options/animations#Introduction">动画</a></a></h1>
+<p>CSS过渡可以由<a href="https://vuejs.org/v2/guide/transitions.html">Vue过渡组件</a>处理。 过渡效果用于展示输入（出现）或离开（消失）动画。</p>
+<p>但是，Quasar可以提供大量即用型CSS动画。 动画效果来自<a href="https://daneden.github.io/animate.css/">Animate.css</a>。 因此，目前有12个常规，32个输入（In）和32个离开（Out）动画类型可供您开箱即用。 查看Animate.css网站上的列表或此页面的展示的DEMO。</p>
+<blockquote>
+<p>请参阅<a href="https://vuejs.org/v2/guide/transitions.html">Vue</a>文档，了解如何使用Vue提供的<code>&lt;transition&gt;</code> 组件。</p>
+</blockquote>
+<h2 id="安装-1"><a class="header" href="#安装-1">安装</a></h2>
+<p>编辑 <code>/quasar.conf.js</code>.</p>
+<pre><code class="language-js">// embedding all animations
+animations: 'all'
+
+// or embedding only specific animations
+animations: [
+  'bounceInLeft',
+  'bounceOutRight'
+]
+</code></pre>
+<p>如果您正在构建一个网站，您也可以跳过配置quasar.conf.js并使用指向Animate.css的CDN链接（以下仅为示例，Google为最新链接）。 请记住，这需要为您的用户提供Internet连接，而不是从quasar.conf.js中进行捆绑。</p>
+<pre><code class="language-html">&lt;!-- src/index.template.html --&gt;
+&lt;head&gt;
+  ...
+
+  &lt;!-- CDN example for Animate.css --&gt;
+  &lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css&quot;
+  &gt;
+&lt;/head&gt;
+</code></pre>
+<h2 id="用法-2"><a class="header" href="#用法-2">用法</a></h2>
+<p>注意实际动画名称前面的字符串“animated”。</p>
+<pre><code class="language-html">&lt;!-- Example with wrapping only one DOM element / component --&gt;
+&lt;transition
+  appear
+  enter-active-class=&quot;animated fadeIn&quot;
+  leave-active-class=&quot;animated fadeOut&quot;
+&gt;
+  &lt;!-- Wrapping only one DOM element, defined by QBtn --&gt;
+  &lt;q-btn
+    color=&quot;secondary&quot;
+    icon=&quot;mail&quot;
+    label=&quot;Email&quot;
+  /&gt;
+&lt;/transition&gt;
+</code></pre>
+<h3 id="包装多个元素"><a class="header" href="#包装多个元素">包装多个元素</a></h3>
+<p>您还可以在过渡中对组件或DOM元素进行分组，以便同时将相同的效果应用于所有这些元素。</p>
+<pre><code class="language-html">
+&lt;!-- Example with wrapping multiple DOM elements / components --&gt;
+&lt;transition-group
+  appear
+  enter-active-class=&quot;animated fadeIn&quot;
+  leave-active-class=&quot;animated fadeOut&quot;
+&gt;
+  &lt;!-- We wrap a &quot;p&quot; tag and a QBtn --&gt;
+  &lt;p key=&quot;text&quot;&gt;
+     Lorem Ipsum
+  &lt;/p&gt;
+  &lt;q-btn
+    key=&quot;email-button&quot;
+    color=&quot;secondary&quot;
+    icon=&quot;mail&quot;
+    label=&quot;Email&quot;
+  /&gt;
+&lt;/transition-group&gt;
+</code></pre>
+<p>请注意以上示例中的一些内容：</p>
+<ol>
+<li>注意使用<code>&lt;transition-group&gt;</code>而不是<code>&lt;transition&gt;</code>。</li>
+<li>必须键入组件和DOM元素，例如上面示例中的<code>key=&quot;text&quot;</code>或<code>key=&quot;email-button&quot;</code>。</li>
+<li>上面的两个例子都指定了布尔属性<code>appear</code>，这使得在渲染组件后立即进入动画。 此属性是可选的。</li>
+</ol>
+<h1 id="quasar组件过渡效果"><a class="header" href="#quasar组件过渡效果"><a href="http://www.quasarchs.com/options/transitions#Introduction">Quasar组件过渡效果</a></a></h1>
+<p>有一些Quasar组件通过 <code>transition-show</code>/<code>transition-hide</code> 或<code>transition-prev</code>/<code>transition-next</code>或简单的<code>transition</code>属性提到过渡。 我们将在这里展示这些过渡效果。</p>
+<h1 id="全局事件总线"><a class="header" href="#全局事件总线">全局事件总线</a></h1>
+<p>有时您需要一个事件总线或发布/订阅通道。 Vue已经为每个组件提供了一个事件总线。 为了方便起见，您可以使用根Vue组件通过<code>this.$root</code>来注册并监听事件。</p>
+<p>WARNING</p>
+<p>不要与Quasar组件支持的事件混淆。 这些是由各个组件发出的Vue事件，并且不会干扰全局事件总线。</p>
+<blockquote>
+<p>考虑使用<a href="https://vuex.vuejs.org/">Vuex</a>而不是事件总线。</p>
+</blockquote>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<p>请查看Vue的 <a href="https://vuejs.org/v2/api/#Instance-Methods-Events">实例方法/事件</a>API页面。 然后让我们看看如何在应用程序的根Vue组件上注册一个事件：</p>
+<pre><code class="language-js">// callback
+function cb (msg) {
+  console.log(msg)
+}
+
+// listen for an event
+this.$root.$on('event_name', cb)
+
+// listen once (only) for an event
+this.$root.$once('event_name', cb)
+
+// Make sure you stop listening for an event
+// when your respective component gets destroyed
+this.$root.$off('event_name', cb)
+
+
+// Emitting an event:
+this.$root.$emit('event_name', 'some message')
+</code></pre>
+<p>Example using event to open drawer from another component or page. Not recommended – a better way would be through <a href="https://vuex.vuejs.org/">Vuex</a>, but the example below is for educational purposes only.</p>
+<p>从另一个组件或页面打开侧滑菜单的使用事件的示例。 不推荐 - 更好的方法是通过<a href="https://vuex.vuejs.org/">Vuex</a>，但下面的示例仅用于教育目的。</p>
+<pre><code class="language-js">// (1) This code is inside layout file that have a drawer
+//     if this.leftDrawerOpen is true, drawer is displayed
+
+// (2) Listen for an event in created
+created () {
+  this.$root.$on('openLeftDrawer', this.openLeftDrawerCallback)
+},
+
+beforeDestroy () {
+  // Don't forget to turn the listener off before your component is destroyed
+  this.$root.$off('openLeftDrawer', this.openLeftDrawerCallback)
+}
+
+methods: {
+  // (3) Define the callback in methods
+  openLeftDrawerCallback () {
+    this.leftDrawerOpen = !this.leftDrawerOpen
+  }
+}
+
+// (4) In another component or page, emit the event!
+//     Call the method when clicking button etc.
+methods: {
+  openLeftDrawer () {
+    this.$root.$emit('openLeftDrawer')
+  }
+}
+</code></pre>
+<h3 id="用于qdialog和qmenu"><a class="header" href="#用于qdialog和qmenu">用于QDialog和QMenu</a></h3>
+<p>这些组件使用Quasar Portals，从而可以在<code>&lt;body&gt;</code>标记的末尾呈现内容，以便： 1.避免css污染 2.避免z-index问题 3.避免可能的父CSS溢出 4.在iOS上正常工作</p>
+<p>如果需要在这些组件中使用总线，则必须通过.js文件创建自己的全局总线：</p>
+<pre><code class="language-js">import Vue from 'vue'
+const bus = new Vue()
+export default bus
+</code></pre>
+<p>然后在需要访问此总线的任何位置导入此文件。</p>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../quasar/quasarCli.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../quasar/vue组件.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../quasar/quasarCli.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../quasar/vue组件.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

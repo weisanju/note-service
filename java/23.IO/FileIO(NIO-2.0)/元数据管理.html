@@ -1,0 +1,738 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>元数据管理 - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item expanded "><a href="../../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../../23.IO/字符集.html">字符集</a></li><li class="chapter-item expanded "><a href="../../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item expanded "><a href="../../23.IO/FileIO(NIO-2.0)/元数据管理.html" class="active">元数据管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="managing-metadata"><a class="header" href="#managing-metadata">Managing Metadata</a></h1>
+<p>File and File Store Attributes</p>
+<p><em>元数据</em>的定义是“关于其他数据的数据”。</p>
+<p>对于文件系统，数据包含在其文件和目录中，元数据跟踪有关每个对象的信息</p>
+<p>它是常规文件、目录还是链接？</p>
+<p>它的大小、创建日期、上次修改日期、文件所有者、组所有者和访问权限是多少？</p>
+<p>文件系统的元数据通常称为其<em>文件属性</em>。 </p>
+<p><code>Files</code> 类包括可用于获取文件的单个属性或设置属性的方法。</p>
+<div class="table-wrapper"><table><thead><tr><th>Methods</th><th>Comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#size-java.nio.file.Path-"><code>size(Path)</code></a></td><td>以字节为单位返回指定文件的大小。</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#isDirectory-java.nio.file.Path-java.nio.file.LinkOption...-"><code>isDirectory(Path, LinkOption)</code></a></td><td>如果指定的 <code>Path</code> 定位的文件是目录，则返回 true。</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#isRegularFile-java.nio.file.Path-java.nio.file.LinkOption...-"><code>isRegularFile(Path, LinkOption...)</code></a></td><td>如果指定的 <code>Path</code> 定位到一个普通文件，则返回 true。</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#isSymbolicLink-java.nio.file.Path-"><code>isSymbolicLink(Path)</code></a></td><td>如果指定的 <code>Path</code> 定位到一个符号链接文件，则返回 true。</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#isHidden-java.nio.file.Path-"><code>isHidden(Path)</code></a></td><td>如果指定的 <code>Path</code> 找到被文件系统视为隐藏的文件，则返回 true。</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#getLastModifiedTime-java.nio.file.Path-java.nio.file.LinkOption...-"><code>getLastModifiedTime(Path, LinkOption...)</code></a> <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#setLastModifiedTime-java.nio.file.Path-java.nio.file.attribute.FileTime-"><code>setLastModifiedTime(Path, FileTime)</code></a></td><td>返回或设置指定文件的最后修改时间</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#getOwner-java.nio.file.Path-java.nio.file.LinkOption...-"><code>getOwner(Path, LinkOption...)</code></a> <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#setOwner-java.nio.file.Path-java.nio.file.attribute.UserPrincipal-"><code>setOwner(Path, UserPrincipal)</code></a></td><td>Returns or sets the owner of the file.</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#getPosixFilePermissions-java.nio.file.Path-java.nio.file.LinkOption...-"><code>getPosixFilePermissions(Path, LinkOption...)</code></a> <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#setPosixFilePermissions-java.nio.file.Path-java.util.Set-"><code>setPosixFilePermissions(Path, Set)</code></a></td><td>Returns or sets a file's POSIX file permissions.</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#getAttribute-java.nio.file.Path-java.lang.String-java.nio.file.LinkOption...-"><code>getAttribute(Path, String, LinkOption...)</code></a> <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#setAttribute-java.nio.file.Path-java.lang.String-java.lang.Object-java.nio.file.LinkOption...-"><code>setAttribute(Path, String, Object, LinkOption...)</code></a></td><td>Returns or sets the value of a file attribute.</td></tr>
+</tbody></table>
+</div>
+<p>如果程序大约同时需要多个文件属性，则使用检索单个属性的方法可能效率低下</p>
+<p>重复访问文件系统以检索单个属性会对性能产生不利影响。</p>
+<p>出于这个原因，<code>Files</code> 类提供了两个 <code>readAttributes</code> 方法来在一次批量操作中获取文件的属性。</p>
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#readAttributes-java.nio.file.Path-java.lang.String-java.nio.file.LinkOption...-"><code>readAttributes(Path, String, LinkOption...)</code></a></td><td>Reads a file's attributes as a bulk operation. The <code>String</code> parameter identifies the attributes to be read.</td></tr>
+<tr><td><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#readAttributes-java.nio.file.Path-java.lang.Class-java.nio.file.LinkOption...-"><code>readAttributes(Path, Class, LinkOption...)</code></a></td><td>Reads a file's attributes as a bulk operation. The <code>Class&lt;A&gt;</code> parameter is the type of attributes requested and the method returns an object of that class.</td></tr>
+</tbody></table>
+</div>
+<p>在展示 readAttributes 方法的示例之前，应该提到不同的文件系统对于应该跟踪哪些属性有不同的概念。</p>
+<p>出于这个原因，相关的文件属性被组合到视图中。</p>
+<p>视图映射到特定的文件系统实现，例如 POSIX 或 DOS，或者映射到公共功能，例如文件所有权。</p>
+<p>The supported views are as follows:</p>
+<ul>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/BasicFileAttributeView.html"><code>BasicFileAttributeView</code></a> </p>
+<ul>
+<li>提供所有文件系统实现需要支持的基本属性的视图。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/DosFileAttributeView.html"><code>DosFileAttributeView</code></a> </p>
+<ul>
+<li>使用支持 DOS 属性的文件系统支持的标准四位扩展基本属性视图。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/PosixFileAttributeView.html"><code>PosixFileAttributeView</code></a></p>
+<ul>
+<li>
+<p>使用支持 POSIX 系列标准的文件系统（如 UNIX）支持的属性扩展基本属性视图。</p>
+<p>这些属性包括文件所有者、组所有者和九个相关的访问权限。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileOwnerAttributeView.html"><code>FileOwnerAttributeView</code></a></p>
+<ul>
+<li>任何支持文件所有者概念的文件系统实现都支持。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/AclFileAttributeView.html"><code>AclFileAttributeView</code></a> </p>
+<ul>
+<li>支持读取或更新文件的访问控制列表 (ACL)。</li>
+<li>支持 NFSv4 ACL 模型。</li>
+<li>也可能支持具有到 NFSv4 模型的明确定义的映射的任何 ACL 模型，例如 Windows ACL 模型。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserDefinedFileAttributeView.html"><code>UserDefinedFileAttributeView</code></a> </p>
+<ul>
+<li>启用对用户定义的元数据的支持。</li>
+<li>该视图可以映射到系统支持的任何扩展机制。</li>
+<li>例如，在 Solaris OS 中，您可以使用此视图来存储文件的 MIME 类型。</li>
+</ul>
+</li>
+</ul>
+<p>一个特定的文件系统实现可能只支持基本的文件属性视图，或者它可能支持这些文件属性视图中的几个。</p>
+<p>文件系统实现可能支持未包含在此 API 中的其他属性视图。</p>
+<p>在大多数情况下，您不必直接处理任何 FileAttributeView 接口。 </p>
+<p>（如果您确实需要直接使用 FileAttributeView，则可以通过 getFileAttributeView(Path, Class, LinkOption...) 方法访问它。）</p>
+<p><code>readAttributes</code> 方法使用泛型，可用于读取任何文件属性视图的属性。</p>
+<p>本页其余部分的示例使用 <code>readAttributes</code> 方法。</p>
+<p>The remainder of this section covers the following topics:</p>
+<ul>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#basic">Basic File Attributes</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#time">Setting Time Stamps</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#dos">DOS File Attributes</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#posix">POSIX File Permissions</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#lookup">Setting a File or Group Owner</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#user">User-Defined File Attributes</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/io/fileAttr.html#store">File Store Attributes</a></li>
+</ul>
+<h1 id="basic-file-attributes"><a class="header" href="#basic-file-attributes">Basic File Attributes</a></h1>
+<p>如前所述，要读取文件的基本属性，您可以使用“Files.readAttributes”方法之一，该方法在一次批量操作中读取所有基本属性。</p>
+<p>这比单独访问文件系统以读取每个单独的属性要高效得多。 </p>
+<p>varargs 参数当前支持 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html"><code>LinkOption</code></a> 枚举，<code>NOFOLLOW_LINKS</code>。</p>
+<p>当您不希望遵循符号链接时，请使用此选项。</p>
+<hr />
+<p><strong>关于时间戳的一句话：</strong> 基本属性集包括三个时间戳：<code>creationTime</code>、<code>lastModifiedTime</code> 和<code>lastAccessTime</code>。</p>
+<p>在特定实现中可能不支持这些时间戳中的任何一个，在这种情况下，相应的访问器方法返回特定于实现的值。</p>
+<p>如果支持，时间戳将作为 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html"><code>FileTime</code></a> 对象返回。</p>
+<hr />
+<p>以下代码片段读取并打印给定文件的基本文件属性，并使用 [<code>BasicFileAttributes</code>](https://docs.oracle.com/javase/8/docs/api/java/nio/file /attribute/BasicFileAttributes.html) 类。</p>
+<pre><code class="language-java">Path file = ...;
+BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
+
+System.out.println(&quot;creationTime: &quot; + attr.creationTime());
+System.out.println(&quot;lastAccessTime: &quot; + attr.lastAccessTime());
+System.out.println(&quot;lastModifiedTime: &quot; + attr.lastModifiedTime());
+
+System.out.println(&quot;isDirectory: &quot; + attr.isDirectory());
+System.out.println(&quot;isOther: &quot; + attr.isOther());
+System.out.println(&quot;isRegularFile: &quot; + attr.isRegularFile());
+System.out.println(&quot;isSymbolicLink: &quot; + attr.isSymbolicLink());
+System.out.println(&quot;size: &quot; + attr.size());
+</code></pre>
+<p>除了此示例中显示的访问器方法之外，还有一个 <code>fileKey</code> 方法，该方法返回唯一标识文件的对象，或者如果没有文件键可用则返回 <code>null</code>。 </p>
+<h2 id="setting-time-stamps"><a class="header" href="#setting-time-stamps">Setting Time Stamps</a></h2>
+<p>The following code snippet sets the last modified time in milliseconds:</p>
+<pre><code class="language-java">Path file = ...;
+BasicFileAttributes attr =
+    Files.readAttributes(file, BasicFileAttributes.class);
+long currentTime = System.currentTimeMillis();
+FileTime ft = FileTime.fromMillis(currentTime);
+Files.setLastModifiedTime(file, ft);
+}
+</code></pre>
+<h1 id="dos-file-attributes"><a class="header" href="#dos-file-attributes">DOS File Attributes</a></h1>
+<p>DOS 文件属性也受 DOS 以外的文件系统支持，例如 Samba。</p>
+<p>以下代码段使用 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/DosFileAttributes.html"><code>DosFileAttributes</code></a> 类的方法。 </p>
+<pre><code>Path file = ...;
+try {
+    DosFileAttributes attr =
+        Files.readAttributes(file, DosFileAttributes.class);
+    System.out.println(&quot;isReadOnly is &quot; + attr.isReadOnly());
+    System.out.println(&quot;isHidden is &quot; + attr.isHidden());
+    System.out.println(&quot;isArchive is &quot; + attr.isArchive());
+    System.out.println(&quot;isSystem is &quot; + attr.isSystem());
+} catch (UnsupportedOperationException x) {
+    System.err.println(&quot;DOS file&quot; +
+        &quot; attributes not supported:&quot; + x);
+}
+</code></pre>
+<p>但是，您可以使用 [<code>setAttribute(Path, String, Object, LinkOption...)</code>](https://docs.oracle.com/javase/8/docs/api/java/nio/ file/Files.html#setAttribute-java.nio.file.Path-java.lang.String-java.lang.Object-java.nio.file.LinkOption...-) 方法，如下：</p>
+<pre><code class="language-java">Path file = ...;
+Files.setAttribute(file, &quot;dos:hidden&quot;, true);
+</code></pre>
+<h1 id="posix-file-permissions"><a class="header" href="#posix-file-permissions">POSIX File Permissions</a></h1>
+<p><em>POSIX</em> 是 Portable Operating System Interface for UNIX 的首字母缩写，是一组 IEEE 和 ISO 标准，旨在确保不同风格的 UNIX 之间的互操作性。</p>
+<p>如果程序符合这些 POSIX 标准，它应该很容易移植到其他符合 POSIX 的操作系统。</p>
+<p>除了文件所有者和组所有者之外，POSIX 还支持九种文件权限：文件所有者、同一组成员和“其他人”的读、写和执行权限。</p>
+<p>以下代码片段读取给定文件的 POSIX 文件属性并将它们打印到标准输出。</p>
+<p>该代码使用 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/PosixFileAttributes.html"><code>PosixFileAttributes</code></a> 类中的方法。</p>
+<pre><code class="language-java">Path file = ...;
+PosixFileAttributes attr =
+    Files.readAttributes(file, PosixFileAttributes.class);
+System.out.format(&quot;%s %s %s%n&quot;,
+    attr.owner().getName(),
+    attr.group().getName(),
+    PosixFilePermissions.toString(attr.permissions()));
+</code></pre>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/PosixFilePermissions.html"><code>PosixFilePermissions</code></a> helper 类提供了几个有用的方法，如下：</p>
+<ul>
+<li><code>toString</code> 方法，在前面的代码片段中使用，将文件权限转换为字符串（例如，<code>rw-r--r--</code>）。</li>
+<li><code>fromString</code> 方法接受一个表示文件权限的字符串并构造一个文件权限的 <code>Set</code>。</li>
+<li><code>asFileAttribute</code> 方法接受文件权限的 <code>Set</code> 并构造一个可以传递给 <code>Path.createFile</code> 或 <code>Path.createDirectory</code> 方法的文件属性。</li>
+</ul>
+<p>以下代码片段从一个文件中读取属性并创建一个新文件，将原始文件中的属性分配给新文件：</p>
+<pre><code class="language-java">Path sourceFile = ...;
+Path newFile = ...;
+PosixFileAttributes attrs =
+    Files.readAttributes(sourceFile, PosixFileAttributes.class);
+FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr =
+    PosixFilePermissions.asFileAttribute(attrs.permissions());
+Files.createFile(file, attr);
+</code></pre>
+<p><code>asFileAttribute</code> 方法将权限包装为一个 <code>FileAttribute</code>。</p>
+<p>然后代码尝试创建一个具有这些权限的新文件。</p>
+<p>请注意，<code>umask</code> 也适用，因此新文件可能比请求的权限更安全。</p>
+<p>要将文件的权限设置为表示为硬编码字符串的值，您可以使用以下代码：</p>
+<pre><code>Path file = ...;
+Set&lt;PosixFilePermission&gt; perms =
+    PosixFilePermissions.fromString(&quot;rw-------&quot;);
+FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr =
+    PosixFilePermissions.asFileAttribute(perms);
+Files.setPosixFilePermissions(file, perms);
+</code></pre>
+<p><a href="https://docs.oracle.com/javase/tutorial/essential/io/examples/Chmod.java"><code>Chmod</code></a> 示例以类似于 <code>chmod</code> 实用程序的方式递归更改文件的权限。</p>
+<h2 id="setting-a-file-or-group-owner"><a class="header" href="#setting-a-file-or-group-owner">Setting a File or Group Owner</a></h2>
+<p>要将名称转换为对象，您可以将其存储为文件所有者或组所有者</p>
+<p>您可以使用 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipalLookupService.html"><code>UserPrincipalLookupService</code></a> 服务。</p>
+<p>此服务将名称或组名称作为字符串查找，并返回表示该字符串的“UserPrincipal”对象。</p>
+<p>您可以通过使用 [<code>FileSystem.getUserPrincipalLookupService</code>](https://docs.oracle.com/javase/8/docs/api/java/nio/file/ FileSystem.html#getUserPrincipalLookupService--) 方法。</p>
+<p>以下代码片段显示了如何使用<code>setOwner</code> 方法设置文件所有者： </p>
+<pre><code class="language-java">Path file = ...;
+UserPrincipal owner = file.GetFileSystem().getUserPrincipalLookupService()
+        .lookupPrincipalByName(&quot;sally&quot;);
+Files.setOwner(file, owner);
+</code></pre>
+<p><code>Files</code> 类中没有用于设置组所有者的特殊用途方法。</p>
+<p>但是，直接这样做的安全方法是通过 POSIX 文件属性查看</p>
+<pre><code>Path file = ...;
+GroupPrincipal group =
+    file.getFileSystem().getUserPrincipalLookupService()
+        .lookupPrincipalByGroupName(&quot;green&quot;);
+Files.getFileAttributeView(file, PosixFileAttributeView.class)
+     .setGroup(group);
+</code></pre>
+<h2 id="user-defined-file-attributes"><a class="header" href="#user-defined-file-attributes">User-Defined File Attributes</a></h2>
+<p>如果您的文件系统实现支持的文件属性不足以满足您的需求，您可以使用“UserDefinedAttributeView”来创建和跟踪您自己的文件属性。</p>
+<p>一些实现将此概念映射到诸如 NTFS 替代数据流之类的功能以及文件系统（如 ext3 和 ZFS）上的扩展属性。</p>
+<p>大多数实现都对值的大小施加了限制，例如，ext3 将大小限制为 4 KB。</p>
+<p>可以使用以下代码片段将文件的 MIME 类型存储为用户定义的属性:</p>
+<pre><code class="language-java">Path file = ...;
+UserDefinedFileAttributeView view = Files
+    .getFileAttributeView(file, UserDefinedFileAttributeView.class);
+view.write(&quot;user.mimetype&quot;,
+           Charset.defaultCharset().encode(&quot;text/html&quot;);
+</code></pre>
+<p>To read the MIME type attribute, you would use this code snippet:</p>
+<pre><code class="language-java">Path file = ...;
+UserDefinedFileAttributeView view = Files
+.getFileAttributeView(file,UserDefinedFileAttributeView.class);
+String name = &quot;user.mimetype&quot;;
+ByteBuffer buf = ByteBuffer.allocate(view.size(name));
+view.read(name, buf);
+buf.flip();
+String value = Charset.defaultCharset().decode(buf).toString();
+</code></pre>
+<p><a href="https://docs.oracle.com/javase/tutorial/essential/io/examples/Xdd.java"><code>Xdd</code></a> 示例展示了如何获取、设置和删除用户定义的属性。 </p>
+<p><strong>注意：</strong> 在 Linux 中，您可能必须启用扩展属性才能使用户定义的属性起作用。</p>
+<p>如果在尝试访问用户定义的属性视图时收到 <code>UnsupportedOperationException</code>，则需要重新挂载文件系统。</p>
+<p>以下命令为 ext3 文件系统重新挂载具有扩展属性的根分区。</p>
+<p>如果此命令不适用于您的 Linux 风格，请查阅文档。</p>
+<pre><code>$ sudo mount -o remount,user_xattr /
+</code></pre>
+<p>如果您想让更改永久生效，请在 <code>/etc/fstab</code> 中添加一个条目。</p>
+<h2 id="file-store-attributes"><a class="header" href="#file-store-attributes">File Store Attributes</a></h2>
+<p>您可以使用 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileStore.html"><code>FileStore</code></a> 类来了解有关文件存储的信息，例如如何有很多空间可用。 </p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#getFileStore-java.nio.file.Path-"><code>getFileStore(Path)</code></a> 方法</p>
+<p>获取指定文件的文件存储。</p>
+<p>以下代码片段打印特定文件所在的文件存储的空间使用情况</p>
+<pre><code class="language-java">Path file = ...;
+FileStore store = Files.getFileStore(file);
+
+long total = store.getTotalSpace() / 1024;
+long used = (store.getTotalSpace() -
+             store.getUnallocatedSpace()) / 1024;
+long avail = store.getUsableSpace() / 1024;
+</code></pre>
+<p><a href="https://docs.oracle.com/javase/tutorial/essential/io/examples/DiskUsage.java"><code>DiskUsage</code></a> 示例使用此 API 打印默认文件系统中所有存储的磁盘空间信息。</p>
+<p>此示例使用 <code>FileSystem</code> 类中的 <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getFileStores--"><code>getFileStores</code></a> 方法来</p>
+<p>获取文件系统的所有文件存储。</p>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../23.IO/FileIO(NIO-2.0)/其他有用方法.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../23.IO/FileIO(NIO-2.0)/其他有用方法.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

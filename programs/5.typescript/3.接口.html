@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>接口 - 各项编程语言</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>C++</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.C++/C++与C的区别.html">C++与C的区别</a></li><li class="chapter-item "><a href="../1.C++/C++面向对象.html">C++面向对象</a></li><li class="chapter-item "><a href="../1.C++/泛型编程.html">泛型编程</a></li><li class="chapter-item "><a href="../1.C++/cmake/index.html">cmake</a></li></ol></li><li class="chapter-item "><a href="../2.LUA/index.html">LUA</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.LUA/基本语法.html">基本语法</a></li><li class="chapter-item "><a href="../2.LUA/高级语法.html">高级语法</a></li></ol></li><li class="chapter-item "><div>rust</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.rust/1常见编程概念.html">1常见编程概念</a></li><li class="chapter-item "><a href="../3.rust/2所有权.html">2所有权</a></li><li class="chapter-item "><a href="../3.rust/ConstantsAndVariables.html">ConstantsAndVariables</a></li><li class="chapter-item "><a href="../3.rust/Rust中的Sizedness.html">Rust中的Sizedness</a></li><li class="chapter-item "><a href="../3.rust/Rust库API设计文档规范.html">Rust库API设计文档规范</a></li><li class="chapter-item "><a href="../3.rust/const类型与函数.html">const类型与函数</a></li><li class="chapter-item "><a href="../3.rust/newType模式.html">newType模式</a></li><li class="chapter-item "><a href="../3.rust/rust执行shell命令.html">rust执行shell命令</a></li><li class="chapter-item "><a href="../3.rust/rust指针.html">rust指针</a></li><li class="chapter-item "><a href="../3.rust/rust面向对象特性.html">rust面向对象特性</a></li><li class="chapter-item "><a href="../3.rust/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../3.rust/函数式编程.html">函数式编程</a></li><li class="chapter-item "><a href="../3.rust/宏.html">宏</a></li><li class="chapter-item "><a href="../3.rust/常见集合.html">常见集合</a></li><li class="chapter-item "><a href="../3.rust/模式匹配.html">模式匹配</a></li><li class="chapter-item "><a href="../3.rust/泛型与trait.html">泛型与trait</a></li><li class="chapter-item "><a href="../3.rust/结构体.html">结构体</a></li><li class="chapter-item "><a href="../3.rust/迭代与闭包.html">迭代与闭包</a></li><li class="chapter-item "><div>rfcs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.rust/rfcs/0195_associated-items.html">0195_associated-items</a></li><li class="chapter-item "><a href="../3.rust/rfcs/0911-const-fn.html">0911-const-fn</a></li></ol></li></ol></li><li class="chapter-item "><div>groovy</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.groovy/RuntimeAndCompile-timeMetaprogramming.html">RuntimeAndCompile-timeMetaprogramming</a></li><li class="chapter-item "><a href="../4.groovy/基础语法.html">基础语法</a></li><li class="chapter-item "><a href="../4.groovy/开发工具类.html">开发工具类</a></li><li class="chapter-item "><a href="../4.groovy/操作符.html">操作符</a></li><li class="chapter-item "><a href="../4.groovy/编程结构.html">编程结构</a></li></ol></li><li class="chapter-item expanded "><a href="../5.typescript/index.html">typescript</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.typescript/1.基础类型.html">基础类型</a></li><li class="chapter-item "><a href="../5.typescript/2.变量声明.html">变量声明</a></li><li class="chapter-item expanded "><a href="../5.typescript/3.接口.html" class="active">接口</a></li><li class="chapter-item "><a href="../5.typescript/4.模块.html">模块</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/index.html">jtest测试框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Except.html">Except</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Globals.html">Globals</a></li><li class="chapter-item "><a href="../5.typescript/jtest测试框架/Hook顺序.html">Hook顺序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/index.html">AppleScript</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/CommonUse.html">CommonUse</a></li><li class="chapter-item "><a href="../6.AppleScript/1.AppleScriptLexicalConventions/index.html">1.AppleScriptLexicalConventions</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/index.html">2.AppleScriptFundamentals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/1.ObjectSpecifiers.html">ObjectSpecifiers</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/2.Coercion(ObjectConversion).html">Coercion(ObjectConversion)</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/3.ScriptingAdditions.html">ScriptingAdditions</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/4.CommandsOverview.html">CommandsOverview</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/5.GlobalConstantsInAppleScript.html">GlobalConstantsInAppleScript</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/6.ITAndMe.html">ITAndMe</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/7.AliasesAndFiles.html">AliasesAndFiles</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/8.RemoteApplications.html">RemoteApplications</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/9.ErrorHanding.html">ErrorHanding</a></li><li class="chapter-item "><a href="../6.AppleScript/2.AppleScriptFundamentals/10.DebuggingAppleScripts.html">DebuggingAppleScripts</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/index.html">3.VariablesAndProperties</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/1.DefiningProperties.html">DefiningProperties</a></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/2.DeclaringVariables.html">DeclaringVariables</a></li><li class="chapter-item "><a href="../6.AppleScript/3.VariablesAndProperties/3.ScopeOfVariablesAndProperties.html">ScopeOfVariablesAndProperties</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/index.html">4.ScriptObjects</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/1.DefiningScriptObjects.html">DefiningScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/2.InitializingScriptObjects.html">InitializingScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/3.SendingCommandsToScriptObjects.html">SendingCommandsToScriptObjects</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/4.ScriptLibraries.html">ScriptLibraries</a></li><li class="chapter-item "><a href="../6.AppleScript/4.ScriptObjects/5.InheritanceInScriptObjects.html">InheritanceInScriptObjects</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/index.html">5.AboutHandlers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/1.HandlerBasics.html">HandlerBasics</a></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/2.HandlersInScriptApplications.html">HandlersInScriptApplications</a></li><li class="chapter-item "><a href="../6.AppleScript/5.AboutHandlers/3.CallingAScriptApplicationFromAScript.html">CallingAScriptApplicationFromAScript</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/index.html">6.ClassReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/1.alias.html">alias</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/2.application.html">application</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/3.boolean.html">boolean</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/4.class.html">class</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/5.constant.html">constant</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/6.date.html">date</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/7.file.html">file</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/8.integer.html">integer</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/9.list.html">list</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/10.number.html">number</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/11.POSIXfile.html">POSIXfile</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/12.real.html">real</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/13.record.html">record</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/14.reference.html">reference</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/15.RGBcolor.html">RGBcolor</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/16.script.html">script</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/17.text.html">text</a></li><li class="chapter-item "><a href="../6.AppleScript/6.ClassReference/18.unitTypes.html">unitTypes</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/7.CommandsReference/index.html">7.CommandsReference</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/index.html">8.ReferenceForms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/1.Arbitrary.html">Arbitrary</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/2.Every.html">Every</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/3.Filter.html">Filter</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/4.ID.html">ID</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/5.Index.html">Index</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/6.Middle.html">Middle</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/7.Name.html">Name</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/8.Property.html">Property</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/9.Range.html">Range</a></li><li class="chapter-item "><a href="../6.AppleScript/8.ReferenceForms/10.Relative.html">Relative</a></li></ol></li><li class="chapter-item "><a href="../6.AppleScript/9.OperatorsReference/index.html">9.OperatorsReference</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">各项编程语言</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/programs/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="接口"><a class="header" href="#接口">接口</a></h2>
+<p><strong>介绍</strong></p>
+<p>TypeScript的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+<h2 id="接口初探"><a class="header" href="#接口初探">接口初探</a></h2>
+<p>下面通过一个简单示例来观察接口是如何工作的：</p>
+<pre><code class="language-typescript">function printLabel(labelledObj: { label: string }) {
+  console.log(labelledObj.label);
+}
+
+let myObj = { size: 10, label: &quot;Size 10 Object&quot; };
+printLabel(myObj);
+</code></pre>
+<pre><code class="language-typescript">interface LabelledValue {
+  label: string;
+}
+
+function printLabel(labelledObj: LabelledValue) {
+  console.log(labelledObj.label);
+}
+
+let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
+printLabel(myObj);
+</code></pre>
+<h2 id="可选属性"><a class="header" href="#可选属性">可选属性</a></h2>
+<p>接口里的属性不全都是必需的。 有些是只在某些条件下存在，或者根本不存在。 可选属性在应用“option bags”模式时很常用，即给函数传入的参数对象中只有部分属性赋值了。</p>
+<pre><code class="language-typescript">interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+
+function createSquare(config: SquareConfig): {color: string; area: number} {
+  let newSquare = {color: &quot;white&quot;, area: 100};
+  if (config.color) {
+    newSquare.color = config.color;
+  }
+  if (config.width) {
+    newSquare.area = config.width * config.width;
+  }
+  return newSquare;
+}
+
+let mySquare = createSquare({color: &quot;black&quot;});
+</code></pre>
+<p>带有可选属性的接口与普通的接口定义差不多**，只是在可选属性名字定义的后面加一个<code>?</code>符号**。</p>
+<p>可选属性的</p>
+<ul>
+<li>
+<p>好处之一是可以对可能存在的属性进行预定义，</p>
+</li>
+<li>
+<p>好处之二是可以捕获引用了不存在的属性时的错误。 比如，我们故意将 <code>createSquare</code>里的<code>color</code>属性名拼错，就会得到一个错误提示：</p>
+</li>
+</ul>
+<h2 id="只读属性"><a class="header" href="#只读属性">只读属性</a></h2>
+<p>一些对象属性只能在对象刚刚创建的时候修改其值。 你可以在<strong>属性名前用 <code>readonly</code>来指定只读属性:</strong></p>
+<pre><code class="language-typescript">interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+</code></pre>
+<p>你可以通过赋值一个对象字面量来构造一个<code>Point</code>。 赋值后， <code>x</code>和<code>y</code>再也不能被改变了。</p>
+<pre><code class="language-ts">let p1: Point = { x: 10, y: 20 };
+p1.x = 5; // error!
+</code></pre>
+<p>TypeScript具有<code>ReadonlyArray&lt;T&gt;</code>类型，它与<code>Array&lt;T&gt;</code>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改：</p>
+<pre><code class="language-ts">let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray&lt;number&gt; = a;
+ro[0] = 12; // error!
+ro.push(5); // error!
+ro.length = 100; // error!
+a = ro; // error!
+</code></pre>
+<p>上面代码的最后一行，可以看到就算把整个<code>ReadonlyArray</code>赋值到一个普通数组也是不可以的。 但是你可以用类型断言重写：</p>
+<pre><code class="language-ts">a = ro as number[];
+</code></pre>
+<p>最简单判断该用<code>readonly</code>还是<code>const</code>的方法是看要把它做为变量使用还是做为一个属性。 做为变量使用的话用 <code>const</code>，若做为属性则使用<code>readonly</code>。</p>
+<h2 id="额外的属性检查"><a class="header" href="#额外的属性检查">额外的属性检查</a></h2>
+<p>对于传入 接口中不存在的属性名则 会编译报错</p>
+<p>绕开这些检查非常简单。 最简便的方法是使用类型断言：</p>
+<pre><code class="language-ts">let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
+</code></pre>
+<p>然而，最佳的方式是能够添加一个字符串索引签名，前提是你能够确定这个对象可能具有某些做为特殊用途使用的额外属性。 如果 <code>SquareConfig</code>带有上面定义的类型的<code>color</code>和<code>width</code>属性，并且<em>还会</em>带有任意数量的其它属性，那么我们可以这样定义它：</p>
+<pre><code class="language-ts">interface SquareConfig {
+    color?: string;
+    width?: number;
+    [propName: string]: any;
+}
+</code></pre>
+<p>还有最后一种跳过这些检查的方式，这可能会让你感到惊讶，它就是将这个对象赋值给一个另一个变量： 因为 <code>squareOptions</code>不会经过额外属性检查，所以编译器不会报错。</p>
+<pre><code class="language-ts">let squareOptions = { colour: &quot;red&quot;, width: 100 };
+let mySquare = createSquare(squareOptions); //被强制类型转换
+</code></pre>
+<h2 id="函数类型"><a class="header" href="#函数类型">函数类型</a></h2>
+<p>接口能够描述JavaScript中对象拥有的各种各样的外形。 </p>
+<p>除了描述带有属性的普通对象外，接口也可以描述函数类型。</p>
+<p>为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。</p>
+<pre><code class="language-ts">interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+</code></pre>
+<p>这样定义后，我们可以像使用其它接口一样使用这个函数类型的接口。 下例展示了如何创建一个函数类型的变量，并将一个同类型的函数赋值给这个变量。</p>
+<pre><code class="language-ts">let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+  let result = source.search(subString);
+  return result &gt; -1;
+}
+</code></pre>
+<p>函数的参数会逐个进行检查，要求对应位置上的参数类型是兼容的。 如果你不想指定类型，TypeScript的类型系统会推断出参数类型，因为函数直接赋值给了 <code>SearchFunc</code>类型变量。 函数的返回值类型是通过其返回值推断出来的（此例是 <code>false</code>和<code>true</code>）。 如果让这个函数返回数字或字符串，类型检查器会警告我们函数的返回值类型与 <code>SearchFunc</code>接口中的定义不匹配。</p>
+<pre><code class="language-ts">let mySearch: SearchFunc;
+mySearch = function(src, sub) {
+    let result = src.search(sub);
+    return result &gt; -1;
+}
+</code></pre>
+<h1 id="可索引的类型"><a class="header" href="#可索引的类型">可索引的类型</a></h1>
+<p>与使用接口描述函数类型差不多，我们也可以描述那些能够“通过索引得到”的类型，比如<code>a[10]</code>或<code>ageMap[&quot;daniel&quot;]</code>。 可索引类型具有一个 <em>索引签名</em>，它描述了对象索引的类型，还有相应的索引返回值类型。 让我们看一个例子：</p>
+<pre><code class="language-ts">interface StringArray {
+  [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = [&quot;Bob&quot;, &quot;Fred&quot;];
+
+let myStr: string = myArray[0];
+</code></pre>
+<p>上面例子里，我们定义了<code>StringArray</code>接口，它具有索引签名。 这个索引签名表示了当用 <code>number</code>去索引<code>StringArray</code>时会得到<code>string</code>类型的返回值。</p>
+<p>TypeScript支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。</p>
+<p>这是因为当使用 <code>number</code>来索引时，JavaScript会将它转换成<code>string</code>然后再去索引对象。 也就是说用 <code>100</code>（一个<code>number</code>）去索引等同于使用<code>&quot;100&quot;</code>（一个<code>string</code>）去索引，因此两者需要保持一致。</p>
+<pre><code class="language-ts">class Animal {
+    name: string;
+}
+class Dog extends Animal {
+    breed: string;
+}
+
+// 错误：使用数值型的字符串索引，有时会得到完全不同的Animal!
+interface NotOkay {
+    [x: number]: Animal;
+    [x: string]: Dog;
+}
+</code></pre>
+<p>字符串索引签名能够很好的描述<code>dictionary</code>模式，并且它们也会确保所有属性与其返回值类型相匹配。 因为字符串索引声明了 <code>obj.property</code>和<code>obj[&quot;property&quot;]</code>两种形式都可以。 下面的例子里， <code>name</code>的类型与字符串索引类型不匹配，所以类型检查器给出一个错误提示：</p>
+<pre><code class="language-ts">interface NumberDictionary {
+  [index: string]: number;
+  length: number;    // 可以，length是number类型
+  name: string       // 错误，`name`的类型与索引类型返回值的类型不匹配
+}
+</code></pre>
+<p>最后，你可以将索引签名设置为只读，这样就防止了给索引赋值：</p>
+<pre><code class="language-ts">interface ReadonlyStringArray {
+    readonly [index: number]: string;
+}
+let myArray: ReadonlyStringArray = [&quot;Alice&quot;, &quot;Bob&quot;];
+myArray[2] = &quot;Mallory&quot;; // error!
+</code></pre>
+<h2 id="类类型"><a class="header" href="#类类型">类类型</a></h2>
+<h3 id="实现接口"><a class="header" href="#实现接口">实现接口</a></h3>
+<p>接口描述了类的公共部分，而不是公共和私有两部分。 它不会帮你检查类是否具有某些私有成员。</p>
+<p><strong>类静态部分与实例部分的区别</strong></p>
+<p>当你操作类和接口的时候，你要知道类是具有两个类型的：静态部分的类型和实例的类型。 你会注意到，当你用构造器签名去定义一个接口并试图定义一个类去实现这个接口时会得到一个错误：</p>
+<pre><code class="language-ts">interface ClockConstructor {
+    new (hour: number, minute: number);
+}
+
+class Clock implements ClockConstructor {
+    currentTime: Date;
+    constructor(h: number, m: number) { }
+}
+</code></pre>
+<p>这里因为当一个类实现了一个接口时，只对其实例部分进行类型检查。 constructor存在于类的静态部分，所以不在检查的范围内。</p>
+<p>因此，我们应该直接操作类的静态部分。 看下面的例子，我们定义了两个接口， <code>ClockConstructor</code>为构造函数所用和<code>ClockInterface</code>为实例方法所用。 为了方便我们定义一个构造函数 <code>createClock</code>，它用传入的类型创建实例。</p>
+<pre><code class="language-ts">interface ClockConstructor {
+    new (hour: number, minute: number): ClockInterface;
+}
+interface ClockInterface {
+    tick();
+}
+
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+    return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log(&quot;beep beep&quot;);
+    }
+}
+class AnalogClock implements ClockInterface {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log(&quot;tick tock&quot;);
+    }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+let analog = createClock(AnalogClock, 7, 32);
+</code></pre>
+<h3 id="继承接口"><a class="header" href="#继承接口">继承接口</a></h3>
+<p>和类一样，接口也可以相互继承。 这让我们能够从一个接口里复制成员到另一个接口里，可以更灵活地将接口分割到可重用的模块里。</p>
+<pre><code class="language-ts">interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+let square = &lt;Square&gt;{};
+square.color = &quot;blue&quot;;
+square.sideLength = 10;
+</code></pre>
+<p>一个接口可以继承多个接口，创建出多个接口的合成接口。</p>
+<pre><code class="language-ts">interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = &lt;Square&gt;{};
+square.color = &quot;blue&quot;;
+square.sideLength = 10;
+square.penWidth = 5.0;
+</code></pre>
+<h3 id="混合类型"><a class="header" href="#混合类型">混合类型</a></h3>
+<p>先前我们提过，接口能够描述JavaScript里丰富的类型。 因为JavaScript其动态灵活的特点，有时你会希望一个对象可以同时具有上面提到的多种类型。</p>
+<p>一个例子就是，一个对象可以同时做为函数和对象使用，并带有额外的属性。</p>
+<pre><code class="language-ts">interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+function getCounter(): Counter {
+    let counter = &lt;Counter&gt;function (start: number) { };
+    counter.interval = 123;
+    counter.reset = function () { };
+    return counter;
+}
+
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
+</code></pre>
+<h3 id="接口继承类"><a class="header" href="#接口继承类">接口继承类</a></h3>
+<p>当接口继承了一个类类型时**，它会继承类的成员但不包括其实现**</p>
+<p>就好像接口声明了所有类中存在的成员，但并没有提供具体实现一样</p>
+<p>接口同样会继承到类的private和protected成员。 这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现（implement）。</p>
+<pre><code class="language-ts">class Control {
+    private state: any;
+}
+
+interface SelectableControl extends Control {
+    select(): void;
+}
+
+class Button extends Control implements SelectableControl {
+    select() { }
+}
+
+class TextBox extends Control {
+    select() { }
+}
+
+// 错误：“Image”类型缺少“state”属性。
+class Image implements SelectableControl {
+    select() { }
+}
+
+class Location {
+
+}
+</code></pre>
+<script src="/note/programs/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/programs/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/programs/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../5.typescript/2.变量声明.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../5.typescript/4.模块.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../5.typescript/2.变量声明.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../5.typescript/4.模块.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

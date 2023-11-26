@@ -1,0 +1,749 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>远程版本库 - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item "><a href="../../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-compose.html">docker-compose</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/MQ消息的投递机制.html">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis数据结构/基本数据结构.html">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item expanded "><a href="../../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/Git库管理.html">Git库管理</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item expanded "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item expanded "><a href="../../9.源码管理_GIT/GIT协作/远程版本库.html" class="active">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="远程版本库"><a class="header" href="#远程版本库">远程版本库</a></h1>
+<p>Git作为分布式版本库控制系统，每个人都是本地版本库的主人，可以在本地的版本库中随心所欲地创建分支和里程碑。当需要多人协作时，问题就出现了</p>
+<ul>
+<li>如何避免因为用户把所有的本地分支都推送到共享版本库，从而造成共享版本库上分支的混乱？</li>
+<li>如何避免不同用户针对不同特性开发创建了相同名字的分支而造成分支名称的冲突？</li>
+<li>如何避免用户随意在共享版本库中创建里程碑而导致里程碑名称上的混乱和冲突？</li>
+<li>当用户向共享版本库及其他版本库推送时，每次都需要输入长长的版本库URL，太不方便了。</li>
+<li>当用户需要经常从多个不同的他人版本库中获取提交时，有没有办法不要总是输入长长的版本库URL？</li>
+<li>如果不带任何其他参数执行<strong>git fetch</strong>、<strong>git pull</strong>和<strong>git push</strong>到底是和哪个远程版本库及哪个分支进行交互？</li>
+</ul>
+<h2 id="远程分支"><a class="header" href="#远程分支">远程分支</a></h2>
+<p>Git允许一个版本库和任意多的版本库进行交</p>
+<p>先执行下面的命令，基于<code>hello-world.git</code>版本库再创建几个新的版本库。</p>
+<pre><code>$ cd /path/to/repos/
+$ git clone --bare hello-world.git hello-user1.git
+Cloning into bare repository hello-user1.git...
+done.
+$ git clone --bare hello-world.git hello-user2.git
+Cloning into bare repository hello-user2.git...
+done.
+</code></pre>
+<p>现在有了三个共享版本库：<code>hello-world.git</code>、<code>hello-user1.git</code>和<code>hello-user2.git</code>。现在有一个疑问，如果一个本地版本库需要和上面三个版本库进行互操作，三个共享版本库都存在一个<code>master</code>分支，会不会互相干扰、冲突或覆盖呢？</p>
+<p>先来看看<code>hello-world</code>远程共享版本库中包含的分支有哪些：</p>
+<pre><code>$ git ls-remote --heads file:///path/to/repos/hello-world.git
+8cffe5f135821e716117ee59bdd53139473bd1d8        refs/heads/hello-1.x
+bb4fef88fee435bfac04b8389cf193d9c04105a6        refs/heads/helper/master
+cf71ae3515e36a59c7f98b9db825fd0f2a318350        refs/heads/helper/v1.x
+c4acab26ff1c1125f5e585ffa8284d27f8ceea55        refs/heads/master
+</code></pre>
+<p>原来远程共享版本库中有四个分支，其中<code>hello-1.x</code>分支是开发者user1创建的。现在重新克隆该版本库，如下：</p>
+<pre><code>$ cd /path/to/my/workspace/
+$ git clone file:///path/to/repos/hello-world.git
+...
+$ cd /path/to/my/workspace/hello-world
+</code></pre>
+<p>执行<strong>git branch</strong>命令检查分支，会吃惊地看到只有一个分支<code>master</code>。</p>
+<pre><code>$ git branch
+* master
+</code></pre>
+<p>那么远程版本库中的其他分支哪里去了？为什么本地只有一个分支呢？执行<strong>git show-ref</strong>命令可以看到全部的本地引用。</p>
+<pre><code>$ git show-ref
+</code></pre>
+<p>从<strong>git show-ref</strong>的输出中发现了几个不寻常的引用，这些引用以<code>refs/remotes/origin/</code>为前缀，并且名称和远程版本库的分支名一一对应。</p>
+<p>这些引用实际上就是从远程版本库的分支拷贝过来的，称为远程分支。</p>
+<p>Git 的<strong>git branch</strong>命令也能够查看这些远程分支，不过要加上<code>-r</code>参数：</p>
+<pre><code>$ git branch -r
+  origin/HEAD -&gt; origin/master
+  origin/hello-1.x
+  origin/helper/master
+  origin/helper/v1.x
+  origin/master
+</code></pre>
+<p>Git这样的设计是非常巧妙的，在向远程版本库执行获取操作时，不是把远程版本库的分支原封不动地复制到本地版本库的分支中，而是复制到另外的命名空间。如在克隆一个版本库时，会将远程分支都复制到目录<code>.git/refs/remotes/origin/</code>下。这样向不同的远程版本库执行获取操作，因为远程分支相互隔离，所以就避免了相互的覆盖。</p>
+<p>那么克隆操作产生的远程分支为什么都有一个名为“origin/”的前缀呢？奥秘就在配置文件<code>.git/config</code>中。下面的几行内容出自该配置文件，为了说明方便显示了行号。</p>
+<pre><code>6 [remote &quot;origin&quot;]
+7   fetch = +refs/heads/*:refs/remotes/origin/*
+8   url = file:///path/to/repos/hello-world.git
+</code></pre>
+<p>这个小节可以称为<code>[remote]</code>小节，该小节以origin为名注册了一个远程版本库。该版本库的URL地址由第8行给出，会发现这个URL地址就是执行<strong>git clone</strong>命令时所用的地址。最具魔法的配置是第7行，这一行设置了执行<strong>git fetch origin</strong>操作时使用的默认引用表达式。</p>
+<ul>
+<li>该引用表达式以加号（+）开头，含义是强制进行引用的替换，即使即将进行的替换是非快进式的。</li>
+<li>引用表达式中使用了通配符，冒号前面的含有通配符的引用指的是远程版本库的所有分支，冒号后面的引用含义是复制到本地的远程分支目录中。</li>
+</ul>
+<p>正因为有了上面的<code>[remote]</code>配置小节，当执行<strong>git fetch origin</strong>操作时,就相当于执行了下面的命令，将远程版本库的所有分支复制为本地的远程分支。</p>
+<pre><code>git fetch origin +refs/heads/*:refs/remotes/origin/*
+</code></pre>
+<p>远程分支不是真正意义上的分支，是类似于里程碑一样的引用。，如果检出就会使得头指针<code>HEAD</code>处于分离头指针状态</p>
+<h2 id="分支追踪"><a class="header" href="#分支追踪">分支追踪</a></h2>
+<p>为了能够在远程分支<code>refs/remotes/origin/hello-1.x</code>上进行工作，需要基于该远程分支创建本地分支</p>
+<p>远程分支可以使用简写<code>origin/hello-1.x</code>。如果Git的版本是1.6.6或者更新的版本，可以使用下面的命令同时完成分支的创建和切换。</p>
+<pre><code>$ git checkout hello-1.x
+Branch hello-1.x set up to track remote branch hello-1.x from origin.
+Switched to a new branch 'hello-1.x'
+</code></pre>
+<p>如果Git的版本比较老，或注册了多个远程版本库，因此存在多个名为<code>hello-1.x</code>的远程分支，就不能使用上面简洁的分支创建和切换命令，而需要使用在上一章中学习到的分支创建命令，显式地从远程分支中创建本地分支。</p>
+<pre><code>$ git checkout -b hello-1.x origin/hello-1.x
+Branch hello-1.x set up to track remote branch hello-1.x from origin.
+Switched to a new branch 'hello-1.x'
+</code></pre>
+<p>在上面基于远程分支创建本地分支的过程中，命令输出的第一行说的是<strong>建立了本地分支和远程分支的跟踪</strong>。和远程分支建立跟踪后，本地分支就具有下列特征：</p>
+<ul>
+<li>检查工作区状态时，会显示本地分支和被跟踪远程分支提交之间的关系。</li>
+<li>当执行<strong>git pull</strong>命令时，会和被跟踪的远程分支进行合并（或者变基），如果两者出现版本偏离的话。</li>
+<li>当执行<strong>git push</strong>命令时，会推送到远程版本库的同名分支中。</li>
+</ul>
+<p>下面就在基于远程分支创建的本地跟踪分支中进行操作，看看本地分支是如何与远程分支建立关联的。</p>
+<ul>
+<li>先将本地<code>hello-1.x</code>分支向后重置两个版本。</li>
+</ul>
+<pre><code>$ git reset --hard HEAD^^
+HEAD is now at ebcf6d6 blank commit for GnuPG-signed tag test.
+</code></pre>
+<ul>
+<li>然后查看状态，显示当前分支相比跟踪分支落后了3个版本</li>
+</ul>
+<p>之所以落后三个版本而非两个版本是因为<code>hello-1.x</code>的最新提交是一个合并提交，包含两个父提交，因此上面的重置命令丢弃掉三个提交。</p>
+<ul>
+<li>执行<strong>git pull</strong>命令，会自动与跟踪的远程分支进行合并，相当于找回最新的3个提交。</li>
+<li>但是如果基于本地分支创建另外一个本地分支则没有分支跟踪的功能</li>
+</ul>
+<p>从远程分支创建本地分支，自动建立了分支间的跟踪，而从一个本地分支创建另外一个本地分支则没有</p>
+<pre><code> 9 [branch &quot;master&quot;]
+10   remote = origin
+11   merge = refs/heads/master
+12 [branch &quot;hello-1.x&quot;]
+13   remote = origin
+14   merge = refs/heads/hello-1.x
+</code></pre>
+<p>如果希望在基于一个本地分支创建另外一个本地分支时也能够使用分支间的跟踪功能，就要在创建分支时提供<code>--track</code>参数。</p>
+<pre><code>$ git checkout --track -b hello-jx hello-1.x
+Branch hello-jx set up to track local branch hello-1.x.
+Switched to a new branch 'hello-jx'
+</code></pre>
+<p>从Git库的配置文件中会看到为<code>hello-jx</code>分支设置的跟踪。</p>
+<p>因为跟踪的是本版本库的本地分支，所以第16行设置的远程版本库的名字为一个点。</p>
+<pre><code>15 [branch &quot;hello-jx&quot;]
+16   remote = .
+17   merge = refs/heads/hello-1.x
+</code></pre>
+<h2 id="远程版本库-1"><a class="header" href="#远程版本库-1">远程版本库</a></h2>
+<p>名为<code>origin</code>的远程版本库是在版本库克隆时注册的，那么如何注册新的远程版本库呢？</p>
+<p>下面将版本库<code>file:///path/to/repos/hello-user1.git</code>以<code>new-remote</code>为名进行注册。</p>
+<pre><code>$ git remote add new-remote file:///path/to/repos/hello-user1.git
+</code></pre>
+<p>如果再打开版本库的配置文件<code>.git/config</code>会看到新的配置。</p>
+<pre><code>12 [remote &quot;new-remote&quot;]
+13   url = file:///path/to/repos/hello-user1.git
+14   fetch = +refs/heads/*:refs/remotes/new-remote/*
+</code></pre>
+<p>执行<strong>git remote</strong>命令，可以更为方便地显示已经注册的远程版本库。</p>
+<pre><code>$ git remote -v
+new-remote      file:///path/to/repos/hello-user1.git (fetch)
+new-remote      file:///path/to/repos/hello-user1.git (push)
+origin  file:///path/to/repos/hello-world.git (fetch)
+origin  file:///path/to/repos/hello-world.git (push)
+</code></pre>
+<p>现在执行<strong>git fetch</strong>并不会从新注册的 new-remote 远程版本库获取，因为当前分支设置的默认远程版本库为 origin</p>
+<p>要想从 new-remote 远程版本库中获取，需要为<strong>git fetch</strong>命令增加一个参数<code>new-remote</code>。</p>
+<pre><code>$ git fetch new-remote
+From file:///path/to/repos/hello-user1
+ * [new branch]      hello-1.x  -&gt; new-remote/hello-1.x
+ * [new branch]      helper/master -&gt; new-remote/helper/master
+ * [new branch]      helper/v1.x -&gt; new-remote/helper/v1.x
+ * [new branch]      master     -&gt; new-remote/master
+</code></pre>
+<p>从上面的命令输出中可以看出，远程版本库的分支复制到本地版本库前缀为<code>new-remote</code>的远程分支中去了。用<strong>git branch -r</strong>命令可以看到新增了几个远程分支。</p>
+<pre><code>$ git branch -r
+  new-remote/hello-1.x
+  new-remote/helper/master
+  new-remote/helper/v1.x
+  new-remote/master
+  origin/HEAD -&gt; origin/master
+  origin/hello-1.x
+  origin/helper/master
+  origin/helper/v1.x
+  origin/master
+</code></pre>
+<p><strong>更改远程版本库的地址</strong></p>
+<p>如果远程版本库的URL地址改变，需要更换，该如何处理呢？</p>
+<p>手工修改<code>.git/config</code>文件是一种方法，</p>
+<p>用<strong>git config</strong>命令进行更改是第二种方法，</p>
+<p>还有一种方法是用<strong>git remote</strong>命令，如下：</p>
+<pre><code>$ git remote set-url new-remote file:///path/to/repos/hello-user2.git
+</code></pre>
+<p>可以看到注册的远程版本库的URL地址已经更改。</p>
+<pre><code>$ git remote -v
+new-remote      file:///path/to/repos/hello-user2.git (fetch)
+new-remote      file:///path/to/repos/hello-user2.git (push)
+origin  file:///path/to/repos/hello-world.git (fetch)
+origin  file:///path/to/repos/hello-world.git (push)
+</code></pre>
+<p>从上面的输出中可以发现每一个远程版本库都有两个URL地址，分别是执行<strong>git fetch</strong>和<strong>git push</strong>命令时用到的URL地址。既然有两个地址，就意味着这两个地址可以不同，用下面的命令可以为推送操作设置单独的URL地址。</p>
+<pre><code>$ git remote set-url --push new-remote /path/to/repos/hello-user2.git
+$ git remote -v
+new-remote      file:///path/to/repos/hello-user2.git (fetch)
+new-remote      /path/to/repos/hello-user2.git (push)
+origin  file:///path/to/repos/hello-world.git (fetch)
+origin  file:///path/to/repos/hello-world.git (push)
+</code></pre>
+<p>当单独为推送设置了URL后，配置文件<code>.git/config</code>的对应<code>[remote]</code>小节也会增加一条新的名为<code>pushurl</code>的配置。如下：</p>
+<p><strong>远程版本库更新</strong></p>
+<p>当注册了多个远程版本库并希望获取所有远程版本库的更新时，Git提供了一个简单的命令。</p>
+<pre><code>$ git remote update
+Fetching origin
+Fetching user2
+</code></pre>
+<p>如果某个远程版本库不想在执行<strong>git remote update</strong>时获得更新，可以通过参数关闭自动更新。例如下面的命令关闭远程版本库user2的自动更新。</p>
+<pre><code>$ git config remote.user2.skipDefaultUpdate true
+$ git remote update
+Fetching origin
+</code></pre>
+<p><strong>删除远程版本库</strong></p>
+<p>如果想要删除注册的远程版本库，用<strong>git remote</strong>的<strong>rm</strong>子命令可以实现。例如删除注册的user2版本库。</p>
+<pre><code>$ git remote rm user2
+</code></pre>
+<h2 id="push和pull操作与远程版本库"><a class="header" href="#push和pull操作与远程版本库">PUSH和PULL操作与远程版本库</a></h2>
+<p>在Git分支一章，已经介绍过对于新建立的本地分支（没有建立和远程分支的追踪），执行<strong>git push</strong>命令是不会被推送到远程版本库中，</p>
+<p>这样的设置是非常安全的，避免了因为误操作将本地分支创建到远程版本库中。当不带任何参数执行<strong>git push</strong>命令，实际的执行过程是：</p>
+<ul>
+<li>
+<p>如果为当前分支设置了<code>\&lt;remote&gt;</code>，即由配置<code>branch.\&lt;branchname&gt;.remote</code>给出了远程版本库代号，则不带参数执行<strong>git push</strong>相当于执行了<strong>git push &lt;remote&gt;</strong></p>
+</li>
+<li>
+<p>如果没有为当前分支设置<code>\&lt;remote&gt;</code>，则不带参数执行<strong>git push</strong>相当于执行了<strong>git push origin</strong>。</p>
+</li>
+<li>
+<p>要推送的远程版本库的URL地址由<code>remote.&lt;remote&gt;.pushurl</code>给出。如果没有配置，则使用<code>remote.&lt;remote&gt;.url</code>配置的URL地址。</p>
+</li>
+<li>
+<p>如果为注册的远程版本库设置了<code>push</code>参数，即通过<code>remote.&lt;remote&gt;.push</code>配置了一个引用表达式，则使用该引用表达式执行推送。</p>
+</li>
+<li>
+<p>否则使用“:”作为引用表达式。该表达式的含义是同名分支推送，即对所有在远程版本库有同名分支的本地分支执行推送。</p>
+<p>这也就是为什么在一个本地新建分支中执行<strong>git push</strong>推送操作不会推送也不会报错的原因，因为远程不存在同名分支，所以根本就没有对该分支执行推送，而推送的是其他分支（如果远程版本库有同名分支的话）。</p>
+</li>
+</ul>
+<p>在Git分支一章中就已经知道，如果需要在远程版本库中创建分支，则执行命令：<strong>git push <remote> &lt;new_branch&gt;</strong>。即通过将本地分支推送到远程版本库的方式在远程版本库中创建分支。</p>
+<p>但是在接下来的使用中会遇到麻烦：不能执行<strong>git pull</strong>操作（不带参数）将远程版本库中其他人推送的提交获取到本地。</p>
+<p>这是因为没有建立本地分支和远程分支的追踪，即没有设置<code>branch.&lt;branchname&gt;.remote</code>的值和<code>branch.&lt;branchname&gt;.merge</code>的值。</p>
+<p>关于不带参数执行<strong>git pull</strong>命令解释如下：</p>
+<ul>
+<li>如果为当前分支设置了<code>&lt;remote&gt;</code>，即由配置<code>branch.&lt;branchname&gt;.remote</code>给出了远程版本库代号，则不带参数执行<strong>git pull</strong>相当于执行了<strong>git pull <remote></strong>。</li>
+<li>如果没有为当前分支设置<code>&lt;remote&gt;</code>，则不带参数执行<strong>git pull</strong>相当于执行了<strong>git pull origin</strong>。</li>
+<li>要获取的远程版本库的URL地址由<code>remote.&lt;remote&gt;.url</code>给出。</li>
+<li>如果为注册的远程版本库设置了<code>fetch</code>参数，即通过<code>remote.&lt;remote&gt;.fetch</code>配置了一个引用表达式，则使用该引用表达式执行获取操作。</li>
+<li>接下来要确定合并的分支。如果设定了<code>branch.&lt;branchname&gt;.merge</code>，则对其设定的分支执行合并，否则报错退出。</li>
+</ul>
+<p>在执行<strong>git pull</strong>操作的时候可以通过参数<code>--rebase</code>设置使用变基而非合并操作，将本地分支的改动变基到跟踪分支上。为了避免因为忘记使用<code>--rebase</code>参数导致分支的合并，可以执行如下命令进行设置。注意将<code>&lt;branchname&gt;</code>替换为对应的分支名称。</p>
+<pre><code>$ git config branch.&lt;branchname&gt;.rebase true
+</code></pre>
+<p>有了这个设置之后，如果是在<code>&lt;branchname&gt;</code>工作分支中执行<strong>git pull</strong>命令，在遇到冲突（本地和远程分支出现偏离）的情况下，会采用变基操作，而不是默认的合并操作。</p>
+<p>如果为本地版本库设置参数<code>branch.autosetuprebase</code>，值为<code>true</code>，则在基于远程分支建立本地追踪分支时，会自动配置<code>branch.&lt;branchname&gt;.rebase</code>参数，在执行<strong>git pull</strong>命令时使用变基操作取代默认的合并操作。</p>
+<h2 id="里程碑和远程版本库"><a class="header" href="#里程碑和远程版本库">里程碑和远程版本库</a></h2>
+<p>远程版本库中的里程碑同步到本地版本库，会使用同样的名称，而不会像分支那样移动到另外的命名空间（远程分支）中，这可能会给本地版本库中的里程碑带来混乱</p>
+<p>前面的Git里程碑一章已经介绍了当执行<strong>git push</strong>命令推送时，默认不会将本地创建的里程碑带入远程版本库</p>
+<p>这样可以避免远程版本库上里程碑的泛滥。</p>
+<p>但是执行<strong>git fetch</strong>命令从远程版本库获取分支的最新提交时，如果获取的提交上建有里程碑，这些里程碑会被获取到本地版本库</p>
+<p>当删除注册的远程版本库时，远程分支会被删除，但是该远程版本库引入的里程碑不会被删除，日积月累本地版本库中的里程碑可能会变得愈加混乱。</p>
+<p>可以在执行<strong>git fetch</strong>命令的时候，设置不获取里程碑只获取分支及提交。通过提供<code>-n</code>或<code>--no-tags</code>参数可以实现。示例如下：</p>
+<pre><code>$ git fetch --no-tags file:///path/to/repos/hello-world.git \
+      refs/heads/*:refs/remotes/hello-world/*
+</code></pre>
+<p>在注册远程版本库的时候，也可以使用<code>--no-tags</code>参数，避免将远程版本库的里程碑引入本地版本库。例如：</p>
+<pre><code>$ git remote add --no-tags hell-world \
+      file:///path/to/repos/hello-world.git
+</code></pre>
+<h2 id="分支和里程碑的安全性"><a class="header" href="#分支和里程碑的安全性">分支和里程碑的安全性</a></h2>
+<p>实际上Git版本库本身也提供了一些安全机制避免对版本库的破坏。</p>
+<ul>
+<li>
+<p>用reflog记录对分支的操作历史。</p>
+<p>默认创建的带工作区的版本库都会包含<code>core.logallrefupdates</code>为<code>true</code>的配置，这样在版本库中建立的每个分支都会创建对应的 reflog。但是创建的裸版本库默认不包含这个设置，也就不会为每个分支设置 reflog。如果团队的规模较小，可能因为分支误操作导致数据丢失，可以考虑为裸版本库添加<code>core.logallrefupdates</code>的相关配置。</p>
+</li>
+</ul>
+<ul>
+<li>关闭非快进式提交。
+<ul>
+<li>如果将配置<code>receive.denyNonFastForwards</code>设置为<code>true</code>，则禁止一切非快进式推送。但这个配置有些矫枉过正，更好的方法是搭建基于SSH协议的Git服务器，通过钩子脚本更灵活的进行配置。例如：允许来自某些用户的强制提交，而其他用户不能执行非快进式推送。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>关闭分支删除功能。</li>
+</ul>
+<p>如果将配置<code>receive.denyDeletes</code>设置为<code>true</code>，则禁止删除分支。同样更好的方法是通过架设基于SSH协议的Git服务器，配置分支删除的用户权限。</p>
+<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="源码管理"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../9.源码管理_GIT/GIT协作/补丁文件交互.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../9.源码管理_GIT/命令集合/AMEND.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../9.源码管理_GIT/GIT协作/补丁文件交互.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../9.源码管理_GIT/命令集合/AMEND.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

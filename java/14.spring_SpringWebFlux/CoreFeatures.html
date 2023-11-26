@@ -1,0 +1,722 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CoreFeatures - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.java基础_Bean校验/javaValidated.html">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item expanded "><a href="../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../14.spring_SpringWebFlux/CoreFeatures.html" class="active">CoreFeatures</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item "><a href="../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="reactive-core"><a class="header" href="#reactive-core">Reactive Core</a></h1>
+<p>对于响应式 web应用，spring-web模块 包含以下 几个 基础支持</p>
+<ul>
+<li>对于服务端请求处理，有两个级别的支持
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-httphandler">HttpHandler</a>: 使用非阻塞IO处理Http请求的基本协定  还有 Reactive Streams back pressure, along with adapters for Reactor Netty, Undertow, Tomcat, Jetty, and any Servlet 3.1+ container.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api"><code>WebHandler</code> API</a>: 稍微高一点的API, 用于请求处理的通用 Web API,具体的编程模型 在这个基础上 构建（例如：基于注解、函数式）</li>
+</ul>
+</li>
+<li>对于客户端, <code>ClientHttpConnector</code> 是一个基本的 非阻塞的 执行 Http请求的约定 并且 Reactive Streams back pressure, along with adapters for <a href="https://github.com/reactor/reactor-netty">Reactor Netty</a>, reactive <a href="https://github.com/jetty-project/jetty-reactive-httpclient">Jetty HttpClient</a> and <a href="https://hc.apache.org/">Apache HttpComponents</a>. 
+<ul>
+<li>更高级的 API： <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client">WebClient</a> 基于 此协定</li>
+</ul>
+</li>
+<li>对于客户端 服务端 都可用的是, <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-codecs">codecs</a> for serialization and deserialization of HTTP request and response content.</li>
+</ul>
+<h1 id="httphandler"><a class="header" href="#httphandler"><code>HttpHandler</code></a></h1>
+<p><a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/http/server/reactive/HttpHandler.html">HttpHandler</a>  是一个简单的 接口，只有一个方法处理 请求和响应</p>
+<p>以下表格 表明支持的 <em>HttpHandler</em></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Server name</th><th style="text-align: left">Server API used</th><th style="text-align: left">Reactive Streams support</th></tr></thead><tbody>
+<tr><td style="text-align: left">Netty</td><td style="text-align: left">Netty API</td><td style="text-align: left"><a href="https://github.com/reactor/reactor-netty">Reactor Netty</a></td></tr>
+<tr><td style="text-align: left">Undertow</td><td style="text-align: left">Undertow API</td><td style="text-align: left">spring-web: Undertow to Reactive Streams bridge</td></tr>
+<tr><td style="text-align: left">Tomcat</td><td style="text-align: left">Servlet 3.1 non-blocking I/O; Tomcat API to read and write ByteBuffers vs byte[]</td><td style="text-align: left">spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge</td></tr>
+<tr><td style="text-align: left">Jetty</td><td style="text-align: left">Servlet 3.1 non-blocking I/O; Jetty API to write ByteBuffers vs byte[]</td><td style="text-align: left">spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge</td></tr>
+<tr><td style="text-align: left">Servlet 3.1 container</td><td style="text-align: left">Servlet 3.1 non-blocking I/O</td><td style="text-align: left">spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge</td></tr>
+</tbody></table>
+</div>
+<p>以下表格描述了 依赖以及版本</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Server name</th><th style="text-align: left">Group id</th><th style="text-align: left">Artifact name</th></tr></thead><tbody>
+<tr><td style="text-align: left">Reactor Netty</td><td style="text-align: left">io.projectreactor.netty</td><td style="text-align: left">reactor-netty</td></tr>
+<tr><td style="text-align: left">Undertow</td><td style="text-align: left">io.undertow</td><td style="text-align: left">undertow-core</td></tr>
+<tr><td style="text-align: left">Tomcat</td><td style="text-align: left">org.apache.tomcat.embed</td><td style="text-align: left">tomcat-embed-core</td></tr>
+<tr><td style="text-align: left">Jetty</td><td style="text-align: left">org.eclipse.jetty</td><td style="text-align: left">jetty-server, jetty-servlet</td></tr>
+</tbody></table>
+</div>
+<h2 id="codeexample"><a class="header" href="#codeexample">CodeExample</a></h2>
+<h3 id="reactornetty-code"><a class="header" href="#reactornetty-code">ReactorNetty Code</a></h3>
+<pre><code class="language-java">HttpHandler handler = ...
+ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(handler);
+HttpServer.create().host(host).port(port).handle(adapter).bind().block();
+</code></pre>
+<h3 id="tomcat"><a class="header" href="#tomcat">Tomcat</a></h3>
+<pre><code class="language-java">HttpHandler handler = ...
+Servlet servlet = new TomcatHttpHandlerAdapter(handler);
+
+Tomcat server = new Tomcat();
+File base = new File(System.getProperty(&quot;java.io.tmpdir&quot;));
+Context rootContext = server.addContext(&quot;&quot;, base.getAbsolutePath());
+Tomcat.addServlet(rootContext, &quot;main&quot;, servlet);
+rootContext.addServletMappingDecoded(&quot;/&quot;, &quot;main&quot;);
+server.setHost(host);
+server.setPort(port);
+server.start();
+</code></pre>
+<h3 id="servlet-31-container"><a class="header" href="#servlet-31-container"><strong>Servlet 3.1+ Container</strong></a></h3>
+<p>To deploy as a WAR to any Servlet 3.1+ container, you can extend and include <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/adapter/AbstractReactiveWebInitializer.html">AbstractReactiveWebInitializer</a> in the WAR. That class wraps an HttpHandler with ServletHttpHandlerAdapter and registers that as a Servlet.</p>
+<h1 id="webhandler"><a class="header" href="#webhandler"><code>WebHandler</code></a></h1>
+<h2 id="webhandler作用"><a class="header" href="#webhandler作用">webhandler作用</a></h2>
+<p><em>WebHandler</em> 主要是为了 提供  通用 web-APi，通过 多个 <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/WebExceptionHandler.html">WebExceptionHandler</a> 多个  <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/WebFilter.html"><code>WebFilter</code></a> 和一个  <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/WebHandler.html"><code>WebHandler</code></a> 组件</p>
+<p>这些链条可以通过  <code>WebHttpHandlerBuilder</code> 中设置 <em>ApplicationContext</em> ，会自动检测 或者 手动注册</p>
+<p>HttpHandler主要是为了处理 不同 HttpServer的抽象使用</p>
+<p>WebHandler旨在 提供 web应用中 更广泛的使用</p>
+<ul>
+<li><em>session with attribute</em> </li>
+<li><em>request attribute</em></li>
+<li>本地化：<em>Resolved <code>Locale</code> or <code>Principal</code> for the request.</em></li>
+<li>对表单的解析、缓存、访问</li>
+<li>multipart data的抽象</li>
+<li>and more..</li>
+</ul>
+<h2 id="special-bean-types"><a class="header" href="#special-bean-types">Special bean types</a></h2>
+<p>下表列出了 WebHttpHandlerBuilder 能够自动检测容器中的bean类型的列表，或者能够直接注册</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Bean name</th><th style="text-align: left">Bean type</th><th style="text-align: left">Count</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left"><any></td><td style="text-align: left"><code>WebExceptionHandler</code></td><td style="text-align: left">0..N</td><td style="text-align: left">Provide handling for exceptions from the chain of <code>WebFilter</code> instances and the target <code>WebHandler</code>. For more details, see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-exception-handler">Exceptions</a>.</td></tr>
+<tr><td style="text-align: left"><any></td><td style="text-align: left"><code>WebFilter</code></td><td style="text-align: left">0..N</td><td style="text-align: left">Apply interception style logic to before and after the rest of the filter chain and the target <code>WebHandler</code>. For more details, see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-filters">Filters</a>.</td></tr>
+<tr><td style="text-align: left"><code>webHandler</code></td><td style="text-align: left"><code>WebHandler</code></td><td style="text-align: left">1</td><td style="text-align: left">The handler for the request.</td></tr>
+<tr><td style="text-align: left"><code>webSessionManager</code></td><td style="text-align: left"><code>WebSessionManager</code></td><td style="text-align: left">0..1</td><td style="text-align: left">The manager for <code>WebSession</code> instances exposed through a method on <code>ServerWebExchange</code>. <code>DefaultWebSessionManager</code> by default.</td></tr>
+<tr><td style="text-align: left"><code>serverCodecConfigurer</code></td><td style="text-align: left"><code>ServerCodecConfigurer</code></td><td style="text-align: left">0..1</td><td style="text-align: left">For access to <code>HttpMessageReader</code> instances for parsing form data and multipart data that is then exposed through methods on <code>ServerWebExchange</code>. <code>ServerCodecConfigurer.create()</code> by default.</td></tr>
+<tr><td style="text-align: left"><code>localeContextResolver</code></td><td style="text-align: left"><code>LocaleContextResolver</code></td><td style="text-align: left">0..1</td><td style="text-align: left">The resolver for <code>LocaleContext</code> exposed through a method on <code>ServerWebExchange</code>. <code>AcceptHeaderLocaleContextResolver</code> by default.</td></tr>
+<tr><td style="text-align: left"><code>forwardedHeaderTransformer</code></td><td style="text-align: left"><code>ForwardedHeaderTransformer</code></td><td style="text-align: left">0..1</td><td style="text-align: left">For processing forwarded type headers, either by extracting and removing them or by removing them only. Not used by default.</td></tr>
+</tbody></table>
+</div>
+<h2 id="form-data"><a class="header" href="#form-data">Form Data</a></h2>
+<p><code>ServerWebExchange</code> 暴露了下面方法 以访问 FormData:</p>
+<pre><code class="language-java">Mono&lt;MultiValueMap&lt;String, String&gt;&gt; getFormData();
+</code></pre>
+<p>The <code>DefaultServerWebExchange</code> uses the configured <code>HttpMessageReader</code> to parse form data (<code>application/x-www-form-urlencoded</code>) into a <code>MultiValueMap</code>.</p>
+<p>By default, <code>FormHttpMessageReader</code> is configured for use by the <code>ServerCodecConfigurer</code> bean (see the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api">Web Handler API</a>).</p>
+<h2 id="multipart-data"><a class="header" href="#multipart-data">Multipart Data</a></h2>
+<p><code>ServerWebExchange</code> exposes the following method for accessing multipart data:</p>
+<pre><code class="language-java">Mono&lt;MultiValueMap&lt;String, Part&gt;&gt; getMultipartData();
+</code></pre>
+<p><strong>默认使用 <em>HttpMessageReader</em></strong></p>
+<p>The <code>DefaultServerWebExchange</code> uses the configured <code>HttpMessageReader&lt;MultiValueMap&lt;String, Part&gt;&gt;</code> to parse <code>multipart/form-data</code> content into a <code>MultiValueMap</code>. By default, this is the <code>DefaultPartHttpMessageReader</code>, which does not have any third-party dependencies. </p>
+<p><strong>使用SynchronossPartHttpMessageReader</strong></p>
+<p>Alternatively, the <code>SynchronossPartHttpMessageReader</code> can be used, which is based on the <a href="https://github.com/synchronoss/nio-multipart">Synchronoss NIO Multipart</a> library. Both are configured through the <code>ServerCodecConfigurer</code> bean (see the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api">Web Handler API</a>).</p>
+<p><strong>使用 StreamingFashion</strong></p>
+<p>To parse multipart data in streaming fashion, you can use the <code>Flux&lt;Part&gt;</code> returned from an <code>HttpMessageReader&lt;Part&gt;</code> instead. For example, in an annotated controller, use of <code>@RequestPart</code> implies <code>Map</code>-like access to individual parts by name and, hence, requires parsing multipart data in full. By contrast, you can use <code>@RequestBody</code> to decode the content to <code>Flux&lt;Part&gt;</code> without collecting to a <code>MultiValueMap</code>.</p>
+<h2 id="forwarded-headers"><a class="header" href="#forwarded-headers">Forwarded Headers</a></h2>
+<p><strong>代理改变服务器信息</strong></p>
+<p>由于请求会走代理，host、port、scheme、可能会变。这导致 客户端无法连接正确的服务端</p>
+<p><strong>原始信息</strong></p>
+<p><a href="https://tools.ietf.org/html/rfc7239">RFC 7239</a>  定义了  <code>Forwarded</code> HTTP header，代理可以提供 原始请求的信息，也有非标准的：including <code>X-Forwarded-Host</code>, <code>X-Forwarded-Port</code>, <code>X-Forwarded-Proto</code>, <code>X-Forwarded-Ssl</code>, and <code>X-Forwarded-Prefix</code>.</p>
+<p><strong>将Forwarded 头 替代为 request中信息</strong></p>
+<ul>
+<li>
+<p><code>ForwardedHeaderTransformer</code>  基于 转发的headers 修改 host、port、scheme</p>
+</li>
+<li>
+<p>移除这些转发的头</p>
+</li>
+<li>
+<p>如果申明为 <em>forwardedHeaderTransformer</em> bean 则会自动检测</p>
+</li>
+</ul>
+<p>对于 forwarded headers 这是处于安全问题考虑的，因为 应用程序 无法知道 请求头是被代理添加的还是 被 可疑的客户端</p>
+<p>这也就是为什么 一个 边界区域的代理 应配置 移除外部不受信任的转发流量</p>
+<p>你可以设置为  <code>removeOnly=true</code> ：这意味着 只删除不适用</p>
+<p><strong>向下兼容</strong></p>
+<p>从5.1 <em>ForwardedHeaderFilter</em> 已过时，被 <em>ForwardedHeaderTransformer</em> 取代，在 exchange创建之前 以尽早处理  forwarded headers</p>
+<p>如果配置了 <em>ForwardedHeaderFilter</em> 会把它拿出来、然后 使用 <em>ForwardedHeaderTransformer</em></p>
+<h1 id="filters"><a class="header" href="#filters">Filters</a></h1>
+<p>在 WebHandler的API中、使用 <em>WebFilter</em> 应用 拦截器样式逻辑，在 处理链中的 前、后、剩余部分 以及 目标 <em>webHandler</em></p>
+<p>当使用  <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-config">WebFlux Config</a>, 时 通过 容器自动注册 或者 手动、使用 @Order 注解 或者 实现 Ordered接口 来表明 先后顺序</p>
+<p><strong>CORS</strong></p>
+<p>Spring WebFlux provides fine-grained support for CORS configuration through annotations on controllers. However, when you use it with Spring Security, </p>
+<p>Spring WebFlux 提供了 细粒度的 CORS 配置支持 通过 controllers上的注解</p>
+<p>当使用Spring Security 时呢？，我们建议使用 内置的<code>CorsFilter</code>  必须在 Spring Security’s 其他过滤器之前</p>
+<p>See the section on <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-cors">CORS</a> and the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/webflux-cors.html#webflux-cors-webfilter">webflux-cors.html</a> for more details.</p>
+<h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+<p>In the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api"><code>WebHandler</code> API</a>, you can use a <code>WebExceptionHandler</code> to handle exceptions from the chain of <code>WebFilter</code> instances and the target <code>WebHandler</code>. When using the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-config">WebFlux Config</a>, registering a <code>WebExceptionHandler</code> is as simple as declaring it as a Spring bean and (optionally) expressing precedence by using <code>@Order</code> on the bean declaration or by implementing <code>Ordered</code>.</p>
+<p>The following table describes the available <code>WebExceptionHandler</code> implementations:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Exception Handler</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>ResponseStatusExceptionHandler</code></td><td style="text-align: left">Provides handling for exceptions of type <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/ResponseStatusException.html"><code>ResponseStatusException</code></a> by setting the response to the HTTP status code of the exception.</td></tr>
+<tr><td style="text-align: left"><code>WebFluxResponseStatusExceptionHandler</code></td><td style="text-align: left">Extension of <code>ResponseStatusExceptionHandler</code> that can also determine the HTTP status code of a <code>@ResponseStatus</code> annotation on any exception.This handler is declared in the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-config">WebFlux Config</a>.</td></tr>
+</tbody></table>
+</div>
+<h1 id="codecs"><a class="header" href="#codecs">Codecs</a></h1>
+<h2 id="介绍"><a class="header" href="#介绍">介绍</a></h2>
+<p>The <code>spring-web</code> and <code>spring-core</code> 模块提供 序列化与反序列化，从字节码到高级对象之间、通过非阻塞IO、使用Reactive Streams back pressure.</p>
+<p>以下是详情</p>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/core/codec/Encoder.html"><code>Encoder</code></a> and <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/core/codec/Decoder.html"><code>Decoder</code></a> 是独立于 HTTP 对内容进行编码和解码的低级协定</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/http/codec/HttpMessageReader.html"><code>HttpMessageReader</code></a> and <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/http/codec/HttpMessageWriter.html"><code>HttpMessageWriter</code></a> 是编码和解码 HTTP 消息内容的协定</li>
+<li>An <code>Encoder</code> can be wrapped with <code>EncoderHttpMessageWriter</code> to adapt it for use in a web application, while a <code>Decoder</code> can be wrapped with <code>DecoderHttpMessageReader</code>.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/core/io/buffer/DataBuffer.html"><code>DataBuffer</code></a> abstracts different byte buffer representations (e.g. Netty <code>ByteBuf</code>, <code>java.nio.ByteBuffer</code>, etc.) and is what all codecs work on. See <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#databuffers">Data Buffers and Codecs</a> in the &quot;Spring Core&quot; section for more on this topic.</li>
+</ul>
+<p><strong>spring默认实现</strong></p>
+<p>The <code>spring-core</code> 模块提供 <code>byte[]</code>, <code>ByteBuffer</code>, <code>DataBuffer</code>, <code>Resource</code>, and <code>String</code>  encoder、decoder实现</p>
+<p>The <code>spring-web</code> module provides Jackson JSON, Jackson Smile, JAXB2, Protocol Buffers and other encoders and decoders along with web-only HTTP message reader and writer implementations for form data, multipart content, server-sent events, and others.</p>
+<p><code>ClientCodecConfigurer</code> and <code>ServerCodecConfigurer</code> are typically used to configure and customize the codecs to use in an application. See the section on configuring <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-config-message-codecs">HTTP message codecs</a>.</p>
+<h2 id="jackson-json"><a class="header" href="#jackson-json">Jackson JSON</a></h2>
+<p>当 jackson library 存在时  JSON and binary JSON 支持</p>
+<p><code>Jackson2Decoder</code> 工作</p>
+<ul>
+<li>Jackson’s 异步非阻塞的 parser 用于 byte chunks 聚合 成 <code>TokenBuffer</code>，代表一个 JSON Object</li>
+<li>每一个 TokenBuffer 传给 ObjectMapper 用来船舰 高等级的对象</li>
+<li>When decoding to a multi-value publisher (e.g. <code>Flux</code>), each <code>TokenBuffer</code> is passed to the <code>ObjectMapper</code> as soon as enough bytes are received for a fully formed object. The input content can be a JSON array, or any <a href="https://en.wikipedia.org/wiki/JSON_streaming">line-delimited JSON</a> format such as NDJSON, JSON Lines, or JSON Text Sequences.</li>
+</ul>
+<p><code>Jackson2Encoder</code> 工作如下:</p>
+<ul>
+<li>For a single value publisher (e.g. <code>Mono</code>), simply serialize it through the <code>ObjectMapper</code>.</li>
+<li>For a multi-value publisher with <code>application/json</code>, by default collect the values with <code>Flux#collectToList()</code> and then serialize the resulting collection.</li>
+<li>For a multi-value publisher with a streaming media type such as <code>application/x-ndjson</code> or <code>application/stream+x-jackson-smile</code>, encode, write, and flush each value individually using a <a href="https://en.wikipedia.org/wiki/JSON_streaming">line-delimited JSON</a> format. Other streaming media types may be registered with the encoder.</li>
+<li>For SSE the <code>Jackson2Encoder</code> is invoked per event and the output is flushed to ensure delivery without delay.</li>
+</ul>
+<p><code>Jackson2Encoder</code> and <code>Jackson2Decoder</code> 不支持 <em>string</em></p>
+<h2 id="form-data-1"><a class="header" href="#form-data-1">Form Data</a></h2>
+<p><code>FormHttpMessageReader</code> and <code>FormHttpMessageWriter</code>  支持 <code>application/x-www-form-urlencoded</code>  的编码与解码</p>
+<p>在服务器端，表单内容通常需要在多个位置访问， <code>ServerWebExchange</code> 提供专门的 <code>getFormData()</code>  方法 ，使用 <em>FormHttpMessageReader</em> 解析 重复访问会缓存结果 See <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-form-data">Form Data</a> in the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api"><code>WebHandler</code> API</a> section.</p>
+<p>一旦调用 <em>getFormData()</em> 那么无法从 request body中 读取原始内容，因此，应用程序应该始终通过 <em>ServerWebExchange</em> 一致的访问 缓存的 form data而不是从 原始请求体读取数据</p>
+<h2 id="multipart"><a class="header" href="#multipart">Multipart</a></h2>
+<p><code>MultipartHttpMessageReader</code> and <code>MultipartHttpMessageWriter</code>  支持 编码与解码  <em>multipart/form-data</em> 内容</p>
+<p><code>MultipartHttpMessageReader</code>  将实际 解析 Flux&lt;Part&gt; 的工作 交给 另一个 <em>HttpMessageReader</em>，然后简单的 将其收集成 <em>MultiValueMap</em></p>
+<p>默认实现为 ：<code>DefaultPartHttpMessageReader</code> ，通过 <em>ServerCodecConfigurer</em> 可以改变，详见：<a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/http/codec/multipart/DefaultPartHttpMessageReader.html">javadoc of <code>DefaultPartHttpMessageReader</code></a></p>
+<p>在服务端，可能需要从多个位置访问 multipart， <code>ServerWebExchange</code>提供了 专门的：<code>getMultipartData()</code>  方法，通过 <code>MultipartHttpMessageReader</code>  解析数据，然后缓存，See <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-multipart">Multipart Data</a> in the <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-web-handler-api"><code>WebHandler</code> API</a> section.</p>
+<p>一旦调用<code>getMultipartData()</code> 那么无法再从 request body中 读取原始内容，所以 应该始终使用  <code>getMultipartData()</code> 或者 依赖 <em>SynchronossPartHttpMessageReader</em> ，一次性访问 <code>Flux&lt;Part&gt;</code></p>
+<h2 id="limits"><a class="header" href="#limits">Limits</a></h2>
+<p><code>Decoder</code> and <code>HttpMessageReader</code> 的实现 了 要么部分 缓存 要么 全部 缓存 输入流。这是可以配置的，限制在内存中缓冲的最大字节数。</p>
+<p>在默写情况，缓冲发生 因为 输入被聚合 表示为单个对象，例如：<code>@RequestBody byte[]</code>, <code>x-www-form-urlencoded</code> </p>
+<p>缓冲也可能 发生在 流中，拆分输入流时（例如：分割的文本、JOSN对象流），这个限制适用于 一个对象关联的字节数</p>
+<p>使用 <code>maxInMemorySize</code> 属性来配置  <code>Decoder</code> or <code>HttpMessageReader</code></p>
+<p>在服务端 <code>ServerCodecConfigurer</code> 提供 统一设置所有 codecs的该limit的地方，, see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-config-message-codecs">HTTP message codecs</a></p>
+<p>在客户端 通过 <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client-builder-maxinmemorysize">WebClient.Builder</a>. 配置</p>
+<p>对于 <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-codecs-multipart">Multipart parsing</a>   <code>maxInMemorySize</code> 属性限制了 非文件 parts的大小、对于文件 它决定 了 文件是否要写入到磁盘。对于写入到磁盘，还有一个额外的参数：<code>maxDiskUsagePerPart</code> 限制 每个 part 使用的磁盘 上限，<code>maxParts</code> 限制了 在一个 multipart 请求中 最多 parts部件总数</p>
+<h2 id="streaming"><a class="header" href="#streaming">Streaming</a></h2>
+<p>对于 HTTP 流式的响应，例如：（ <code>text/event-stream</code>, <code>application/x-ndjson</code>）</p>
+<p>定期发送数据很重要，尽早的可靠的 检测断开的客户端，这样的发送可以只是 * comment-only* 空 SSE 事件 或者 其他 no-op 数据，作为 heartbeat</p>
+<h2 id="databuffer"><a class="header" href="#databuffer"><code>DataBuffer</code></a></h2>
+<p><code>DataBuffer</code>  在 WebFlux中表示 a byte buffer ，详见： <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#databuffers">Data Buffers and Codecs</a>. </p>
+<p>The key point to understand is that on some servers like Netty, byte buffers are pooled and reference counted,</p>
+<p>要知道的关键点是：在 Netty等服务器上，byte buffer 是池化 并且引用计算的，当被消费完之后，需要被释放 避免内存泄漏</p>
+<p>WebFlux 程序 大体上 不需要 关系这类问题，除非 直接 消费或者产生 data buffers，相反 一般都依赖 codecs 转换 除非创建自定义的 codecs</p>
+<p>详见： <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#databuffers">Data Buffers and Codecs</a>, especially the section on <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#databuffers-using">Using DataBuffer</a>.</p>
+<h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
+<p><code>DEBUG</code>  ：在 SpringWebFlux中 <code>DEBUG</code>  级别的日志  旨在 紧凑、最小、可读。关注 重要信息 </p>
+<p><code>TRACE</code>： 与 <code>DEBUG</code> 遵循一样的原则 但是可以用来调式 任何问题</p>
+<h2 id="log-id"><a class="header" href="#log-id">Log Id</a></h2>
+<p>在 WebFlux中，一个请求可能跨多个线程，线程ID 记录 特定请求 的日志消息不是很有用。这也是为什么 WebFlux默认使用 <em>request-specific</em> id</p>
+<p>在服务端，logID 存储在 <code>ServerWebExchange</code> 属性，<a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/server/ServerWebExchange.html#LOG_ID_ATTRIBUTE"><code>LOG_ID_ATTRIBUTE</code></a></p>
+<p><code>ServerWebExchange#getLogPrefix()</code> 获取完整格式化的 ID 前缀</p>
+<p>在客户端，logId 存储在<code>ClientRequest</code>   <a href="https://docs.spring.io/spring-framework/docs/5.3.10/javadoc-api/org/springframework/web/reactive/function/client/ClientRequest.html#LOG_ID_ATTRIBUTE"><code>LOG_ID_ATTRIBUTE</code></a> </p>
+<p><code>ClientRequest#logPrefix()</code> 获取完整格式化的 ID 前缀</p>
+<h2 id="sensitive-data"><a class="header" href="#sensitive-data">Sensitive Data</a></h2>
+<p><code>DEBUG</code> and <code>TRACE</code>  可以记录 敏感信息，这也是为什么表单参数 跟请求头 默认被掩盖，需要显示启用</p>
+<p>Java</p>
+<pre><code class="language-java">@Configuration
+@EnableWebFlux
+class MyConfig implements WebFluxConfigurer {
+
+    @Override
+    public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
+        configurer.defaultCodecs().enableLoggingRequestDetails(true);
+    }
+}
+</code></pre>
+<p>The following example shows how to do so for client-side requests:</p>
+<p>Java</p>
+<pre><code class="language-java">Consumer&lt;ClientCodecConfigurer&gt; consumer = configurer -&gt;
+        configurer.defaultCodecs().enableLoggingRequestDetails(true);
+
+WebClient webClient = WebClient.builder()
+        .exchangeStrategies(strategies -&gt; strategies.codecs(consumer))
+        .build();
+</code></pre>
+<h2 id="appenders"><a class="header" href="#appenders">Appenders</a></h2>
+<p>日志库 例如 SLF4J and Log4J2  提供异步 日志器 避免阻塞，这也有缺点，比如 可能会 丢失消息，因为没法对日志 入队列，它们最好的选择就是使用 reactive </p>
+<h2 id="custom-codecs"><a class="header" href="#custom-codecs">Custom codecs</a></h2>
+<p>应用程序 能注册 自定义的 codecs ，以支持 额外的 请求类型，或者 默认codecs 不支持的 特定行为</p>
+<p>想 保持跟 首选项对齐的配置</p>
+<p>Java</p>
+<pre><code class="language-java">WebClient webClient = WebClient.builder()
+        .codecs(configurer -&gt; {
+                CustomDecoder decoder = new CustomDecoder();
+                configurer.customCodecs().registerWithDefaultConfig(decoder);
+        })
+        .build();
+</code></pre>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="spring"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../14.spring_SpringWebFlux/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../14.spring_SpringWebFlux/DispatcherHandler.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../14.spring_SpringWebFlux/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../14.spring_SpringWebFlux/DispatcherHandler.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

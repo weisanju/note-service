@@ -1,0 +1,1162 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CSS3 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item expanded "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Html5/CSS3.html" class="active">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="css3"><a class="header" href="#css3"><code>CSS3</code></a></h1>
+<h2 id="css3的模块化"><a class="header" href="#css3的模块化"><code>CSS3的模块化</code></a></h2>
+<h3 id="详细模块表格"><a class="header" href="#详细模块表格"><code>详细模块表格</code></a></h3>
+<div class="table-wrapper"><table><thead><tr><th><code>模块名称</code></th><th><code>功能描述</code></th></tr></thead><tbody>
+<tr><td><code>basic box model</code></td><td><code>盒相关样式</code></td></tr>
+<tr><td><code>line</code></td><td><code>直线相关样式</code></td></tr>
+<tr><td><code>lists</code></td><td><code>列表相关样式</code></td></tr>
+<tr><td><code>hyperlinkPresentation</code></td><td><code>超链接,锚的显示方式,视觉效果</code></td></tr>
+<tr><td><code>presentationLevel</code></td><td><code>元素不同的样式级别</code></td></tr>
+<tr><td><code>speech</code></td><td><code>语言相关样式,音量,音速,间歇时间</code></td></tr>
+<tr><td><code>background and border</code></td><td><code>背景和边框</code></td></tr>
+<tr><td><code>text</code></td><td><code>文字</code></td></tr>
+<tr><td><code>color</code></td><td><code>颜色</code></td></tr>
+<tr><td><code>font</code></td><td><code>字体</code></td></tr>
+<tr><td><code>pagedMedia</code></td><td><code>页眉页脚页数</code></td></tr>
+<tr><td><code>cascadingand inheritance</code></td><td><code>属性赋值</code></td></tr>
+<tr><td><code>value units</code></td><td><code>值与单位</code></td></tr>
+<tr><td><code>imageValue</code></td><td><code>imgae元素赋值方式</code></td></tr>
+<tr><td><code>2DTransforms</code></td><td><code>2维空间变形</code></td></tr>
+<tr><td><code>3DTransforms</code></td><td><code>3维空间变形</code></td></tr>
+<tr><td><code>transitions</code></td><td><code>平滑过渡视觉效果</code></td></tr>
+<tr><td><code>animations</code></td><td><code>动画</code></td></tr>
+<tr><td><code>cssOM view</code></td><td><code>查看管理页面或页面视觉效果,处理元素的位置信息</code></td></tr>
+<tr><td><code>syntax</code></td><td><code>CSS样式表的基本结构,样式表语法细节</code></td></tr>
+<tr><td><code>generated and replaced content</code></td><td><code>怎么插入内容</code></td></tr>
+<tr><td><code>marquee</code></td><td><code>怎样显示溢出部分</code></td></tr>
+<tr><td><code>ruby</code></td><td><code>定义ruby元素(用于显示拼音文字)</code></td></tr>
+<tr><td><code>writing modes</code></td><td><code>文本数据的布局方式</code></td></tr>
+<tr><td><code>basic user interface</code></td><td><code>定义在屏幕 纸张上进行输出时页面的渲染方式</code></td></tr>
+<tr><td><code>namespaces</code></td><td><code>使用命名空间的语法</code></td></tr>
+<tr><td><code>media queries</code></td><td><code>根据媒体类型来 实现不同样式</code></td></tr>
+<tr><td><code>'reader' media type</code></td><td><code>屏幕阅读器之类的阅读程序 时的样式</code></td></tr>
+<tr><td><code>multi-column layout</code></td><td><code>多栏布局方式</code></td></tr>
+<tr><td><code>template layout</code></td><td><code>特殊布局方式</code></td></tr>
+<tr><td><code>flexiblebox layout</code></td><td><code>自适应浏览器窗口的流动布局</code></td></tr>
+<tr><td><code>grid position</code></td><td><code>网格布局</code></td></tr>
+<tr><td><code>generated content for paged media</code></td><td><code>印刷时使用的布局方式</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="选择器"><a class="header" href="#选择器"><code>选择器</code></a></h2>
+<h3 id="属性选择器"><a class="header" href="#属性选择器"><code>属性选择器</code></a></h3>
+<ol>
+<li><code>[attr=val]{...} :普通属性选择器</code></li>
+<li><code>[attr*=val]:包含:属性名包含val值的属性</code></li>
+<li><code>[attr^=val]:开头:以val开头的属性名</code></li>
+<li><code>[attr$=val]:结尾:以val结尾的属性名</code></li>
+</ol>
+<h3 id="结构型伪类选择器"><a class="header" href="#结构型伪类选择器"><code>结构型伪类选择器</code></a></h3>
+<ol>
+<li>
+<p><code>a标签上的伪类选择器</code></p>
+<ol>
+<li><code>a:link{...}</code></li>
+<li><code>a:visited</code></li>
+<li><code>a:hover</code></li>
+<li><code>a:active</code></li>
+</ol>
+</li>
+<li>
+<p><code>伪元素选择器:针对CSS中已经定义好的元素选择器</code></p>
+<ol>
+<li>
+<p><code>语法: 选择器 类名:伪元素{属性:值}</code></p>
+</li>
+<li>
+<p><code>伪元素</code></p>
+<ol>
+<li><code>first-line :选定的某个元素的 内容的第一行</code></li>
+<li><code>first-letter:选定的某个元素的 内容的第一个字</code></li>
+<li><code>before:选定的某个元素的 内容的前面插入一些内容,配合content使用</code></li>
+<li><code>after:选定的某个元素的 内容的后面插入一些内容,配合content使用</code></li>
+</ol>
+</li>
+<li>
+<p><code>content插入的元素</code></p>
+<ol>
+<li>
+<p><code>插入文本 content = &quot;&quot;</code></p>
+</li>
+<li>
+<p><code>插入图像 content:url(imgurl)</code></p>
+</li>
+<li>
+<p><code>插入项目编号</code></p>
+<ol>
+<li>
+<p><code>content:counter(计数器名[,编号器样式list-style-type])</code></p>
+</li>
+<li>
+<p><code>list-style-type</code></p>
+<ol>
+<li><code>upper-alpha</code></li>
+<li><code>upper-roman</code></li>
+</ol>
+</li>
+<li>
+<p><code>example</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			h1:before{
+				content: '第'counter(mycounter,upper-roman)'章节';
+				color: blue;
+				font-size: 42px;
+				
+			}
+			h1{
+				counter-increment: mycounter;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;标题&lt;/h1&gt;
+		&lt;p&gt;文字&lt;/p&gt;
+		&lt;h1&gt;标题&lt;/h1&gt;
+		&lt;p&gt;文字&lt;/p&gt;
+		&lt;h1&gt;标题&lt;/h1&gt;
+		&lt;p&gt;文字&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>
+<p><code>编号嵌套</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			h1:before{
+				content: counter(counter1) '. ';
+			}
+			h1{
+				counter-increment: counter1;
+			}
+			h2:before{
+				content: counter(counter1)'-'counter(counter2) '. ';
+			}
+			h2{
+				counter-increment: counter2;
+				margin-left: 40px;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;大标题&lt;/h1&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h1&gt;大标题&lt;/h1&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h1&gt;大标题&lt;/h1&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+		&lt;h2&gt;小标题&lt;/h2&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+</li>
+<li>
+<p><code>插入编号</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			/*选择元素 插入quotes*/
+			h1:before{
+				content: open-quote;
+			}
+			h1:after{
+				content: close-quote;
+			}
+			/*定义quotes*/
+			h1{
+				quotes: &quot;&lt;&lt;&quot; &quot;&gt;&gt;&quot;;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;标题&lt;/h1&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><code>结构型伪类选择器</code></p>
+</li>
+<li>
+<p><code>root根选择器:设定 html整个样式</code></p>
+<p><code>:root{background-color:yellow}</code></p>
+</li>
+<li>
+<p><code>not选择器:排除某个元素</code></p>
+<p><code>body *:not(h1){ background-color:yellow}</code></p>
+</li>
+<li>
+<p><code>empty:单内容为空白时,指定的元素</code></p>
+<p><code>:empty{background-color:yellow}</code></p>
+</li>
+<li>
+<p><code>target:对于具有超链接的a标签,只有在跳转之后,才会呈现样式</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			:target {
+				background-color: yellow;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;a href=&quot;#text1&quot;&gt;示例1&lt;/a&gt;
+		&lt;a href=&quot;#text2&quot;&gt;示例2&lt;/a&gt;
+
+		&lt;div id=&quot;text1&quot;&gt;
+			&lt;h2&gt;示例文本&lt;/h2&gt;
+			&lt;p&gt;此处省去&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div id=&quot;text2&quot;&gt;
+			&lt;h2&gt;示例文本&lt;/h2&gt;
+			&lt;p&gt;此处省去&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>
+<p><code>子元素选择器</code></p>
+<ol>
+<li><code>first-child</code></li>
+<li><code>last-child</code></li>
+<li><code>nth-child(n), n=odd,基数,even偶数</code></li>
+<li><code>nth-last-child(n)</code></li>
+</ol>
+</li>
+<li>
+<p><code>类型选择器:在nth-child选择时,不同元素类型也会被计数</code></p>
+<ol>
+<li>
+<p><code>nth-of-type(n), nth-last-of-type(n)</code></p>
+</li>
+<li>
+<p><code>在计算子元素类型的时候就 只计算同类元素</code></p>
+</li>
+<li>
+<p><code>循环使用样式</code></p>
+<p><code>li:nth-child(4n+1) 4表示样式的种类,1表示循环的位置</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p><code>only-child,only-of-type</code></p>
+<ol>
+<li><code>只针对只有一个子元素生效</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="ui元素状态伪类选择器"><a class="header" href="#ui元素状态伪类选择器"><code>UI元素状态伪类选择器</code></a></h3>
+<ol>
+<li><code>E:hover</code></li>
+<li><code>E:avtive</code></li>
+<li><code>E:focus</code></li>
+<li><code>E:enabled</code></li>
+<li><code>E:disabled</code></li>
+<li><code>E:read-only</code></li>
+<li><code>E:read-write</code></li>
+<li><code>E:checked</code></li>
+<li><code>E:default</code></li>
+<li><code>E:indeterminate</code></li>
+<li><code>E::selection</code></li>
+</ol>
+<h3 id="通用兄弟元素选择器"><a class="header" href="#通用兄弟元素选择器"><code>通用兄弟元素选择器</code></a></h3>
+<ol>
+<li>
+<p><code>语法</code></p>
+<pre><code class="language-css">    span~p{
+        background: green;
+    }
+</code></pre>
+</li>
+<li>
+<p><code>解析</code></p>
+<p><code>寻找span标签后,所有的的兄弟标签 ,且该标签为 p标签</code></p>
+</li>
+</ol>
+<h2 id="文字与字体相关样式"><a class="header" href="#文字与字体相关样式"><code>文字与字体相关样式</code></a></h2>
+<h3 id="文字添加阴影"><a class="header" href="#文字添加阴影"><code>文字添加阴影</code></a></h3>
+<ol>
+<li><code>text-shadow: xlength ylength zlength color[,xlength ylength zlength color]</code></li>
+<li><code>解释: 阴影离开横向方向,纵向方向,模糊半径,阴影颜色</code></li>
+<li><code>可以指定多组</code></li>
+</ol>
+<h3 id="文本自动换行"><a class="header" href="#文本自动换行"><code>文本自动换行</code></a></h3>
+<ol>
+<li><code>word-break:wordbreak-style;</code>
+<ol>
+<li><code>normal:使用浏览器默认规则</code></li>
+<li><code>keep-all:半角空格或连字符处换行</code></li>
+<li><code>break-all:单词内换行</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="长单词与url地址自动换行"><a class="header" href="#长单词与url地址自动换行"><code>长单词与URL地址自动换行</code></a></h3>
+<ol>
+<li><code>word-wrap:break-word</code></li>
+</ol>
+<h3 id="使用服务端字体"><a class="header" href="#使用服务端字体"><code>使用服务端字体</code></a></h3>
+<ol>
+<li>
+<p><code>使用服务端字体的语法</code></p>
+<pre><code class="language-css">//声明使用web字体
+@font-face{
+    font-family:webFont;
+	src:url('font/Fontin_Sans_R_45b.otf') format(&quot;opentype&quot;)
+    font -weight:normal
+}
+//使用web字体
+h1{
+    font-family:webFont
+}
+</code></pre>
+</li>
+<li>
+<p><code>使用本地字体</code></p>
+<pre><code class="language-css">@font-face{
+    font-famioly:Arial;
+    src:local('Arial')
+}
+</code></pre>
+</li>
+<li>
+<p><code>@font-face可以指定的属性</code></p>
+<div class="table-wrapper"><table><thead><tr><th><code>属性值</code></th><th><code>说明</code></th><th><code>取值</code></th></tr></thead><tbody>
+<tr><td><code>font-family</code></td><td><code>设置字体系列名称</code></td><td></td></tr>
+<tr><td><code>font-style</code></td><td><code>字体样式</code></td><td><code>normal:不使用斜体&lt;br /&gt;italic:斜体&lt;br /&gt;oblique:倾斜体&lt;br /&gt;inherit:从父元素继承</code></td></tr>
+<tr><td><code>font-variant</code></td><td><code>设置字体大小</code></td><td><code>normal:浏览器默认值&lt;br /&gt;small-caps:小型大小字母&lt;br /&gt;inherit:父元素继承</code></td></tr>
+<tr><td><code>font-weight</code></td><td><code>设置字体的粗细</code></td><td><code>normal:浏览器默认值&lt;br /&gt;bold:使用粗体字符&lt;br /&gt;bolder:更粗&lt;br /&gt;lighter:更细字符&lt;br /&gt;100-900:从细到粗,必须为100的整数倍</code></td></tr>
+<tr><td><code>font-stretch</code></td><td><code>字体是否变形伸缩</code></td><td><code>normal&lt;br /&gt;wider&lt;br /&gt;narrower&lt;br /&gt;ultra-condensed&lt;br /&gt;extra-condensed&lt;br /&gt;condensed&lt;br /&gt;semi-condensed&lt;br /&gt;semi-expanded&lt;br /&gt;extra-expanded&lt;br /&gt;ultra-expanded:最宽的</code></td></tr>
+<tr><td><code>font-size</code></td><td><code>字体大小</code></td><td></td></tr>
+<tr><td><code>src</code></td><td><code>字体文件路径</code></td><td></td></tr>
+</tbody></table>
+</div></li>
+</ol>
+<h3 id="修改字体种类而保持字体大小尺寸不变"><a class="header" href="#修改字体种类而保持字体大小尺寸不变"><code>修改字体种类而保持字体大小尺寸不变</code></a></h3>
+<ol>
+<li>
+<p><code>改变字体的种类很可能会因为文字大小的变化而导致原来的页面布局产生混乱</code></p>
+</li>
+<li>
+<p><code>font-size-adjust:0.49(aspect值)</code></p>
+<p><code>font-size-adjust 的大小 = x-length / 字体像素大小</code></p>
+</li>
+<li>
+<p><code>c = (a/b) * s , a是 新字体的 aspect值, b是旧字体的aspect得值,s是指定的尺寸</code></p>
+</li>
+</ol>
+<h2 id="盒相关样式"><a class="header" href="#盒相关样式"><code>盒相关样式</code></a></h2>
+<h3 id="盒的类型"><a class="header" href="#盒的类型"><code>盒的类型</code></a></h3>
+<ol>
+<li>
+<p><code>盒的基本类型</code></p>
+<ol>
+<li>
+<p><code>inline: a,span,每行可容纳多个标签</code></p>
+</li>
+<li>
+<p><code>block</code></p>
+</li>
+<li>
+<p><code>inline-block</code></p>
+<div class="table-wrapper"><table><thead><tr><th><code>类型</code></th><th><code>说明</code></th><th><code>典型标签</code></th></tr></thead><tbody>
+<tr><td><code>inline</code></td><td><code>1.inline元素的宽度始终等于其内容的宽度&lt;br /&gt;指定宽度的样式对inline元素无效&lt;br /&gt;2. 可以允许多个inline元素</code></td><td><code>a,span,input</code></td></tr>
+<tr><td><code>block</code></td><td><code>1. block元素的宽度 充满整行&lt;br /&gt;2.高度 = getOrdefault(指定宽度,内容宽度)</code></td><td><code>div,p</code></td></tr>
+<tr><td><code>inline-block</code></td><td><code>1.该元素的宽度 =  getOrdefault(指定宽度,内容宽度)</code></td><td></td></tr>
+</tbody></table>
+</div></li>
+</ol>
+</li>
+<li>
+<p><code>inline-table类型 :针对表格使用的inline</code></p>
+</li>
+<li>
+<p><code>list-item:列表显示</code></p>
+<pre><code class="language-css">		div{
+			display: list-item;
+			list-style-type: circle;
+			margin-left: 30px;
+		}
+</code></pre>
+</li>
+<li>
+<p><code>表格相关类型</code></p>
+<div class="table-wrapper"><table><thead><tr><th><code>元素</code></th><th><code>所属类型</code></th><th><code>说明</code></th></tr></thead><tbody>
+<tr><td><code>table</code></td><td><code>inline-table</code></td><td><code>整个表格</code></td></tr>
+<tr><td><code>tr</code></td><td><code>table-row</code></td><td><code>表格中的一行</code></td></tr>
+<tr><td><code>td</code></td><td><code>table-cell</code></td><td><code>单元格</code></td></tr>
+<tr><td><code>th</code></td><td><code>table-header</code></td><td><code>列标题</code></td></tr>
+<tr><td><code>tbody</code></td><td><code>table-row-group</code></td><td><code>表格所有行</code></td></tr>
+<tr><td><code>thead</code></td><td><code>table-header-group</code></td><td><code>表格表头部分</code></td></tr>
+<tr><td><code>tfoot</code></td><td><code>table-footer-group</code></td><td><code>脚注部分</code></td></tr>
+<tr><td><code>col</code></td><td><code>table-column</code></td><td><code>一列</code></td></tr>
+<tr><td><code>colgroup</code></td><td><code>table-column-group</code></td><td><code>所有列</code></td></tr>
+<tr><td><code>caption</code></td><td><code>table-caption</code></td><td><code>表格标题</code></td></tr>
+</tbody></table>
+</div></li>
+<li>
+<p><code>none类型 , 隐藏元素</code></p>
+</li>
+</ol>
+<h3 id="盒中容纳不下的内容显示"><a class="header" href="#盒中容纳不下的内容显示"><code>盒中容纳不下的内容显示</code></a></h3>
+<ol>
+<li><code>指定 overflow属性指定盒容纳不下的内容的处理方式\</code></li>
+<li><code>overflow,overflow-x,overflow-y,text-overflow</code></li>
+<li><code>取值范围</code>
+<ol>
+<li><code>scroll 滚动条</code></li>
+<li><code>visible:超出容纳范围文字原样显示</code></li>
+<li><code>hidden:隐藏</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="盒阴影"><a class="header" href="#盒阴影"><code>盒阴影</code></a></h3>
+<ol>
+<li>
+<p><code>box-shadow:lengthx legnthy lengthz color</code></p>
+<p><code>阴影离开文字很想,纵向,阴影模糊半径,颜色</code></p>
+</li>
+<li>
+<p><code>将参数设定为0:将绘制不向外模糊的阴影</code></p>
+</li>
+<li>
+<p><code>对盒内子元素使用阴影</code></p>
+</li>
+<li>
+<p><code>对第一个文字或者第一行使用阴影 div:first-letter</code></p>
+</li>
+<li>
+<p><code>对表格单元格使用阴影</code></p>
+</li>
+</ol>
+<h3 id="指定-针对元素宽度与高度的-计算方法"><a class="header" href="#指定-针对元素宽度与高度的-计算方法"><code>指定 针对元素宽度与高度的 计算方法</code></a></h3>
+<ol>
+<li><code>使用box-sizing属性可选值</code>
+<ol>
+<li><code>content-box:用width,height指定的宽度与高度 不包括 内部留白(padding),边框的厚度</code></li>
+<li><code>border-box:用width,height指定的宽度与高度包括 内部留白(padding),边框的厚度</code> </li>
+</ol>
+</li>
+</ol>
+<h2 id="与背景边框相关样式"><a class="header" href="#与背景边框相关样式"><code>与背景边框相关样式</code></a></h2>
+<h3 id="与背景相关的-新增属性"><a class="header" href="#与背景相关的-新增属性"><code>与背景相关的 新增属性</code></a></h3>
+<ol>
+<li>
+<p><code>backgroup-clip:背景默认显示的范围包括边框与内部留白</code></p>
+<ol>
+<li>
+<p><code>border: 包括边框区域(如果边框为虚线的话)</code></p>
+</li>
+<li>
+<p><code>padding:不包括边框区域</code></p>
+</li>
+<li>
+<p><code>example</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			div{
+				background-color: red;
+				border: dashed 15px ;
+				/*padding: 30px;
+				color: white;
+				font-size: 30px;
+				font-weight: bold;*/
+			}
+			div#a1{
+				background-clip: border-box;
+			}
+			div#a2{
+				background-clip: padding-box;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;a1&quot;&gt;示例文字1&lt;/div&gt;
+		&lt;div id=&quot;a2&quot;&gt;示例文字2&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p><code>background-origin:图像的绘制起点</code></p>
+<ol>
+<li>
+<p><code>默认是从内部留白区域的左上角开始</code></p>
+</li>
+<li>
+<p><code>显示级别: 背景颜色 &lt;  背景图片 &lt; 边框,内容</code></p>
+</li>
+<li>
+<p><code>可选值为</code></p>
+<ol>
+<li><code>border:边框左上角开始,(边框会把背景覆盖)</code></li>
+<li><code>padding:内部留白左上角</code></li>
+<li><code>content:内容左上角</code></li>
+</ol>
+</li>
+<li>
+<p><code>example</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			div{
+				background-color: black;
+				background-image: url(img/下载.jpg);
+				background-repeat: no-repeat;
+				border: dashed 15px green;
+				padding: 30px;
+				color: white;
+				font-size:  2em;
+				font-weight: bold;
+			}
+			
+			div#div1{
+				background-origin: border-box;
+			}
+			div#div2{
+				background-origin: content-box;
+			}
+			div#div3{
+				background-origin: padding-box;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;div1&quot;&gt;示例文字1&lt;/div&gt;
+		&lt;div id=&quot;div2&quot;&gt;示例文字2&lt;/div&gt;
+		&lt;div id=&quot;div3&quot;&gt;示例文字3&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p><code>background-size:指定背景图像的大小</code></p>
+<ol>
+<li>
+<p><code>background-size width height  or background-size auto(auto维持 纵横比)</code></p>
+</li>
+<li>
+<p><code>example</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			div{
+				background-color: black;
+				background-image: url(img/下载.jpg);
+				padding: 30px;
+				color:white;
+				font-size :2em;
+				font-weight: bold;
+				/*background-size: 40px 20px;*/
+				background-size: auto;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+			&lt;div&gt;示例文字&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p><code>background-break:指定内联元素背景图像进行平铺时的循环方式</code></p>
+<ol>
+<li><code>bounding-box:在整个内联元素中平铺</code></li>
+<li><code>each-box:在每一行中平铺</code></li>
+<li><code>continuous:下一行紧接着上一行图像继续平铺</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="在一个元素中显示多个背景图像"><a class="header" href="#在一个元素中显示多个背景图像"><code>在一个元素中显示多个背景图像</code></a></h3>
+<ol>
+<li><code>通过 background-image:url(1),url(2)</code></li>
+<li><code>通过 background-repeat: repeat-y,repeat-x;指定每个图片的平铺方式</code></li>
+<li><code>最先指定的图片优先级最高</code></li>
+<li><code>允许多重指定配合使用的属性有</code>
+<ol>
+<li><code>background-image</code></li>
+<li><code>background-repeat</code></li>
+<li><code>background-position</code></li>
+<li><code>background-clip</code></li>
+<li><code>background-origin</code></li>
+<li><code>background-size</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="圆角边框的绘制"><a class="header" href="#圆角边框的绘制"><code>圆角边框的绘制</code></a></h3>
+<ol>
+<li><code>使用 border-radius:x y</code></li>
+<li><code>指定两个半径有两种处理方式</code>
+<ol>
+<li><code>Firefox:第一个半径为边框左上角,右下角 的圆半径</code></li>
+<li><code>chrome:第一个半径为椭圆的 水平半径, 第二个为 垂直半径</code></li>
+</ol>
+</li>
+<li><code>可以 矩形四个角半径各不相同的边框</code>
+<ol>
+<li><code>border-top-left-radius</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="使用图像边框"><a class="header" href="#使用图像边框"><code>使用图像边框</code></a></h3>
+<ol>
+<li><code>border-image url(path) a b c d</code>
+<ol>
+<li><code>ABCD四个参数表示 当浏览器 自动把边框使用到的图像进行分成九分</code></li>
+<li><code>A上 B右 C下 D左</code></li>
+</ol>
+</li>
+<li><code>使用border-image指定边框宽度</code>
+<ol>
+<li><code>border-image url(path) a b c d/border-width</code></li>
+</ol>
+</li>
+<li><code>图像显示方式</code>
+<ol>
+<li><code>border-image url(path) a b c d/border-width topbottom-type leftright-type</code></li>
+<li><code>type</code>
+<ol>
+<li><code>stretch:拉伸</code></li>
+<li><code>round</code>:平铺
+<ol>
+<li>与重复类似,区别在于</li>
+<li>最后一张图如果 不能铺满一半,则将上张图拉伸处理,</li>
+<li>如果能铺满一半,则将该图拉伸处理</li>
+</ol>
+</li>
+<li><code>repeat</code>:重复</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Html5/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Html5/H5canvas图形绘制.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Html5/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Html5/H5canvas图形绘制.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

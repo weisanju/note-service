@@ -1,0 +1,1226 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>XML - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><div>UML</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html">UML</a></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/index.html">MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html">时序图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html">流程图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html">类图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html">语法总览</a></li></ol></li><li class="chapter-item "><div>Flowchart</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html">flowchart_fun</a></li></ol></li><li class="chapter-item "><div>PlantUml</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html">plantUML语法</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../4.模板引擎/index.html">模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/index.html">mustache</a></li></ol></li><li class="chapter-item "><div>常用软件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/Multipass.html">Multipass</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html">v2rayN代理</a></li></ol></li><li class="chapter-item "><div>生活事宜</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html">个人清算汇缴</a></li></ol></li><li class="chapter-item "><a href="../7.思考/index.html">思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html">学习总结</a></li><li class="chapter-item "><a href="../7.思考/杂项.html">杂项</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html">编程技巧</a></li></ol></li><li class="chapter-item "><div>学习</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html">概率论与数理统计</a></li></ol></li><li class="chapter-item expanded "><div>数据格式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../9.数据格式/XML.html" class="active">XML</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html">yaml</a></li></ol></li><li class="chapter-item "><div>Linux</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html">CFSBandwidthControl</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html">LinuxFor</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html">LinuxWOL设置</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html">Linux条件测试</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html">Seed</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html">VIM</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html">caseIn</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html">cgroup</a></li><li class="chapter-item "><a href="../10.Linux/curl.html">curl</a></li><li class="chapter-item "><a href="../10.Linux/dd.html">dd</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html">diffPatch</a></li><li class="chapter-item "><a href="../10.Linux/find.html">find</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html">iptables</a></li><li class="chapter-item "><a href="../10.Linux/jq.html">jq</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html">lsof</a></li><li class="chapter-item "><a href="../10.Linux/ps.html">ps</a></li><li class="chapter-item "><a href="../10.Linux/read.html">read</a></li><li class="chapter-item "><a href="../10.Linux/scp.html">scp</a></li><li class="chapter-item "><a href="../10.Linux/select.html">select</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html">service脚本</a></li><li class="chapter-item "><a href="../10.Linux/set.html">set</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html">shell字符串</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html">shell脚本参数</a></li><li class="chapter-item "><a href="../10.Linux/stat.html">stat</a></li><li class="chapter-item "><a href="../10.Linux/tar.html">tar</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html">top命令</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html">uidGidSetUidSetGid</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html">wsl关闭提示音</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html">yum本地包依赖</a></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html">大端与小端</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html">确定Linux发行版本</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html">零拷贝</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html">默认值语法糖</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/index.html">algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html">Base64编码</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html">Huffman编码</a></li><li class="chapter-item "><a href="../11.algorithm/base64.html">base64</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html">fnv-hash算法</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html">二叉搜索平衡树</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html">位运算</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html">动态规划</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html">动态规划-新</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html">字符编码</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html">布隆过滤器</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html">浮点数</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html">红黑树</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html">贪心算法</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html">逆波兰表达式</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="xml"><a class="header" href="#xml">XML</a></h1>
+<h2 id="xml语法规则"><a class="header" href="#xml语法规则">XML语法规则</a></h2>
+<ul>
+<li>
+<p>必须有跟元素</p>
+</li>
+<li>
+<p>XML声明 可选</p>
+<p><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code></p>
+</li>
+<li>
+<p>所有的 XML 元素都必须有一个关闭标签</p>
+</li>
+<li>
+<p>XML 标签对大小写敏感</p>
+</li>
+<li>
+<p>XML <strong>必须正确嵌套</strong></p>
+</li>
+<li>
+<p>XML 属性值必须加引号</p>
+</li>
+<li>
+<p>实体引用：特殊字符用实体引用替代</p>
+<div class="table-wrapper"><table><thead><tr><th>实体引用</th><th>符号</th><th>含义</th></tr></thead><tbody>
+<tr><td><code>&amp;lt;</code></td><td>&lt;</td><td>less than</td></tr>
+<tr><td><code>&amp;gt;</code></td><td>&gt;</td><td>greater than</td></tr>
+<tr><td><code>&amp;amp;</code></td><td>&amp;</td><td>ampersand</td></tr>
+<tr><td><code>&amp;apos;</code></td><td>'</td><td>apostrophe</td></tr>
+<tr><td><code>&amp;quot;</code></td><td>&quot;</td><td>quotation mark</td></tr>
+</tbody></table>
+</div></li>
+<li>
+<p>XML 中的注释</p>
+<p><code>&lt;!-- This is a comment --&gt;</code></p>
+</li>
+<li>
+<p>空格会被保留</p>
+<p>HTML 会把多个连续的空格字符裁减（合并）为一个：</p>
+</li>
+<li>
+<p>XML 以 LF 存储换行</p>
+</li>
+</ul>
+<h2 id="xml元素"><a class="header" href="#xml元素">XML元素</a></h2>
+<ul>
+<li>
+<p>XML 元素指的是从（且包括）开始标签直到（且包括）结束标签的部分。</p>
+</li>
+<li>
+<p>一个元素可以包含：</p>
+<ul>
+<li>其他元素</li>
+<li>文本</li>
+<li>属性</li>
+<li>或混合以上所有...</li>
+</ul>
+</li>
+<li>
+<p>元素命名规则</p>
+<ul>
+<li>字母数字其他字符</li>
+<li>不能以数字标点符号开始</li>
+<li>不能以字母xml开始</li>
+<li>不能有空格</li>
+<li>避免使用 : -  . 的字符</li>
+</ul>
+</li>
+</ul>
+<h2 id="xml属性"><a class="header" href="#xml属性">XML属性</a></h2>
+<p>XML 中，您应该尽量避免使用属性。如果信息感觉起来很像数据，那么请使用元素吧</p>
+<p>元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。</p>
+<h2 id="xml验证"><a class="header" href="#xml验证">XML验证</a></h2>
+<ul>
+<li>
+<p>合法的 XML 文档是&quot;形式良好&quot;的 XML 文档，这也符合文档类型定义（DTD,documentTyoeDefinition ）的规则</p>
+</li>
+<li>
+<p><code>&lt;!DOCTYPE note system &quot;note.dtd&quot;</code></p>
+</li>
+<li>
+<p>DTD 的目的是定义 XML 文档的结构</p>
+</li>
+<li>
+<p>W3C 支持一种基于 XML 的 DTD 代替者，它名为 XML Schema</p>
+</li>
+</ul>
+<h2 id="使用-css-xslt显示-xml"><a class="header" href="#使用-css-xslt显示-xml">使用 CSS /XSLT显示 XML</a></h2>
+<ul>
+<li>
+<p><code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;cd_catalog.css&quot;?&gt;</code></p>
+</li>
+<li>
+<p>使用 CSS 格式化 XML 不是常用的方法。W3C 推荐使用 XSLT。</p>
+</li>
+<li>
+<p>XSLT（eXtensible Stylesheet Language Transformations）远比 CSS 更加完善。</p>
+</li>
+<li>
+<p>通过使用 XSLT，您可以把 XML 文档转换成 HTML 格式。</p>
+</li>
+</ul>
+<h2 id="xml-命名空间"><a class="header" href="#xml-命名空间">XML 命名空间</a></h2>
+<ul>
+<li>
+<p>XML 命名空间提供避免元素命名冲突的方法。</p>
+</li>
+<li>
+<p>在 XML 中的命名冲突可以通过使用名称前缀从而容易地避免。</p>
+<pre><code>&lt;h:table&gt;
+&lt;h:tr&gt;
+&lt;h:td&gt;Apples&lt;/h:td&gt;
+&lt;h:td&gt;Bananas&lt;/h:td&gt;
+&lt;/h:tr&gt;
+&lt;/h:table&gt;
+</code></pre>
+</li>
+<li>
+<p>当在 XML 中使用前缀时，一个所谓的用于前缀的<strong>命名空间</strong>必须被定义。xmlns:<em>前缀</em>=&quot;<em>URI</em>&quot;</p>
+<pre><code>&lt;h:table xmlns:h=&quot;http://www.w3.org/TR/html4/&quot;&gt;
+&lt;h:tr&gt;
+&lt;h:td&gt;Apples&lt;/h:td&gt;
+&lt;h:td&gt;Bananas&lt;/h:td&gt;
+&lt;/h:tr&gt;
+&lt;/h:table&gt;
+</code></pre>
+</li>
+<li>
+<p>元素定义默认的命名空间可以让我们省去在所有的子元素中使用前缀的工作</p>
+<p><code>&lt;table xmlns=&quot;http://www.w3.org/TR/html4/&quot;&gt;</code></p>
+</li>
+</ul>
+<h2 id="xml-cdata"><a class="header" href="#xml-cdata">XML CDATA</a></h2>
+<ul>
+<li>XML 文档中的所有文本均会被解析器解析。只有 CDATA 区段中的文本会被解析器忽略。</li>
+<li>CDATA 部分由 <code>&lt;![CDATA[</code> 开始，由 &quot;<strong>]]&gt;</strong>&quot; 结束：</li>
+</ul>
+<h1 id=""><a class="header" href="#"></a></h1>
+<h1 id="dtd"><a class="header" href="#dtd">DTD</a></h1>
+<h2 id="简介"><a class="header" href="#简介">简介</a></h2>
+<p>DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。</p>
+<p>DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。</p>
+<h2 id="xml构建模块"><a class="header" href="#xml构建模块">XML构建模块</a></h2>
+<ul>
+<li>所有的 XML 文档（以及 HTML 文档）均由以下简单的构建模块构成：
+<ul>
+<li>元素</li>
+<li>属性</li>
+<li>实体：特殊字符的实体引用</li>
+<li>PCDATA：parsed character data，<strong>被解析器解析的文本</strong></li>
+<li>CDATA：<strong>不会被解析器解析的文本</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="dtd元素申明"><a class="header" href="#dtd元素申明">DTD元素申明</a></h2>
+<p>声明一个元素</p>
+<pre><code>&lt;!ELEMENT element-name category&gt;
+或
+&lt;!ELEMENT element-name (element-content)&gt;
+</code></pre>
+<ul>
+<li>
+<p>空元素：<code>&lt;!ELEMENT br EMPTY&gt;</code></p>
+</li>
+<li>
+<p>PCDATA 的元素：<code>&lt;!ELEMENT from (#PCDATA)&gt;</code></p>
+</li>
+<li>
+<p>带有任何内容的元素:<code>&lt;!ELEMENT note ANY&gt;</code></p>
+</li>
+<li>
+<p>带有子元素（序列）的元素</p>
+<ul>
+<li>带有一个或多个子元素的元素通过圆括号中的子元素名进行声明：</li>
+<li><code>&lt;!ELEMENT element-name (child1)&gt;</code></li>
+<li><code>&lt;!ELEMENT element-name (child1,child2,...)&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明只出现一次的元素</p>
+<ul>
+<li><code>&lt;!ELEMENT note (message)&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明最少出现一次的元素</p>
+<ul>
+<li><code>&lt;!ELEMENT note (message+)&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明出现零次或多次的元素</p>
+<ul>
+<li><code>&lt;!ELEMENT note (message*)&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明出现零次或一次的元素</p>
+<ul>
+<li><code>&lt;!ELEMENT note (message?)&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明&quot;非.../即...&quot;类型的内容</p>
+<ul>
+<li><code>&lt;!ELEMENT note (to,from,header,(message|body))&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明混合型的内容</p>
+<ul>
+<li><code>&lt;!ELEMENT note (#PCDATA|to|from|header|message)*&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="dtd属性申明"><a class="header" href="#dtd属性申明">DTD属性申明</a></h2>
+<p>在 DTD 中，属性通过 ATTLIST 声明来进行声明。</p>
+<ul>
+<li>
+<p>语法：</p>
+<p><code>&lt;!ATTLIST element-name attribute-name attribute-type attribute-value&gt;</code></p>
+</li>
+<li>
+<p>类型选项</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">类型</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">CDATA</td><td style="text-align: left">值为字符数据 (character data)</td></tr>
+<tr><td style="text-align: left">(<em>en1</em>|<em>en2</em>|..)</td><td style="text-align: left">此值是枚举列表中的一个值</td></tr>
+<tr><td style="text-align: left">ID</td><td style="text-align: left">值为唯一的 id</td></tr>
+<tr><td style="text-align: left">IDREF</td><td style="text-align: left">值为另外一个元素的 id</td></tr>
+<tr><td style="text-align: left">IDREFS</td><td style="text-align: left">值为其他 id 的列表</td></tr>
+<tr><td style="text-align: left">NMTOKEN</td><td style="text-align: left">值为合法的 XML 名称</td></tr>
+<tr><td style="text-align: left">NMTOKENS</td><td style="text-align: left">值为合法的 XML 名称的列表</td></tr>
+<tr><td style="text-align: left">ENTITY</td><td style="text-align: left">值是一个实体</td></tr>
+<tr><td style="text-align: left">ENTITIES</td><td style="text-align: left">值是一个实体列表</td></tr>
+<tr><td style="text-align: left">NOTATION</td><td style="text-align: left">此值是符号的名称</td></tr>
+<tr><td style="text-align: left">xml:</td><td style="text-align: left">值是一个预定义的 XML 值</td></tr>
+</tbody></table>
+</div></li>
+<li>
+<p>默认<strong>属性值</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>值</th><th>属性的默认值</th></tr></thead><tbody>
+<tr><td></td><td>属性值</td></tr>
+<tr><td>#REQUIRED</td><td>属性值是必需的</td></tr>
+<tr><td>#IMPLIED</td><td>属性不是必需的</td></tr>
+<tr><td>#FIXED value</td><td>属性值是固定的</td></tr>
+</tbody></table>
+</div></li>
+</ul>
+<h2 id="dtd实体"><a class="header" href="#dtd实体">DTD实体</a></h2>
+<ul>
+<li>
+<p>实体是用于定义引用普通文本或特殊字符的快捷方式的变量。</p>
+</li>
+<li>
+<p>实体引用是对实体的引用</p>
+</li>
+<li>
+<p>实体可在内部或外部进行声明。</p>
+</li>
+<li>
+<p>一个内部实体声明</p>
+<ul>
+<li>
+<p><code>&lt;!ENTITY entity-name &quot;entity-value&quot;&gt;</code></p>
+<pre><code>&lt;!ENTITY writer &quot;Donald Duck.&quot;&gt;
+&lt;!ENTITY copyright &quot;Copyright runoob.com&quot;&gt;
+
+XML 实例：
+
+&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;
+</code></pre>
+</li>
+<li>
+<p>一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>一个外部实体声明</p>
+<pre><code>DTD 实例:
+
+&lt;!ENTITY writer SYSTEM &quot;http://www.runoob.com/entities.dtd&quot;&gt;
+&lt;!ENTITY copyright SYSTEM &quot;http://www.runoob.com/entities.dtd&quot;&gt;
+
+XML example:
+
+&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="example"><a class="header" href="#example">EXAMPLE</a></h2>
+<h3 id="电视节目表-dtd"><a class="header" href="#电视节目表-dtd">电视节目表 DTD</a></h3>
+<pre><code>由 David Moisan 创造。拷贝自： http://www.davidmoisan.org/
+
+&lt;!DOCTYPE TVSCHEDULE [
+
+&lt;!ELEMENT TVSCHEDULE (CHANNEL+)&gt;
+&lt;!ELEMENT CHANNEL (BANNER,DAY+)&gt;
+&lt;!ELEMENT BANNER (#PCDATA)&gt;
+&lt;!ELEMENT DAY (DATE,(HOLIDAY|PROGRAMSLOT+)+)&gt;
+&lt;!ELEMENT HOLIDAY (#PCDATA)&gt;
+&lt;!ELEMENT DATE (#PCDATA)&gt;
+&lt;!ELEMENT PROGRAMSLOT (TIME,TITLE,DESCRIPTION?)&gt;
+&lt;!ELEMENT TIME (#PCDATA)&gt;
+&lt;!ELEMENT TITLE (#PCDATA)&gt; 
+&lt;!ELEMENT DESCRIPTION (#PCDATA)&gt;
+
+&lt;!ATTLIST TVSCHEDULE NAME CDATA #REQUIRED&gt;
+&lt;!ATTLIST CHANNEL CHAN CDATA #REQUIRED&gt;
+&lt;!ATTLIST PROGRAMSLOT VTR CDATA #IMPLIED&gt;
+&lt;!ATTLIST TITLE RATING CDATA #IMPLIED&gt;
+&lt;!ATTLIST TITLE LANGUAGE CDATA #IMPLIED&gt;
+]&gt;
+
+
+</code></pre>
+<hr />
+<h3 id="报纸文章-dtd"><a class="header" href="#报纸文章-dtd">报纸文章 DTD</a></h3>
+<pre><code>拷贝自：http://www.vervet.com/
+
+&lt;!DOCTYPE NEWSPAPER [
+
+&lt;!ELEMENT NEWSPAPER (ARTICLE+)&gt;
+&lt;!ELEMENT ARTICLE (HEADLINE,BYLINE,LEAD,BODY,NOTES)&gt;
+&lt;!ELEMENT HEADLINE (#PCDATA)&gt;
+&lt;!ELEMENT BYLINE (#PCDATA)&gt;
+&lt;!ELEMENT LEAD (#PCDATA)&gt;
+&lt;!ELEMENT BODY (#PCDATA)&gt;
+&lt;!ELEMENT NOTES (#PCDATA)&gt;
+
+&lt;!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED&gt;
+&lt;!ATTLIST ARTICLE EDITOR CDATA #IMPLIED&gt;
+&lt;!ATTLIST ARTICLE DATE CDATA #IMPLIED&gt;
+&lt;!ATTLIST ARTICLE EDITION CDATA #IMPLIED&gt;
+
+&lt;!ENTITY NEWSPAPER &quot;Vervet Logic Times&quot;&gt;
+&lt;!ENTITY PUBLISHER &quot;Vervet Logic Press&quot;&gt;
+&lt;!ENTITY COPYRIGHT &quot;Copyright 1998 Vervet Logic Press&quot;&gt;
+
+]&gt;
+</code></pre>
+<hr />
+<h3 id="产品目录-dtd"><a class="header" href="#产品目录-dtd">产品目录 DTD</a></h3>
+<pre><code>拷贝自： http://www.vervet.com/
+
+&lt;!DOCTYPE CATALOG [
+
+&lt;!ENTITY AUTHOR &quot;John Doe&quot;&gt;
+&lt;!ENTITY COMPANY &quot;JD Power Tools, Inc.&quot;&gt;
+&lt;!ENTITY EMAIL &quot;jd@jd-tools.com&quot;&gt;
+
+&lt;!ELEMENT CATALOG (PRODUCT+)&gt;
+
+&lt;!ELEMENT PRODUCT
+(SPECIFICATIONS+,OPTIONS?,PRICE+,NOTES?)&gt;
+&lt;!ATTLIST PRODUCT
+NAME CDATA #IMPLIED
+CATEGORY (HandTool|Table|Shop-Professional) &quot;HandTool&quot;
+PARTNUM CDATA #IMPLIED
+PLANT (Pittsburgh|Milwaukee|Chicago) &quot;Chicago&quot;
+INVENTORY (InStock|Backordered|Discontinued) &quot;InStock&quot;&gt;
+
+&lt;!ELEMENT SPECIFICATIONS (#PCDATA)&gt;
+&lt;!ATTLIST SPECIFICATIONS
+WEIGHT CDATA #IMPLIED
+POWER CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT OPTIONS (#PCDATA)&gt;
+&lt;!ATTLIST OPTIONS
+FINISH (Metal|Polished|Matte) &quot;Matte&quot;
+ADAPTER (Included|Optional|NotApplicable) &quot;Included&quot;
+CASE (HardShell|Soft|NotApplicable) &quot;HardShell&quot;&gt;
+
+&lt;!ELEMENT PRICE (#PCDATA)&gt;
+&lt;!ATTLIST PRICE
+MSRP CDATA #IMPLIED
+WHOLESALE CDATA #IMPLIED
+STREET CDATA #IMPLIED
+SHIPPING CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT NOTES (#PCDATA)&gt;
+
+]&gt;
+</code></pre>
+<h1 id="xmlschema"><a class="header" href="#xmlschema">XMLSchema</a></h1>
+<p>描述</p>
+<ul>
+<li>
+<p>XML Schema 是基于 XML 的 DTD 替代者。</p>
+</li>
+<li>
+<p>XML Schema 可描述 XML 文档的结构。</p>
+</li>
+<li>
+<p>XML Schema 语言也可作为 XSD（XML Schema Definition）来引用。</p>
+</li>
+<li>
+<p>XML Schema 的作用是定义 XML 文档的合法构建模块，</p>
+</li>
+</ul>
+<h2 id="xmlschema定义"><a class="header" href="#xmlschema定义">XMLSchema定义</a></h2>
+<ul>
+<li>存在性问题定义</li>
+</ul>
+<p>​	定义了文档中可以出现的元素和属性</p>
+<ul>
+<li>
+<p>层次结构</p>
+<p>定义了子元素，子元素的次序，数目</p>
+</li>
+<li>
+<p>元素和属性的值</p>
+<p>数据类型，是否为空，是否可包含文本，默认值，固定值</p>
+</li>
+</ul>
+<h2 id="xsdschema元素"><a class="header" href="#xsdschema元素">XSDschema元素</a></h2>
+<p><code>&lt;schema&gt;</code>  为root元素</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+
+&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+targetNamespace=&quot;http://www.runoob.com&quot;
+xmlns=&quot;http://www.runoob.com&quot;
+elementFormDefault=&quot;qualified&quot;&gt;
+...
+...
+&lt;/xs:schema&gt;
+
+xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; 申明一个名称空间使用xs前缀
+xmlns=&quot;http://www.runoob.com&quot; ：申明默认的名称空间
+xmlns=&quot;http://www.runoob.com&quot; ：被此schema定义的元素的名称空间
+xs:schemaLocation=&quot;http://www.runoob.com note.xsd&quot;：xs引用的名称空间的 XML schema 的位置
+</code></pre>
+<h2 id="xsd-简易元素"><a class="header" href="#xsd-简易元素">XSD 简易元素</a></h2>
+<ul>
+<li>
+<p>简易元素指那些只包含文本的元素。它不会包含任何其他的元素或属性。</p>
+</li>
+<li>
+<p>它可以是 XML Schema 定义中包括的类型中的一种（布尔、字符串、数据等等）</p>
+</li>
+</ul>
+<p>定义简易元素</p>
+<p>​	<code>&lt;xs:element name=&quot;xxx&quot; type=&quot;yyy&quot;/&gt;</code></p>
+<p>常见数据类型</p>
+<ul>
+<li>xs:string</li>
+<li>xs:decimal</li>
+<li>xs:integer</li>
+<li>xs:boolean</li>
+<li>xs:date</li>
+<li>xs:time</li>
+</ul>
+<p>简易元素的默认值和固定值</p>
+<p><code>&lt;xs:element name=&quot;color&quot; type=&quot;xs:string&quot; default=&quot;red&quot;/&gt;</code></p>
+<p><code>&lt;xs:element name=&quot;color&quot; type=&quot;xs:string&quot; fixed=&quot;red&quot;/&gt;</code></p>
+<h2 id="xsd属性"><a class="header" href="#xsd属性">XSD属性</a></h2>
+<p>定义属性</p>
+<p><code>&lt;xs:attribute name=&quot;xxx&quot; type=&quot;yyy&quot;/&gt;</code></p>
+<ul>
+<li>xs:string</li>
+<li>xs:decimal</li>
+<li>xs:integer</li>
+<li>xs:boolean</li>
+<li>xs:date</li>
+<li>xs:time</li>
+</ul>
+<p>默认值和固定值</p>
+<p><code>&lt;xs:attribute name=&quot;lang&quot; type=&quot;xs:string&quot; default=&quot;EN&quot;/&gt;</code></p>
+<p><code>&lt;xs:attribute name=&quot;lang&quot; type=&quot;xs:string&quot; fixed=&quot;EN&quot;/&gt;</code></p>
+<p>可选的和必需</p>
+<p>在默认的情况下，属性是可选的</p>
+<p><code>&lt;xs:attribute name=&quot;lang&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code></p>
+<h2 id="xsd限定"><a class="header" href="#xsd限定">XSD限定</a></h2>
+<h3 id="对值的限定"><a class="header" href="#对值的限定">对值的限定</a></h3>
+<p>限定 元素age 的值不能低于 0 或者高于 120</p>
+<pre><code>&lt;xs:element name=&quot;age&quot;&gt;
+ &lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&quot;xs:integer&quot;&gt;
+   &lt;xs:minInclusive value=&quot;0&quot;/&gt;
+   &lt;xs:maxInclusive value=&quot;120&quot;/&gt;
+  &lt;/xs:restriction&gt;
+ &lt;/xs:simpleType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<h3 id="对一组值的限定"><a class="header" href="#对一组值的限定">对一组值的限定</a></h3>
+<p>使用枚举约束（enumeration constraint）	</p>
+<pre><code>&lt;xs:element name=&quot;car&quot;&gt;
+  &lt;xs:simpleType&gt;
+    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+      &lt;xs:enumeration value=&quot;Audi&quot;/&gt;
+      &lt;xs:enumeration value=&quot;Golf&quot;/&gt;
+      &lt;xs:enumeration value=&quot;BMW&quot;/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<p>或者</p>
+<pre><code>&lt;xs:element name=&quot;car&quot; type=&quot;carType&quot;/&gt;
+
+&lt;xs:simpleType name=&quot;carType&quot;&gt;
+  &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+    &lt;xs:enumeration value=&quot;Audi&quot;/&gt;
+    &lt;xs:enumeration value=&quot;Golf&quot;/&gt;
+    &lt;xs:enumeration value=&quot;BMW&quot;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+</code></pre>
+<h3 id="对一系列值的限定"><a class="header" href="#对一系列值的限定">对一系列值的限定</a></h3>
+<p>使用模式约束（pattern constraint），符合正则表达式</p>
+<pre><code>&lt;xs:element name=&quot;letter&quot;&gt;
+  &lt;xs:simpleType&gt;
+    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+      &lt;xs:pattern value=&quot;[a-z]&quot;/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<h3 id="对空白字符的限定"><a class="header" href="#对空白字符的限定">对空白字符的限定</a></h3>
+<pre><code>&lt;xs:whiteSpace value=&quot;preserve&quot;/&gt;：保留空格
+&lt;xs:whiteSpace value=&quot;replace&quot;/&gt;：移除所有空格
+&lt;xs:whiteSpace value=&quot;collapse&quot;/&gt;：合并空格
+</code></pre>
+<h3 id="对长度的限定"><a class="header" href="#对长度的限定">对长度的限定</a></h3>
+<pre><code>&lt;xs:length value=&quot;8&quot;/&gt;：值的长度
+&lt;xs:minLength value=&quot;5&quot;/&gt;：最小值
+&lt;xs:maxLength value=&quot;8&quot;/&gt;：最大值
+</code></pre>
+<h3 id="数据类型限定表"><a class="header" href="#数据类型限定表">数据类型限定表</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">限定</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">enumeration</td><td style="text-align: left">定义可接受值的一个列表</td></tr>
+<tr><td style="text-align: left">fractionDigits</td><td style="text-align: left">定义所允许的最大的小数位数。必须大于等于0。</td></tr>
+<tr><td style="text-align: left">length</td><td style="text-align: left">定义所允许的字符或者列表项目的精确数目。必须大于或等于0。</td></tr>
+<tr><td style="text-align: left">maxExclusive</td><td style="text-align: left">定义数值的上限。所允许的值必须小于此值。</td></tr>
+<tr><td style="text-align: left">maxInclusive</td><td style="text-align: left">定义数值的上限。所允许的值必须小于或等于此值。</td></tr>
+<tr><td style="text-align: left">maxLength</td><td style="text-align: left">定义所允许的字符或者列表项目的最大数目。必须大于或等于0。</td></tr>
+<tr><td style="text-align: left">minExclusive</td><td style="text-align: left">定义数值的下限。所允许的值必需大于此值。</td></tr>
+<tr><td style="text-align: left">minInclusive</td><td style="text-align: left">定义数值的下限。所允许的值必需大于或等于此值。</td></tr>
+<tr><td style="text-align: left">minLength</td><td style="text-align: left">定义所允许的字符或者列表项目的最小数目。必须大于或等于0。</td></tr>
+<tr><td style="text-align: left">pattern</td><td style="text-align: left">定义可接受的字符的精确序列。</td></tr>
+<tr><td style="text-align: left">totalDigits</td><td style="text-align: left">定义所允许的阿拉伯数字的精确位数。必须大于0。</td></tr>
+<tr><td style="text-align: left">whiteSpace</td><td style="text-align: left">定义空白字符（换行、回车、空格以及制表符）的处理方式。</td></tr>
+</tbody></table>
+</div>
+<h2 id="xsd复合元素"><a class="header" href="#xsd复合元素">XSD复合元素</a></h2>
+<p>复合元素指包含其他元素及/或属性的 XML 元素。</p>
+<h3 id="四种类型的复合元素"><a class="header" href="#四种类型的复合元素">四种类型的复合元素</a></h3>
+<ul>
+<li>空元素</li>
+<li>包含其他元素的元素</li>
+<li>仅包含文本的元素</li>
+<li>包含元素和文本的元素</li>
+</ul>
+<h3 id="定义复合元素"><a class="header" href="#定义复合元素">定义复合元素</a></h3>
+<ul>
+<li>
+<p>直接对&quot;employee&quot;元素进行声明</p>
+<pre><code>&lt;xs:element name=&quot;employee&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+</li>
+<li>
+<p>&quot;employee&quot; 元素可以使用 type 属性，这个属性的作用是引用要使用的复合类型的名称</p>
+</li>
+</ul>
+<pre><code>&lt;xs:element name=&quot;employee&quot; type=&quot;personinfo&quot;/&gt;
+
+&lt;xs:complexType name=&quot;personinfo&quot;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+</code></pre>
+<ul>
+<li>
+<p>在已有的复合元素之上以某个复合元素为基础，然后添加一些元素</p>
+<pre><code>&lt;xs:element name=&quot;employee&quot; type=&quot;fullpersoninfo&quot;/&gt;
+
+&lt;xs:complexType name=&quot;personinfo&quot;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+
+&lt;xs:complexType name=&quot;fullpersoninfo&quot;&gt;
+  &lt;xs:complexContent&gt;
+    &lt;xs:extension base=&quot;personinfo&quot;&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name=&quot;address&quot; type=&quot;xs:string&quot;/&gt;
+        &lt;xs:element name=&quot;city&quot; type=&quot;xs:string&quot;/&gt;
+        &lt;xs:element name=&quot;country&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:extension&gt;
+  &lt;/xs:complexContent&gt;
+&lt;/xs:complexType&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="复合空元素"><a class="header" href="#复合空元素">复合空元素</a></h3>
+<p>一个空的 XML 元素：<code>&lt;product prodid=&quot;1345&quot; /&gt;</code></p>
+<pre><code>&lt;xs:element name=&quot;product&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:restriction base=&quot;xs:integer&quot;&gt;
+        &lt;xs:attribute name=&quot;prodid&quot; type=&quot;xs:positiveInteger&quot;/&gt;
+      &lt;/xs:restriction&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;product&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:attribute name=&quot;prodid&quot; type=&quot;xs:positiveInteger&quot;/&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;product&quot; type=&quot;prodtype&quot;/&gt;
+
+&lt;xs:complexType name=&quot;prodtype&quot;&gt;
+  &lt;xs:attribute name=&quot;prodid&quot; type=&quot;xs:positiveInteger&quot;/&gt;
+&lt;/xs:complexType&gt;
+</code></pre>
+<h3 id="复合类型仅包含元素"><a class="header" href="#复合类型仅包含元素">复合类型仅包含元素</a></h3>
+<pre><code>&lt;person&gt;
+ &lt;firstname&gt;John&lt;/firstname&gt;
+ &lt;lastname&gt;Smith&lt;/lastname&gt;
+&lt;/person&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;person&quot;&gt;
+ &lt;xs:complexType&gt;
+  &lt;xs:sequence&gt;
+   &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+   &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+  &lt;/xs:sequence&gt;
+ &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;person&quot; type=&quot;persontype&quot;/&gt;
+
+&lt;xs:complexType name=&quot;persontype&quot;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+</code></pre>
+<h3 id="仅含文本的复合元素"><a class="header" href="#仅含文本的复合元素">仅含文本的复合元素</a></h3>
+<pre><code>&lt;xs:element name=&quot;shoesize&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base=&quot;xs:integer&quot;&gt;
+        &lt;xs:attribute name=&quot;country&quot; type=&quot;xs:string&quot; /&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;shoesize&quot; type=&quot;shoetype&quot;/&gt;
+
+&lt;xs:complexType name=&quot;shoetype&quot;&gt;
+  &lt;xs:simpleContent&gt;
+    &lt;xs:extension base=&quot;xs:integer&quot;&gt;
+      &lt;xs:attribute name=&quot;country&quot; type=&quot;xs:string&quot; /&gt;
+    &lt;/xs:extension&gt;
+  &lt;/xs:simpleContent&gt;
+&lt;/xs:complexType&gt;
+</code></pre>
+<h3 id="带有混合内容的复合类型"><a class="header" href="#带有混合内容的复合类型">带有混合内容的复合类型</a></h3>
+<pre><code>&lt;letter&gt;
+  Dear Mr.&lt;name&gt;John Smith&lt;/name&gt;.
+  Your order &lt;orderid&gt;1032&lt;/orderid&gt;
+  will be shipped on &lt;shipdate&gt;2001-07-13&lt;/shipdate&gt;.
+&lt;/letter&gt;
+</code></pre>
+<pre><code>&lt;xs:element name=&quot;letter&quot;&gt;
+  &lt;xs:complexType mixed=&quot;true&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;name&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element name=&quot;orderid&quot; type=&quot;xs:positiveInteger&quot;/&gt;
+      &lt;xs:element name=&quot;shipdate&quot; type=&quot;xs:date&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+<h2 id="xsd-指示器"><a class="header" href="#xsd-指示器">XSD 指示器</a></h2>
+<p>有七种指示器：</p>
+<p>Order 指示器</p>
+<ul>
+<li>
+<p>All:规定子元素可以按照任意顺序出现</p>
+<pre><code>&lt;xs:element name=&quot;person&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:all&gt;
+      &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;/xs:all&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+</li>
+<li>
+<p>Choice：只可选一个</p>
+<pre><code>&lt;xs:element name=&quot;person&quot;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element name=&quot;employee&quot; type=&quot;employee&quot;/&gt;
+      &lt;xs:element name=&quot;member&quot; type=&quot;member&quot;/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+</li>
+<li>
+<p>Sequence:按顺序出现</p>
+<pre><code>&lt;xs:element name=&quot;person&quot;&gt;
+   &lt;xs:complexType&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;firstname&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element name=&quot;lastname&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</code></pre>
+</li>
+</ul>
+<p>Occurrence 指示器</p>
+<ul>
+<li>maxOccurs</li>
+<li>minOccurs</li>
+</ul>
+<p>Group 指示器</p>
+<ul>
+<li>Group name</li>
+<li>attributeGroup name</li>
+</ul>
+<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../8.学习/概率论与数理统计.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../9.数据格式/yaml.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../8.学习/概率论与数理统计.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../9.数据格式/yaml.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

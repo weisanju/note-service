@@ -1,0 +1,701 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>弹性设计 - 数据库</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">数据库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>oracle</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../oracle/Oracle小知识点.html">Oracle小知识点</a></li><li class="chapter-item "><a href="../../oracle/oracledocker快速搭建.html">oracledocker快速搭建</a></li><li class="chapter-item "><a href="../../oracle/oracle多表更新方法.html">oracle多表更新方法</a></li></ol></li><li class="chapter-item "><a href="../../MongoDB/index.html">MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../MongoDB/mongodb基本操作.html">mongodb基本操作</a></li><li class="chapter-item "><a href="../../MongoDB/mongodb高级语法.html">mongodb高级语法</a></li><li class="chapter-item "><a href="../../MongoDB/权限管理.html">权限管理</a></li></ol></li><li class="chapter-item "><div>mysql</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysqlfunction.html">mysqlfunction</a></li><li class="chapter-item "><a href="../../mysql/mysqlpdump.html">mysqlpdump</a></li><li class="chapter-item "><a href="../../mysql/mysqlzip安装.html">mysqlzip安装</a></li><li class="chapter-item "><a href="../../mysql/mysql公用表达式.html">mysql公用表达式</a></li><li class="chapter-item "><a href="../../mysql/mysql学习.html">mysql学习</a></li><li class="chapter-item "><a href="../../mysql/mysql执行计划.html">mysql执行计划</a></li><li class="chapter-item "><a href="../../mysql/空值处理函数.html">空值处理函数</a></li><li class="chapter-item "><div>mysql官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序.html">mysql程序</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/客户端.html">客户端</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/index.html">mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/使用mysql相关程序.html">使用mysql相关程序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../mysql/mysql日志/index.html">mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql日志/mysql日志及分类.html">mysql日志及分类</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/二进制日志.html">二进制日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/慢sql日志.html">慢sql日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/通用日志.html">通用日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/错误日志.html">错误日志</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../elasticSearch/index.html">elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/BackUpACluster.html">BackUpACluster</a></li><li class="chapter-item "><a href="../../elasticSearch/KQL.html">KQL</a></li><li class="chapter-item "><a href="../../elasticSearch/dataStream.html">dataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/es堆内存如何分配.html">es堆内存如何分配</a></li><li class="chapter-item "><a href="../../elasticSearch/scroll查询.html">scroll查询</a></li><li class="chapter-item "><a href="../../elasticSearch/乐观并发控制.html">乐观并发控制</a></li><li class="chapter-item "><a href="../../elasticSearch/分布式检索.html">分布式检索</a></li><li class="chapter-item "><a href="../../elasticSearch/分片内部原理.html">分片内部原理</a></li><li class="chapter-item "><a href="../../elasticSearch/分词.html">分词</a></li><li class="chapter-item "><a href="../../elasticSearch/慢日志.html">慢日志</a></li><li class="chapter-item "><a href="../../elasticSearch/搜索引擎中的概念杂项.html">搜索引擎中的概念杂项</a></li><li class="chapter-item "><a href="../../elasticSearch/数据分片.html">数据分片</a></li><li class="chapter-item "><a href="../../elasticSearch/映射.html">映射</a></li><li class="chapter-item "><a href="../../elasticSearch/杂项学习.html">杂项学习</a></li><li class="chapter-item "><a href="../../elasticSearch/索引和分片.html">索引和分片</a></li><li class="chapter-item "><a href="../../elasticSearch/索引管理.html">索引管理</a></li><li class="chapter-item "><a href="../../elasticSearch/评分标准与相关性.html">评分标准与相关性</a></li><li class="chapter-item "><a href="../../elasticSearch/集群内原理.html">集群内原理</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/index.html">1.IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/1.Analysis.html">Analysis</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/2.IndexShardAllocation.html">IndexShardAllocation</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/3.Indexblocks.html">Indexblocks</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/4.Mapper.html">Mapper</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/5.Merge.html">Merge</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/6.SimilarityModule.html">SimilarityModule</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/7.Slowlog.html">Slowlog</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/8.Store.html">Store</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/9.Translog.html">Translog</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/10.HistoryRetention.html">HistoryRetention</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/11.IndexSorting.html">IndexSorting</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/12.IndexPressure.html">IndexPressure</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/index.html">2.TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/index.html">1.Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html">AnatomyOfAnAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html">IndexAndSearchAnalysis</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html">Stemming</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html">TokenGraphs</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/index.html">2.ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html">AnalyzeAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html">TestAnAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html">ConfiguringBuilt-inAnalyzers</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html">CreateACustomAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html">SpecifyAnAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/index.html">3.Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html">StandardAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html">FingerprintAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html">KeywordAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html">LanguageAnalyzers</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html">PatternAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html">SimpleAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html">StopAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html">WhitespaceAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/index.html">4.TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html">Ng-gram</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html">Keyword</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html">SimplePattern</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html">SimplePatternSplitTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html">StandardTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html">CharacterGroupTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html">ClassicTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html">LetterTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html">LowercaseTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html">PathHierarchyTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html">UAXURLEmailTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html">WhitespaceTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html">PatternTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html">EdgeN-gramTokenizer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/index.html">5.TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html">ASCIIFoldingTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html">CJKBigramTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html">CJKWidthTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html">ClassicTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html">CommonGramsTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html">ConditionalTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html">DecimalDigitTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html">DelimitedPayloadTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html">DictionaryDecompounderFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html">EdgeN-gramTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html">ElisionFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html">FingerprintFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html">FlattenGraphTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html">20</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/index.html">6.CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html">HTMLStripCharacterFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html">MappingCharacterFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html">PatternReplaceCharacterFilter</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/7.Normalizers/index.html">7.Normalizers</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/index.html">3.Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/index.html">1.DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html">DynamicFieldMapping</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html">DynamicTemplates</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/2.ExplicitMapping/index.html">2.ExplicitMapping</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/index.html">3.RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html">MapARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html">DefineRuntimeFieldsInASearchRequest</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html">OverrideFieldValuesAtQueryTime</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html">RetrieveARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html">IndexARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html">ExploreYourDataWithRuntimeFields</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/index.html">4.FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html">AggregateMetric</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html">AliasFieldType</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html">Arrays</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html">Binary</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html">Boolean</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html">Date</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html">DateNanoseconds</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html">DenseVector</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html">Flattened</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html">GeoPoint</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html">Geo-shape</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html">Histogram</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html">IP</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html">Join</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html">KeywordType</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html">Object</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html">Nested</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html">Numberic</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html">Percolator</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html">Point</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html">Range</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html">RankFeature</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html">RankFeatures</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html">Search-as-you-type</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html">Shape</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html">Text</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html">TokenCount</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html">UnsignedLong</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html">Version</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/index.html">5.MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html">DocCount</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html">FiledNames</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html">Ignored</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/4.Id.html">Id</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/5.Index.html">Index</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html">Meta</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html">Routing</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/8.Source.html">Source</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html">Tier</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/index.html">6.MappingParameters</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html">Analyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/2.boost.html">boost</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html">coerce</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html">Copy_to</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html">DocValue</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html">dynamic</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html">eagerGlobalOrdinals</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html">enabled</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/9.format.html">format</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html">Ignore_above</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html">Ignore_malformed</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/12.index.html">index</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html">Index_options</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html">index_pharse</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html">index_prefixes</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/16.meta.html">meta</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html">multifileds</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html">normalizer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/19.norms.html">norms</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html">null_value</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html">position_increment_gap</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/22.properties.html">properties</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html">search_analyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html">similarity</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/25.store.html">store</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html">term_vector</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/7.MappingLimitSettings/index.html">7.MappingLimitSettings</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/8.RemovalOfMappingTypes/index.html">8.RemovalOfMappingTypes</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/index.html">4.IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html">SimulateMultiComponentTemplates</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/5.Aliases/index.html">5.Aliases</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/index.html">6.DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/1.setUpADataStream.html">setUpADataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/2.UseADataStream.html">UseADataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html">ChangeMappingsAndSettings</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/index.html">Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/DataTier.html">DataTier</a></li></ol></li><li class="chapter-item "><div>IngestPipeline</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/1.IngestPipelines.html">IngestPipelines</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/2.pipeLineExample.html">pipeLineExample</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/3.EnrichYourData.html">EnrichYourData</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html">ExampleEnrichYourDataBasedOnGeolocation</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/5.IngestProcessorReference.html">IngestProcessorReference</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/index.html">queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/1.QueryAndFilterContext.html">QueryAndFilterContext</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/2.CompoundQueries.html">CompoundQueries</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/SearchAfter.html">SearchAfter</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/index.html">FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html">IntervalsQuery</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html">MatchQuery</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/index.html">snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html">CleanUpSnapshotRepo</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CloneSnapshot.html">CloneSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html">CreateOrUpdateSnapshotAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateSnapshot.html">CreateSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapShot.html">DeleteSnapShot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html">DeleteSnapshotRepository</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/GetSnapshotAPI.html">GetSnapshotAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RegisterASnapshot.html">RegisterASnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RestoreSnapshot.html">RestoreSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SLM.html">SLM</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshots.html">SearchableSnapshots</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html">SearchableSnapshotsMountAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/repository-s3.html">repository-s3</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html">使用OSS备份恢复集群实战</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/安装/index.html">安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/安装/1.InstallingFromRpm.html">InstallingFromRpm</a></li><li class="chapter-item "><a href="../../elasticSearch/安装/2.InstallFromDeb.html">InstallFromDeb</a></li></ol></li><li class="chapter-item "><div>深入搜索</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/深入搜索/全文搜索.html">全文搜索</a></li><li class="chapter-item "><a href="../../elasticSearch/深入搜索/多字段搜索.html">多字段搜索</a></li><li class="chapter-item "><a href="../../elasticSearch/深入搜索/结构化搜索.html">结构化搜索</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/index.html">索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/1.索引级别的分片分配控制.html">索引级别的分片分配控制</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/2.节点离开延迟分配.html">节点离开延迟分配</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/3.索引恢复优先级.html">索引恢复优先级</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/4.每个节点的总分片.html">每个节点的总分片</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html">索引级别数据层分配过滤</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html">手动分配分片clusterRerouteAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/7.cluster-allocation-explain.html">cluster-allocation-explain</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/index.html">考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/考纲解读/1.ClusterManagement.html">ClusterManagement</a></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/2.DataManagement.html">DataManagement</a></li></ol></li><li class="chapter-item "><div>聚合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/聚合/RareTermsAggregation.html">RareTermsAggregation</a></li><li class="chapter-item "><a href="../../elasticSearch/聚合/Term.html">Term</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/配置/index.html">配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/配置/1.重要配置.html">重要配置</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/2.elasticsearch.yml核心配置.html">elasticsearch.yml核心配置</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/3.es系统参数修改.html">es系统参数修改</a></li></ol></li><li class="chapter-item "><div>集群</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/集群/Health.html">Health</a></li></ol></li><li class="chapter-item expanded "><div>高可用专题</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../elasticSearch/高可用专题/弹性设计.html" class="active">弹性设计</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/跨集群复制.html">跨集群复制</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/集群备份.html">集群备份</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">数据库</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="designing-for-resilience"><a class="header" href="#designing-for-resilience">Designing for resilience</a></h2>
+<ol>
+<li>像Elasticsearch这样的分布式系统被设计为：即使它们的某些组件发生故障也可以继续工作。</li>
+<li>只要有足够的连接良好的节点来接管其职责，如果Elasticsearch集群的某些节点不可用或断开连接，它就可以继续正常运行。</li>
+</ol>
+<p>弹性集群的大小是有限度的。所有的Elasticsearch集群都要求:</p>
+<ul>
+<li>One <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-discovery-quorums.html">elected master node</a> node：一个选举的主节点</li>
+<li>At least one node for each <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html">role</a>.  每个 role至少一个 节点</li>
+<li>At least one copy of every <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/scalability.html">shard</a>. 每个分片至少一个备份</li>
+</ul>
+<p>一个弹性的集群 需要 为每一个 必要的集群组件 提供冗余，这意味着一个弹性集群需要</p>
+<ul>
+<li>At least three master-eligible nodes：至少三个 有资格的 master</li>
+<li>At least two nodes of each role：每个 role至少两个节点</li>
+<li>At least two copies of each shard (one primary and one or more replicas, unless the index is a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/searchable-snapshots.html">searchable snapshot index</a>)</li>
+</ul>
+<ol>
+<li>弹性集群需要三个  可以当选主节点的节点。这样 一旦其中一个宕机，剩下的两个 任然可以组成大多数，可以成功获得选举</li>
+<li>同样的，每个role的 节点冗余 意味着某个节点宕机了，另一个节点可以顶替其职责</li>
+<li>最后每个分片至少 需要 两个 copy 。如果其中一个 copy失败了，另一个则顶上</li>
+<li>并且，es会自动 在剩余的节点 上 重新构建 副本分片，以确保 能及时恢复 集群的健康</li>
+<li>故障会暂时降低 集群的总容量，故障后，群集必须执行额外的后台活动以使其恢复健康。即使某些节点出现故障，您也应确保群集具有处理工作负载的能力。</li>
+</ol>
+<p>根据您的需求和预算，Elasticsearch集群可以由单个节点、数百个节点或两者之间的任意数量组成。在设计较小的集群时，通常应该专注于使其能够适应单节点故障。较大集群的设计者还必须考虑多个节点同时发生故障的情况。以下页面给出了构建各种规模的弹性集群的一些建议:</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/high-availability-cluster-small-clusters.html">Resilience in small clusters</a></li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/high-availability-cluster-design-large-clusters.html">Resilience in larger clusters</a></li>
+</ul>
+<h2 id="resilience-in-small-clusters"><a class="header" href="#resilience-in-small-clusters">Resilience in small clusters</a></h2>
+<p>在较小的集群中，最重要的是要对单节点故障具有弹性。本节提供了一些指导，以使您的群集对单个节点的故障具有尽可能的弹性。</p>
+<h3 id="one-node-clusters"><a class="header" href="#one-node-clusters">One-node clusters</a></h3>
+<ol>
+<li>如果您的集群由一个节点组成，则该单个节点必须执行所有操作。</li>
+<li>为了适应这一点，Elasticsearch默认为节点分配每个角色。</li>
+<li>单个节点群集没有弹性。如果节点出现故障，集群将停止工作</li>
+<li>默认情况下：对于一个 绿色的集群来说，至少需要一个 副本分片</li>
+<li>可以通过  设置 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/index-modules.html#dynamic-index-settings"><code>index.number_of_replicas</code></a> to <code>0</code> 来修改默认副本的数</li>
+<li>如果节点失败了，则唯一的办法是 从 快照中恢复</li>
+<li>由于它们无法抵御任何故障，因此我们不建议在生产中使用单节点群集。</li>
+</ol>
+<h3 id="two-node-clusters"><a class="header" href="#two-node-clusters">Two-node clusters</a></h3>
+<ol>
+<li>
+<p>如果是双节点，则两个节点最后都是 数据节点</p>
+</li>
+<li>
+<p>还要确保 每个 索引的副本数为1   <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/index-modules.html#dynamic-index-settings"><code>index.number_of_replicas</code></a> </p>
+</li>
+<li>
+<p>副本数可能会被  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/index-templates.html">index template</a>. <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/index-modules.html#dynamic-index-settings">Auto-expand replicas</a>（小集群不要使用）</p>
+</li>
+<li>
+<p>给其中一个节点 设置  <code>node.master: false</code>  ，这就意味着可以 清楚的知道 谁是主节点</p>
+</li>
+<li>
+<p>如果任一节点不可用，则选举将失败，因此您的群集无法可靠地容忍任一节点的丢失。</p>
+</li>
+<li>
+<p>默认情况下，每个节点都会被分配所有角色。我们建议您为两个节点分配除主资格之外的所有其他角色。如果一个节点发生故障，则另一个节点可以处理其任务。</p>
+</li>
+<li>
+<p>您可以使用弹性负载均衡器来平衡群集中节点之间的客户端请求。</p>
+</li>
+<li>
+<p>因为它对故障没有弹性，所以我们不建议在生产中部署两个节点的集群。</p>
+</li>
+</ol>
+<h3 id="two-node-clusters-with-a-tiebreaker"><a class="header" href="#two-node-clusters-with-a-tiebreaker">Two-node clusters with a tiebreaker</a></h3>
+<ol>
+<li>
+<p>由于主节点的选举是基于大多数的，因此上述双节点集群可以容忍其一个节点的丢失，而另一个节点则不能容忍丢失</p>
+</li>
+<li>
+<p>您不能将  两个节点的群集，配置成 可以容忍任何一个节点的丢失，因为这在理论上是不可能的。</p>
+</li>
+<li>
+<p>您可能会期望，如果任一节点出现故障，则Elasticsearch可以选择其余节点作为主节点，但是无法分辨</p>
+<ol>
+<li>节点的故障  或者</li>
+<li>节点之间仅失去连接 这两者 的区别。</li>
+<li>如果双方都能 进行独立的选举，这将可能导致脑裂 <a href="https://en.wikipedia.org/wiki/Split-brain_(computing)">split-brain problem</a> </li>
+</ol>
+</li>
+<li>
+<p>Elasticsearch  直到该节点可以确定它具有最新的群集状态并且群集中没有其他主节点 才会选举成主节点，这可能会导致集群中没有主节点 直到 连接恢复</p>
+</li>
+<li>
+<p>解决办法是 增加第三个节点 ，使得这三个节点都可以选举主节点</p>
+</li>
+<li>
+<p>A <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-discovery-quorums.html">master election</a> 需要2/3投票， 这意味着集群可以容忍任何单个节点的丢失</p>
+</li>
+<li>
+<p>在两个原始节点彼此断开连接的情况下，第三个节点充当决胜局</p>
+</li>
+<li>
+<p>您可以通过使此节点成为 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#voting-only-node">dedicated voting-only master-eligible node</a>, 也称为 dedicated tiebreaker.因为它没有其他角色，所以投票节点不需要很高的性能配置 它不会执行任何搜索，也不会协调任何客户端请求，并且不能被选为群集的主服务器。</p>
+</li>
+<li>
+<p>如果您的三个节点中有两个是仅具有投票资格的主节点，则当选的主节点必须是第三个节点。然后，此节点成为单点故障。</p>
+</li>
+<li>
+<p>我们建议 分配 非 dedicated tiebreaker 节点 分配所有其他角色。这确保群集中的任何任务都可以由任一节点处理来创建冗余。</p>
+</li>
+<li>
+<p>您不应该向专用的tiebreaker节点发送任何客户端请求，也不能只向 其中一个或者连个节点发送请求，理想情况是 在非 tiebreaker 节点中保持负载均衡</p>
+</li>
+</ol>
+<p>带有额外的tiebreaker节点的两节点群集是适合生产部署的最小可能群集。</p>
+<h3 id="three-node-clusters"><a class="header" href="#three-node-clusters">Three-node clusters</a></h3>
+<ol>
+<li>
+<p>如果你有三个节点，推荐 都设置为 数据节点 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#data-node">data nodes</a> ，每个索引 至少有一个 副本</p>
+</li>
+<li>
+<p>您可能希望某些索引具有两个副本，以便每个节点在这些索引中具有每个分片的副本</p>
+</li>
+<li>
+<p>三个节点都是可当选主节点的，默认如此</p>
+</li>
+</ol>
+<h3 id="clusters-with-more-than-three-nodes"><a class="header" href="#clusters-with-more-than-three-nodes">Clusters with more than three nodes</a></h3>
+<ol>
+<li>如果有超过三个节点以上的集群，可以考虑 根据不同的职责 将分配不同的角色，这可以按需 扩缩资源</li>
+<li>You can have as many <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#data-node">data nodes</a>, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/ingest.html">ingest nodes</a>, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#ml-node">machine learning nodes</a></li>
+<li>建议每个角色 都有一部分 专有的 节点，这使您可以独立地扩展每个任务的资源。</li>
+<li>但是，将群集中 可以当选主节点的数量限制为三个是很好的做法。因为 主节点不会 像其他节点一样 扩缩，因为 集群总是选举他们其中的一个当做主节点</li>
+<li>如果主节点数太多，导致选举时间耗费太长。</li>
+<li>推荐专用的主节点，不要往主节点上发请求。因为如果主节点因为 其他任务 过载 会导致集群变得不稳定</li>
+<li>也可以配置 其中一个 可当选主节点的节点 为 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#voting-only-node">voting-only node</a>  ，这样它就永远不能当选主节点，从而可以 担当 数据节点等其他节点功能，而它自己只是作为选举过程中的 tiebreaker</li>
+</ol>
+<h3 id="summary"><a class="header" href="#summary">Summary</a></h3>
+<p>The cluster will be resilient to the loss of any node as long as:</p>
+<ul>
+<li>The <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/cluster-health.html">cluster health status</a> is <code>green</code>.</li>
+<li>There are at least two data nodes. 至少有两个数据节点</li>
+<li>Every index that is not a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/searchable-snapshots.html">searchable snapshot index</a> has at least one replica of each shard, in addition to the primary. 分片至少有一个副本</li>
+<li>The cluster has at least three master-eligible nodes, as long as at least two of these nodes are not voting-only master-eligible nodes. 至少有三个可当选主节点的节点</li>
+<li>Clients are configured to send their requests to more than one node or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The <a href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs">Elastic Cloud</a> service provides such a load balancer. 客户端的负载均衡</li>
+</ul>
+<h2 id="resilience-in-larger-clusters"><a class="header" href="#resilience-in-larger-clusters">Resilience in larger clusters</a></h2>
+<ol>
+<li>节点共享一些公共基础设施 (例如电源或网络路由器) 并不罕见</li>
+<li>如果是这样，您应该为此基础架构的故障进行计划，并确保此类故障不会影响太多节点。</li>
+<li>通常的做法是将共享某些基础结构的所有节点分组为区域，并立即计划任何整个区域的故障。</li>
+<li>您集群的区域都应包含在单个数据中心内</li>
+<li>Elasticsearch期望其节点到节点的连接是可靠的，并且具有低延迟和高带宽。数据中心之间的连接通常不符合这些期望</li>
+<li>尽管Elasticsearch在不可靠或缓慢的网络上表现正确，但它不一定表现最佳</li>
+<li>群集从网络分区完全恢复可能需要相当长的时间，因为它必须重新同步任何丢失的数据，并在分区恢复后重新平衡群集。</li>
+<li>如果您希望您的数据在多个数据中心可用，请在每个数据中心部署一个单独的集群，并  使用  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-cross-cluster-search.html">cross-cluster search</a> or <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/xpack-ccr.html">cross-cluster replication</a>  将集群连接在一起</li>
+<li>即使群集到群集的连接比每个群集内的网络可靠性差或速度慢，这些功能也被设计为性能良好。</li>
+<li>在失去整个区域的节点之后，设计正确的群集可能会起作用，但运行时容量会大大降低。在处理此类故障时，您可能需要配置额外的节点以恢复群集中可接受的性能。</li>
+<li>为了抵御全区域故障，重要的是在多个区域中存在每个分片的副本，这可以通过将数据节点放置在多个区域中并配置分片分配意识( <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/allocation-awareness.html">shard allocation awareness</a>.)来实现。您还应确保将客户端请求发送到多个区域中的节点。</li>
+<li>您应该考虑所有节点角色，并确保每个角色在两个或多个区域中冗余地拆分。</li>
+<li>例如, 使用 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/ingest.html">ingest pipelines</a> 或 machine learning, 您应该在两个或多个区域中有多个 ingest 或 machine learning  节点。</li>
+<li>但是，主控合格节点的放置需要更多的注意，因为弹性集群需要三个主控合格节点中的至少两个才能起作用。以下各节将探讨跨多个区域放置主控合格节点的选项。</li>
+</ol>
+<h3 id="two-zone-clusters"><a class="header" href="#two-zone-clusters">Two-zone clusters</a></h3>
+<ol>
+<li>
+<p>如果您有两个区域，您应该在每个区域中有不同数量的主控合格节点，以便具有更多节点的区域将包含其中的大多数，并且能够在另一个区域的丢失中幸存下来。</p>
+</li>
+<li>
+<p>例如，如果您有三个主控合格的节点，那么您可以将它们全部放在一个区域中，或者可以将两个放在一个区域中，第三个放在另一个区域中。</p>
+</li>
+<li>
+<p>您不应该在每个区域中放置相等数量的符合主条件的节点，如果在每个区域中放置相同数量的主控合格节点，则两个区域都没有自己的大部分。因此，群集可能无法幸免于任何一个区域的丢失。</p>
+</li>
+</ol>
+<h3 id="two-zone-clusters-with-a-tiebreaker"><a class="header" href="#two-zone-clusters-with-a-tiebreaker">Two-zone clusters with a tiebreaker</a></h3>
+<ol>
+<li>
+<p>上述双区部署可以容忍其中一个区的丧失，但不能容忍另一个区的丧失，因为主选举是基于多数的</p>
+</li>
+<li>
+<p>您可能会想，如果任一区域失败，则Elasticsearch可以从其余区域中选择一个节点作为主节点，但是无法分辨出，远程区域的故障 和 区域之间仅仅失去连接这两者之间的区别。</p>
+</li>
+<li>
+<p>如果两个区域都独立运行 选举，那么 丧失连接 这可能会导致 <a href="https://en.wikipedia.org/wiki/Split-brain_(computing)">split-brain problem</a>  从而导致数据丢失</p>
+</li>
+<li>
+<p>Elasticsearch避免了这种情况，并通过不选择来自任一区域的节点作为主节点来保护您的数据，直到该节点可以确定它具有最新的群集状态并且群集中没有其他主节点。这可能意味着在恢复连接之前根本没有master。</p>
+</li>
+<li>
+<p>您可以通过在两个区域中的每个区域中放置一个主控合格的节点，并在独立的第三区域中添加一个额外的主控合格的节点 来解决此问题。</p>
+</li>
+<li>
+<p>在两个原始区域彼此断开连接的情况下，额外的主控合格节点 充当tiebreaker ， The extra tiebreaker node should be a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/modules-node.html#voting-only-node">dedicated voting-only master-eligible node</a>, </p>
+</li>
+<li>
+<p>您应该使用  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/allocation-awareness.html">shard allocation awareness</a>  来确保每个区域中都有每个分片的副本。这意味着如果另一个区域出现故障，则任何一个区域都保持完全可用。</p>
+</li>
+<li>
+<p>所有主控合格节点 (包括仅投票节点) 都在发布群集状态更新的关键路径上。因此，这些节点需要<strong>合理快速的持久性存储</strong>以及与<strong>群集其他节点的可靠，低延迟的网络连接</strong>。如果在第三个独立区域中添加了tiebreaker节点，则必须确保它具有足够的资源并且与群集的其余部分具有良好的连接性。</p>
+</li>
+</ol>
+<h3 id="clusters-with-three-or-more-zones"><a class="header" href="#clusters-with-three-or-more-zones">Clusters with three or more zones</a></h3>
+<ol>
+<li>如果您有三个区域，那么每个区域中应该有一个主控合格节点</li>
+<li>如果您有三个以上的区域，则应选择三个区域，并在这三个区域中的每个区域中放置一个符合主条件的节点。</li>
+<li>这将意味着即使其中一个区域失败，群集仍然可以选择主服务器。</li>
+<li>与往常一样，您的索引应该至少有一个副本，以防节点出现故障</li>
+<li>使用  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/allocation-awareness.html">shard allocation awareness</a>  来限制 每个分片在 每个 区域的 副本分片数</li>
+<li>例如，如果您有一个配置了一个或两个副本的索引，则 allocation awareness 将确保碎片的副本与主副本位于不同的区域中</li>
+<li>这意味着如果一个区域失败，每个分片的副本仍然可用。这种碎片的可用性不会受到这种故障的影响。</li>
+</ol>
+<h3 id="summary-1"><a class="header" href="#summary-1">Summary</a></h3>
+<p>The cluster will be resilient to the loss of any zone as long as:</p>
+<ul>
+<li>The <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/cluster-health.html">cluster health status</a> is <code>green</code>. 集群状态为绿色</li>
+<li>There are at least two zones containing data nodes. 至少两个包含数据节点的区域</li>
+<li>Every index that is not a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/searchable-snapshots.html">searchable snapshot index</a> has at least one replica of each shard, in addition to the primary.：每个主分片 有 额外的副本 分片</li>
+<li>Shard allocation awareness is configured to avoid concentrating all copies of a shard within a single zone. Shard allocation awareness 避免将 所有副本集中在 单个区域 </li>
+<li>The cluster has at least three master-eligible nodes. At least two of these nodes are not voting-only master-eligible nodes, and they are spread evenly across at least three zones.</li>
+<li>Clients are configured to send their requests to nodes in more than one zone or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The <a href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs">Elastic Cloud</a> service provides such a load balancer.</li>
+</ul>
+<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/db/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../elasticSearch/集群/Health.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../elasticSearch/高可用专题/跨集群复制.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../elasticSearch/集群/Health.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../elasticSearch/高可用专题/跨集群复制.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

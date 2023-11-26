@@ -1,0 +1,922 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Git库管理 - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item "><a href="../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-compose.html">docker-compose</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item "><a href="../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.消息队列_RocketMQ/MQ消息的投递机制.html">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item "><a href="../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item "><a href="../8.缓存中间件_Redis/redis数据结构/基本数据结构.html">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item expanded "><a href="../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item expanded "><a href="../9.源码管理_GIT/Git库管理.html" class="active">Git库管理</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/GIT协作/远程版本库.html">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="git库管理"><a class="header" href="#git库管理">Git库管理</a></h1>
+<p>版本库管理？那不是管理员要干的事情么，怎么放在“Git独奏”这一部分了？</p>
+<p>没有错，这是因为对于Git，每个用户都是自己版本库的管理员，所以在“Git独奏”的最后一章，来谈一谈Git版本库管理的问题</p>
+<p>如果下面的问题您没有遇到或者不感兴趣，读者大可以放心的跳过这一章。</p>
+<ul>
+<li>从网上克隆来的版本库，为什么对象库中找不到对象文件？而且引用目录里也看不到所有的引用文件？</li>
+<li>不小心添加了一个大文件到Git库中，用重置命令丢弃了包含大文件的提交，可是版本库不见小，大文件仍在对象库中。</li>
+<li>本地版本库的对象库里文件越来越多，这可能导致Git性能的降低。</li>
+</ul>
+<h2 id="对象和引用哪里去了"><a class="header" href="#对象和引用哪里去了">对象和引用哪里去了</a></h2>
+<pre><code>git clone git://github.com/ossxp-com/gitdemo-commit-tree.git i-am-admin
+</code></pre>
+<p>进入克隆的版本库，使用<strong>git show-ref</strong>命令看看所含的引用。</p>
+<pre><code>$ cd /path/to/my/workspace/i-am-admin
+$ git show-ref
+6652a0dce6a5067732c00ef0a220810a7230655e refs/heads/master
+6652a0dce6a5067732c00ef0a220810a7230655e refs/remotes/origin/HEAD
+6652a0dce6a5067732c00ef0a220810a7230655e refs/remotes/origin/master
+c9b03a208288aebdbfe8d84aeb984952a16da3f2 refs/tags/A
+1a87782f8853c6e11aacba463af04b4fa8565713 refs/tags/B
+9f8b51bc7dd98f7501ade526dd78c55ee4abb75f refs/tags/C
+887113dc095238a0f4661400d33ea570e5edc37c refs/tags/D
+6decd0ad3201ddb3f5b37c201387511059ac120c refs/tags/E
+70cab20f099e0af3f870956a3fbbbda50a17864f refs/tags/F
+96793e37c7f1c7b2ddf69b4c1e252763c11a711f refs/tags/G
+476e74549047e2c5fbd616287a499cc6f07ebde0 refs/tags/H
+76945a15543c49735634d58169b349301d65524d refs/tags/I
+f199c10c3f1a54fa3f9542902b25b49d58efb35b refs/tags/J
+</code></pre>
+<p>其中以<code>refs/heads/</code>开头的是分支；以<code>refs/remotes/</code>开头的是远程版本库分支在本地的映射，会在后面章节介绍；以<code>refs/tags/</code>开头的是里程碑。按照之前的经验，在<code>.git/refs</code>目录下应该有这些引用所对应的文件才是。看看都在么？</p>
+<pre><code>$ find .git/refs/ -type f
+.git/refs/remotes/origin/HEAD
+.git/refs/heads/master
+</code></pre>
+<p>为什么才有两个文件？实际上当运行下面的命令后，引用目录下的文件会更少：</p>
+<pre><code>$ git pack-refs --all
+$ find .git/refs/ -type f
+.git/refs/remotes/origin/HEAD
+</code></pre>
+<pre><code>$ find .git/objects/ -type f
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.idx
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.pack
+</code></pre>
+<p>对象库中只有两个文件，本应该一个一个独立保存的对象都不见了。读者应该能够猜到，所有的对象文件都被打包到这两个文件中了，其中以<code>.pack</code>结尾的文件是打包文件，以<code>.idx</code>结尾的是索引文件。打包文件和对应的索引文件只是扩展名不同，都保存于<code>.git/objects/pack/</code>目录下。Git对于以SHA1哈希值作为目录名和文件名保存的对象有一个术语，称为松散对象。</p>
+<p>松散对象打包后会提高访问效率，而且不同的对象可以通过增量存储节省磁盘空间。</p>
+<p>可以通过Git一个底层命令可以查看索引中包含的对象：</p>
+<pre><code>$ git show-index &lt; .git/objects/pack/pack-*.idx | head -5
+661 0cd7f2ea245d90d414e502467ac749f36aa32cc4 (0793420b)
+63020 1026d9416d6fc8d34e1edfb2bc58adb8aa5a6763 (ed77ff72)
+3936 15328fc6961390b4b10895f39bb042021edd07ea (13fb79ef)
+3768 1a588ca36e25f58fbeae421c36d2c39e38e991ef (86e3b0bd)
+2022 1a87782f8853c6e11aacba463af04b4fa8565713 (e269ed74)
+</code></pre>
+<p>为什么克隆远程版本库就可以产生对象库打包以及引用打包的效果呢？</p>
+<p>这是因为克隆远程版本库时，使用了“智能”的通讯协议，远程Git服务器将对象打包后传输给本地，形成本地版本库的对象库中的一个包含所有对象的包以及索引文件</p>
+<p>无疑这样的传输方式——按需传输、打包传输，效率最高。</p>
+<p>克隆之后的版本库在日常的提交中，产生的新的对象仍旧以松散对象存在，而不是以打包的形式，日积月累会在本地版本库的对象库中形成大量的松散文件</p>
+<p>松散对象只是进行了压缩，而没有（打包文件才有的）增量存储的功能，会浪费磁盘空间，也会降低访问效率</p>
+<p>更为严重的是一些非正式的临时对象（暂存区操作中产生的临时对象）也以松散对象的形式保存在对象库中，造成磁盘空间的浪费。下一节就着手处理临时对象的问题。</p>
+<h2 id="暂存区操作引入的临时对象"><a class="header" href="#暂存区操作引入的临时对象">暂存区操作引入的临时对象</a></h2>
+<p>暂存区操作有可能在对象库中产生临时对象，例如文件反复的修改和反复的向暂存区添加，或者添加到暂存区后不提交甚至直接撤销，就会产生垃圾数据占用磁盘空间</p>
+<p>然后将工作区中两个内容完全一样的大文件加入暂存区。</p>
+<pre><code>$ git add bigfile bigfile.dup
+</code></pre>
+<p>查看一下磁盘空间占用：</p>
+<ul>
+<li>
+<p>工作区连同版本库共占用33MB。</p>
+<pre><code>$ du -sh .
+33M     .
+</code></pre>
+</li>
+<li>
+<p>其中版本库只占用了11MB。版本库空间占用是工作区的一半。</p>
+<p>如果再有谁说版本库空间占用一定比工作区大，可以用这个例子回击他。</p>
+<pre><code>$ du -sh .git/
+11M     .git/
+</code></pre>
+</li>
+</ul>
+<p>看看版本库中对象库内的文件，会发现多出了一个松散对象。之所以添加两个文件而只有一个松散对象，是因为Git对于文件的保存是将内容保存为blob对象中，和文件名无关，相同内容的不同文件会共享同一个blob对象。</p>
+<pre><code>$ find .git/objects/ -type f
+.git/objects/2e/bcd92d0dda2bad50c775dc662c6cb700477aff
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.idx
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.pack
+</code></pre>
+<p>如果不想提交，想将文件撤出暂存区，则进行如下操作。</p>
+<ul>
+<li>
+<p>当前暂存区的状态。</p>
+<pre><code>$ git status -s
+A  bigfile
+A  bigfile.dup
+</code></pre>
+</li>
+<li>
+<p>将添加的文件撤出暂存区。</p>
+<pre><code>$ git reset HEAD
+</code></pre>
+</li>
+<li>
+<p>通过查看状态，看到文件被撤出暂存区了。</p>
+<pre><code>$ git status -s
+?? bigfile
+?? bigfile.dup
+</code></pre>
+</li>
+</ul>
+<p>文件撤出暂存区后，在对象库中产生的blob松散对象仍然存在，通过查看版本库的磁盘占用就可以看出来。</p>
+<pre><code>$ du -sh .git/
+11M     .git/
+</code></pre>
+<p>Git提供了<strong>git fsck</strong>命令，可以查看到版本库中包含的没有被任何引用关联松散对象</p>
+<pre><code>$ git fsck
+dangling blob 2ebcd92d0dda2bad50c775dc662c6cb700477aff
+</code></pre>
+<p>标识为dangling的对象就是没有被任何引用直接或者间接关联到的对象。这个对象就是前面通过暂存区操作引入的大文件的内容。如何将这个文件从版本库中彻底删除呢？Git提供了一个清理的命令：</p>
+<pre><code>$ git prune
+</code></pre>
+<p>用<strong>git prune</strong>清理之后，会发现：</p>
+<ul>
+<li>
+<p>用<strong>git fsck</strong>查看，没有未被关联到的松散对象。</p>
+<pre><code>$ git fsck
+</code></pre>
+</li>
+<li>
+<p>版本库的空间占用也小了10MB，证明大的临时对象文件已经从版本库中删除了。</p>
+<pre><code>$ du -sh .git/
+236K    .git/
+</code></pre>
+</li>
+</ul>
+<h2 id="重置提交引入的对象"><a class="header" href="#重置提交引入的对象">重置提交引入的对象</a></h2>
+<p>上一节用<strong>git prune</strong>命令清除暂存区操作时引入的临时对象，但是如果是用重置命令抛弃的提交和文件就不会轻易的被清除。</p>
+<p>将这两个大文件提交到版本库中。</p>
+<ul>
+<li>
+<p>添加到暂存区。</p>
+<pre><code>$ git add bigfile bigfile.dup
+</code></pre>
+</li>
+<li>
+<p>提交到版本库。</p>
+<pre><code>$ git commit -m &quot;add bigfiles.&quot;
+[master 51519c7] add bigfiles.
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bigfile
+ create mode 100644 bigfile.dup
+</code></pre>
+</li>
+<li>
+<p>查看版本库的空间占用。</p>
+<pre><code>$ du -sh .git/
+11M     .git/
+</code></pre>
+</li>
+</ul>
+<p>做一个重置操作，抛弃刚刚针对两个大文件做的提交。</p>
+<pre><code>$ git reset --hard HEAD^
+</code></pre>
+<p>重置之后，看看版本库的变化。</p>
+<ul>
+<li>
+<p>版本库的空间占用没有变化，还是那么“庞大”。</p>
+<pre><code>$ du -sh .git/
+11M     .git/
+</code></pre>
+</li>
+<li>
+<p>查看对象库，看到三个松散对象。</p>
+<pre><code>$ find .git/objects/ -type f
+.git/objects/info/packs
+.git/objects/2e/bcd92d0dda2bad50c775dc662c6cb700477aff
+.git/objects/d9/38dee8fde4e5053b12406c66a19183a24238e1
+.git/objects/51/519c7d8d60e0f958e135e8b989a78e84122591
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.idx
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.pack
+</code></pre>
+</li>
+<li>
+<p>这三个松散对象分别对应于撤销的提交，目录树，以及大文件对应的blob对象。</p>
+<pre><code>$ git cat-file -t 51519c7
+commit
+$ git cat-file -t d938dee
+tree
+$ git cat-file -t 2ebcd92
+blob
+</code></pre>
+</li>
+</ul>
+<p>向上一节一样，执行<strong>git prune</strong>命令，期待版本库空间占用会变小。可是：</p>
+<ul>
+<li>
+<p>版本库空间占用没有变化！</p>
+<pre><code>$ git prune
+$ du -sh .git/
+11M     .git/
+</code></pre>
+</li>
+<li>
+<p>执行<strong>git fsck</strong>也看不到未被关联到的对象。</p>
+<pre><code>$ git fsck
+</code></pre>
+</li>
+<li>
+<p>除非像下面这样执行。</p>
+<pre><code>$ git fsck --no-reflogs
+dangling commit 51519c7d8d60e0f958e135e8b989a78e84122591
+</code></pre>
+</li>
+</ul>
+<p>还记得前面章节中介绍的reflog么？reflog是防止误操作的最后一道闸门。</p>
+<pre><code>$ git reflog
+6652a0d HEAD@{0}: HEAD^: updating HEAD
+51519c7 HEAD@{1}: commit: add bigfiles.
+</code></pre>
+<p>可以看到撤销的操作仍然记录在reflog中，正因如此Git认为撤销的提交和大文件都还被可以被追踪到，还在使用着，所以无法用<strong>git prune</strong>命令删除。</p>
+<p>如果确认真的要丢弃不想要的对象，需要对版本库的reflog做过期操作，相当于将<code>.git/logs/</code>下的文件清空。</p>
+<ul>
+<li>
+<p>使用下面的reflog过期命令做不到让刚刚撤销的提交过期，因为reflog的过期操作缺省只会让90天前的数据过期。</p>
+</li>
+<li>
+<pre><code>$ git reflog expire --all
+$ git reflog
+6652a0d HEAD@{0}: HEAD^: updating HEAD
+51519c7 HEAD@{1}: commit: add bigfiles.
+</code></pre>
+</li>
+</ul>
+<p>需要要为<strong>git reflog</strong>命令提供<code>--expire=&lt;date&gt;</code>参数，强制<code>&lt;date&gt;</code>之前的记录全部过期。</p>
+<pre><code>$ git reflog expire --expire=now --all
+$ git reflog
+</code></pre>
+<p>使用<code>now</code>作为时间参数，让 reflog 的全部记录都过期</p>
+<p>没有了 reflog，即回滚的添加大文件的提交从 reflog 中看不到后</p>
+<p>该提交对应的 commit 对象、tree 对象和 blob 对象就会成为未被关联的 dangling 对象</p>
+<p>可以用<strong>git prune</strong>命令清理</p>
+<h2 id="git管家git-gc"><a class="header" href="#git管家git-gc">Git管家：<code>git gc</code></a></h2>
+<p>实际操作中会很少用到<strong>git prune</strong>命令来清理版本库，而是会使用一个更为常用的命令<strong>git gc</strong></p>
+<p>命令<strong>git gc</strong>就好比Git版本库的管家，会对版本库进行一系列的优化动作。</p>
+<ul>
+<li>
+<p>对分散在<code>.git/refs</code>下的文件进行打包，打包到文件<code>.git/packed-refs</code>中</p>
+<p>如果没有将配置<code>gc.packrefs</code>关闭，就会执行命令：<strong>git pack-refs –all –prune</strong>实现对引用的打包。</p>
+</li>
+<li>
+<p>丢弃90天前的reflog记录。</p>
+<p>会运行使reflog过期命令：<strong>git reflog expire –all</strong>。因为采用了缺省参数调用，因此只会清空reflog中90天前的记录。</p>
+</li>
+<li>
+<p>对松散对象进行打包。</p>
+<ul>
+<li>运行<strong>git repack</strong>命令，凡是有引用关联的对象都被打在包里，未被关联的对象仍旧以松散对象形式保存。</li>
+</ul>
+</li>
+<li>
+<p>清除未被关联的对象。缺省只清除2周以前的未被关联的对象。</p>
+<ul>
+<li>可以向<strong>git gc</strong>提供<code>--prune=&lt;date&gt;</code>参数，其中的时间参数传递给<strong>git prune –expire <date></strong>，实现对指定日期之前的未被关联的松散对象进行清理。</li>
+</ul>
+</li>
+<li>
+<p>其他清理</p>
+<ul>
+<li>如运行<strong>git rerere gc</strong>对合并冲突的历史记录进行过期操作。</li>
+</ul>
+</li>
+<li>
+<p>例如像暂存区操作引入的没有关联的临时对象会最少保留2个星期，而因为重置而丢弃的提交和文件则会保留最少3个月。</p>
+</li>
+</ul>
+<p>复制两个大文件到工作区。</p>
+<pre><code>$ cp /tmp/bigfile bigfile
+$ cp /tmp/bigfile bigfile.dup
+</code></pre>
+<p>在文件<code>bigfile.dup</code>后面追加些内容，造成<code>bigfile</code>和<code>bigfile.dup</code>内容不同。</p>
+<pre><code>$ echo &quot;hello world&quot; &gt;&gt; bigfile.dup
+</code></pre>
+<p>将这两个稍有不同的文件提交到版本库。</p>
+<pre><code>$ git add bigfile bigfile.dup
+$ git commit -m &quot;add bigfiles.&quot;
+[master c62fa4d] add bigfiles.
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bigfile
+ create mode 100644 bigfile.dup
+</code></pre>
+<p>可以看到版本库中提交进来的两个不同的大文件是不同的对象。</p>
+<pre><code>$ git ls-tree HEAD | grep bigfile
+100644 blob 2ebcd92d0dda2bad50c775dc662c6cb700477aff    bigfile
+100644 blob 9e35f946a30c11c47ba1df351ca22866bc351e7b    bigfile.dup
+</code></pre>
+<p>做版本库重置，抛弃最新的提交，即抛弃添加两个大文件的提交。</p>
+<pre><code>$ git reset --hard HEAD^
+HEAD is now at 6652a0d Add Images for git treeview.
+</code></pre>
+<p>此时的版本库有多大呢，还是像之前添加两个相同的大文件时占用11MB空间么？</p>
+<pre><code>$ du -sh .git/
+22M     .git/
+</code></pre>
+<p>版本库空间占用居然扩大了一倍！这显然是因为两个大文件分开存储造成的。可以用下面的命令在对象库中查看对象的大小。</p>
+<pre><code>$ find .git/objects -type f -printf &quot;%-20p\t%s\n&quot;
+.git/objects/0c/844d2a072fd69e71638558216b69ebc57ddb64  233
+.git/objects/2e/bcd92d0dda2bad50c775dc662c6cb700477aff  11184682
+.git/objects/9e/35f946a30c11c47ba1df351ca22866bc351e7b  11184694
+.git/objects/c6/2fa4d6cb4c082fadfa45920b5149a23fd7272e  162
+.git/objects/info/packs 54
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.idx   2892
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.pack  80015
+</code></pre>
+<p>输出的每一行用空白分隔，前面是文件名，后面是以字节为单位的文件大小。从上面的输出可以看出来，打包文件很小，但是有两个大的文件各自占用了11MB左右的空间。</p>
+<p>执行<strong>git gc</strong>并不会删除任何对象，因为这些对象都还没有过期。但是会发现版本库的占用变小了。</p>
+<ul>
+<li>
+<p>执行<strong>git gc</strong>对版本库进行整理。</p>
+<pre><code>$ git gc
+Counting objects: 69, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (69/69), done.
+Total 69 (delta 11), reused 63 (delta 8)
+</code></pre>
+</li>
+<li>
+<p>版本库空间占用小了一半！</p>
+<pre><code>$ du -sh .git/
+11M     .git/
+</code></pre>
+</li>
+<li>
+<p>原来是因为对象库重新打包，两个大文件采用了增量存储使得版本库变小。</p>
+<pre><code>$ find .git/objects -type f -printf &quot;%-20p\t%s\n&quot; | sort
+.git/objects/info/packs 54
+.git/objects/pack/pack-7cae010c1b064406cd6c16d5a6ab2f446de4076c.idx 3004
+.git/objects/pack/pack-7cae010c1b064406cd6c16d5a6ab2f446de4076c.pack 11263033
+</code></pre>
+</li>
+</ul>
+<p>如果想将抛弃的历史数据彻底丢弃，如下操作。</p>
+<ul>
+<li>
+<p>不再保留90天的reflog，而是将所有reflog全部即时过期。</p>
+<pre><code>$ git reflog expire --expire=now --all
+</code></pre>
+</li>
+<li>
+<p>通过<strong>git fsck</strong>可以看到有提交成为了未被关联的提交。</p>
+<pre><code>$ git fsck
+dangling commit c62fa4d6cb4c082fadfa45920b5149a23fd7272e
+</code></pre>
+</li>
+<li>
+<p>这个未被关联的提交就是删除大文件的提交。</p>
+<pre><code>$ git show c62fa4d6cb4c082fadfa45920b5149a23fd7272e
+commit c62fa4d6cb4c082fadfa45920b5149a23fd7272e
+Author: Jiang Xin &lt;jiangxin@ossxp.com&gt;
+Date:   Thu Dec 16 20:18:38 2010 +0800
+
+    add bigfiles.
+
+diff --git a/bigfile b/bigfile
+new file mode 100644
+index 0000000..2ebcd92
+Binary files /dev/null and b/bigfile differ
+diff --git a/bigfile.dup b/bigfile.dup
+new file mode 100644
+index 0000000..9e35f94
+Binary files /dev/null and b/bigfile.dup differ
+</code></pre>
+</li>
+<li>
+<p>不带参数调用<strong>git gc</strong>虽然不会清除尚未过期（未到2周）的大文件，但是会将未被关联的对象从打包文件中移出，成为松散文件。</p>
+<pre><code>$ git gc
+Counting objects: 65, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (45/45), done.
+Writing objects: 100% (65/65), done.
+Total 65 (delta 8), reused 63 (delta 8)
+</code></pre>
+</li>
+<li>
+<p>未被关联的对象重新成为松散文件，所以<code>.git</code>版本库的空间占用又反弹了。</p>
+<pre><code>$ du -sh .git/
+22M     .git/
+$ find .git/objects -type f -printf &quot;%-20p\t%s\n&quot; | sort
+.git/objects/0c/844d2a072fd69e71638558216b69ebc57ddb64  233
+.git/objects/2e/bcd92d0dda2bad50c775dc662c6cb700477aff  11184682
+.git/objects/9e/35f946a30c11c47ba1df351ca22866bc351e7b  11184694
+.git/objects/c6/2fa4d6cb4c082fadfa45920b5149a23fd7272e  162
+.git/objects/info/packs 54
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.idx 2892
+.git/objects/pack/pack-969329578b95057b7ea1208379a22c250c3b992a.pack 80015
+</code></pre>
+</li>
+<li>
+<p>实际上如果使用立即过期参数<code>--prune=now</code>调用<strong>git gc</strong>，就不用再等2周了，直接就可以完成对未关联的对象的清理。</p>
+<pre><code>$ git gc --prune=now
+Counting objects: 65, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (45/45), done.
+Writing objects: 100% (65/65), done.
+Total 65 (delta 8), reused 65 (delta 8)
+</code></pre>
+</li>
+<li>
+<p>清理过后，版本库的空间占用降了下来。</p>
+<pre><code>$ du -sh .git/
+240K    .git/
+</code></pre>
+</li>
+</ul>
+<h2 id="git管家的自动执行"><a class="header" href="#git管家的自动执行">Git管家的自动执行</a></h2>
+<p>实际上对于1.6.6及以后版本的Git已经基本上不需要手动执行<strong>git gc</strong>命令了，因为部分Git命令会自动调用<strong>git gc –auto</strong>命令，在版本库确实需要整理的情况下自动开始整理操作。</p>
+<p>目前有如下Git命令会自动执行<strong>git gc –auto</strong>命令，实现对版本库的按需整理。</p>
+<ul>
+<li>执行命令<strong>git merge</strong>进行合并操作后，对版本库进行按需整理。</li>
+<li>执行命令<strong>git receive-pack</strong>，即版本库接收其他版本库推送（push）的提交后，版本库会做按需整理操作。
+<ul>
+<li>当版本库接收到其他版本库的推送（push）请求时，会调用<strong>git receive-pack</strong>命令以接收请求。在接收到推送的提交后，对版本库进行按需整理。</li>
+</ul>
+</li>
+<li>执行命令<strong>git rebase -i</strong>进行交互式变基操作后，会对版本库进行按需整理。</li>
+<li>执行命令<strong>git am</strong>对mbox邮箱中通过邮件提交的补丁在版本库中进行应用的操作后，会对版本库做按需整理操作。</li>
+</ul>
+<p>对于提供共享式“写操作”的Git版本库，可以免维护</p>
+<p>所谓的共享式写操作，就是版本库作为一个裸版本库放在服务器上，团队成员可以通过推送（push）操作将提交推送到共享的裸版本中。</p>
+<p>每一次推送操作都会触发<strong>git gc –auto</strong>命令，对版本库进行按需整理</p>
+<p>对于非独立工作的本地工作区，也可以免维护</p>
+<p>因为和他人协同工作的本地工作区会经常执行<strong>git pull</strong>操作从他人版本库或者从共享的版本库拉回新提交，执行<strong>git pull</strong>操作会，会触发<strong>git merge</strong>操作，因此也会对本地版本库进行按需整理。</p>
+<p>Git管家命令使用<code>--auto</code>参数调用，会进行按需整理。</p>
+<p>因为版本库整理操作对于大的项目可能会非常费时，因此实际的整理并不会经常被触发，即有着非常苛刻的触发条件。想要观察到触发版本库整理操作是非常不容易的事情。</p>
+<p>主要的触发条件是：</p>
+<p><strong>松散对象只有超过一定的数量时才会执行</strong></p>
+<p>而且在统计松散对象数量时，为了降低在<code>.git/objects/</code>目录下搜索松散对象对系统造成的负担，实际采取了取样搜索，即只会对对象库下一个子目录<code>.git/objects/17</code>进行文件搜索。在缺省的配置下，只有该目录中对象数目超过27个，才会触发版本库的整理。</p>
+<p>至于为什么只在对象库下选择了一个子目录进行松散对象的搜索，这是因为SHA1哈希值是完全随机的，</p>
+<p>文件在由前两位哈希值组成的目录中差不多是平均分布的。至于为什么选择<code>17</code>，不知道对于作者Junio C Hamano有什么特殊意义，也许是向Linus Torvalds被评选为二十世纪最有影响力的100人中排名第17位而进行致敬。</p>
+<p>可以通过配置<strong>gc.auto</strong>的值，调整Git管家自动运行时触发版本库整理操作的频率，但是注意不要将<strong>gc.auto</strong>设置为0，否则<strong>git gc –auto</strong>命令永远不会触发版本库的整理。</p>
+<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="源码管理"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../9.源码管理_GIT/GIT回滚.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../9.源码管理_GIT/gitflow.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../9.源码管理_GIT/GIT回滚.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../9.源码管理_GIT/gitflow.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

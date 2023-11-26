@@ -1,0 +1,825 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Geo-shape - 数据库</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../index.html">数据库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>oracle</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../oracle/Oracle小知识点.html">Oracle小知识点</a></li><li class="chapter-item "><a href="../../../oracle/oracledocker快速搭建.html">oracledocker快速搭建</a></li><li class="chapter-item "><a href="../../../oracle/oracle多表更新方法.html">oracle多表更新方法</a></li></ol></li><li class="chapter-item "><a href="../../../MongoDB/index.html">MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../MongoDB/mongodb基本操作.html">mongodb基本操作</a></li><li class="chapter-item "><a href="../../../MongoDB/mongodb高级语法.html">mongodb高级语法</a></li><li class="chapter-item "><a href="../../../MongoDB/权限管理.html">权限管理</a></li></ol></li><li class="chapter-item "><div>mysql</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysqlfunction.html">mysqlfunction</a></li><li class="chapter-item "><a href="../../../mysql/mysqlpdump.html">mysqlpdump</a></li><li class="chapter-item "><a href="../../../mysql/mysqlzip安装.html">mysqlzip安装</a></li><li class="chapter-item "><a href="../../../mysql/mysql公用表达式.html">mysql公用表达式</a></li><li class="chapter-item "><a href="../../../mysql/mysql学习.html">mysql学习</a></li><li class="chapter-item "><a href="../../../mysql/mysql执行计划.html">mysql执行计划</a></li><li class="chapter-item "><a href="../../../mysql/空值处理函数.html">空值处理函数</a></li><li class="chapter-item "><div>mysql官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序.html">mysql程序</a></li><li class="chapter-item "><a href="../../../mysql/mysql官方文档/客户端.html">客户端</a></li><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序/index.html">mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序/使用mysql相关程序.html">使用mysql相关程序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../mysql/mysql日志/index.html">mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql日志/mysql日志及分类.html">mysql日志及分类</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/二进制日志.html">二进制日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/慢sql日志.html">慢sql日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/通用日志.html">通用日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/错误日志.html">错误日志</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/index.html">elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/BackUpACluster.html">BackUpACluster</a></li><li class="chapter-item "><a href="../../../elasticSearch/KQL.html">KQL</a></li><li class="chapter-item "><a href="../../../elasticSearch/dataStream.html">dataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/es堆内存如何分配.html">es堆内存如何分配</a></li><li class="chapter-item "><a href="../../../elasticSearch/scroll查询.html">scroll查询</a></li><li class="chapter-item "><a href="../../../elasticSearch/乐观并发控制.html">乐观并发控制</a></li><li class="chapter-item "><a href="../../../elasticSearch/分布式检索.html">分布式检索</a></li><li class="chapter-item "><a href="../../../elasticSearch/分片内部原理.html">分片内部原理</a></li><li class="chapter-item "><a href="../../../elasticSearch/分词.html">分词</a></li><li class="chapter-item "><a href="../../../elasticSearch/慢日志.html">慢日志</a></li><li class="chapter-item "><a href="../../../elasticSearch/搜索引擎中的概念杂项.html">搜索引擎中的概念杂项</a></li><li class="chapter-item "><a href="../../../elasticSearch/数据分片.html">数据分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/映射.html">映射</a></li><li class="chapter-item "><a href="../../../elasticSearch/杂项学习.html">杂项学习</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引和分片.html">索引和分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引管理.html">索引管理</a></li><li class="chapter-item "><a href="../../../elasticSearch/评分标准与相关性.html">评分标准与相关性</a></li><li class="chapter-item "><a href="../../../elasticSearch/集群内原理.html">集群内原理</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/index.html">1.IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/1.Analysis.html">Analysis</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/2.IndexShardAllocation.html">IndexShardAllocation</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/3.Indexblocks.html">Indexblocks</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/4.Mapper.html">Mapper</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/5.Merge.html">Merge</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/6.SimilarityModule.html">SimilarityModule</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/7.Slowlog.html">Slowlog</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/8.Store.html">Store</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/9.Translog.html">Translog</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/10.HistoryRetention.html">HistoryRetention</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/11.IndexSorting.html">IndexSorting</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/12.IndexPressure.html">IndexPressure</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/index.html">2.TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/index.html">1.Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html">AnatomyOfAnAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html">IndexAndSearchAnalysis</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html">Stemming</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html">TokenGraphs</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/index.html">2.ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html">AnalyzeAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html">TestAnAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html">ConfiguringBuilt-inAnalyzers</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html">CreateACustomAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html">SpecifyAnAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/index.html">3.Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html">StandardAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html">FingerprintAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html">KeywordAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html">LanguageAnalyzers</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html">PatternAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html">SimpleAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html">StopAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html">WhitespaceAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/index.html">4.TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html">Ng-gram</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html">Keyword</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html">SimplePattern</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html">SimplePatternSplitTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html">StandardTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html">CharacterGroupTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html">ClassicTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html">LetterTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html">LowercaseTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html">PathHierarchyTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html">UAXURLEmailTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html">WhitespaceTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html">PatternTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html">EdgeN-gramTokenizer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/index.html">5.TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html">ASCIIFoldingTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html">CJKBigramTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html">CJKWidthTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html">ClassicTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html">CommonGramsTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html">ConditionalTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html">DecimalDigitTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html">DelimitedPayloadTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html">DictionaryDecompounderFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html">EdgeN-gramTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html">ElisionFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html">FingerprintFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html">FlattenGraphTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html">20</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/index.html">6.CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html">HTMLStripCharacterFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html">MappingCharacterFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html">PatternReplaceCharacterFilter</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/7.Normalizers/index.html">7.Normalizers</a></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/index.html">3.Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/index.html">1.DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html">DynamicFieldMapping</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html">DynamicTemplates</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/2.ExplicitMapping/index.html">2.ExplicitMapping</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/index.html">3.RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html">MapARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html">DefineRuntimeFieldsInASearchRequest</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html">OverrideFieldValuesAtQueryTime</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html">RetrieveARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html">IndexARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html">ExploreYourDataWithRuntimeFields</a></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/index.html">4.FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html">AggregateMetric</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html">AliasFieldType</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html">Arrays</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html">Binary</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html">Boolean</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html">Date</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html">DateNanoseconds</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html">DenseVector</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html">Flattened</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html">GeoPoint</a></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html" class="active">Geo-shape</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html">Histogram</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html">IP</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html">Join</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html">KeywordType</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html">Object</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html">Nested</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html">Numberic</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html">Percolator</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html">Point</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html">Range</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html">RankFeature</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html">RankFeatures</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html">Search-as-you-type</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html">Shape</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html">Text</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html">TokenCount</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html">UnsignedLong</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html">Version</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/index.html">5.MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html">DocCount</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html">FiledNames</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html">Ignored</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/4.Id.html">Id</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/5.Index.html">Index</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html">Meta</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html">Routing</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/8.Source.html">Source</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html">Tier</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/index.html">6.MappingParameters</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html">Analyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/2.boost.html">boost</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html">coerce</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html">Copy_to</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html">DocValue</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html">dynamic</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html">eagerGlobalOrdinals</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html">enabled</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/9.format.html">format</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html">Ignore_above</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html">Ignore_malformed</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/12.index.html">index</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html">Index_options</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html">index_pharse</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html">index_prefixes</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/16.meta.html">meta</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html">multifileds</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html">normalizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/19.norms.html">norms</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html">null_value</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html">position_increment_gap</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/22.properties.html">properties</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html">search_analyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html">similarity</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/25.store.html">store</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html">term_vector</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/7.MappingLimitSettings/index.html">7.MappingLimitSettings</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/8.RemovalOfMappingTypes/index.html">8.RemovalOfMappingTypes</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/4.IndexTemplates/index.html">4.IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html">SimulateMultiComponentTemplates</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/5.Aliases/index.html">5.Aliases</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/index.html">6.DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/1.setUpADataStream.html">setUpADataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/2.UseADataStream.html">UseADataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html">ChangeMappingsAndSettings</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/Datamanagement/index.html">Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/Datamanagement/DataTier.html">DataTier</a></li></ol></li><li class="chapter-item "><div>IngestPipeline</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/1.IngestPipelines.html">IngestPipelines</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/2.pipeLineExample.html">pipeLineExample</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/3.EnrichYourData.html">EnrichYourData</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html">ExampleEnrichYourDataBasedOnGeolocation</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/5.IngestProcessorReference.html">IngestProcessorReference</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/index.html">queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/1.QueryAndFilterContext.html">QueryAndFilterContext</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/2.CompoundQueries.html">CompoundQueries</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/SearchAfter.html">SearchAfter</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/index.html">FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html">IntervalsQuery</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html">MatchQuery</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/index.html">snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html">CleanUpSnapshotRepo</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CloneSnapshot.html">CloneSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html">CreateOrUpdateSnapshotAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CreateSnapshot.html">CreateSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/DeleteSnapShot.html">DeleteSnapShot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html">DeleteSnapshotRepository</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/GetSnapshotAPI.html">GetSnapshotAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/RegisterASnapshot.html">RegisterASnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/RestoreSnapshot.html">RestoreSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SLM.html">SLM</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SearchableSnapshots.html">SearchableSnapshots</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html">SearchableSnapshotsMountAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/repository-s3.html">repository-s3</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html">使用OSS备份恢复集群实战</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/安装/index.html">安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/安装/1.InstallingFromRpm.html">InstallingFromRpm</a></li><li class="chapter-item "><a href="../../../elasticSearch/安装/2.InstallFromDeb.html">InstallFromDeb</a></li></ol></li><li class="chapter-item "><div>深入搜索</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/全文搜索.html">全文搜索</a></li><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/多字段搜索.html">多字段搜索</a></li><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/结构化搜索.html">结构化搜索</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/index.html">索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/1.索引级别的分片分配控制.html">索引级别的分片分配控制</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/2.节点离开延迟分配.html">节点离开延迟分配</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/3.索引恢复优先级.html">索引恢复优先级</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/4.每个节点的总分片.html">每个节点的总分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html">索引级别数据层分配过滤</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html">手动分配分片clusterRerouteAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/7.cluster-allocation-explain.html">cluster-allocation-explain</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/index.html">考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/1.ClusterManagement.html">ClusterManagement</a></li><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/2.DataManagement.html">DataManagement</a></li></ol></li><li class="chapter-item "><div>聚合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/聚合/RareTermsAggregation.html">RareTermsAggregation</a></li><li class="chapter-item "><a href="../../../elasticSearch/聚合/Term.html">Term</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/配置/index.html">配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/配置/1.重要配置.html">重要配置</a></li><li class="chapter-item "><a href="../../../elasticSearch/配置/2.elasticsearch.yml核心配置.html">elasticsearch.yml核心配置</a></li><li class="chapter-item "><a href="../../../elasticSearch/配置/3.es系统参数修改.html">es系统参数修改</a></li></ol></li><li class="chapter-item "><div>集群</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/集群/Health.html">Health</a></li></ol></li><li class="chapter-item "><div>高可用专题</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/弹性设计.html">弹性设计</a></li><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/跨集群复制.html">跨集群复制</a></li><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/集群备份.html">集群备份</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">数据库</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="geo-shape-field-type"><a class="header" href="#geo-shape-field-type">Geo-shape field type</a></h2>
+<ol>
+<li>
+<p>'geo_shape' 数据类型有助于对任意地理形状 (例如矩形和多边形) 进行索引和搜索。</p>
+</li>
+<li>
+<p>You can query documents using this type using <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-geo-shape-query.html">geo_shape Query</a>.</p>
+</li>
+<li>
+<p>Elasticsearch encodes <code>geo_shape</code> values as <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geoshape-indexing-approach">BKD trees</a> by default. To use BKD encoding, do not specify the following <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geo-shape-mapping-options">mapping options</a>:</p>
+<ul>
+<li>
+<p><code>distance_error_pct</code></p>
+</li>
+<li>
+<p><code>points_only</code></p>
+</li>
+<li>
+<p><code>precision</code></p>
+</li>
+<li>
+<p><code>strategy</code></p>
+</li>
+<li>
+<p><code>tree_levels</code></p>
+</li>
+<li>
+<p><code>tree</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>如果指定这些选项中的一个或多个，则该字段将使用前缀树编码。前缀树编码已弃用。</p>
+<h4 id="mapping-options"><a class="header" href="#mapping-options">Mapping Options</a></h4>
+<p>The geo_shape mapping maps geo_json geometry objects to the geo_shape type. To enable it, users must explicitly map fields to the geo_shape type.</p>
+<div class="table-wrapper"><table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>tree</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedName of the PrefixTree implementation to be used: <code>geohash</code> for GeohashPrefixTree and <code>quadtree</code> for QuadPrefixTree. Note: This parameter is only relevant for <code>term</code> and <code>recursive</code> strategies.</td><td><code>quadtree</code></td></tr>
+<tr><td><code>precision</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedThis parameter may be used instead of <code>tree_levels</code> to set an appropriate value for the <code>tree_levels</code> parameter. The value specifies the desired precision and Elasticsearch will calculate the best tree_levels value to honor this precision. The value should be a number followed by an optional distance unit. Valid distance units include: <code>in</code>, <code>inch</code>, <code>yd</code>, <code>yard</code>, <code>mi</code>, <code>miles</code>, <code>km</code>, <code>kilometers</code>, <code>m</code>,<code>meters</code>, <code>cm</code>,<code>centimeters</code>, <code>mm</code>, <code>millimeters</code>. Note: This parameter is only relevant for <code>term</code> and <code>recursive</code> strategies.</td><td><code>50m</code></td></tr>
+<tr><td><code>tree_levels</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedMaximum number of layers to be used by the PrefixTree. This can be used to control the precision of shape representations andtherefore how many terms are indexed. Defaults to the default value of the chosen PrefixTree implementation. Since this parameter requires a certain level of understanding of the underlying implementation, users may use the <code>precision</code> parameter instead. However, Elasticsearch only uses the tree_levels parameter internally and this is what is returned via the mapping API even if you use the precision parameter. Note: This parameter is only relevant for <code>term</code> and <code>recursive</code> strategies.</td><td>various</td></tr>
+<tr><td><code>strategy</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedThe strategy parameter defines the approach for how to represent shapes at indexing and search time. It also influences the capabilities available so it is recommended to let Elasticsearch set this parameter automatically. There are two strategies available: <code>recursive</code>, and <code>term</code>. Recursive and Term strategies are deprecated and will be removed in a future version. While they are still available, the Term strategy supports point types only (the <code>points_only</code> parameter will be automatically set to true) while Recursive strategy supports all shape types. (IMPORTANT: see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#prefix-trees">Prefix trees</a> for more detailed information about these strategies)</td><td><code>recursive</code></td></tr>
+<tr><td><code>distance_error_pct</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedUsed as a hint to the PrefixTree about how precise it should be. Defaults to 0.025 (2.5%) with 0.5 as the maximum supported value. PERFORMANCE NOTE: This value will default to 0 if a <code>precision</code> or <code>tree_level</code> definition is explicitly defined. This guarantees spatial precision at the level defined in the mapping. This can lead to significant memory usage for high resolution shapes with low error (e.g., large shapes at 1m with &lt; 0.001 error). To improve indexing performance (at the cost of query accuracy) explicitly define <code>tree_level</code> or <code>precision</code> along with a reasonable <code>distance_error_pct</code>, noting that large shapes will have greater false positives. Note: This parameter is only relevant for <code>term</code> and <code>recursive</code> strategies.</td><td><code>0.025</code></td></tr>
+<tr><td><code>orientation</code></td><td>Optional. Vertex order for the shape’s coordinates list.This parameter sets and returns only a <code>RIGHT</code> (counterclockwise) or <code>LEFT</code> (clockwise) value. However, you can specify either value in multiple ways.To set <code>RIGHT</code>, use one of the following arguments or its uppercase variant:<code>right``counterclockwise``ccw</code>To set <code>LEFT</code>, use one of the following arguments or its uppercase variant:<code>left``clockwise``cw</code>Defaults to <code>RIGHT</code> to comply with <a href="https://www.ogc.org/docs/is">OGC standards</a>. OGC standards define outer ring vertices in counterclockwise order with inner ring (hole) vertices in clockwise order.Individual GeoJSON or WKT documents can override this parameter.</td><td><code>RIGHT</code></td></tr>
+<tr><td><code>points_only</code></td><td>[6.6] Deprecated in 6.6. PrefixTrees no longer usedSetting this option to <code>true</code> (defaults to <code>false</code>) configures the <code>geo_shape</code> field type for point shapes only (NOTE: Multi-Points are not yet supported). This optimizes index and search performance for the <code>geohash</code> and <code>quadtree</code> when it is known that only points will be indexed. At present geo_shape queries can not be executed on <code>geo_point</code> field types. This option bridges the gap by improving point performance on a <code>geo_shape</code> field so that <code>geo_shape</code> queries are optimal on a point only field.</td><td><code>false</code></td></tr>
+<tr><td><code>ignore_malformed</code></td><td>If true, malformed GeoJSON or WKT shapes are ignored. If false (default), malformed GeoJSON and WKT shapes throw an exception and reject the entire document.</td><td><code>false</code></td></tr>
+<tr><td><code>ignore_z_value</code></td><td>If <code>true</code> (default) three dimension points will be accepted (stored in source) but only latitude and longitude values will be indexed; the third dimension is ignored. If <code>false</code>, geo-points containing any more than latitude and longitude (two dimensions) values throw an exception and reject the whole document.</td><td><code>true</code></td></tr>
+<tr><td><code>coerce</code></td><td>If <code>true</code> unclosed linear rings in polygons will be automatically closed.</td><td><code>false</code></td></tr>
+</tbody></table>
+</div>
+<h4 id="indexing-approach"><a class="header" href="#indexing-approach">Indexing approach</a></h4>
+<p>GeoShape types are indexed by decomposing the shape into a triangular mesh and indexing each triangle as a 7 dimension point in a BKD tree. This provides near perfect spatial resolution (down to 1e-7 decimal degree precision) since all spatial relations are computed using an encoded vector representation of the original shape instead of a raster-grid representation as used by the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#prefix-trees">Prefix trees</a> indexing approach. Performance of the tessellator primarily depends on the number of vertices that define the polygon/multi-polygon. While this is the default indexing technique prefix trees can still be used by setting the <code>tree</code> or <code>strategy</code> parameters according to the appropriate <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geo-shape-mapping-options">Mapping Options</a>. Note that these parameters are now deprecated and will be removed in a future version.</p>
+<p><strong>IMPORTANT NOTES</strong></p>
+<p><code>CONTAINS</code> relation query - when using the new default vector indexing strategy, <code>geo_shape</code> queries with <code>relation</code> defined as <code>contains</code> are supported for indices created with ElasticSearch 7.5.0 or higher.</p>
+<h4 id="prefix-trees"><a class="header" href="#prefix-trees">Prefix trees</a></h4>
+<p>[6.6] Deprecated in 6.6. PrefixTrees no longer usedTo efficiently represent shapes in an inverted index, Shapes are converted into a series of hashes representing grid squares (commonly referred to as &quot;rasters&quot;) using implementations of a PrefixTree. The tree notion comes from the fact that the PrefixTree uses multiple grid layers, each with an increasing level of precision to represent the Earth. This can be thought of as increasing the level of detail of a map or image at higher zoom levels. Since this approach causes precision issues with indexed shape, it has been deprecated in favor of a vector indexing approach that indexes the shapes as a triangular mesh (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geoshape-indexing-approach">Indexing approach</a>).</p>
+<p>Multiple PrefixTree implementations are provided:</p>
+<ul>
+<li>GeohashPrefixTree - Uses <a href="https://en.wikipedia.org/wiki/Geohash">geohashes</a> for grid squares. Geohashes are base32 encoded strings of the bits of the latitude and longitude interleaved. So the longer the hash, the more precise it is. Each character added to the geohash represents another tree level and adds 5 bits of precision to the geohash. A geohash represents a rectangular area and has 32 sub rectangles. The maximum number of levels in Elasticsearch is 24; the default is 9.</li>
+<li>QuadPrefixTree - Uses a <a href="https://en.wikipedia.org/wiki/Quadtree">quadtree</a> for grid squares. Similar to geohash, quad trees interleave the bits of the latitude and longitude the resulting hash is a bit set. A tree level in a quad tree represents 2 bits in this bit set, one for each coordinate. The maximum number of levels for the quad trees in Elasticsearch is 29; the default is 21.</li>
+</ul>
+<h5 id="spatial-strategies"><a class="header" href="#spatial-strategies">Spatial strategies</a></h5>
+<p>[6.6] Deprecated in 6.6. PrefixTrees no longer usedThe indexing implementation selected relies on a SpatialStrategy for choosing how to decompose the shapes (either as grid squares or a tessellated triangular mesh). Each strategy answers the following:</p>
+<ul>
+<li>What type of Shapes can be indexed?</li>
+<li>What types of Query Operations and Shapes can be used?</li>
+<li>Does it support more than one Shape per field?</li>
+</ul>
+<p>The following Strategy implementations (with corresponding capabilities) are provided:</p>
+<div class="table-wrapper"><table><thead><tr><th>Strategy</th><th>Supported Shapes</th><th>Supported Queries</th><th>Multiple Shapes</th></tr></thead><tbody>
+<tr><td><code>recursive</code></td><td><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#input-structure">All</a></td><td><code>INTERSECTS</code>, <code>DISJOINT</code>, <code>WITHIN</code>, <code>CONTAINS</code></td><td>Yes</td></tr>
+<tr><td><code>term</code></td><td><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geo-point-type">Points</a></td><td><code>INTERSECTS</code></td><td>Yes</td></tr>
+</tbody></table>
+</div>
+<h5 id="accuracy"><a class="header" href="#accuracy">Accuracy</a></h5>
+<p><code>Recursive</code> and <code>Term</code> strategies do not provide 100% accuracy and depending on how they are configured it may return some false positives for <code>INTERSECTS</code>, <code>WITHIN</code> and <code>CONTAINS</code> queries, and some false negatives for <code>DISJOINT</code> queries. To mitigate this, it is important to select an appropriate value for the tree_levels parameter and to adjust expectations accordingly. For example, a point may be near the border of a particular grid cell and may thus not match a query that only matches the cell right next to it — even though the shape is very close to the point.</p>
+<h5 id="example"><a class="header" href="#example">Example</a></h5>
+<pre><code class="language-console">PUT /example
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;location&quot;: {
+        &quot;type&quot;: &quot;geo_shape&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>This mapping definition maps the location field to the geo_shape type using the default vector implementation. It provides approximately 1e-7 decimal degree precision.</p>
+<h5 id="performance-considerations-with-prefix-trees"><a class="header" href="#performance-considerations-with-prefix-trees">Performance considerations with Prefix Trees</a></h5>
+<p>[6.6] Deprecated in 6.6. PrefixTrees no longer usedWith prefix trees, Elasticsearch uses the paths in the tree as terms in the inverted index and in queries. The higher the level (and thus the precision), the more terms are generated. Of course, calculating the terms, keeping them in memory, and storing them on disk all have a price. Especially with higher tree levels, indices can become extremely large even with a modest amount of data. Additionally, the size of the features also matters. Big, complex polygons can take up a lot of space at higher tree levels. Which setting is right depends on the use case. Generally one trades off accuracy against index size and query performance.</p>
+<p>The defaults in Elasticsearch for both implementations are a compromise between index size and a reasonable level of precision of 50m at the equator. This allows for indexing tens of millions of shapes without overly bloating the resulting index too much relative to the input size.</p>
+<p>Geo-shape queries on geo-shapes implemented with PrefixTrees will not be executed if <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl.html#query-dsl-allow-expensive-queries"><code>search.allow_expensive_queries</code></a> is set to false.</p>
+<h4 id="input-structure"><a class="header" href="#input-structure">Input Structure</a></h4>
+<p>Shapes can be represented using either the <a href="http://geojson.org/">GeoJSON</a> or <a href="https://docs.opengeospatial.org/is/12-063r5/12-063r5.html">Well-Known Text</a> (WKT) format. The following table provides a mapping of GeoJSON and WKT to Elasticsearch types:</p>
+<div class="table-wrapper"><table><thead><tr><th>GeoJSON Type</th><th>WKT Type</th><th>Elasticsearch Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Point</code></td><td><code>POINT</code></td><td><code>point</code></td><td>A single geographic coordinate. Note: Elasticsearch uses WGS-84 coordinates only.</td></tr>
+<tr><td><code>LineString</code></td><td><code>LINESTRING</code></td><td><code>linestring</code></td><td>An arbitrary line given two or more points.</td></tr>
+<tr><td><code>Polygon</code></td><td><code>POLYGON</code></td><td><code>polygon</code></td><td>A <em>closed</em> polygon whose first and last point must match, thus requiring <code>n + 1</code> vertices to create an <code>n</code>-sided polygon and a minimum of <code>4</code> vertices.</td></tr>
+<tr><td><code>MultiPoint</code></td><td><code>MULTIPOINT</code></td><td><code>multipoint</code></td><td>An array of unconnected, but likely related points.</td></tr>
+<tr><td><code>MultiLineString</code></td><td><code>MULTILINESTRING</code></td><td><code>multilinestring</code></td><td>An array of separate linestrings.</td></tr>
+<tr><td><code>MultiPolygon</code></td><td><code>MULTIPOLYGON</code></td><td><code>multipolygon</code></td><td>An array of separate polygons.</td></tr>
+<tr><td><code>GeometryCollection</code></td><td><code>GEOMETRYCOLLECTION</code></td><td><code>geometrycollection</code></td><td>A GeoJSON shape similar to the <code>multi*</code> shapes except that multiple types can coexist (e.g., a Point and a LineString).</td></tr>
+<tr><td><code>N/A</code></td><td><code>BBOX</code></td><td><code>envelope</code></td><td>A bounding rectangle, or envelope, specified by specifying only the top left and bottom right points.</td></tr>
+<tr><td><code>N/A</code></td><td><code>N/A</code></td><td><code>circle</code></td><td>A circle specified by a center point and radius with units, which default to <code>METERS</code>.</td></tr>
+</tbody></table>
+</div>
+<p>For all types, both the inner <code>type</code> and <code>coordinates</code> fields are required.</p>
+<p>In GeoJSON and WKT, and therefore Elasticsearch, the correct <strong>coordinate order is longitude, latitude (X, Y)</strong> within coordinate arrays. This differs from many Geospatial APIs (e.g., Google Maps) that generally use the colloquial latitude, longitude (Y, X).</p>
+<h5 id="point"><a class="header" href="#point"><a href="http://geojson.org/geojson-spec.html#id2">Point</a></a></h5>
+<p>A point is a single geographic coordinate, such as the location of a building or the current position given by a smartphone’s Geolocation API. The following is an example of a point in GeoJSON.</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;point&quot;,
+    &quot;coordinates&quot; : [-77.03653, 38.897676]
+  }
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/184.console">View in Console</a> </p>
+<p>The following is an example of a point in WKT:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;POINT (-77.03653 38.897676)&quot;
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/185.console">View in Console</a> </p>
+<h5 id="linestring"><a class="header" href="#linestring"><a href="http://geojson.org/geojson-spec.html#id3">LineString</a></a></h5>
+<p>A <code>linestring</code> defined by an array of two or more positions. By specifying only two points, the <code>linestring</code> will represent a straight line. Specifying more than two points creates an arbitrary path. The following is an example of a LineString in GeoJSON.</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;linestring&quot;,
+    &quot;coordinates&quot; : [[-77.03653, 38.897676], [-77.009051, 38.889939]]
+  }
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/186.console">View in Console</a> </p>
+<p>The following is an example of a LineString in WKT:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;LINESTRING (-77.03653 38.897676, -77.009051 38.889939)&quot;
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/187.console">View in Console</a> </p>
+<p>The above <code>linestring</code> would draw a straight line starting at the White House to the US Capitol Building.</p>
+<h5 id="polygon"><a class="header" href="#polygon"><a href="http://geojson.org/geojson-spec.html#id4">Polygon</a></a></h5>
+<p>A polygon is defined by a list of a list of points. The first and last points in each (outer) list must be the same (the polygon must be closed). The following is an example of a Polygon in GeoJSON.</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;polygon&quot;,
+    &quot;coordinates&quot; : [
+      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+    ]
+  }
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/188.console">View in Console</a> </p>
+<p>The following is an example of a Polygon in WKT:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;POLYGON ((100.0 0.0, 101.0 0.0, 101.0 1.0, 100.0 1.0, 100.0 0.0))&quot;
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/189.console">View in Console</a> </p>
+<p>The first array represents the outer boundary of the polygon, the other arrays represent the interior shapes (&quot;holes&quot;). The following is a GeoJSON example of a polygon with a hole:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;polygon&quot;,
+    &quot;coordinates&quot; : [
+      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
+      [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
+    ]
+  }
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/190.console">View in Console</a> </p>
+<p>The following is an example of a Polygon with a hole in WKT:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;POLYGON ((100.0 0.0, 101.0 0.0, 101.0 1.0, 100.0 1.0, 100.0 0.0), (100.2 0.2, 100.8 0.2, 100.8 0.8, 100.2 0.8, 100.2 0.2))&quot;
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/191.console">View in Console</a> </p>
+<p><strong>IMPORTANT NOTE:</strong> WKT does not enforce a specific order for vertices thus ambiguous polygons around the dateline and poles are possible. <a href="https://tools.ietf.org/html/rfc7946#section-3.1.6">GeoJSON</a> mandates that the outer polygon must be counterclockwise and interior shapes must be clockwise, which agrees with the Open Geospatial Consortium (OGC) <a href="https://www.opengeospatial.org/standards/sfa">Simple Feature Access</a> specification for vertex ordering.</p>
+<p>Elasticsearch accepts both clockwise and counterclockwise polygons if they appear not to cross the dateline (i.e. they cross less than 180° of longitude), but for polygons that do cross the dateline (or for other polygons wider than 180°) Elasticsearch requires the vertex ordering to comply with the OGC and GeoJSON specifications. Otherwise, an unintended polygon may be created and unexpected query/filter results will be returned.</p>
+<p>The following provides an example of an ambiguous polygon. Elasticsearch will apply the GeoJSON standard to eliminate ambiguity resulting in a polygon that crosses the dateline.</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;polygon&quot;,
+    &quot;coordinates&quot; : [
+      [ [-177.0, 10.0], [176.0, 15.0], [172.0, 0.0], [176.0, -15.0], [-177.0, -10.0], [-177.0, 10.0] ],
+      [ [178.2, 8.2], [-178.8, 8.2], [-180.8, -8.8], [178.2, 8.8] ]
+    ]
+  }
+}
+</code></pre>
+<p>An <code>orientation</code> parameter can be defined when setting the geo_shape mapping (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geo-shape-mapping-options">Mapping Options</a>). This will define vertex order for the coordinate list on the mapped geo_shape field. It can also be overridden on each document. The following is an example for overriding the orientation on a document:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;polygon&quot;,
+    &quot;orientation&quot; : &quot;clockwise&quot;,
+    &quot;coordinates&quot; : [
+      [ [100.0, 0.0], [100.0, 1.0], [101.0, 1.0], [101.0, 0.0], [100.0, 0.0] ]
+    ]
+  }
+}
+</code></pre>
+<h5 id="multipoint"><a class="header" href="#multipoint"><a href="http://geojson.org/geojson-spec.html#id5">MultiPoint</a></a></h5>
+<p>The following is an example of a list of geojson points:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;multipoint&quot;,
+    &quot;coordinates&quot; : [
+      [102.0, 2.0], [103.0, 2.0]
+    ]
+  }
+}
+</code></pre>
+<p>The following is an example of a list of WKT points:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;MULTIPOINT (102.0 2.0, 103.0 2.0)&quot;
+}
+</code></pre>
+<h5 id="multilinestring"><a class="header" href="#multilinestring"><a href="http://geojson.org/geojson-spec.html#id6">MultiLineString</a></a></h5>
+<p>The following is an example of a list of geojson linestrings:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;multilinestring&quot;,
+    &quot;coordinates&quot; : [
+      [ [102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0] ],
+      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0] ],
+      [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8] ]
+    ]
+  }
+}
+</code></pre>
+<p>The following is an example of a list of WKT linestrings:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;MULTILINESTRING ((102.0 2.0, 103.0 2.0, 103.0 3.0, 102.0 3.0), (100.0 0.0, 101.0 0.0, 101.0 1.0, 100.0 1.0), (100.2 0.2, 100.8 0.2, 100.8 0.8, 100.2 0.8))&quot;
+}
+</code></pre>
+<h5 id="multipolygon"><a class="header" href="#multipolygon"><a href="http://geojson.org/geojson-spec.html#id7">MultiPolygon</a></a></h5>
+<p>The following is an example of a list of geojson polygons (second polygon contains a hole):</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;multipolygon&quot;,
+    &quot;coordinates&quot; : [
+      [ [[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]] ],
+      [ [[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
+        [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]] ]
+    ]
+  }
+}
+</code></pre>
+<p>Copy as curl<a href="http://localhost:5601/app/kibana#/dev_tools/console?load_from=https://www.elastic.co/guide/en/elasticsearch/reference/7.13/snippets/198.console">View in Console</a> </p>
+<p>The following is an example of a list of WKT polygons (second polygon contains a hole):</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;MULTIPOLYGON (((102.0 2.0, 103.0 2.0, 103.0 3.0, 102.0 3.0, 102.0 2.0)), ((100.0 0.0, 101.0 0.0, 101.0 1.0, 100.0 1.0, 100.0 0.0), (100.2 0.2, 100.8 0.2, 100.8 0.8, 100.2 0.8, 100.2 0.2)))&quot;
+}
+</code></pre>
+<h5 id="geometry-collection"><a class="header" href="#geometry-collection"><a href="http://geojson.org/geojson-spec.html#geometrycollection">Geometry Collection</a></a></h5>
+<p>The following is an example of a collection of geojson geometry objects:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot;: &quot;geometrycollection&quot;,
+    &quot;geometries&quot;: [
+      {
+        &quot;type&quot;: &quot;point&quot;,
+        &quot;coordinates&quot;: [100.0, 0.0]
+      },
+      {
+        &quot;type&quot;: &quot;linestring&quot;,
+        &quot;coordinates&quot;: [ [101.0, 0.0], [102.0, 1.0] ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>The following is an example of a collection of WKT geometry objects:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;GEOMETRYCOLLECTION (POINT (100.0 0.0), LINESTRING (101.0 0.0, 102.0 1.0))&quot;
+}
+</code></pre>
+<h5 id="envelope"><a class="header" href="#envelope">Envelope</a></h5>
+<p>Elasticsearch supports an <code>envelope</code> type, which consists of coordinates for upper left and lower right points of the shape to represent a bounding rectangle in the format <code>[[minLon, maxLat], [maxLon, minLat]]</code>:</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;envelope&quot;,
+    &quot;coordinates&quot; : [ [100.0, 1.0], [101.0, 0.0] ]
+  }
+}
+</code></pre>
+<p>The following is an example of an envelope using the WKT BBOX format:</p>
+<p><strong>NOTE:</strong> WKT specification expects the following order: minLon, maxLon, maxLat, minLat.</p>
+<pre><code class="language-console">POST /example/_doc
+{
+  &quot;location&quot; : &quot;BBOX (100.0, 102.0, 2.0, 0.0)&quot;
+}
+</code></pre>
+<h5 id="circle"><a class="header" href="#circle">Circle</a></h5>
+<p>Elasticsearch supports a <code>circle</code> type, which consists of a center point with a radius.</p>
+<p>You cannot index the <code>circle</code> type using the default <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geoshape-indexing-approach">BKD tree indexing approach</a>. Instead, use a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/ingest-circle-processor.html">circle ingest processor</a> to approximate the circle as a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/geo-shape.html#geo-polygon"><code>polygon</code></a>.</p>
+<p>The <code>circle</code> type requires a <code>geo_shape</code> field mapping with the deprecated <code>recursive</code> Prefix Tree strategy.</p>
+<pre><code class="language-console">PUT /circle-example
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;location&quot;: {
+        &quot;type&quot;: &quot;geo_shape&quot;,
+        &quot;strategy&quot;: &quot;recursive&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>The following request indexes a <code>circle</code> geo-shape.</p>
+<pre><code class="language-console">POST /circle-example/_doc
+{
+  &quot;location&quot; : {
+    &quot;type&quot; : &quot;circle&quot;,
+    &quot;coordinates&quot; : [101.0, 1.0],
+    &quot;radius&quot; : &quot;100m&quot;
+  }
+}
+</code></pre>
+<p>Note: The inner <code>radius</code> field is required. If not specified, then the units of the <code>radius</code> will default to <code>METERS</code>.</p>
+<p><strong>NOTE:</strong> Neither GeoJSON or WKT support a point-radius circle type.</p>
+<h4 id="sorting-and-retrieving-index-shapes"><a class="header" href="#sorting-and-retrieving-index-shapes">Sorting and Retrieving index Shapes</a></h4>
+<p>Due to the complex input structure and index representation of shapes, it is not currently possible to sort shapes or retrieve their fields directly. The geo_shape value is only retrievable through the <code>_source</code> field.</p>
+<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/db/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

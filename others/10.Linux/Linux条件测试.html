@@ -1,0 +1,698 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Linux条件测试 - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><div>UML</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html">UML</a></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/index.html">MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html">时序图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html">流程图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html">类图</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html">语法总览</a></li></ol></li><li class="chapter-item "><div>Flowchart</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html">flowchart_fun</a></li></ol></li><li class="chapter-item "><div>PlantUml</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html">plantUML语法</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../4.模板引擎/index.html">模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/index.html">mustache</a></li></ol></li><li class="chapter-item "><div>常用软件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/Multipass.html">Multipass</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html">v2rayN代理</a></li></ol></li><li class="chapter-item "><div>生活事宜</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html">个人清算汇缴</a></li></ol></li><li class="chapter-item "><a href="../7.思考/index.html">思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html">学习总结</a></li><li class="chapter-item "><a href="../7.思考/杂项.html">杂项</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html">编程技巧</a></li></ol></li><li class="chapter-item "><div>学习</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html">概率论与数理统计</a></li></ol></li><li class="chapter-item "><div>数据格式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/XML.html">XML</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html">yaml</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html">CFSBandwidthControl</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html">LinuxFor</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html">LinuxWOL设置</a></li><li class="chapter-item expanded "><a href="../10.Linux/Linux条件测试.html" class="active">Linux条件测试</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html">Seed</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html">VIM</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html">caseIn</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html">cgroup</a></li><li class="chapter-item "><a href="../10.Linux/curl.html">curl</a></li><li class="chapter-item "><a href="../10.Linux/dd.html">dd</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html">diffPatch</a></li><li class="chapter-item "><a href="../10.Linux/find.html">find</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html">iptables</a></li><li class="chapter-item "><a href="../10.Linux/jq.html">jq</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html">lsof</a></li><li class="chapter-item "><a href="../10.Linux/ps.html">ps</a></li><li class="chapter-item "><a href="../10.Linux/read.html">read</a></li><li class="chapter-item "><a href="../10.Linux/scp.html">scp</a></li><li class="chapter-item "><a href="../10.Linux/select.html">select</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html">service脚本</a></li><li class="chapter-item "><a href="../10.Linux/set.html">set</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html">shell字符串</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html">shell脚本参数</a></li><li class="chapter-item "><a href="../10.Linux/stat.html">stat</a></li><li class="chapter-item "><a href="../10.Linux/tar.html">tar</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html">top命令</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html">uidGidSetUidSetGid</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html">wsl关闭提示音</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html">yum本地包依赖</a></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html">大端与小端</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html">确定Linux发行版本</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html">零拷贝</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html">默认值语法糖</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/index.html">algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html">Base64编码</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html">Huffman编码</a></li><li class="chapter-item "><a href="../11.algorithm/base64.html">base64</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html">fnv-hash算法</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html">二叉搜索平衡树</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html">位运算</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html">动态规划</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html">动态规划-新</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html">字符编码</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html">布隆过滤器</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html">浮点数</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html">红黑树</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html">贪心算法</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html">逆波兰表达式</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="shell-test-命令"><a class="header" href="#shell-test-命令">Shell test 命令</a></h1>
+<blockquote>
+<p>Shell中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。</p>
+</blockquote>
+<h2 id="数值测试"><a class="header" href="#数值测试">数值测试</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">-eq</td><td style="text-align: left">等于则为真</td></tr>
+<tr><td style="text-align: left">-ne</td><td style="text-align: left">不等于则为真</td></tr>
+<tr><td style="text-align: left">-gt</td><td style="text-align: left">大于则为真</td></tr>
+<tr><td style="text-align: left">-ge</td><td style="text-align: left">大于等于则为真</td></tr>
+<tr><td style="text-align: left">-lt</td><td style="text-align: left">小于则为真</td></tr>
+<tr><td style="text-align: left">-le</td><td style="text-align: left">小于等于则为真</td></tr>
+</tbody></table>
+</div>
+<h2 id="实例"><a class="header" href="#实例">实例</a></h2>
+<h3 id="实例1"><a class="header" href="#实例1">实例1</a></h3>
+<pre><code>num1=100
+num2=100
+if test $[num1] -eq $[num2]
+then
+    echo '两个数相等！'
+else
+    echo '两个数不相等！'
+fi
+</code></pre>
+<p>代码中的 <strong>[]</strong> 执行基本的算数运算，如：</p>
+<h3 id="实例2"><a class="header" href="#实例2">实例2</a></h3>
+<pre><code>#!/bin/bash
+a=5
+b=6
+result=$[a+b]# 注意等号两边不能有空格
+echo &quot;result 为： $result&quot;
+</code></pre>
+<h2 id="字符串测试"><a class="header" href="#字符串测试">字符串测试</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">=</td><td style="text-align: left">等于则为真</td></tr>
+<tr><td style="text-align: left">!=</td><td style="text-align: left">不相等则为真</td></tr>
+<tr><td style="text-align: left">-z 字符串</td><td style="text-align: left">字符串的长度为零则为真</td></tr>
+<tr><td style="text-align: left">-n 字符串</td><td style="text-align: left">字符串的长度不为零则为真</td></tr>
+</tbody></table>
+</div>
+<h3 id="实例-1"><a class="header" href="#实例-1">实例</a></h3>
+<pre><code class="language-sh">num1=&quot;ru1noob&quot;
+num2=&quot;runoob&quot;
+if test $num1 = $num2
+then
+    echo '两个字符串相等!'
+else
+    echo '两个字符串不相等!'
+fi
+</code></pre>
+<h2 id="文件测试"><a class="header" href="#文件测试">文件测试</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>-b filename</th><th>当filename 存在并且是块文件时返回真(返回0)</th></tr></thead><tbody>
+<tr><td>-c filename</td><td>当filename 存在并且是字符文件时返回真</td></tr>
+<tr><td>-d pathname</td><td>当pathname 存在并且是一个目录时返回真</td></tr>
+<tr><td>-e pathname</td><td>当由pathname 指定的文件或目录存在时返回真</td></tr>
+<tr><td>-f filename</td><td>当filename 存在并且是正规文件时返回真</td></tr>
+<tr><td>-g pathname</td><td>当由pathname 指定的文件或目录存在并且设置了SGID 位时返回真</td></tr>
+<tr><td>-h filename</td><td>当filename 存在并且是符号链接文件时返回真 (或 -L filename)</td></tr>
+<tr><td>-k pathname</td><td>当由pathname 指定的文件或目录存在并且设置了&quot;粘滞&quot;位时返回真</td></tr>
+<tr><td>-p filename</td><td>当filename 存在并且是命名管道时返回真</td></tr>
+<tr><td>-r pathname</td><td>当由pathname 指定的文件或目录存在并且可读时返回真</td></tr>
+<tr><td>-s filename</td><td>当filename 存在并且文件大小大于0 时返回真</td></tr>
+<tr><td>-S filename</td><td>当filename 存在并且是socket 时返回真</td></tr>
+<tr><td>-t fd</td><td>当fd 是与终端设备相关联的文件描述符时返回真</td></tr>
+<tr><td>-u pathname</td><td>当由pathname 指定的文件或目录存在并且设置了SUID 位时返回真</td></tr>
+<tr><td>-w pathname</td><td>当由pathname 指定的文件或目录存在并且可写时返回真</td></tr>
+<tr><td>-x pathname</td><td>当由pathname 指定的文件或目录存在并且可执行时返回真</td></tr>
+<tr><td>-O pathname</td><td>当由pathname 存在并且被当前进程的有效用户id 的用户拥有时返回真(字母O 大写)</td></tr>
+<tr><td>-G pathname</td><td>当由pathname 存在并且属于当前进程的有效用户id 的用户的用户组时返回真</td></tr>
+<tr><td>file1 -nt file2</td><td>file1 比file2 新时返回真</td></tr>
+<tr><td>file1 -ot file2</td><td>file1 比file2 旧时返回真</td></tr>
+<tr><td>f1 -ef f2</td><td>files f1 and f2 are hard links to the same file</td></tr>
+</tbody></table>
+</div>
+<pre><code class="language-sh">cd /bin
+if test -e ./bash
+then
+    echo '文件已存在!'
+else
+    echo '文件不存在!'
+fi
+</code></pre>
+<h2 id="条件组合"><a class="header" href="#条件组合">条件组合</a></h2>
+<p>另外，Shell 还提供了与( -a )、或( -o )、非( ! )三个逻辑操作符用于将测试条件连接起来，其优先级为： <strong>!</strong> 最高， <strong>-a</strong> 次之， <strong>-o</strong> 最低</p>
+<pre><code class="language-sh">cd /bin
+if test -e ./notFile -o -e ./bash
+then
+    echo '至少有一个文件存在!'
+else
+    echo '两个文件都不存在'
+fi
+</code></pre>
+<h2 id="简写形式"><a class="header" href="#简写形式">简写形式</a></h2>
+<pre><code class="language-sh">[ expression ]
+</code></pre>
+<p>注意<code>[]</code>和<code>expression</code>之间的空格，这两个空格是必须的，否则会导致语法错误。<code>[]</code>的写法更加简洁，比 test 使用频率高。</p>
+<h2 id="在-test-中使用变量建议用双引号包围起来"><a class="header" href="#在-test-中使用变量建议用双引号包围起来">在 test 中使用变量建议用双引号包围起来</a></h2>
+<p>test 和 [] 都是命令，一个命令本质上对应一个程序或者一个函数。即使是一个程序，它也有入口函数，例如C语言程序的入口函数是 main()，运行C语言程序就从 main() 函数开始，所以也可以将一个程序等效为一个函数，这样我们就不用再区分函数和程序了，直接将一个命令和一个函数对应起来即可。</p>
+<p>有了以上认知，就很容易看透命令的本质了：使用一个命令其实就是调用一个函数，命令后面附带的选项和参数最终都会作为实参传递给函数。</p>
+<p>假设 test 命令对应的函数是 func()，使用<code>test -z $str1</code>命令时，会先将变量 $str1 替换成字符串：</p>
+<ul>
+<li>如果 $str1 是一个正常的字符串，比如 abc123，那么替换后的效果就是<code>test -z abc123</code>，调用 func() 函数的形式就是<code>func(&quot;-z abc123&quot;)</code>。test 命令后面附带的所有选项和参数会被看成一个整体，并作为实参传递进函数。</li>
+<li>如果 $str1 是一个空字符串，那么替换后的效果就是<code>test -z</code>，调用 func() 函数的形式就是<code>func(&quot;-z &quot;)</code>，这就比较奇怪了，因为<code>-z</code>选项没有和参数成对出现，func() 在分析时就会出错。</li>
+</ul>
+<p>如果我们给 $str1 变量加上双引号，当 $str1 是空字符串时，<code>test -z &quot;$str1&quot;</code>就会被替换为<code>test -z &quot;&quot;</code>，调用 func() 函数的形式就是<code>func(&quot;-z \&quot;\&quot;&quot;)</code>，很显然，<code>-z</code>选项后面跟的是一个空字符串（<code>\&quot;</code>表示转义字符），这样 func() 在分析时就不会出错了。</p>
+<p>所以，当你在 test 命令中使用变量时，我强烈建议将变量用双引号<code>&quot;&quot;</code>包围起来，这样能避免变量为空值时导致的很多奇葩问题</p>
+<h1 id="ifelse语句"><a class="header" href="#ifelse语句">ifelse语句</a></h1>
+<h2 id="语法格式"><a class="header" href="#语法格式">语法格式</a></h2>
+<pre><code class="language-sh">if  condition
+then
+    statement(s)
+fi
+</code></pre>
+<p><code>condition</code>是判断条件，如果 condition 成立（返回“真”），那么 then 后边的语句将会被执行；如果 condition 不成立（返回“假”），那么不会执行任何语句。</p>
+<p><strong>从本质上讲，if 检测的是命令的退出状态</strong>，我们将在下节《<a href="http://c.biancheng.net/view/2735.html">Shell退出状态</a>》中深入讲解。</p>
+<p>注意，最后必须以<code>fi</code>来闭合，fi 就是 if 倒过来拼写。也正是有了 fi 来结尾，所以即使有多条语句也不需要用<code>{ }</code>包围起来。</p>
+<p>如果你喜欢，也可以将 then 和 if 写在一行：</p>
+<pre><code class="language-sh">if condition;  then
+  statement(s)
+fi
+
+
+if  condition
+then
+   statement1
+else
+   statement2
+fi
+
+
+if  condition1
+then
+   statement1
+elif condition2
+then
+    statement2
+elif condition3
+then
+    statement3
+……
+else
+   statementn
+fi
+</code></pre>
+<p>请注意 condition 后边的分号<code>;</code>，当 if 和 then 位于同一行的时候，这个分号是必须的，否则会有语法错误。</p>
+<h1 id="双括号与条件测试"><a class="header" href="#双括号与条件测试">双括号与条件测试</a></h1>
+<blockquote>
+<p><strong>使用双括号进行四则运算、逻辑运算等</strong></p>
+</blockquote>
+<h2 id="比较两个数字的大小"><a class="header" href="#比较两个数字的大小">比较两个数字的大小</a></h2>
+<pre><code class="language-sh">#!/bin/bash
+read a
+read b
+if (( $a == $b ))
+then
+    echo &quot;a和b相等&quot;
+fi
+</code></pre>
+<p>在《<a href="http://c.biancheng.net/view/2480.html">Shell (())</a>》一节中我们讲到，<code>(())</code>是一种数学计算命令，它除了可以进行最基本的加减乘除运算，<strong>还可以进行大于、小于、等于等关系运算，以及与、或、非逻辑运算</strong>。当 a 和 b 相等时，<code>(( $a == $b ))</code>判断条件成立，进入 if，执行 then 后边的 echo 语句。</p>
+<h2 id="逻辑运算"><a class="header" href="#逻辑运算">逻辑运算</a></h2>
+<pre><code class="language-sh">#!/bin/bash
+
+read age
+read iq
+
+if (( $age &gt; 18 &amp;&amp; $iq &lt; 60 ))
+then
+    echo &quot;你都成年了，智商怎么还不及格！&quot;
+    echo &quot;来C语言中文网（http://c.biancheng.net/）学习编程吧，能迅速提高你的智商。&quot;
+fi
+</code></pre>
+<h1 id="-条件测试"><a class="header" href="#-条件测试">[[ ]]条件测试</a></h1>
+<blockquote>
+<p><code>[[ ]]</code>是 Shell 内置关键字，它和 <a href="http://c.biancheng.net/view/2742.html">test 命令</a>类似，也用来检测某个条件是否成立。</p>
+</blockquote>
+<p>test 能做到的，[[ ]] 也能做到，而且 [[ ]] 做的更好；test 做不到的，[[ ]] 还能做到。可以认为 [[ ]] 是 <strong>test 的升级版</strong>，对细节进行了优化，并且扩展了一些功能。</p>
+<h2 id="语法"><a class="header" href="#语法">语法</a></h2>
+<pre><code class="language-sh">[[ expression ]]
+当 [[ ]] 判断 expression 成立时，退出状态为 0，否则为非 0 值。注意[[ ]]和expression之间的空格，这两个空格是必须的，否则会导致语法错误。
+</code></pre>
+<h2 id="逻辑运算-1"><a class="header" href="#逻辑运算-1">逻辑运算</a></h2>
+<p>对多个表达式进行逻辑运算时，可以使用逻辑运算符将多个 test 命令连接起来，例如：</p>
+<pre><code class="language-sh">[ -z &quot;$str1&quot; ] || [ -z &quot;$str2&quot; ]
+</code></pre>
+<p>你也可以借助选项把多个表达式写在一个 test 命令中，例如：</p>
+<pre><code class="language-sh">[ -z &quot;$str1&quot; -o -z &quot;$str2&quot; ]
+</code></pre>
+<p>但是，这两种写法都有点“别扭”，完美的写法是在一个命令中使用逻辑运算符将多个表达式连接起来。我们的这个愿望在 [[ ]] 中实现了，[[ ]] 支持 &amp;&amp;、|| 和 ! 三种逻辑运算符。</p>
+<p><strong>使用 [[ ]] 对上面的语句进行改进：</strong></p>
+<pre><code class="language-sh">[[ -z $str1 || -z $str2 ]]
+</code></pre>
+<p>这种写法就比较简洁漂亮了。</p>
+<p><strong>注意，[[ ]] 剔除了 test 命令的<code>-o</code>和<code>-a</code>选项，你只能使用 || 和 &amp;&amp;。这意味着，你不能写成下面的形式：</strong></p>
+<pre><code class="language-sh">[[ -z $str1 -o -z $str2 ]]
+</code></pre>
+<p>当然，使用逻辑运算符将多个 [[ ]] 连接起来依然是可以的，因为这是 Shell 本身提供的功能，跟 [[ ]] 或者 test 没有关系，如下所示：</p>
+<pre><code class="language-sh">[[ -z $str1 ]] || [[ -z $str2 ]]
+</code></pre>
+<h2 id="实例-2"><a class="header" href="#实例-2">实例</a></h2>
+<h3 id="字符串比较"><a class="header" href="#字符串比较">字符串比较</a></h3>
+<pre><code class="language-sh">#!/bin/bash
+read str1
+read str2
+if [[ -z $str1 ]] || [[ -z $str2 ]]  #不需要对变量名加双引号
+then
+    echo &quot;字符串不能为空&quot;
+elif [[ $str1 &lt; $str2 ]]  #不需要也不能对 &lt; 进行转义
+then
+    echo &quot;str1 &lt; str2&quot;
+else
+    echo &quot;str1 &gt;= str2&quot;
+fi
+</code></pre>
+<script src="/note/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../10.Linux/LinuxWOL设置.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../10.Linux/Seed.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../10.Linux/LinuxWOL设置.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../10.Linux/Seed.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

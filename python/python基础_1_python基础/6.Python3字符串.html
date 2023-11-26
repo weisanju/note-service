@@ -1,0 +1,642 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Python3字符串 - Python</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/6.Python3字符串.html" class="active">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Python</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/python/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="python3-字符串"><a class="header" href="#python3-字符串">Python3 字符串</a></h1>
+<p>字符串是 Python 中最常用的数据类型。我们可以使用引号( <strong>'</strong> 或 <strong>&quot;</strong> )来创建字符串。</p>
+<p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
+<h2 id="python-访问字符串中的值"><a class="header" href="#python-访问字符串中的值">Python 访问字符串中的值</a></h2>
+<pre><code class="language-python">变量[头下标:尾下标]
+</code></pre>
+<h2 id="python转义字符"><a class="header" href="#python转义字符">Python转义字符</a></h2>
+<p>在需要在字符中使用特殊字符时，python 用反斜杠 *<em>*</em> 转义字符。如下表：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">转义字符</th><th style="text-align: left">描述</th><th style="text-align: left">实例</th></tr></thead><tbody>
+<tr><td style="text-align: left">\(在行尾时)</td><td style="text-align: left">续行符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;line1 \ ... line2 \ ... line3&quot;) line1 line2 line3 &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\\</td><td style="text-align: left">反斜杠符号</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\\&quot;) \</code></td></tr>
+<tr><td style="text-align: left">\'</td><td style="text-align: left">单引号</td><td style="text-align: left"><code>&gt;&gt;&gt; print('\'') '</code></td></tr>
+<tr><td style="text-align: left">\&quot;</td><td style="text-align: left">双引号</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\&quot;&quot;) &quot;</code></td></tr>
+<tr><td style="text-align: left">\a</td><td style="text-align: left">响铃</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\a&quot;)</code>执行后电脑有响声。</td></tr>
+<tr><td style="text-align: left">\b</td><td style="text-align: left">退格(Backspace)</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \b World!&quot;) Hello World!</code></td></tr>
+<tr><td style="text-align: left">\000</td><td style="text-align: left">空</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\000&quot;) &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\n</td><td style="text-align: left">换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\n&quot;)  &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\v</td><td style="text-align: left">纵向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \v World!&quot;) Hello        World! &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\t</td><td style="text-align: left">横向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \t World!&quot;) Hello    World! &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\r</td><td style="text-align: left">回车，将 <strong>\r</strong> 后面的内容移到字符串开头，并逐一替换开头部分的字符，直至将 <strong>\r</strong> 后面的内容完全替换完成。</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello\rWorld!&quot;) World! &gt;&gt;&gt; print('google runoob taobao\r123456') 123456 runoob taobao</code></td></tr>
+<tr><td style="text-align: left">\f</td><td style="text-align: left">换页</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \f World!&quot;) Hello        World! &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\yyy</td><td style="text-align: left">八进制数，y 代表 0~7 的字符，例如：\012 代表换行。</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\110\145\154\154\157\40\127\157\162\154\144\41&quot;) Hello World!</code></td></tr>
+<tr><td style="text-align: left">\xyy</td><td style="text-align: left">十六进制数，以 \x 开头，y 代表的字符，例如：\x0a 代表换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21&quot;) Hello World!</code></td></tr>
+<tr><td style="text-align: left">\other</td><td style="text-align: left">其它的字符以普通格式输出</td><td style="text-align: left"></td></tr>
+</tbody></table>
+</div>
+<h2 id="python字符串运算符"><a class="header" href="#python字符串运算符">Python字符串运算符</a></h2>
+<p>下表实例变量 a 值为字符串 &quot;Hello&quot;，b 变量值为 &quot;Python&quot;：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">操作符</th><th style="text-align: left">描述</th><th style="text-align: left">实例</th></tr></thead><tbody>
+<tr><td style="text-align: left">+</td><td style="text-align: left">字符串连接</td><td style="text-align: left">a + b 输出结果： HelloPython</td></tr>
+<tr><td style="text-align: left">*</td><td style="text-align: left">重复输出字符串</td><td style="text-align: left">a*2 输出结果：HelloHello</td></tr>
+<tr><td style="text-align: left">[]</td><td style="text-align: left">通过索引获取字符串中字符</td><td style="text-align: left">a[1] 输出结果 <strong>e</strong></td></tr>
+<tr><td style="text-align: left">[ : ]</td><td style="text-align: left">截取字符串中的一部分，遵循<strong>左闭右开</strong>原则，str[0:2] 是不包含第 3 个字符的。</td><td style="text-align: left">a[1:4] 输出结果 <strong>ell</strong></td></tr>
+<tr><td style="text-align: left">in</td><td style="text-align: left">成员运算符 - 如果字符串中包含给定的字符返回 True</td><td style="text-align: left"><strong>'H' in a</strong> 输出结果 True</td></tr>
+<tr><td style="text-align: left">not in</td><td style="text-align: left">成员运算符 - 如果字符串中不包含给定的字符返回 True</td><td style="text-align: left"><strong>'M' not in a</strong> 输出结果 True</td></tr>
+<tr><td style="text-align: left">r/R</td><td style="text-align: left">原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母 <strong>r</strong>（可以大小写）以外，与普通字符串有着几乎完全相同的语法。</td><td style="text-align: left"><code>print( r'\n' ) print( R'\n' )</code></td></tr>
+<tr><td style="text-align: left">%</td><td style="text-align: left">格式字符串</td><td style="text-align: left">请看下一节内容。</td></tr>
+</tbody></table>
+</div>
+<h2 id="python-字符串格式化"><a class="header" href="#python-字符串格式化">Python 字符串格式化</a></h2>
+<p>Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。</p>
+<pre><code class="language-python">print (&quot;我叫 %s 今年 %d 岁!&quot; % ('小明', 10))
+</code></pre>
+<p>python字符串格式化符号:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">符  号</th><th style="text-align: left">描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">%c</td><td style="text-align: left">格式化字符及其ASCII码</td></tr>
+<tr><td style="text-align: left">%s</td><td style="text-align: left">格式化字符串</td></tr>
+<tr><td style="text-align: left">%d</td><td style="text-align: left">格式化整数</td></tr>
+<tr><td style="text-align: left">%u</td><td style="text-align: left">格式化无符号整型</td></tr>
+<tr><td style="text-align: left">%o</td><td style="text-align: left">格式化无符号八进制数</td></tr>
+<tr><td style="text-align: left">%x</td><td style="text-align: left">格式化无符号十六进制数</td></tr>
+<tr><td style="text-align: left">%X</td><td style="text-align: left">格式化无符号十六进制数（大写）</td></tr>
+<tr><td style="text-align: left">%f</td><td style="text-align: left">格式化浮点数字，可指定小数点后的精度</td></tr>
+<tr><td style="text-align: left">%e</td><td style="text-align: left">用科学计数法格式化浮点数</td></tr>
+<tr><td style="text-align: left">%E</td><td style="text-align: left">作用同%e，用科学计数法格式化浮点数</td></tr>
+<tr><td style="text-align: left">%g</td><td style="text-align: left">%f和%e的简写</td></tr>
+<tr><td style="text-align: left">%G</td><td style="text-align: left">%f 和 %E 的简写</td></tr>
+<tr><td style="text-align: left">%p</td><td style="text-align: left">用十六进制数格式化变量的地址</td></tr>
+</tbody></table>
+</div>
+<p>格式化操作符辅助指令:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">符号</th><th style="text-align: left">功能</th></tr></thead><tbody>
+<tr><td style="text-align: left">*</td><td style="text-align: left">定义宽度或者小数点精度</td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left">用做左对齐</td></tr>
+<tr><td style="text-align: left">+</td><td style="text-align: left">在正数前面显示加号( + )</td></tr>
+<tr><td style="text-align: left"><sp></td><td style="text-align: left">在正数前面显示空格</td></tr>
+<tr><td style="text-align: left">#</td><td style="text-align: left">在八进制数前面显示零('0')，在十六进制前面显示'0x'或者'0X'(取决于用的是'x'还是'X')</td></tr>
+<tr><td style="text-align: left">0</td><td style="text-align: left">显示的数字前面填充'0'而不是默认的空格</td></tr>
+<tr><td style="text-align: left">%</td><td style="text-align: left">'%%'输出一个单一的'%'</td></tr>
+<tr><td style="text-align: left">(var)</td><td style="text-align: left">映射变量(字典参数)</td></tr>
+<tr><td style="text-align: left">m.n.</td><td style="text-align: left">m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td></tr>
+</tbody></table>
+</div>
+<p>Python2.6 开始，新增了一种格式化字符串的函数 <a href="https://www.runoob.com/python/att-string-format.html">str.format()</a>，它增强了字符串格式化的功能。</p>
+<h2 id="python三引号"><a class="header" href="#python三引号">Python三引号</a></h2>
+<p>python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符。实例如下</p>
+<pre><code class="language-python">#!/usr/bin/python3
+ 
+para_str = &quot;&quot;&quot;这是一个多行字符串的实例
+多行字符串可以使用制表符
+TAB ( \t )。
+也可以使用换行符 [ \n ]。
+&quot;&quot;&quot;
+print (para_str)
+</code></pre>
+<h2 id="f-string"><a class="header" href="#f-string">f-string</a></h2>
+<pre><code class="language-python">&gt;&gt;&gt; name = 'Runoob'
+&gt;&gt;&gt; 'Hello %s' % name
+'Hello Runoob'
+</code></pre>
+<p><strong>f-string</strong> 格式化字符串以 <strong>f</strong> 开头，后面跟着字符串，字符串中的表达式用大括号 {} 包起来，它会将变量或表达式计算后的值替换进去，实例如下：</p>
+<pre><code class="language-python">&gt;&gt;&gt; name = 'Runoob'
+&gt;&gt;&gt; f'Hello {name}'  # 替换变量
+'Hello Runoob'
+&gt;&gt;&gt; f'{1+2}'         # 使用表达式
+'3'
+
+&gt;&gt;&gt; w = {'name': 'Runoob', 'url': 'www.runoob.com'}
+&gt;&gt;&gt; f'{w[&quot;name&quot;]}: {w[&quot;url&quot;]}'
+'Runoob: www.runoob.com'
+</code></pre>
+<p>用了这种方式明显更简单了，不用再去判断使用 %s，还是 %d。</p>
+<p>在 Python 3.8 的版本中可以使用 <strong>=</strong> 符号来拼接运算表达式与结果：</p>
+<pre><code class="language-python">&gt;&gt;&gt; x = 1
+&gt;&gt;&gt; print(f'{x+1}')   # Python 3.6
+2
+
+&gt;&gt;&gt; x = 1
+&gt;&gt;&gt; print(f'{x+1=}')   # Python 3.8
+x+1=2
+</code></pre>
+<h2 id="unicode-字符串"><a class="header" href="#unicode-字符串">Unicode 字符串</a></h2>
+<p>在Python2中，普通字符串是以8位ASCII码进行存储的，而Unicode字符串则存储为16位unicode字符串，这样能够表示更多的字符集。使用的语法是在字符串前面加上前缀 <strong>u</strong>。</p>
+<p>在Python3中，所有的字符串都是Unicode字符串。</p>
+<h2 id="python-的字符串内建函数"><a class="header" href="#python-的字符串内建函数">Python 的字符串内建函数</a></h2>
+<p>Python 的字符串常用内建函数如下：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">序号</th><th style="text-align: left">方法及描述</th></tr></thead><tbody>
+<tr><td style="text-align: left">1</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-capitalize.html">capitalize()</a> 将字符串的第一个字符转换为大写</td></tr>
+<tr><td style="text-align: left">2</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-center.html">center(width, fillchar)</a>返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。</td></tr>
+<tr><td style="text-align: left">3</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-count.html">count(str, beg= 0,end=len(string))</a> 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td></tr>
+<tr><td style="text-align: left">4</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-decode.html">bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</a> Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。</td></tr>
+<tr><td style="text-align: left">5</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-encode.html">encode(encoding='UTF-8',errors='strict')</a> 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是'ignore'或者'replace'</td></tr>
+<tr><td style="text-align: left">6</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-endswith.html">endswith(suffix, beg=0, end=len(string))</a> 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False.</td></tr>
+<tr><td style="text-align: left">7</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-expandtabs.html">expandtabs(tabsize=8)</a> 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。</td></tr>
+<tr><td style="text-align: left">8</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-find.html">find(str, beg=0, end=len(string))</a> 检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1</td></tr>
+<tr><td style="text-align: left">9</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-index.html">index(str, beg=0, end=len(string))</a> 跟find()方法一样，只不过如果str不在字符串中会报一个异常。</td></tr>
+<tr><td style="text-align: left">10</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isalnum.html">isalnum()</a> 如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True，否则返回 False</td></tr>
+<tr><td style="text-align: left">11</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isalpha.html">isalpha()</a> 如果字符串至少有一个字符并且所有字符都是字母或中文字则返回 True, 否则返回 False</td></tr>
+<tr><td style="text-align: left">12</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isdigit.html">isdigit()</a> 如果字符串只包含数字则返回 True 否则返回 False..</td></tr>
+<tr><td style="text-align: left">13</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-islower.html">islower()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False</td></tr>
+<tr><td style="text-align: left">14</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isnumeric.html">isnumeric()</a> 如果字符串中只包含数字字符，则返回 True，否则返回 False</td></tr>
+<tr><td style="text-align: left">15</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isspace.html">isspace()</a> 如果字符串中只包含空白，则返回 True，否则返回 False.</td></tr>
+<tr><td style="text-align: left">16</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-istitle.html">istitle()</a> 如果字符串是标题化的(见 title())则返回 True，否则返回 False</td></tr>
+<tr><td style="text-align: left">17</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isupper.html">isupper()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False</td></tr>
+<tr><td style="text-align: left">18</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-join.html">join(seq)</a> 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串</td></tr>
+<tr><td style="text-align: left">19</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-len.html">len(string)</a> 返回字符串长度</td></tr>
+<tr><td style="text-align: left">20</td><td style="text-align: left">[ljust(width<a href="https://www.runoob.com/python3/python3-string-ljust.html">, fillchar])</a> 返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。</td></tr>
+<tr><td style="text-align: left">21</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-lower.html">lower()</a> 转换字符串中所有大写字符为小写.</td></tr>
+<tr><td style="text-align: left">22</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-lstrip.html">lstrip()</a> 截掉字符串左边的空格或指定字符。</td></tr>
+<tr><td style="text-align: left">23</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-maketrans.html">maketrans()</a> 创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</td></tr>
+<tr><td style="text-align: left">24</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-max.html">max(str)</a> 返回字符串 str 中最大的字母。</td></tr>
+<tr><td style="text-align: left">25</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-min.html">min(str)</a> 返回字符串 str 中最小的字母。</td></tr>
+<tr><td style="text-align: left">26</td><td style="text-align: left">[replace(old, new <a href="https://www.runoob.com/python3/python3-string-replace.html">, max])</a> 把 将字符串中的 old 替换成 new,如果 max 指定，则替换不超过 max 次。</td></tr>
+<tr><td style="text-align: left">27</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-rfind.html">rfind(str, beg=0,end=len(string))</a> 类似于 find()函数，不过是从右边开始查找.</td></tr>
+<tr><td style="text-align: left">28</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-rindex.html">rindex( str, beg=0, end=len(string))</a> 类似于 index()，不过是从右边开始.</td></tr>
+<tr><td style="text-align: left">29</td><td style="text-align: left">[rjust(width,<a href="https://www.runoob.com/python3/python3-string-rjust.html">, fillchar])</a> 返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串</td></tr>
+<tr><td style="text-align: left">30</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-rstrip.html">rstrip()</a> 删除字符串末尾的空格或指定字符。</td></tr>
+<tr><td style="text-align: left">31</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-split.html">split(str=&quot;&quot;, num=string.count(str))</a> 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串</td></tr>
+<tr><td style="text-align: left">32</td><td style="text-align: left">[splitlines(<a href="https://www.runoob.com/python3/python3-string-splitlines.html">keepends])</a> 按照行('\r', '\r\n', \n')分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td></tr>
+<tr><td style="text-align: left">33</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-startswith.html">startswith(substr, beg=0,end=len(string))</a> 检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。</td></tr>
+<tr><td style="text-align: left">34</td><td style="text-align: left">[strip(<a href="https://www.runoob.com/python3/python3-string-strip.html">chars])</a> 在字符串上执行 lstrip()和 rstrip()</td></tr>
+<tr><td style="text-align: left">35</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-swapcase.html">swapcase()</a> 将字符串中大写转换为小写，小写转换为大写</td></tr>
+<tr><td style="text-align: left">36</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-title.html">title()</a> 返回&quot;标题化&quot;的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</td></tr>
+<tr><td style="text-align: left">37</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-translate.html">translate(table, deletechars=&quot;&quot;)</a> 根据 table 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中</td></tr>
+<tr><td style="text-align: left">38</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-upper.html">upper()</a> 转换字符串中的小写字母为大写</td></tr>
+<tr><td style="text-align: left">39</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-zfill.html">zfill (width)</a> 返回长度为 width 的字符串，原字符串右对齐，前面填充0</td></tr>
+<tr><td style="text-align: left">40</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isdecimal.html">isdecimal()</a> 检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。</td></tr>
+</tbody></table>
+</div><script src="/note/python/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/python/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/python/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="python基础"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../python基础_1_python基础/5.Python3运算符.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../python基础_1_python基础/7.python3列表.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../python基础_1_python基础/5.Python3运算符.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../python基础_1_python基础/7.python3列表.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

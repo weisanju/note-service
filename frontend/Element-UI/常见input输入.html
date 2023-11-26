@@ -1,0 +1,1735 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常见input输入 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item expanded "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item expanded "><a href="../Element-UI/常见input输入.html" class="active">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="radio-单选框"><a class="header" href="#radio-单选框">Radio 单选框</a></h1>
+<p>由于选项默认可见，不宜过多，若选项过多，建议使用 Select 选择器。</p>
+<h2 id="基础使用"><a class="header" href="#基础使用">基础使用</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-radio v-model=&quot;radio&quot; label=&quot;1&quot;&gt;备选项&lt;/el-radio&gt;
+  &lt;el-radio v-model=&quot;radio&quot; label=&quot;2&quot;&gt;备选项&lt;/el-radio&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        radio: '1'
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="禁用"><a class="header" href="#禁用">禁用</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-radio disabled v-model=&quot;radio&quot; label=&quot;禁用&quot;&gt;备选项&lt;/el-radio&gt;
+  &lt;el-radio disabled v-model=&quot;radio&quot; label=&quot;选中且禁用&quot;&gt;备选项&lt;/el-radio&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        radio: '选中且禁用'
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="单选框组"><a class="header" href="#单选框组">单选框组</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-radio-group v-model=&quot;radio&quot;&gt;
+    &lt;el-radio :label=&quot;3&quot;&gt;备选项&lt;/el-radio&gt;
+    &lt;el-radio :label=&quot;6&quot;&gt;备选项&lt;/el-radio&gt;
+    &lt;el-radio :label=&quot;9&quot;&gt;备选项&lt;/el-radio&gt;
+  &lt;/el-radio-group&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        radio: 3
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="按钮-样式"><a class="header" href="#按钮-样式">按钮 样式</a></h2>
+<p>只需要把<code>el-radio</code>元素换成<code>el-radio-button</code>元素即可，此外，Element 还提供了<code>size</code>属性</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-radio-group v-model=&quot;radio1&quot;&gt;
+      &lt;el-radio-button label=&quot;上海&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;北京&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;广州&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;深圳&quot;&gt;&lt;/el-radio-button&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio-group v-model=&quot;radio2&quot; size=&quot;medium&quot;&gt;
+      &lt;el-radio-button label=&quot;上海&quot; &gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;北京&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;广州&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;深圳&quot;&gt;&lt;/el-radio-button&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio-group v-model=&quot;radio3&quot; size=&quot;small&quot;&gt;
+      &lt;el-radio-button label=&quot;上海&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;北京&quot; disabled &gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;广州&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;深圳&quot;&gt;&lt;/el-radio-button&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio-group v-model=&quot;radio4&quot; disabled size=&quot;mini&quot;&gt;
+      &lt;el-radio-button label=&quot;上海&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;北京&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;广州&quot;&gt;&lt;/el-radio-button&gt;
+      &lt;el-radio-button label=&quot;深圳&quot;&gt;&lt;/el-radio-button&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        radio1: '上海',
+        radio2: '上海',
+        radio3: '上海',
+        radio4: '上海'
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="带有边框"><a class="header" href="#带有边框">带有边框</a></h2>
+<p>设置<code>border</code>属性可以渲染为带有边框的单选框。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-radio v-model=&quot;radio1&quot; label=&quot;1&quot; border&gt;备选项1&lt;/el-radio&gt;
+    &lt;el-radio v-model=&quot;radio1&quot; label=&quot;2&quot; border&gt;备选项2&lt;/el-radio&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio v-model=&quot;radio2&quot; label=&quot;1&quot; border size=&quot;medium&quot;&gt;备选项1&lt;/el-radio&gt;
+    &lt;el-radio v-model=&quot;radio2&quot; label=&quot;2&quot; border size=&quot;medium&quot;&gt;备选项2&lt;/el-radio&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio-group v-model=&quot;radio3&quot; size=&quot;small&quot;&gt;
+      &lt;el-radio label=&quot;1&quot; border&gt;备选项1&lt;/el-radio&gt;
+      &lt;el-radio label=&quot;2&quot; border disabled&gt;备选项2&lt;/el-radio&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-radio-group v-model=&quot;radio4&quot; size=&quot;mini&quot; disabled&gt;
+      &lt;el-radio label=&quot;1&quot; border&gt;备选项1&lt;/el-radio&gt;
+      &lt;el-radio label=&quot;2&quot; border&gt;备选项2&lt;/el-radio&gt;
+    &lt;/el-radio-group&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        radio1: '1',
+        radio2: '1',
+        radio3: '1',
+        radio4: '1'
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="radio-attributes"><a class="header" href="#radio-attributes">Radio Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">Radio 的 value</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">border</td><td style="text-align: left">是否显示边框</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">Radio 的尺寸，仅在 border 为真时有效</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生 name 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+</tbody></table>
+</div>
+<h2 id="radio-events"><a class="header" href="#radio-events">Radio Events</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">绑定值变化时触发的事件</td><td style="text-align: left">选中的 Radio label 值</td></tr>
+</tbody></table>
+</div>
+<h2 id="radio-group-attributes"><a class="header" href="#radio-group-attributes">Radio-group Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">单选框组尺寸，仅对按钮形式的 Radio 或带有边框的 Radio 有效</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">text-color</td><td style="text-align: left">按钮形式的 Radio 激活时的文本颜色</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">#ffffff</td></tr>
+<tr><td style="text-align: left">fill</td><td style="text-align: left">按钮形式的 Radio 激活时的填充色和边框色</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">#409EFF</td></tr>
+</tbody></table>
+</div>
+<h2 id="radio-group-events"><a class="header" href="#radio-group-events">Radio-group Events</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">绑定值变化时触发的事件</td><td style="text-align: left">选中的 Radio label 值</td></tr>
+</tbody></table>
+</div>
+<h2 id="radio-button-attributes"><a class="header" href="#radio-button-attributes">Radio-button Attributes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">label</td><td style="text-align: left">Radio 的 value</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生 name 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+</tbody></table>
+</div>
+<h1 id="checkbox-多选框"><a class="header" href="#checkbox-多选框">Checkbox 多选框</a></h1>
+<h2 id="基础用法"><a class="header" href="#基础用法">基础用法</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;!-- `checked` 为 true 或 false --&gt;
+  &lt;el-checkbox v-model=&quot;checked&quot;&gt;备选项&lt;/el-checkbox&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        checked: true
+      };
+    }
+  };
+&lt;/script&gt;
+</code></pre>
+<h2 id="禁用状态"><a class="header" href="#禁用状态">禁用状态</a></h2>
+<p><em>disabled</em></p>
+<h2 id="多选框组"><a class="header" href="#多选框组">多选框组</a></h2>
+<p><code>checkbox-group</code>元素能把多个 checkbox 管理为一组，只需要在 Group 中使用<code>v-model</code>绑定<code>Array</code>类型的变量即可。 <code>el-checkbox</code> 的 <code>label</code>属性是该 checkbox 对应的值，若该标签中无内容，则该属性也充当 checkbox 按钮后的介绍。<code>label</code>与数组中的元素值相对应，如果存在指定的值则为选中状态，否则为不选中。</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-checkbox-group v-model=&quot;checkList&quot;&gt;
+    &lt;el-checkbox label=&quot;复选框 A&quot;&gt;&lt;/el-checkbox&gt;
+    &lt;el-checkbox label=&quot;复选框 B&quot;&gt;&lt;/el-checkbox&gt;
+    &lt;el-checkbox label=&quot;复选框 C&quot;&gt;&lt;/el-checkbox&gt;
+    &lt;el-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+    &lt;el-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/el-checkbox&gt;
+  &lt;/el-checkbox-group&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data () {
+      return {
+        checkList: ['选中且禁用','复选框 A']
+      };
+    }
+  };
+&lt;/script&gt;
+</code></pre>
+<h2 id="indeterminate-状态"><a class="header" href="#indeterminate-状态">indeterminate 状态</a></h2>
+<p><code>indeterminate</code> 属性用以表示 checkbox 的不确定状态，一般用于<strong>实现全选的效果</strong></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-checkbox :indeterminate=&quot;isIndeterminate&quot; v-model=&quot;checkAll&quot; @change=&quot;handleCheckAllChange&quot;&gt;全选&lt;/el-checkbox&gt;
+  &lt;div style=&quot;margin: 15px 0;&quot;&gt;&lt;/div&gt;
+  &lt;el-checkbox-group v-model=&quot;checkedCities&quot; @change=&quot;handleCheckedCitiesChange&quot;&gt;
+    &lt;el-checkbox v-for=&quot;city in cities&quot; :label=&quot;city&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox&gt;
+  &lt;/el-checkbox-group&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  const cityOptions = ['上海', '北京', '广州', '深圳'];
+  export default {
+    data() {
+      return {
+        checkAll: false,
+        checkedCities: ['上海', '北京'],
+        cities: cityOptions,
+        isIndeterminate: true
+      };
+    },
+    methods: {
+      handleCheckAllChange(val) {
+        this.checkedCities = val ? cityOptions : [];
+        this.isIndeterminate = false;
+      },
+      handleCheckedCitiesChange(value) {
+        let checkedCount = value.length;
+        this.checkAll = checkedCount === this.cities.length;
+        this.isIndeterminate = checkedCount &gt; 0 &amp;&amp; checkedCount &lt; this.cities.length;
+      }
+    }
+  };
+&lt;/script&gt;
+</code></pre>
+<h2 id="可选项目数量的限制"><a class="header" href="#可选项目数量的限制">可选项目数量的限制</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-checkbox-group 
+    v-model=&quot;checkedCities&quot;
+    :min=&quot;1&quot;
+    :max=&quot;2&quot;&gt;
+    &lt;el-checkbox v-for=&quot;city in cities&quot; :label=&quot;city&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox&gt;
+  &lt;/el-checkbox-group&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  const cityOptions = ['上海', '北京', '广州', '深圳'];
+  export default {
+    data() {
+      return {
+        checkedCities: ['上海', '北京'],
+        cities: cityOptions
+      };
+    }
+  };
+&lt;/script&gt;
+</code></pre>
+<h2 id="按钮样式"><a class="header" href="#按钮样式">按钮样式</a></h2>
+<p>只需要把<code>el-checkbox</code>元素替换为<code>el-checkbox-button</code>元素即可。此外，Element 还提供了<code>size</code>属性。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-checkbox-group v-model=&quot;checkboxGroup1&quot;&gt;
+      &lt;el-checkbox-button v-for=&quot;city in cities&quot; :label=&quot;city&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox-button&gt;
+    &lt;/el-checkbox-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-checkbox-group v-model=&quot;checkboxGroup2&quot; size=&quot;medium&quot;&gt;
+      &lt;el-checkbox-button v-for=&quot;city in cities&quot; :label=&quot;city&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox-button&gt;
+    &lt;/el-checkbox-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-checkbox-group v-model=&quot;checkboxGroup3&quot; size=&quot;small&quot;&gt;
+      &lt;el-checkbox-button v-for=&quot;city in cities&quot; :label=&quot;city&quot; :disabled=&quot;city === '北京'&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox-button&gt;
+    &lt;/el-checkbox-group&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 20px&quot;&gt;
+    &lt;el-checkbox-group v-model=&quot;checkboxGroup4&quot; size=&quot;mini&quot; disabled&gt;
+      &lt;el-checkbox-button v-for=&quot;city in cities&quot; :label=&quot;city&quot; :key=&quot;city&quot;&gt;{{city}}&lt;/el-checkbox-button&gt;
+    &lt;/el-checkbox-group&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  const cityOptions = ['上海', '北京', '广州', '深圳'];
+  export default {
+    data () {
+      return {
+        checkboxGroup1: ['上海'],
+        checkboxGroup2: ['上海'],
+        checkboxGroup3: ['上海'],
+        checkboxGroup4: ['上海'],
+        cities: cityOptions
+      };
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="带有边框-1"><a class="header" href="#带有边框-1">带有边框</a></h2>
+<p><code>&lt;el-checkbox v-model=&quot;checked1&quot; label=&quot;备选项1&quot; border&gt;&lt;/el-checkbox&gt;</code></p>
+<h2 id="参数与事件"><a class="header" href="#参数与事件">参数与事件</a></h2>
+<h3 id="checkbox-attributes"><a class="header" href="#checkbox-attributes">Checkbox Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">选中状态的值（只有在<code>checkbox-group</code>或者绑定对象类型为<code>array</code>时有效）</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">true-label</td><td style="text-align: left">选中时的值</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">false-label</td><td style="text-align: left">没有选中时的值</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">border</td><td style="text-align: left">是否显示边框</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">Checkbox 的尺寸，仅在 border 为真时有效</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生 name 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">checked</td><td style="text-align: left">当前是否勾选</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">indeterminate</td><td style="text-align: left">设置 indeterminate 状态，只负责样式控制</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h3 id="checkbox-events"><a class="header" href="#checkbox-events"><a href="https://element.eleme.cn/#/zh-CN/component/checkbox#checkbox-events">¶</a>Checkbox Events</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">当绑定值变化时触发的事件</td><td style="text-align: left">更新后的值</td></tr>
+</tbody></table>
+</div>
+<h3 id="checkbox-group-attributes"><a class="header" href="#checkbox-group-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/checkbox#checkbox-group-attributes">¶</a>Checkbox-group Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">array</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">min</td><td style="text-align: left">可被勾选的 checkbox 的最小数量</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">max</td><td style="text-align: left">可被勾选的 checkbox 的最大数量</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">text-color</td><td style="text-align: left">按钮形式的 Checkbox 激活时的文本颜色</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">#ffffff</td></tr>
+<tr><td style="text-align: left">fill</td><td style="text-align: left">按钮形式的 Checkbox 激活时的填充色和边框色</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">#409EFF</td></tr>
+</tbody></table>
+</div>
+<h3 id="checkbox-group-events"><a class="header" href="#checkbox-group-events"><a href="https://element.eleme.cn/#/zh-CN/component/checkbox#checkbox-group-events">¶</a>Checkbox-group Events</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">当绑定值变化时触发的事件</td><td style="text-align: left">更新后的值</td></tr>
+</tbody></table>
+</div>
+<h3 id="checkbox-button-attributes"><a class="header" href="#checkbox-button-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/checkbox#checkbox-button-attributes">¶</a>Checkbox-button Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">label</td><td style="text-align: left">选中状态的值（只有在<code>checkbox-group</code>或者绑定对象类型为<code>array</code>时有效）</td><td style="text-align: left">string / number / boolean</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">true-label</td><td style="text-align: left">选中时的值</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">false-label</td><td style="text-align: left">没有选中时的值</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生 name 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">checked</td><td style="text-align: left">当前是否勾选</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h1 id="input-输入框"><a class="header" href="#input-输入框">Input 输入框</a></h1>
+<h2 id="基础用法-1"><a class="header" href="#基础用法-1">基础用法</a></h2>
+<pre><code class="language-html">&lt;el-input v-model=&quot;input&quot; placeholder=&quot;请输入内容&quot;&gt;&lt;/el-input&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      input: ''
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2 id="禁用-1"><a class="header" href="#禁用-1">禁用</a></h2>
+<pre><code class="language-vue">&lt;el-input
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;input&quot;
+  :disabled=&quot;true&quot;&gt;
+&lt;/el-input&gt;
+</code></pre>
+<h2 id="清空"><a class="header" href="#清空">清空</a></h2>
+<pre><code class="language-vue">&lt;el-input
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;input&quot;
+  clearable&gt;
+&lt;/el-input&gt;
+</code></pre>
+<h2 id="密码输入"><a class="header" href="#密码输入">密码输入</a></h2>
+<pre><code class="language-html">&lt;el-input placeholder=&quot;请输入密码&quot; v-model=&quot;input&quot; show-password&gt;&lt;/el-input&gt;
+</code></pre>
+<h2 id="带-icon-的输入框"><a class="header" href="#带-icon-的输入框">带 icon 的输入框</a></h2>
+<p>可以通过 <code>prefix-icon</code> 和 <code>suffix-icon</code> 属性在 input 组件首部和尾部增加显示图标，也可以通过 slot 来放置图标。</p>
+<pre><code class="language-vue">&lt;div class=&quot;demo-input-suffix&quot;&gt;
+  属性方式：
+  &lt;el-input
+    placeholder=&quot;请选择日期&quot;
+    suffix-icon=&quot;el-icon-date&quot;
+    v-model=&quot;input1&quot;&gt;
+  &lt;/el-input&gt;
+  &lt;el-input
+    placeholder=&quot;请输入内容&quot;
+    prefix-icon=&quot;el-icon-search&quot;
+    v-model=&quot;input2&quot;&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+&lt;div class=&quot;demo-input-suffix&quot;&gt;
+  slot 方式：
+  &lt;el-input
+    placeholder=&quot;请选择日期&quot;
+    v-model=&quot;input3&quot;&gt;
+    &lt;i slot=&quot;suffix&quot; class=&quot;el-input__icon el-icon-date&quot;&gt;&lt;/i&gt;
+  &lt;/el-input&gt;
+  &lt;el-input
+    placeholder=&quot;请输入内容&quot;
+    v-model=&quot;input4&quot;&gt;
+    &lt;i slot=&quot;prefix&quot; class=&quot;el-input__icon el-icon-search&quot;&gt;&lt;/i&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+
+</code></pre>
+<h2 id="文本域"><a class="header" href="#文本域">文本域</a></h2>
+<p>用于输入多行文本信息，通过将 <code>type</code> 属性的值指定为 textarea。</p>
+<pre><code class="language-vue">&lt;el-input
+  type=&quot;textarea&quot;
+  :rows=&quot;2&quot;
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;textarea&quot;&gt;
+&lt;/el-input&gt;
+
+</code></pre>
+<h2 id="可自适应文本高度的文本域"><a class="header" href="#可自适应文本高度的文本域">可自适应文本高度的文本域</a></h2>
+<pre><code class="language-vue">&lt;el-input
+  type=&quot;textarea&quot;
+  autosize
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;textarea1&quot;&gt;
+&lt;/el-input&gt;
+&lt;div style=&quot;margin: 20px 0;&quot;&gt;&lt;/div&gt;
+&lt;el-input
+  type=&quot;textarea&quot;
+  :autosize=&quot;{ minRows: 2, maxRows: 4}&quot;
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;textarea2&quot;&gt;
+&lt;/el-input&gt;
+
+</code></pre>
+<h2 id="复合型输入框"><a class="header" href="#复合型输入框">复合型输入框</a></h2>
+<pre><code class="language-vue">&lt;div&gt;
+  &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;input1&quot;&gt;
+    &lt;template slot=&quot;prepend&quot;&gt;Http://&lt;/template&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-top: 15px;&quot;&gt;
+  &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;input2&quot;&gt;
+    &lt;template slot=&quot;append&quot;&gt;.com&lt;/template&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-top: 15px;&quot;&gt;
+  &lt;el-input placeholder=&quot;请输入内容&quot; v-model=&quot;input3&quot; class=&quot;input-with-select&quot;&gt;
+    &lt;el-select v-model=&quot;select&quot; slot=&quot;prepend&quot; placeholder=&quot;请选择&quot;&gt;
+      &lt;el-option label=&quot;餐厅名&quot; value=&quot;1&quot;&gt;&lt;/el-option&gt;
+      &lt;el-option label=&quot;订单号&quot; value=&quot;2&quot;&gt;&lt;/el-option&gt;
+      &lt;el-option label=&quot;用户电话&quot; value=&quot;3&quot;&gt;&lt;/el-option&gt;
+    &lt;/el-select&gt;
+    &lt;el-button slot=&quot;append&quot; icon=&quot;el-icon-search&quot;&gt;&lt;/el-button&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+&lt;style&gt;
+  .el-select .el-input {
+    width: 130px;
+  }
+  .input-with-select .el-input-group__prepend {
+    background-color: #fff;
+  }
+&lt;/style&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      input1: '',
+      input2: '',
+      input3: '',
+      select: ''
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2 id="尺寸"><a class="header" href="#尺寸">尺寸</a></h2>
+<p>可通过 <code>size</code> 属性指定输入框的尺寸，除了默认的大小外，还提供了 large、small 和 mini 三种尺寸。</p>
+<pre><code class="language-vue">&lt;div class=&quot;demo-input-size&quot;&gt;
+  &lt;el-input
+    placeholder=&quot;请输入内容&quot;
+    suffix-icon=&quot;el-icon-date&quot;
+    v-model=&quot;input1&quot;&gt;
+  &lt;/el-input&gt;
+  &lt;el-input
+    size=&quot;medium&quot;
+    placeholder=&quot;请输入内容&quot;
+    suffix-icon=&quot;el-icon-date&quot;
+    v-model=&quot;input2&quot;&gt;
+  &lt;/el-input&gt;
+  &lt;el-input
+    size=&quot;small&quot;
+    placeholder=&quot;请输入内容&quot;
+    suffix-icon=&quot;el-icon-date&quot;
+    v-model=&quot;input3&quot;&gt;
+  &lt;/el-input&gt;
+  &lt;el-input
+    size=&quot;mini&quot;
+    placeholder=&quot;请输入内容&quot;
+    suffix-icon=&quot;el-icon-date&quot;
+    v-model=&quot;input4&quot;&gt;
+  &lt;/el-input&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="输入建议"><a class="header" href="#输入建议">输入建议</a></h2>
+<p>autocomplete 是一个可带输入建议的输入框组件，<code>fetch-suggestions</code> 是一个返回输入建议的方法属性，如 querySearch(queryString, cb)，在该方法中你可以在你的输入建议数据准备好时通过 cb(data) 返回到 autocomplete 组件中。</p>
+<pre><code class="language-vue">&lt;el-row class=&quot;demo-autocomplete&quot;&gt;
+  &lt;el-col :span=&quot;12&quot;&gt;
+    &lt;div class=&quot;sub-title&quot;&gt;激活即列出输入建议&lt;/div&gt;
+    &lt;el-autocomplete
+      class=&quot;inline-input&quot;
+      v-model=&quot;state1&quot;
+      :fetch-suggestions=&quot;querySearch&quot;
+      placeholder=&quot;请输入内容&quot;
+      @select=&quot;handleSelect&quot;
+    &gt;&lt;/el-autocomplete&gt;
+  &lt;/el-col&gt;
+  &lt;el-col :span=&quot;12&quot;&gt;
+    &lt;div class=&quot;sub-title&quot;&gt;输入后匹配输入建议&lt;/div&gt;
+    &lt;el-autocomplete
+      class=&quot;inline-input&quot;
+      v-model=&quot;state2&quot;
+      :fetch-suggestions=&quot;querySearch&quot;
+      placeholder=&quot;请输入内容&quot;
+      :trigger-on-focus=&quot;false&quot;
+      @select=&quot;handleSelect&quot;
+    &gt;&lt;/el-autocomplete&gt;
+  &lt;/el-col&gt;
+&lt;/el-row&gt;
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        restaurants: [],
+        state1: '',
+        state2: ''
+      };
+    },
+    methods: {
+      querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) =&gt; {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [
+          { &quot;value&quot;: &quot;三全鲜食（北新泾店）&quot;, &quot;address&quot;: &quot;长宁区新渔路144号&quot; },
+          { &quot;value&quot;: &quot;Hot honey 首尔炸鸡（仙霞路）&quot;, &quot;address&quot;: &quot;上海市长宁区淞虹路661号&quot; },
+          { &quot;value&quot;: &quot;新旺角茶餐厅&quot;, &quot;address&quot;: &quot;上海市普陀区真北路988号创邑金沙谷6号楼113&quot; },
+          { &quot;value&quot;: &quot;泷千家(天山西路店)&quot;, &quot;address&quot;: &quot;天山西路438号&quot; },
+          { &quot;value&quot;: &quot;胖仙女纸杯蛋糕（上海凌空店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号1幢18号楼一层商铺18-101&quot; },
+          { &quot;value&quot;: &quot;贡茶&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路633号&quot; },
+          { &quot;value&quot;: &quot;豪大大香鸡排超级奶爸&quot;, &quot;address&quot;: &quot;上海市嘉定区曹安公路曹安路1685号&quot; },
+          { &quot;value&quot;: &quot;茶芝兰（奶茶，手抓饼）&quot;, &quot;address&quot;: &quot;上海市普陀区同普路1435号&quot; },
+          { &quot;value&quot;: &quot;十二泷町&quot;, &quot;address&quot;: &quot;上海市北翟路1444弄81号B幢-107&quot; },
+          { &quot;value&quot;: &quot;星移浓缩咖啡&quot;, &quot;address&quot;: &quot;上海市嘉定区新郁路817号&quot; },
+          { &quot;value&quot;: &quot;阿姨奶茶/豪大大&quot;, &quot;address&quot;: &quot;嘉定区曹安路1611号&quot; },
+          { &quot;value&quot;: &quot;新麦甜四季甜品炸鸡&quot;, &quot;address&quot;: &quot;嘉定区曹安公路2383弄55号&quot; },
+          { &quot;value&quot;: &quot;Monica摩托主题咖啡店&quot;, &quot;address&quot;: &quot;嘉定区江桥镇曹安公路2409号1F，2383弄62号1F&quot; },
+          { &quot;value&quot;: &quot;浮生若茶（凌空soho店）&quot;, &quot;address&quot;: &quot;上海长宁区金钟路968号9号楼地下一层&quot; },
+          { &quot;value&quot;: &quot;NONO JUICE  鲜榨果汁&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路119号&quot; },
+          { &quot;value&quot;: &quot;CoCo都可(北新泾店）&quot;, &quot;address&quot;: &quot;上海市长宁区仙霞西路&quot; },
+          { &quot;value&quot;: &quot;快乐柠檬（神州智慧店）&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路567号1层R117号店铺&quot; },
+          { &quot;value&quot;: &quot;Merci Paul cafe&quot;, &quot;address&quot;: &quot;上海市普陀区光复西路丹巴路28弄6号楼819&quot; },
+          { &quot;value&quot;: &quot;猫山王（西郊百联店）&quot;, &quot;address&quot;: &quot;上海市长宁区仙霞西路88号第一层G05-F01-1-306&quot; },
+          { &quot;value&quot;: &quot;枪会山&quot;, &quot;address&quot;: &quot;上海市普陀区棕榈路&quot; },
+          { &quot;value&quot;: &quot;纵食&quot;, &quot;address&quot;: &quot;元丰天山花园(东门) 双流路267号&quot; },
+          { &quot;value&quot;: &quot;钱记&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路&quot; },
+          { &quot;value&quot;: &quot;壹杯加&quot;, &quot;address&quot;: &quot;上海市长宁区通协路&quot; },
+          { &quot;value&quot;: &quot;唦哇嘀咖&quot;, &quot;address&quot;: &quot;上海市长宁区新泾镇金钟路999号2幢（B幢）第01层第1-02A单元&quot; },
+          { &quot;value&quot;: &quot;爱茜茜里(西郊百联)&quot;, &quot;address&quot;: &quot;长宁区仙霞西路88号1305室&quot; },
+          { &quot;value&quot;: &quot;爱茜茜里(近铁广场)&quot;, &quot;address&quot;: &quot;上海市普陀区真北路818号近铁城市广场北区地下二楼N-B2-O2-C商铺&quot; },
+          { &quot;value&quot;: &quot;鲜果榨汁（金沙江路和美广店）&quot;, &quot;address&quot;: &quot;普陀区金沙江路2239号金沙和美广场B1-10-6&quot; },
+          { &quot;value&quot;: &quot;开心丽果（缤谷店）&quot;, &quot;address&quot;: &quot;上海市长宁区威宁路天山路341号&quot; },
+          { &quot;value&quot;: &quot;超级鸡车（丰庄路店）&quot;, &quot;address&quot;: &quot;上海市嘉定区丰庄路240号&quot; },
+          { &quot;value&quot;: &quot;妙生活果园（北新泾店）&quot;, &quot;address&quot;: &quot;长宁区新渔路144号&quot; },
+          { &quot;value&quot;: &quot;香宜度麻辣香锅&quot;, &quot;address&quot;: &quot;长宁区淞虹路148号&quot; },
+          { &quot;value&quot;: &quot;凡仔汉堡（老真北路店）&quot;, &quot;address&quot;: &quot;上海市普陀区老真北路160号&quot; },
+          { &quot;value&quot;: &quot;港式小铺&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号15楼15-105室&quot; },
+          { &quot;value&quot;: &quot;蜀香源麻辣香锅（剑河路店）&quot;, &quot;address&quot;: &quot;剑河路443-1&quot; },
+          { &quot;value&quot;: &quot;北京饺子馆&quot;, &quot;address&quot;: &quot;长宁区北新泾街道天山西路490-1号&quot; },
+          { &quot;value&quot;: &quot;饭典*新简餐（凌空SOHO店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号9号楼地下一层9-83室&quot; },
+          { &quot;value&quot;: &quot;焦耳·川式快餐（金钟路店）&quot;, &quot;address&quot;: &quot;上海市金钟路633号地下一层甲部&quot; },
+          { &quot;value&quot;: &quot;动力鸡车&quot;, &quot;address&quot;: &quot;长宁区仙霞西路299弄3号101B&quot; },
+          { &quot;value&quot;: &quot;浏阳蒸菜&quot;, &quot;address&quot;: &quot;天山西路430号&quot; },
+          { &quot;value&quot;: &quot;四海游龙（天山西路店）&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路&quot; },
+          { &quot;value&quot;: &quot;樱花食堂（凌空店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号15楼15-105室&quot; },
+          { &quot;value&quot;: &quot;壹分米客家传统调制米粉(天山店)&quot;, &quot;address&quot;: &quot;天山西路428号&quot; },
+          { &quot;value&quot;: &quot;福荣祥烧腊（平溪路店）&quot;, &quot;address&quot;: &quot;上海市长宁区协和路福泉路255弄57-73号&quot; },
+          { &quot;value&quot;: &quot;速记黄焖鸡米饭&quot;, &quot;address&quot;: &quot;上海市长宁区北新泾街道金钟路180号1层01号摊位&quot; },
+          { &quot;value&quot;: &quot;红辣椒麻辣烫&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路492号&quot; },
+          { &quot;value&quot;: &quot;(小杨生煎)西郊百联餐厅&quot;, &quot;address&quot;: &quot;长宁区仙霞西路88号百联2楼&quot; },
+          { &quot;value&quot;: &quot;阳阳麻辣烫&quot;, &quot;address&quot;: &quot;天山西路389号&quot; },
+          { &quot;value&quot;: &quot;南拳妈妈龙虾盖浇饭&quot;, &quot;address&quot;: &quot;普陀区金沙江路1699号鑫乐惠美食广场A13&quot; }
+        ];
+      },
+      handleSelect(item) {
+        console.log(item);
+      }
+    },
+    mounted() {
+      this.restaurants = this.loadAll();
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="自定义模板"><a class="header" href="#自定义模板">自定义模板</a></h2>
+<p>使用scoped slot自定义输入建议的模板。该 scope 的参数为item，表示当前输入建议对象。</p>
+<pre><code class="language-vue">
+&lt;el-autocomplete
+  popper-class=&quot;my-autocomplete&quot;
+  v-model=&quot;state&quot;
+  :fetch-suggestions=&quot;querySearch&quot;
+  placeholder=&quot;请输入内容&quot;
+  @select=&quot;handleSelect&quot;&gt;
+  &lt;i
+    class=&quot;el-icon-edit el-input__icon&quot;
+    slot=&quot;suffix&quot;
+    @click=&quot;handleIconClick&quot;&gt;
+  &lt;/i&gt;
+  &lt;template slot-scope=&quot;{ item }&quot;&gt;
+    &lt;div class=&quot;name&quot;&gt;{{ item.value }}&lt;/div&gt;
+    &lt;span class=&quot;addr&quot;&gt;{{ item.address }}&lt;/span&gt;
+  &lt;/template&gt;
+&lt;/el-autocomplete&gt;
+
+&lt;style&gt;
+.my-autocomplete {
+  li {
+    line-height: normal;
+    padding: 7px;
+
+    .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .addr {
+      font-size: 12px;
+      color: #b4b4b4;
+    }
+
+    .highlighted .addr {
+      color: #ddd;
+    }
+  }
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        restaurants: [],
+        state: ''
+      };
+    },
+    methods: {
+      querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) =&gt; {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [
+          { &quot;value&quot;: &quot;三全鲜食（北新泾店）&quot;, &quot;address&quot;: &quot;长宁区新渔路144号&quot; },
+          { &quot;value&quot;: &quot;Hot honey 首尔炸鸡（仙霞路）&quot;, &quot;address&quot;: &quot;上海市长宁区淞虹路661号&quot; },
+          { &quot;value&quot;: &quot;新旺角茶餐厅&quot;, &quot;address&quot;: &quot;上海市普陀区真北路988号创邑金沙谷6号楼113&quot; },
+          { &quot;value&quot;: &quot;泷千家(天山西路店)&quot;, &quot;address&quot;: &quot;天山西路438号&quot; },
+          { &quot;value&quot;: &quot;胖仙女纸杯蛋糕（上海凌空店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号1幢18号楼一层商铺18-101&quot; },
+          { &quot;value&quot;: &quot;贡茶&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路633号&quot; },
+          { &quot;value&quot;: &quot;豪大大香鸡排超级奶爸&quot;, &quot;address&quot;: &quot;上海市嘉定区曹安公路曹安路1685号&quot; },
+          { &quot;value&quot;: &quot;茶芝兰（奶茶，手抓饼）&quot;, &quot;address&quot;: &quot;上海市普陀区同普路1435号&quot; },
+          { &quot;value&quot;: &quot;十二泷町&quot;, &quot;address&quot;: &quot;上海市北翟路1444弄81号B幢-107&quot; },
+          { &quot;value&quot;: &quot;星移浓缩咖啡&quot;, &quot;address&quot;: &quot;上海市嘉定区新郁路817号&quot; },
+          { &quot;value&quot;: &quot;阿姨奶茶/豪大大&quot;, &quot;address&quot;: &quot;嘉定区曹安路1611号&quot; },
+          { &quot;value&quot;: &quot;新麦甜四季甜品炸鸡&quot;, &quot;address&quot;: &quot;嘉定区曹安公路2383弄55号&quot; },
+          { &quot;value&quot;: &quot;Monica摩托主题咖啡店&quot;, &quot;address&quot;: &quot;嘉定区江桥镇曹安公路2409号1F，2383弄62号1F&quot; },
+          { &quot;value&quot;: &quot;浮生若茶（凌空soho店）&quot;, &quot;address&quot;: &quot;上海长宁区金钟路968号9号楼地下一层&quot; },
+          { &quot;value&quot;: &quot;NONO JUICE  鲜榨果汁&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路119号&quot; },
+          { &quot;value&quot;: &quot;CoCo都可(北新泾店）&quot;, &quot;address&quot;: &quot;上海市长宁区仙霞西路&quot; },
+          { &quot;value&quot;: &quot;快乐柠檬（神州智慧店）&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路567号1层R117号店铺&quot; },
+          { &quot;value&quot;: &quot;Merci Paul cafe&quot;, &quot;address&quot;: &quot;上海市普陀区光复西路丹巴路28弄6号楼819&quot; },
+          { &quot;value&quot;: &quot;猫山王（西郊百联店）&quot;, &quot;address&quot;: &quot;上海市长宁区仙霞西路88号第一层G05-F01-1-306&quot; },
+          { &quot;value&quot;: &quot;枪会山&quot;, &quot;address&quot;: &quot;上海市普陀区棕榈路&quot; },
+          { &quot;value&quot;: &quot;纵食&quot;, &quot;address&quot;: &quot;元丰天山花园(东门) 双流路267号&quot; },
+          { &quot;value&quot;: &quot;钱记&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路&quot; },
+          { &quot;value&quot;: &quot;壹杯加&quot;, &quot;address&quot;: &quot;上海市长宁区通协路&quot; },
+          { &quot;value&quot;: &quot;唦哇嘀咖&quot;, &quot;address&quot;: &quot;上海市长宁区新泾镇金钟路999号2幢（B幢）第01层第1-02A单元&quot; },
+          { &quot;value&quot;: &quot;爱茜茜里(西郊百联)&quot;, &quot;address&quot;: &quot;长宁区仙霞西路88号1305室&quot; },
+          { &quot;value&quot;: &quot;爱茜茜里(近铁广场)&quot;, &quot;address&quot;: &quot;上海市普陀区真北路818号近铁城市广场北区地下二楼N-B2-O2-C商铺&quot; },
+          { &quot;value&quot;: &quot;鲜果榨汁（金沙江路和美广店）&quot;, &quot;address&quot;: &quot;普陀区金沙江路2239号金沙和美广场B1-10-6&quot; },
+          { &quot;value&quot;: &quot;开心丽果（缤谷店）&quot;, &quot;address&quot;: &quot;上海市长宁区威宁路天山路341号&quot; },
+          { &quot;value&quot;: &quot;超级鸡车（丰庄路店）&quot;, &quot;address&quot;: &quot;上海市嘉定区丰庄路240号&quot; },
+          { &quot;value&quot;: &quot;妙生活果园（北新泾店）&quot;, &quot;address&quot;: &quot;长宁区新渔路144号&quot; },
+          { &quot;value&quot;: &quot;香宜度麻辣香锅&quot;, &quot;address&quot;: &quot;长宁区淞虹路148号&quot; },
+          { &quot;value&quot;: &quot;凡仔汉堡（老真北路店）&quot;, &quot;address&quot;: &quot;上海市普陀区老真北路160号&quot; },
+          { &quot;value&quot;: &quot;港式小铺&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号15楼15-105室&quot; },
+          { &quot;value&quot;: &quot;蜀香源麻辣香锅（剑河路店）&quot;, &quot;address&quot;: &quot;剑河路443-1&quot; },
+          { &quot;value&quot;: &quot;北京饺子馆&quot;, &quot;address&quot;: &quot;长宁区北新泾街道天山西路490-1号&quot; },
+          { &quot;value&quot;: &quot;饭典*新简餐（凌空SOHO店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号9号楼地下一层9-83室&quot; },
+          { &quot;value&quot;: &quot;焦耳·川式快餐（金钟路店）&quot;, &quot;address&quot;: &quot;上海市金钟路633号地下一层甲部&quot; },
+          { &quot;value&quot;: &quot;动力鸡车&quot;, &quot;address&quot;: &quot;长宁区仙霞西路299弄3号101B&quot; },
+          { &quot;value&quot;: &quot;浏阳蒸菜&quot;, &quot;address&quot;: &quot;天山西路430号&quot; },
+          { &quot;value&quot;: &quot;四海游龙（天山西路店）&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路&quot; },
+          { &quot;value&quot;: &quot;樱花食堂（凌空店）&quot;, &quot;address&quot;: &quot;上海市长宁区金钟路968号15楼15-105室&quot; },
+          { &quot;value&quot;: &quot;壹分米客家传统调制米粉(天山店)&quot;, &quot;address&quot;: &quot;天山西路428号&quot; },
+          { &quot;value&quot;: &quot;福荣祥烧腊（平溪路店）&quot;, &quot;address&quot;: &quot;上海市长宁区协和路福泉路255弄57-73号&quot; },
+          { &quot;value&quot;: &quot;速记黄焖鸡米饭&quot;, &quot;address&quot;: &quot;上海市长宁区北新泾街道金钟路180号1层01号摊位&quot; },
+          { &quot;value&quot;: &quot;红辣椒麻辣烫&quot;, &quot;address&quot;: &quot;上海市长宁区天山西路492号&quot; },
+          { &quot;value&quot;: &quot;(小杨生煎)西郊百联餐厅&quot;, &quot;address&quot;: &quot;长宁区仙霞西路88号百联2楼&quot; },
+          { &quot;value&quot;: &quot;阳阳麻辣烫&quot;, &quot;address&quot;: &quot;天山西路389号&quot; },
+          { &quot;value&quot;: &quot;南拳妈妈龙虾盖浇饭&quot;, &quot;address&quot;: &quot;普陀区金沙江路1699号鑫乐惠美食广场A13&quot; }
+        ];
+      },
+      handleSelect(item) {
+        console.log(item);
+      },
+      handleIconClick(ev) {
+        console.log(ev);
+      }
+    },
+    mounted() {
+      this.restaurants = this.loadAll();
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="输入长度限制"><a class="header" href="#输入长度限制">输入长度限制</a></h2>
+<p><code>maxlength</code> 和 <code>minlength</code> 是原生属性，用来限制输入框的字符长度，其中字符长度是用 Javascript 的字符串长度统计的。对于类型为 <code>text</code> 或 <code>textarea</code> 的输入框，在使用 <code>maxlength</code> 属性限制最大输入长度的同时，可通过设置 <code>show-word-limit</code> 属性来展示字数统计。</p>
+<pre><code class="language-vue">&lt;el-input
+  type=&quot;text&quot;
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;text&quot;
+  maxlength=&quot;10&quot;
+  show-word-limit
+&gt;
+&lt;/el-input&gt;
+&lt;div style=&quot;margin: 20px 0;&quot;&gt;&lt;/div&gt;
+&lt;el-input
+  type=&quot;textarea&quot;
+  placeholder=&quot;请输入内容&quot;
+  v-model=&quot;textarea&quot;
+  maxlength=&quot;30&quot;
+  show-word-limit
+&gt;
+&lt;/el-input&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      text: '',
+      textarea: ''
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2 id="属性与事件"><a class="header" href="#属性与事件">属性与事件</a></h2>
+<h3 id="input-attributes"><a class="header" href="#input-attributes">Input Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">type</td><td style="text-align: left">类型</td><td style="text-align: left">string</td><td style="text-align: left">text，textarea 和其他 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form__types">原生 input 的 type 值</a></td><td style="text-align: left">text</td></tr>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">maxlength</td><td style="text-align: left">原生属性，最大输入长度</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">minlength</td><td style="text-align: left">原生属性，最小输入长度</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">show-word-limit</td><td style="text-align: left">是否显示输入字数统计，只在 <code>type = &quot;text&quot;</code> 或 <code>type = &quot;textarea&quot;</code> 时有效</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">placeholder</td><td style="text-align: left">输入框占位文本</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">clearable</td><td style="text-align: left">是否可清空</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">show-password</td><td style="text-align: left">是否显示切换密码图标</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">输入框尺寸，只在 <code>type!=&quot;textarea&quot;</code> 时有效</td><td style="text-align: left">string</td><td style="text-align: left">medium / small / mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">prefix-icon</td><td style="text-align: left">输入框头部图标</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">suffix-icon</td><td style="text-align: left">输入框尾部图标</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">rows</td><td style="text-align: left">输入框行数，只对 <code>type=&quot;textarea&quot;</code> 有效</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">2</td></tr>
+<tr><td style="text-align: left">autosize</td><td style="text-align: left">自适应内容高度，只对 <code>type=&quot;textarea&quot;</code> 有效，可传入对象，如，{ minRows: 2, maxRows: 6 }</td><td style="text-align: left">boolean / object</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">autocomplete</td><td style="text-align: left">原生属性，自动补全</td><td style="text-align: left">string</td><td style="text-align: left">on, off</td><td style="text-align: left">off</td></tr>
+<tr><td style="text-align: left">auto-complete</td><td style="text-align: left">下个主版本弃用</td><td style="text-align: left">string</td><td style="text-align: left">on, off</td><td style="text-align: left">off</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">readonly</td><td style="text-align: left">原生属性，是否只读</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">max</td><td style="text-align: left">原生属性，设置最大值</td><td style="text-align: left">—</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">min</td><td style="text-align: left">原生属性，设置最小值</td><td style="text-align: left">—</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">step</td><td style="text-align: left">原生属性，设置输入字段的合法数字间隔</td><td style="text-align: left">—</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">resize</td><td style="text-align: left">控制是否能被用户缩放</td><td style="text-align: left">string</td><td style="text-align: left">none, both, horizontal, vertical</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">autofocus</td><td style="text-align: left">原生属性，自动获取焦点</td><td style="text-align: left">boolean</td><td style="text-align: left">true, false</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">form</td><td style="text-align: left">原生属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">输入框关联的label文字</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">tabindex</td><td style="text-align: left">输入框的tabindex</td><td style="text-align: left">string</td><td style="text-align: left">-</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">validate-event</td><td style="text-align: left">输入时是否触发表单的校验</td><td style="text-align: left">boolean</td><td style="text-align: left">-</td><td style="text-align: left">true</td></tr>
+</tbody></table>
+</div>
+<h3 id="input-slots"><a class="header" href="#input-slots">Input Slots</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">name</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">prefix</td><td style="text-align: left">输入框头部内容，只对 <code>type=&quot;text&quot;</code> 有效</td></tr>
+<tr><td style="text-align: left">suffix</td><td style="text-align: left">输入框尾部内容，只对 <code>type=&quot;text&quot;</code> 有效</td></tr>
+<tr><td style="text-align: left">prepend</td><td style="text-align: left">输入框前置内容，只对 <code>type=&quot;text&quot;</code> 有效</td></tr>
+<tr><td style="text-align: left">append</td><td style="text-align: left">输入框后置内容，只对 <code>type=&quot;text&quot;</code> 有效</td></tr>
+</tbody></table>
+</div>
+<h3 id="input-events"><a class="header" href="#input-events">Input Events</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">blur</td><td style="text-align: left">在 Input 失去焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">在 Input 获得焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+<tr><td style="text-align: left">change</td><td style="text-align: left">仅在输入框失去焦点或用户按下回车时触发</td><td style="text-align: left">(value: string | number)</td></tr>
+<tr><td style="text-align: left">input</td><td style="text-align: left">在 Input 值改变时触发</td><td style="text-align: left">(value: string | number)</td></tr>
+<tr><td style="text-align: left">clear</td><td style="text-align: left">在点击由 <code>clearable</code> 属性生成的清空按钮时触发</td><td style="text-align: left">—</td></tr>
+</tbody></table>
+</div>
+<h3 id="input-methods"><a class="header" href="#input-methods">Input Methods</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">方法名</th><th style="text-align: left">说明</th><th style="text-align: left">参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">使 input 获取焦点</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">blur</td><td style="text-align: left">使 input 失去焦点</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">select</td><td style="text-align: left">选中 input 中的文字</td><td style="text-align: left">—</td></tr>
+</tbody></table>
+</div>
+<h3 id="autocomplete-attributes"><a class="header" href="#autocomplete-attributes">Autocomplete Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">placeholder</td><td style="text-align: left">输入框占位文本</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">value-key</td><td style="text-align: left">输入建议对象中用于显示的键名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">value</td></tr>
+<tr><td style="text-align: left">value</td><td style="text-align: left">必填值，输入绑定值</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">debounce</td><td style="text-align: left">获取输入建议的去抖延时</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">300</td></tr>
+<tr><td style="text-align: left">placement</td><td style="text-align: left">菜单弹出位置</td><td style="text-align: left">string</td><td style="text-align: left">top / top-start / top-end / bottom / bottom-start / bottom-end</td><td style="text-align: left">bottom-start</td></tr>
+<tr><td style="text-align: left">fetch-suggestions</td><td style="text-align: left">返回输入建议的方法，仅当你的输入建议数据 resolve 时，通过调用 callback(data:[]) 来返回它</td><td style="text-align: left">Function(queryString, callback)</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">popper-class</td><td style="text-align: left">Autocomplete 下拉列表的类名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">trigger-on-focus</td><td style="text-align: left">是否在输入框 focus 时显示建议列表</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">true</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">select-when-unmatched</td><td style="text-align: left">在输入没有任何匹配建议的情况下，按下回车是否触发 <code>select</code> 事件</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">输入框关联的label文字</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">prefix-icon</td><td style="text-align: left">输入框头部图标</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">suffix-icon</td><td style="text-align: left">输入框尾部图标</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">hide-loading</td><td style="text-align: left">是否隐藏远程加载时的加载图标</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">popper-append-to-body</td><td style="text-align: left">是否将下拉列表插入至 body 元素。在下拉列表的定位出现问题时，可将该属性设置为 false</td><td style="text-align: left">boolean</td><td style="text-align: left">-</td><td style="text-align: left">true</td></tr>
+<tr><td style="text-align: left">highlight-first-item</td><td style="text-align: left">是否默认突出显示远程搜索建议中的第一项</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h3 id="autocomplete-slots"><a class="header" href="#autocomplete-slots">Autocomplete Slots</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">name</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">prefix</td><td style="text-align: left">输入框头部内容</td></tr>
+<tr><td style="text-align: left">suffix</td><td style="text-align: left">输入框尾部内容</td></tr>
+<tr><td style="text-align: left">prepend</td><td style="text-align: left">输入框前置内容</td></tr>
+<tr><td style="text-align: left">append</td><td style="text-align: left">输入框后置内容</td></tr>
+</tbody></table>
+</div>
+<h3 id="autocomplete-scoped-slot"><a class="header" href="#autocomplete-scoped-slot">Autocomplete Scoped Slot</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">name</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">—</td><td style="text-align: left">自定义输入建议，参数为 { item }</td></tr>
+</tbody></table>
+</div>
+<h3 id="autocomplete-methods"><a class="header" href="#autocomplete-methods">Autocomplete Methods</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">方法名</th><th style="text-align: left">说明</th><th style="text-align: left">参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">使 input 获取焦点</td><td style="text-align: left">-</td></tr>
+</tbody></table>
+</div>
+<h2 id="inputnumber-计数器"><a class="header" href="#inputnumber-计数器">InputNumber 计数器</a></h2>
+<p>要使用它，只需要在<code>el-input-number</code>元素中使用<code>v-model</code>绑定变量即可，变量的初始值即为默认值。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num&quot; @change=&quot;handleChange&quot; :min=&quot;1&quot; :max=&quot;10&quot; label=&quot;描述文字&quot;&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        num: 1
+      };
+    },
+    methods: {
+      handleChange(value) {
+        console.log(value);
+      }
+    }
+  };
+&lt;/script&gt;
+</code></pre>
+<h2 id="禁用状态-1"><a class="header" href="#禁用状态-1">禁用状态</a></h2>
+<p><code>disabled</code>属性接受一个<code>Boolean</code>，设置为<code>true</code>即可禁用整个组件，如果你只需要控制数值在某一范围内，可以设置<code>min</code>属性和<code>max</code>属性，不设置<code>min</code>和<code>max</code>时，最小值为 0。</p>
+<pre><code class="language-vue"> &lt;el-input-number v-model=&quot;num&quot; :disabled=&quot;true&quot;&gt;&lt;/el-input-number&gt;
+</code></pre>
+<h2 id="步数"><a class="header" href="#步数">步数</a></h2>
+<p>允许定义递增递减的步数控制,设置<code>step</code>属性可以控制步长，接受一个<code>Number</code>。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num&quot; :step=&quot;2&quot;&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="严格步数"><a class="header" href="#严格步数">严格步数</a></h2>
+<p><code>step-strictly</code>属性接受一个<code>Boolean</code>。如果这个属性被设置为<code>true</code>，则只能输入步数的倍数。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num&quot; :step=&quot;2&quot; step-strictly&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="精度"><a class="header" href="#精度">精度</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num&quot; :precision=&quot;2&quot; :step=&quot;0.1&quot; :max=&quot;10&quot;&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="尺寸-1"><a class="header" href="#尺寸-1">尺寸</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num1&quot;&gt;&lt;/el-input-number&gt;
+  &lt;el-input-number size=&quot;medium&quot; v-model=&quot;num2&quot;&gt;&lt;/el-input-number&gt;
+  &lt;el-input-number size=&quot;small&quot; v-model=&quot;num3&quot;&gt;&lt;/el-input-number&gt;
+  &lt;el-input-number size=&quot;mini&quot; v-model=&quot;num4&quot;&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="按钮位置"><a class="header" href="#按钮位置">按钮位置</a></h2>
+<p>设置 <code>controls-position</code> 属性可以控制按钮位置。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-input-number v-model=&quot;num&quot; controls-position=&quot;right&quot; @change=&quot;handleChange&quot; :min=&quot;1&quot; :max=&quot;10&quot;&gt;&lt;/el-input-number&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="属性和事件"><a class="header" href="#属性和事件">属性和事件</a></h2>
+<h3 id="attributes"><a class="header" href="#attributes">Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">min</td><td style="text-align: left">设置计数器允许的最小值</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">-Infinity</td></tr>
+<tr><td style="text-align: left">max</td><td style="text-align: left">设置计数器允许的最大值</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">Infinity</td></tr>
+<tr><td style="text-align: left">step</td><td style="text-align: left">计数器步长</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">1</td></tr>
+<tr><td style="text-align: left">step-strictly</td><td style="text-align: left">是否只能输入 step 的倍数</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">precision</td><td style="text-align: left">数值精度</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">计数器尺寸</td><td style="text-align: left">string</td><td style="text-align: left">large, small</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用计数器</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">controls</td><td style="text-align: left">是否使用控制按钮</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">true</td></tr>
+<tr><td style="text-align: left">controls-position</td><td style="text-align: left">控制按钮位置</td><td style="text-align: left">string</td><td style="text-align: left">right</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">原生属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">输入框关联的label文字</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">placeholder</td><td style="text-align: left">输入框默认 placeholder</td><td style="text-align: left">string</td><td style="text-align: left">-</td><td style="text-align: left">-</td></tr>
+</tbody></table>
+</div>
+<h3 id="events"><a class="header" href="#events">Events</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">绑定值被改变时触发</td><td style="text-align: left">currentValue, oldValue</td></tr>
+<tr><td style="text-align: left">blur</td><td style="text-align: left">在组件 Input 失去焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">在组件 Input 获得焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+</tbody></table>
+</div>
+<h3 id="methods"><a class="header" href="#methods">Methods</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">方法名</th><th style="text-align: left">说明</th><th style="text-align: left">参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">使 input 获取焦点</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">select</td><td style="text-align: left">选中 input 中的文字</td><td style="text-align: left">—</td></tr>
+</tbody></table>
+</div>
+<h1 id="select-选择器"><a class="header" href="#select-选择器">Select 选择器</a></h1>
+<p>当选项过多时，使用下拉菜单展示并选择内容。</p>
+<h2 id="基础用法-2"><a class="header" href="#基础用法-2">基础用法</a></h2>
+<p><code>v-model</code>的值为当前被选中的<code>el-option</code>的 value 属性值</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select v-model=&quot;value&quot; placeholder=&quot;请选择&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in options&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="有禁用选项"><a class="header" href="#有禁用选项">有禁用选项</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select v-model=&quot;value&quot; disabled placeholder=&quot;请选择&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in options&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="可清空单选"><a class="header" href="#可清空单选">可清空单选</a></h2>
+<pre><code class="language-vue">  &lt;el-select v-model=&quot;value&quot; clearable placeholder=&quot;请选择&quot;&gt;
+      ......
+  &lt;/el-select&gt;
+</code></pre>
+<h2 id="基础多选"><a class="header" href="#基础多选">基础多选</a></h2>
+<p>为<code>el-select</code>设置<code>multiple</code>属性即可启用多选，此时<code>v-model</code>的值为当前选中值所组成的数组。</p>
+<pre><code class="language-vue">&lt;el-select v-model=&quot;value1&quot; multiple placeholder=&quot;请选择&quot;&gt;
+.....    
+&lt;/el-select&gt;
+</code></pre>
+<p>默认情况下选中值会以 Tag 的形式展现，你也可以设置<code>collapse-tags</code>属性将它们合并为一段文字。</p>
+<pre><code class="language-vue"> &lt;el-select
+    v-model=&quot;value2&quot;
+    multiple
+    collapse-tags
+    style=&quot;margin-left: 20px;&quot;
+    placeholder=&quot;请选择&quot;&gt;
+  &lt;/el-select&gt;
+</code></pre>
+<h2 id="自定义模板-1"><a class="header" href="#自定义模板-1">自定义模板</a></h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select v-model=&quot;value&quot; placeholder=&quot;请选择&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in cities&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+      &lt;span style=&quot;float: left&quot;&gt;{{ item.label }}&lt;/span&gt;
+      &lt;span style=&quot;float: right; color: #8492a6; font-size: 13px&quot;&gt;{{ item.value }}&lt;/span&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="分组"><a class="header" href="#分组">分组</a></h2>
+<p>使用<code>el-option-group</code>对备选项进行分组，它的<code>label</code>属性为分组名</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select v-model=&quot;value&quot; placeholder=&quot;请选择&quot;&gt;
+    &lt;el-option-group
+      v-for=&quot;group in options&quot;
+      :key=&quot;group.label&quot;
+      :label=&quot;group.label&quot;&gt;
+      &lt;el-option
+        v-for=&quot;item in group.options&quot;
+        :key=&quot;item.value&quot;
+        :label=&quot;item.label&quot;
+        :value=&quot;item.value&quot;&gt;
+      &lt;/el-option&gt;
+    &lt;/el-option-group&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        options: [{
+          label: '热门城市',
+          options: [{
+            value: 'Shanghai',
+            label: '上海'
+          }, {
+            value: 'Beijing',
+            label: '北京'
+          }]
+        }, {
+          label: '城市名',
+          options: [{
+            value: 'Chengdu',
+            label: '成都'
+          }, {
+            value: 'Shenzhen',
+            label: '深圳'
+          }, {
+            value: 'Guangzhou',
+            label: '广州'
+          }, {
+            value: 'Dalian',
+            label: '大连'
+          }]
+        }],
+        value: ''
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="可搜索"><a class="header" href="#可搜索">可搜索</a></h2>
+<p>为<code>el-select</code>添加<code>filterable</code>属性即可启用搜索功能。默认情况下，Select 会找出所有<code>label</code>属性包含输入值的选项。如果希望使用其他的搜索逻辑，可以通过传入一个<code>filter-method</code>来实现。<code>filter-method</code>为一个<code>Function</code>，它会在输入值发生变化时调用，参数为当前输入值。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select v-model=&quot;value&quot; filterable placeholder=&quot;请选择&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in options&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+
+</code></pre>
+<h2 id="远程搜索"><a class="header" href="#远程搜索">远程搜索</a></h2>
+<p>为了启用远程搜索，需要将<code>filterable</code>和<code>remote</code>设置为<code>true</code>，同时传入一个<code>remote-method</code>。<code>remote-method</code>为一个<code>Function</code>，它会在输入值发生变化时调用，参数为当前输入值。需要注意的是，如果<code>el-option</code>是通过<code>v-for</code>指令渲染出来的，此时需要为<code>el-option</code>添加<code>key</code>属性，且其值需具有唯一性，比如此例中的<code>item.value</code>。</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-select
+    v-model=&quot;value&quot;
+    multiple
+    filterable
+    remote
+    reserve-keyword
+    placeholder=&quot;请输入关键词&quot;
+    :remote-method=&quot;remoteMethod&quot;
+    :loading=&quot;loading&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in options&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        options: [],
+        value: [],
+        list: [],
+        loading: false,
+        states: [&quot;Alabama&quot;, &quot;Alaska&quot;, &quot;Arizona&quot;,
+        &quot;Arkansas&quot;, &quot;California&quot;, &quot;Colorado&quot;,
+        &quot;Connecticut&quot;, &quot;Delaware&quot;, &quot;Florida&quot;,
+        &quot;Georgia&quot;, &quot;Hawaii&quot;, &quot;Idaho&quot;, &quot;Illinois&quot;,
+        &quot;Indiana&quot;, &quot;Iowa&quot;, &quot;Kansas&quot;, &quot;Kentucky&quot;,
+        &quot;Louisiana&quot;, &quot;Maine&quot;, &quot;Maryland&quot;,
+        &quot;Massachusetts&quot;, &quot;Michigan&quot;, &quot;Minnesota&quot;,
+        &quot;Mississippi&quot;, &quot;Missouri&quot;, &quot;Montana&quot;,
+        &quot;Nebraska&quot;, &quot;Nevada&quot;, &quot;New Hampshire&quot;,
+        &quot;New Jersey&quot;, &quot;New Mexico&quot;, &quot;New York&quot;,
+        &quot;North Carolina&quot;, &quot;North Dakota&quot;, &quot;Ohio&quot;,
+        &quot;Oklahoma&quot;, &quot;Oregon&quot;, &quot;Pennsylvania&quot;,
+        &quot;Rhode Island&quot;, &quot;South Carolina&quot;,
+        &quot;South Dakota&quot;, &quot;Tennessee&quot;, &quot;Texas&quot;,
+        &quot;Utah&quot;, &quot;Vermont&quot;, &quot;Virginia&quot;,
+        &quot;Washington&quot;, &quot;West Virginia&quot;, &quot;Wisconsin&quot;,
+        &quot;Wyoming&quot;]
+      }
+    },
+    mounted() {
+      this.list = this.states.map(item =&gt; {
+        return { value: `value:${item}`, label: `label:${item}` };
+      });
+    },
+    methods: {
+      remoteMethod(query) {
+        if (query !== '') {
+          this.loading = true;
+          setTimeout(() =&gt; {
+            this.loading = false;
+            this.options = this.list.filter(item =&gt; {
+              return item.label.toLowerCase()
+                .indexOf(query.toLowerCase()) &gt; -1;
+            });
+          }, 200);
+        } else {
+          this.options = [];
+        }
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<h2 id="创建条目"><a class="header" href="#创建条目">创建条目</a></h2>
+<p>使用<code>allow-create</code>属性即可通过在输入框中输入文字来创建新的条目。注意此时<code>filterable</code>必须为真。本例还使用了<code>default-first-option</code>属性，在该属性打开的情况下，按下回车就可以选中当前选项列表中的第一个选项，无需使用鼠标或键盘方向键进行定位。</p>
+<pre><code class="language-vuie">&lt;template&gt;
+  &lt;el-select
+    v-model=&quot;value&quot;
+    multiple
+    filterable
+    allow-create
+    default-first-option
+    placeholder=&quot;请选择文章标签&quot;&gt;
+    &lt;el-option
+      v-for=&quot;item in options&quot;
+      :key=&quot;item.value&quot;
+      :label=&quot;item.label&quot;
+      :value=&quot;item.value&quot;&gt;
+    &lt;/el-option&gt;
+  &lt;/el-select&gt;
+&lt;/template&gt;
+</code></pre>
+<blockquote>
+<p>如果 Select 的绑定值为对象类型，请务必指定 <code>value-key</code> 作为它的唯一性标识。</p>
+</blockquote>
+<h2 id="属性和方法"><a class="header" href="#属性和方法">属性和方法</a></h2>
+<h3 id="select-attributes"><a class="header" href="#select-attributes">Select Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value / v-model</td><td style="text-align: left">绑定值</td><td style="text-align: left">boolean / string / number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">multiple</td><td style="text-align: left">是否多选</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">value-key</td><td style="text-align: left">作为 value 唯一标识的键名，绑定值为对象类型时必填</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">value</td></tr>
+<tr><td style="text-align: left">size</td><td style="text-align: left">输入框尺寸</td><td style="text-align: left">string</td><td style="text-align: left">medium/small/mini</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">clearable</td><td style="text-align: left">是否可以清空选项</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">collapse-tags</td><td style="text-align: left">多选时是否将选中值按文字的形式展示</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">multiple-limit</td><td style="text-align: left">多选时用户最多可以选择的项目数，为 0 则不限制</td><td style="text-align: left">number</td><td style="text-align: left">—</td><td style="text-align: left">0</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">select input 的 name 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">autocomplete</td><td style="text-align: left">select input 的 autocomplete 属性</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">off</td></tr>
+<tr><td style="text-align: left">auto-complete</td><td style="text-align: left">下个主版本弃用</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">off</td></tr>
+<tr><td style="text-align: left">placeholder</td><td style="text-align: left">占位符</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">请选择</td></tr>
+<tr><td style="text-align: left">filterable</td><td style="text-align: left">是否可搜索</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">allow-create</td><td style="text-align: left">是否允许用户创建新条目，需配合 <code>filterable</code> 使用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">filter-method</td><td style="text-align: left">自定义搜索方法</td><td style="text-align: left">function</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">remote</td><td style="text-align: left">是否为远程搜索</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">remote-method</td><td style="text-align: left">远程搜索方法</td><td style="text-align: left">function</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">loading</td><td style="text-align: left">是否正在从远程获取数据</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">loading-text</td><td style="text-align: left">远程加载时显示的文字</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">加载中</td></tr>
+<tr><td style="text-align: left">no-match-text</td><td style="text-align: left">搜索条件无匹配时显示的文字，也可以使用<code>slot=&quot;empty&quot;</code>设置</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">无匹配数据</td></tr>
+<tr><td style="text-align: left">no-data-text</td><td style="text-align: left">选项为空时显示的文字，也可以使用<code>slot=&quot;empty&quot;</code>设置</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">无数据</td></tr>
+<tr><td style="text-align: left">popper-class</td><td style="text-align: left">Select 下拉框的类名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">reserve-keyword</td><td style="text-align: left">多选且可搜索时，是否在选中一个选项后保留当前的搜索关键词</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">default-first-option</td><td style="text-align: left">在输入框按下回车，选择第一个匹配项。需配合 <code>filterable</code> 或 <code>remote</code> 使用</td><td style="text-align: left">boolean</td><td style="text-align: left">-</td><td style="text-align: left">false</td></tr>
+<tr><td style="text-align: left">popper-append-to-body</td><td style="text-align: left">是否将弹出框插入至 body 元素。在弹出框的定位出现问题时，可将该属性设置为 false</td><td style="text-align: left">boolean</td><td style="text-align: left">-</td><td style="text-align: left">true</td></tr>
+<tr><td style="text-align: left">automatic-dropdown</td><td style="text-align: left">对于不可搜索的 Select，是否在输入框获得焦点后自动弹出选项菜单</td><td style="text-align: left">boolean</td><td style="text-align: left">-</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h3 id="select-events"><a class="header" href="#select-events"><a href="https://element.eleme.cn/#/zh-CN/component/select#select-events">¶</a>Select Events</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">事件名称</th><th style="text-align: left">说明</th><th style="text-align: left">回调参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">change</td><td style="text-align: left">选中值发生变化时触发</td><td style="text-align: left">目前的选中值</td></tr>
+<tr><td style="text-align: left">visible-change</td><td style="text-align: left">下拉框出现/隐藏时触发</td><td style="text-align: left">出现则为 true，隐藏则为 false</td></tr>
+<tr><td style="text-align: left">remove-tag</td><td style="text-align: left">多选模式下移除tag时触发</td><td style="text-align: left">移除的tag值</td></tr>
+<tr><td style="text-align: left">clear</td><td style="text-align: left">可清空的单选模式下用户点击清空按钮时触发</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">blur</td><td style="text-align: left">当 input 失去焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">当 input 获得焦点时触发</td><td style="text-align: left">(event: Event)</td></tr>
+</tbody></table>
+</div>
+<h3 id="select-slots"><a class="header" href="#select-slots"><a href="https://element.eleme.cn/#/zh-CN/component/select#select-slots">¶</a>Select Slots</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">name</th><th style="text-align: left">说明</th></tr></thead><tbody>
+<tr><td style="text-align: left">—</td><td style="text-align: left">Option 组件列表</td></tr>
+<tr><td style="text-align: left">prefix</td><td style="text-align: left">Select 组件头部内容</td></tr>
+<tr><td style="text-align: left">empty</td><td style="text-align: left">无选项时的列表</td></tr>
+</tbody></table>
+</div>
+<h3 id="option-group-attributes"><a class="header" href="#option-group-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/select#option-group-attributes">¶</a>Option Group Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">label</td><td style="text-align: left">分组的组名</td><td style="text-align: left">string</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否将该分组下所有选项置为禁用</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h3 id="option-attributes"><a class="header" href="#option-attributes"><a href="https://element.eleme.cn/#/zh-CN/component/select#option-attributes">¶</a>Option Attributes</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">参数</th><th style="text-align: left">说明</th><th style="text-align: left">类型</th><th style="text-align: left">可选值</th><th style="text-align: left">默认值</th></tr></thead><tbody>
+<tr><td style="text-align: left">value</td><td style="text-align: left">选项的值</td><td style="text-align: left">string/number/object</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">label</td><td style="text-align: left">选项的标签，若不设置则默认与 <code>value</code> 相同</td><td style="text-align: left">string/number</td><td style="text-align: left">—</td><td style="text-align: left">—</td></tr>
+<tr><td style="text-align: left">disabled</td><td style="text-align: left">是否禁用该选项</td><td style="text-align: left">boolean</td><td style="text-align: left">—</td><td style="text-align: left">false</td></tr>
+</tbody></table>
+</div>
+<h3 id="methods-1"><a class="header" href="#methods-1"><a href="https://element.eleme.cn/#/zh-CN/component/select#methods">¶</a>Methods</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">方法名</th><th style="text-align: left">说明</th><th style="text-align: left">参数</th></tr></thead><tbody>
+<tr><td style="text-align: left">focus</td><td style="text-align: left">使 input 获取焦点</td><td style="text-align: left">-</td></tr>
+<tr><td style="text-align: left">blur</td><td style="text-align: left">使 input 失去焦点，并隐藏下拉框</td><td style="text-align: left">-</td></tr>
+</tbody></table>
+</div><script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Element-UI/对话框.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Element-UI/折叠面板.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Element-UI/对话框.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Element-UI/折叠面板.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

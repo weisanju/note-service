@@ -1,0 +1,618 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Shell - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item "><a href="../../../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../../../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker-compose.html">docker-compose</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../../../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../../../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item expanded "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item expanded "><a href="../../../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item expanded "><a href="../../../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html" class="active">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../../../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../../../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../../../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/MQ消息的投递机制.html">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../../../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../../../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item "><a href="../../../8.缓存中间件_Redis/redis数据结构/基本数据结构.html">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item "><a href="../../../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/Git库管理.html">Git库管理</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/GIT协作/远程版本库.html">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../../../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h3 id="ansiblebuiltinshell-module--execute-shell-commands-on-targets"><a class="header" href="#ansiblebuiltinshell-module--execute-shell-commands-on-targets">ansible.builtin.shell module – Execute shell commands on targets</a></h3>
+<ol>
+<li>位于 <code>ansible-core</code> </li>
+<li>可以直接指定 <code>command</code> 不用 <code>collections:</code>  关键字</li>
+<li>推荐使用 FQCN。避免命名冲突</li>
+</ol>
+<h3 id="synopsis"><a class="header" href="#synopsis"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id1">Synopsis</a></a></h3>
+<ul>
+<li>执行shell命令</li>
+</ul>
+<ul>
+<li>可以使用 <em>free-form</em> 格式指定</li>
+<li>类似 <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#ansible-collections-ansible-builtin-command-module">ansible.builtin.command</a> ，但使用 (<code>/bin/sh</code>) 执行</li>
+<li>For Windows targets, use the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_shell_module.html#ansible-collections-ansible-windows-win-shell-module">ansible.windows.win_shell</a> module instead.</li>
+</ul>
+<h2 id="parameters"><a class="header" href="#parameters"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id2">Parameters</a></a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Comments</th></tr></thead><tbody>
+<tr><td><strong>chdir</strong> path<em>added in 0.6 of ansible.builtin</em></td><td>Change into this directory before running the command.</td></tr>
+<tr><td><strong>cmd</strong> string</td><td>The command to run followed by optional arguments.</td></tr>
+<tr><td><strong>creates</strong> path</td><td>A filename, when it already exists, this step will <strong>not</strong> be run.</td></tr>
+<tr><td><strong>executable</strong> path<em>added in 0.9 of ansible.builtin</em></td><td>Change the shell used to execute the command.This expects an absolute path to the executable.</td></tr>
+<tr><td><strong>free_form</strong> string</td><td>The shell module takes a free form command to run, as a string.There is no actual parameter named ‘free form’.See the examples on how to use this module.</td></tr>
+<tr><td><strong>removes</strong> path<em>added in 0.8 of ansible.builtin</em></td><td>A filename, when it does not exist, this step will <strong>not</strong> be run.</td></tr>
+<tr><td><strong>stdin</strong> string<em>added in 2.4 of ansible.builtin</em></td><td>Set the stdin of the command directly to the specified value.</td></tr>
+<tr><td><strong>stdin_add_newline</strong> boolean<em>added in 2.8 of ansible.builtin</em></td><td>Whether to append a newline to stdin data.<strong>Choices:<strong>no</strong>yes</strong> ← (default)</td></tr>
+<tr><td><strong>warn</strong> boolean<em>added in 1.8 of ansible.builtin</em></td><td>Whether to enable task warnings.<strong>Choices:<strong>no</strong>yes</strong> ← (default)</td></tr>
+</tbody></table>
+</div>
+<h2 id="attributes"><a class="header" href="#attributes"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id3">Attributes</a></a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Attribute</th><th>Support</th><th>Description</th></tr></thead><tbody>
+<tr><td><strong>check_mode</strong></td><td><strong>partial</strong><br />while the command itself is arbitrary and cannot be subject to the check mode semantics it adds <code>creates</code>/<code>removes</code> options as a workaround</td><td>Can run in check_mode and return changed status prediction withought modifying target</td></tr>
+<tr><td><strong>diff_mode</strong></td><td><strong>none</strong></td><td>Will return details on what has changed (or possibly needs changing in check_mode), when in diff mode</td></tr>
+<tr><td><strong>platform</strong></td><td><strong>Platform:</strong> <strong>posix</strong></td><td>Target OS/families that can be operated against</td></tr>
+<tr><td><strong>raw</strong></td><td><strong>full</strong></td><td>Indicates if an action takes a ‘raw’ or ‘free form’ string as an option and has it’s own special parsing of it</td></tr>
+</tbody></table>
+</div>
+<h3 id="注意"><a class="header" href="#注意">注意</a></h3>
+<ul>
+<li>如果您想安全且可预测地执行命令, it may be better to use the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#ansible-collections-ansible-builtin-command-module">ansible.builtin.command</a> module instead. Best practices when writing playbooks will follow the trend of using <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#ansible-collections-ansible-builtin-command-module">ansible.builtin.command</a> unless the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#ansible-collections-ansible-builtin-shell-module">ansible.builtin.shell</a> module is explicitly required. When running ad-hoc commands, use your best judgement.</li>
+<li>To sanitize any variables passed to the shell module, you should use <code>{{ var | quote }}</code> instead of just <code>{{ var }}</code> to make sure they do not include evil things like semicolons.</li>
+<li>An alternative to using inline shell scripts with this module is to use the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html#ansible-collections-ansible-builtin-script-module">ansible.builtin.script</a> module possibly together with the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html#ansible-collections-ansible-builtin-template-module">ansible.builtin.template</a> module.</li>
+<li>For rebooting systems, use the <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/reboot_module.html#ansible-collections-ansible-builtin-reboot-module">ansible.builtin.reboot</a> or <a href="https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_reboot_module.html#ansible-collections-ansible-windows-win-reboot-module">ansible.windows.win_reboot</a> module.</li>
+</ul>
+<h3 id="see-also"><a class="header" href="#see-also"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id5">See Also</a></a></h3>
+<ul>
+<li>
+<p><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#ansible-collections-ansible-builtin-command-module">ansible.builtin.command</a></p>
+<p>The official documentation on the <strong>ansible.builtin.command</strong> module.</p>
+</li>
+<li>
+<p><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/raw_module.html#ansible-collections-ansible-builtin-raw-module">ansible.builtin.raw</a></p>
+<p>The official documentation on the <strong>ansible.builtin.raw</strong> module.</p>
+</li>
+<li>
+<p><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html#ansible-collections-ansible-builtin-script-module">ansible.builtin.script</a></p>
+<p>The official documentation on the <strong>ansible.builtin.script</strong> module.</p>
+</li>
+<li>
+<p><a href="https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_shell_module.html#ansible-collections-ansible-windows-win-shell-module">ansible.windows.win_shell</a></p>
+<p>The official documentation on the <strong>ansible.windows.win_shell</strong> module.</p>
+</li>
+</ul>
+<h3 id="examples"><a class="header" href="#examples"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id6">Examples</a></a></h3>
+<pre><code class="language-yaml">- name: Execute the command in remote shell; stdout goes to the specified file on the remote
+  ansible.builtin.shell: somescript.sh &gt;&gt; somelog.txt
+  
+
+- name: Change the working directory to somedir/ before executing the command
+  ansible.builtin.shell: somescript.sh &gt;&gt; somelog.txt
+  args:
+  chdir: somedir/
+  
+ 
+ # You can also use the 'args' form to provide the options.
+- name: This command will change the working directory to somedir/ and will only run when somedir/somelog.txt doesn't exist
+  ansible.builtin.shell: somescript.sh &gt;&gt; somelog.txt
+  args:
+    chdir: somedir/
+    creates: somelog.txt
+    
+# You can also use the 'cmd' parameter instead of free form format.
+- name: This command will change the working directory to somedir/
+  ansible.builtin.shell:
+    cmd: ls -l | grep log
+    chdir: somedir/
+
+- name: Run a command that uses non-posix shell-isms (in this example /bin/sh doesn't handle redirection and wildcards together but bash does)
+  ansible.builtin.shell: cat &lt; /tmp/*txt
+  args:
+    executable: /bin/bash
+
+- name: Run a command using a templated variable (always use quote filter to avoid injection)
+  ansible.builtin.shell: cat {{ myfile|quote }}
+  
+  
+  # You can use shell to run other executables to perform actions inline
+- name: Run expect to wait for a successful PXE boot via out-of-band CIMC
+  ansible.builtin.shell: |
+    set timeout 300
+    spawn ssh admin@{{ cimc_host }}
+
+    expect &quot;password:&quot;
+    send &quot;{{ cimc_password }}\n&quot;
+
+    expect &quot;\n{{ cimc_name }}&quot;
+    send &quot;connect host\n&quot;
+
+    expect &quot;pxeboot.n12&quot;
+    send &quot;\n&quot;
+
+    exit 0
+  args:
+    executable: /usr/bin/expect
+  delegate_to: localhost
+  
+# Disabling warnings
+- name: Using curl to connect to a host via SOCKS proxy (unsupported in uri). Ordinarily this would throw a warning
+  ansible.builtin.shell: curl --socks5 localhost:9000 http://www.ansible.com
+  args:
+    warn: no
+</code></pre>
+<h2 id="return-values"><a class="header" href="#return-values"><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html#id7">Return Values</a></a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
+<tr><td><strong>cmd</strong> string</td><td>The command executed by the task.<strong>Returned:</strong> always<strong>Sample:</strong> “rabbitmqctl join_cluster <a href="mailto:rabbit@master">rabbit@master</a>”</td></tr>
+<tr><td><strong>delta</strong> string</td><td>The command execution delta time.<strong>Returned:</strong> always<strong>Sample:</strong> “0:00:00.325771”</td></tr>
+<tr><td><strong>end</strong> string</td><td>The command execution end time.<strong>Returned:</strong> always<strong>Sample:</strong> “2016-02-25 09:18:26.755339”</td></tr>
+<tr><td><strong>msg</strong> boolean</td><td>changed<strong>Returned:</strong> always<strong>Sample:</strong> true</td></tr>
+<tr><td><strong>rc</strong> integer</td><td>The command return code (0 means success).<strong>Returned:</strong> always<strong>Sample:</strong> 0</td></tr>
+<tr><td><strong>start</strong> string</td><td>The command execution start time.<strong>Returned:</strong> always<strong>Sample:</strong> “2016-02-25 09:18:26.429568”</td></tr>
+<tr><td><strong>stderr</strong> string</td><td>The command standard error.<strong>Returned:</strong> always<strong>Sample:</strong> “ls: cannot access foo: No such file or directory”</td></tr>
+<tr><td><strong>stderr_lines</strong> list / elements=string</td><td>The command standard error split in lines.<strong>Returned:</strong> always<strong>Sample:</strong> [{“u\u0027ls cannot access foo”: “No such file or directory\u0027”}, “u\u0027ls \u2026\u0027”]</td></tr>
+<tr><td><strong>stdout</strong> string</td><td>The command standard output.<strong>Returned:</strong> always<strong>Sample:</strong> “Clustering node <a href="mailto:rabbit@slave1">rabbit@slave1</a> with <a href="mailto:rabbit@master">rabbit@master</a> \u2026”</td></tr>
+<tr><td><strong>stdout_lines</strong> list / elements=string</td><td>The command standard output split in lines.<strong>Returned:</strong> always<strong>Sample:</strong> [“u\u0027Clustering node <a href="mailto:rabbit@slave1">rabbit@slave1</a> with <a href="mailto:rabbit@master">rabbit@master</a> \u2026\u0027”]</td></tr>
+</tbody></table>
+</div><script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="运维与部署"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../4.持续集成_jenkins/Jenkins.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../4.持续集成_jenkins/Jenkins.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

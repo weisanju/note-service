@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HTML5表单 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item expanded "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item expanded "><a href="../Html5/HTML5表单.html" class="active">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item "><a href="../ECMAScript/数组.html">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="html5表单"><a class="header" href="#html5表单">HTML5表单</a></h1>
+<h2 id="新增元素与属性"><a class="header" href="#新增元素与属性">新增元素与属性</a></h2>
+<h4 id="新增表单相关属性"><a class="header" href="#新增表单相关属性">新增表单相关属性</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>属性名</th><th>作用的元素</th><th>取值</th><th>作用</th></tr></thead><tbody>
+<tr><td>form</td><td>一般作用于input元素上</td><td>取form表单ID</td><td>可以把form表单的元素不写在form内部</td></tr>
+<tr><td>formaction</td><td>input type=submit</td><td>URL</td><td>使得提交到不同URL</td></tr>
+<tr><td>formmethod</td><td>input type=submit</td><td>get,post</td><td>以不同方法提交</td></tr>
+<tr><td>placeholder</td><td>input type=text,area</td><td>string</td><td>提示文字</td></tr>
+<tr><td>autofocus</td><td>文本框,选择框,按钮</td><td>boolean</td><td>画面打开时自动获得焦点</td></tr>
+<tr><td>list</td><td>input type=text</td><td>datalist标签ID</td><td>可供选择条目</td></tr>
+<tr><td>autocomplete</td><td>input type=text</td><td>on off</td><td>自动填充</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<h4 id="新增input元素类型"><a class="header" href="#新增input元素类型">新增input元素类型</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>新增input元素类型</th><th>说明</th></tr></thead><tbody>
+<tr><td>email</td><td>邮箱地址输入</td></tr>
+<tr><td>url</td><td>url输入</td></tr>
+<tr><td>number</td><td>数值类型输入</td></tr>
+<tr><td>range</td><td>范围类型</td></tr>
+<tr><td>日期选择类型:date</td><td>选择年月日</td></tr>
+<tr><td>日期选择类型:month</td><td>选择月年</td></tr>
+<tr><td>日期选择类型:week</td><td>选择周,年</td></tr>
+<tr><td>日期选择类型:time</td><td>选取时间,小时分钟</td></tr>
+<tr><td>日期选择类型:datetime</td><td>选取日月年,时间(UTC时间)</td></tr>
+<tr><td>日期选择类型:datetime-local</td><td>选取日月年,时间(本地时间)</td></tr>
+<tr><td>color</td><td>颜色选择</td></tr>
+<tr><td>search</td><td>搜索框</td></tr>
+</tbody></table>
+</div>
+<h4 id="output元素"><a class="header" href="#output元素">output元素</a></h4>
+<ol>
+<li>&lt;output onforminput=&quot;value=range1.value&quot;&gt;</output></li>
+</ol>
+<h2 id="表单验证"><a class="header" href="#表单验证">表单验证</a></h2>
+<h4 id="自动验证属性"><a class="header" href="#自动验证属性">自动验证属性</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>属性名</th><th>作用</th><th>举例</th></tr></thead><tbody>
+<tr><td>required</td><td>必输项</td><td><input type=text required></td></tr>
+<tr><td>pattern</td><td>满足正则</td><td><input type=text pattern="[0-9][A-Z]{3}"></td></tr>
+<tr><td>min,max</td><td>限制最小值,最大值</td><td><input type=number min=1 max=100></td></tr>
+<tr><td>step</td><td>步进,值位5的倍数</td><td><input type=text step=5 ></td></tr>
+</tbody></table>
+</div>
+<h4 id="显示验证取消验证自定义错误"><a class="header" href="#显示验证取消验证自定义错误">显示验证,取消验证,自定义错误</a></h4>
+<ol>
+<li>手动验证方法:checkValidity()</li>
+<li>取消验证:<input type=submit formnovalidate></li>
+<li>自定义错误:setCustomValidity</li>
+</ol>
+<h2 id="增强页面元素"><a class="header" href="#增强页面元素">增强页面元素</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>元素名</th><th>作用</th><th>例子</th></tr></thead><tbody>
+<tr><td>figure,figcaption</td><td>figuration:独立的内容,不是很相关,可以是图片;figcaption:从属于figure,为它的标题</td><td>none</td></tr>
+<tr><td>details,summary</td><td>详细展开</td><td><details><summary>这是总结</summary><p>HelloWorld</p></details></td></tr>
+<tr><td>progress</td><td>进度条</td><td>none</td></tr>
+<tr><td>meter</td><td>范围内的数量值,value,min,max,low,high,optimum</td><td>none</td></tr>
+<tr><td>改良的ol</td><td>增加start,reversed属性</td><td>none</td></tr>
+<tr><td>改良的dl</td><td>配合dt,dd进行术语定义,名词解释</td><td>none</td></tr>
+<tr><td>cite</td><td>用于书名,电影名等</td><td>none</td></tr>
+<tr><td>small</td><td>小字印刷体</td><td>none</td></tr>
+</tbody></table>
+</div>
+<h2 id="文件api"><a class="header" href="#文件api">文件API</a></h2>
+<ol>
+<li>fileList与file对象</li>
+</ol>
+<pre><code class="language-html">&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;script&gt;
+        function showfilename(){
+            var file;
+            for(var i=0;i&lt;document.getElementById('file').files.length;i++){
+                file= document.getElementById('file').files[i];
+                alert(file.name);
+            }
+        }
+    &lt;/script&gt;
+    &lt;body&gt;
+        &lt;input type=&quot;file&quot; multiple id=file size=80&gt;
+        &lt;input type=&quot;button&quot; onclick=&quot;showfilename()&quot; value=&quot;文件上传&quot;&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<ol start="2">
+<li>blob对象的属性与方法
+<ol>
+<li>size</li>
+<li>type:以 image/jgp 样式</li>
+</ol>
+</li>
+<li>accept</li>
+</ol>
+<pre><code class="language-html">        &lt;input type=&quot;file&quot; multiple id=file size=80 accept=&quot;image/*&quot;&gt;
+        &lt;input type=&quot;button&quot; onclick=&quot;showfilename()&quot; value=&quot;文件上传&quot; &gt;
+</code></pre>
+<ol start="4">
+<li>filereader对象</li>
+</ol>
+<div class="table-wrapper"><table><thead><tr><th>方法名</th><th>参数描述</th></tr></thead><tbody>
+<tr><td>readAsBinaryString</td><td>file,读二进制</td></tr>
+<tr><td>readAsText</td><td>file,encoding:文本</td></tr>
+<tr><td>readAsDataURL</td><td>file:读作DataURL</td></tr>
+<tr><td>abort</td><td>none,中断读取操作</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>事件</th><th>描述</th></tr></thead><tbody>
+<tr><td>obabort</td><td>中断</td></tr>
+<tr><td>onerror</td><td>出错</td></tr>
+<tr><td>onloadstart</td><td>开始读取</td></tr>
+<tr><td>onprogress</td><td>正在读取</td></tr>
+<tr><td>onload</td><td>读取成功完成</td></tr>
+<tr><td>onloadend</td><td>读取完成,无论成功或失败</td></tr>
+</tbody></table>
+</div>
+<p>基本使用</p>
+<pre><code class="language-html">&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;script&gt;
+      if(typeof FileReader == 'undefined'){
+          result.innerHTML =&quot;&lt;p&gt;浏览器不支持fileReader&lt;/p&gt;&quot;
+      }
+      function readAsDataURL(){
+          var file = document.getElementById('file').files[0];
+
+          if(!/image\/\w+/.test(file.type)){
+              alert('图像文件格式不对');
+              return false;
+          }
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload= function(e){
+            var result = document.getElementById('result');
+            result.innerHTML='&lt;img src=&quot;'+this.result+'&quot;/&gt;'
+          }
+      }
+      function readAsBinaryString(){
+        var file = document.getElementById('file').files[0];
+        var reader = new FileReader();
+        reader.readAsBinaryString(file);
+        reader.onload = function(f) {
+            var result = document.getElementById('result');
+            result.innerHTML=this.result
+        }
+      }
+      function readAsText(){
+        var file = document.getElementById('file').files[0];
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload=function (f) {
+            var result = document.getElementById('result');
+            result.innerHTML=this.result
+        }
+      }
+    &lt;/script&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            &lt;label&gt;请选择一个文件&lt;/label&gt;
+            &lt;input type=&quot;file&quot;  id=&quot;file&quot;&gt;
+            &lt;input type=&quot;button&quot; value=&quot;读取图像&quot; onclick=&quot;readAsDataURL()&quot;&gt;
+            &lt;input type=&quot;button&quot; value=&quot;读取二进制数据&quot; onclick=&quot;readAsBinaryString()&quot;&gt;
+            &lt;input type=&quot;button&quot; value=&quot;读取文本&quot; onclick=&quot;readAsText()&quot;&gt;
+        &lt;/p&gt;
+        
+        &lt;output id=result &gt;
+
+        &lt;/output&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="拖放api"><a class="header" href="#拖放api">拖放API</a></h2>
+<h3 id="实现拖放的步骤"><a class="header" href="#实现拖放的步骤">实现拖放的步骤</a></h3>
+<ol>
+<li>设置draggable 属性(img a标签默认可拖放)</li>
+<li>编写拖放事件代码</li>
+</ol>
+<div class="table-wrapper"><table><thead><tr><th>事件</th><th>产生事件的元素</th><th>描述</th></tr></thead><tbody>
+<tr><td>dragstart</td><td>被拖放的元素</td><td>开始拖放操作</td></tr>
+<tr><td>drag</td><td>被拖放的元素</td><td>拖放过程中</td></tr>
+<tr><td>dragenter</td><td>拖放过程中鼠标经过的元素</td><td>被拖放的元素开始进入本元素的范围内</td></tr>
+<tr><td>drgaover</td><td>拖放过程中鼠标经过的元素</td><td>被拖放的元素开始在本元素的范围内移动</td></tr>
+<tr><td>dragleave</td><td>拖放过程中鼠标经过的元素</td><td>被拖放的元素开始离开本元素的范围</td></tr>
+<tr><td>drop</td><td>拖放的目标元素</td><td>有其他元素被拖放到了本元素中</td></tr>
+<tr><td>dragend</td><td>拖放的对象元素</td><td>拖放操作结束</td></tr>
+</tbody></table>
+</div>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;script&gt;
+    function init(){
+        var source = document.getElementById('dragme');
+        var dest = document.getElementById('text');
+        source.addEventListener(&quot;dragstart&quot;,function (ev) {
+            var dt = ev.dataTransfer;
+            dt.effectAllowed = 'move';
+            dt.setData(&quot;text/plain&quot;,'你好');
+
+        },false);
+
+        dest.addEventListener('dragend',function (ev) {
+            ev.preventDefault();
+        },false);
+
+        dest.addEventListener('drop',function (ev) {
+            var dt = ev.dataTransfer;
+            var text = dt.getData(&quot;text/plain&quot;);
+            dest.innerHTML='&lt;img src=222.jpg&gt;'
+            ev.preventDefault();
+            ev.stopPropagation();
+        },false);
+    }
+   document.ondragover = function(e){e.preventDefault();}
+   document.ondrop = function(e){e.preventDefault();}
+&lt;/script&gt;
+
+&lt;body onload=&quot;init()&quot;&gt;
+    &lt;div id=&quot;dragme&quot; draggable=&quot;true&quot; style=&quot;width:200px;border :1px solid gray;&quot;&gt;
+        请拖放
+    &lt;/div&gt;
+    &lt;div id=&quot;text&quot; style=&quot;width: 200px; height: 200px; border: 1px solid gray;&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="datatransfer对象的属性与方法"><a class="header" href="#datatransfer对象的属性与方法">DataTransfer对象的属性与方法</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>属性/方法</th><th>描述</th></tr></thead><tbody>
+<tr><td>dropeffect属性</td><td>拖放操作的视觉效果,指定的值在effectAllowed范围内</td></tr>
+<tr><td>effectAllowed属性</td><td>指定元素被拖放时所允许的效果</td></tr>
+<tr><td>types属性</td><td>存入数据的种类,伪数组</td></tr>
+<tr><td>clearData(DOMString format)</td><td>清楚DataTransfer对象存放的数据,省略参数清除全部</td></tr>
+<tr><td>setData(DOMString format,DOMSttring data)</td><td>向DataTransfer对象中存数据</td></tr>
+<tr><td>getData(DOMString firmat)</td><td>从DT取数据</td></tr>
+<tr><td>setDragImage(Element image,long x,long  y)</td><td>用img元素来设置拖放图标</td></tr>
+</tbody></table>
+</div>
+<h3 id="自定义拖放icon"><a class="header" href="#自定义拖放icon">自定义拖放ICON</a></h3>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;script&gt;
+    var dragIcon = document.createElement('img');
+    dragIcon.src = '222.jpg';
+
+    function init(){
+        var source = document.getElementById('dragme');
+        var dest = document.getElementById('text');
+
+        source.addEventListener(&quot;dragstart&quot;,function (ev) {
+            var dt = ev.dataTransfer;
+            dt.effectAllowed = 'all';
+            dt.dropEffect = 'copyMove';
+            dt.setDragImage(dragIcon,120,150);
+            dt.setData(&quot;text/plain&quot;,'你好');
+
+        },false);
+
+        dest.addEventListener('dragend',function (ev) {
+            ev.preventDefault();
+        },false);
+
+        dest.addEventListener('drop',function (ev) {
+            var dt = ev.dataTransfer;
+            var text = dt.getData(&quot;text/plain&quot;);
+            dest.innerHTML='&lt;img src=222.jpg&gt;'
+            ev.preventDefault();
+            ev.stopPropagation();
+        },false);
+    }
+   document.ondragover = function(e){e.preventDefault();}
+   document.ondrop = function(e){e.preventDefault();}
+&lt;/script&gt;
+
+&lt;body onload=&quot;init()&quot;&gt;
+    &lt;div id=&quot;dragme&quot; draggable=&quot;true&quot; style=&quot;width:200px;border :1px solid gray;&quot;&gt;
+        请拖放
+    &lt;/div&gt;
+    &lt;div id=&quot;text&quot; style=&quot;width: 200px; height: 200px; border: 1px solid gray;&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Html5/HTML5的结构.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Html5/WebWorkers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Html5/HTML5的结构.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Html5/WebWorkers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

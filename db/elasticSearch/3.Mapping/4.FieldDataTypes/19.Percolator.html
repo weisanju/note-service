@@ -1,0 +1,1795 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Percolator - 数据库</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../index.html">数据库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>oracle</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../oracle/Oracle小知识点.html">Oracle小知识点</a></li><li class="chapter-item "><a href="../../../oracle/oracledocker快速搭建.html">oracledocker快速搭建</a></li><li class="chapter-item "><a href="../../../oracle/oracle多表更新方法.html">oracle多表更新方法</a></li></ol></li><li class="chapter-item "><a href="../../../MongoDB/index.html">MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../MongoDB/mongodb基本操作.html">mongodb基本操作</a></li><li class="chapter-item "><a href="../../../MongoDB/mongodb高级语法.html">mongodb高级语法</a></li><li class="chapter-item "><a href="../../../MongoDB/权限管理.html">权限管理</a></li></ol></li><li class="chapter-item "><div>mysql</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysqlfunction.html">mysqlfunction</a></li><li class="chapter-item "><a href="../../../mysql/mysqlpdump.html">mysqlpdump</a></li><li class="chapter-item "><a href="../../../mysql/mysqlzip安装.html">mysqlzip安装</a></li><li class="chapter-item "><a href="../../../mysql/mysql公用表达式.html">mysql公用表达式</a></li><li class="chapter-item "><a href="../../../mysql/mysql学习.html">mysql学习</a></li><li class="chapter-item "><a href="../../../mysql/mysql执行计划.html">mysql执行计划</a></li><li class="chapter-item "><a href="../../../mysql/空值处理函数.html">空值处理函数</a></li><li class="chapter-item "><div>mysql官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序.html">mysql程序</a></li><li class="chapter-item "><a href="../../../mysql/mysql官方文档/客户端.html">客户端</a></li><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序/index.html">mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql官方文档/mysql程序/使用mysql相关程序.html">使用mysql相关程序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../mysql/mysql日志/index.html">mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../mysql/mysql日志/mysql日志及分类.html">mysql日志及分类</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/二进制日志.html">二进制日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/慢sql日志.html">慢sql日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/通用日志.html">通用日志</a></li><li class="chapter-item "><a href="../../../mysql/mysql日志/错误日志.html">错误日志</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/index.html">elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/BackUpACluster.html">BackUpACluster</a></li><li class="chapter-item "><a href="../../../elasticSearch/KQL.html">KQL</a></li><li class="chapter-item "><a href="../../../elasticSearch/dataStream.html">dataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/es堆内存如何分配.html">es堆内存如何分配</a></li><li class="chapter-item "><a href="../../../elasticSearch/scroll查询.html">scroll查询</a></li><li class="chapter-item "><a href="../../../elasticSearch/乐观并发控制.html">乐观并发控制</a></li><li class="chapter-item "><a href="../../../elasticSearch/分布式检索.html">分布式检索</a></li><li class="chapter-item "><a href="../../../elasticSearch/分片内部原理.html">分片内部原理</a></li><li class="chapter-item "><a href="../../../elasticSearch/分词.html">分词</a></li><li class="chapter-item "><a href="../../../elasticSearch/慢日志.html">慢日志</a></li><li class="chapter-item "><a href="../../../elasticSearch/搜索引擎中的概念杂项.html">搜索引擎中的概念杂项</a></li><li class="chapter-item "><a href="../../../elasticSearch/数据分片.html">数据分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/映射.html">映射</a></li><li class="chapter-item "><a href="../../../elasticSearch/杂项学习.html">杂项学习</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引和分片.html">索引和分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引管理.html">索引管理</a></li><li class="chapter-item "><a href="../../../elasticSearch/评分标准与相关性.html">评分标准与相关性</a></li><li class="chapter-item "><a href="../../../elasticSearch/集群内原理.html">集群内原理</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/index.html">1.IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/1.Analysis.html">Analysis</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/2.IndexShardAllocation.html">IndexShardAllocation</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/3.Indexblocks.html">Indexblocks</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/4.Mapper.html">Mapper</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/5.Merge.html">Merge</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/6.SimilarityModule.html">SimilarityModule</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/7.Slowlog.html">Slowlog</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/8.Store.html">Store</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/9.Translog.html">Translog</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/10.HistoryRetention.html">HistoryRetention</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/11.IndexSorting.html">IndexSorting</a></li><li class="chapter-item "><a href="../../../elasticSearch/1.IndexModules/12.IndexPressure.html">IndexPressure</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/index.html">2.TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/index.html">1.Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html">AnatomyOfAnAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html">IndexAndSearchAnalysis</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html">Stemming</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html">TokenGraphs</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/index.html">2.ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html">AnalyzeAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html">TestAnAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html">ConfiguringBuilt-inAnalyzers</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html">CreateACustomAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html">SpecifyAnAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/index.html">3.Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html">StandardAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html">FingerprintAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html">KeywordAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html">LanguageAnalyzers</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html">PatternAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html">SimpleAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html">StopAnalyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html">WhitespaceAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/index.html">4.TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html">Ng-gram</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html">Keyword</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html">SimplePattern</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html">SimplePatternSplitTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html">StandardTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html">CharacterGroupTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html">ClassicTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html">LetterTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html">LowercaseTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html">PathHierarchyTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html">UAXURLEmailTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html">WhitespaceTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html">PatternTokenizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html">EdgeN-gramTokenizer</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/index.html">5.TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html">ASCIIFoldingTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html">CJKBigramTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html">CJKWidthTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html">ClassicTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html">CommonGramsTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html">ConditionalTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html">DecimalDigitTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html">DelimitedPayloadTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html">DictionaryDecompounderFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html">EdgeN-gramTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html">ElisionFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html">FingerprintFokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html">FlattenGraphTokenFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html">20</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/index.html">6.CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html">HTMLStripCharacterFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html">MappingCharacterFilter</a></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html">PatternReplaceCharacterFilter</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/2.TextAnalysis/7.Normalizers/index.html">7.Normalizers</a></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/index.html">3.Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/index.html">1.DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html">DynamicFieldMapping</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html">DynamicTemplates</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/2.ExplicitMapping/index.html">2.ExplicitMapping</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/index.html">3.RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html">MapARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html">DefineRuntimeFieldsInASearchRequest</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html">OverrideFieldValuesAtQueryTime</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html">RetrieveARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html">IndexARuntimeField</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html">ExploreYourDataWithRuntimeFields</a></li></ol></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/index.html">4.FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html">AggregateMetric</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html">AliasFieldType</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html">Arrays</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html">Binary</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html">Boolean</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html">Date</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html">DateNanoseconds</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html">DenseVector</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html">Flattened</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html">GeoPoint</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html">Geo-shape</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html">Histogram</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html">IP</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html">Join</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html">KeywordType</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html">Object</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html">Nested</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html">Numberic</a></li><li class="chapter-item expanded "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html" class="active">Percolator</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html">Point</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html">Range</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html">RankFeature</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html">RankFeatures</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html">Search-as-you-type</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html">Shape</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html">Text</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html">TokenCount</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html">UnsignedLong</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html">Version</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/index.html">5.MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html">DocCount</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html">FiledNames</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html">Ignored</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/4.Id.html">Id</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/5.Index.html">Index</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html">Meta</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html">Routing</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/8.Source.html">Source</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html">Tier</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/index.html">6.MappingParameters</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html">Analyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/2.boost.html">boost</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html">coerce</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html">Copy_to</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html">DocValue</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html">dynamic</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html">eagerGlobalOrdinals</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html">enabled</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/9.format.html">format</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html">Ignore_above</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html">Ignore_malformed</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/12.index.html">index</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html">Index_options</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html">index_pharse</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html">index_prefixes</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/16.meta.html">meta</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html">multifileds</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html">normalizer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/19.norms.html">norms</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html">null_value</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html">position_increment_gap</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/22.properties.html">properties</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html">search_analyzer</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html">similarity</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/25.store.html">store</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html">term_vector</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/7.MappingLimitSettings/index.html">7.MappingLimitSettings</a></li><li class="chapter-item "><a href="../../../elasticSearch/3.Mapping/8.RemovalOfMappingTypes/index.html">8.RemovalOfMappingTypes</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/4.IndexTemplates/index.html">4.IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html">SimulateMultiComponentTemplates</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/5.Aliases/index.html">5.Aliases</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/index.html">6.DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/1.setUpADataStream.html">setUpADataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/2.UseADataStream.html">UseADataStream</a></li><li class="chapter-item "><a href="../../../elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html">ChangeMappingsAndSettings</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/Datamanagement/index.html">Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/Datamanagement/DataTier.html">DataTier</a></li></ol></li><li class="chapter-item "><div>IngestPipeline</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/1.IngestPipelines.html">IngestPipelines</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/2.pipeLineExample.html">pipeLineExample</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/3.EnrichYourData.html">EnrichYourData</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html">ExampleEnrichYourDataBasedOnGeolocation</a></li><li class="chapter-item "><a href="../../../elasticSearch/IngestPipeline/5.IngestProcessorReference.html">IngestProcessorReference</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/index.html">queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/1.QueryAndFilterContext.html">QueryAndFilterContext</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/2.CompoundQueries.html">CompoundQueries</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/SearchAfter.html">SearchAfter</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/index.html">FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html">IntervalsQuery</a></li><li class="chapter-item "><a href="../../../elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html">MatchQuery</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/index.html">snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html">CleanUpSnapshotRepo</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CloneSnapshot.html">CloneSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html">CreateOrUpdateSnapshotAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/CreateSnapshot.html">CreateSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/DeleteSnapShot.html">DeleteSnapShot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html">DeleteSnapshotRepository</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/GetSnapshotAPI.html">GetSnapshotAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/RegisterASnapshot.html">RegisterASnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/RestoreSnapshot.html">RestoreSnapshot</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SLM.html">SLM</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SearchableSnapshots.html">SearchableSnapshots</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html">SearchableSnapshotsMountAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/repository-s3.html">repository-s3</a></li><li class="chapter-item "><a href="../../../elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html">使用OSS备份恢复集群实战</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/安装/index.html">安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/安装/1.InstallingFromRpm.html">InstallingFromRpm</a></li><li class="chapter-item "><a href="../../../elasticSearch/安装/2.InstallFromDeb.html">InstallFromDeb</a></li></ol></li><li class="chapter-item "><div>深入搜索</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/全文搜索.html">全文搜索</a></li><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/多字段搜索.html">多字段搜索</a></li><li class="chapter-item "><a href="../../../elasticSearch/深入搜索/结构化搜索.html">结构化搜索</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/index.html">索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/1.索引级别的分片分配控制.html">索引级别的分片分配控制</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/2.节点离开延迟分配.html">节点离开延迟分配</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/3.索引恢复优先级.html">索引恢复优先级</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/4.每个节点的总分片.html">每个节点的总分片</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html">索引级别数据层分配过滤</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html">手动分配分片clusterRerouteAPI</a></li><li class="chapter-item "><a href="../../../elasticSearch/索引分片分配/7.cluster-allocation-explain.html">cluster-allocation-explain</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/index.html">考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/1.ClusterManagement.html">ClusterManagement</a></li><li class="chapter-item "><a href="../../../elasticSearch/考纲解读/2.DataManagement.html">DataManagement</a></li></ol></li><li class="chapter-item "><div>聚合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/聚合/RareTermsAggregation.html">RareTermsAggregation</a></li><li class="chapter-item "><a href="../../../elasticSearch/聚合/Term.html">Term</a></li></ol></li><li class="chapter-item "><a href="../../../elasticSearch/配置/index.html">配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/配置/1.重要配置.html">重要配置</a></li><li class="chapter-item "><a href="../../../elasticSearch/配置/2.elasticsearch.yml核心配置.html">elasticsearch.yml核心配置</a></li><li class="chapter-item "><a href="../../../elasticSearch/配置/3.es系统参数修改.html">es系统参数修改</a></li></ol></li><li class="chapter-item "><div>集群</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/集群/Health.html">Health</a></li></ol></li><li class="chapter-item "><div>高可用专题</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/弹性设计.html">弹性设计</a></li><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/跨集群复制.html">跨集群复制</a></li><li class="chapter-item "><a href="../../../elasticSearch/高可用专题/集群备份.html">集群备份</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">数据库</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/db/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="percolator-field-type"><a class="header" href="#percolator-field-type">Percolator field type</a></h2>
+<ol>
+<li>
+<p>'percolator' 字段类型将json结构解析为本地查询并存储该查询，</p>
+</li>
+<li>
+<p>so that the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-percolate-query.html">percolate query</a> can use it to match provided documents.</p>
+</li>
+<li>
+<p>任何包含json对象的字段都可以配置为 percolator 字段，渗滤器字段类型没有设置，仅配置 “percolator” 字段类型就足以指示Elasticsearch将字段视为查询。</p>
+</li>
+<li>
+<p>以下映射为 “查询” 字段配置了 “percolator” 字段类型:</p>
+</li>
+</ol>
+<h3 id="什么是percolator查询"><a class="header" href="#什么是percolator查询"><strong>什么是percolator查询</strong></a></h3>
+<p>percolator中文含义：渗透器。</p>
+<p>percolator query等价于<strong>渗透查询</strong>或者<strong>反向查询</strong>。</p>
+<p>将查询存储到索引中，然后通过Percolate API定义文档以检索这些查询。</p>
+<ol>
+<li>传统查询，根据查询语句的查询条件返回文档。query-&gt;document。</li>
+<li>而percolator渗透查询，根据文档返回与之匹配的查询语句。document-&gt;query。</li>
+</ol>
+<h3 id="percolator-查询的应用场景"><a class="header" href="#percolator-查询的应用场景"><strong>percolator 查询的应用场景</strong></a></h3>
+<p>提供一个存储用户兴趣的平台，以便在每次有新内容进入时将正确的内容（通知警报）发送给正确的用户。</p>
+<p>用户订阅了特定主题，以便一旦该主题的新文章出现，就会向感兴趣的用户发送通知。</p>
+<p>应用场景如下：</p>
+<ul>
+<li>价格监控</li>
+<li>新闻警报</li>
+<li>股票警告</li>
+<li>日志监控</li>
+<li>天气预报</li>
+<li>库存警报</li>
+</ul>
+<h3 id="概念"><a class="header" href="#概念">概念</a></h3>
+<p>Elasticsearch 的正常工作流程是将文档（JSON数据）存储在索引中，然后在执行搜索时通过索引查询这些文档的信息。</p>
+<p>设想如果反转这种使用流程将如何（即先有查询条件，再有文档），Percolate即可实现这种逆转的流程。</p>
+<p>其使用流程是先存储search条件，之后使用文档询问是否可命中这些搜索条件。本文接下来将介绍如何构造和使用percolator。</p>
+<p>Percolation功能围绕percolator字段类型展开。 与其他字段类型一样（先在mappings中定义，再进行写入），不同的是它将搜索条件作为文档进行存储。当存储数据时，索引会将此搜索条件的文档处理为可执行形式，并将其保存以备后用。</p>
+<p>Percolate query接受一个或多个文档，并返回预先存储的搜索条件文档（该条件至少匹配一个传入的文档）。在执行搜索时，Percolate query的工作原理与其他任何查询模式一样，不同的一些细节将在下文介绍。</p>
+<h3 id="深入理解"><a class="header" href="#深入理解">深入理解</a></h3>
+<p>在底层，具有percolate字段的索引将保留于一个隐藏的索引（内存中）</p>
+<p>查询时，首先将在 percolate query 中列出的文档放入该索引，然后对该索引执行常规查询，看与原始的含 percolate 字段的搜索条件是否匹配。</p>
+<p>该隐藏索引是从原始 percolator 索引获取其映射的。因此，用于 percolate query 的索引字段需要具有适合原始数据和查询文档数据的mappings配置。</p>
+<p>这引入了一些索引管理的问题，因为你的索引数据和 percolate query 文档可能以不同的方式使用同一字段。一个简单的方式是使用对象类型（object type) 将 percolate 相关的映射与普通文档映射分开，具体可参考后文给出的例子。</p>
+<p>假设你使用的查询最初是为另一个索引A中的数据编写的，那么最直接的方法是将数据隔离以避免数据直接写到 percolate 索引中去，并将索引A中根级别的mappings在 percolate索引中进行定义。</p>
+<p>此外，由于percolate field被解析为搜索条件并在索引时保存，因此在升级ES主版本后可能需要reindex Percolate文档。</p>
+<h3 id="示例"><a class="header" href="#示例">示例</a></h3>
+<ol>
+<li>
+<p>在此示例中，我们将建立一个索引，该索引含有保存的玩具名字和玩具价格搜索条件。</p>
+</li>
+<li>
+<p>其背后思路是，用户输入搜索词和最高价格，然后在与该玩具名匹配的商品价格低于用户指定价格时立即得到通知</p>
+</li>
+<li>
+<p>此外用户还可以打开和关闭这些通知。下面的映射通过percolate索引来支持此功能。与保存的搜索条件本身相关的字段位于search对象中，而与原始玩具相关的字段位于映射的根级别。</p>
+</li>
+</ol>
+<pre><code> PUT toys {
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;search&quot;: {
+        &quot;properties&quot;: {
+          &quot;query&quot;: {
+            &quot;type&quot;: &quot;percolator&quot;
+          },
+          &quot;user_id&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+          },
+          &quot;enabled&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+          }
+        }
+      },
+      &quot;price&quot;: {
+        &quot;type&quot;: &quot;float&quot;
+      },
+      &quot;description&quot;: {
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<pre><code>PUT toys/_doc/1
+{
+  &quot;search&quot;: {
+    &quot;user_id&quot;: 5,
+    &quot;enabled&quot;: true,
+    &quot;query&quot;: {
+      &quot;bool&quot;: {
+        &quot;filter&quot;: [
+          {
+           &quot;match&quot;: {
+              &quot;description&quot;: {
+                &quot;query&quot;: &quot;nintendo switch&quot;
+              }
+            }
+          },
+          {
+            &quot;range&quot;: {
+              &quot;price&quot;: {
+                &quot;lte&quot;: 300
+              }
+            }
+          }
+        ] 
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>检查document文档是否满足 percolate查询</strong></p>
+<pre><code>
+GET toys/_search
+{
+  &quot;query&quot;: {
+    &quot;bool&quot;: {
+      &quot;filter&quot;: [
+        {
+          &quot;percolate&quot;: {
+            &quot;field&quot;: &quot;search.query&quot;,
+            &quot;document&quot;: {
+              &quot;description&quot;: &quot;Nintendo Switch&quot;,
+              &quot;price&quot;: 250
+            }
+          }
+        },
+        {
+          &quot;term&quot;: {
+            &quot;search.enabled&quot;: true
+          }
+        },
+        {
+          &quot;term&quot;: {
+            &quot;search.user_id&quot;: 5
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>请注意，此处结合使用了基础字段的查询（search.user_id和search.enabled字段），以及percolator条件字段的查询（search.query），用以对指定的用户ID在启用状态下生效。</p>
+<pre><code> {
+  &quot;took&quot; : 1,
+  &quot;timed_out&quot; : false,
+  &quot;_shards&quot; : {
+    &quot;total&quot; : 1,
+    &quot;successful&quot; : 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot; : 0
+  },
+  &quot;hits&quot; : {
+    &quot;total&quot; : {
+      &quot;value&quot; : 1,
+      &quot;relation&quot; : &quot;eq&quot;
+    },
+    &quot;max_score&quot; : 0.0,
+    &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;toys&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 0.0,
+        &quot;_source&quot; : {
+          &quot;search&quot; : {
+            &quot;user_id&quot; : 5,
+            &quot;enabled&quot; : true,
+           &quot;query&quot; : {
+              &quot;bool&quot; : {
+                &quot;filter&quot; : [
+                  {
+                    &quot;match&quot; : {
+                      &quot;description&quot; : {
+                        &quot;query&quot; : &quot;nintendo switch&quot;
+                      }
+                    }
+                  },
+                  {
+                    &quot;range&quot; : {
+                      &quot;price&quot; : {
+                        &quot;lte&quot; : 300
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [
+            0
+          ] 
+        }
+      }
+    ] 
+  }
+}
+</code></pre>
+<pre><code class="language-console">PUT my-index-000001
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot;: {
+        &quot;type&quot;: &quot;percolator&quot;
+      },
+      &quot;field&quot;: {
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>Then you can index a query:</p>
+<pre><code class="language-console">PUT my-index-000001/_doc/match_value
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;field&quot;: &quot;value&quot;
+    }
+  }
+}
+</code></pre>
+<p>percolator 查询中引用的字段必须 已经存在于与用于percolation的索引相关联的映射中</p>
+<h4 id="reindexing-your-percolator-queries"><a class="header" href="#reindexing-your-percolator-queries">Reindexing your percolator queries</a></h4>
+<ol>
+<li>
+<p>有时需要重新索引percolator器查询，才能从新版本中对 “percolator” 字段类型的改进中受益。</p>
+</li>
+<li>
+<p>Reindexing percolator queries can be reindexed by using the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/docs-reindex.html">reindex api</a>. Lets take a look at the following index with a percolator field type:</p>
+</li>
+</ol>
+<pre><code class="language-console">PUT index
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot; : {
+        &quot;type&quot; : &quot;percolator&quot;
+      },
+      &quot;body&quot; : {
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  }
+}
+
+POST _aliases
+{
+  &quot;actions&quot;: [
+    {
+      &quot;add&quot;: {
+        &quot;index&quot;: &quot;index&quot;,
+        &quot;alias&quot;: &quot;queries&quot; 
+      }
+    }
+  ]
+}
+
+PUT queries/_doc/1?refresh
+{
+  &quot;query&quot; : {
+    &quot;match&quot; : {
+      &quot;body&quot; : &quot;quick brown fox&quot;
+    }
+  }
+}
+</code></pre>
+<p>始终建议为索引定义别名，以便在重新索引的情况下，系统/应用程序不需要更改即可知道渗滤器查询现在位于不同的索引中。</p>
+<p>假设您将升级到新的主要版本，并且为了使新的Elasticsearch版本仍然能够读取您的查询，您需要将查询重新索引为当前Elasticsearch版本的新索引:</p>
+<pre><code class="language-console">PUT new_index
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot; : {
+        &quot;type&quot; : &quot;percolator&quot;
+      },
+      &quot;body&quot; : {
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  }
+}
+
+POST /_reindex?refresh
+{
+  &quot;source&quot;: {
+    &quot;index&quot;: &quot;index&quot;
+  },
+  &quot;dest&quot;: {
+    &quot;index&quot;: &quot;new_index&quot;
+  }
+}
+
+POST _aliases
+{
+  &quot;actions&quot;: [ 
+    {
+      &quot;remove&quot;: {
+        &quot;index&quot; : &quot;index&quot;,
+        &quot;alias&quot;: &quot;queries&quot;
+      }
+    },
+    {
+      &quot;add&quot;: {
+        &quot;index&quot;: &quot;new_index&quot;,
+        &quot;alias&quot;: &quot;queries&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<p>Executing the <code>percolate</code> query via the <code>queries</code> alias:</p>
+<pre><code class="language-console">GET /queries/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot; : {
+      &quot;field&quot; : &quot;query&quot;,
+      &quot;document&quot; : {
+        &quot;body&quot; : &quot;fox jumps over the lazy dog&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>now returns matches from the new index:</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 3,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.13076457,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;new_index&quot;, 
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.13076457,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;body&quot;: &quot;quick brown fox&quot;
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h4 id="optimizing-query-time-text-analysis"><a class="header" href="#optimizing-query-time-text-analysis">Optimizing query time text analysis</a></h4>
+<ol>
+<li>当percolator验证要解析的percolator候选匹配时，执行查询时文本分析，最终 对正在 percolator 的文档执行 percolator query </li>
+<li>每个候选的 precolate 匹配和每次 'percolate' 查询执行完成的。</li>
+<li>如果您的查询时文本分析是查询解析中相对昂贵的一部分，那么文本分析可能成为percolate 花费时间的主要因素</li>
+<li>当percolate 最终验证许多候选percolator 查询匹配时，此查询解析开销可能会变得明显。</li>
+<li>为了避免在percolator时间进行文本分析中最昂贵的部分 .索引 percolator query时，可以选择进行文本分析的昂贵部分 . 这需要使用两个不同的分析器
+<ol>
+<li>第一个分析器实际上执行需要执行的文本分析 (昂贵的部分)。</li>
+<li>第二个分析器 (通常是空白) 只是分割第一个分析器已经产生的生成的标记.</li>
+<li>然后在索引percolator query 之前，analyze api应该是s，以使用更昂贵的分析器分析查询文本。analyze api的结果，tokens，应用于替换percolator查询中的原始查询文本。重要的是，现在应该将查询配置为从映射中覆盖分析器，而仅覆盖第二个分析器。大多数基于文本的查询都支持 'analyzer' 选项 ('match' 、 'query_string '、 'simple_query_string')。使用这种方法，昂贵的文本分析被执行一次，而不是多次。</li>
+</ol>
+</li>
+</ol>
+<p>让我们通过一个简化的例子来演示这个工作流程。</p>
+<p>假设我们要索引以下percolator查询:</p>
+<pre><code class="language-js">{
+  &quot;query&quot; : {
+    &quot;match&quot; : {
+      &quot;body&quot; : {
+        &quot;query&quot; : &quot;missing bicycles&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>with these settings and mapping:</p>
+<pre><code class="language-console">PUT /test_index
+{
+  &quot;settings&quot;: {
+    &quot;analysis&quot;: {
+      &quot;analyzer&quot;: {
+        &quot;my_analyzer&quot; : {
+          &quot;tokenizer&quot;: &quot;standard&quot;,//For the purpose of this example, this analyzer is considered expensive.
+          &quot;filter&quot; : [&quot;lowercase&quot;, &quot;porter_stem&quot;]
+        }
+      }
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot; : {
+        &quot;type&quot;: &quot;percolator&quot;
+      },
+      &quot;body&quot; : {
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;analyzer&quot;: &quot;my_analyzer&quot; 
+      }
+    }
+  }
+}
+</code></pre>
+<p>首先，我们需要使用analyze api在索引之前执行文本分析:</p>
+<pre><code class="language-console">POST /test_index/_analyze
+{
+  &quot;analyzer&quot; : &quot;my_analyzer&quot;,
+  &quot;text&quot; : &quot;missing bicycles&quot;
+}
+</code></pre>
+<p>This results the following response:</p>
+<pre><code class="language-console-result">{
+  &quot;tokens&quot;: [
+    {
+      &quot;token&quot;: &quot;miss&quot;,
+      &quot;start_offset&quot;: 0,
+      &quot;end_offset&quot;: 7,
+      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
+      &quot;position&quot;: 0
+    },
+    {
+      &quot;token&quot;: &quot;bicycl&quot;,
+      &quot;start_offset&quot;: 8,
+      &quot;end_offset&quot;: 16,
+      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
+      &quot;position&quot;: 1
+    }
+  ]
+}
+</code></pre>
+<p>返回的顺序中的所有令牌都需要替换percolator查询中的查询文本:</p>
+<pre><code class="language-console">PUT /test_index/_doc/1?refresh
+{
+  &quot;query&quot; : {
+    &quot;match&quot; : {
+      &quot;body&quot; : {
+        &quot;query&quot; : &quot;miss bicycl&quot;,
+        &quot;analyzer&quot; : &quot;whitespace&quot; //在这里选择空格分析器很重要，否则将使用映射中定义的分析器,这就失去了使用这个工作流程的意义。
+      }
+    }
+  }
+}
+</code></pre>
+<p>请注意，'whitespace' 是一个内置的分析器，如果需要使用不同的分析器，则需要首先在索引的设置中对其进行配置。</p>
+<p>对于每个percolator query，应在对percolator工作流进行索引之前进行分析api。</p>
+<p>在percolate 时没有任何变化，percolate查询可以正常定义:</p>
+<pre><code class="language-console">GET /test_index/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot; : {
+      &quot;field&quot; : &quot;query&quot;,
+      &quot;document&quot; : {
+        &quot;body&quot; : &quot;Bycicles are missing&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>This results in a response like this:</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 6,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.13076457,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;test_index&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.13076457,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;body&quot;: {
+                &quot;query&quot;: &quot;miss bicycl&quot;,
+                &quot;analyzer&quot;: &quot;whitespace&quot;
+              }
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h4 id="optimizing-wildcard-queries"><a class="header" href="#optimizing-wildcard-queries">Optimizing wildcard queries.</a></h4>
+<ol>
+<li>
+<p>通配符查询比percolator 的其他查询更昂贵，,特别是如果通配符表达式很大。</p>
+</li>
+<li>
+<p>对于带有前缀通配符表达式的 “通配符” 查询或仅使用 “前缀” 查询的情况，可以使用 “edge_ngram” 令牌过滤器将这些查询替换为配置了 “edge_ngram” 令牌过滤器的字段上的常规 “term” 查询。</p>
+</li>
+</ol>
+<p>Creating an index with custom analysis settings:</p>
+<pre><code class="language-console">PUT my_queries1
+{
+  &quot;settings&quot;: {
+    &quot;analysis&quot;: {
+      &quot;analyzer&quot;: {
+        &quot;wildcard_prefix&quot;: { 
+          &quot;type&quot;: &quot;custom&quot;,
+          &quot;tokenizer&quot;: &quot;standard&quot;,
+          &quot;filter&quot;: [
+            &quot;lowercase&quot;,
+            &quot;wildcard_edge_ngram&quot;
+          ]
+        }
+      },
+      &quot;filter&quot;: {
+        &quot;wildcard_edge_ngram&quot;: { 
+          &quot;type&quot;: &quot;edge_ngram&quot;,//Increase the `min_gram` and decrease `max_gram` settings based on your prefix search needs.
+          &quot;min_gram&quot;: 1, 
+          &quot;max_gram&quot;: 32
+        }
+      }
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot;: {
+        &quot;type&quot;: &quot;percolator&quot;
+      },
+      &quot;my_field&quot;: { //This multifield should be used to do the prefix search with a `term` or `match` query instead of a `prefix` or `wildcard` query.
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;fields&quot;: {
+          &quot;prefix&quot;: { 
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;analyzer&quot;: &quot;wildcard_prefix&quot;, //The analyzer that generates the prefix tokens to be used at index time only.
+            &quot;search_analyzer&quot;: &quot;standard&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>然后，而不是索引以下查询:</p>
+<pre><code class="language-js">{
+  &quot;query&quot;: {
+    &quot;wildcard&quot;: {
+      &quot;my_field&quot;: &quot;abc*&quot;
+    }
+  }
+}
+</code></pre>
+<p>下面的这个查询应该被索引:</p>
+<pre><code class="language-console">PUT /my_queries1/_doc/1?refresh
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;my_field.prefix&quot;: &quot;abc&quot;
+    }
+  }
+}
+</code></pre>
+<p>这种方式可以比第一个查询更有效地处理第二个查询。</p>
+<p>以下搜索请求将与先前索引的渗滤器查询匹配:</p>
+<pre><code class="language-console">GET /my_queries1/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;document&quot;: {
+        &quot;my_field&quot;: &quot;abcd&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 6,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.18864399,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;my_queries1&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.18864399,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;term&quot;: {
+              &quot;my_field.prefix&quot;: &quot;abc&quot;
+            }
+          }
+        },
+        &quot;fields&quot;: {
+          &quot;_percolator_document_slot&quot;: [
+            0
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>同样的技术也可以用来加速后缀通配符搜索。通过在 “edge_ngram” 令牌过滤器之前使用 “reverse” 令牌过滤器。</p>
+<pre><code class="language-console">PUT my_queries2
+{
+  &quot;settings&quot;: {
+    &quot;analysis&quot;: {
+      &quot;analyzer&quot;: {
+        &quot;wildcard_suffix&quot;: {
+          &quot;type&quot;: &quot;custom&quot;,
+          &quot;tokenizer&quot;: &quot;standard&quot;,
+          &quot;filter&quot;: [
+            &quot;lowercase&quot;,
+            &quot;reverse&quot;,
+            &quot;wildcard_edge_ngram&quot;
+          ]
+        },
+        &quot;wildcard_suffix_search_time&quot;: {
+          &quot;type&quot;: &quot;custom&quot;,
+          &quot;tokenizer&quot;: &quot;standard&quot;,
+          &quot;filter&quot;: [
+            &quot;lowercase&quot;,
+            &quot;reverse&quot;
+          ]
+        }
+      },
+      &quot;filter&quot;: {
+        &quot;wildcard_edge_ngram&quot;: {
+          &quot;type&quot;: &quot;edge_ngram&quot;,
+          &quot;min_gram&quot;: 1,
+          &quot;max_gram&quot;: 32
+        }
+      }
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;query&quot;: {
+        &quot;type&quot;: &quot;percolator&quot;
+      },
+      &quot;my_field&quot;: {
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;fields&quot;: {
+          &quot;suffix&quot;: {
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;analyzer&quot;: &quot;wildcard_suffix&quot;,
+            &quot;search_analyzer&quot;: &quot;wildcard_suffix_search_time&quot; 
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>A custom analyzer is needed at search time too, because otherwise the query terms are not being reversed and would otherwise not match with the reserved suffix tokens.</p>
+<p>Then instead of indexing the following query:</p>
+<pre><code class="language-js">{
+  &quot;query&quot;: {
+    &quot;wildcard&quot;: {
+      &quot;my_field&quot;: &quot;*xyz&quot;
+    }
+  }
+}
+</code></pre>
+<pre><code class="language-console">PUT /my_queries2/_doc/2?refresh
+{
+  &quot;query&quot;: { //The `match` query should be used instead of the `term` query, because text analysis needs to reverse the query terms.
+    &quot;match&quot;: { 
+      &quot;my_field.suffix&quot;: &quot;xyz&quot;
+    }
+  }
+}
+</code></pre>
+<p>以下搜索请求将与先前索引的渗滤器查询匹配:</p>
+<pre><code class="language-console">GET /my_queries2/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;document&quot;: {
+        &quot;my_field&quot;: &quot;wxyz&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<h4 id="dedicated-percolator-index"><a class="header" href="#dedicated-percolator-index">Dedicated Percolator Index</a></h4>
+<ol>
+<li>可以将Percolate查询添加到任何索引中</li>
+<li>不是将percolate查询添加到数据驻留的索引中，而是添加到专用索引</li>
+<li>这样做的好处是，这种专用的Percolate 索引可以具有自己的索引设置 (例如，主分片和副本分片的数量)。如果选择使用专用的percolate索引，则需要确保在percolate索引上也可以使用来自普通索引的映射。否则percolate 查询可能会被错误地解析。</li>
+</ol>
+<h4 id="forcing-unmapped-fields-to-be-handled-as-strings"><a class="header" href="#forcing-unmapped-fields-to-be-handled-as-strings">Forcing Unmapped Fields to be Handled as Strings</a></h4>
+<ol>
+<li>在某些情况下，不知道会注册哪种渗滤器查询，,并且如果对于由percolator查询引用的字段不存在字段映射，则添加percolator查询失败，这意味着需要更新映射以使字段具有适当的设置</li>
+<li>但是有时候，如果所有未映射的字段都像默认文本字段一样处理，那就足够了。</li>
+<li>In those cases one can configure the <code>index.percolator.map_unmapped_fields_as_text</code> setting to <code>true</code> (default to <code>false</code>) and</li>
+<li>then if a field referred in a percolator query does not exist, it will be handled as a default text field so that adding the percolator query doesn’t fail.</li>
+</ol>
+<h4 id="limitations"><a class="header" href="#limitations">Limitations</a></h4>
+<h5 id="parentchild"><a class="header" href="#parentchild">Parent/child</a></h5>
+<p>由于 “percolate” 查询一次处理一个文档，因此它不支持针对子文档 (例如 “has_child” 和 “has_parent”) 运行的查询和过滤器。</p>
+<h5 id="fetching-queries"><a class="header" href="#fetching-queries">Fetching queries</a></h5>
+<ol>
+<li>在查询解析过程中，有许多查询通过get调用获取数据。</li>
+<li>例如，使用term query时的  term lookup</li>
+<li><code>template</code> query when using indexed scripts and <code>geo_shape</code> when using pre-indexed shapes.</li>
+<li>当这些查询由 “percolator” 字段类型索引时，get调用将执行一次</li>
+<li>因此，每次 “percolator” 查询评估这些查询时，将使用获取术语，形状等作为索引时间。</li>
+<li>每次percolator查询都在主分片和副本分片上建立索引时都会发生，因此，如果源索引在索引时更改了，则在分片副本之间实际索引的术语可能会有所不同。</li>
+</ol>
+<h5 id="script-query"><a class="header" href="#script-query">Script query</a></h5>
+<ol>
+<li>“脚本” 查询中的脚本只能访问doc值字段。</li>
+<li>“percolate” 查询将提供的文档索引为内存索引</li>
+<li>此内存索引不支持存储字段，因此 “_ source” 字段和其他存储字段不存储。这就是为什么在 “脚本” 查询中 “_ source” 和其他存储字段不可用的原因。</li>
+</ol>
+<h5 id="field-aliases"><a class="header" href="#field-aliases">Field aliases</a></h5>
+<p>包含 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/field-alias.html">字段别名</a> 的Percolator 查询可能并不总是如预期的那样运行。特别地，如果注册了包含字段别名的percolator查询，然后在映射中更新该别名以引用不同的字段，则存储的查询仍将引用原始目标字段。要获取对字段别名的更改，必须显式地重新索引percolator查询。</p>
+<h2 id="percolate-query"><a class="header" href="#percolate-query">Percolate query</a></h2>
+<ol>
+<li>
+<p>“percolate” 查询可用于匹配存储在索引中的查询。</p>
+</li>
+<li>
+<p>percolate  查询本身包含将用作查询以与存储的查询匹配的文档。</p>
+</li>
+</ol>
+<h3 id="sample-usage"><a class="header" href="#sample-usage">Sample Usage</a></h3>
+<p>Create an index with two fields:</p>
+<pre><code class="language-console">PUT /my-index-00001
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;message&quot;: {
+        &quot;type&quot;: &quot;text&quot;
+      },
+      &quot;query&quot;: {
+        &quot;type&quot;: &quot;percolator&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<ol>
+<li>“message” 字段是用于在 “percolator” 查询中定义的文档被索引为临时索引之前对其进行预处理的字段。</li>
+<li>“query” 字段用于索引查询文档。 。它将持有一个表示实际Elasticsearch查询的json对象。</li>
+<li>The <code>query</code> field has been configured to use the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/percolator.html">percolator field type</a>. 此字段类型可以理解查询dsl并以这样的方式存储查询，以便以后可以使用它来匹配在 “percolator” 查询中定义的文档。</li>
+</ol>
+<p>Register a query in the percolator:</p>
+<pre><code class="language-console">PUT /my-index-00001/_doc/1?refresh
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;message&quot;: &quot;bonsai tree&quot;
+    }
+  }
+}
+</code></pre>
+<p>Match a document to the registered percolator queries:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;document&quot;: {
+        &quot;message&quot;: &quot;A new bonsai tree in the office&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>The above request will yield the following response:</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 13,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.26152915,
+    &quot;hits&quot;: [
+      { 
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;, The query with id `1` matches our document.
+        &quot;_score&quot;: 0.26152915,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;bonsai tree&quot;
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0]//“_ percolator_document_slot” 字段指示哪个文档与此查询匹配。当同时percolator多个文档时很有用。
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<ol>
+<li>为了提供一个简单的示例，此文档对percolate 查询和文档使用一个索引 “my-index-00001”。</li>
+<li>当仅注册了几个percolate 查询时，此设置可以很好地工作</li>
+<li>但是，如果使用率较高，建议将查询和文档存储在单独的索引中。</li>
+<li>Please see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-percolate-query.html#how-it-works">How it Works Under the Hood</a> for more details.</li>
+</ol>
+<h4 id="parameters"><a class="header" href="#parameters">Parameters</a></h4>
+<p>percolate 文档时需要以下参数:</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><code>field</code></td><td>保存索引查询的类型为 “percolator” 的字段。这是必填参数。</td></tr>
+<tr><td><code>name</code></td><td>如果指定了多个 “percolator_document_slot” 查询，则用于 “_ percolator_document_slot” 字段的后缀。这是一个可选参数。</td></tr>
+<tr><td><code>document</code></td><td>正在percolator的文档的来源。</td></tr>
+<tr><td><code>documents</code></td><td>像 'document' 参数，但通过json数组接受多个文档。</td></tr>
+<tr><td><code>document_type</code></td><td>The type / mapping of the document being percolated. This parameter is deprecated and will be removed in Elasticsearch 8.0.</td></tr>
+</tbody></table>
+</div>
+<p><strong>从已经源检索文档</strong></p>
+<p>也可以从已经存储的文档中检索源，而不是指定要 percolate 的文档的源。然后，“percolate” 查询将在内部执行get请求以获取该文档。</p>
+<p>在这种情况下，“文档” 参数可以用以下参数代替:</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><code>index</code></td><td>The index the document resides in. This is a required parameter.</td></tr>
+<tr><td><code>type</code></td><td>The type of the document to fetch. This parameter is deprecated and will be removed in Elasticsearch 8.0.</td></tr>
+<tr><td><code>id</code></td><td>The id of the document to fetch. This is a required parameter.</td></tr>
+<tr><td><code>routing</code></td><td>Optionally, routing to be used to fetch document to percolate.</td></tr>
+<tr><td><code>preference</code></td><td>Optionally, preference to be used to fetch document to percolate.</td></tr>
+<tr><td><code>version</code></td><td>Optionally, the expected version of the document to be fetched.</td></tr>
+</tbody></table>
+</div>
+<h4 id="percolating-in-a-filter-context"><a class="header" href="#percolating-in-a-filter-context">Percolating in a filter context</a></h4>
+<p>如果您对分数不感兴趣，可以通过将percolator查询包装在 'bool' 查询的filter子句中或 'constant_score '查询中来期望更好的性能:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;percolate&quot;: {
+          &quot;field&quot;: &quot;query&quot;,
+          &quot;document&quot;: {
+            &quot;message&quot;: &quot;A new bonsai tree in the office&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>在索引时，从percolator 查询中提取术语，percolator器通常可以仅通过查看提取的术语来确定查询是否匹配。</p>
+<p>但是，计算分数需要对每个匹配的查询进行反序列化，并针对percolated的文档运行它，这是一个昂贵得多的操作。因此，如果不需要计算分数，则 “percolate” 查询应包装在 “constant_score” 查询或 “bool” 查询的filter子句中。</p>
+<p>请注意，查询缓存永远不会缓存 “percolate” 查询。</p>
+<h4 id="percolating-multiple-documents"><a class="header" href="#percolating-multiple-documents">Percolating multiple documents</a></h4>
+<ol>
+<li>
+<p>“Percolating” 查询可以与索引的Percolating 查询同时匹配多个文档. </p>
+</li>
+<li>
+<p>在单个请求中渗透多个文档可以提高性能，因为查询只需要解析和匹配一次，而不是多次。</p>
+</li>
+<li>
+<p>当同时percolator 多个文档时，与每个匹配的percolator 查询一起返回的 “_percolator_document_slot” 字段非常重要。它指示哪些文档与特定的percolator查询匹配</p>
+</li>
+<li>
+<p>这些数字与 “percolator” 查询中指定的 “文档” 数组中的插槽相关。</p>
+</li>
+</ol>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;, //The documents array contains 4 documents that are going to be percolated at the same time.
+      &quot;documents&quot;: [ 
+        {
+          &quot;message&quot;: &quot;bonsai tree&quot;
+        },
+        {
+          &quot;message&quot;: &quot;new tree&quot;
+        },
+        {
+          &quot;message&quot;: &quot;the office&quot;
+        },
+        {
+          &quot;message&quot;: &quot;office tree&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 13,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.7093853,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.7093853,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;bonsai tree&quot;
+            }
+          }
+        },
+        &quot;fields&quot; : { //The `_percolator_document_slot` indicates that the first, second and last documents specified in the `percolate` query are matching with this query.
+          &quot;_percolator_document_slot&quot; : [0, 1, 3] 
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h4 id="percolating-an-existing-document"><a class="header" href="#percolating-an-existing-document">Percolating an Existing Document</a></h4>
+<ol>
+<li>为了Percolating 新索引的文档，可以使用 “percolate” 查询</li>
+<li>根据来自索引请求的响应，可以使用 “_ id” 和其他元信息立即percolate新添加的文档。</li>
+</ol>
+<h5 id="example"><a class="header" href="#example">Example</a></h5>
+<p>Based on the previous example.</p>
+<p>Index the document we want to percolate:</p>
+<pre><code class="language-console">PUT /my-index-00001/_doc/2
+{
+  &quot;message&quot; : &quot;A new bonsai tree in the office&quot;
+}
+</code></pre>
+<p>Index response:</p>
+<pre><code class="language-console-result">{
+  &quot;_index&quot;: &quot;my-index-00001&quot;,
+  &quot;_type&quot;: &quot;_doc&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 1,
+    &quot;failed&quot;: 0
+  },
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_seq_no&quot; : 1,
+  &quot;_primary_term&quot; : 1
+}
+</code></pre>
+<p>Percolat 现有文档，使用索引响应作为基础来构建新的搜索请求:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;index&quot;: &quot;my-index-00001&quot;,
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;version&quot;: 1 
+    }
+  }
+}
+</code></pre>
+<p>该版本是可选的，但在某些情况下很有用。我们可以确保我们正在尝试渗透我们刚刚索引的文档</p>
+<p>在我们建立索引后可能会进行更改，如果是这种情况，则搜索请求将因版本冲突错误而失败。</p>
+<p>返回的搜索响应与前面的示例相同。</p>
+<h4 id="percolate-query-and-highlighting"><a class="header" href="#percolate-query-and-highlighting">Percolate query and highlighting</a></h4>
+<p>当涉及到highlighting ，“渗透” 查询以一种特殊的方式处理。查询命中用于highlight “渗透” 查询中提供的文档。而通过常规突出显示，搜索请求中的查询用于突出显示命中的文档</p>
+<h5 id="example-1"><a class="header" href="#example-1">Example</a></h5>
+<p>This example is based on the mapping of the first example.</p>
+<p>Save a query:</p>
+<pre><code class="language-console">PUT /my-index-00001/_doc/3?refresh
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;message&quot;: &quot;brown fox&quot;
+    }
+  }
+}
+</code></pre>
+<p>Save another query:</p>
+<pre><code class="language-console">PUT /my-index-00001/_doc/4?refresh
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;message&quot;: &quot;lazy dog&quot;
+    }
+  }
+}
+</code></pre>
+<p>Execute a search request with the <code>percolate</code> query and highlighting enabled:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;document&quot;: {
+        &quot;message&quot;: &quot;The quick brown fox jumps over the lazy dog&quot;
+      }
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;fields&quot;: {
+      &quot;message&quot;: {}
+    }
+  }
+}
+</code></pre>
+<p><strong>单文档多渗透查询</strong></p>
+<p>This will yield the following response.</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 7,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 2,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.26152915,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;3&quot;,
+        &quot;_score&quot;: 0.26152915,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;brown fox&quot;
+            }
+          }
+        },
+        &quot;highlight&quot;: {
+          &quot;message&quot;: [
+            &quot;The quick &lt;em&gt;brown&lt;/em&gt; &lt;em&gt;fox&lt;/em&gt; jumps over the lazy dog&quot; 
+          ]
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;4&quot;,
+        &quot;_score&quot;: 0.26152915,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;lazy dog&quot;
+            }
+          }
+        },
+        &quot;highlight&quot;: {
+          &quot;message&quot;: [
+            &quot;The quick brown fox jumps over the &lt;em&gt;lazy&lt;/em&gt; &lt;em&gt;dog&lt;/em&gt;&quot; 
+          ]
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>单渗透查询多文档</strong></p>
+<p>渗滤器查询不是突出显示 “渗滤器” 命中的搜索请求中的查询，而是突出显示 “渗滤器” 查询中定义的文档。</p>
+<p>当像下面的请求一样同时渗透多个文档时，高亮响应是不同的:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;percolate&quot;: {
+      &quot;field&quot;: &quot;query&quot;,
+      &quot;documents&quot;: [
+        {
+          &quot;message&quot;: &quot;bonsai tree&quot;
+        },
+        {
+          &quot;message&quot;: &quot;new tree&quot;
+        },
+        {
+          &quot;message&quot;: &quot;the office&quot;
+        },
+        {
+          &quot;message&quot;: &quot;office tree&quot;
+        }
+      ]
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;fields&quot;: {
+      &quot;message&quot;: {}
+    }
+  }
+}
+</code></pre>
+<p>The slightly different response:</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 13,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.7093853,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.7093853,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;bonsai tree&quot;
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot&quot; : [0, 1, 3]
+        },
+        &quot;highlight&quot; : {  // The highlight fields have been prefixed with the document slot they belong to, in order to know which highlight field belongs to what document.
+          &quot;0_message&quot; : [
+              &quot;&lt;em&gt;bonsai&lt;/em&gt; &lt;em&gt;tree&lt;/em&gt;&quot;
+          ],
+          &quot;3_message&quot; : [
+              &quot;office &lt;em&gt;tree&lt;/em&gt;&quot;
+          ],
+          &quot;1_message&quot; : [
+              &quot;new &lt;em&gt;tree&lt;/em&gt;&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h4 id="specifying-multiple-percolate-queries"><a class="header" href="#specifying-multiple-percolate-queries">Specifying multiple percolate queries</a></h4>
+<p>It is possible to specify multiple <code>percolate</code> queries in a single search request:</p>
+<pre><code class="language-console">GET /my-index-00001/_search
+{
+  &quot;query&quot;: {
+    &quot;bool&quot;: {
+      &quot;should&quot;: [
+        {
+          &quot;percolate&quot;: {
+            &quot;field&quot;: &quot;query&quot;,
+            &quot;document&quot;: {
+              &quot;message&quot;: &quot;bonsai tree&quot;
+            },
+            &quot;name&quot;: &quot;query1&quot; 
+          }
+        },
+        {
+          &quot;percolate&quot;: {
+            &quot;field&quot;: &quot;query&quot;,
+            &quot;document&quot;: {
+              &quot;message&quot;: &quot;tulip flower&quot;
+            },
+            &quot;name&quot;: &quot;query2&quot; 
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>The <code>_percolator_document_slot</code> field name will be suffixed with what is specified in the <code>_name</code> parameter. If that isn’t specified then the <code>field</code> parameter will be used, which in this case will result in ambiguity.</p>
+<p>The above search request returns a response similar to this:</p>
+<pre><code class="language-console-result">{
+  &quot;took&quot;: 13,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot; : {
+        &quot;value&quot;: 1,
+        &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.26152915,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;my-index-00001&quot;,
+        &quot;_type&quot;: &quot;_doc&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.26152915,
+        &quot;_source&quot;: {
+          &quot;query&quot;: {
+            &quot;match&quot;: {
+              &quot;message&quot;: &quot;bonsai tree&quot;
+            }
+          }
+        },
+        &quot;fields&quot; : {
+          &quot;_percolator_document_slot_query1&quot; : [0] 
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>'_ Percolator_document_slot _ query1'  percolator slot 字段指示这些匹配的插槽来自 “percolate” 查询，其中 “_ name” 参数设置为 “query1”。</p>
+<h4 id="how-it-works-under-the-hood"><a class="header" href="#how-it-works-under-the-hood">How it Works Under the Hood</a></h4>
+<ol>
+<li>
+<p>当将文档索引为已配置 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/percolator.html">percolator字段类型</a> 映射的索引时，文档的查询部分被解析为Lucene查询并存储到Lucene索引中，而且查询的术语也被分析并存储到索引字段中。</p>
+</li>
+<li>
+<p>在搜索时，请求中指定的文档被解析为Lucene文档，并存储在内存中的临时Lucene索引中。这个内存索引只能容纳这个文档，并且为此进行了优化。</p>
+</li>
+<li>
+<p>在此之后，将根据内存索引中的术语构建特殊查询，该查询根据其索引的查询术语选择候选percolator 查询</p>
+</li>
+<li>
+<p>The selecting of candidate percolator queries matches is an important performance optimization during the execution of the <code>percolate</code> query as it can significantly reduce the number of candidate matches the in-memory index needs to evaluate. </p>
+</li>
+<li>
+<p>The reason the <code>percolate</code> query can do this is because during indexing of the percolator queries the query terms are being extracted and indexed with the percolator query. </p>
+</li>
+<li>
+<p>Unfortunately the percolator cannot extract terms from all queries (for example the <code>wildcard</code> or <code>geo_shape</code> query) and as a result of that in certain cases the percolator can’t do the selecting optimization (例如，如果在布尔查询的 must 子句中定义了不支持的查询，或者不支持的查询是percolator文档中唯一的查询). These queries are marked by the percolator and can be found by running the following search:</p>
+</li>
+</ol>
+<pre><code class="language-console">GET /_search
+{
+  &quot;query&quot;: {
+    &quot;term&quot; : {
+      &quot;query.extraction_result&quot; : &quot;failed&quot;
+    }
+  }
+}
+</code></pre>
+<ol>
+<li>上面的示例假设映射中存在类型为 “percolator” 的 “query” 字段。</li>
+<li>考虑到percolation的设计，通常对percolation query 和要percolation 的文档使用单独的索引是有意义的，而不是像我们在示例中那样使用单个索引。这种方法有一些好处:</li>
+</ol>
+<ul>
+<li>因为 percolation 包含与percolation document 不同的一组字段, 使用两个单独的索引可以使字段以更密集，更有效的方式存储。</li>
+<li>Percolate queries do not scale in the same way as other queries, so percolation performance may benefit from using a different index configuration, like the number of primary shards.</li>
+</ul>
+<h3 id="notes"><a class="header" href="#notes">Notes</a></h3>
+<h4 id="allow-expensive-queries"><a class="header" href="#allow-expensive-queries">Allow expensive queries</a></h4>
+<p>Percolate queries will not be executed if <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl.html#query-dsl-allow-expensive-queries"><code>search.allow_expensive_queries</code></a> is set to false.</p>
+<h3 id="可参考文章"><a class="header" href="#可参考文章">可参考文章</a></h3>
+<ol>
+<li>https://juejin.cn/post/7020585236433993735</li>
+<li>https://developer.aliyun.com/article/776868</li>
+</ol>
+<script src="/note/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/db/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>数组 - 前端</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">我的笔记库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../nodejs/index.html">nodejs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/fakeJS.html">fakeJS</a></li><li class="chapter-item "><a href="../nodejs/nodejs事件循环.html">nodejs事件循环</a></li><li class="chapter-item "><a href="../nodejs/入门.html">入门</a></li><li class="chapter-item "><a href="../nodejs/包管理.html">包管理</a></li><li class="chapter-item "><a href="../nodejs/定时器.html">定时器</a></li><li class="chapter-item "><a href="../nodejs/异步编程.html">异步编程</a></li><li class="chapter-item "><div>packageInfo参数解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nodejs/packageInfo参数解析/1.scripts.html">scripts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../CSS知识/杂项.html">CSS知识</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/BFC.html">BFC</a></li><li class="chapter-item "><a href="../CSS知识/CSS选择器.html">CSS选择器</a></li><li class="chapter-item "><a href="../CSS知识/内联元素垂直居中的方式.html">内联元素垂直居中的方式</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化.html">基本视觉格式化</a></li><li class="chapter-item "><a href="../CSS知识/基本视觉格式化-1.html">基本视觉格式化-1</a></li><li class="chapter-item "><a href="../CSS知识/弹性布局.html">弹性布局</a></li><li class="chapter-item "><a href="../CSS知识/结构与层叠.html">结构与层叠</a></li><li class="chapter-item "><div>CSS布局方式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS布局方式/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS布局方式/两栏布局.html">两栏布局</a></li></ol></li><li class="chapter-item "><div>CSS样式详解</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../CSS知识/CSS样式详解/Grid布局.html">Grid布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/flex布局.html">flex布局</a></li><li class="chapter-item "><a href="../CSS知识/CSS样式详解/定位.html">定位</a></li></ol></li></ol></li><li class="chapter-item "><div>Element-UI</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Element-UI/Switch开关.html">Switch开关</a></li><li class="chapter-item "><a href="../Element-UI/Tree树形控件.html">Tree树形控件</a></li><li class="chapter-item "><a href="../Element-UI/backtop.html">backtop</a></li><li class="chapter-item "><a href="../Element-UI/card卡片.html">card卡片</a></li><li class="chapter-item "><a href="../Element-UI/form表单.html">form表单</a></li><li class="chapter-item "><a href="../Element-UI/image图片.html">image图片</a></li><li class="chapter-item "><a href="../Element-UI/navigation-Breadcrumb面包屑.html">navigation-Breadcrumb面包屑</a></li><li class="chapter-item "><a href="../Element-UI/navigation-dropdown.html">navigation-dropdown</a></li><li class="chapter-item "><a href="../Element-UI/navigation-navmenu.html">navigation-navmenu</a></li><li class="chapter-item "><a href="../Element-UI/navigation-steps.html">navigation-steps</a></li><li class="chapter-item "><a href="../Element-UI/navigation-标签页.html">navigation-标签页</a></li><li class="chapter-item "><a href="../Element-UI/navigation-页头.html">navigation-页头</a></li><li class="chapter-item "><a href="../Element-UI/notice-Notification.html">notice-Notification</a></li><li class="chapter-item "><a href="../Element-UI/notice-alert.html">notice-alert</a></li><li class="chapter-item "><a href="../Element-UI/notice-loading.html">notice-loading</a></li><li class="chapter-item "><a href="../Element-UI/notice-message-box.html">notice-message-box</a></li><li class="chapter-item "><a href="../Element-UI/notice-message提示.html">notice-message提示</a></li><li class="chapter-item "><a href="../Element-UI/popConfirm.html">popConfirm</a></li><li class="chapter-item "><a href="../Element-UI/popOver弹出框.html">popOver弹出框</a></li><li class="chapter-item "><a href="../Element-UI/slider滑块.html">slider滑块</a></li><li class="chapter-item "><a href="../Element-UI/timeline.html">timeline</a></li><li class="chapter-item "><a href="../Element-UI/tooltip.html">tooltip</a></li><li class="chapter-item "><a href="../Element-UI/transfer穿梭框.html">transfer穿梭框</a></li><li class="chapter-item "><a href="../Element-UI/上传.html">上传</a></li><li class="chapter-item "><a href="../Element-UI/入门.html">入门</a></li><li class="chapter-item "><a href="../Element-UI/分割线.html">分割线</a></li><li class="chapter-item "><a href="../Element-UI/分页.html">分页</a></li><li class="chapter-item "><a href="../Element-UI/基础组件.html">基础组件</a></li><li class="chapter-item "><a href="../Element-UI/头像.html">头像</a></li><li class="chapter-item "><a href="../Element-UI/对话框.html">对话框</a></li><li class="chapter-item "><a href="../Element-UI/常见input输入.html">常见input输入</a></li><li class="chapter-item "><a href="../Element-UI/折叠面板.html">折叠面板</a></li><li class="chapter-item "><a href="../Element-UI/抽屉.html">抽屉</a></li><li class="chapter-item "><a href="../Element-UI/无限滚动.html">无限滚动</a></li><li class="chapter-item "><a href="../Element-UI/日历.html">日历</a></li><li class="chapter-item "><a href="../Element-UI/时间日期选择.html">时间日期选择</a></li><li class="chapter-item "><a href="../Element-UI/标签.html">标签</a></li><li class="chapter-item "><a href="../Element-UI/标记与提示.html">标记与提示</a></li><li class="chapter-item "><a href="../Element-UI/级联选择器.html">级联选择器</a></li><li class="chapter-item "><a href="../Element-UI/表格.html">表格</a></li><li class="chapter-item "><a href="../Element-UI/评分.html">评分</a></li><li class="chapter-item "><a href="../Element-UI/走马灯.html">走马灯</a></li><li class="chapter-item "><a href="../Element-UI/进度条.html">进度条</a></li><li class="chapter-item "><a href="../Element-UI/颜色选择器.html">颜色选择器</a></li></ol></li><li class="chapter-item "><a href="../Html5/index.html">Html5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Html5/CSS3.html">CSS3</a></li><li class="chapter-item "><a href="../Html5/H5canvas图形绘制.html">H5canvas图形绘制</a></li><li class="chapter-item "><a href="../Html5/HTML5.html">HTML5</a></li><li class="chapter-item "><a href="../Html5/HTML5的结构.html">HTML5的结构</a></li><li class="chapter-item "><a href="../Html5/HTML5表单.html">HTML5表单</a></li><li class="chapter-item "><a href="../Html5/WebWorkers.html">WebWorkers</a></li><li class="chapter-item "><a href="../Html5/多媒体播放.html">多媒体播放</a></li><li class="chapter-item "><a href="../Html5/本地存储.html">本地存储</a></li><li class="chapter-item "><a href="../Html5/离线应用程序.html">离线应用程序</a></li><li class="chapter-item "><a href="../Html5/获取地址位置信息.html">获取地址位置信息</a></li><li class="chapter-item "><a href="../Html5/通信API.html">通信API</a></li></ol></li><li class="chapter-item "><a href="../vue/index.html">vue</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vue/class与style的绑定.html">class与style的绑定</a></li><li class="chapter-item "><a href="../vue/事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../vue/列表渲染.html">列表渲染</a></li><li class="chapter-item "><a href="../vue/条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../vue/模板语法.html">模板语法</a></li><li class="chapter-item "><a href="../vue/组件.html">组件</a></li><li class="chapter-item "><a href="../vue/表单输入绑定.html">表单输入绑定</a></li><li class="chapter-item "><a href="../vue/计算属性和侦听器.html">计算属性和侦听器</a></li></ol></li><li class="chapter-item "><a href="../quasar/index.html">quasar</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/quasarCli.html">quasarCli</a></li><li class="chapter-item "><a href="../quasar/quasar选项和辅助.html">quasar选项和辅助</a></li><li class="chapter-item "><a href="../quasar/vue组件.html">vue组件</a></li><li class="chapter-item "><a href="../quasar/布局.html">布局</a></li><li class="chapter-item "><a href="../quasar/网格布局.html">网格布局</a></li><li class="chapter-item "><a href="../quasar/风格和特性.html">风格和特性</a></li><li class="chapter-item "><div>组件</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quasar/组件/q-dialog.html">q-dialog</a></li><li class="chapter-item "><a href="../quasar/组件/q-expansion-item.html">q-expansion-item</a></li><li class="chapter-item "><a href="../quasar/组件/q-page-sticky.html">q-page-sticky</a></li><li class="chapter-item "><a href="../quasar/组件/q-tabs.html">q-tabs</a></li><li class="chapter-item "><a href="../quasar/组件/q-toolbar.html">q-toolbar</a></li></ol></li></ol></li><li class="chapter-item "><div>HTTP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../HTTP/Content-Disposition.html">Content-Disposition</a></li><li class="chapter-item "><a href="../HTTP/Cookie.html">Cookie</a></li><li class="chapter-item "><a href="../HTTP/HTTP缓存.html">HTTP缓存</a></li><li class="chapter-item "><a href="../HTTP/HTTP访问控制.html">HTTP访问控制</a></li><li class="chapter-item "><a href="../HTTP/Http响应码.html">Http响应码</a></li><li class="chapter-item "><a href="../HTTP/MIME.html">MIME</a></li><li class="chapter-item "><a href="../HTTP/http头.html">http头</a></li></ol></li><li class="chapter-item expanded "><div>ECMAScript</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ECMAScript/ECMAScript6简介.html">ECMAScript6简介</a></li><li class="chapter-item "><a href="../ECMAScript/Set-Map数据结构.html">Set-Map数据结构</a></li><li class="chapter-item "><a href="../ECMAScript/async函数.html">async函数</a></li><li class="chapter-item "><a href="../ECMAScript/generate函数.html">generate函数</a></li><li class="chapter-item "><a href="../ECMAScript/let与const命令.html">let与const命令</a></li><li class="chapter-item "><a href="../ECMAScript/proxy.html">proxy</a></li><li class="chapter-item "><a href="../ECMAScript/symbol.html">symbol</a></li><li class="chapter-item "><a href="../ECMAScript/函数.html">函数</a></li><li class="chapter-item "><a href="../ECMAScript/字符串-正则-数值.html">字符串-正则-数值</a></li><li class="chapter-item "><a href="../ECMAScript/对象.html">对象</a></li><li class="chapter-item expanded "><a href="../ECMAScript/数组.html" class="active">数组</a></li></ol></li><li class="chapter-item "><a href="../reactor/index.html">reactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/1.搭建TS-Reactor环境.html">搭建TS-Reactor环境</a></li><li class="chapter-item "><a href="../reactor/2.jsx.html">jsx</a></li><li class="chapter-item "><a href="../reactor/3.元素渲染.html">元素渲染</a></li><li class="chapter-item "><a href="../reactor/4.组件与模块&Props.html">组件与模块&Props</a></li><li class="chapter-item "><a href="../reactor/5.State生命周期.html">State生命周期</a></li><li class="chapter-item "><a href="../reactor/6.事件处理.html">事件处理</a></li><li class="chapter-item "><a href="../reactor/7.条件渲染.html">条件渲染</a></li><li class="chapter-item "><a href="../reactor/8.列表.html">列表</a></li><li class="chapter-item "><a href="../reactor/9.表单.html">表单</a></li><li class="chapter-item "><a href="../reactor/10.组合与继承.html">组合与继承</a></li><li class="chapter-item "><a href="../reactor/11.React最佳实践.html">React最佳实践</a></li><li class="chapter-item "><a href="../reactor/高级特性/index.html">高级特性</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reactor/高级特性/Refs转发.html">Refs转发</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">前端</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/frontend/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="扩展运算符"><a class="header" href="#扩展运算符">扩展运算符</a></h1>
+<h2 id="含义"><a class="header" href="#含义">含义</a></h2>
+<p>​	扩展运算符（spread）是三个点（<code>...</code>）。它好比 rest 参数的逆运算，将一个数组转为用<strong>逗号分隔的参数序列。</strong></p>
+<pre><code class="language-javascript">console.log(...[1, 2, 3])
+// 1 2 3
+
+console.log(1, ...[2, 3, 4], 5)
+// 1 2 3 4 5
+
+[...document.querySelectorAll('div')]
+// [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]
+</code></pre>
+<p>该运算符主要用于函数调用。</p>
+<pre><code class="language-javascript">function push(array, ...items) {
+  array.push(...items);
+}
+
+function add(x, y) {
+  return x + y;
+}
+
+const numbers = [4, 38];
+add(...numbers) // 42
+</code></pre>
+<h2 id="扩展运算符的应用"><a class="header" href="#扩展运算符的应用">扩展运算符的应用</a></h2>
+<p><strong>复制数组</strong></p>
+<p>数组是复合的数据类型，直接复制的话，只是复制了指向底层数据结构的指针，而不是克隆一个全新的数组。</p>
+<pre><code class="language-javascript">const a1 = [1, 2];
+// 写法一
+const a2 = [...a1];
+// 写法二
+const [...a2] = a1;
+</code></pre>
+<p><strong>合并数组</strong></p>
+<pre><code class="language-javascript">const arr1 = ['a', 'b'];
+const arr2 = ['c'];
+const arr3 = ['d', 'e'];
+
+// ES5 的合并数组
+arr1.concat(arr2, arr3);
+// [ 'a', 'b', 'c', 'd', 'e' ]
+
+// ES6 的合并数组
+[...arr1, ...arr2, ...arr3]
+// [ 'a', 'b', 'c', 'd', 'e' ]
+</code></pre>
+<p><strong>与解构赋值结合</strong></p>
+<p>扩展运算符可以与解构赋值结合起来，用于生成数组。</p>
+<pre><code class="language-javascript">// ES5
+a = list[0], rest = list.slice(1)
+// ES6
+[a, ...rest] = list
+</code></pre>
+<p>下面是另外一些例子。</p>
+<pre><code class="language-javascript">const [first, ...rest] = [1, 2, 3, 4, 5];
+first // 1
+rest  // [2, 3, 4, 5]
+
+const [first, ...rest] = [];
+first // undefined
+rest  // []
+
+const [first, ...rest] = [&quot;foo&quot;];
+first  // &quot;foo&quot;
+rest   // []
+</code></pre>
+<p>如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。</p>
+<pre><code class="language-javascript">const [...butLast, last] = [1, 2, 3, 4, 5];
+// 报错
+
+const [first, ...middle, last] = [1, 2, 3, 4, 5];
+// 报错
+</code></pre>
+<p><strong>字符串</strong></p>
+<p>扩展运算符还可以将字符串转为真正的数组。</p>
+<pre><code class="language-javascript">[...'hello']
+// [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]
+</code></pre>
+<p>上面的写法，有一个重要的好处，那就是能够正确识别四个字节的 Unicode 字符。</p>
+<pre><code class="language-javascript">'x\uD83D\uDE80y'.length // 4
+[...'x\uD83D\uDE80y'].length // 3
+</code></pre>
+<p>上面代码的第一种写法，JavaScript 会将四个字节的 Unicode 字符，识别为 2 个字符，采用扩展运算符就没有这个问题。因此，正确返回字符串长度的函数，可以像下面这样写。</p>
+<pre><code class="language-javascript">function length(str) {
+  return [...str].length;
+}
+
+length('x\uD83D\uDE80y') // 3
+</code></pre>
+<p>凡是涉及到操作四个字节的 Unicode 字符的函数，都有这个问题。因此，最好都用扩展运算符改写。</p>
+<pre><code class="language-javascript">let str = 'x\uD83D\uDE80y';
+
+str.split('').reverse().join('')
+// 'y\uDE80\uD83Dx'
+
+[...str].reverse().join('')
+// 'y\uD83D\uDE80x'
+</code></pre>
+<p><strong>实现了 Iterator 接口的对象</strong></p>
+<p>任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。</p>
+<pre><code class="language-javascript">let nodeList = document.querySelectorAll('div');
+let array = [...nodeList];
+</code></pre>
+<p>上面代码中，<code>querySelectorAll</code>方法返回的是一个<code>NodeList</code>对象。它不是数组，而是一个类似数组的对象。这时，扩展运算符可以将其转为真正的数组，原因就在于<code>NodeList</code>对象实现了 Iterator 。</p>
+<pre><code class="language-javascript">Number.prototype[Symbol.iterator] = function*() {
+  let i = 0;
+  let num = this.valueOf();
+  while (i &lt; num) {
+    yield i++;
+  }
+}
+
+console.log([...5]) // [0, 1, 2, 3, 4]
+</code></pre>
+<p>​	上面代码中，先定义了<code>Number</code>对象的遍历器接口，扩展运算符将<code>5</code>自动转成<code>Number</code>实例以后，就会调用这个接口，就会返回自定义的结果。</p>
+<p><strong>Map 和 Set 结构，Generator 函数</strong></p>
+<p>扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，比如 Map 结构。</p>
+<pre><code class="language-javascript">let map = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three'],
+]);
+
+let arr = [...map.keys()]; // [1, 2, 3]
+</code></pre>
+<p>Generator 函数运行后，返回一个遍历器对象，因此也可以使用扩展运算符。</p>
+<pre><code class="language-javascript">const go = function*(){
+  yield 1;
+  yield 2;
+  yield 3;
+};
+
+[...go()] // [1, 2, 3]
+</code></pre>
+<p>上面代码中，变量<code>go</code>是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符，就会将内部遍历得到的值，转为一个数组。</p>
+<p>如果对没有 Iterator 接口的对象，使用扩展运算符，将会报错。</p>
+<pre><code class="language-javascript">const obj = {a: 1, b: 2};
+let arr = [...obj]; // TypeError: Cannot spread non-iterable object
+</code></pre>
+<h1 id="arrayfrom"><a class="header" href="#arrayfrom">Array.from()</a></h1>
+<p><code>Array.from</code>方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）。</p>
+<p>下面是一个类似数组的对象，<code>Array.from</code>将它转为真正的数组。</p>
+<pre><code class="language-javascript">let arrayLike = {
+    '0': 'a',
+    '1': 'b',
+    '2': 'c',
+    length: 3
+};
+
+// ES5的写法
+var arr1 = [].slice.call(arrayLike); // ['a', 'b', 'c']
+
+// ES6的写法
+let arr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+</code></pre>
+<p>实际应用中，常见的类似数组的对象是 DOM 操作返回的 NodeList 集合，以及函数内部的<code>arguments</code>对象。<code>Array.from</code>都可以将它们转为真正的数组。</p>
+<pre><code class="language-javascript">// NodeList对象
+let ps = document.querySelectorAll('p');
+Array.from(ps).filter(p =&gt; {
+  return p.textContent.length &gt; 100;
+});
+
+// arguments对象
+function foo() {
+  var args = Array.from(arguments);
+  // ...
+}
+</code></pre>
+<p>上面代码中，<code>querySelectorAll</code>方法返回的是一个类似数组的对象，可以将这个对象转为真正的数组，再使用<code>filter</code>方法。</p>
+<p>只要是部署了 Iterator 接口的数据结构，<code>Array.from</code>都能将其转为数组。</p>
+<pre><code class="language-javascript">Array.from('hello')
+// ['h', 'e', 'l', 'l', 'o']
+
+let namesSet = new Set(['a', 'b'])
+Array.from(namesSet) // ['a', 'b']
+</code></pre>
+<p>如果参数是一个真正的数组，<code>Array.from</code>会返回一个一模一样的新数组。</p>
+<pre><code class="language-javascript">Array.from([1, 2, 3])
+// [1, 2, 3]
+</code></pre>
+<p>值得提醒的是，扩展运算符（<code>...</code>）也可以将某些数据结构转为数组。</p>
+<pre><code class="language-javascript">// arguments对象
+function foo() {
+  const args = [...arguments];
+}
+
+// NodeList对象
+[...document.querySelectorAll('div')]
+</code></pre>
+<h2 id="扩展运算符与遍历器接口的区别"><a class="header" href="#扩展运算符与遍历器接口的区别"><strong>扩展运算符与遍历器接口的区别</strong></a></h2>
+<p>扩展运算符背后调用的是遍历器接口（<code>Symbol.iterator</code>），如果一个对象没有部署这个接口，就无法转换。<code>Array.from</code>方法还支持类似数组的对象。所谓类似数组的对象，本质特征只有一点，即必须有<code>length</code>属性。因此，任何有<code>length</code>属性的对象，都可以通过<code>Array.from</code>方法转为数组，而此时扩展运算符就无法转换。</p>
+<pre><code class="language-javascript">Array.from({ length: 3 });
+// [ undefined, undefined, undefined ]
+</code></pre>
+<h2 id="第二个-映射器操作"><a class="header" href="#第二个-映射器操作">第二个 映射器操作</a></h2>
+<p><code>Array.from</code>还可以接受第二个参数，作用类似于数组的<code>map</code>方法，用来对每个元素进行处理，将处理后的值放入返回的数组。</p>
+<pre><code class="language-javascript">Array.from(arrayLike, x =&gt; x * x);
+// 等同于
+Array.from(arrayLike).map(x =&gt; x * x);
+
+Array.from([1, 2, 3], (x) =&gt; x * x)
+// [1, 4, 9]
+</code></pre>
+<p>下面的例子是取出一组 DOM 节点的文本内容。</p>
+<pre><code class="language-javascript">let spans = document.querySelectorAll('span.name');
+
+// map()
+let names1 = Array.prototype.map.call(spans, s =&gt; s.textContent);
+
+// Array.from()
+let names2 = Array.from(spans, s =&gt; s.textContent)
+</code></pre>
+<p>下面的例子将数组中布尔值为<code>false</code>的成员转为<code>0</code>。</p>
+<pre><code class="language-javascript">Array.from([1, , 2, , 3], (n) =&gt; n || 0)
+// [1, 0, 2, 0, 3]
+</code></pre>
+<p>另一个例子是返回各种数据的类型。</p>
+<pre><code class="language-javascript">function typesOf () {
+  return Array.from(arguments, value =&gt; typeof value)
+}
+typesOf(null, [], NaN)
+// ['object', 'object', 'number']
+</code></pre>
+<p>如果<code>map</code>函数里面用到了<code>this</code>关键字，还可以传入<code>Array.from</code>的第三个参数，用来绑定<code>this</code>。</p>
+<p><code>Array.from()</code>的另一个应用是，将字符串转为数组，然后返回字符串的长度。因为它能正确处理各种 Unicode 字符，可以避免 JavaScript 将大于<code>\uFFFF</code>的 Unicode 字符，算作两个字符的 bug。</p>
+<pre><code class="language-javascript">function countSymbols(string) {
+  return Array.from(string).length;
+}
+</code></pre>
+<h1 id="arrayof"><a class="header" href="#arrayof">Array.of()</a></h1>
+<p><code>Array.of</code>方法用于将一组值，转换为数组。</p>
+<p>这个方法的主要目的，是弥补数组构造函数<code>Array()</code>的不足。因为参数个数的不同，会导致<code>Array()</code>的行为有差异。</p>
+<pre><code class="language-javascript">Array.of(3, 11, 8) // [3,11,8]
+Array.of(3) // [3]
+Array.of(3).length // 1
+</code></pre>
+<pre><code class="language-javascript">Array() // []
+Array(3) // [, , ,]
+Array(3, 11, 8) // [3, 11, 8]
+</code></pre>
+<h1 id="数组实例的-copywithin"><a class="header" href="#数组实例的-copywithin">数组实例的 copyWithin()</a></h1>
+<pre><code class="language-javascript">Array.prototype.copyWithin(target, start = 0, end = this.length)
+</code></pre>
+<p>它接受三个参数。</p>
+<ul>
+<li>target（必需）：从该位置开始替换数据。如果为负值，表示倒数。</li>
+<li>start（可选）：从该位置开始读取数据，默认为 0。如果为负值，表示从末尾开始计算。</li>
+<li>end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示从末尾开始计算。</li>
+</ul>
+<pre><code class="language-javascript">[1, 2, 3, 4, 5].copyWithin(0, 3)
+// [4, 5, 3, 4, 5]
+</code></pre>
+<p>上面代码表示将从 3 号位直到数组结束的成员（4 和 5），复制到从 0 号位开始的位置，结果覆盖了原来的 1 和 2。</p>
+<h1 id="数组实例的-find-和-findindex"><a class="header" href="#数组实例的-find-和-findindex">数组实例的 find() 和 findIndex()</a></h1>
+<p>数组实例的<code>find</code>方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为<code>true</code>的成员，然后返回该成员。如果没有符合条件的成员，则返回<code>undefined</code>。</p>
+<pre><code class="language-javascript">[1, 4, -5, 10].find((n) =&gt; n &lt; 0)
+</code></pre>
+<p><code>find</code>方法的回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组。</p>
+<p>数组实例的<code>findIndex</code>方法的用法与<code>find</code>方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回<code>-1</code>。</p>
+<p>这两个方法都可以接受第二个参数，用来绑定回调函数的<code>this</code>对象。</p>
+<pre><code class="language-javascript">function f(v){
+  return v &gt; this.age;
+}
+let person = {name: 'John', age: 20};
+[10, 12, 26, 15].find(f, person);    // 26
+</code></pre>
+<p>上面的代码中，<code>find</code>函数接收了第二个参数<code>person</code>对象，回调函数中的<code>this</code>对象指向<code>person</code>对象。</p>
+<p>另外，这两个方法都可以发现<code>NaN</code>，弥补了数组的<code>indexOf</code>方法的不足。</p>
+<pre><code class="language-javascript">[NaN].indexOf(NaN)
+// -1
+
+[NaN].findIndex(y =&gt; Object.is(NaN, y))
+// 0
+</code></pre>
+<h1 id="数组实例的-fill"><a class="header" href="#数组实例的-fill">数组实例的 fill()</a></h1>
+<p><code>fill</code>方法使用给定值，填充一个数组。</p>
+<pre><code class="language-javascript">['a', 'b', 'c'].fill(7)
+// [7, 7, 7]
+
+new Array(3).fill(7)
+// [7, 7, 7]
+</code></pre>
+<p>上面代码表明，<code>fill</code>方法用于空数组的初始化非常方便。数组中已有的元素，会被全部抹去。</p>
+<p><code>fill</code>方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置。</p>
+<pre><code class="language-javascript">['a', 'b', 'c'].fill(7, 1, 2)
+// ['a', 7, 'c']
+</code></pre>
+<p>上面代码表示，<code>fill</code>方法从 1 号位开始，向原数组填充 7，到 2 号位之前结束。</p>
+<p>注意，如果填充的类型为对象，那么被赋值的是同一个内存地址的对象，而不是深拷贝对象。</p>
+<pre><code class="language-javascript">let arr = new Array(3).fill({name: &quot;Mike&quot;});
+arr[0].name = &quot;Ben&quot;;
+arr
+// [{name: &quot;Ben&quot;}, {name: &quot;Ben&quot;}, {name: &quot;Ben&quot;}]
+
+let arr = new Array(3).fill([]);
+arr[0].push(5);
+arr
+// [[5], [5], [5]]
+</code></pre>
+<h1 id="数组实例的-entrieskeys-和-values"><a class="header" href="#数组实例的-entrieskeys-和-values">数组实例的 entries()，keys() 和 values()</a></h1>
+<p>ES6 提供三个新的方法——<code>entries()</code>，<code>keys()</code>和<code>values()</code>——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用<code>for...of</code>循环进行遍历，唯一的区别是<code>keys()</code>是对键名的遍历、<code>values()</code>是对键值的遍历，<code>entries()</code>是对键值对的遍历。</p>
+<pre><code class="language-javascript">for (let index of ['a', 'b'].keys()) {
+  console.log(index);
+}
+// 0
+// 1
+
+for (let elem of ['a', 'b'].values()) {
+  console.log(elem);
+}
+// 'a'
+// 'b'
+
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}
+// 0 &quot;a&quot;
+// 1 &quot;b&quot;
+</code></pre>
+<p>如果不使用<code>for...of</code>循环，可以手动调用遍历器对象的<code>next</code>方法，进行遍历。</p>
+<pre><code class="language-javascript">let letter = ['a', 'b', 'c'];
+let entries = letter.entries();
+console.log(entries.next().value); // [0, 'a']
+console.log(entries.next().value); // [1, 'b']
+console.log(entries.next().value); // [2, 'c']
+</code></pre>
+<h1 id="数组实例的-includes"><a class="header" href="#数组实例的-includes">数组实例的 includes()</a></h1>
+<p><code>Array.prototype.includes</code>方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的<code>includes</code>方法类似。ES2016 引入了该方法。</p>
+<pre><code class="language-javascript">[1, 2, 3].includes(2)     // true
+[1, 2, 3].includes(4)     // false
+[1, 2, NaN].includes(NaN) // true
+</code></pre>
+<p>该方法的第二个参数表示搜索的起始位置，默认为<code>0</code>。如果第二个参数为负数，则表示倒数的位置，如果这时它大于数组长度（比如第二个参数为<code>-4</code>，但数组长度为<code>3</code>），则会重置为从<code>0</code>开始。</p>
+<pre><code class="language-javascript">[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+</code></pre>
+<p>没有该方法之前，我们通常使用数组的<code>indexOf</code>方法，检查是否包含某个值。</p>
+<pre><code class="language-javascript">if (arr.indexOf(el) !== -1) {
+  // ...
+}
+</code></pre>
+<p><code>indexOf</code>方法有两个缺点，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于<code>-1</code>，表达起来不够直观。二是，它内部使用严格相等运算符（<code>===</code>）进行判断，这会导致对<code>NaN</code>的误判。</p>
+<pre><code class="language-javascript">[NaN].indexOf(NaN)
+// -1
+</code></pre>
+<p><code>includes</code>使用的是不一样的判断算法，就没有这个问题。</p>
+<pre><code class="language-javascript">[NaN].includes(NaN)
+// true
+</code></pre>
+<p>下面代码用来检查当前环境是否支持该方法，如果不支持，部署一个简易的替代版本。</p>
+<pre><code class="language-javascript">const contains = (() =&gt;
+  Array.prototype.includes
+    ? (arr, value) =&gt; arr.includes(value)
+    : (arr, value) =&gt; arr.some(el =&gt; el === value)
+)();
+contains(['foo', 'bar'], 'baz'); // =&gt; false
+</code></pre>
+<p>另外，Map 和 Set 数据结构有一个<code>has</code>方法，需要注意与<code>includes</code>区分。</p>
+<ul>
+<li>Map 结构的<code>has</code>方法，是用来查找键名的，比如<code>Map.prototype.has(key)</code>、<code>WeakMap.prototype.has(key)</code>、<code>Reflect.has(target, propertyKey)</code>。</li>
+<li>Set 结构的<code>has</code>方法，是用来查找值的，比如<code>Set.prototype.has(value)</code>、<code>WeakSet.prototype.has(value)</code>。</li>
+</ul>
+<h1 id="数组实例的-flatflatmap"><a class="header" href="#数组实例的-flatflatmap">数组实例的 flat()，flatMap()</a></h1>
+<p>数组的成员有时还是数组，<code>Array.prototype.flat()</code>用于将嵌套的数组“拉平”，变成一维的数组。该方法返回一个新数组，对原数据没有影响。</p>
+<pre><code class="language-javascript">[1, 2, [3, 4]].flat()
+// [1, 2, 3, 4]
+</code></pre>
+<p>上面代码中，原数组的成员里面有一个数组，<code>flat()</code>方法将子数组的成员取出来，添加在原来的位置。</p>
+<p><code>flat()</code>默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，可以将<code>flat()</code>方法的参数写成一个整数，表示想要拉平的层数，默认为1。</p>
+<pre><code class="language-javascript">[1, 2, [3, [4, 5]]].flat()
+// [1, 2, 3, [4, 5]]
+
+[1, 2, [3, [4, 5]]].flat(2)
+// [1, 2, 3, 4, 5]
+</code></pre>
+<p>上面代码中，<code>flat()</code>的参数为2，表示要“拉平”两层的嵌套数组。</p>
+<p>如果不管有多少层嵌套，都要转成一维数组，可以用<code>Infinity</code>关键字作为参数。</p>
+<pre><code class="language-javascript">[1, [2, [3]]].flat(Infinity)
+// [1, 2, 3]
+</code></pre>
+<p>如果原数组有空位，<code>flat()</code>方法会跳过空位。</p>
+<pre><code class="language-javascript">[1, 2, , 4, 5].flat()
+// [1, 2, 4, 5]
+</code></pre>
+<p><code>flatMap()</code>方法对原数组的每个成员执行一个函数（相当于执行<code>Array.prototype.map()</code>），然后对返回值组成的数组执行<code>flat()</code>方法。该方法返回一个新数组，不改变原数组。</p>
+<pre><code class="language-javascript">// 相当于 [[2, 4], [3, 6], [4, 8]].flat()
+[2, 3, 4].flatMap((x) =&gt; [x, x * 2])
+// [2, 4, 3, 6, 4, 8]
+</code></pre>
+<p><code>flatMap()</code>只能展开一层数组。</p>
+<pre><code class="language-javascript">// 相当于 [[[2]], [[4]], [[6]], [[8]]].flat()
+[1, 2, 3, 4].flatMap(x =&gt; [[x * 2]])
+// [[2], [4], [6], [8]]
+</code></pre>
+<p>上面代码中，遍历函数返回的是一个双层的数组，但是默认只能展开一层，因此<code>flatMap()</code>返回的还是一个嵌套数组。</p>
+<p><code>flatMap()</code>方法的参数是一个遍历函数，该函数可以接受三个参数，分别是当前数组成员、当前数组成员的位置（从零开始）、原数组。</p>
+<pre><code class="language-javascript">arr.flatMap(function callback(currentValue[, index[, array]]) {
+  // ...
+}[, thisArg])
+flatMap()`方法还可以有第二个参数，用来绑定遍历函数里面的`this
+</code></pre>
+<h1 id="数组的空位"><a class="header" href="#数组的空位">数组的空位</a></h1>
+<p>数组的空位指，数组的某一个位置没有任何值。比如，<code>Array</code>构造函数返回的数组都是空位。</p>
+<pre><code class="language-javascript">Array(3) // [, , ,]
+</code></pre>
+<p>上面代码中，<code>Array(3)</code>返回一个具有 3 个空位的数组。</p>
+<p>注意，空位不是<code>undefined</code>，一个位置的值等于<code>undefined</code>，依然是有值的。空位是没有任何值，<code>in</code>运算符可以说明这一点。</p>
+<pre><code class="language-javascript">0 in [undefined, undefined, undefined] // true
+0 in [, , ,] // false
+</code></pre>
+<p>上面代码说明，第一个数组的 0 号位置是有值的，第二个数组的 0 号位置没有值。</p>
+<p>ES5 对空位的处理，已经很不一致了，大多数情况下会忽略空位。</p>
+<ul>
+<li><code>forEach()</code>, <code>filter()</code>, <code>reduce()</code>, <code>every()</code> 和<code>some()</code>都会跳过空位。</li>
+<li><code>map()</code>会跳过空位，但会保留这个值</li>
+<li><code>join()</code>和<code>toString()</code>会将空位视为<code>undefined</code>，而<code>undefined</code>和<code>null</code>会被处理成空字符串。</li>
+</ul>
+<pre><code class="language-javascript">// forEach方法
+[,'a'].forEach((x,i) =&gt; console.log(i)); // 1
+
+// filter方法
+['a',,'b'].filter(x =&gt; true) // ['a','b']
+
+// every方法
+[,'a'].every(x =&gt; x==='a') // true
+
+// reduce方法
+[1,,2].reduce((x,y) =&gt; x+y) // 3
+
+// some方法
+[,'a'].some(x =&gt; x !== 'a') // false
+
+// map方法
+[,'a'].map(x =&gt; 1) // [,1]
+
+// join方法
+[,'a',undefined,null].join('#') // &quot;#a##&quot;
+
+// toString方法
+[,'a',undefined,null].toString() // &quot;,a,,&quot;
+</code></pre>
+<p>ES6 则是明确将空位转为<code>undefined</code>。</p>
+<p><code>Array.from</code>方法会将数组的空位，转为<code>undefined</code>，也就是说，这个方法不会忽略空位。</p>
+<pre><code class="language-javascript">Array.from(['a',,'b'])
+// [ &quot;a&quot;, undefined, &quot;b&quot; ]
+</code></pre>
+<p>扩展运算符（<code>...</code>）也会将空位转为<code>undefined</code>。</p>
+<pre><code class="language-javascript">[...['a',,'b']]
+// [ &quot;a&quot;, undefined, &quot;b&quot; ]
+</code></pre>
+<p><code>copyWithin()</code>会连空位一起拷贝。</p>
+<pre><code class="language-javascript">[,'a','b',,].copyWithin(2,0) // [,&quot;a&quot;,,&quot;a&quot;]
+</code></pre>
+<p><code>fill()</code>会将空位视为正常的数组位置。</p>
+<pre><code class="language-javascript">new Array(3).fill('a') // [&quot;a&quot;,&quot;a&quot;,&quot;a&quot;]
+</code></pre>
+<p><code>for...of</code>循环也会遍历空位。</p>
+<pre><code class="language-javascript">let arr = [, ,];
+for (let i of arr) {
+  console.log(1);
+}
+// 1
+// 1
+</code></pre>
+<p>上面代码中，数组<code>arr</code>有两个空位，<code>for...of</code>并没有忽略它们。如果改成<code>map</code>方法遍历，空位是会跳过的。</p>
+<p><code>entries()</code>、<code>keys()</code>、<code>values()</code>、<code>find()</code>和<code>findIndex()</code>会将空位处理成<code>undefined</code>。</p>
+<pre><code class="language-javascript">// entries()
+[...[,'a'].entries()] // [[0,undefined], [1,&quot;a&quot;]]
+
+// keys()
+[...[,'a'].keys()] // [0,1]
+
+// values()
+[...[,'a'].values()] // [undefined,&quot;a&quot;]
+
+// find()
+[,'a'].find(x =&gt; true) // undefined
+
+// findIndex()
+[,'a'].findIndex(x =&gt; true) // 0
+</code></pre>
+<p>由于空位的处理规则非常不统一，所以建议避免出现空位。</p>
+<h1 id="arrayprototypesort-的排序稳定性"><a class="header" href="#arrayprototypesort-的排序稳定性">Array.prototype.sort() 的排序稳定性</a></h1>
+<p>排序稳定性（stable sorting）是排序算法的重要属性，指的是排序关键字相同的项目，排序前后的顺序不变。</p>
+<p><strong>就是 当key一样时,不要改变 这两个元素的先后顺序</strong></p>
+<pre><code class="language-javascript">const arr = [
+  'peach',
+  'straw',
+  'apple',
+  'spork'
+];
+
+const stableSorting = (s1, s2) =&gt; {
+  if (s1[0] &lt; s2[0]) return -1;
+  return 1;
+};
+
+arr.sort(stableSorting)
+// [&quot;apple&quot;, &quot;peach&quot;, &quot;straw&quot;, &quot;spork&quot;]
+</code></pre>
+<p>上面代码对数组<code>arr</code>按照首字母进行排序。排序结果中，<code>straw</code>在<code>spork</code>的前面，跟原始顺序一致，所以排序算法<code>stableSorting</code>是稳定排序。</p>
+<pre><code class="language-javascript">const unstableSorting = (s1, s2) =&gt; {
+  if (s1[0] &lt;= s2[0]) return -1;
+  return 1;
+};
+
+arr.sort(unstableSorting)
+// [&quot;apple&quot;, &quot;peach&quot;, &quot;spork&quot;, &quot;straw&quot;]
+</code></pre>
+<p>上面代码中，排序结果是<code>spork</code>在<code>straw</code>前面，跟原始顺序相反，所以排序算法<code>unstableSorting</code>是不稳定的。</p>
+<p>常见的排序算法之中，插入排序、合并排序、冒泡排序等都是稳定的，堆排序、快速排序等是不稳定的。不稳定排序的主要缺点是，多重排序时可能会产生问题。假设有一个姓和名的列表，要求按照“姓氏为主要关键字，名字为次要关键字”进行排序。开发者可能会先按名字排序，再按姓氏进行排序。如果排序算法是稳定的，这样就可以达到“先姓氏，后名字”的排序效果。如果是不稳定的，就不行。</p>
+<p>早先的 ECMAScript 没有规定，<code>Array.prototype.sort()</code>的默认排序算法是否稳定，留给浏览器自己决定，这导致某些实现是不稳定的。<a href="https://github.com/tc39/ecma262/pull/1340">ES2019</a> 明确规定，<code>Array.prototype.sort()</code>的默认排序算法必须稳定。这个规定已经做到了，现在 JavaScript 各个主要实现的默认排序算法都是稳定的。</p>
+<script src="/note/frontend/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/frontend/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/frontend/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ECMAScript/对象.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../reactor/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ECMAScript/对象.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../reactor/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

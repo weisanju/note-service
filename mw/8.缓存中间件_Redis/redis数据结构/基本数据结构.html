@@ -1,0 +1,732 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>基本数据结构 - 中间件</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">中间件</a></li><li class="chapter-item affix "><li class="part-title">容器</li><li class="chapter-item "><a href="../../1.容器_docker/index.html">docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../1.容器_docker/DockerFile简介.html">DockerFile简介</a></li><li class="chapter-item "><a href="../../1.容器_docker/dockcer-swarm.html">dockcer-swarm</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-compose.html">docker-compose</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-swarm集群搭建实例.html">docker-swarm集群搭建实例</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker-volume管理.html">docker-volume管理</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker容器连接.html">docker容器连接</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker搭建registry仓库.html">docker搭建registry仓库</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker搭建私有镜像库.html">docker搭建私有镜像库</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker离线安装.html">docker离线安装</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker网络管理.html">docker网络管理</a></li><li class="chapter-item "><a href="../../1.容器_docker/docker远程连接配置.html">docker远程连接配置</a></li><li class="chapter-item "><a href="../../1.容器_docker/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../1.容器_docker/使用实例.html">使用实例</a></li></ol></li><li class="chapter-item "><div>k8s</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../2.容器_k8s/k8s/index.html">k8s</a></li></ol></li><li class="chapter-item "><li class="part-title">运维与部署</li><li class="chapter-item "><div>ansible</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/index.html">ansible</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/1.入门.html">入门</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/Ansible.html">Ansible</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/Loops.html">Loops</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/ansible中的变量.html">ansible中的变量</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/ansible示例.html">ansible示例</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/inventor文件.html">inventor文件</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/playbooks.html">playbooks</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/临时命令行模式.html">临时命令行模式</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/2.AnsibleConcepts/index.html">2.AnsibleConcepts</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/index.html">3.内置模块</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/1.Command.html">Command</a></li><li class="chapter-item "><a href="../../3.运维与部署_ansible/ansible/3.内置模块/2.Shell.html">Shell</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">持续集成</li><li class="chapter-item "><div>jenkins</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../4.持续集成_jenkins/Jenkins.html">Jenkins</a></li><li class="chapter-item "><a href="../../4.持续集成_jenkins/jenkins_pipeline.html">jenkins_pipeline</a></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><div>日志收集</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/index.html">filebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/1.HowFilebeatWorks.html">HowFilebeatWorks</a></li><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/index.html">ConfigureFilebeat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/1.Input.html">Input</a></li><li class="chapter-item "><a href="../../5.日志收集/filebeat/ConfigureFilebeat/2.InputFileStream.html">InputFileStream</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>Redis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../10.Redis/命令杂项.html">命令杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">消息队列</li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/index.html">RocketMQ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/MQ消息的投递机制.html">MQ消息的投递机制</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/MQ的一致性算法实现原理.html">MQ的一致性算法实现原理</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/架构和设计.html">架构和设计</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/案例.html">案例</a></li><li class="chapter-item "><a href="../../6.消息队列_RocketMQ/概念和特性.html">概念和特性</a></li></ol></li><li class="chapter-item "><a href="../../7.消息队列_KafaKa/index.html">KafaKa</a></li><li class="chapter-item affix "><li class="part-title">缓存中间件</li><li class="chapter-item expanded "><a href="../../8.缓存中间件_Redis/index.html">Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.缓存中间件_Redis/Redis应用-位图.html">Redis应用-位图</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/Redis应用-分布式锁.html">Redis应用-分布式锁</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis-keys与scan.html">redis-keys与scan</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis-serverAndRedis-cli.html">redis-serverAndRedis-cli</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis主从与哨兵.html">redis主从与哨兵</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis发布与订阅.html">redis发布与订阅</a></li><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis集群.html">redis集群</a></li><li class="chapter-item expanded "><div>redis数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html">Redis有序集合(sortedSet)</a></li><li class="chapter-item expanded "><a href="../../8.缓存中间件_Redis/redis数据结构/基本数据结构.html" class="active">基本数据结构</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">源码管理</li><li class="chapter-item "><a href="../../9.源码管理_GIT/index.html">GIT</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT回滚.html">GIT回滚</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/Git库管理.html">Git库管理</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/gitflow.html">gitflow</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git使用案例.html">git使用案例</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git分支.html">git分支</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git命令杂项.html">git命令杂项</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git基础.html">git基础</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git指针与引用.html">git指针与引用</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/git错误提交后场景.html">git错误提交后场景</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/克隆.html">克隆</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/历史提交.html">历史提交</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/基本操作.html">基本操作</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/杂项.html">杂项</a></li><li class="chapter-item "><div>GIT协作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/Git支持的协议.html">Git支持的协议</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/冲突解决.html">冲突解决</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/补丁文件交互.html">补丁文件交互</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/GIT协作/远程版本库.html">远程版本库</a></li></ol></li><li class="chapter-item "><div>命令集合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/AMEND.html">AMEND</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/LOG.html">LOG</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/MERGE.html">MERGE</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/PUSH.html">PUSH</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/REBASE.html">REBASE</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/RESET.html">RESET</a></li><li class="chapter-item "><a href="../../9.源码管理_GIT/命令集合/TAG.html">TAG</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">中间件</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/mw/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="五种基础数据结构"><a class="header" href="#五种基础数据结构">五种基础数据结构</a></h1>
+<p>redis 的所有数据结构都以唯一的 key 字符串作为名称，通过唯一的 key 获取相对应的 value 数据。不同的数据类型的差异就在于 value 的结构不一样。</p>
+<ul>
+<li>string（字符串）</li>
+<li>list（列表）</li>
+<li>hash（字典）</li>
+<li>set（集合）</li>
+<li>zset（有序集合）</li>
+</ul>
+<h1 id="string"><a class="header" href="#string">string</a></h1>
+<p>string 是最简单的数据结构，其内部就是一个字符数组。string 是动态字符串，相当于 ArrayList，当字符串长度小于 1M 时扩容都是加倍现有的空间。当字符串长度大于 1M 时每次扩容只会增加 1M 的空间。字符串长度最大为 512M。</p>
+<h2 id="键值对操作"><a class="header" href="#键值对操作">键值对操作</a></h2>
+<pre><code class="language-sh">127.0.0.1:6379&gt; set name codehole
+OK
+127.0.0.1:6379&gt; get name
+&quot;codehole&quot;
+127.0.0.1:6379&gt; exists name
+(integer) 1
+127.0.0.1:6379&gt; del name
+(integer) 1
+127.0.0.1:6379&gt; get name
+(nil)
+127.0.0.1:6379&gt;
+</code></pre>
+<h2 id="批量键值对操作"><a class="header" href="#批量键值对操作">批量键值对操作</a></h2>
+<pre><code class="language-sh">mset key value [key value ...]
+mget key [key ...]
+</code></pre>
+<pre><code class="language-sh">127.0.0.1:6379&gt; set name1 codehole
+OK
+127.0.0.1:6379&gt; set name2 holycoder
+OK
+127.0.0.1:6379&gt; mget name1 name2 name3
+1) &quot;codehole&quot;
+2) &quot;holycoder&quot;
+3) (nil)
+127.0.0.1:6379&gt; mset name1 boy name2 girl name3 unknown
+OK
+127.0.0.1:6379&gt; mget name1 name2 name3
+1) &quot;boy&quot;
+2) &quot;girl&quot;
+3) &quot;unknown&quot;
+127.0.0.1:6379&gt;
+</code></pre>
+<h2 id="过期和-set-命令拓展"><a class="header" href="#过期和-set-命令拓展">过期和 set 命令拓展</a></h2>
+<ul>
+<li>expire：设置指定 key 的过期时间</li>
+<li>setex：添加 key 并设置过期时间</li>
+<li>setnx：如果key不存在添加，key存在则不添加。</li>
+</ul>
+<h2 id="计数"><a class="header" href="#计数">计数</a></h2>
+<ul>
+<li>incr key</li>
+<li>incrby key increment</li>
+</ul>
+<p>如果 value 是整数，可以对其进行自增操作。注意：自增是有范围的，范围在 signed long 的最大值和最小值之间，超过返回会报错。</p>
+<h1 id="list"><a class="header" href="#list">list</a></h1>
+<ul>
+<li>list 相当于 java 中的 LinkedList，由于是链表结构故新增和删除特别快，但是索引定位特别慢。redis 中的 list 是双向链表结构，支持前后遍历，当列表最后一个元素被删除时，该数据结构会被自动删除。</li>
+<li>redis 的 list 结构常用来做异步队列使用。将需要延后处理的任务序列化成字符串，放入 redis 的 list，另一个线程从这个列表中轮训数据进行处理。</li>
+<li>使用 list 可以实现先进先出（队列）和后进先出（栈）的效果，添加命令有：<code>lpush</code>、<code>rpush</code>，区别在于取出命令的区别：<code>lpop</code>、<code>rpop</code>。</li>
+<li>lpop、rpop记忆：假设 list 元素都是从右边进来(rpush)，左边出是队列，对应命令是 lpop；右边出是栈，对应的命令是 rpop。</li>
+</ul>
+<h2 id="右进左出队列"><a class="header" href="#右进左出队列"><strong>右进左出：队列</strong></a></h2>
+<ul>
+<li>rpush key value [value ...] 从右边添加数据，相反的还有 lpush。</li>
+<li>llen key</li>
+<li>lpop key</li>
+</ul>
+<h2 id="右进右出栈"><a class="header" href="#右进右出栈">右进右出：栈</a></h2>
+<ul>
+<li>rpush key value [value ...]</li>
+<li>rlen key</li>
+<li>rpop key</li>
+</ul>
+<h2 id="慢操作"><a class="header" href="#慢操作">慢操作</a></h2>
+<ul>
+<li>lindex key index：相当于 Java 链表的 get(int index)，由于需要对链表进行遍历，性能随着 index 增大而变差。</li>
+<li>ltrim key start stop：修剪 start 和 end 区间之间的值，外边的去掉。</li>
+<li>lrange key start stop：获取索引范围内的值。</li>
+<li>索引值可以为负数，-1 代表倒数第一个元素，-2 代表倒数第二个元素，这点和 Groovy 的 Range 对象很相似。</li>
+</ul>
+<p><em>example</em></p>
+<pre><code class="language-shell">127.0.0.1:6379&gt; rpush books python java golang
+(integer) 3
+127.0.0.1:6379&gt; lindex books 1
+&quot;java&quot;
+127.0.0.1:6379&gt; lrange books 0 -1
+1) &quot;python&quot;
+2) &quot;java&quot;
+3) &quot;golang&quot;
+127.0.0.1:6379&gt; ltrim books 1 -1 # 去掉第一个元素
+OK
+127.0.0.1:6379&gt; lrange books 0 -1 # 查看所有元素
+1) &quot;java&quot;
+2) &quot;golang&quot;
+127.0.0.1:6379&gt; ltrim books 1 0 # 区间范围长度为负数，会清空 list。
+OK
+127.0.0.1:6379&gt; llen books
+(integer) 0
+127.0.0.1:6379&gt;
+</code></pre>
+<h2 id="快速列表"><a class="header" href="#快速列表">快速列表</a></h2>
+<p>redis list 结构并不简单是一个 linkedList，而是一种称之为「快速链表quicklist」的结构。</p>
+<p>在列表元素较少的情况下，会使用一块连续的内存存储，这个结构是 ziplist，即「压缩列表」。</p>
+<p>它将所有的元素彼此紧挨着一起存储，分配的是一块连续的内存。</p>
+<p>当数据量比较多的时候才会改成 quicklist，因为普通链表需要附加的指针空间太大，会浪费空间，还会加重内存的碎片化。</p>
+<p>比如某普通链表存的只是 int 类型的数据，结构上还需要两个额外的指针 prev 和 next。</p>
+<p>所以 redis 将链表和 ziplist 结合起来组成了 quicklist。将多个 ziplist 使用双向指针串起来使用。</p>
+<h1 id="hash"><a class="header" href="#hash">hash</a></h1>
+<blockquote>
+<p>hash 相当于 java 的 HashMap，value 是一个键值对。它是一个无序字典，最后一个元素移除后该结构会被删除。</p>
+</blockquote>
+<p>hash 相当于 java 的 HashMap，value 是一个键值对。它是一个无序字典，最后一个元素移除后该结构会被删除。</p>
+<p>适用场景：使用 string 时保存一个用户信息需要将整个对象序列化存入，当我们只需要某个属性却需要把整个对象取出，这样会浪费网络流量和时间。使用 hash 可以将用户信息分段存储，可以只取出部分数据。</p>
+<h2 id="基本操作"><a class="header" href="#基本操作">基本操作</a></h2>
+<ul>
+<li>hset key field value</li>
+<li>hget key field</li>
+<li>hgetall key</li>
+<li>hlen key</li>
+<li>hmset key field value [field value ...]</li>
+<li>hmget key field [field ...]</li>
+</ul>
+<h2 id="example"><a class="header" href="#example"><strong>example</strong></a></h2>
+<pre><code class="language-shell">127.0.0.1:6379&gt; hset userList user1 zhangsan
+(integer) 1
+127.0.0.1:6379&gt; hset userList user2 lisi
+(integer) 1
+127.0.0.1:6379&gt; hset userList user3 wangwu
+(integer) 1
+127.0.0.1:6379&gt; hgetall userList # 获取所有，key value 依次输出。
+1) &quot;user1&quot;
+2) &quot;zhangsan&quot;
+3) &quot;user2&quot;
+4) &quot;lisi&quot;
+5) &quot;user3&quot;
+6) &quot;wangwu&quot;
+127.0.0.1:6379&gt; hlen userList
+(integer) 3
+127.0.0.1:6379&gt; hget userList user2
+&quot;lisi&quot;
+127.0.0.1:6379&gt; hset userList user2 lisa # 修改值返回0
+(integer) 0
+127.0.0.1:6379&gt; hget userList user2
+&quot;lisa&quot;
+127.0.0.1:6379&gt; hmset userList user4 Harry user5 Jessica # 多个设值
+OK
+127.0.0.1:6379&gt; hgetall userList
+ 1) &quot;user1&quot;
+ 2) &quot;zhangsan&quot;
+ 3) &quot;user2&quot;
+ 4) &quot;lisa&quot;
+ 5) &quot;user3&quot;
+ 6) &quot;wangwu&quot;
+ 7) &quot;user4&quot;
+ 8) &quot;Harry&quot;
+ 9) &quot;user5&quot;
+10) &quot;Jessica&quot;
+127.0.0.1:6379&gt; hmget userList user4 user5 user6 # 多个取值
+1) &quot;Harry&quot;
+2) &quot;Jessica&quot;
+3) (nil)
+</code></pre>
+<h2 id="计数-1"><a class="header" href="#计数-1">计数</a></h2>
+<p><strong>hash 的 field 也可以进行计数，用法和 incrby 一样。</strong></p>
+<ul>
+<li>hincrby key field increment</li>
+</ul>
+<pre><code>127.0.0.1:6379&gt; hset user-Harry age 21
+(integer) 1
+127.0.0.1:6379&gt; hget user-Harry age
+&quot;21&quot;
+127.0.0.1:6379&gt; hincrby user-Harry age 1 # 年龄 +1
+(integer) 22
+127.0.0.1:6379&gt; hget user-Harry age
+&quot;22&quot;
+</code></pre>
+<h1 id="set"><a class="header" href="#set">set</a></h1>
+<p>set 相当于 java 的 HashSet，以键值对存储，无序，唯一。</p>
+<ul>
+<li>sadd key member [member ...]</li>
+<li>smembers key</li>
+<li>sismember key member</li>
+<li>scard key</li>
+<li>spop key [count]</li>
+</ul>
+<pre><code class="language-shell">127.0.0.1:6379&gt; sadd books python
+(integer) 1
+127.0.0.1:6379&gt; sadd books python # 重复添加不会生效
+(integer) 0
+127.0.0.1:6379&gt; sadd books java golang
+(integer) 2
+127.0.0.1:6379&gt; smembers books # 查看所有成员
+1) &quot;python&quot;
+2) &quot;java&quot;
+3) &quot;golang&quot;
+127.0.0.1:6379&gt; sismember books java # 是否是一个成员
+(integer) 1
+127.0.0.1:6379&gt; sismember books rust
+(integer) 0
+127.0.0.1:6379&gt; scard books # 相当于 count()
+(integer) 3
+127.0.0.1:6379&gt; spop books # 弹出一个
+&quot;python&quot;
+127.0.0.1:6379&gt; smembers books
+1) &quot;java&quot;
+2) &quot;golang&quot;
+</code></pre>
+<h1 id="zset"><a class="header" href="#zset">zset</a></h1>
+<h2 id="介绍"><a class="header" href="#介绍">介绍</a></h2>
+<p>有序列表，类似于 Sorted 和 HashMap 的结合体。</p>
+<p>一方面它是一个 set，保证元素的唯一性；另一方面它可以为每个 value 赋予一个 score 作为这个 value 的排序权重。</p>
+<p>其内部实现用的是一种叫做「跳跃链表」的数据结构。</p>
+<p>适用场景：</p>
+<ol>
+<li>存储粉丝列表，value 是粉丝的用户Id，score 是关注时间。我们可以以此对粉丝列表按关注时间排序；</li>
+<li>存储学生成绩，value 是学生的ID，score 是他的成绩，以此对成绩分组进行排序。</li>
+</ol>
+<h2 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h2>
+<ul>
+<li><strong>zadd key score member</strong> [score member ...]：添加一个或多个成员</li>
+<li><strong>zrange key start stop</strong> [WITHSCORES]：查看成员区间，WITHSCORES 表示显示成绩。</li>
+<li><strong>zrevrange key start stop</strong> [WITHSCORES]：反向查看成员区间</li>
+<li><strong>zcard key</strong>：成员个数</li>
+<li><strong>zscore key member</strong>：查看成员排序权重</li>
+<li><strong>zrank key member</strong>：查看指定成员的排名</li>
+<li><strong>zrangebyscore key min max</strong> [WITHSCORES] [LIMIT offset count]：以成绩排名显示</li>
+<li><strong>zrem key member</strong> [member ...]：移除指定成员</li>
+</ul>
+<h1 id="过期时间"><a class="header" href="#过期时间">过期时间</a></h1>
+<p>redis 的所有数据结构都可以设置过期时间（单位 s），时间到了，redis 会自动删除相应的对象。</p>
+<ol>
+<li>过期是以对象为单位的，即一个 key 是一个对象。比如一个 Hash 结构的过期是整个 key 的过期而不是某个子 key 的过期。</li>
+<li>如果一个字符串设置了过期时间，然后调用 set 方法设置了它，它的过期时间会消失。</li>
+</ol>
+<pre><code class="language-shell">127.0.0.1:6379&gt; set codehole yoyo
+OK
+127.0.0.1:6379&gt; expire codehole 600
+(integer) 1
+127.0.0.1:6379&gt; ttl codehole
+(integer) 596
+127.0.0.1:6379&gt; set codehole yoyo
+OK
+127.0.0.1:6379&gt; ttl codehole
+(integer) -1
+127.0.0.1:6379&gt;
+</code></pre>
+<script src="/note/mw/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/mw/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/mw/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="缓存中间件"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../9.源码管理_GIT/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../8.缓存中间件_Redis/redis数据结构/Redis有序集合(sortedSet).html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../9.源码管理_GIT/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

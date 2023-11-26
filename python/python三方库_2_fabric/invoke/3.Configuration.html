@@ -1,0 +1,786 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Configuration - Python</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item "><a href="../../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item expanded "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/invoke/3.Configuration.html" class="active">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Python</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/python/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>配置搜索，加载，解析和合并的最终结果是一个Config对象，它的行为就像一个 (嵌套的) Python字典。</p>
+<p>Invoke在运行时引用此对象 (确定诸如  <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context.run"><code>Context.run</code></a> 之类的方法的默认行为)，并将其作为  <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context.config"><code>Context.config</code></a>  或上下文本身的速记属性访问方式公开给用户的任务。</p>
+<h2 id="the-configuration-hierarchy"><a class="header" href="#the-configuration-hierarchy">The configuration hierarchy</a></h2>
+<p>简而言之，配置值相互覆盖的顺序如下:</p>
+<ol>
+<li>
+<p>内部默认值（<strong>Internal default values</strong>）用于通过配置可控制的行为。 详见： <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#default-values">Default configuration values</a> </p>
+</li>
+<li>
+<p>基于集合的配置：<strong>Collection-driven configurations</strong> defined in tasks modules via <a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection.configure"><code>Collection.configure</code></a>. (See <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#collection-configuration">Collection-based configuration</a> below for details.)</p>
+<blockquote>
+<p>子集合的配置被合并到顶级集合中，最终结果构成了整个配置设置的基础。</p>
+</blockquote>
+</li>
+<li>
+<p>系统层面的配置文件：<strong>System-level configuration file</strong> stored in <code>/etc/</code>, such as <code>/etc/invoke.yaml</code>. (详见： <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#config-files">Configuration files</a> ）</p>
+</li>
+<li>
+<p>用户层面的配置文件：<strong>User-level configuration file</strong>. <code>~/.invoke.yaml</code>.</p>
+</li>
+<li>
+<p>项目层面的配置：<strong>Project-level configuration file</strong> living next to your top level <code>tasks.py</code>. For example, if your run of Invoke loads <code>/home/user/myproject/tasks.py</code> (see our docs on <a href="https://docs.pyinvoke.org/en/stable/concepts/loading.html">the load process</a>), this might be <code>/home/user/myproject/invoke.yaml</code>.</p>
+</li>
+<li>
+<p>环境变量：<strong>Environment variables</strong> found in the invoking shell environment.</p>
+<blockquote>
+<p>这些不像其他人那样具有强烈的层次性，也不是shell环境命名空间完全由Invoke拥有，所以我们必须依靠稍微冗长的前缀来代替- - 详见 <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#env-vars">Environment variables</a> </p>
+</blockquote>
+</li>
+<li>
+<p>命令行指定配置文件：<strong>Runtime configuration file</strong> whose path is given to <a href="https://docs.pyinvoke.org/en/stable/invoke.html#cmdoption-f"><code>-f</code></a>, e.g. <code>inv -f /random/path/to/config_file.yaml</code>. This path may also be set via the <code>INVOKE_RUNTIME_CONFIG</code> env var.</p>
+</li>
+<li>
+<p>命令行指定环境变量：<strong>Command-line flags</strong> for certain core settings, such as <a href="https://docs.pyinvoke.org/en/stable/invoke.html#cmdoption-e"><code>-e</code></a>.</p>
+</li>
+<li>
+<p>用户代码运行时变更：<strong>Modifications made by user code</strong> at runtime.</p>
+</li>
+</ol>
+<h2 id="default-configuration-values"><a class="header" href="#default-configuration-values">Default configuration values</a></h2>
+<blockquote>
+<p>默认配置值</p>
+</blockquote>
+<p>下面列出了所有配置值和/或section Invoke本身用于控制行为的列表，例如 <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context.run"><code>Context.run</code></a>的echo和pty标志，task deduplication等。</p>
+<p>这些值的存储位置在 <a href="https://docs.pyinvoke.org/en/stable/api/config.html#invoke.config.Config"><code>Config</code></a> 类内部，特别是  <a href="https://docs.pyinvoke.org/en/stable/api/config.html#invoke.config.Config.global_defaults"><code>Config.global_defaults</code></a>;  的返回值; 有关更多详细信息，请参见其API文档。</p>
+<p>可以使用嵌套点访问或设置  <a href="https://docs.pyinvoke.org/en/stable/api/config.html#invoke.config.Config"><code>Config</code></a> and <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context"><code>Context</code></a>  对象</p>
+<ul>
+<li>
+<p>The <code>tasks</code> config tree holds settings relating to task execution.</p>
+<blockquote>
+<ul>
+<li>
+<p><code>tasks.dedupe</code> 控制任务重复取消，默认是TRUE、可以通过运行时指定 <a href="https://docs.pyinvoke.org/en/stable/invoke.html#cmdoption-no-dedupe"><code>--no-dedupe</code></a>.</p>
+</li>
+<li>
+<p><code>tasks.auto_dash_names</code> 是否自动转换短横杠与下划线. Default: <code>True</code>. See also <a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#dashes-vs-underscores">Dashes vs underscores</a>.</p>
+</li>
+<li>
+<p><code>tasks.collection_name</code> controls the Python import name sought out by <a href="https://docs.pyinvoke.org/en/stable/concepts/loading.html#collection-discovery">collection discovery</a>, and defaults to <code>&quot;tasks&quot;</code>.</p>
+</li>
+<li>
+<p><code>tasks.executor_class</code> allows users to override the class instantiated and used for task execution.</p>
+<p>Must be a fully-qualified dotted path of the form <code>module(.submodule...).class</code>, where all but <code>.class</code> will be handed to <a href="https://docs.python.org/2.7/library/importlib.html#importlib.import_module"><code>importlib.import_module</code></a>, and <code>class</code> is expected to be an attribute on that resulting module object.</p>
+<p>Defaults to <code>None</code>, meaning to use the running <a href="https://docs.pyinvoke.org/en/stable/api/program.html#invoke.program.Program"><code>Program</code></a> object’s <code>executor_class</code> attribute.</p>
+<p>Warning</p>
+<p>Take care if using this setting in tandem with <a href="https://docs.pyinvoke.org/en/stable/concepts/library.html#reusing-as-a-binary">custom program binaries</a>, since custom programs may specify their own default executor class (which your use of this setting will override!) and assume certain behaviors stemming from that.</p>
+</li>
+<li>
+<p><code>tasks.search_root</code> allows overriding the default <a href="https://docs.pyinvoke.org/en/stable/concepts/loading.html#collection-discovery">collection discovery</a> root search location. It defaults to <code>None</code>, which indicates to use the executing process’ current working directory.</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>The <code>run</code> tree controls the behavior of <a href="https://docs.pyinvoke.org/en/stable/api/runners.html#invoke.runners.Runner.run"><code>Runner.run</code></a>. Each member of this tree (such as <code>run.echo</code> or <code>run.pty</code>) maps directly to a <a href="https://docs.pyinvoke.org/en/stable/api/runners.html#invoke.runners.Runner.run"><code>Runner.run</code></a> keyword argument of the same name; see that method’s docstring for details on what these settings do &amp; what their default values are.</p>
+</li>
+<li>
+<p>The <code>runners</code> tree controls <em>which</em> runner classes map to which execution contexts; if you’re using Invoke by itself, this will only tend to have a single member, <code>runners.local</code>. Client libraries may extend it with additional key/value pairs, such as <code>runners.remote</code>.</p>
+</li>
+<li>
+<p>The <code>sudo</code> tree controls the behavior of <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context.sudo"><code>Context.sudo</code></a>:</p>
+<blockquote>
+<ul>
+<li>
+<p><code>sudo.password</code> controls the autoresponse password submitted to sudo’s password prompt. Default: <code>None</code>.</p>
+<p>Warning</p>
+<p>While it’s possible to store this setting, like any other, in <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#">configuration files</a> – doing so is inherently insecure. We highly recommend filling this config value in at runtime from a secrets management system of some kind.</p>
+</li>
+<li>
+<p><code>sudo.prompt</code> holds the sudo password prompt text, which is both supplied to <code>sudo -p</code>, and searched for when performing <a href="https://docs.pyinvoke.org/en/stable/concepts/watchers.html">auto-response</a>. Default: <code>[sudo] password:</code>.</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>A top level config setting, <code>debug</code>, controls whether debug-level output is logged; it defaults to <code>False</code>.</p>
+<p><code>debug</code> can be toggled via the <a href="https://docs.pyinvoke.org/en/stable/invoke.html#cmdoption-d"><code>-d</code></a> CLI flag, which enables debugging after CLI parsing runs. It can also be toggled via the <code>INVOKE_DEBUG</code> environment variable which - unlike regular env vars - is honored from the start of execution and is thus useful for troubleshooting parsing and/or config loading.</p>
+</li>
+<li>
+<p>A small config tree, <code>timeouts</code>, holds various kinds of timeout controls. At present, for Invoke, this only holds a <code>command</code> subkey, which controls subprocess execution timeouts.</p>
+<blockquote>
+<p>Client code often adds more to this tree, and Invoke itself may add more in the future as well.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="configuration-files"><a class="header" href="#configuration-files">Configuration files</a></h2>
+<h3 id="loading"><a class="header" href="#loading">Loading</a></h3>
+<p>For each configuration file location mentioned in the previous section, we search for files ending in <code>.yaml</code>, <code>.yml</code>, <code>.json</code> or <code>.py</code> (<strong>in that order!</strong>), load the first one we find, and ignore any others that might exist.</p>
+<p>For example, if Invoke is run on a system containing both <code>/etc/invoke.yml</code> <em>and</em> <code>/etc/invoke.json</code>, <strong>only the YAML file will be loaded</strong>. This helps keep things simple, both conceptually and in the implementation.</p>
+<h3 id="format"><a class="header" href="#format">Format</a></h3>
+<p>Invoke’s configuration allows arbitrary nesting, and thus so do our config file formats. All three of the below examples result in a configuration equivalent to <code>{'debug': True, 'run': {'echo': True}}</code>:</p>
+<ul>
+<li>
+<p><strong>YAML</strong></p>
+<pre><code>debug: true
+run:
+    echo: true
+</code></pre>
+</li>
+<li>
+<p><strong>JSON</strong></p>
+<pre><code>{
+    &quot;debug&quot;: true,
+    &quot;run&quot;: {
+        &quot;echo&quot;: true
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>Python</strong>:</p>
+<pre><code>debug = True
+run = {
+    &quot;echo&quot;: True
+}
+</code></pre>
+</li>
+</ul>
+<p>For further details, see these languages’ own documentation.</p>
+<h2 id="environment-variables"><a class="header" href="#environment-variables">Environment variables</a></h2>
+<p>Environment variables are a bit different from other configuration-setting methods, since they don’t provide a clean way to nest configuration keys, and are also implicitly shared amongst the entire system’s installed application base.</p>
+<p>In addition, due to implementation concerns, env vars must be pre-determined by the levels below them in the config hierarchy (in other words - env vars may only be used to override existing config values). If you need Invoke to understand a <code>FOOBAR</code> environment variable, you must first declare a <code>foobar</code> setting in a configuration file or in your task collections.</p>
+<h3 id="basic-rules"><a class="header" href="#basic-rules">Basic rules</a></h3>
+<p>To mitigate the shell namespace problem, we simply prefix all our env vars with <code>INVOKE_</code>.</p>
+<p>Nesting is performed via underscore separation, so a setting that looks like e.g. <code>{'run': {'echo': True}}</code> at the Python level becomes <code>INVOKE_RUN_ECHO=1</code> in a typical shell. See <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#env-var-nesting">Nesting vs underscored names</a> below for more on this.</p>
+<h3 id="type-casting"><a class="header" href="#type-casting">Type casting</a></h3>
+<p>Since env vars can only be used to override existing settings, the previous value of a given setting is used as a guide in casting the strings we get back from the shell:</p>
+<ul>
+<li>
+<p>If the current value is a string or Unicode object, it is replaced with the value from the environment, with no casting whatsoever;</p>
+<blockquote>
+<ul>
+<li>Depending on interpreter and environment, this means that a setting defaulting to a non-Unicode string type (eg a <code>str</code> on Python 2) may end up replaced with a Unicode string, or vice versa. This is intentional as it prevents users from accidentally limiting themselves to non-Unicode strings.</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>If the current value is <code>None</code>, it too is replaced with the string from the environment;</p>
+</li>
+<li>
+<p>Booleans are set as follows: <code>0</code> and the empty value/string (e.g. <code>SETTING=</code>, or <code>unset SETTING</code>, or etc) evaluate to <code>False</code>, and any other value evaluates to <code>True</code>.</p>
+</li>
+<li>
+<p>Lists and tuples are currently unsupported and will raise an exception;</p>
+<blockquote>
+<ul>
+<li>In the future we may implement convenience transformations, such as splitting on commas to form a list; however since users can always perform such operations themselves, it may not be a high priority.</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>All other types - integers, longs, floats, etc - are simply used as constructors for the incoming value.</p>
+<blockquote>
+<ul>
+<li>For example, a <code>foobar</code> setting whose default value is the integer <code>1</code> will run all env var inputs through <a href="https://docs.python.org/2.7/library/functions.html#int"><code>int</code></a>, and thus <code>FOOBAR=5</code> will result in the Python value <code>5</code>, not <code>&quot;5&quot;</code>.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="nesting-vs-underscored-names"><a class="header" href="#nesting-vs-underscored-names">Nesting vs underscored names</a></h3>
+<p>Since environment variable keys are single strings, we must use some form of string parsing to allow access to nested configuration settings. As mentioned above, in basic use cases this just means using an underscore character: <code>{'run': {'echo': True}}</code> becomes <code>INVOKE_RUN_ECHO=1</code>.</p>
+<p>However, ambiguity is introduced when the settings names themselves contain underscores: is <code>INVOKE_FOO_BAR=baz</code> equivalent to <code>{'foo': {'bar': 'baz'}}</code>, or to <code>{'foo_bar': 'baz'}</code>? Thankfully, because env vars can only be used to modify settings declared at the Python level or in config files, we look at the current state of the config to determine the answer.</p>
+<p>There is still a corner case where <em>both</em> possible interpretations exist as valid config paths (e.g. <code>{'foo': {'bar': 'default'}, 'foo_bar': 'otherdefault'}</code>). In this situation, we honor the <a href="http://zen-of-python.info/in-the-face-of-ambiguity-refuse-the-temptation-to-guess.html#12">Zen of Python</a> and refuse to guess; an error is raised instead, counseling users to modify their configuration layout or avoid using env vars for the setting in question.</p>
+<h2 id="collection-based-configuration"><a class="header" href="#collection-based-configuration"><a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection"><code>Collection</code></a>-based configuration</a></h2>
+<p><a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection"><code>Collection</code></a> objects may contain a config mapping, set via <a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection.configure"><code>Collection.configure</code></a>, and (as per <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#config-hierarchy">the hierarchy</a>) this typically forms the lowest level of configuration in the system.</p>
+<p>When collections are <a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html">nested</a>, configuration is merged ‘downwards’ by default: when conflicts arise, outer namespaces closer to the root will win, versus inner ones closer to the task being invoked.</p>
+<p>Note</p>
+<p>‘Inner’ tasks here are specifically those on the path from the root to the one housing the invoked task. ‘Sibling’ subcollections are ignored.</p>
+<p>A quick example of what this means:</p>
+<pre><code>from invoke import Collection, task
+
+# This task &amp; collection could just as easily come from
+# another module somewhere.
+@task
+def mytask(c):
+    print(c['conflicted'])
+inner = Collection('inner', mytask)
+inner.configure({'conflicted': 'default value'})
+
+# Our project's root namespace.
+ns = Collection(inner)
+ns.configure({'conflicted': 'override value'})
+</code></pre>
+<p>The result of calling <code>inner.mytask</code>:</p>
+<pre><code>$ inv inner.mytask
+override value
+</code></pre>
+<h2 id="example-of-real-world-config-use"><a class="header" href="#example-of-real-world-config-use">Example of real-world config use</a></h2>
+<p>The previous sections had small examples within them; this section provides a more realistic-looking set of examples showing how the config system works.</p>
+<h3 id="setup"><a class="header" href="#setup">Setup</a></h3>
+<p>We’ll start out with semi-realistic tasks that hardcode their values, and build up to using the various configuration mechanisms. A small module for building <a href="http://sphinx-doc.org/">Sphinx</a> docs might begin like this:</p>
+<pre><code>from invoke import task
+
+@task
+def clean(c):
+    c.run(&quot;rm -rf docs/_build&quot;)
+
+@task
+def build(c):
+    c.run(&quot;sphinx-build docs docs/_build&quot;)
+</code></pre>
+<p>Then maybe you refactor the build target:</p>
+<pre><code>target = &quot;docs/_build&quot;
+
+@task
+def clean(c):
+    c.run(&quot;rm -rf {}&quot;.format(target))
+
+@task
+def build(c):
+    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+</code></pre>
+<p>We can also allow runtime parameterization:</p>
+<pre><code>default_target = &quot;docs/_build&quot;
+
+@task
+def clean(c, target=default_target):
+    c.run(&quot;rm -rf {}&quot;.format(target))
+
+@task
+def build(c, target=default_target):
+    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+</code></pre>
+<p>This task module works for a single set of users, but what if we want to allow reuse? Somebody may want to use this module with a different default target. Using the configuration data (made available via the context arg) to configure these settings is usually the better solution [<a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#id3">1]</a>.</p>
+<h3 id="configuring-via-task-collection"><a class="header" href="#configuring-via-task-collection">Configuring via task collection</a></h3>
+<p>The configuration <a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection.configure"><code>setting</code></a> and <a href="https://docs.pyinvoke.org/en/stable/api/context.html#invoke.context.Context.config"><code>getting</code></a> APIs enable moving otherwise ‘hardcoded’ default values into a config structure which downstream users are free to redefine. Let’s apply this to our example. First we add an explicit namespace object:</p>
+<pre><code>from invoke import Collection, task
+
+default_target = &quot;docs/_build&quot;
+
+@task
+def clean(c, target=default_target):
+    c.run(&quot;rm -rf {}&quot;.format(target))
+
+@task
+def build(c, target=default_target):
+    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+
+ns = Collection(clean, build)
+</code></pre>
+<p>Then we can move the default build target value into the collection’s default configuration, and refer to it via the context. At this point we also change our kwarg default value to be <code>None</code> so we can determine whether or not a runtime value was given. The result:</p>
+<pre><code>@task
+def clean(c, target=None):
+    if target is None:
+        target = c.sphinx.target
+    c.run(&quot;rm -rf {}&quot;.format(target))
+
+@task
+def build(c, target=None):
+    if target is None:
+        target = c.sphinx.target
+    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+
+ns = Collection(clean, build)
+ns.configure({'sphinx': {'target': &quot;docs/_build&quot;}})
+</code></pre>
+<p>The result isn’t significantly more complex than what we began with, and as we’ll see next, it’s now trivial for users to override your defaults in various ways.</p>
+<h3 id="configuration-overriding"><a class="header" href="#configuration-overriding">Configuration overriding</a></h3>
+<p>The lowest-level override is, of course, just modifying the local <a href="https://docs.pyinvoke.org/en/stable/api/collection.html#invoke.collection.Collection"><code>Collection</code></a> tree into which a distributed module has been imported. E.g. if the above module is distributed as <code>myproject.docs</code>, someone can define a <code>tasks.py</code> that does this:</p>
+<pre><code>from invoke import Collection, task
+from myproject import docs
+
+@task
+def mylocaltask(c):
+    # Some local stuff goes here
+    pass
+
+# Add 'docs' to our local root namespace, plus our own task
+ns = Collection(mylocaltask, docs)
+</code></pre>
+<p>And then they can add this to the bottom:</p>
+<pre><code># Our docs live in 'built_docs', not 'docs/_build'
+ns.configure({'sphinx': {'target': &quot;built_docs&quot;}})
+</code></pre>
+<p>Now we have a <code>docs</code> sub-namespace whose build target defaults to <code>built_docs</code> instead of <code>docs/_build</code>. Runtime users can still override this via flags (e.g. <code>inv docs.build --target='some/other/dir'</code>) just as before.</p>
+<p>If you prefer configuration files over in-Python tweaking of your namespace tree, that works just as well; instead of adding the line above to the previous snippet, instead drop this into a file next to <code>tasks.py</code> named <code>invoke.yaml</code>:</p>
+<pre><code>sphinx:
+    target: built_docs
+</code></pre>
+<p>For this example, that sort of local-to-project conf file makes the most sense, but don’t forget that the <a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#config-hierarchy">config hierarchy</a> offers additional configuration methods which may be suitable depending on your needs.</p>
+<script src="/note/python/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/python/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/python/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="python三方库"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../python三方库_2_fabric/invoke/4.loadingCollections.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../python三方库_2_fabric/invoke/4.loadingCollections.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

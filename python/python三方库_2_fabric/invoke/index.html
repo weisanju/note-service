@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>invoke - Python</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item "><a href="../../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item expanded "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/invoke/index.html" class="active">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Python</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/python/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="welcome-to-invoke"><a class="header" href="#welcome-to-invoke">Welcome to Invoke!</a></h1>
+<p>该网站涵盖了Invoke的项目信息，例如变更日志，贡献指南，开发路线图，新闻/博客等。详细的用法和API文档可以在我们的代码文档网站 docs.pyinvoke.org 上找到。此外，项目维护者在他的网站上保留了路线图。
+请参阅下面的高级介绍，或左侧的导航以获取网站的其余内容。</p>
+<h2 id="what-is-invoke"><a class="header" href="#what-is-invoke">What is Invoke?</a></h2>
+<p>Invoke是一个Python (2.7和3.4) 任务执行工具和库，从各种来源汲取灵感，得出一个强大而干净的功能集。</p>
+<ul>
+<li>
+<p>像Ruby的Rake工具和Invoke自己的前身Fabric 1.x一样，它提供了一个干净的高级API，用于运行shell命令并从tasks.py文件中定义/组织任务函数:</p>
+<pre><code class="language-python"></code></pre>
+</li>
+</ul>
+<p>import buildConfig.Utils
+from invoke import task</p>
+<p>@task
+def clean(c, docs=False, bytecode=False, extra=''):
+patterns = ['build']
+if docs:
+patterns.append('docs/_build')
+if bytecode:
+patterns.append('**/*.pyc')
+if extra:
+patterns.append(extra)
+for pattern in patterns:
+buildConfig.Utils.run(&quot;rm -rf {}&quot;.format(pattern))</p>
+<p>@task
+def build(c, docs=False):
+buildConfig.Utils.run(&quot;python setup.py build&quot;)
+if docs:
+buildConfig.Utils.run(&quot;sphinx-build docs docs/_build&quot;)</p>
+<pre><code>
+- 从GNU Make开始，它继承了对通用模式的最小样板的强调，并能够在一次调用中运行多个任务:
+
+```python
+$ invoke clean build
+</code></pre>
+<ul>
+<li>
+<p>其中Fabric 1.x认为命令行方法的默认使用模式，Invoke (和建立在它上面的工具) 同样在家里嵌入你自己的Python代码或REPL::</p>
+<pre><code class="language-python">&gt;&gt;&gt; from invoke import run
+&gt;&gt;&gt; cmd = &quot;pip install -r requirements.txt&quot;
+&gt;&gt;&gt; result = run(cmd, hide=True, warn=True)
+&gt;&gt;&gt; print(result.ok)
+True
+&gt;&gt;&gt; print(result.stdout.splitlines()[-1])
+Successfully installed invocations-0.13.0 pep8-1.5.7 spec-1.3.1
+</code></pre>
+</li>
+<li>
+<p>在大多数Unix CLI应用程序的领导下，它提供了一种传统的基于标志的命令行解析风格，从任务签名中导出标志名称和值类型 (当然是可选的!):</p>
+<pre><code>$ invoke clean --docs --bytecode build --docs --extra='**/*.pyo'
+$ invoke clean -d -b build --docs -e '**/*.pyo'
+$ invoke clean -db build -de '**/*.pyo'
+</code></pre>
+</li>
+<li>
+<p>像它的许多前辈一样，它也提供了高级功能– namespacing, task aliasing, before/after hooks, parallel execution and more.</p>
+</li>
+</ul>
+<h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
+<p>教程/入门文档中解释了许多核心思想和API调用:Getting started</p>
+<ul>
+<li>定义或运行任务：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#defining-and-running-task-functions">Defining and running task functions</a></li>
+<li>任务参数：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#task-parameters">Task parameters</a></li>
+<li>列出任务：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#listing-tasks">Listing tasks</a></li>
+<li>运行shell任务：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#running-shell-commands">Running shell commands</a></li>
+<li>申明任务：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#declaring-pre-tasks">Declaring pre-tasks</a></li>
+<li>创建名称空间：<a href="https://docs.pyinvoke.org/en/stable/getting-started.html#creating-namespaces">Creating namespaces</a></li>
+</ul>
+<h2 id="the-invoke-cli-tool"><a class="header" href="#the-invoke-cli-tool">The <code>invoke</code> CLI tool</a></h2>
+<p>有关要调用的CLI接口、可用的核心标志和TAB补全：选项的详细信息。</p>
+<ul>
+<li><code>inv[oke]</code> core usage
+<ul>
+<li>核心标志：<a href="https://docs.pyinvoke.org/en/stable/invoke.html#core-options-and-flags">Core options and flags</a></li>
+<li>Shell tab completion
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/invoke.html#generating-a-completion-script">Generating a completion script</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/invoke.html#sourcing-the-script">Sourcing the script</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/invoke.html#utilizing-tab-completion-itself">Utilizing tab completion itself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="concepts"><a class="header" href="#concepts">Concepts</a></h2>
+<p><strong>深入挖掘</strong></p>
+<ul>
+<li>Configuration
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#introduction">Introduction</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#the-configuration-hierarchy">The configuration hierarchy</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#default-configuration-values">Default configuration values</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#configuration-files">Configuration files</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables">Environment variables</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#collection-based-configuration"><code>Collection</code>-based configuration</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/configuration.html#example-of-real-world-config-use">Example of real-world config use</a></li>
+</ul>
+</li>
+<li>Invoking tasks
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/invoking-tasks.html#basic-command-line-layout">Basic command line layout</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/invoking-tasks.html#task-command-line-arguments">Task command-line arguments</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/invoking-tasks.html#how-tasks-run">How tasks run</a></li>
+</ul>
+</li>
+<li>Using Invoke as a library
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/library.html#reusing-invoke-s-cli-module-as-a-distinct-binary">Reusing Invoke’s CLI module as a distinct binary</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/library.html#customizing-the-configuration-system-s-defaults">Customizing the configuration system’s defaults</a></li>
+</ul>
+</li>
+<li>Loading collections
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/loading.html#task-module-discovery">Task module discovery</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/loading.html#configuring-the-loading-process">Configuring the loading process</a></li>
+</ul>
+</li>
+<li>Constructing namespaces
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#starting-out">Starting out</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#naming-your-tasks">Naming your tasks</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#nesting-collections">Nesting collections</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#importing-modules-as-collections">Importing modules as collections</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#default-tasks">Default tasks</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#mix-and-match">Mix and match</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/namespaces.html#more-shortcuts">More shortcuts</a></li>
+</ul>
+</li>
+<li>Testing Invoke-using codebases
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/testing.html#subclass-modify-invoke-internals">Subclass &amp; modify Invoke ‘internals’</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/testing.html#use-mockcontext">Use <code>MockContext</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/testing.html#expect-results">Expect <code>Results</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/testing.html#avoid-mocking-dependency-code-paths-altogether">Avoid mocking dependency code paths altogether</a></li>
+</ul>
+</li>
+<li>Automatically responding to program output
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/watchers.html#background">Background</a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/concepts/watchers.html#basic-use">Basic use</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="api"><a class="header" href="#api">API</a></h2>
+<ul>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/__init__.html"><code>__init__</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/collection.html"><code>collection</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/config.html"><code>config</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/context.html"><code>context</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/exceptions.html"><code>exceptions</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/executor.html"><code>executor</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/loader.html"><code>loader</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/parser.html"><code>parser</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/program.html"><code>program</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/runners.html"><code>runners</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/tasks.html"><code>tasks</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/terminals.html"><code>terminals</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/util.html"><code>util</code></a></li>
+<li><a href="https://docs.pyinvoke.org/en/stable/api/watchers.html"><code>watchers</code></a></li>
+</ul>
+<script src="/note/python/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/python/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/python/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="python三方库"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

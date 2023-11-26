@@ -1,0 +1,1420 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>javaValidated - Java</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="/note/favicon.svg">
+        <link rel="shortcut icon" href="/note/favicon.png">
+        <link rel="stylesheet" href="/note/css/variables.css">
+        <link rel="stylesheet" href="/note/css/general.css">
+        <link rel="stylesheet" href="/note/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
+        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Java笔记库</a></li><li class="chapter-item affix "><li class="part-title">java基础</li><li class="chapter-item "><a href="../1.java基础_代理/index.html">代理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.java基础_代理/CGLIB.html">CGLIB</a></li><li class="chapter-item "><a href="../1.java基础_代理/cglib的几种Callback.html">cglib的几种Callback</a></li><li class="chapter-item "><a href="../1.java基础_代理/jdk动态代理.html">jdk动态代理</a></li></ol></li><li class="chapter-item "><div>对象拷贝</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2.java基础_对象拷贝/mapstruct.html">mapstruct</a></li></ol></li><li class="chapter-item "><div>函数式编程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.java基础_函数式编程/anyMatchAllMatch.html">anyMatchAllMatch</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/java函数式编程.html">java函数式编程</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/lamba表达式原理.html">lamba表达式原理</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/方法引用.html">方法引用</a></li><li class="chapter-item "><a href="../3.java基础_函数式编程/流操作.html">流操作</a></li></ol></li><li class="chapter-item expanded "><div>Bean校验</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4.java基础_Bean校验/javaValidated.html" class="active">javaValidated</a></li></ol></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/index.html">多线程与锁</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/JUC线程同步工具.html">JUC线程同步工具</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/LockSupport.html">LockSupport</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java内存模型.html">java内存模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java线程状态.html">java线程状态</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/java锁.html">java锁</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/jvm线程模型.html">jvm线程模型</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/关于多线程与并发编码的心得.html">关于多线程与并发编码的心得</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程操作.html">线程操作</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/线程池.html">线程池</a></li><li class="chapter-item "><div>基于AQS的同步工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html">AQS</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html">Condition条件等待</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html">CountDownLatch</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html">CyclicBarrier</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html">Lock锁接口</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html">ReentrantLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html">Semaphore</a></li><li class="chapter-item "><a href="../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html">StampedLock</a></li></ol></li></ol></li><li class="chapter-item "><a href="../6.java基础_集合框架/index.html">集合框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ArrayList.html">ArrayList</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Collections工具类.html">Collections工具类</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/ConcurrentHashMap.html">ConcurrentHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/LinkedList与双向队列.html">LinkedList与双向队列</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/List.html">List</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Map接口.html">Map接口</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Queue与Deque.html">Queue与Deque</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/Set与LinkedHashMap.html">Set与LinkedHashMap</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/SynchronousQueue.html">SynchronousQueue</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/arraylist和linkedlist.html">arraylist和linkedlist</a></li><li class="chapter-item "><a href="../6.java基础_集合框架/hashMap.html">hashMap</a></li></ol></li><li class="chapter-item "><li class="part-title">jvm</li><li class="chapter-item "><div>jvm基础</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html">GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JMM与volatile关键字.html">JMM与volatile关键字</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVMGC.html">JVMGC</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM内存模型.html">JVM内存模型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM参数.html">JVM参数</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/JVM复制算法.html">JVM复制算法</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/javaUnsafe工具类与CAS.html">javaUnsafe工具类与CAS</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java内存泄露与OOM.html">java内存泄露与OOM</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java对象分析.html">java对象分析</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/java引用类型.html">java引用类型</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/index.html">类加载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载器.html">类加载器</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/类加载过程.html">类加载过程</a></li><li class="chapter-item "><a href="../7.jvm_jvm基础/类加载/线程上下文加载器.html">线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item "><div>jvm问题诊断与性能分析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/MAT.html">MAT</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html">javaCPU占用高的问题</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/java远程调试.html">java远程调试</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/优雅停服.html">优雅停服</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/元空间溢出.html">元空间溢出</a></li><li class="chapter-item "><a href="../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html">排查内存溢出</a></li></ol></li><li class="chapter-item "><div>Arthas</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.jvm_Arthas/1.安装.html">安装</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/2.快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/3.命令.html">命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/4.ArthasTunnel.html">ArthasTunnel</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/5.Idea插件.html">Idea插件</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/6.JavaAgent启动.html">JavaAgent启动</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/7.火焰图.html">火焰图</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/8.thread命令.html">thread命令</a></li><li class="chapter-item "><a href="../9.jvm_Arthas/9.trace.html">trace</a></li></ol></li><li class="chapter-item "><li class="part-title">spring</li><li class="chapter-item "><div>SpringFramework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/0.spring容器启动总览.html">spring容器启动总览</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html">spring容器启动-bean实例化流程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/2.SpringBean实例化过程.html">SpringBean实例化过程</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/3.Spring依赖注入与初始化.html">Spring依赖注入与初始化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/4.SpringBean的生命周期.html">SpringBean的生命周期</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/5.SpringSchedule.html">SpringSchedule</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html">ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/PropertySource.html">PropertySource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/Spring总结.html">Spring总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html">applicationContext与BeanFactory的区别</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring杂项.html">spring杂项</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring组合注解.html">spring组合注解</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring解决循环依赖问题.html">spring解决循环依赖问题</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/postprocessor/index.html">postprocessor</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/index.html">spring-aop</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html">SpringAop-cglib动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html">SpringAop-jdk动态代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html">SpringAop-涉及到的类</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html">SpringAop-编程式代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html">SpringAop-自动代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/SpringAop总结.html">SpringAop总结</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/aop包解析.html">aop包解析</a></li><li class="chapter-item "><div>AOP应用解析</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html">Async异步</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html">依赖懒加载</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html">缓存</a></li></ol></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/index.html">spring-bean定义</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/spring-bean定义/Bean定义.html">Bean定义</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/index.html">springBeanScope</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html">spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item "><div>springframework</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/MessageSource.html">MessageSource</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring-ioc.html">spring-ioc</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/springEL.html">springEL</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/spring代理.html">spring代理</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html">基于Ant的路径匹配</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/字段格式化.html">字段格式化</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/属性源抽象.html">属性源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/类型转换.html">类型转换</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/资源抽象.html">资源抽象</a></li><li class="chapter-item "><a href="../10.spring_SpringFramework/springframework/配置全局日期格式化.html">配置全局日期格式化</a></li></ol></li><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/index.html">编程式注入类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.spring_SpringFramework/编程式注入类/AOP代理相关.html">AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/index.html">SpringWebMvc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.spring_SpringWebMvc/URI_Links.html">URI_Links</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/functional_endpoints.html">functional_endpoints</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html">mvcannotation-driven注解的作用</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/spring-mvc.html">spring-mvc</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html">springMVC自定义参数解析注解</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC路径映射.html">springMVC路径映射</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMVC返回后.html">springMVC返回后</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/springMvcController配置.html">springMvcController配置</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/内置四种filters.html">内置四种filters</a></li><li class="chapter-item "><a href="../11.spring_SpringWebMvc/基于注解的控制器.html">基于注解的控制器</a></li></ol></li><li class="chapter-item "><a href="../12.spring_SpringBoot/index.html">SpringBoot</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springBoot资源处理.html">springBoot资源处理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html">springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-devtools.html">springboot-devtools</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-元数据.html">springboot-元数据</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-多模块.html">springboot-多模块</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-日志.html">springboot-日志</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-自动配置原理.html">springboot-自动配置原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-过滤器.html">springboot-过滤器</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot-配置文件与jar分离.html">springboot-配置文件与jar分离</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/快速入门.html">快速入门</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/自定义springBootStarter.html">自定义springBootStarter</a></li><li class="chapter-item "><div>springboot配置文件加载</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html">propertySource原理</a></li><li class="chapter-item "><a href="../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html">默认加载原则</a></li></ol></li><li class="chapter-item "><div>官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.spring_SpringBoot/官方文档/SpringApplication.html">SpringApplication</a></li></ol></li></ol></li><li class="chapter-item "><a href="../13.spring_SpringSecurity/index.html">SpringSecurity</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../13.spring_SpringSecurity/spring核心逻辑.html">spring核心逻辑</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/index.html">SpringWebFlux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/CoreFeatures.html">CoreFeatures</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/DispatcherHandler.html">DispatcherHandler</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/FunctionEndpoint.html">FunctionEndpoint</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/URILinks.html">URILinks</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/WebFluxConfig.html">WebFluxConfig</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/taskList.html">taskList</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/index.html">基于注解的控制器</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html">HandlerMethod</a></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html">RequestMapping</a></li></ol></li><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/index.html">源码分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html">springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item "><a href="../15.spring_SpringCloud/index.html">SpringCloud</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/Ribbon与Feign/index.html">Ribbon与Feign</a></li><li class="chapter-item "><div>服务注册与发现</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/index.html">nacos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html">nacos-with-spring</a></li><li class="chapter-item "><a href="../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html">nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item "><div>网关</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/index.html">springCloudGateway</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html">springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../16.spring_SpringCache/index.html">SpringCache</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.spring_SpringCache/1.基于申明式缓存.html">基于申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/2.JCacheAnnotations.html">JCacheAnnotations</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/3.XML的申明式缓存.html">XML的申明式缓存</a></li><li class="chapter-item "><a href="../16.spring_SpringCache/4.配置缓存库.html">配置缓存库</a></li></ol></li><li class="chapter-item "><a href="../17.spring_SpringDataRedis/index.html">SpringDataRedis</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><a href="../18.响应式编程/index.html">响应式编程</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/index.html">ProjectReactor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建发布者.html">创建发布者</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/创建订阅.html">创建订阅</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/响应式流的动作.html">响应式流的动作</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/选择合适的操作符.html">选择合适的操作符</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/index.html">core-features</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html">FluxAndMono</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html">ProcessorOrSinks</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/线程和调度.html">线程和调度</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html">编程式创建序列</a></li><li class="chapter-item "><a href="../18.响应式编程/ProjectReactor/core-features/错误处理.html">错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../19.日志/index.html">日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/JUL.html">JUL</a></li><li class="chapter-item "><a href="../19.日志/SL4j.html">SL4j</a></li><li class="chapter-item "><a href="../19.日志/日志处理进化史.html">日志处理进化史</a></li><li class="chapter-item "><a href="../19.日志/log4j2/index.html">log4j2</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/Log4j2API.html">Log4j2API</a></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2-web.html">log4j2-web</a></li><li class="chapter-item "><a href="../19.日志/log4j2/lookups.html">lookups</a></li><li class="chapter-item "><a href="../19.日志/log4j2/依赖管理.html">依赖管理</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/index.html">appenders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/appenders/AsyncAppender.html">AsyncAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/CassandraAppender.html">CassandraAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/ConsoleAppender.html">ConsoleAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FailoverAppender.html">FailoverAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/FileAppender.html">FileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/JDBCAppender.html">JDBCAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/OutputStreamAppender.html">OutputStreamAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RandomAccessFileAppender.html">RandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RewriteAppender.html">RewriteAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingFileAppender.html">RollingFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html">RollingRandomAccessFileAppender</a></li><li class="chapter-item "><a href="../19.日志/log4j2/appenders/RoutingAppender.html">RoutingAppender</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/index.html">layouts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/layouts/CSVLayouts.html">CSVLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/HTMLayouts.html">HTMLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONLayout.html">JSONLayout</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/JSONTemplateLayouts.html">JSONTemplateLayouts</a></li><li class="chapter-item "><a href="../19.日志/log4j2/layouts/PatternLayout.html">PatternLayout</a></li></ol></li><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/index.html">log4j2配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../19.日志/log4j2/log4j2配置/高级配置.html">高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><div>设计模式</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../20.设计模式/PipeLine.html">PipeLine</a></li></ol></li><li class="chapter-item "><a href="../22.Maven/index.html">Maven</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../22.Maven/AutoConfig插件.html">AutoConfig插件</a></li><li class="chapter-item "><a href="../22.Maven/Executions.html">Executions</a></li><li class="chapter-item "><a href="../22.Maven/MavenArcheType.html">MavenArcheType</a></li><li class="chapter-item "><a href="../22.Maven/maven.html">maven</a></li><li class="chapter-item "><a href="../22.Maven/maven-Maven_Resources_Plugin.html">maven-Maven_Resources_Plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-archiver.html">maven-archiver</a></li><li class="chapter-item "><a href="../22.Maven/maven-assembly-plugin.html">maven-assembly-plugin</a></li><li class="chapter-item "><a href="../22.Maven/maven-bom.html">maven-bom</a></li><li class="chapter-item "><a href="../22.Maven/maven-profile.html">maven-profile</a></li><li class="chapter-item "><a href="../22.Maven/maven-依赖管理.html">maven-依赖管理</a></li><li class="chapter-item "><a href="../22.Maven/maven-编译源码.html">maven-编译源码</a></li><li class="chapter-item "><a href="../22.Maven/maven中的生命周期、插件、目标.html">maven中的生命周期、插件、目标</a></li><li class="chapter-item "><a href="../22.Maven/maven打包方式.html">maven打包方式</a></li><li class="chapter-item "><a href="../22.Maven/maven聚合项目版本管理实践.html">maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item "><a href="../23.IO/index.html">IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/Buffer.html">Buffer</a></li><li class="chapter-item "><a href="../23.IO/Channel.html">Channel</a></li><li class="chapter-item "><a href="../23.IO/LinuxIO模型演变.html">LinuxIO模型演变</a></li><li class="chapter-item "><a href="../23.IO/Selector（选择器）.html">Selector（选择器）</a></li><li class="chapter-item "><a href="../23.IO/主流IO模型.html">主流IO模型</a></li><li class="chapter-item "><a href="../23.IO/从IO到NIO个人理解.html">从IO到NIO个人理解</a></li><li class="chapter-item "><a href="../23.IO/字符集.html">字符集</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/index.html">FileIO(NIO-2.0)</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html">LinksSymbolicOtherwise</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html">RandomAccessFiles</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html">传统IO与NIO的API迁移</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/元数据管理.html">元数据管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/其他有用方法.html">其他有用方法</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html">开发自定义文件系统</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件查找.html">文件查找</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件管理.html">文件管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/文件读写.html">文件读写</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/监控目录变化.html">监控目录变化</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/目录管理.html">目录管理</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/路径操作.html">路径操作</a></li><li class="chapter-item "><a href="../23.IO/FileIO(NIO-2.0)/遍历目录树.html">遍历目录树</a></li></ol></li></ol></li><li class="chapter-item "><a href="../24.Servlet规范/index.html">Servlet规范</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../24.Servlet规范/fitler.html">fitler</a></li><li class="chapter-item "><a href="../24.Servlet规范/httpServlet接口.html">httpServlet接口</a></li><li class="chapter-item "><a href="../24.Servlet规范/request.html">request</a></li><li class="chapter-item "><a href="../24.Servlet规范/response.html">response</a></li><li class="chapter-item "><a href="../24.Servlet规范/servletContext.html">servletContext</a></li><li class="chapter-item "><a href="../24.Servlet规范/servlet初始化.html">servlet初始化</a></li><li class="chapter-item "><a href="../24.Servlet规范/session.html">session</a></li><li class="chapter-item "><a href="../24.Servlet规范/入门.html">入门</a></li><li class="chapter-item "><a href="../24.Servlet规范/注解与可插拔.html">注解与可插拔</a></li></ol></li><li class="chapter-item "><li class="part-title">单元测试</li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/index.html">JUNIT5</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/ConsoleLaunch.html">ConsoleLaunch</a></li><li class="chapter-item "><a href="../21.单元测试_JUNIT5/DependencyMetadata.html">DependencyMetadata</a></li><li class="chapter-item "><div>writtingTest</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../21.单元测试_JUNIT5/writtingTest/Annotations.html">Annotations</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">ORM</li><li class="chapter-item "><div>MyBatis</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis.html">mybatis</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis-插件开发.html">mybatis-插件开发</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/mybatis标签.html">mybatis标签</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/resultHandler.html">resultHandler</a></li><li class="chapter-item "><a href="../25.ORM_MyBatis/多结果集分页.html">多结果集分页</a></li></ol></li><li class="chapter-item "><a href="../26.ORM_JPA/index.html">JPA</a></li><li class="chapter-item affix "><li class="part-title">鉴权</li><li class="chapter-item "><div>Shiro</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../27.鉴权_Shiro/shiro频繁访问redis.html">shiro频繁访问redis</a></li></ol></li><li class="chapter-item "><li class="part-title">其他</li><li class="chapter-item "><a href="../28.其他_Security/index.html">Security</a></li><li class="chapter-item "><a href="../29.其他_JSR/index.html">JSR</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../29.其他_JSR/jar包规范.html">jar包规范</a></li></ol></li><li class="chapter-item "><div>JMH</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../30.其他_JMH/java基准测试.html">java基准测试</a></li></ol></li><li class="chapter-item "><div>JavaCommandLine</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../31.其他_JavaCommandLine/JAVA命令行工具.html">JAVA命令行工具</a></li></ol></li><li class="chapter-item "><div>分布式与微服务</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../32.其他_分布式与微服务/JWT无状态Session.html">JWT无状态Session</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/一致性Hash.html">一致性Hash</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式ID.html">分布式ID</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式Session案.html">分布式Session案</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式事务.html">分布式事务</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式协调器-Zookeeper.html">分布式协调器-Zookeeper</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/分布式锁.html">分布式锁</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/接口幂等性.html">接口幂等性</a></li><li class="chapter-item "><a href="../32.其他_分布式与微服务/负载均衡.html">负载均衡</a></li></ol></li><li class="chapter-item "><a href="../33.其他_Graavml/index.html">Graavml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>安装</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../33.其他_Graavml/安装/Macos安装.html">Macos安装</a></li></ol></li></ol></li><li class="chapter-item "><div>未分类</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../50.其他_未分类/EasyRules.html">EasyRules</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaLocalDate.html">JavaLocalDate</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaSPI.html">JavaSPI</a></li><li class="chapter-item "><a href="../50.其他_未分类/JavaUnsafe类.html">JavaUnsafe类</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java异常.html">Java异常</a></li><li class="chapter-item "><a href="../50.其他_未分类/Java泛型的协变与逆变.html">Java泛型的协变与逆变</a></li><li class="chapter-item "><a href="../50.其他_未分类/PO、VO、BO.html">PO、VO、BO</a></li><li class="chapter-item "><a href="../50.其他_未分类/WeakCache.html">WeakCache</a></li><li class="chapter-item "><a href="../50.其他_未分类/apacheUtils类.html">apacheUtils类</a></li><li class="chapter-item "><a href="../50.其他_未分类/foreach语法糖.html">foreach语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/formatter.html">formatter</a></li><li class="chapter-item "><a href="../50.其他_未分类/integer的比较问题.html">integer的比较问题</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaIdea调试.html">javaIdea调试</a></li><li class="chapter-item "><a href="../50.其他_未分类/javaPererences工具.html">javaPererences工具</a></li><li class="chapter-item "><a href="../50.其他_未分类/java中常见的语法糖.html">java中常见的语法糖</a></li><li class="chapter-item "><a href="../50.其他_未分类/java优化指南.html">java优化指南</a></li><li class="chapter-item "><a href="../50.其他_未分类/java各版本新特性.html">java各版本新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/java序列化接口.html">java序列化接口</a></li><li class="chapter-item "><a href="../50.其他_未分类/java模块化.html">java模块化</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk1.8新特性.html">jdk1.8新特性</a></li><li class="chapter-item "><a href="../50.其他_未分类/jdk与jre.html">jdk与jre</a></li><li class="chapter-item "><a href="../50.其他_未分类/string常量池.html">string常量池</a></li><li class="chapter-item "><a href="../50.其他_未分类/threadLocal.html">threadLocal</a></li><li class="chapter-item "><a href="../50.其他_未分类/代码异味.html">代码异味</a></li><li class="chapter-item "><a href="../50.其他_未分类/基于jdk1.8的Arrays.sort.html">基于jdk1.8的Arrays.sort</a></li><li class="chapter-item "><a href="../50.其他_未分类/枚举.html">枚举</a></li><li class="chapter-item "><a href="../50.其他_未分类/注解.html">注解</a></li><li class="chapter-item "><a href="../50.其他_未分类/类的关系.html">类的关系</a></li></ol></li><li class="chapter-item "><li class="part-title">源编程</li><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/index.html">AnnotationProcessor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../34.源编程_AnnotationProcessor/TreeMarker.html">TreeMarker</a></li></ol></li><li class="chapter-item "><a href="../35.源编程_Javapoet/index.html">Javapoet</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../35.源编程_Javapoet/1.Code&ControlFlow.html">Code&ControlFlow</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/2.Placehold.html">Placehold</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/3.Methods.html">Methods</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/4.Constructors.html">Constructors</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/5.ParametersAndFields.html">ParametersAndFields</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/6.InterfacesAndEnums.html">InterfacesAndEnums</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/7.AnonymousInnerClasses.html">AnonymousInnerClasses</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/8.Annotations.html">Annotations</a></li><li class="chapter-item "><a href="../35.源编程_Javapoet/9.JavaDoc.html">JavaDoc</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Java</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note/java/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="校验框架介绍"><a class="header" href="#校验框架介绍">校验框架介绍</a></h1>
+<p>JSR303 是一套JavaBean参数校验的标准，它定义了很多常用的校验注解，我们可以直接将这些注解加在我们JavaBean的属性上面，就可以在需要校验的时候进行校验了。注解如下：</p>
+<h2 id="jsr303注解"><a class="header" href="#jsr303注解">JSR303注解</a></h2>
+<h2 id="空检查"><a class="header" href="#空检查">空检查</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>验证对象</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>@NotEmpty</strong></td><td>集合类</td><td>；不能为null，而且长度必须大于0</td></tr>
+<tr><td><strong>@NotBlank</strong></td><td>String</td><td>只能作用在String上，不能为null，而且调用trim()后，长度必须大于0</td></tr>
+<tr><td><strong>@NotNull</strong></td><td>用在基本类型上</td><td>不能为null，但可以为empty。</td></tr>
+<tr><td><strong>@Null</strong></td><td>用在基本类型上</td><td>被注释的元素必须为null</td></tr>
+</tbody></table>
+</div>
+<h2 id="长度检查"><a class="header" href="#长度检查"><strong>长度检查</strong></a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>验证对象</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>@Size(min=,max=)</strong></td><td>Array,Collection,Map,String</td><td>长度是否在给定的范围之内</td></tr>
+<tr><td><strong>@Length(min=, max=)</strong></td><td>String 类型</td><td>长度是否在给定的范围之内</td></tr>
+</tbody></table>
+</div>
+<h2 id="booelan检查"><a class="header" href="#booelan检查">Booelan检查</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>验证对象</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>@AssertTrue</strong></td><td>bool</td><td>验证 Boolean 对象是否为 true</td></tr>
+<tr><td><strong>@AssertFalse</strong></td><td>bool</td><td>验证 Boolean 对象是否为 false</td></tr>
+</tbody></table>
+</div>
+<h2 id="日期检查"><a class="header" href="#日期检查">日期检查</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>验证对象</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>@Past</strong></td><td>date,Calendar</td><td>验证是否在当前时间之前</td></tr>
+<tr><td><strong>@Future</strong></td><td>date,Calendar</td><td>验证 String 对象是否符合正则表达式的规则</td></tr>
+<tr><td><strong>@Pattern</strong></td><td>String 对象</td><td>是否符合正则表达式的规则</td></tr>
+</tbody></table>
+</div>
+<h2 id="数值检查"><a class="header" href="#数值检查">数值检查</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>验证对象</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>@Min</strong>,<strong>@Max</strong></td><td>Number 和 String 对象</td><td>是否大等于指定的值</td></tr>
+<tr><td><strong>@DecimalMax</strong>,<strong>@DecimalMin</strong></td><td>BigDecimal,数值类型</td><td></td></tr>
+<tr><td><strong>@Digits</strong></td><td>Number 和 String</td><td>验证 Number 和 String 的构成是否合法</td></tr>
+<tr><td><strong>@Digits(integer=,fraction=)</strong></td><td>字符串</td><td>验证字符串是否是符合指定格式的数字，interger指定整数精度，fraction指定小数精度。</td></tr>
+</tbody></table>
+</div>
+<p>Hibernate validator 在JSR303的基础上对校验注解进行了扩展，扩展注解如下：</p>
+<h2 id="hibernate扩展注解"><a class="header" href="#hibernate扩展注解">Hibernate扩展注解</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>注解名</th><th>说明</th></tr></thead><tbody>
+<tr><td>@Email</td><td>被注释的元素必须是电子邮箱</td></tr>
+<tr><td>@Length</td><td>字符串的长度</td></tr>
+<tr><td>@NotEmpty</td><td>字符串非空</td></tr>
+<tr><td>@Range</td><td>指定范围</td></tr>
+</tbody></table>
+</div>
+<p>Spring validtor 同样扩展了jsr303,并实现了方法参数和返回值的校验</p>
+<p>Spring 提供了MethodValidationPostProcessor类，用于对方法的校验</p>
+<h1 id="声明-java-bean-约束"><a class="header" href="#声明-java-bean-约束">声明 Java Bean 约束</a></h1>
+<h2 id="字段级别约束"><a class="header" href="#字段级别约束">字段级别约束</a></h2>
+<pre><code class="language-java">@NotNull
+private String manufacturer;
+</code></pre>
+<h2 id="属性级别约束"><a class="header" href="#属性级别约束">属性级别约束</a></h2>
+<pre><code class="language-java">@NotNull
+public String getManufacturer(){
+  return manufacturer;
+}
+</code></pre>
+<h2 id="容器级别约束"><a class="header" href="#容器级别约束">容器级别约束</a></h2>
+<pre><code class="language-java">private Map&lt;@NotNull FuelConsumption, @MaxAllowedFuelConsumption Integer&gt; fuelConsumption = new HashMap&lt;&gt;();
+</code></pre>
+<h2 id="类级别约束"><a class="header" href="#类级别约束">类级别约束</a></h2>
+<p>在这种情况下，验证的对象不是单个属性，而是完整的对象。如果验证依赖于对象的多个属性之间的相关性，则类级约束非常有用。
+如：汽车中，乘客数量不能大于座椅数量，否则超载</p>
+<pre><code class="language-java">@ValidPassengerCount
+public class Car {
+
+    private int seatCount;
+
+    private List&lt;Person&gt; passengers;
+
+    //...
+}
+</code></pre>
+<h2 id="约束继承"><a class="header" href="#约束继承">约束继承</a></h2>
+<p>当一个类继承/实现另一个类时，父类声明的所有约束也会应用在子类继承的对应属性上。
+如果方法<code>重写</code>，约束注解将会聚合，也就是此方法父类和子类声明的约束都会起作用。</p>
+<h2 id="级联验证"><a class="header" href="#级联验证">级联验证</a></h2>
+<p><code>Bean Validation API</code> 不仅允许验证单个类实例，也支持级联验证。</p>
+<p>只需使用 <code>@Valid</code> 修饰对象属性的引用，则对象属性中声明的所有约束也会起作用。</p>
+<pre><code class="language-java">public class Car {
+    @NotNull
+    @Valid
+    private Person driver;
+    //...
+}
+public class Person {
+    @NotNull
+    private String name;
+    //...
+}
+</code></pre>
+<h1 id="声明方法约束"><a class="header" href="#声明方法约束">声明方法约束</a></h1>
+<h2 id="参数约束"><a class="header" href="#参数约束">参数约束</a></h2>
+<p>通过向方法或构造函数的参数添加约束注解来指定方法或构造函数的<code>前置条件</code>，官方示例如下：</p>
+<pre><code class="language-java">public RentalStation(@NotNull String name){}
+
+public void rentCar(@NotNull Customer customer,
+                          @NotNull @Future Date startDate,
+                          @Min(1) int durationInDays){}
+</code></pre>
+<h2 id="返回值约束"><a class="header" href="#返回值约束">返回值约束</a></h2>
+<p>通过在方法体上添加约束注解来给方法或构造函数指定<code>后置条件</code>，官方示例如下：</p>
+<pre><code class="language-java">public class RentalStation {
+    @ValidRentalStation
+    public RentalStation() {
+        //...
+    }
+    @NotNull
+    @Size(min = 1)
+    public List&lt;@NotNull Customer&gt; getCustomers() {
+        //...
+        return null;
+    }
+}
+</code></pre>
+<p>此示例指定了三个约束：</p>
+<ul>
+<li>任何新创建的 RentalStation 对象都必须满足 @validRentalStation 约束</li>
+<li>getCustomers() 返回的客户列表不能为空，并且必须至少包含 1 个元素</li>
+<li>getCustomers() 返回的客户列表不能包含空对象</li>
+</ul>
+<h2 id="级联约束"><a class="header" href="#级联约束">级联约束</a></h2>
+<p>类似于 JavaBeans 属性的级联验证，<code>@Valid</code> 注解可用于标记方法参数和返回值的级联验证。</p>
+<p>类似于 javabeans 属性的级联验证（参见第 2.1.6 节“对象图”），@valid 注释可用于标记可执行参数和级联验证的返回值。当验证用@valid 注释的参数或返回值时，也会验证在参数或返回值对象上声明的约束。
+而且，也可用在容器元素中。</p>
+<pre><code class="language-java">public class Garage {
+    public boolean checkCars(@NotNull List&lt;@Valid Car&gt; cars) {
+        //...
+        return false;
+    }
+}
+</code></pre>
+<h2 id="继承验证"><a class="header" href="#继承验证">继承验证</a></h2>
+<p>当在继承体系中声明方法约束时，必须了解两个规则：</p>
+<ul>
+<li>方法调用方要满足前置条件不能在子类型中得到加强 参数</li>
+<li>方法调用方要保证后置条件不能再子类型中被削弱 返回值</li>
+</ul>
+<p>这些规则是由子类行为概念所决定的：在使用类型 T 的任何地方，也能在不改变程序行为的情况下使用 T 的子类。</p>
+<p>当两个类分别有一个同名且形参列表相同的方法，而另一个类用一个方法重写/实现上述两个类的同名方法时，这两个父类的同名方法上不能有任何参数约束，因为不管怎样都会与上述规则冲突。
+示例：</p>
+<pre><code class="language-java">public interface Vehicle {
+  void drive(@Max(75) int speedInMph);
+}
+public interface Car {
+  void drive(int speedInMph);
+}
+
+public class RacingCar implements Car, Vehicle {
+  @Override
+  public void drive(int speedInMph) {
+      //...
+  }
+}
+</code></pre>
+<h1 id="分组约束"><a class="header" href="#分组约束">分组约束</a></h1>
+<p><code>注意</code>：上述的 22 个约束注解都有 <code>groups</code> 属性。当不指定 groups 时，默认为 <code>Default</code> 分组。</p>
+<p><code>JSR</code> 规范支持手动校验，不直接支持使用注解校验，不过 <code>spring</code> 提供了分组校验注解扩展支持，即：<code>@Validated</code>，参数为 group 类集合</p>
+<h2 id="分组继承"><a class="header" href="#分组继承">分组继承</a></h2>
+<p>在某些场景下，需要定义一个组，它包含其它组的约束，可以用分组继承。
+如：</p>
+<pre><code class="language-java">public class SuperCar extends Car {
+    @AssertTrue(
+            message = &quot;Race car must have a safety belt&quot;,
+            groups = RaceCarChecks.class
+    )
+    private boolean safetyBelt;
+    // getters and setters ...
+}
+public interface RaceCarChecks extends Default {}
+</code></pre>
+<p>但因为此处，是想 <code>Default</code> 分组一直都要校验</p>
+<pre><code class="language-java">public interface DefaultInherGroup extends Default {}
+</code></pre>
+<h2 id="定义分组序列"><a class="header" href="#定义分组序列">定义分组序列</a></h2>
+<p>默认情况下，不管约束是属于哪个分组，它们的计算是没有特定顺序的，而在某些场景下，控制约束的计算顺序是有用的。
+如：先检查汽车的默认约束，再检查汽车的性能约束，最后在开车前，检查驾驶员的实际约束。
+可以定义一个接口，并用 <code>@GroupSequence</code> 来定义需要验证的分组的序列。</p>
+<pre><code class="language-java">@GroupSequence({ Default.class, CarChecks.class, DriverChecks.class })
+public interface OrderedChecks {}
+</code></pre>
+<p>此分组用法与其它分组一样，只是此分组拥有按分组顺序校验的功能</p>
+<blockquote>
+<p>定义序列的组和组成序列的组不能通过级联序列定义或组继承直接或间接地参与循环依赖关系。如果对包含此类循环的组计算，则会引发 GroupDefinitionException。</p>
+</blockquote>
+<h2 id="重新定义默认分组序列"><a class="header" href="#重新定义默认分组序列">重新定义默认分组序列</a></h2>
+<h4 id="groupsequence"><a class="header" href="#groupsequence">@GroupSequence</a></h4>
+<p><code>@GroupSequence</code> 除了定义分组序列外，还允许重新定义指定类的默认分组。为此，只需将<code>@GroupSequence</code> 添加到类中，并在注解中用指定序列的分组替换 <code>Default</code> 默认分组。</p>
+<pre><code class="language-java">@GroupSequence({ RentalChecks.class, CarChecks.class, RentalCar.class })
+public class RentalCar extends Car {}
+</code></pre>
+<p>在验证约束时，直接把其当做默认分组方式来验证</p>
+<h4 id="groupsequenceprovider"><a class="header" href="#groupsequenceprovider">@GroupSequenceProvider</a></h4>
+<p>注意：此为 hibernate-validator 提供，JSR 规范不支持</p>
+<p>可用于根据对象状态动态地重新定义默认分组序列。
+需要做两步：</p>
+<ol>
+<li>实现接口：DefaultGroupSequenceProvider</li>
+<li>在指定类上使用 @GroupSequenceProvider，并指定 value 为上一步的类</li>
+</ol>
+<pre><code class="language-java">public class RentalCarGroupSequenceProvider
+        implements DefaultGroupSequenceProvider&lt;RentalCar&gt; {
+    @Override
+    public List&lt;Class&lt;?&gt;&gt; getValidationGroups(RentalCar car) {
+        List&lt;Class&lt;?&gt;&gt; defaultGroupSequence = new ArrayList&lt;Class&lt;?&gt;&gt;();
+        defaultGroupSequence.add( RentalCar.class );
+        if ( car != null &amp;&amp; !car.isRented() ) {
+            defaultGroupSequence.add( CarChecks.class );
+        }
+        return defaultGroupSequence;
+    }
+}
+@GroupSequenceProvider(RentalCarGroupSequenceProvider.class)
+public class RentalCar extends Car {
+    @AssertFalse(message = &quot;The car is currently rented out&quot;, groups = RentalChecks.class)
+    private boolean rented;
+    public RentalCar(String manufacturer, String licencePlate, int seatCount) {
+        super( manufacturer, licencePlate, seatCount );
+    }
+    public boolean isRented() {
+        return rented;
+    }
+    public void setRented(boolean rented) {
+        this.rented = rented;
+    }
+}
+</code></pre>
+<h2 id="分组转换"><a class="header" href="#分组转换">分组转换</a></h2>
+<p>如果你想把与汽车相关的检查和驾驶员检查一起验证呢？当然，您可以显式地指定验证多个组，但是如果您希望将这些验证作为默认组验证的一部分进行，该怎么办？这里@ConvertGroup 开始使用，它允许您在级联验证期间使用与最初请求的组不同的组。</p>
+<p>在可以使用 @Valid 的任何地方，都能定义分组转换，也可以在同一个元素上定义多个分组转换
+必须满足以下限制：</p>
+<ul>
+<li>@ConvertGroup 只能与 @Valid 结合使用。如果不是，则抛出 ConstraintDeclarationException。</li>
+<li>在同一元素上有多个 from 值相同的转换规则是不合法的。在这种情况下，将抛出 ConstraintDeclarationException。</li>
+<li>from 属性不能引用分组序列。在这种情况下会抛出 ConstraintDeclarationException</li>
+</ul>
+<pre><code class="language-java">// 当 driver 为 null 时，不会级联验证，使用的是默认分组，当级联验证时，使用的是 DriverChecks 分组 @Valid @ConvertGroup(from = Default.class, to = DriverChecks.class) private Driver driver;
+</code></pre>
+<h1 id="全局异常处理"><a class="header" href="#全局异常处理">全局异常处理</a></h1>
+<h2 id="引包"><a class="header" href="#引包"><strong>引包</strong></a></h2>
+<pre><code class="language-xml">    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<h2 id="全局异常处理-1"><a class="header" href="#全局异常处理-1"><strong>全局异常处理</strong></a></h2>
+<pre><code class="language-java">@ControllerAdvice
+public class WebExceptionHandler {
+　　 //处理Get请求中 使用@Valid 验证路径中请求实体校验失败后抛出的异常，详情继续往下看代码
+    @ExceptionHandler(BindException.class)
+    @ResponseBody
+    public ResponseVO BindExceptionHandler(BindException e) {
+        String message = e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining());
+        return new ResponseVO(message);
+    }
+
+    //处理请求参数格式错误 @RequestParam上validate失败后抛出的异常是javax.validation.ConstraintViolationException
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseBody
+    public ResponseVO ConstraintViolationExceptionHandler(ConstraintViolationException e) {
+        String message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining());
+        return new ResponseVO(message);
+    }
+
+    //处理请求参数格式错误 @RequestBody上validate失败后抛出的异常是MethodArgumentNotValidException异常。
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public ResponseVO MethodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
+        String message = e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining());
+        return new ResponseVO(message);
+    }
+}
+</code></pre>
+<p><strong>多异常统一处理</strong></p>
+<pre><code class="language-java">// @RestControllerAdvice
+
+    /*  数据校验处理 */
+    @ExceptionHandler({BindException.class, ConstraintViolationException.class})
+    public String validatorExceptionHandler(Exception e) {
+        String msg = e instanceof BindException ? msgConvertor(((BindException) e).getBindingResult())
+            : msgConvertor(((ConstraintViolationException) e).getConstraintViolations());
+
+        return msg;
+    }
+
+    /**
+     * 校验消息转换拼接
+     *
+     * @param bindingResult
+     * @return
+     */
+    public static String msgConvertor(BindingResult bindingResult) {
+        List&lt;FieldError&gt; fieldErrors = bindingResult.getFieldErrors();
+        StringBuilder sb = new StringBuilder();
+        fieldErrors.forEach(fieldError -&gt; sb.append(fieldError.getDefaultMessage()).append(&quot;,&quot;));
+
+        return sb.deleteCharAt(sb.length() - 1).toString().toLowerCase();
+    }
+
+    private String msgConvertor(Set&lt;ConstraintViolation&lt;?&gt;&gt; constraintViolations) {
+        StringBuilder sb = new StringBuilder();
+        constraintViolations.forEach(violation -&gt; sb.append(violation.getMessage()).append(&quot;,&quot;));
+
+        return sb.deleteCharAt(sb.length() - 1).toString().toLowerCase();
+    }
+
+</code></pre>
+<h1 id="嵌套对象的校验"><a class="header" href="#嵌套对象的校验">嵌套对象的校验</a></h1>
+<pre><code class="language-java">@Setter
+@Getter
+public class BuyFlowerRequest {
+
+    @NotEmpty(field = &quot;花名&quot;)
+    private String name;
+
+    @Min(field = &quot;价格&quot;, value = 1)
+    private int price;
+
+    @NotNull
+    private List&lt;PayType&gt; payTypeList;
+
+} 
+
+@Setter
+@Getter
+public class PayType {
+
+    @Valid
+    @Min(value = 1)
+    private int payType;
+
+    @Valid
+    @Min(value = 1)
+    private int payAmount;
+
+}
+</code></pre>
+<h1 id="三种校验方式"><a class="header" href="#三种校验方式">三种校验方式</a></h1>
+<h2 id="全局异常处理-2"><a class="header" href="#全局异常处理-2">全局异常处理</a></h2>
+<p>在Controller方法参数前加@Valid注解——校验不通过时直接抛异常</p>
+<h2 id="用户自行判断并处理"><a class="header" href="#用户自行判断并处理">用户自行判断并处理</a></h2>
+<p>在Controller方法参数前加@Valid注解，参数后面定义一个BindingResult类型参数——执行时会将校验结果放进bindingResult里面，用户自行判断并处理</p>
+<pre><code class="language-java">@PostMapping(&quot;/test2&quot;)
+	public Object test2(@RequestBody @Valid User user, BindingResult bindingResult) {
+		// 参数校验
+		if (bindingResult.hasErrors()) {
+			String messages = bindingResult.getAllErrors()
+				.stream()
+				.map(ObjectError::getDefaultMessage)
+				.reduce((m1, m2) -&gt; m1 + &quot;；&quot; + m2)
+				.orElse(&quot;参数输入有误！&quot;);
+			throw new IllegalArgumentException(messages);
+		}
+		return &quot;操作成功！&quot;;
+
+
+	}
+</code></pre>
+<h5 id="bindingresult-的使用"><a class="header" href="#bindingresult-的使用">BindingResult 的使用</a></h5>
+<p><code>BindingResult</code>必须跟在被校验参数之后,若被校验参数之后没有<code>BindingResult</code>对象，将会抛出<code>BindException</code>。</p>
+<h2 id="手动验证"><a class="header" href="#手动验证">手动验证</a></h2>
+<p>用户手动调用对应API执行校验——Validation.buildDefault ValidatorFactory().getValidator().validate(xxx)</p>
+<pre><code class="language-java">    /**
+ * 用户手动调用对应API执行校验
+ * @param user
+ * @return
+ */
+@PostMapping(&quot;/test3&quot;)
+public Object test3(@RequestBody User user) {
+	// 参数校验
+	validate(user);
+	
+	return &quot;操作成功！&quot;;
+}
+ 
+private void validate(@Valid User user) {
+	Set&lt;ConstraintViolation&lt;@Valid User&gt;&gt; validateSet = Validation.buildDefaultValidatorFactory()
+			.getValidator()
+			.validate(user, new Class[0]);
+		if (!CollectionUtils.isEmpty(validateSet)) {
+			String messages = validateSet.stream()
+				.map(ConstraintViolation::getMessage)
+				.reduce((m1, m2) -&gt; m1 + &quot;；&quot; + m2)
+				.orElse(&quot;参数输入有误！&quot;);
+			throw new IllegalArgumentException(messages);
+			
+		}
+}
+</code></pre>
+<p><strong>获取Validtor对象</strong></p>
+<pre><code class="language-java">import org.hibernate.validator.HibernateValidator;
+import org.springframework.util.ClassUtils;
+import org.springframework.validation.BindException;
+import org.springframework.validation.DataBinder;
+import org.springframework.validation.SmartValidator;
+import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import java.util.Set;
+
+/**
+ * hibernate-validator校验工具类
+ */
+public class ValidatorUtils {
+    private static Validator validator;
+    private static SmartValidator validatorAdapter;
+
+    static {
+        // 快速返回模式
+        validator = Validation.byProvider(HibernateValidator.class)
+            .configure()
+            .failFast(true)
+            .buildValidatorFactory()
+            .getValidator();
+    }
+
+    public static Validator getValidator() {
+        return validator;
+    }
+
+    private static SmartValidator getValidatorAdapter(Validator validator) {
+        if (validatorAdapter == null) {
+            validatorAdapter = new SpringValidatorAdapter(validator);
+        }
+        return validatorAdapter;
+    }
+
+    /**
+     * 校验参数，用于普通参数校验 [未测试！]
+     *
+     * @param
+     */
+    public static void validateParams(Object... params) {
+        Set&lt;ConstraintViolation&lt;Object&gt;&gt; constraintViolationSet = validator.validate(params);
+
+        if (!constraintViolationSet.isEmpty()) {
+            throw new ConstraintViolationException(constraintViolationSet);
+        }
+    }
+
+    /**
+     * 校验对象
+     *
+     * @param object
+     * @param groups
+     * @param &lt;T&gt;
+     */
+    public static &lt;T&gt; void validate(T object, Class&lt;?&gt;... groups) {
+        Set&lt;ConstraintViolation&lt;T&gt;&gt; constraintViolationSet = validator.validate(object, groups);
+
+        if (!constraintViolationSet.isEmpty()) {
+            throw new ConstraintViolationException(constraintViolationSet);
+        }
+    }
+
+    /**
+     * 校验对象
+     * 使用与 Spring 集成的校验方式。
+     * 
+     * @param object 待校验对象
+     * @param groups 待校验的组
+     * @throws BindException
+     */
+    public static &lt;T&gt; void validateBySpring(T object, Class&lt;?&gt;... groups)
+        throws BindException {
+        DataBinder dataBinder = getBinder(object);
+        dataBinder.validate((Object[]) groups);
+
+        if (dataBinder.getBindingResult().hasErrors()) {
+            throw new BindException(dataBinder.getBindingResult());
+        }
+    }
+
+    private static &lt;T&gt; DataBinder getBinder(T object) {
+        DataBinder dataBinder = new DataBinder(object, ClassUtils.getShortName(object.getClass()));
+        dataBinder.setValidator(getValidatorAdapter(validator));
+        return dataBinder;
+    }
+
+}
+</code></pre>
+<h1 id="快速失败"><a class="header" href="#快速失败">快速失败</a></h1>
+<p><strong>校验完后不继续校验</strong></p>
+<pre><code class="language-java">@Configuration
+public class WebConfig {
+    @Bean
+    public Validator validator() {
+        ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)
+                .configure()
+                //failFast的意思只要出现校验失败的情况，就立即结束校验，不再进行后续的校验。
+                .failFast(true)
+                .buildValidatorFactory();
+
+        return validatorFactory.getValidator();
+    }
+
+    @Bean
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
+        MethodValidationPostProcessor methodValidationPostProcessor = new MethodValidationPostProcessor();
+        methodValidationPostProcessor.setValidator(validator());
+        return methodValidationPostProcessor;
+    }
+}
+</code></pre>
+<h1 id="绑定多个校验对象"><a class="header" href="#绑定多个校验对象">绑定多个校验对象</a></h1>
+<pre><code class="language-java">@PostMapping(&quot;save&quot;)
+public void v1(@RequestBody @Valid AppUser appUser,BindingResult result,@RequestBody @Valid AppUser appUser2,BindingResult result2){
+      if(result.hasErrors()){
+            for (ObjectError error : result.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+        }
+}
+</code></pre>
+<h1 id="message属性国际化"><a class="header" href="#message属性国际化">message属性国际化</a></h1>
+<h2 id="指定properties"><a class="header" href="#指定properties">指定properties</a></h2>
+<p><code>message</code>中填写国际化消息的<code>code</code>，在抛出异常时根据<code>code</code>处理一下就好了。</p>
+<pre><code class="language-java">    @GetMapping(&quot;/room&quot;)
+    @Validated
+    public String validator(@NotNull(message = &quot;demo.message.notnull&quot;) String name) {
+        if (result.hasErrors()) {
+            return result.getFieldError().getDefaultMessage();
+        }
+        return &quot;ok&quot;;
+    }
+</code></pre>
+<p>idea乱码 勾选 <em>transparent native-to-ascii conversion</em></p>
+<p><strong>在/resources的根目录下添加上ValidationMessages.properties文件</strong></p>
+<p>​	国际化配置文件必须放在classpath的根目录下，即src/java/resources的根目录下。
+国际化配置文件必须以ValidationMessages开头，比如ValidationMessages.properties 或者 ValidationMessages_en.properties。</p>
+<h2 id="自定义properties文件"><a class="header" href="#自定义properties文件">自定义properties文件</a></h2>
+<p>重写LocalValidatorFactoryBean</p>
+<pre><code class="language-java">@Configuration
+public class ValidatorConfiguration extends WebMvcConfigurationSupport {
+    @Autowired
+    private MessageSource messageSource;
+
+    @Override
+    public Validator getValidator() {
+        return validator();
+    }
+
+    @Bean
+    public Validator validator() {
+        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setValidationMessageSource(messageSource);
+        return validator;
+    }
+}
+</code></pre>
+<h1 id="自定义validtor"><a class="header" href="#自定义validtor">自定义validtor</a></h1>
+<h2 id="bean-validation-注解规范"><a class="header" href="#bean-validation-注解规范">Bean Validation 注解规范</a></h2>
+<p><code>Bean Validation API</code> 规范要求任何约束注解定义以下要求：</p>
+<p>一个 <code>message</code> 属性：在违反约束的情况下返回一个默认 key 以用于创建错误消息</p>
+<p>一个 <code>groups</code> 属性：允许指定此约束所属的验证分组。必须默认是一个空 Class 数组</p>
+<p>一个 <code>payload</code> 属性：能被 Bean Validation API 客户端使用，以自定义一个注解的 payload 对象。API 本身不使用此属性。自定义 payload 可以是用来定义严重程度。如下：</p>
+<pre><code class="language-java">public class Severity{
+  public interface Info extends Payload{}
+  public interface Error extends Payload{}
+}
+public class ContactDetails{
+  @NotNull(message=&quot;名字必填&quot;, payload=Severity.Error.class)
+  private String name;
+  
+  @NotNull(message=&quot;手机号没有指定，但不是必填项&quot;, payload=Severity.Info.class)
+  private String phoneNumber;
+}
+</code></pre>
+<p>然后客户端在 ContactDetails 实例验证之后，可以通过 <code>ConstraintViolation.getConstraintDescriptor().getPayload()</code> 获取 severity ，然后根据 severity 调整其行为。</p>
+<p>此外，约束注解上还修饰了一些元注解：</p>
+<ul>
+<li>@Target：指定此注解支持的元素类型，比如：FIELD（属性）、METHOD（方法）等</li>
+<li>@Rentention(RUNTIME)：指定此类型的注解将在运行时通过反射方式可用</li>
+<li>@Constraint()：标记注解的类型为约束，指定注解所使用的验证器（写验证逻辑的类），如果约束可以用在多种数据类型中，则每种数据类型对应一个验证器。</li>
+<li>@Documented：用此注解会被包含在使用方的 JavaDoc 中</li>
+<li>@Repeatable(List.class)：指示注解可以在相同的位置重复多次，通常具有不同的配置。List 包含注解类型。</li>
+</ul>
+<h2 id="验证器"><a class="header" href="#验证器">验证器</a></h2>
+<h3 id="示例"><a class="header" href="#示例">示例</a></h3>
+<pre><code class="language-java">public class CheckCaseValidator implements ConstraintValidator&lt;CheckCase, String&gt; {
+    private CaseMode caseMode;
+    @Override
+    public void initialize(CheckCase constraintAnnotation) {
+        this.caseMode = constraintAnnotation.value();
+    }
+    @Override
+    public boolean isValid(String object, ConstraintValidatorContext constraintContext) {
+        if ( object == null ) {
+            return true;
+        }
+        if ( caseMode == CaseMode.UPPER ) {
+            return object.equals( object.toUpperCase() );
+        }else {
+            return object.equals( object.toLowerCase() );
+        }
+    }
+}
+</code></pre>
+<h3 id="constraintvalidator-指定了两个泛型类型"><a class="header" href="#constraintvalidator-指定了两个泛型类型"><strong><code>ConstraintValidator</code> 指定了两个泛型类型：</strong></a></h3>
+<ol>
+<li>第一个是指定需要验证的注解类</li>
+<li>第二个是指定要验证的数据类型，当注解支持多种类型时，就要写多个实现类，并分别指定对应的类型</li>
+</ol>
+<h3 id="需要实现两个方法"><a class="header" href="#需要实现两个方法"><strong>需要实现两个方法</strong>：</a></h3>
+<ul>
+<li><code>initialize()</code> 让你可以获取到使用注解时所指定的参数（可以将它们保存起来以供下一步使用）</li>
+<li><code>isValid()</code> 包含实际的校验逻辑。注意：Bean Validation 规范建议将 null 值视为有效值。如果一个元素 null 不是一个有效值，则应该显示的用 @NotNull 标注。</li>
+</ul>
+<h3 id="isvalid-方法中的-constraintvalidatorcontext-对象参数"><a class="header" href="#isvalid-方法中的-constraintvalidatorcontext-对象参数"><strong>isValid() 方法中的 ConstraintValidatorContext 对象参数：</strong></a></h3>
+<p>当应用指定约束验证器时，提供上下文数据和操作。</p>
+<p>此对象至少有一个 <code>ConstraintViolation</code></p>
+<p><strong>示例</strong></p>
+<p>官方示例展示了禁用默认消息并自定义了一个错误消息提示。</p>
+<pre><code class="language-java">@Override
+public boolean isValid(String object, ConstraintValidatorContext constraintContext) {
+    if ( object == null ) {
+        return true;
+    }
+
+    boolean isValid;
+    if ( caseMode == CaseMode.UPPER ) {
+        isValid = object.equals( object.toUpperCase() );
+    }
+    else {
+        isValid = object.equals( object.toLowerCase() );
+    }
+
+    if ( !isValid ) {
+    // 禁用默认 ConstraintViolation，并自定义一个
+        constraintContext.disableDefaultConstraintViolation();
+        constraintContext.buildConstraintViolationWithTemplate(
+                &quot;{org.hibernate.validator.referenceguide.chapter06.&quot; +
+                &quot;constraintvalidatorcontext.CheckCase.message}&quot;
+        )
+        .addConstraintViolation();
+    }
+
+    return isValid;
+}
+</code></pre>
+<h3 id="传递-payload-参数给验证器"><a class="header" href="#传递-payload-参数给验证器">传递 payload 参数给验证器</a></h3>
+<p><strong>官方示例</strong></p>
+<pre><code class="language-java">HibernateValidatorFactory hibernateValidatorFactory = Validation.byDefaultProvider()
+        .configure()
+        .buildValidatorFactory()
+        .unwrap( HibernateValidatorFactory.class );
+
+Validator validator = hibernateValidatorFactory.usingContext()
+        .constraintValidatorPayload( &quot;US&quot; )
+        .getValidator();
+
+// [...] US specific validation checks
+validator = hibernateValidatorFactory.usingContext()
+        .constraintValidatorPayload( &quot;FR&quot; )
+        .getValidator();
+
+
+public class ZipCodeValidator implements ConstraintValidator&lt;ZipCode, String&gt; {
+
+    public String countryCode;
+
+    @Override
+    public boolean isValid(String object, ConstraintValidatorContext constraintContext) {
+        if ( object == null ) {
+            return true;
+        }
+
+        boolean isValid = false;
+
+        String countryCode = constraintContext
+                .unwrap( HibernateConstraintValidatorContext.class )
+                .getConstraintValidatorPayload( String.class );
+
+        if ( &quot;US&quot;.equals( countryCode ) ) {
+            // checks specific to the United States
+        }
+        else if ( &quot;FR&quot;.equals( countryCode ) ) {
+            // checks specific to France
+        }
+        else {
+            // ...
+        }
+
+        return isValid;
+    }
+}
+</code></pre>
+<h3 id="message"><a class="header" href="#message">message</a></h3>
+<p><strong>当违反约束时，应该用到的消息</strong>
+需要定义一个 <code>ValidationMessages.properties</code>文件，并记录以下内容：</p>
+<pre><code class="language-properties"># org.hibernate.validator.referenceguide.chapter06.CheckCase 是注解 CheckCase 的全类名
+org.hibernate.validator.referenceguide.chapter06.CheckCase.message=Case mode must be {value}.
+</code></pre>
+<h2 id="类级别的约束"><a class="header" href="#类级别的约束">类级别的约束</a></h2>
+<pre><code class="language-java">public class ValidPassengerCountValidator
+        implements ConstraintValidator&lt;ValidPassengerCount, Car&gt; {
+
+    @Override
+    public void initialize(ValidPassengerCount constraintAnnotation) {}
+
+    @Override
+    public boolean isValid(Car car, ConstraintValidatorContext constraintValidatorContext) {
+        if ( car == null ) {
+            return true;
+        }
+        // 用来验证两个属性之间必须满足一种关系
+        // 验证乘客数量不能大于座椅数量
+        boolean isValid = car.getPassengers().size() &lt;= car.getSeatCount();
+
+        if ( !isValid ) {
+            constraintValidatorContext.disableDefaultConstraintViolation();
+            constraintValidatorContext
+                    .buildConstraintViolationWithTemplate( &quot;{my.custom.template}&quot; )
+                    .addPropertyNode( &quot;passengers&quot; ).addConstraintViolation();
+        }
+
+        return isValid;
+    }
+}
+</code></pre>
+<h2 id="组合约束"><a class="header" href="#组合约束">组合约束</a></h2>
+<h3 id="示例-1"><a class="header" href="#示例-1">示例</a></h3>
+<pre><code class="language-java">@NotNull
+@Size(min = 2, max = 14)
+@CheckCase(CaseMode.UPPER)
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, TYPE_USE })
+@Retention(RUNTIME)
+@Constraint(validatedBy = { })
+@Documented
+public @interface ValidLicensePlate {
+    String message() default &quot;{org.hibernate.validator.referenceguide.chapter06.&quot; +
+            &quot;constraintcomposition.ValidLicensePlate.message}&quot;;
+
+    Class&lt;?&gt;[] groups() default { };
+
+    Class&lt;? extends Payload&gt;[] payload() default { };
+}
+</code></pre>
+<h3 id="遇到违反一个约束即返回"><a class="header" href="#遇到违反一个约束即返回">遇到违反一个约束即返回</a></h3>
+<p>一个注解拥有多个注解的功能，而且此组合注解通常不需要再指定验证器。此注解验证之后会得到违反所有约束的集合，如果想违反其中一个约束之后就有对应的违约信息，可以使用 <code>@ReportAsSingleViolation</code></p>
+<pre><code class="language-java">//...
+@ReportAsSingleViolation
+public @interface ValidLicensePlate {
+
+    String message() default &quot;{org.hibernate.validator.referenceguide.chapter06.&quot; +
+            &quot;constraintcomposition.reportassingle.ValidLicensePlate.message}&quot;;
+
+    Class&lt;?&gt;[] groups() default { };
+
+    Class&lt;? extends Payload&gt;[] payload() default { };
+}
+</code></pre>
+<h1 id="示例-2"><a class="header" href="#示例-2">示例</a></h1>
+<h2 id="自定义简单约束"><a class="header" href="#自定义简单约束">自定义简单约束</a></h2>
+<p>三个步骤：</p>
+<ul>
+<li>创建一个约束注解</li>
+<li>实现一个验证器</li>
+<li>定义一个默认的错误消息</li>
+</ul>
+<ol>
+<li>
+<p>定义注解</p>
+<pre><code class="language-java">
+@Target( { ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER })
+@Constraint(validatedBy = { NotNullValidator.class })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NotNull {
+
+    String field() default &quot;&quot;;
+
+    String message() default &quot;{field} can not be null&quot;;
+
+    Class&lt;?&gt;[] groups() default {};
+
+    Class&lt;? extends Payload&gt;[] payload() default {};
+}
+
+</code></pre>
+</li>
+<li>
+<p>定义注解处理类</p>
+<pre><code class="language-java">package com.weisanju.validtortest.common;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+public class NotNullValidator implements ConstraintValidator&lt;NotNull, Object&gt; {
+
+    @Override
+    public void initialize(NotNull annotation) {
+        System.out.println(annotation);
+    }
+
+    @Override
+    public boolean isValid(Object str, ConstraintValidatorContext constraintValidatorContext) {
+        System.out.println(str);
+        return str != null;
+    }
+
+}
+
+</code></pre>
+</li>
+</ol>
+<h1 id="spring-validation实现关键代码"><a class="header" href="#spring-validation实现关键代码">spring validation实现关键代码</a></h1>
+<h2 id="requestbody"><a class="header" href="#requestbody">@<strong>RequestBody</strong></a></h2>
+<pre><code class="language-java">public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    Object arg = this.readWithMessageConverters(webRequest, parameter, parameter.getGenericParameterType());
+    String name = Conventions.getVariableNameForParameter(parameter);
+    WebDataBinder binder = binderFactory.createBinder(webRequest, arg, name);
+    if (arg != null) {
+        this.validateIfApplicable(binder, parameter);
+        if (binder.getBindingResult().hasErrors() &amp;&amp; this.isBindExceptionRequired(binder, parameter)) {
+            throw new MethodArgumentNotValidException(parameter, binder.getBindingResult());
+        }
+    }
+
+    mavContainer.addAttribute(BindingResult.MODEL_KEY_PREFIX + name, binder.getBindingResult());
+    return arg;
+}
+</code></pre>
+<h2 id="modelattibute"><a class="header" href="#modelattibute">@ModelAttibute</a></h2>
+<pre><code class="language-java">public final Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    String name = ModelFactory.getNameForParameter(parameter);
+    Object attribute = mavContainer.containsAttribute(name) ? mavContainer.getModel().get(name) : this.createAttribute(name, parameter, binderFactory, webRequest);
+    if (!mavContainer.isBindingDisabled(name)) {
+        ModelAttribute ann = (ModelAttribute)parameter.getParameterAnnotation(ModelAttribute.class);
+        if (ann != null &amp;&amp; !ann.binding()) {
+            mavContainer.setBindingDisabled(name);
+        }
+    }
+
+    WebDataBinder binder = binderFactory.createBinder(webRequest, attribute, name);
+    if (binder.getTarget() != null) {
+        if (!mavContainer.isBindingDisabled(name)) {
+            this.bindRequestParameters(binder, webRequest);
+        }
+
+        this.validateIfApplicable(binder, parameter);
+        if (binder.getBindingResult().hasErrors() &amp;&amp; this.isBindExceptionRequired(binder, parameter)) {
+            throw new BindException(binder.getBindingResult());
+        }
+    }
+
+    Map&lt;String, Object&gt; bindingResultModel = binder.getBindingResult().getModel();
+    mavContainer.removeAttributes(bindingResultModel);
+    mavContainer.addAllAttributes(bindingResultModel);
+    return binder.convertIfNecessary(binder.getTarget(), parameter.getParameterType(), parameter);
+}
+</code></pre>
+<h2 id="为什么-bindingresult-接收不到简单对象的校验信息"><a class="header" href="#为什么-bindingresult-接收不到简单对象的校验信息">为什么 <code>BindingResult</code> 接收不到简单对象的校验信息？</a></h2>
+<p>注入实体对象时使用<code>ModelAttributeMethodProcessor</code>而注入 String 对象使用<code>AbstractNamedValueMethodArgumentResolver</code></p>
+<p>而正是这个差异导致了<code>BindingResult</code>无法接受到简单对象(简单的入参参数类型)的校验信息。</p>
+<pre><code class="language-java">public final Object resolveArgument(MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer,
+            NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception {
+            
+        // bean 参数绑定和校验
+        WebDataBinder binder = binderFactory.createBinder(webRequest, attribute, name);
+        
+        // 参数校验
+        validateIfApplicable(binder, parameter);
+        // 校验结果包含错误，并且该对象后不存在 BindingResult 对象，就抛出异常
+        if (binder.getBindingResult().hasErrors() &amp;&amp; isBindExceptionRequired(binder, parameter)) {
+            throw new BindException(binder.getBindingResult());
+        }
+
+        // 在对象后注入 BindingResult 对象
+        Map&lt;String, Object&gt; bindingResultModel = bindingResult.getModel();
+        mavContainer.removeAttributes(bindingResultModel);
+        mavContainer.addAllAttributes(bindingResultModel);
+    }
+</code></pre>
+<pre><code class="language-java">    // HandlerMethodArgumentResolverComposite.class
+    public Object resolveArgument(MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer,
+            NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception {
+        // 获取 parameter 参数的解析器
+        HandlerMethodArgumentResolver resolver = getArgumentResolver(parameter);
+        // 调用解析器获取参数
+        return resolver.resolveArgument(parameter, mavContainer, webRequest, binderFactory);
+    }
+    
+    // 获取 parameter 参数的解析器
+    private HandlerMethodArgumentResolver getArgumentResolver(MethodParameter parameter) {
+        // 从缓存中获取参数对应的解析器
+        HandlerMethodArgumentResolver result = this.argumentResolverCache.get(parameter);
+        for (HandlerMethodArgumentResolver methodArgumentResolver : this.argumentResolvers) {
+            // 解析器是否支持该参数类型
+            if (methodArgumentResolver.supportsParameter(parameter)) {
+                result = methodArgumentResolver;
+                this.argumentResolverCache.put(parameter, result);
+                break;
+            }
+        }
+        return result;
+    }
+</code></pre>
+<p><strong>简单参数类型检验</strong></p>
+<pre><code class="language-java">// MethodValidationInterceptor.class
+
+public Object invoke(MethodInvocation invocation) throws Throwable {
+        ExecutableValidator execVal = this.validator.forExecutables();
+        // 校验参数
+        try {
+            result = execVal.validateParameters(
+                    invocation.getThis(), methodToValidate, invocation.getArguments(), groups);
+        }
+        catch (IllegalArgumentException ex) {
+            // 解决参数错误异常、再次校验
+            methodToValidate = BridgeMethodResolver.findBridgedMethod(
+                    ClassUtils.getMostSpecificMethod(invocation.getMethod(), invocation.getThis().getClass()));
+            result = execVal.validateParameters(
+                    invocation.getThis(), methodToValidate, invocation.getArguments(), groups);
+        }
+        if (!result.isEmpty()) {
+            throw new ConstraintViolationException(result);
+        }
+        
+        // 执行结果
+        Object returnValue = invocation.proceed();
+        
+        // 校验返回值
+        result = execVal.validateReturnValue(invocation.getThis(), methodToValidate, returnValue, groups);
+        if (!result.isEmpty()) {
+            throw new ConstraintViolationException(result);
+        }
+
+        return returnValue;
+    }
+</code></pre>
+<script src="/note/java/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note/java/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note/java/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="java基础"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../3.java基础_函数式编程/流操作.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../5.java基础_多线程与锁/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../3.java基础_函数式编程/流操作.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../5.java基础_多线程与锁/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
+        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
+        <script src="/note/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
