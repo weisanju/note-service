@@ -1,0 +1,691 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DNS&amp;DHCP.md - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><a href="../0.html"><strong aria-hidden="true">0.</strong> UML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html"><strong aria-hidden="true">0.0.</strong> UML.md</a></li></ol></li><li class="chapter-item "><a href="../2.html"><strong aria-hidden="true">1.</strong> Flowchart</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">flowchart</li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html"><strong aria-hidden="true">1.2.</strong> fun.md</a></li></ol></li><li class="chapter-item "><a href="../3.html"><strong aria-hidden="true">2.</strong> PlantUml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html"><strong aria-hidden="true">2.0.</strong> plantUML语法.md</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../10.html"><strong aria-hidden="true">3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html"><strong aria-hidden="true">3.0.</strong> CFSBandwidthControl.md</a></li><li class="chapter-item "><a href="../10.Linux/JQ语法.html"><strong aria-hidden="true">3.1.</strong> JQ语法.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html"><strong aria-hidden="true">3.2.</strong> LinuxFor.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxMount.html"><strong aria-hidden="true">3.3.</strong> LinuxMount.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html"><strong aria-hidden="true">3.4.</strong> LinuxWOL设置.md</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html"><strong aria-hidden="true">3.5.</strong> Linux条件测试.md</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html"><strong aria-hidden="true">3.6.</strong> Seed.md</a></li><li class="chapter-item "><a href="../10.Linux/Sort.html"><strong aria-hidden="true">3.7.</strong> Sort.md</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html"><strong aria-hidden="true">3.8.</strong> VIM.md</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html"><strong aria-hidden="true">3.9.</strong> caseIn.md</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html"><strong aria-hidden="true">3.10.</strong> cgroup.md</a></li><li class="chapter-item "><a href="../10.Linux/curl.html"><strong aria-hidden="true">3.11.</strong> curl.md</a></li><li class="chapter-item "><a href="../10.Linux/dd.html"><strong aria-hidden="true">3.12.</strong> dd.md</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html"><strong aria-hidden="true">3.13.</strong> diffPatch.md</a></li><li class="chapter-item "><a href="../10.Linux/find.html"><strong aria-hidden="true">3.14.</strong> find.md</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html"><strong aria-hidden="true">3.15.</strong> iptables.md</a></li><li class="chapter-item "><a href="../10.Linux/jq.html"><strong aria-hidden="true">3.16.</strong> jq.md</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html"><strong aria-hidden="true">3.17.</strong> lsof.md</a></li><li class="chapter-item "><a href="../10.Linux/ps.html"><strong aria-hidden="true">3.18.</strong> ps.md</a></li><li class="chapter-item "><a href="../10.Linux/read.html"><strong aria-hidden="true">3.19.</strong> read.md</a></li><li class="chapter-item "><a href="../10.Linux/scp.html"><strong aria-hidden="true">3.20.</strong> scp.md</a></li><li class="chapter-item "><a href="../10.Linux/select.html"><strong aria-hidden="true">3.21.</strong> select.md</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html"><strong aria-hidden="true">3.22.</strong> service脚本.md</a></li><li class="chapter-item "><a href="../10.Linux/set.html"><strong aria-hidden="true">3.23.</strong> set.md</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html"><strong aria-hidden="true">3.24.</strong> shell字符串.md</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html"><strong aria-hidden="true">3.25.</strong> shell脚本参数.md</a></li><li class="chapter-item "><a href="../10.Linux/stat.html"><strong aria-hidden="true">3.26.</strong> stat.md</a></li><li class="chapter-item "><a href="../10.Linux/tar.html"><strong aria-hidden="true">3.27.</strong> tar.md</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html"><strong aria-hidden="true">3.28.</strong> top命令.md</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html"><strong aria-hidden="true">3.29.</strong> uidGidSetUidSetGid.md</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html"><strong aria-hidden="true">3.30.</strong> wsl关闭提示音.md</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html"><strong aria-hidden="true">3.31.</strong> yum本地包依赖.md</a></li><li class="chapter-item "><a href="../10.Linux/内存管理.html"><strong aria-hidden="true">3.32.</strong> 内存管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/内存管理/RSS与VSZ.html"><strong aria-hidden="true">3.32.0.</strong> RSS与VSZ.md</a></li></ol></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html"><strong aria-hidden="true">3.33.</strong> 大端与小端.md</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html"><strong aria-hidden="true">3.34.</strong> 确定Linux发行版本.md</a></li><li class="chapter-item "><a href="../10.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">3.35.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html"><strong aria-hidden="true">3.36.</strong> 零拷贝.md</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html"><strong aria-hidden="true">3.37.</strong> 默认值语法糖.md</a></li></ol></li><li class="chapter-item expanded "><a href="../16.html"><strong aria-hidden="true">4.</strong> 杂项</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../16.杂项/DNS&DHCP.html" class="active"><strong aria-hidden="true">4.0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="../16.杂项/Linux烧录镜像.html"><strong aria-hidden="true">4.1.</strong> Linux烧录镜像.md</a></li><li class="chapter-item "><a href="../16.杂项/SSH代理.html"><strong aria-hidden="true">4.2.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="../16.杂项/在线FireFox.html"><strong aria-hidden="true">4.3.</strong> 在线FireFox.md</a></li></ol></li><li class="chapter-item "><a href="../17.html"><strong aria-hidden="true">5.</strong> OpenWrt</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../17.OpenWrt/DHCP.html"><strong aria-hidden="true">5.0.</strong> DHCP.md</a></li><li class="chapter-item "><a href="../17.OpenWrt/UCI.html"><strong aria-hidden="true">5.1.</strong> UCI.md</a></li></ol></li><li class="chapter-item "><a href="../5.html"><strong aria-hidden="true">6.</strong> 常用软件</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/MakeFile.html"><strong aria-hidden="true">6.0.</strong> MakeFile.md</a></li><li class="chapter-item "><a href="../5.常用软件/MdBook.html"><strong aria-hidden="true">6.1.</strong> MdBook.md</a></li><li class="chapter-item "><a href="../5.常用软件/Multipass.html"><strong aria-hidden="true">6.2.</strong> Multipass.md</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html"><strong aria-hidden="true">6.3.</strong> v2rayN代理.md</a></li></ol></li><li class="chapter-item "><a href="../6.html"><strong aria-hidden="true">7.</strong> 生活事宜</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html"><strong aria-hidden="true">7.0.</strong> 个人清算汇缴.md</a></li></ol></li><li class="chapter-item "><a href="../8.html"><strong aria-hidden="true">8.</strong> 学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html"><strong aria-hidden="true">8.0.</strong> 概率论与数理统计.md</a></li></ol></li><li class="chapter-item "><a href="../9.html"><strong aria-hidden="true">9.</strong> 数据格式</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/README.html"><strong aria-hidden="true">9.0.</strong> JSON</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/JsonSchema.html"><strong aria-hidden="true">9.0.0.</strong> JsonSchema.md</a></li></ol></li><li class="chapter-item "><a href="../9.数据格式/XML.html"><strong aria-hidden="true">9.1.</strong> XML.md</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html"><strong aria-hidden="true">9.2.</strong> yaml.md</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/README.html"><strong aria-hidden="true">10.</strong> algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html"><strong aria-hidden="true">10.0.</strong> Base64编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html"><strong aria-hidden="true">10.1.</strong> Huffman编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html"><strong aria-hidden="true">10.2.</strong> fnv-hash算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html"><strong aria-hidden="true">10.3.</strong> 二叉搜索平衡树.md</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html"><strong aria-hidden="true">10.4.</strong> 位运算.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html"><strong aria-hidden="true">10.5.</strong> 动态规划-新.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html"><strong aria-hidden="true">10.6.</strong> 动态规划.md</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html"><strong aria-hidden="true">10.7.</strong> 字符编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html"><strong aria-hidden="true">10.8.</strong> 布隆过滤器.md</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html"><strong aria-hidden="true">10.9.</strong> 浮点数.md</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html"><strong aria-hidden="true">10.10.</strong> 红黑树.md</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html"><strong aria-hidden="true">10.11.</strong> 贪心算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html"><strong aria-hidden="true">10.12.</strong> 逆波兰表达式.md</a></li></ol></li><li class="chapter-item "><a href="../15.音频/README.html"><strong aria-hidden="true">11.</strong> 音频</a></li><li class="chapter-item "><a href="../12.AutoHotKey/README.html"><strong aria-hidden="true">12.</strong> AutoHotKey</a></li><li class="chapter-item "><a href="../7.思考/README.html"><strong aria-hidden="true">13.</strong> 思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html"><strong aria-hidden="true">13.0.</strong> 学习总结.md</a></li><li class="chapter-item "><a href="../7.思考/杂项.html"><strong aria-hidden="true">13.1.</strong> 杂项.md</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html"><strong aria-hidden="true">13.2.</strong> 编程技巧.md</a></li></ol></li><li class="chapter-item "><a href="../13.espanso/README.html"><strong aria-hidden="true">14.</strong> espanso</a></li><li class="chapter-item "><a href="../4.模板引擎/README.html"><strong aria-hidden="true">15.</strong> 模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/README.html"><strong aria-hidden="true">15.0.</strong> mustache</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/README.html"><strong aria-hidden="true">16.</strong> 驾照理论学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/README.html"><strong aria-hidden="true">16.0.</strong> 道路交通安全法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/1.总则.html"><strong aria-hidden="true">16.0.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/10.交通事故处理.html"><strong aria-hidden="true">16.0.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/11.执法监督.html"><strong aria-hidden="true">16.0.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/12.法律责任.html"><strong aria-hidden="true">16.0.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/13.附则.html"><strong aria-hidden="true">16.0.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/2.车辆和驾驶人-1.机动车&非机动车.html"><strong aria-hidden="true">16.0.5.</strong> 车辆和驾驶人-1.机动车&非机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/3.车辆和驾驶人-2.机动车驾驶人.html"><strong aria-hidden="true">16.0.6.</strong> 车辆和驾驶人-2.机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/4.道路通行条件.html"><strong aria-hidden="true">16.0.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.0.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.0.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.0.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/8.道路通行规定-行人和乘车通行规定.html"><strong aria-hidden="true">16.0.11.</strong> 道路通行规定-行人和乘车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/9.道路通行规定-高速公路特别规定.html"><strong aria-hidden="true">16.0.12.</strong> 道路通行规定-高速公路特别规定.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/地址类.html"><strong aria-hidden="true">16.1.</strong> 地址类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/学习盲点.html"><strong aria-hidden="true">16.2.</strong> 学习盲点.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/惩罚类.html"><strong aria-hidden="true">16.3.</strong> 惩罚类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/扣分类.html"><strong aria-hidden="true">16.4.</strong> 扣分类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/时间类.html"><strong aria-hidden="true">16.5.</strong> 时间类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定.html"><strong aria-hidden="true">16.6.</strong> 机动车驾驶证申领和使用规定</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定/1.总则.html"><strong aria-hidden="true">16.6.0.</strong> 总则.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/知乎笔记学习.html"><strong aria-hidden="true">16.7.</strong> 知乎笔记学习.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/英文缩写.html"><strong aria-hidden="true">16.8.</strong> 英文缩写.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/速度类.html"><strong aria-hidden="true">16.9.</strong> 速度类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例.html"><strong aria-hidden="true">16.10.</strong> 道路交通安全法实施条例</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/1.总则.html"><strong aria-hidden="true">16.10.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/10.交通事故处理.html"><strong aria-hidden="true">16.10.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/11.执法监督.html"><strong aria-hidden="true">16.10.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/12.法律责任.html"><strong aria-hidden="true">16.10.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/13.附则.html"><strong aria-hidden="true">16.10.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/2.车辆和驾驶人-机动车.html"><strong aria-hidden="true">16.10.5.</strong> 车辆和驾驶人-机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/3.车辆和驾驶人-机动车驾驶人.html"><strong aria-hidden="true">16.10.6.</strong> 车辆和驾驶人-机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/4.道路通行条件.html"><strong aria-hidden="true">16.10.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.10.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.10.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.10.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/8.道路通行规定-行人和乘车规定.html"><strong aria-hidden="true">16.10.11.</strong> 道路通行规定-行人和乘车规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/9.道路通行规定-高速公路的特别规定.html"><strong aria-hidden="true">16.10.12.</strong> 道路通行规定-高速公路的特别规定.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/README.html"><strong aria-hidden="true">17.</strong> MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/ER图.html"><strong aria-hidden="true">17.0.</strong> ER图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html"><strong aria-hidden="true">17.1.</strong> 时序图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html"><strong aria-hidden="true">17.2.</strong> 流程图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html"><strong aria-hidden="true">17.3.</strong> 类图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html"><strong aria-hidden="true">17.4.</strong> 语法总览.md</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="dns配置"><a class="header" href="#dns配置">DNS配置</a></h2>
+<h3 id="etchosts"><a class="header" href="#etchosts">/etc/hosts</a></h3>
+<p>在Linux系统，主机配置文件为/etc/hosts，这是主机名的静态查找表。这个文件是简单的文本文件，用于保存主机名称和IP之间对应关系。
+其格式为一个 IP 地址占用一行， 每一个主机关联一个IP地址（各个域之间用空格或制表字符分开）。格式如下：
+127.0.0.1 localhost [aliases...]</p>
+<h3 id="etchosts文件的作用"><a class="header" href="#etchosts文件的作用">/etc/hosts文件的作用</a></h3>
+<ol>
+<li>
+<p>包含本地网络上的信息主机信息表</p>
+</li>
+<li>
+<p>DNS 输入：使用主机表作为 DNS 服务主机数据库的输入，或 者使用主机表作为备用配置。</p>
+</li>
+<li>
+<p>加快域名解析，节省网络流量
+hosts 文件在主机上配置具有加快域名解析的作用， 对于经常访问的网站和主机，我们可以在 hosts 文件中配置域名和 IP 的对应关系。由于有 了映射关系，当我们访问域名时，可以直接从 hosts 文件中解析得出，而不用访问网络上 的域名服务器，不用消耗网络流量。</p>
+</li>
+<li>
+<p>屏蔽网站（域名重定向）
+屏蔽广告网站，有很多网站带有广告，但广告和网站 本身域名不同，因此如果能屏蔽一些众所周知的广告网站域名，这样我们利用 hosts 把这 些广告的网站的域名映射到本机 IP 或非法目的 IP，这样就不会看到这些广告图片了,也不 会浪费网络流量。</p>
+</li>
+<li>
+<p>防止 DNS 污染和 DNS 劫持</p>
+<ol>
+<li>DNS 劫持就是攻破了 DNS 服务器防护，从而获得 域名解析记录的控制权，进而修改域名解析的结果。这将导致对原始域名的访问转到另外 的 IP 地址。</li>
+<li>DNS 污染是因为 DNS 查询没有任何认证机制，而且 DNS 查询通常采用的 UDP 是无 连接不可靠的协议，因此 DNS 的查询非常容易被篡改：通过对 UDP 端口 53 上的 DNS 查 询报文进行分析，一旦发现与关键词相匹配的请求则立即伪装成目标域名的解析服务器给 查询者返回虚假结果。</li>
+<li>如果我们已知服务器的 IP 地址，就可以在 hosts 文件中设置正确的 IP 地址，从而避 免 DNS 劫持和污染。</li>
+</ol>
+</li>
+</ol>
+<h3 id="广域网上的dns"><a class="header" href="#广域网上的dns">广域网上的DNS</a></h3>
+<ol>
+<li>在因特网中，主机地址非常庞大，并且主 机的IP地址经常改变，因此使用域名系统 DNS 代替主机系统。</li>
+<li>DNS 可以被视为一种用于 TCP/IP 应用程序的分布式数据库，它提供主机名字和 IP 地址间的相互转换</li>
+<li>这里提到的分布式是指在因特网上的单个站点不能拥有所有的信息</li>
+<li>每个站点（如大学中的系、校园、公司或公司的部门）保留它自己的信息数据库，并运行一 个服务器程序供因特网上的其他系统查询。</li>
+</ol>
+<h3 id="域名结构"><a class="header" href="#域名结构">域名结构</a></h3>
+<ul>
+<li>未命名跟节点
+<ul>
+<li>net</li>
+</ul>
+<ul>
+<li>bjbook
+<ul>
+<li>www</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>com</li>
+</ul>
+<ul>
+<li>cctv</li>
+</ul>
+<ul>
+<li>gov</li>
+<li>org</li>
+<li>openwrt
+www
+dev
+wiki</li>
+<li>ietf</li>
+<li>cn、sg、us</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>其最顶端有一个未命名的根节点，然后其下分为几个基本类别名称（称 为顶层域名），例如 com、org、net 和 gov 等 3字符域名，还有 cn、sg、jp 和 us 等两个字 符国家地区域名。</li>
+<li>每个节点有一个至多 63 个字符长的标识，域名总长度则不能超过 253 个字符。</li>
+<li>命名标识中不区分大写和小写。</li>
+<li>命名树上任何一个节点的域名就是将从该节点到 最高层的域名串连起来，中间使用一个点“.”分隔这些节点。例如，一个完整的域名为 www.bjbook.net。</li>
+<li>域名树中的每个节点必须有一个唯一的名称，但域名树中的不同层级节 点可使用相同的标识，只要在不同的父节点下即可。</li>
+</ol>
+<h3 id="dns报文格式"><a class="header" href="#dns报文格式">DNS报文格式</a></h3>
+<ol>
+<li>DNS默认使用TCP和UDP端口53。CS模型。DNS的请求和应答封装在UDP报文中。</li>
+<li></li>
+</ol>
+<p>| 会话标识                          | flags                    |
+| 问题数目(2字节)                   | 回答资源记录数(2字节)        |
+| 授权资源记录数(2字节)             | 额外资源记录数(2字节)         |
+|                   问题（可变长度）              |
+|            回答资源记录（可变长度）            |
+|           授权资源记录 （可变长度）          |
+|           附加信息资源 （可变长度）           |</p>
+<h4 id="会话标识"><a class="header" href="#会话标识">会话标识</a></h4>
+<p>报文头部的会话标识字段由客户端生成随机值填充并由服务器原样 返回。客户端通过该字段来匹配请求和响应。</p>
+<h4 id="flags"><a class="header" href="#flags">flags</a></h4>
+<p>flags部分非常复杂
+- 如果是请求一般为0x0100。
+- 如果为响应，通常有两种情况：
+- 0x8182表示服务器失败；
+- 0x8180表示服务器 成功响应。</p>
+<p>问题数目、回答资源记录数、授权资源记录数目、额外资源记录数目
+对于查询报文，问题数目通常是1，而其他3项则均为0。对于应答报文，问题数目还是1，回答数至少是1。</p>
+<h4 id="问题"><a class="header" href="#问题">问题</a></h4>
+<ol>
+<li>
+<p>问题部分中每个问题的格式由3部分顺序组成：</p>
+<ul>
+<li>查询内容</li>
+<li>类型（Type）</li>
+<li>类（Class）。 类型和类均为固定的两个字节长度。</li>
+</ul>
+</li>
+<li>
+<p>查询内容长度不定，它是一个或多个标识符的序列。每个标识符以首字节的计数值来 说明随后字符串的字节长度，每个名字的最后字节为 0 表示结束。计数字节的值必须是 0～ 63 的数字，因为标识符的最大长度为 63。高位字节为二进制 11000000 时，用于压缩格式，指向 报文的查询字符串位置，字符串位置是从 DNS 报文头部开始计算的。</p>
+</li>
+</ol>
+<h4 id="回答资源记录授权资源记录附加信息资源记录"><a class="header" href="#回答资源记录授权资源记录附加信息资源记录">回答资源记录、授权资源记录、附加信息资源记录</a></h4>
+<ol>
+<li>DNS 报文中最后 3 个字段分别为回答字段、授权字段和附加信息字段，均采用资源记录（Resource Record，RR）格式</li>
+<li>资源记录格式内容顺序包含   域名、类型、类、生存时间、数据长度和数据6部分。
+<ol>
+<li>Name:域名是记录中资源数据对应的名字</li>
+<li>Type: 与问题域内容格式相同</li>
+<li>Class: 与问题域内容格式相同</li>
+<li>TimeToLive: 生存时间字段占4个字节，是客户程序保留该资源记录的 秒数</li>
+<li>DataLength: 数据长度字段占2个字节，指明资源数据的长度</li>
+<li>Address: 数据字段占4个字节，指明资源数据的内容。数据部分的格式依赖于类型字段的值</li>
+</ol>
+</li>
+</ol>
+<h3 id="域名解析过程"><a class="header" href="#域名解析过程">域名解析过程</a></h3>
+<p>client -&gt; 
+/etc/hosts -&gt; 
+/etc/resolv.conf 
+-&gt; DNS服务器1、DNS服务器2</p>
+<h4 id="etcresolvconf配置文件"><a class="header" href="#etcresolvconf配置文件">/etc/resolv.conf配置文件</a></h4>
+<p>常见的配置如下:</p>
+<ul>
+<li>
+<p>nameserver: 域名服务器地址。最多可以设置 3 个名字服务器，每一行一个
+将按照列表顺序查询。若第一个域名服务器查询超 时，再顺序查询下面的域名服务器，直到所有的域名服务器都尝试一遍。如果没有域名服务器地址或者这个配置文件不存在，则默认使用本机（127.0.0.1）作为名字服务器 地址</p>
+</li>
+<li>
+<p>domain
+可以使用相对于本地域名的短名来查询。如果域名没有配置，则返回主机名。
+如果域名中不包含点。则认为是短域名。会附加此域名后缀</p>
+</li>
+<li>
+<p>search
+定义短域名时的附加列表。
+假设search参数设置为&quot;example.com, company.com&quot;，系统会按照顺序在这两个域名后面依次进行搜索。首先，系统会尝试解析&quot;webserver.example.com&quot;，如果找到了对应的IP地址，就会进行通信。如果没有找到，系统会继续尝试解析&quot;webserver.company.com&quot;。如果还是没有找到，最终会返回一个域名解析失败的错误。通过这种方式，search参数可以方便地进行域名搜索，省去了每次都要完整输入域名的麻烦。这对于在局域网或企业内部使用的内部域名解析非常有用。</p>
+</li>
+</ul>
+<h2 id="dhcp简介"><a class="header" href="#dhcp简介">DHCP简介</a></h2>
+<ol>
+<li>在 TCP/IP 网络上，每台主机在访问网络及其资源之前，都必须进行基本的网络信息 配置，包含 IP 地址、子网掩码、默认网关和 DNS 等</li>
+<li>在大型网络中，如果每台终端主 机的地址都由不同的使用者来分配，那么就很容易出现地址相同的情况</li>
+<li>对于经常移动 的终端，重新配置可能需要很长时间，并且容易出错，如果 IP 配置错误将会导致不能访问网络。因此需要一种机制来简化主机 IP 地址的配置。动态主机配置协议 DHCP 应运而生。</li>
+<li>采用 DHCP 的好处在于减少了网络管理员和用户的负担。这将可以减少手工配置 IP 地址导致的地址冲突，以及网关地址或 DNS 地址错误导致的不能访问网络等问题。</li>
+</ol>
+<h3 id="dhcp原理"><a class="header" href="#dhcp原理">DHCP原理</a></h3>
+<ol>
+<li>DHCP 服务器拥有一个 IP 地址池，当任何启用 DHCP 的客户机连接到网络时，可 从服务器那里租借一个 IP 地址，不再使用的 IP 地址自动回收到地址池中，供再次分配 使用。</li>
+<li>DHCP 保证同一时刻的任何 IP 地址只能分给一个客户机使用。当 DHCP 客户机重新 启动时，应配置为相同的 IP 地址。在 DHCP 服务器重启的情况下，也应当给每一个客户机分配相同的 IP 地址，并且和手动分配的 IP 地址共存。这要求 DHCP 服务器对已分配的 地址进行保存，并且在客户端不使用时进行回收。</li>
+<li>DHCP 是一种动态地向网络终端提供配置参数的协议。在终端提出申请之后，DHCP 服务器可以向终端提供 IP 地址及子网掩码、网关和 DNS 服务器地址等参数。</li>
+<li>DHCP 协议基于 UDP 协议，客户端的端口号是68，服务器的端口号是67。</li>
+</ol>
+<h3 id="dhcp报文"><a class="header" href="#dhcp报文">DHCP报文</a></h3>
+<ol>
+<li>DHCP的请求和应答封装在UDP报文中。</li>
+<li>IP层在请求 IP 地址时采用链路层广播，链路层广播地址为<code>FF:FF:FF:FF:FF:FF</code></li>
+<li>网络层目的IP使用广播地址255.255.255.255，源地址采用 0.0.0.0，这是因为请求时自身没有 IP 地址，并且不知道服务器的 IP 地址。</li>
+</ol>
+<h3 id="dhcp工作流程"><a class="header" href="#dhcp工作流程">DHCP工作流程</a></h3>
+<ol>
+<li>DHCP 通常由客户端发起广播请求，服务器收到请求后在配置文件中查询，如果符合 要求则向客户端提供服务。
+<ol>
+<li>客户端在以太网上广播“DHCP Discover”报文来发现 DHCP 服务器。</li>
+<li>IP 为 10.0.2.2 的服务器收到广播请求后，向客户端回应请求，发出单播“DHCP Offer”报文，并且目的 IP 为 10.0.2.15。</li>
+<li>客户端再次以广播形式发出“DHCP Request”报文。这是因为客户端可能收到多个服务器“DHCP Offer”报文，客户端会根据报文的内容来选择一个给予响应，采用广播 形式可以让多个服务器均可收到。</li>
+<li>当服务器收到“DHCP Request”报文后，服务器在将客户端的 MAC 地址同分配的IP地址绑定后，将IP信息（IP、掩码、网关地址和 DNS 等）发送给客户机。</li>
+<li>客户机收到“DHCP ACK”报文后，将 IP 信息设置到主机系统上。这时 IP 设置 就完成了，客户机就可使用 IP 来访问网络了。</li>
+</ol>
+</li>
+</ol>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../16.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../16.杂项/Linux烧录镜像.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../16.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../16.杂项/Linux烧录镜像.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

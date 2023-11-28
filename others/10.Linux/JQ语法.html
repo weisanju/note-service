@@ -1,0 +1,1449 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>JQ语法.md - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><a href="../0.html"><strong aria-hidden="true">0.</strong> UML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html"><strong aria-hidden="true">0.0.</strong> UML.md</a></li></ol></li><li class="chapter-item "><a href="../2.html"><strong aria-hidden="true">1.</strong> Flowchart</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">flowchart</li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html"><strong aria-hidden="true">1.2.</strong> fun.md</a></li></ol></li><li class="chapter-item "><a href="../3.html"><strong aria-hidden="true">2.</strong> PlantUml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html"><strong aria-hidden="true">2.0.</strong> plantUML语法.md</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item expanded "><a href="../10.html"><strong aria-hidden="true">3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html"><strong aria-hidden="true">3.0.</strong> CFSBandwidthControl.md</a></li><li class="chapter-item expanded "><a href="../10.Linux/JQ语法.html" class="active"><strong aria-hidden="true">3.1.</strong> JQ语法.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html"><strong aria-hidden="true">3.2.</strong> LinuxFor.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxMount.html"><strong aria-hidden="true">3.3.</strong> LinuxMount.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html"><strong aria-hidden="true">3.4.</strong> LinuxWOL设置.md</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html"><strong aria-hidden="true">3.5.</strong> Linux条件测试.md</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html"><strong aria-hidden="true">3.6.</strong> Seed.md</a></li><li class="chapter-item "><a href="../10.Linux/Sort.html"><strong aria-hidden="true">3.7.</strong> Sort.md</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html"><strong aria-hidden="true">3.8.</strong> VIM.md</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html"><strong aria-hidden="true">3.9.</strong> caseIn.md</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html"><strong aria-hidden="true">3.10.</strong> cgroup.md</a></li><li class="chapter-item "><a href="../10.Linux/curl.html"><strong aria-hidden="true">3.11.</strong> curl.md</a></li><li class="chapter-item "><a href="../10.Linux/dd.html"><strong aria-hidden="true">3.12.</strong> dd.md</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html"><strong aria-hidden="true">3.13.</strong> diffPatch.md</a></li><li class="chapter-item "><a href="../10.Linux/find.html"><strong aria-hidden="true">3.14.</strong> find.md</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html"><strong aria-hidden="true">3.15.</strong> iptables.md</a></li><li class="chapter-item "><a href="../10.Linux/jq.html"><strong aria-hidden="true">3.16.</strong> jq.md</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html"><strong aria-hidden="true">3.17.</strong> lsof.md</a></li><li class="chapter-item "><a href="../10.Linux/ps.html"><strong aria-hidden="true">3.18.</strong> ps.md</a></li><li class="chapter-item "><a href="../10.Linux/read.html"><strong aria-hidden="true">3.19.</strong> read.md</a></li><li class="chapter-item "><a href="../10.Linux/scp.html"><strong aria-hidden="true">3.20.</strong> scp.md</a></li><li class="chapter-item "><a href="../10.Linux/select.html"><strong aria-hidden="true">3.21.</strong> select.md</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html"><strong aria-hidden="true">3.22.</strong> service脚本.md</a></li><li class="chapter-item "><a href="../10.Linux/set.html"><strong aria-hidden="true">3.23.</strong> set.md</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html"><strong aria-hidden="true">3.24.</strong> shell字符串.md</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html"><strong aria-hidden="true">3.25.</strong> shell脚本参数.md</a></li><li class="chapter-item "><a href="../10.Linux/stat.html"><strong aria-hidden="true">3.26.</strong> stat.md</a></li><li class="chapter-item "><a href="../10.Linux/tar.html"><strong aria-hidden="true">3.27.</strong> tar.md</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html"><strong aria-hidden="true">3.28.</strong> top命令.md</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html"><strong aria-hidden="true">3.29.</strong> uidGidSetUidSetGid.md</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html"><strong aria-hidden="true">3.30.</strong> wsl关闭提示音.md</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html"><strong aria-hidden="true">3.31.</strong> yum本地包依赖.md</a></li><li class="chapter-item "><a href="../10.Linux/内存管理.html"><strong aria-hidden="true">3.32.</strong> 内存管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/内存管理/RSS与VSZ.html"><strong aria-hidden="true">3.32.0.</strong> RSS与VSZ.md</a></li></ol></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html"><strong aria-hidden="true">3.33.</strong> 大端与小端.md</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html"><strong aria-hidden="true">3.34.</strong> 确定Linux发行版本.md</a></li><li class="chapter-item "><a href="../10.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">3.35.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html"><strong aria-hidden="true">3.36.</strong> 零拷贝.md</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html"><strong aria-hidden="true">3.37.</strong> 默认值语法糖.md</a></li></ol></li><li class="chapter-item "><a href="../16.html"><strong aria-hidden="true">4.</strong> 杂项</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.杂项/DNS&DHCP.html"><strong aria-hidden="true">4.0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="../16.杂项/Linux烧录镜像.html"><strong aria-hidden="true">4.1.</strong> Linux烧录镜像.md</a></li><li class="chapter-item "><a href="../16.杂项/SSH代理.html"><strong aria-hidden="true">4.2.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="../16.杂项/在线FireFox.html"><strong aria-hidden="true">4.3.</strong> 在线FireFox.md</a></li></ol></li><li class="chapter-item "><a href="../17.html"><strong aria-hidden="true">5.</strong> OpenWrt</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../17.OpenWrt/DHCP.html"><strong aria-hidden="true">5.0.</strong> DHCP.md</a></li><li class="chapter-item "><a href="../17.OpenWrt/UCI.html"><strong aria-hidden="true">5.1.</strong> UCI.md</a></li></ol></li><li class="chapter-item "><a href="../5.html"><strong aria-hidden="true">6.</strong> 常用软件</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/MakeFile.html"><strong aria-hidden="true">6.0.</strong> MakeFile.md</a></li><li class="chapter-item "><a href="../5.常用软件/MdBook.html"><strong aria-hidden="true">6.1.</strong> MdBook.md</a></li><li class="chapter-item "><a href="../5.常用软件/Multipass.html"><strong aria-hidden="true">6.2.</strong> Multipass.md</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html"><strong aria-hidden="true">6.3.</strong> v2rayN代理.md</a></li></ol></li><li class="chapter-item "><a href="../6.html"><strong aria-hidden="true">7.</strong> 生活事宜</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html"><strong aria-hidden="true">7.0.</strong> 个人清算汇缴.md</a></li></ol></li><li class="chapter-item "><a href="../8.html"><strong aria-hidden="true">8.</strong> 学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html"><strong aria-hidden="true">8.0.</strong> 概率论与数理统计.md</a></li></ol></li><li class="chapter-item "><a href="../9.html"><strong aria-hidden="true">9.</strong> 数据格式</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/README.html"><strong aria-hidden="true">9.0.</strong> JSON</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/JsonSchema.html"><strong aria-hidden="true">9.0.0.</strong> JsonSchema.md</a></li></ol></li><li class="chapter-item "><a href="../9.数据格式/XML.html"><strong aria-hidden="true">9.1.</strong> XML.md</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html"><strong aria-hidden="true">9.2.</strong> yaml.md</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/README.html"><strong aria-hidden="true">10.</strong> algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html"><strong aria-hidden="true">10.0.</strong> Base64编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html"><strong aria-hidden="true">10.1.</strong> Huffman编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html"><strong aria-hidden="true">10.2.</strong> fnv-hash算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html"><strong aria-hidden="true">10.3.</strong> 二叉搜索平衡树.md</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html"><strong aria-hidden="true">10.4.</strong> 位运算.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html"><strong aria-hidden="true">10.5.</strong> 动态规划-新.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html"><strong aria-hidden="true">10.6.</strong> 动态规划.md</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html"><strong aria-hidden="true">10.7.</strong> 字符编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html"><strong aria-hidden="true">10.8.</strong> 布隆过滤器.md</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html"><strong aria-hidden="true">10.9.</strong> 浮点数.md</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html"><strong aria-hidden="true">10.10.</strong> 红黑树.md</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html"><strong aria-hidden="true">10.11.</strong> 贪心算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html"><strong aria-hidden="true">10.12.</strong> 逆波兰表达式.md</a></li></ol></li><li class="chapter-item "><a href="../15.音频/README.html"><strong aria-hidden="true">11.</strong> 音频</a></li><li class="chapter-item "><a href="../12.AutoHotKey/README.html"><strong aria-hidden="true">12.</strong> AutoHotKey</a></li><li class="chapter-item "><a href="../7.思考/README.html"><strong aria-hidden="true">13.</strong> 思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html"><strong aria-hidden="true">13.0.</strong> 学习总结.md</a></li><li class="chapter-item "><a href="../7.思考/杂项.html"><strong aria-hidden="true">13.1.</strong> 杂项.md</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html"><strong aria-hidden="true">13.2.</strong> 编程技巧.md</a></li></ol></li><li class="chapter-item "><a href="../13.espanso/README.html"><strong aria-hidden="true">14.</strong> espanso</a></li><li class="chapter-item "><a href="../4.模板引擎/README.html"><strong aria-hidden="true">15.</strong> 模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/README.html"><strong aria-hidden="true">15.0.</strong> mustache</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/README.html"><strong aria-hidden="true">16.</strong> 驾照理论学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/README.html"><strong aria-hidden="true">16.0.</strong> 道路交通安全法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/1.总则.html"><strong aria-hidden="true">16.0.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/10.交通事故处理.html"><strong aria-hidden="true">16.0.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/11.执法监督.html"><strong aria-hidden="true">16.0.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/12.法律责任.html"><strong aria-hidden="true">16.0.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/13.附则.html"><strong aria-hidden="true">16.0.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/2.车辆和驾驶人-1.机动车&非机动车.html"><strong aria-hidden="true">16.0.5.</strong> 车辆和驾驶人-1.机动车&非机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/3.车辆和驾驶人-2.机动车驾驶人.html"><strong aria-hidden="true">16.0.6.</strong> 车辆和驾驶人-2.机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/4.道路通行条件.html"><strong aria-hidden="true">16.0.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.0.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.0.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.0.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/8.道路通行规定-行人和乘车通行规定.html"><strong aria-hidden="true">16.0.11.</strong> 道路通行规定-行人和乘车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/9.道路通行规定-高速公路特别规定.html"><strong aria-hidden="true">16.0.12.</strong> 道路通行规定-高速公路特别规定.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/地址类.html"><strong aria-hidden="true">16.1.</strong> 地址类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/学习盲点.html"><strong aria-hidden="true">16.2.</strong> 学习盲点.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/惩罚类.html"><strong aria-hidden="true">16.3.</strong> 惩罚类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/扣分类.html"><strong aria-hidden="true">16.4.</strong> 扣分类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/时间类.html"><strong aria-hidden="true">16.5.</strong> 时间类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定.html"><strong aria-hidden="true">16.6.</strong> 机动车驾驶证申领和使用规定</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定/1.总则.html"><strong aria-hidden="true">16.6.0.</strong> 总则.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/知乎笔记学习.html"><strong aria-hidden="true">16.7.</strong> 知乎笔记学习.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/英文缩写.html"><strong aria-hidden="true">16.8.</strong> 英文缩写.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/速度类.html"><strong aria-hidden="true">16.9.</strong> 速度类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例.html"><strong aria-hidden="true">16.10.</strong> 道路交通安全法实施条例</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/1.总则.html"><strong aria-hidden="true">16.10.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/10.交通事故处理.html"><strong aria-hidden="true">16.10.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/11.执法监督.html"><strong aria-hidden="true">16.10.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/12.法律责任.html"><strong aria-hidden="true">16.10.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/13.附则.html"><strong aria-hidden="true">16.10.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/2.车辆和驾驶人-机动车.html"><strong aria-hidden="true">16.10.5.</strong> 车辆和驾驶人-机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/3.车辆和驾驶人-机动车驾驶人.html"><strong aria-hidden="true">16.10.6.</strong> 车辆和驾驶人-机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/4.道路通行条件.html"><strong aria-hidden="true">16.10.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.10.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.10.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.10.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/8.道路通行规定-行人和乘车规定.html"><strong aria-hidden="true">16.10.11.</strong> 道路通行规定-行人和乘车规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/9.道路通行规定-高速公路的特别规定.html"><strong aria-hidden="true">16.10.12.</strong> 道路通行规定-高速公路的特别规定.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/README.html"><strong aria-hidden="true">17.</strong> MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/ER图.html"><strong aria-hidden="true">17.0.</strong> ER图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html"><strong aria-hidden="true">17.1.</strong> 时序图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html"><strong aria-hidden="true">17.2.</strong> 流程图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html"><strong aria-hidden="true">17.3.</strong> 类图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html"><strong aria-hidden="true">17.4.</strong> 语法总览.md</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="jq语法"><a class="header" href="#jq语法">JQ语法</a></h1>
+<p><a href="https://jqlang.github.io/jq/manual/#$__loc__">参考文档</a></p>
+<h3 id="basic-filters"><a class="header" href="#basic-filters">Basic filters</a></h3>
+<h4 id="identity"><a class="header" href="#identity">identity：.</a></h4>
+<ol>
+<li>
+<p>标识对象本身、它读取输入，输出同样的对象</p>
+</li>
+<li>
+<p>因为 jq默认 格式化打印 所有输出，所以 . 可以 格式化Json</p>
+</li>
+<li>
+<p>尽管JQ identity 不会修改任何输出，但是以下情况下会修改输出</p>
+<ol>
+<li>针对浮点数：1E1234567890 | . 会产生  <code>1.7976931348623157e+308</code>  ，因为JQ使用 IEEE754 double-precision 标识浮点，从而丢失了精度。</li>
+<li>jq处理数字的方式随着时间的推移而发生了变化，并且在相关的JSON标准设定的参数范围内，进一步的变化也是可能的。</li>
+<li>因此，以下备注是基于当前版本的jq的描述，并不应被解释为规定性的：
+<ol>
+<li>对尚未转换为IEEE754双精度表示的数字进行任何算术运算将触发转换为IEEE754表示。</li>
+<li>jq将尝试保持数字文字的原始小数精度，但在诸如1E1234567890的表达式中，如果指数过大，精度将会丢失。</li>
+<li>在jq程序中，前导负号将触发将数字转换为IEEE754表示。</li>
+<li>如果有的话，比较将使用未截断的大十进制表示进行</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="object-identifier-index-foo-foobar"><a class="header" href="#object-identifier-index-foo-foobar">Object Identifier-Index: <code>.foo</code>, `.foo.bar</a></h4>
+<blockquote>
+<p>对象标识符-索引</p>
+</blockquote>
+<ol>
+<li>.foo.bar 等价于  <code>.foo | .bar</code>.</li>
+<li>如果key不是标准的标识符，则需要 用双引号包裹</li>
+</ol>
+<h4 id="optional-object-identifier-index-foo"><a class="header" href="#optional-object-identifier-index-foo">Optional Object Identifier-Index: <code>.foo?</code></a></h4>
+<blockquote>
+<p>可选的对象标识符</p>
+</blockquote>
+<h4 id="object-index-string"><a class="header" href="#object-index-string">Object Index: <code>.[&lt;string&gt;]</code></a></h4>
+<p>等价于 对象标识符。只不过是缩写。且只支持 标识符的 key</p>
+<h4 id="array-index-number"><a class="header" href="#array-index-number">Array Index: <code>.[&lt;number&gt;]</code></a></h4>
+<p>数组索引</p>
+<h4 id="arraystring-slice-numbernumber"><a class="header" href="#arraystring-slice-numbernumber">Array/String Slice: <code>.[&lt;number&gt;:&lt;number&gt;]</code></a></h4>
+<p>数组切片</p>
+<ol>
+<li>可以支持负数索引</li>
+</ol>
+<h4 id="arrayobject-value-iterator-"><a class="header" href="#arrayobject-value-iterator-">Array/Object Value Iterator: <code>.[]</code></a></h4>
+<p>数组对象值迭代</p>
+<h3 id=""><a class="header" href="#"><code>.[]?</code></a></h3>
+<p>空值处理</p>
+<h4 id="comma-"><a class="header" href="#comma-">Comma: <code>,</code></a></h4>
+<p>如果两个过滤器之间用逗号分隔，那么相同的输入将被同时传递给两个过滤器，并且两个过滤器的输出值流将按顺序连接在一起：首先是左表达式产生的所有输出，然后是右表达式产生的所有输出。例如，过滤器 .foo, .bar 将分别产生 &quot;foo&quot; 字段和 &quot;bar&quot; 字段作为独立的输出。</p>
+<h4 id="pipe-"><a class="header" href="#pipe-">Pipe: <code>|</code></a></h4>
+<p>| 运算符通过将左侧过滤器的输出作为右侧过滤器的输入来组合两个过滤器。如果你熟悉Unix shell的管道操作，它与之类似。</p>
+<p>如果左侧的过滤器产生多个结果，右侧的过滤器将针对每个结果运行。因此，该表达式检索输入数组中每个元素的 &quot;foo&quot; 字段。这是一个笛卡尔积，可能会让人感到意外。..[] | .foo</p>
+<p>请注意，..a.b.c.a | .b | .c 与 .a | .b | .c 是相同的。</p>
+<p>还要注意，在 &quot;管道&quot; 中特定阶段的输入值是指出现的表达式的值。因此，..a 与 , 是相同的，因为中间的 . 引用的是产生的任何值。...a | . | .b.a.b..a</p>
+<h4 id="parenthesis"><a class="header" href="#parenthesis">Parenthesis</a></h4>
+<pre><code>jq '(. + 2) * 5'
+
+Input	1
+Output	15
+</code></pre>
+<h2 id="types-and-values"><a class="header" href="#types-and-values">Types and Values</a></h2>
+<p>jq支持与JSON相同的数据类型集合 - 数字、字符串、布尔值、数组、对象（在JSON中被称为只有字符串键的哈希表）和 &quot;null&quot;。</p>
+<h3 id="array-construction-"><a class="header" href="#array-construction-">Array construction: <code>[]</code></a></h3>
+<blockquote>
+<p>数组解构</p>
+</blockquote>
+<ol>
+<li>
+<p>与JSON一样，[]用于构建数组，例如[1,2,3]。数组的元素可以是任何jq表达式，包括管道。</p>
+</li>
+<li>
+<p>所有表达式产生的结果都被收集到一个大数组中。</p>
+</li>
+<li>
+<p>你可以使用它来构建一个由已知数量的值组成的数组（例如[.foo, .bar, .baz]），或者将一个过滤器的所有结果&quot;收集&quot;到一个数组中（例如[.items[].name]）。</p>
+</li>
+<li>
+<p>一旦你理解了&quot;,&quot;运算符，你就可以以不同的方式看待jq的数组语法：表达式[1,2,3]不是使用逗号分隔的数组的内置语法，而是将[]运算符（收集结果）应用于表达式1,2,3（它产生三个不同的结果）。</p>
+</li>
+</ol>
+<p><strong>exmple</strong>: 如果你有一个产生四个结果的过滤器X，那么表达式[X]将产生一个单一的结果，即一个由四个元素组成的数组。</p>
+<h3 id="object-construction-"><a class="header" href="#object-construction-">Object Construction: <code>{}</code></a></h3>
+<ol>
+<li>与JSON一样，{}用于构建对象（也称为字典或哈希表），例如：{&quot;a&quot;: 42, &quot;b&quot;: 17}。</li>
+<li>如果键是&quot;标识符样式&quot;的，那么可以省略引号，例如{a:42, b:17}。作为键表达式的变量引用使用变量的值作为键。除了常量文字、标识符或变量引用之外，键表达式需要用括号括起来，例如{(&quot;a&quot;+&quot;b&quot;):59}。</li>
+<li>值可以是任何表达式（尽管如果它包含冒号，可能需要将其用括号括起来），该表达式应用于{}表达式的输入（请记住，所有过滤器都有输入和输出）。</li>
+<li>同名标识符简写：</li>
+</ol>
+<pre><code>{user: .user, title: .title}
+
+等价于
+
+{user, title}
+</code></pre>
+<ol start="5">
+<li>数组解构中 表达式产生多值</li>
+</ol>
+<pre><code>input:
+{&quot;user&quot;:&quot;stedolan&quot;,&quot;titles&quot;:[&quot;JQ Primer&quot;, &quot;More JQ&quot;]}
+
+
+expression:
+{user, title: .titles[]}
+
+output:
+会产生两条数据
+{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;JQ Primer&quot;}
+{&quot;user&quot;:&quot;stedolan&quot;, &quot;title&quot;: &quot;More JQ&quot;}
+</code></pre>
+<ol start="6">
+<li>将KEY使用 括号包裹</li>
+</ol>
+<pre><code>在键的周围加上括号意味着它将被作为表达式进行评估。使用与上述相同的输入，
+
+
+{(.user): .titles}
+
+output:
+{&quot;stedolan&quot;: [&quot;JQ Primer&quot;, &quot;More JQ&quot;]}
+</code></pre>
+<ol start="7">
+<li>使用变量引用作为键时，将使用变量的值作为键。如果没有提供值，则变量的名称将成为键，其值将成为值。</li>
+</ol>
+<pre><code>&quot;f o o&quot; as $foo | &quot;b a r&quot; as $bar | {$foo, $bar:$foo}
+
+
+output
+{&quot;foo&quot;:&quot;f o o&quot;,&quot;b a r&quot;:&quot;f o o&quot;}
+</code></pre>
+<h3 id="recursive-descent-"><a class="header" href="#recursive-descent-">Recursive Descent: <code>..</code></a></h3>
+<p>递归下降、递归遍历</p>
+<h2 id="builtin-operators-and-functions"><a class="header" href="#builtin-operators-and-functions">Builtin operators and functions</a></h2>
+<ol>
+<li>一些 jq 运算符（例如 +）根据其参数的类型（数组、数字等）执行不同的操作。然而，jq 永远不会进行隐式类型转换。如果尝试将字符串添加到对象中，将会收到错误消息并且没有结果。</li>
+<li>请注意，所有数字都会转换为 IEEE754 双精度浮点表示。算术和逻辑运算符使用这些转换后的双精度数进行计算。所有此类操作的结果也限制在双精度范围内。</li>
+<li>唯一的例外是数字的原始快照。当一个数字最初作为字面量提供，并且在程序结束之前从未被更改时，它将以其原始字面形式打印到输出中。这也包括当将原始字面量转换为 IEEE754 双精度浮点数时会被截断的情况。</li>
+</ol>
+<h3 id="addition-"><a class="header" href="#addition-">Addition: <code>+</code></a></h3>
+<p>运算符 + 接受两个过滤器，将它们都应用于相同的输入，并将结果相加。&quot;相加&quot;的意义取决于所涉及的类型：</p>
+<ul>
+<li>
+<p><strong>Numbers</strong> are added by normal arithmetic. 数值相加</p>
+</li>
+<li>
+<p><strong>Arrays</strong> are added by being concatenated into a larger array. 数组拼接</p>
+</li>
+<li>
+<p><strong>Strings</strong> are added by being joined into a larger string. 字符串拼接</p>
+</li>
+<li>
+<p><strong>Objects</strong> are added by merging, that is, inserting all the key-value pairs from both objects into a single combined object. If both objects contain a value for the same key, the object on the right of the <code>+</code> wins. (For recursive merge use the <code>*</code> operator.) </p>
+<ul>
+<li>对象合并、右边的对象优先级高、使用星号递归合并</li>
+</ul>
+</li>
+<li>
+<p><code>null</code> can be added to any value, and returns the other value unchanged.</p>
+</li>
+</ul>
+<h3 id="subtraction--"><a class="header" href="#subtraction--">Subtraction: <code>-</code></a></h3>
+<p>除了对数字进行常规的算术减法运算外，&quot;-&quot; 运算符还可以用于数组，从第一个数组中移除第二个数组的所有元素。</p>
+<h3 id="multiplication-division-modulo---"><a class="header" href="#multiplication-division-modulo---">Multiplication, division, modulo: <code>*</code>, <code>/</code>, <code>%</code></a></h3>
+<ol>
+<li>
+<p>这些中缀运算符在给定两个数字时会按预期行为。除以零会引发错误。</p>
+</li>
+<li>
+<p>x % y 计算 x 对 y 取模的结果。</p>
+</li>
+<li>
+<p>将字符串乘以一个数字会产生该字符串重复连接多次的结果。&quot;x&quot; * 0 会产生 &quot;&quot;。</p>
+</li>
+<li>
+<p>将一个字符串除以另一个字符串会使用第二个字符串作为分隔符来分割第一个字符串。</p>
+</li>
+<li>
+<p>将两个对象相乘将递归地合并它们：这类似于加法，但如果两个对象都包含相同键的值，并且这些值是对象，则使用相同的策略将它们合并。</p>
+</li>
+</ol>
+<h3 id="abs"><a class="header" href="#abs"><code>abs</code></a></h3>
+<p>内置函数 abs 的定义很简单：如果 . 小于 0，则返回 - .，否则返回 .。</p>
+<p>对于数字输入，这是求绝对值的函数。关于这个定义对于数字输入的影响，请参考关于身份过滤器的部分。</p>
+<p>如果要计算一个数的绝对值作为浮点数，可以使用 fabs 函数。</p>
+<pre><code>Command	jq 'map(abs)'
+Input	[-10, -1.1, -1e-1]
+Output	[10,1.1,1e-1]
+</code></pre>
+<h3 id="length"><a class="header" href="#length"><code>length</code></a></h3>
+<ol>
+<li>
+<p>内置函数 length 可以获取不同类型的值的长度：</p>
+</li>
+<li>
+<p>字符串的长度是它包含的 Unicode 代码点的数量（如果它是纯 ASCII，则与它的 JSON 编码长度（以字节为单位）相同）。</p>
+</li>
+<li>
+<p>数字的长度是它的绝对值。</p>
+</li>
+<li>
+<p>数组的长度是它包含的元素数量。</p>
+</li>
+<li>
+<p>对象的长度是它包含的键值对数量。</p>
+</li>
+<li>
+<p>null 的长度为零。</p>
+</li>
+<li>
+<p>在布尔值上使用 length 是错误的。</p>
+</li>
+</ol>
+<h3 id="utf8bytelength"><a class="header" href="#utf8bytelength"><code>utf8bytelength</code></a></h3>
+<p>内置函数 utf8bytelength 输出使用 UTF-8 编码一个字符串所使用的字节数。</p>
+<h3 id="keys-keys_unsorted"><a class="header" href="#keys-keys_unsorted"><code>keys</code>, <code>keys_unsorted</code></a></h3>
+<ol>
+<li>内置函数 keys 在给定一个对象时，返回该对象的键组成的数组。</li>
+<li>这些键按照 Unicode 代码点顺序进行&quot;按字母顺序&quot;排序。这不是任何特定语言中有特定意义的顺序，但是您可以确保在具有相同键集的任何两个对象上，无论区域设置如何，这个顺序都是相同的。</li>
+<li>当 keys 函数接收到一个数组时，它返回该数组的有效索引：从 0 到 length-1 的整数。</li>
+<li>keys_unsorted 函数与 keys 函数类似，但如果输入是对象，则键不会被排序，而是大致按插入顺序排列。</li>
+</ol>
+<h3 id="haskey"><a class="header" href="#haskey"><code>has(key)</code></a></h3>
+<ol>
+<li>
+<p>内置函数 has 返回输入对象是否具有给定的键，或者输入数组是否具有给定索引处的元素。</p>
+</li>
+<li>
+<p><code>has($key)</code> has the same effect as checking whether <code>$key</code> is a member of the array returned by <code>keys</code>, although <code>has</code> will be faster.</p>
+</li>
+</ol>
+<h3 id="in"><a class="header" href="#in"><code>in</code></a></h3>
+<p>内置函数 in 返回输入键是否 存在于给定的对象中，或者输入索引是否对应于给定数组中的元素。它本质上是 has 函数的相反版本。</p>
+<h3 id="mapf-map_valuesf"><a class="header" href="#mapf-map_valuesf"><code>map(f)</code>, <code>map_values(f)</code></a></h3>
+<ol>
+<li>
+<p>对于任何过滤器 f，map(f) 和 map_values(f) 将 f 应用于输入数组或对象的每个值，即 .[] 的值。</p>
+</li>
+<li>
+<p>在没有错误的情况下，map(f) 总是输出一个数组，而 map_values(f) 如果给定一个数组则输出一个数组，如果给定一个对象则输出一个对象。</p>
+</li>
+<li>
+<p>当 map_values(f) 的输入是一个对象时，输出对象具有与输入对象相同的键，除了那些当其值通过管道传递给 f 时根本不产生值的键。</p>
+</li>
+<li>
+<p>map(f) 和 map_values(f) 的关键区别在于前者仅仅从输入数组或对象的每个值 $x 中形成一个包含所有 ($x|f) 值的数组，而 map_values(f) 只使用第一个 ($x|f) 值。
+4. 具体来说，对于对象输入，map_values(f) 通过依次检查每个键 $k 的表达式 first(.[$k]|f) 的值来构建输出对象。如果该表达式不产生任何值，则相应的键将被删除；否则，输出对象将在键 $k 处具有该值。</p>
+</li>
+</ol>
+<p><strong>example</strong></p>
+<p>以下是一些示例，以阐明将 map 和 map_values 应用于数组时的行为。这些示例假设输入在所有情况下都是 [1]：</p>
+<pre><code>Input: [1]
+
+map(.+1)          #=&gt;  [2]
+map(., .)         #=&gt;  [1,1]
+map(empty)        #=&gt;  []
+
+map_values(.+1)   #=&gt;  [2]
+map_values(., .)  #=&gt;  [1]
+map_values(empty) #=&gt;  []
+</code></pre>
+<p><code>map(f)</code> is equivalent to <code>[.[] | f]</code> and <code>map_values(f)</code> is equivalent to <code>.[] |= f</code>.</p>
+<pre><code>Command	jq 'map(.+1)'
+Input	[1,2,3]
+Output	[2,3,4]
+
+
+Command	jq 'map_values(.+1)'
+Input	{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}
+Output	{&quot;a&quot;: 2, &quot;b&quot;: 3, &quot;c&quot;: 4}
+
+
+
+Command	jq 'map(., .)'
+Input	[1,2]
+Output	[1,1,2,2]
+
+
+Command	jq 'map_values(. // empty)'
+Input	{&quot;a&quot;: null, &quot;b&quot;: true, &quot;c&quot;: false}
+Output	{&quot;b&quot;:true}
+
+
+</code></pre>
+<h3 id="pickpathexps"><a class="header" href="#pickpathexps"><code>pick(pathexps)</code></a></h3>
+<p>根据指定的路径表达式序列，发出输入对象或数组的投影，以便如果 p 是其中的任何一个规范，则 (. | p) 的计算结果将与 (. | pick(pathexps) | p) 相同。对于数组，不应使用负索引和 .[m:n] 规范。</p>
+<ol>
+<li>选择本身不改变 对象的层级关系、如果对象选择了叶子节点 则必须要包含 父节点，</li>
+<li>如果选择了数组中的 第5个元素，则数组中的其他元素全部置空，会保留被选择元素的顺序性</li>
+</ol>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'pick(.a, .b.c, .x)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>{&quot;a&quot;: 1, &quot;b&quot;: {&quot;c&quot;: 2, &quot;d&quot;: 3}, &quot;e&quot;: 4}</td></tr>
+<tr><td>Output</td><td>{&quot;a&quot;:1,&quot;b&quot;:{&quot;c&quot;:2},&quot;x&quot;:null}</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'pick(.[2], .[0], .[0])'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1,2,3,4]</td></tr>
+<tr><td>Output</td><td>[1,null,3]</td></tr>
+</tbody></table>
+</div>
+<h3 id="pathpath_expression"><a class="header" href="#pathpath_expression"><code>path(path_expression)</code></a></h3>
+<ol>
+<li>在..中输出给定路径表达式的数组表示。输出是字符串数组（对象键）和/或数字数组（数组索引）。</li>
+<li>路径表达式是类似于 .a 的jq表达式，但也可以是 .[]。路径表达式有两种类型：可以精确匹配的和不能精确匹配的。例如，.a.b.c 是一个精确匹配的路径表达式，而 .a[].b 不是。</li>
+<li><strong>列举 所有 可达路径表达式</strong></li>
+<li>..： 表示递归列举所有</li>
+<li>针对 NULL 也会可达</li>
+</ol>
+<pre><code>Command	jq 'path(.a[0].b)'
+Input	null
+Output	[&quot;a&quot;,0,&quot;b&quot;]
+
+
+Command	jq '[path(..)]'
+Input	{&quot;a&quot;:[{&quot;b&quot;:1}]}
+Output	[[],[&quot;a&quot;],[&quot;a&quot;,0],[&quot;a&quot;,0,&quot;b&quot;]]
+</code></pre>
+<h3 id="delpath_expression"><a class="header" href="#delpath_expression"><code>del(path_expression)</code></a></h3>
+<p>删除 路径表达式所表示的路径</p>
+<h3 id="getpathpaths"><a class="header" href="#getpathpaths"><code>getpath(PATHS)</code></a></h3>
+<p>使用path返回的路径 数组 作为输入，获取指定表达式的值</p>
+<pre><code>
+Command	jq '[getpath([&quot;a&quot;,&quot;b&quot;], [&quot;a&quot;,&quot;c&quot;])]'
+Input	{&quot;a&quot;:{&quot;b&quot;:0, &quot;c&quot;:1}}
+Output	[0, 1]
+</code></pre>
+<h3 id="setpathpaths-value"><a class="header" href="#setpathpaths-value"><code>setpath(PATHS; VALUE)</code></a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'setpath([&quot;a&quot;,&quot;b&quot;]; 1)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>null</td></tr>
+<tr><td>Output</td><td>{&quot;a&quot;: {&quot;b&quot;: 1}}</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'setpath([&quot;a&quot;,&quot;b&quot;]; 1)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>{&quot;a&quot;:{&quot;b&quot;:0}}</td></tr>
+<tr><td>Output</td><td>{&quot;a&quot;: {&quot;b&quot;: 1}}</td></tr>
+</tbody></table>
+</div>
+<h3 id="delpathspaths"><a class="header" href="#delpathspaths"><code>delpaths(PATHS)</code></a></h3>
+<p>删除路径</p>
+<h3 id="to_entries-from_entries-with_entriesf"><a class="header" href="#to_entries-from_entries-with_entriesf"><code>to_entries</code>, <code>from_entries</code>, <code>with_entries(f)</code></a></h3>
+<p>这些函数用于对象和键值对数组之间的转换。如果将 to_entries 应用于一个对象，那么对于输入中的每个键值对 k: v，输出数组将包含 {&quot;key&quot;: k, &quot;value&quot;: v}。</p>
+<p>from_entries 则执行相反的转换，它将键值对数组转换回一个对象。with_entries(f) 是 to_entries | map(f) | from_entries 的简写形式，它可以对对象的所有键和值执行某个操作。from_entries 函数接受 &quot;key&quot;、&quot;Key&quot;、&quot;name&quot;、&quot;Name&quot;、&quot;value&quot; 和 &quot;Value&quot; 作为键。</p>
+<pre><code>Command	jq 'to_entries'
+Input	{&quot;a&quot;: 1, &quot;b&quot;: 2}
+Output	[{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]
+
+
+
+Command	jq 'from_entries'
+Input	[{&quot;key&quot;:&quot;a&quot;, &quot;value&quot;:1}, {&quot;key&quot;:&quot;b&quot;, &quot;value&quot;:2}]
+Output	{&quot;a&quot;: 1, &quot;b&quot;: 2}
+
+
+Command	jq 'with_entries(.key |= &quot;KEY_&quot; + .)'
+Input	{&quot;a&quot;: 1, &quot;b&quot;: 2}
+Output	{&quot;KEY_a&quot;: 1, &quot;KEY_b&quot;: 2}
+</code></pre>
+<h3 id="selectboolean_expression"><a class="header" href="#selectboolean_expression"><code>select(boolean_expression)</code></a></h3>
+<ol>
+<li>
+<p>函数 select(f) 在 f 返回 true 时保持输入不变，并在 f 返回 false 时不产生输出。</p>
+</li>
+<li>
+<p>它在列表过滤中非常有用：[1,2,3] | map(select(. &gt;= 2)) 将给出 [2,3]。</p>
+</li>
+</ol>
+<h3 id="arrays-objects-iterables-booleans-numbers-normals-finites-strings-nulls-values-scalars"><a class="header" href="#arrays-objects-iterables-booleans-numbers-normals-finites-strings-nulls-values-scalars"><code>arrays</code>, <code>objects</code>, <code>iterables</code>, <code>booleans</code>, <code>numbers</code>, <code>normals</code>, <code>finites</code>, <code>strings</code>, <code>nulls</code>, <code>values</code>, <code>scalars</code></a></h3>
+<p>这些内置函数只选择数组、对象、可迭代对象（数组或对象）、布尔值、数字、普通数字、有限数字、字符串、null、非null值和非可迭代对象的输入。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '.[]|numbers'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[[],{},1,&quot;foo&quot;,null,true,false]</td></tr>
+<tr><td>Output</td><td>1</td></tr>
+</tbody></table>
+</div>
+<h3 id="empty"><a class="header" href="#empty"><code>empty</code></a></h3>
+<p><code>empty</code> returns no results. None at all. Not even <code>null</code>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '1, empty, 2'</th></tr></thead><tbody>
+<tr><td>Input</td><td>null</td></tr>
+<tr><td>Output</td><td>1</td></tr>
+<tr><td></td><td>2</td></tr>
+</tbody></table>
+</div>
+<h3 id="error-errormessage"><a class="header" href="#error-errormessage"><code>error</code>, <code>error(message)</code></a></h3>
+<p>产生一个错误，错误的输入值，或者使用作为参数给出的消息。错误可以通过 try/catch 来捕获；见下面的例子。</p>
+<h3 id="halt"><a class="header" href="#halt"><code>halt</code></a></h3>
+<p>停止 jq 程序，并且没有进一步的输出。jq 将以退出状态 0 退出。</p>
+<h3 id="halt_error-halt_errorexit_code"><a class="header" href="#halt_error-halt_errorexit_code"><code>halt_error</code>, <code>halt_error(exit_code)</code></a></h3>
+<p>停止 jq 程序，并且没有进一步的输出。输入将作为原始输出打印在 stderr 上（即，字符串不会有双引号），没有任何修饰，甚至没有换行符。</p>
+<h3 id="__loc__"><a class="header" href="#__loc__"><code>$__loc__</code></a></h3>
+<p>生成一个带有 &quot;file&quot; 键和 &quot;line&quot; 键的对象，值分别为出现 $<strong>loc</strong> 的文件名和行号。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'try error(&quot;($<strong>loc</strong>)&quot;) catch .'</th></tr></thead><tbody>
+<tr><td>Input</td><td>null</td></tr>
+<tr><td>Output</td><td>&quot;{&quot;file&quot;:&quot;<top-level>&quot;,&quot;line&quot;:1}&quot;</td></tr>
+</tbody></table>
+</div>
+<h3 id="paths-pathsnode_filter"><a class="header" href="#paths-pathsnode_filter"><code>paths</code>, <code>paths(node_filter)</code></a></h3>
+<p>paths 函数输出其输入中所有元素的路径（除了不输出表示 . 自身的空列表）。</p>
+<p>paths(f) 输出满足 f 为 true 的任何值的路径。也就是说，paths(type == &quot;number&quot;) 输出所有数值的路径。</p>
+<p>例子</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '[paths]'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1,[[],{&quot;a&quot;:2}]]</td></tr>
+<tr><td>Output</td><td>[[0],[1],[1,0],[1,1],[1,1,&quot;a&quot;]]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '[paths(type == &quot;number&quot;)]'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1,[[],{&quot;a&quot;:2}]]</td></tr>
+<tr><td>Output</td><td>[[0],[1,1,&quot;a&quot;]]</td></tr>
+</tbody></table>
+</div>
+<h3 id="add"><a class="header" href="#add"><code>add</code></a></h3>
+<p>过滤器 add 以数组作为输入，并将数组的元素相加作为输出。这可能意味着对输入数组的元素进行求和、连接或合并，具体取决于输入数组元素的类型 - 规则与 + 运算符的规则相同（如上所述）。</p>
+<p>如果输入是一个空数组，则 add 返回 null。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'add'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]</td></tr>
+<tr><td>Output</td><td>&quot;abc&quot;</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'add'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1, 2, 3]</td></tr>
+<tr><td>Output</td><td>6</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'add'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[]</td></tr>
+<tr><td>Output</td><td>null</td></tr>
+</tbody></table>
+</div>
+<h3 id="any-anycondition-anygenerator-condition"><a class="header" href="#any-anycondition-anygenerator-condition"><code>any</code>, <code>any(condition)</code>, <code>any(generator; condition)</code></a></h3>
+<p>过滤器 any 以布尔值数组作为输入，并在数组中有任何一个元素为 true 时，输出 true。</p>
+<p>如果输入是一个空数组，则 any 返回 false。</p>
+<p>any(condition) 的形式将给定的条件应用于输入数组的元素。</p>
+<p>any(generator; condition) 的形式将给定条件应用于给定生成器的所有输出。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'any'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[true, false]</td></tr>
+<tr><td>Output</td><td>true</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'any'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[false, false]</td></tr>
+<tr><td>Output</td><td>false</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'any'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[]</td></tr>
+<tr><td>Output</td><td>false</td></tr>
+</tbody></table>
+</div>
+<h3 id="all-allcondition-allgenerator-condition"><a class="header" href="#all-allcondition-allgenerator-condition"><code>all</code>, <code>all(condition)</code>, <code>all(generator; condition)</code></a></h3>
+<p>同 any</p>
+<h3 id="flatten-flattendepth"><a class="header" href="#flatten-flattendepth"><code>flatten</code>, `flatten(depth)</a></h3>
+<p>过滤器 flatten 以嵌套数组的数组作为输入，并生成一个扁平数组，其中原始数组内部的所有数组都被递归地替换为它们的值。您可以传递一个参数来指定要展开的嵌套级别。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'flatten'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1, [2], [[3]]]</td></tr>
+<tr><td>Output</td><td>[1, 2, 3]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'flatten(1)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[1, [2], [[3]]]</td></tr>
+<tr><td>Output</td><td>[1, 2, [3]]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'flatten'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[[]]</td></tr>
+<tr><td>Output</td><td>[]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'flatten'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[{&quot;foo&quot;: &quot;bar&quot;}, [{&quot;foo&quot;: &quot;baz&quot;}]]</td></tr>
+<tr><td>Output</td><td>[{&quot;foo&quot;: &quot;bar&quot;}, {&quot;foo&quot;: &quot;baz&quot;}]</td></tr>
+</tbody></table>
+</div>
+<h3 id="rangeupto-rangefrom-upto-rangefrom-upto-by"><a class="header" href="#rangeupto-rangefrom-upto-rangefrom-upto-by"><code>range(upto)</code>, <code>range(from; upto)</code>, <code>range(from; upto; by)</code></a></h3>
+<p>range 函数生成一系列数字。range(4; 10) 生成6个数字，从4（包括）到10（不包括）。这些数字作为独立的输出产生。使用 [range(4; 10)] 可以将范围作为数组获取。</p>
+<p>一： 参数形式生成从0到给定数字的数字，增量为1。</p>
+<p>二： 参数形式生成从 from 到 upto 的数字，增量为1。</p>
+<p>三：参数形式生成从 from 到 upto 的数字，增量为 by。</p>
+<p>例子</p>
+<h3 id="floorsqrttonumbertostring"><a class="header" href="#floorsqrttonumbertostring"><code>floor</code>、<code>sqrt</code>、<code>tonumber</code>、<code>tostring</code></a></h3>
+<p>字面意思</p>
+<h3 id="type"><a class="header" href="#type"><code>type</code></a></h3>
+<p>type 函数返回其参数的类型作为字符串，可能的值为 null、boolean、number、string、array 或 object。</p>
+<h3 id="infinite-nan-isinfinite-isnan-isfinite-isnormal"><a class="header" href="#infinite-nan-isinfinite-isnan-isfinite-isnormal"><code>infinite</code>, <code>nan</code>, <code>isinfinite</code>, <code>isnan</code>, <code>isfinite</code>, <code>isnormal</code></a></h3>
+<p>一些算术运算可能会产生无穷大和“非数字”（NaN）的值。isinfinite 内置函数在其输入为无穷大时返回 true。isnan 内置函数在其输入为 NaN 时返回 true。infinite 内置函数返回一个正无穷大的值。nan 内置函数返回一个 NaN。isnormal 内置函数在其输入为正常数时返回 true。</p>
+<p>请注意，除以零会引发错误。</p>
+<p>目前，大多数对无穷大、NaN 和次正规数进行的算术运算不会引发错误。</p>
+<h3 id="sort-sort_bypath_expression"><a class="header" href="#sort-sort_bypath_expression"><code>sort</code>, <code>sort_by(path_expression)</code></a></h3>
+<p>sort 函数对其必须是数组的输入进行排序。值按照以下顺序排序：</p>
+<p>1.null 2. false 3. true 4. 数字 5. 字符串，按字母顺序排序（按 Unicode 码点值）6.数组，按词法顺序排序、6.对象</p>
+<p>对象的排序有点复杂：首先通过比较它们的键集（作为按排序顺序排列的数组）进行比较，如果它们的键相等，则按键逐个比较值。</p>
+<p>sort_by 可以用于按对象的特定字段进行排序，或者应用任何 jq 过滤器进行排序。sort_by(f) 通过比较每个元素上 f 的结果来比较两个元素。当 f 产生多个值时，首先比较第一个值，如果第一个值相等，则比较第二个值，依此类推。</p>
+<h3 id="group_bypath_expression"><a class="header" href="#group_bypath_expression"><code>group_by(path_expression)</code></a></h3>
+<p>group_by(.foo) 接受一个数组作为输入，将具有相同 .foo 字段的元素分组为单独的数组，并将所有这些数组作为一个更大的数组的元素，按 .foo 字段的值进行排序。</p>
+<p>可以在 .foo 的位置使用任何 jq 表达式，而不仅仅是字段访问。排序顺序与上面描述的 sort 函数相同。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'group_by(.foo)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:3, &quot;bar&quot;:100}, {&quot;foo&quot;:1, &quot;bar&quot;:1}]</td></tr>
+<tr><td>Output</td><td>[[{&quot;foo&quot;:1, &quot;bar&quot;:10}, {&quot;foo&quot;:1, &quot;bar&quot;:1}], [{&quot;foo&quot;:3, &quot;bar&quot;:100}]]</td></tr>
+</tbody></table>
+</div>
+<h3 id="min-max-min_bypath_exp-max_bypath_exp"><a class="header" href="#min-max-min_bypath_exp-max_bypath_exp"><code>min</code>, <code>max</code>, <code>min_by(path_exp)</code>, <code>max_by(path_exp)</code></a></h3>
+<p>找到输入数组的最小或最大元素。</p>
+<p>min_by(path_exp) 和 max_by(path_exp) 函数允许您指定要检查的特定字段或属性，例如 min_by(.foo) 找到具有最小 foo 字段的对象。</p>
+<h3 id="unique-unique_bypath_exp"><a class="header" href="#unique-unique_bypath_exp"><code>unique</code>, <code>unique_by(path_exp)</code></a></h3>
+<p>unique 函数接受一个数组作为输入，并按排序顺序生成一个相同元素的数组，去除重复项。</p>
+<p>unique_by(path_exp) 函数将对应用参数后获得的每个值保留一个元素。可以将其视为通过从 group 生成的每个组中取出一个元素来创建数组。</p>
+<p>示例</p>
+<pre><code>Command	jq 'unique'
+Input	[1,2,5,3,5,3,1,3]
+Output	[1,2,3,5]
+
+
+
+Command	jq 'unique_by(.foo)'
+Input	[{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 1, &quot;bar&quot;: 3}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]
+Output	[{&quot;foo&quot;: 1, &quot;bar&quot;: 2}, {&quot;foo&quot;: 4, &quot;bar&quot;: 5}]
+
+
+Command	jq 'unique_by(length)'
+Input	[&quot;chunky&quot;, &quot;bacon&quot;, &quot;kitten&quot;, &quot;cicada&quot;, &quot;asparagus&quot;]
+Output	[&quot;bacon&quot;, &quot;chunky&quot;, &quot;asparagus&quot;]
+
+
+</code></pre>
+<h3 id="reverse"><a class="header" href="#reverse"><code>reverse</code></a></h3>
+<p>This function reverses an array.</p>
+<h3 id="containselement"><a class="header" href="#containselement"><code>contains(element)</code></a></h3>
+<p>filter contains(b) 如果 b 完全包含在输入中，则会生成 true。如果字符串 B 是字符串 A 的子字符串，则字符串 B 包含在字符串 A 中。如果数组 B 包含在数组 A 中，则 B 中的所有元素都包含在 A 中的任何元素中。如果对象 B 包含在对象 A 中，则 B 中的所有值都包含在 A 中具有相同键的值中。如果其他类型相等，则假定它们相互包含。</p>
+<p>示例</p>
+<h3 id="indicess"><a class="header" href="#indicess"><code>indices(s)</code></a></h3>
+<p>输出一个包含 . 中出现的 s 的索引的数组。输入可以是一个数组，如果 s 是一个数组，那么索引输出将是 . 中所有元素与 s 的元素匹配的位置。</p>
+<p>示例</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'indices(&quot;, &quot;)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>&quot;a,b, cd, efg, hijk&quot;</td></tr>
+<tr><td>Output</td><td>[3,7,12]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'indices(1)'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[0,1,2,1,3,1,4]</td></tr>
+<tr><td>Output</td><td>[1,3,5]</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq 'indices([1,2])'</th></tr></thead><tbody>
+<tr><td>Input</td><td>[0,1,2,3,1,4,2,5,1,2,6,7]</td></tr>
+<tr><td>Output</td><td>[1,8]</td></tr>
+</tbody></table>
+</div>
+<h3 id="indexs-rindexs"><a class="header" href="#indexs-rindexs"><code>index(s)</code>, <code>rindex(s)</code></a></h3>
+<p>Outputs the index of the first (<code>index</code>) or last (<code>rindex</code>) occurrence of <code>s</code> in the input.</p>
+<p>Examples</p>
+<h3 id="inside"><a class="header" href="#inside"><code>inside</code></a></h3>
+<p>filter inside(b) 如果输入完全包含在 b 中，则会生成 true。它本质上是 contains 的相反版本。</p>
+<p>示例</p>
+<h3 id="startswithstr"><a class="header" href="#startswithstr"><code>startswith(str)</code></a></h3>
+<p>Outputs <code>true</code> if . starts with the given string argument.</p>
+<h3 id="endswithstr"><a class="header" href="#endswithstr"><code>endswith(str)</code></a></h3>
+<p>Outputs <code>true</code> if . ends with the given string argument.</p>
+<h3 id="combinations-combinationsn"><a class="header" href="#combinations-combinationsn"><code>combinations</code>, <code>combinations(n)</code></a></h3>
+<p>输出输入数组中数组元素的所有组合。如果给定一个参数 'n'，它输出输入数组的 'n' 个重复的所有组合。</p>
+<pre><code>
+Command	jq 'combinations'
+Input	[[1,2], [3, 4]]
+Output	[1, 3]
+[1, 4]
+[2, 3]
+[2, 4]
+
+
+
+Command	jq 'combinations(2)'
+Input	[0, 1]
+Output	[0, 0]
+[0, 1]
+[1, 0]
+[1, 1]
+</code></pre>
+<h3 id="ltrimstrstr"><a class="header" href="#ltrimstrstr"><code>ltrimstr(str)</code></a></h3>
+<p>如果输入以给定的前缀字符串开头，则输出去除该前缀后的输入。</p>
+<h3 id="rtrimstrstr"><a class="header" href="#rtrimstrstr"><code>rtrimstr(str)</code></a></h3>
+<p>如果输入以给定的后缀字符串结尾，则输出去除该后缀后的输入。</p>
+<h3 id="explode"><a class="header" href="#explode"><code>explode</code></a></h3>
+<p>将输入字符串转换为字符串的代码点数字数组。</p>
+<pre><code>Command	jq 'explode'
+Input	&quot;foobar&quot;
+Output	[102,111,111,98,97,114]
+
+</code></pre>
+<h3 id="implode"><a class="header" href="#implode"><code>implode</code></a></h3>
+<p>The inverse of explode.</p>
+<h3 id="splitstr"><a class="header" href="#splitstr"><code>split(str)</code></a></h3>
+<p>在分隔符参数上拆分输入字符串。</p>
+<p>当使用两个参数调用 split 时，还可以在正则表达式匹配上进行拆分（请参阅下面的正则表达式部分）。</p>
+<p>示例</p>
+<h3 id="joinstr"><a class="header" href="#joinstr"><code>join(str)</code></a></h3>
+<p>使用参数作为分隔符，将作为输入给定的元素数组连接起来。它是 split 的逆操作：也就是说，对任何输入字符串运行 split(&quot;foo&quot;) | join(&quot;foo&quot;)，将返回该输入字符串。</p>
+<p>输入中的数字和布尔值将转换为字符串。空值将被视为空字符串。不支持输入中的数组和对象。</p>
+<h3 id="ascii_downcase-ascii_upcase"><a class="header" href="#ascii_downcase-ascii_upcase"><code>ascii_downcase</code>, <code>ascii_upcase</code></a></h3>
+<p>、</p>
+<h3 id="whilecond-update"><a class="header" href="#whilecond-update"><code>while(cond; update)</code></a></h3>
+<pre><code>Command	jq '[while(.&lt;100; .*2)]'
+Input	1
+Output	[1,2,4,8,16,32,64]
+
+</code></pre>
+<h3 id="repeatexp"><a class="header" href="#repeatexp"><code>repeat(exp)</code></a></h3>
+<p>repeat(exp) 函数允许您重复将表达式 exp 应用到 .，直到出现错误。</p>
+<p>请注意，repeat(exp) 在内部被定义为一个递归的 jq 函数。如果 exp 对每个输入最多产生一个输出，那么 repeat 内部的递归调用不会消耗额外的内存。请参阅下面的高级主题。</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '[repeat(.*2, error)?]'</th></tr></thead><tbody>
+<tr><td>Input</td><td>1</td></tr>
+<tr><td>Output</td><td>[2]</td></tr>
+</tbody></table>
+</div>
+<h3 id="untilcond-next"><a class="header" href="#untilcond-next"><code>until(cond; next)</code></a></h3>
+<p>until(cond; next) 函数允许您重复应用表达式 next，初始为 .，然后是其自身的输出，直到 cond 为真。例如，这可以用来实现一个阶乘函数（见下文）。</p>
+<p>请注意，until(cond; next) 在内部被定义为一个递归的 jq 函数。如果 next 对每个输入最多产生一个输出，那么 until() 内部的递归调用不会消耗额外的内存。请参阅下面的高级主题。</p>
+<p>示例</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '[.,1]|until(.[0] &lt; 1; [.[0] - 1, .[1] * .[0]])|.[1]'</th></tr></thead><tbody>
+<tr><td>Input</td><td>4</td></tr>
+<tr><td>Output</td><td>24</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th>Command</th><th>jq '[.,1]|until(.[0] &lt; 1; [.[0] - 1, .[1] * .[0]])|.[1]'</th></tr></thead><tbody>
+<tr><td>Input</td><td>4</td></tr>
+<tr><td>Output</td><td>24</td></tr>
+</tbody></table>
+</div>
+<h3 id="recursef-recurse-recursef-condition"><a class="header" href="#recursef-recurse-recursef-condition"><code>recurse(f)</code>, <code>recurse</code>, <code>recurse(f; condition)</code></a></h3>
+<p>recurse(f) 函数允许您搜索递归结构，并从所有层级中提取有趣的数据。假设您的输入表示一个文件系统：</p>
+<pre><code>{&quot;name&quot;: &quot;/&quot;, &quot;children&quot;: [
+  {&quot;name&quot;: &quot;/bin&quot;, &quot;children&quot;: [
+    {&quot;name&quot;: &quot;/bin/ls&quot;, &quot;children&quot;: []},
+    {&quot;name&quot;: &quot;/bin/sh&quot;, &quot;children&quot;: []}]},
+  {&quot;name&quot;: &quot;/home&quot;, &quot;children&quot;: [
+    {&quot;name&quot;: &quot;/home/stephen&quot;, &quot;children&quot;: [
+      {&quot;name&quot;: &quot;/home/stephen/jq&quot;, &quot;children&quot;: []}]}]}]}
+</code></pre>
+<p>现在假设您想提取所有的文件名。您需要检索 .name、.children[].name、.children[].children[].name 等等。您可以使用以下方法实现：</p>
+<pre><code>recurse(.children[]) | .name
+</code></pre>
+<p>当没有参数调用时，recurse 等同于 recurse(.[]?)。</p>
+<p>recurse(f) 与 recurse(f; true) 完全相同，并且可以在不考虑递归深度的情况下使用。</p>
+<p>recurse(f; condition) 是一个生成器，它首先发出 .，然后依次发出 .|f，.|f|f，.|f|f|f，...，只要计算得到的值满足条件。例如，要生成所有的整数，至少在原理上，可以写成 recurse(.+1; true)。</p>
+<p>recurse 中的递归调用在 f 对每个输入最多产生一个输出时不会消耗额外的内存。</p>
+<p>示例</p>
+<pre><code>
+Command	jq 'recurse(.foo[])'
+Input	{&quot;foo&quot;:[{&quot;foo&quot;: []}, {&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}
+Output	{&quot;foo&quot;:[{&quot;foo&quot;:[]},{&quot;foo&quot;:[{&quot;foo&quot;:[]}]}]}
+{&quot;foo&quot;:[]}
+{&quot;foo&quot;:[{&quot;foo&quot;:[]}]}
+{&quot;foo&quot;:[]}
+
+
+
+Command	jq 'recurse'
+Input	{&quot;a&quot;:0,&quot;b&quot;:[1]}
+Output	{&quot;a&quot;:0,&quot;b&quot;:[1]}
+0
+[1]
+1
+
+
+
+Command	jq 'recurse(. * .; . &lt; 20)'
+Input	2
+Output	2
+4
+16
+</code></pre>
+<h3 id="walkf"><a class="header" href="#walkf"><code>walk(f)</code></a></h3>
+<p>walk(f) 函数递归地将 f 应用于输入实体的每个组成部分。当遇到数组时，首先将 f 应用于其元素，然后再应用于数组本身；当遇到对象时，首先将 f 应用于所有的值，然后再应用于对象。在实践中，f 通常会测试其输入的类型，如下面的示例所示。</p>
+<p>第一个示例突出了在处理数组本身之前处理数组的元素的有用性。</p>
+<p>第二个示例展示了如何考虑对输入中所有对象的所有键进行修改。</p>
+<p>示例</p>
+<pre><code>Command	jq 'walk(if type == &quot;array&quot; then sort else . end)'
+Input	[[4, 1, 7], [8, 5, 2], [3, 6, 9]]
+Output	[[1,4,7],[2,5,8],[3,6,9]]
+
+
+Command	jq 'walk( if type == &quot;object&quot; then with_entries( .key |= sub( &quot;^_+&quot;; &quot;&quot;) ) else . end )'
+Input	[ { &quot;_a&quot;: { &quot;__b&quot;: 2 } } ]
+Output	[{&quot;a&quot;:{&quot;b&quot;:2}}]
+
+</code></pre>
+<h3 id="jq_build_configuration"><a class="header" href="#jq_build_configuration"><code>$JQ_BUILD_CONFIGURATION</code></a></h3>
+<p>这个内置绑定显示了 jq 可执行文件的构建配置。它的值没有特定的格式，但可以期望至少包含 ./configure 命令行参数，并且在将来可能会增加其他构建工具的版本字符串。</p>
+<p>请注意，这可以在命令行中使用 --arg 和相关选项进行覆盖。</p>
+<h3 id="env-env"><a class="header" href="#env-env"><code>$ENV</code>, <code>env</code></a></h3>
+<p>$ENV 是一个表示环境变量的对象，它在 jq 程序启动时设置。</p>
+<p>env 输出一个表示 jq 当前环境的对象。</p>
+<p>目前还没有用于设置环境变量的内置函数。</p>
+<pre><code>
+Command	jq '$ENV.PAGER'
+Input	null
+Output	&quot;less&quot;
+
+</code></pre>
+<h3 id="transpose"><a class="header" href="#transpose"><code>transpose</code></a></h3>
+<p>将可能是不规则矩阵（一个数组的数组）转置。行会用 null 进行填充，以确保结果始终是矩形的。</p>
+<p>示例：</p>
+<pre><code>
+Command	jq 'transpose'
+Input	[[1], [2,3]]
+Output	[[1,2],[null,3]]
+
+</code></pre>
+<h3 id="bsearchx"><a class="header" href="#bsearchx"><code>bsearch(x)</code></a></h3>
+<p>bsearch(x) 在输入数组中进行二分查找 x。如果输入是有序的并且包含 x，则 bsearch(x) 将返回 x 在数组中的索引；否则，如果数组是有序的，它将返回 (-1 - ix)，其中 ix 是插入点，即在 ix 处插入 x 后数组仍然保持有序。如果数组未排序，bsearch(x) 将返回一个可能不感兴趣的整数。</p>
+<p>示例：</p>
+<pre><code>Command	jq 'bsearch(0)'
+Input	[0,1]
+Output	0
+
+
+Command	jq 'bsearch(0)'
+Input	[1,2,3]
+Output	-1
+
+
+Command	jq 'bsearch(4) as $ix | if $ix &lt; 0 then .[-(1+$ix)] = 4 else . end'
+Input	[1,2,3]
+Output	[1,2,3,4]
+</code></pre>
+<h3 id="string-interpolation-exp"><a class="header" href="#string-interpolation-exp">String interpolation: <code>\(exp)</code></a></h3>
+<p>在字符串中，你可以在反斜杠后面的括号中放置一个表达式。表达式返回的内容将被插入到字符串中。</p>
+<pre><code>
+Command	jq '&quot;The input was \(.), which is one less than \(.+1)&quot;'
+Input	42
+Output	&quot;The input was 42, which is one less than 43&quot;
+
+</code></pre>
+<h3 id="convert-tofrom-json"><a class="header" href="#convert-tofrom-json">Convert to/from JSON</a></h3>
+<p>tojson 和 fromjson 内置函数分别将值转换为 JSON 文本或将 JSON 文本解析为值。tojson 内置函数与 tostring 不同之处在于，tostring 返回未经修改的字符串，而 tojson 将字符串编码为 JSON 字符串。</p>
+<pre><code>Command	jq '[.[]|tostring]'
+Input	[1, &quot;foo&quot;, [&quot;foo&quot;]]
+Output	[&quot;1&quot;,&quot;foo&quot;,&quot;[\&quot;foo\&quot;]&quot;]
+
+
+Command	jq '[.[]|tojson]'
+Input	[1, &quot;foo&quot;, [&quot;foo&quot;]]
+Output	[&quot;1&quot;,&quot;\&quot;foo\&quot;&quot;,&quot;[\&quot;foo\&quot;]&quot;]
+
+Command	jq '[.[]|tojson|fromjson]'
+Input	[1, &quot;foo&quot;, [&quot;foo&quot;]]
+Output	[1,&quot;foo&quot;,[&quot;foo&quot;]]
+</code></pre>
+<h3 id="format-strings-and-escaping"><a class="header" href="#format-strings-and-escaping">Format strings and escaping</a></h3>
+<p>@foo 语法用于格式化和转义字符串，对于构建 URL、HTML 或 XML 等语言的文档非常有用。@foo 可以作为一个独立的过滤器使用，可能的转义方式包括：</p>
+<p>@text:：调用 tostring，详见该函数的详细说明。</p>
+<p>@json:  将输入序列化为 JSON。</p>
+<p>@html:：应用 HTML/XML 转义，将字符 &lt;&gt;&amp;'&quot; 映射为它们的实体等价物 &lt;, &gt;, &amp;, ', &quot;。</p>
+<p>@uri：应用百分号编码，将所有保留的 URI 字符映射为 %XX 序列。</p>
+<p>@csv：输入必须是一个数组，并以 CSV 格式呈现，字符串使用双引号，引号通过重复进行转义。</p>
+<p>@tsv：输入必须是一个数组，并以 TSV（制表符分隔值）格式呈现。每个输入数组将打印为一行。字段由单个制表符（ascii 0x09）分隔。输入字符换行符（ascii 0x0a）、回车符（ascii 0x0d）、制表符（ascii 0x09）和反斜杠（ascii 0x5c）将作为转义序列 \n、\r、\t、\ 输出。</p>
+<p>@sh：输入适用于在 POSIX shell 的命令行中使用的转义。如果输入是一个数组，则输出将是一系列以空格分隔的字符串。</p>
+<p>@base64：将输入转换为 RFC 4648 指定的 base64。</p>
+<p>@base64d:   @base64 的逆操作，将输入按照 RFC 4648 指定的方式进行解码。注意：如果解码后的字符串不是 UTF-8，则结果是未定义的。</p>
+<p>这种语法可以与字符串插值结合使用。可以在 @foo 标记后面跟一个字符串字面量。字符串字面量的内容将不会被转义。然而，在该字符串字面量内部进行的所有插值都将被转义。例如，</p>
+<p>@uri &quot;https://www.google.com/search?q=(.search)&quot;
+对于输入 {&quot;search&quot;:&quot;what is jq?&quot;}，将产生以下输出：</p>
+<p>&quot;https://www.google.com/search?q=what%20is%20jq%3F&quot;
+注意，在 URL 中的斜杠、问号等不会被转义，因为它们是字符串字面量的一部分。</p>
+<h3 id="dates"><a class="header" href="#dates">Dates</a></h3>
+<p>jq提供了一些基本的日期处理功能，包括一些高级和低级的内置函数。在所有情况下，这些内置函数仅处理UTC时间。</p>
+<ol>
+<li>
+<p>fromdateiso8601   内置函数将ISO 8601格式的日期时间解析为自Unix纪元（1970-01-01T00:00:00Z）以来的秒数。而todateiso8601内置函数则执行相反的操作。</p>
+</li>
+<li>
+<p>fromdate内置函数解析日期时间字符串。目前，fromdate仅支持ISO 8601日期时间字符串，但将来它将尝试解析更多格式的日期时间字符串。</p>
+</li>
+<li>
+<p>todate内置函数是todateiso8601的别名。</p>
+</li>
+<li>
+<p>now内置函数输出当前时间，以自Unix纪元以来的秒数表示。</p>
+</li>
+<li>
+<p>低级jq接口还提供了对C库时间函数的访问：strptime、strftime、strflocaltime、mktime、gmtime和localtime。有关strptime和strftime使用的格式字符串，请参考您的主机操作系统的文档。注意：这些在jq中不一定是稳定的接口，特别是它们的本地化功能。</p>
+</li>
+<li>
+<p>gmtime内置函数接受自Unix纪元以来的秒数，并将格林威治标准时间表示为一个数组，数组中的数字依次表示：年份、月份（从零开始）、月份中的日期（从一开始）、小时、分钟、秒、星期几和一年中的第几天，除非另有说明，所有数字都是以一为基准。对于1900年3月1日之前或2099年12月31日之后的日期，某些系统上的星期几可能会出错。</p>
+</li>
+<li>
+<p>localtime内置函数与gmtime内置函数类似，但使用本地时区设置。</p>
+</li>
+<li>
+<p>mktime内置函数接受gmtime和strptime输出的“分解时间”表示，并将其转换为秒数。</p>
+</li>
+<li>
+<p>strptime(fmt)内置函数解析与fmt参数匹配的输入字符串。输出是由gmtime消耗和mktime输出的“分解时间”表示。</p>
+</li>
+<li>
+<p>strftime(fmt)内置函数使用给定的格式对时间（GMT）进行格式化。strflocaltime执行相同的操作，但使用本地时区设置。</p>
+</li>
+<li>
+<p>有关strptime和strftime的格式字符串，请参考典型的C库文档。ISO 8601日期时间的格式字符串为&quot;%Y-%m-%dT%H:%M:%SZ&quot;。</p>
+</li>
+<li>
+<p>在某些系统上，jq可能不支持某些或全部日期功能。特别是在macOS上不支持strptime(fmt)的%u和%j说明符。</p>
+</li>
+</ol>
+<h3 id="sql-style-operators"><a class="header" href="#sql-style-operators">SQL-Style Operators</a></h3>
+<p>jq提供了一些类似SQL的操作符。</p>
+<p>INDEX(stream; index_expression)：这个内置函数生成一个对象，其键是通过将给定的索引表达式应用于给定流中的每个值计算得出的。</p>
+<p>JOIN($idx; stream; idx_expr; join_expr)：这个内置函数将给定流中的值与给定的索引进行连接。索引的键是通过将给定的索引表达式应用于给定流中的每个值计算得出的。将流中的值和索引中相应的值的数组输入到给定的连接表达式中，以产生每个结果。</p>
+<p>JOIN($idx; stream; idx_expr)：
+与JOIN($idx; stream; idx_expr; .)相同。</p>
+<p>JOIN($idx; idx_expr)：
+这个内置函数将输入.与给定的索引进行连接，将给定的索引表达式应用于.以计算索引键。连接操作如上所述。</p>
+<p>IN(s)：
+如果.出现在给定的流中，则这个内置函数输出true，否则输出false。</p>
+<p>IN(source; s)：
+如果源流中的任何值出现在第二个流中，则这个内置函数输出true，否则输出false。</p>
+<h3 id="builtins"><a class="header" href="#builtins"><code>builtins</code></a></h3>
+<p>返回一个以名称/参数个数格式表示的所有内置函数的列表。由于具有相同名称但参数个数不同的函数被视为不同的函数，因此列表中将包含all/0、all/1和all/2。</p>
+<h2 id="conditionals-and-comparisons"><a class="header" href="#conditionals-and-comparisons">Conditionals and Comparisons</a></h2>
+<h3 id="-"><a class="header" href="#-"><code>==</code>, <code>!=</code></a></h3>
+<p>如果评估a和b的结果相等（即它们表示等效的JSON值），则表达式'a == b'将产生'true'，否则产生'false'。特别地，字符串永远不被视为与数字相等。在检查JSON对象的相等性时，键的顺序是无关紧要的。如果你熟悉JavaScript，请注意jq的==类似于JavaScript的===，即&quot;严格相等&quot;运算符。</p>
+<pre><code>Command	jq '. == false'
+Input	null
+Output	false
+
+</code></pre>
+<h3 id="if-then-else-end"><a class="header" href="#if-then-else-end">if-then-else-end</a></h3>
+<p>如果A为真，则if A then B else C end将与B相同，如果A产生的值不是false或null，但在其他情况下与C相同。</p>
+<p>if A then B end与if A then B else . end相同。也就是说，else分支是可选的，如果不存在，则与..相同。这也适用于elif没有结束else分支的情况。</p>
+<p>检查false或null是一种比JavaScript或Python中更简单的&quot;真值&quot;概念，但这意味着您有时需要更明确地表达您想要的条件。您不能使用if .name then A else B end来测试字符串是否为空；您需要使用类似if .name == &quot;&quot; then A else B end的表达式。</p>
+<p>如果条件A产生多个结果，则对于每个不为false或null的结果，B将被评估一次，对于每个false或null，C将被评估一次。</p>
+<p>可以使用elif A then B语法为if添加更多情况。</p>
+<pre><code>
+Command	jq 'if . == 0 then &quot;zero&quot; elif . == 1 then &quot;one&quot; else &quot;many&quot; end'
+Input	2
+Output	&quot;many&quot;
+</code></pre>
+<h3 id="--"><a class="header" href="#--"><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code></a></h3>
+<p>比较运算符 &gt;、&gt;=、&lt;=、&lt; 返回它们的左操作数是否大于、大于等于、小于等于或小于它们的右操作数（分别）。</p>
+<p>其顺序与上述的排序描述相同。</p>
+<pre><code>
+Command	jq '. &lt; 5'
+Input	2
+Output	true
+
+</code></pre>
+<h3 id="and-or-not"><a class="header" href="#and-or-not"><code>and</code>, <code>or</code>, <code>not</code></a></h3>
+<p>jq支持常规的布尔运算符and、or、not。它们具有与if表达式相同的真实标准 - false和null被视为&quot;假值&quot;，而其他任何值都是&quot;真值&quot;。</p>
+<p>如果这些运算符的操作数产生多个结果，则运算符本身将为每个输入产生一个结果。</p>
+<p>实际上，not是一个内置函数而不是运算符，因此它被称为一个过滤器，可以将东西传递给它，而不是使用特殊的语法，如.foo和.bar | not。</p>
+<p>这三个运算符只产生true和false两个值，因此只适用于真正的布尔运算，而不是常见的Perl/Python/Ruby习惯用法&quot;可能为null的值 or 默认值&quot;。如果你想使用这种形式的&quot;or&quot;，在两个值之间选择而不是评估条件，请参见下面的//运算符。</p>
+<pre><code>
+Command	jq '42 and &quot;a string&quot;'
+Input	null
+Output	true
+
+
+Command	jq '(true, false) or false'
+Input	null
+Output	true
+false
+
+
+Command	jq '(true, true) and (true, false)'
+Input	null
+Output	true
+false
+true
+false
+
+
+
+Command	jq '[true, false | not]'
+Input	null
+Output	[false, true]
+
+
+</code></pre>
+<h3 id="alternative-operator-"><a class="header" href="#alternative-operator-">Alternative operator: <code>//</code></a></h3>
+<p>//运算符生成其左操作数中既不为false也不为null的所有值，或者，如果左操作数除了false或null之外没有其他值，则//生成其右操作数的所有值。</p>
+<p>形式为a // b的过滤器生成a的所有结果，这些结果不是false或null。如果a没有结果，或者除了false或null之外没有其他结果，则a // b生成b的结果。</p>
+<p>这对于提供默认值非常有用：如果输入中没有.foo元素，则.foo // 1将计算为1。这类似于Python中有时使用的or（jq的or运算符专用于严格的布尔运算）。</p>
+<p>注意：some_generator // defaults_here与some_generator | . // defaults_here不同。后者将为左操作数的所有非false、非null值生成默认值，而前者则不会。优先级规则可能会让人感到困惑。例如，在false, 1 // 2中，//的左操作数是1，而不是false, 1 -- false, 1 // 2的解析方式与false, (1 // 2)相同。在(false, null, 1) | . // 42中，//的左操作数是.，它始终只生成一个值，而在(false, null, 1) // 42中，左操作数是一个生成器，它生成三个值，并且由于它产生了一个不是false和null的值，因此不会产生默认值42。</p>
+<pre><code>
+Command	jq 'empty // 42'
+Input	null
+Output	42
+
+
+Command	jq '.foo // 42'
+Input	{&quot;foo&quot;: 19}
+Output	19
+
+
+Command	jq '(false, null, 1) // 42'
+Input	null
+Output	1
+
+
+Command	jq '(false, null, 1) | . // 42'
+Input	null
+Output	42
+42
+1
+
+
+</code></pre>
+<h3 id="try-catch"><a class="header" href="#try-catch">try-catch</a></h3>
+<p>错误可以通过使用try EXP catch EXP来捕获。首先执行第一个表达式，如果失败，则执行第二个表达式并输出错误消息。如果有的话，处理程序的输出将被输出，就像它是try表达式的输出一样。</p>
+<p>try EXP形式使用empty作为异常处理程序。</p>
+<pre><code>Command	jq 'try .a catch &quot;. is not an object&quot;'
+Input	true
+Output	&quot;. is not an object&quot;
+
+Command	jq '[.[]|try .a]'
+Input	[{}, true, {&quot;a&quot;:1}]
+Output	[null, 1]
+
+Command	jq 'try error(&quot;some exception&quot;) catch .'
+Input	true
+Output	&quot;some exception&quot;
+</code></pre>
+<h3 id="breaking-out-of-control-structures"><a class="header" href="#breaking-out-of-control-structures">Breaking out of control structures</a></h3>
+<p>try/catch的一个方便的用途是跳出控制结构，比如reduce、foreach、while等等。</p>
+<pre><code># Repeat an expression until it raises &quot;break&quot; as an
+# error, then stop repeating without re-raising the error.
+# But if the error caught is not &quot;break&quot; then re-raise it.
+try repeat(exp) catch if .==&quot;break&quot; then empty else error
+</code></pre>
+<p>jq有一种语法用于命名词法标签，可以用于&quot;break&quot;或&quot;返回到&quot;：</p>
+<pre><code>label $out | ... break $out ...
+</code></pre>
+<p>break $label_name表达式将使程序表现得好像最近（靠左）的标签$label_name产生了empty。</p>
+<p>break和对应标签之间的关系是词法的：标签必须从break处&quot;可见&quot;。</p>
+<p>例如，要跳出reduce：</p>
+<pre><code>label $out | reduce .[] as $item (null; if .==false then break $out else ... end)
+</code></pre>
+<p>以下jq程序会产生语法错误：</p>
+<pre><code>break $out
+
+because no label $out is visible.
+</code></pre>
+<h3 id="error-suppression--optional-operator-"><a class="header" href="#error-suppression--optional-operator-">Error Suppression / Optional Operator: <code>?</code></a></h3>
+<p>The <code>?</code> operator, used as <code>EXP?</code>, is shorthand for <code>try EXP</code>.</p>
+<pre><code>
+Command	jq '[.[] | .a?]'
+Input	[{}, true, {&quot;a&quot;:1}]
+Output	[null, 1]
+</code></pre>
+<pre><code>Command	jq '[.[] | tonumber?]'
+Input	[&quot;1&quot;, &quot;invalid&quot;, &quot;3&quot;, 4]
+Output	[1, 3, 4]
+</code></pre>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../10.Linux/CFSBandwidthControl.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../10.Linux/LinuxFor.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../10.Linux/CFSBandwidthControl.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../10.Linux/LinuxFor.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

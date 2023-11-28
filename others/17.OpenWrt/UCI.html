@@ -1,0 +1,867 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>UCI.md - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><a href="../0.html"><strong aria-hidden="true">0.</strong> UML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../0.绘图与建模_UML/UML.html"><strong aria-hidden="true">0.0.</strong> UML.md</a></li></ol></li><li class="chapter-item "><a href="../2.html"><strong aria-hidden="true">1.</strong> Flowchart</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">flowchart</li><li><ol class="section"><li class="chapter-item "><a href="../2.绘图与建模_Flowchart/flowchart_fun.html"><strong aria-hidden="true">1.2.</strong> fun.md</a></li></ol></li><li class="chapter-item "><a href="../3.html"><strong aria-hidden="true">2.</strong> PlantUml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../3.绘图与建模_PlantUml/plantUML语法.html"><strong aria-hidden="true">2.0.</strong> plantUML语法.md</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../10.html"><strong aria-hidden="true">3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/CFSBandwidthControl.html"><strong aria-hidden="true">3.0.</strong> CFSBandwidthControl.md</a></li><li class="chapter-item "><a href="../10.Linux/JQ语法.html"><strong aria-hidden="true">3.1.</strong> JQ语法.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxFor.html"><strong aria-hidden="true">3.2.</strong> LinuxFor.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxMount.html"><strong aria-hidden="true">3.3.</strong> LinuxMount.md</a></li><li class="chapter-item "><a href="../10.Linux/LinuxWOL设置.html"><strong aria-hidden="true">3.4.</strong> LinuxWOL设置.md</a></li><li class="chapter-item "><a href="../10.Linux/Linux条件测试.html"><strong aria-hidden="true">3.5.</strong> Linux条件测试.md</a></li><li class="chapter-item "><a href="../10.Linux/Seed.html"><strong aria-hidden="true">3.6.</strong> Seed.md</a></li><li class="chapter-item "><a href="../10.Linux/Sort.html"><strong aria-hidden="true">3.7.</strong> Sort.md</a></li><li class="chapter-item "><a href="../10.Linux/VIM.html"><strong aria-hidden="true">3.8.</strong> VIM.md</a></li><li class="chapter-item "><a href="../10.Linux/caseIn.html"><strong aria-hidden="true">3.9.</strong> caseIn.md</a></li><li class="chapter-item "><a href="../10.Linux/cgroup.html"><strong aria-hidden="true">3.10.</strong> cgroup.md</a></li><li class="chapter-item "><a href="../10.Linux/curl.html"><strong aria-hidden="true">3.11.</strong> curl.md</a></li><li class="chapter-item "><a href="../10.Linux/dd.html"><strong aria-hidden="true">3.12.</strong> dd.md</a></li><li class="chapter-item "><a href="../10.Linux/diffPatch.html"><strong aria-hidden="true">3.13.</strong> diffPatch.md</a></li><li class="chapter-item "><a href="../10.Linux/find.html"><strong aria-hidden="true">3.14.</strong> find.md</a></li><li class="chapter-item "><a href="../10.Linux/iptables.html"><strong aria-hidden="true">3.15.</strong> iptables.md</a></li><li class="chapter-item "><a href="../10.Linux/jq.html"><strong aria-hidden="true">3.16.</strong> jq.md</a></li><li class="chapter-item "><a href="../10.Linux/lsof.html"><strong aria-hidden="true">3.17.</strong> lsof.md</a></li><li class="chapter-item "><a href="../10.Linux/ps.html"><strong aria-hidden="true">3.18.</strong> ps.md</a></li><li class="chapter-item "><a href="../10.Linux/read.html"><strong aria-hidden="true">3.19.</strong> read.md</a></li><li class="chapter-item "><a href="../10.Linux/scp.html"><strong aria-hidden="true">3.20.</strong> scp.md</a></li><li class="chapter-item "><a href="../10.Linux/select.html"><strong aria-hidden="true">3.21.</strong> select.md</a></li><li class="chapter-item "><a href="../10.Linux/service脚本.html"><strong aria-hidden="true">3.22.</strong> service脚本.md</a></li><li class="chapter-item "><a href="../10.Linux/set.html"><strong aria-hidden="true">3.23.</strong> set.md</a></li><li class="chapter-item "><a href="../10.Linux/shell字符串.html"><strong aria-hidden="true">3.24.</strong> shell字符串.md</a></li><li class="chapter-item "><a href="../10.Linux/shell脚本参数.html"><strong aria-hidden="true">3.25.</strong> shell脚本参数.md</a></li><li class="chapter-item "><a href="../10.Linux/stat.html"><strong aria-hidden="true">3.26.</strong> stat.md</a></li><li class="chapter-item "><a href="../10.Linux/tar.html"><strong aria-hidden="true">3.27.</strong> tar.md</a></li><li class="chapter-item "><a href="../10.Linux/top命令.html"><strong aria-hidden="true">3.28.</strong> top命令.md</a></li><li class="chapter-item "><a href="../10.Linux/uidGidSetUidSetGid.html"><strong aria-hidden="true">3.29.</strong> uidGidSetUidSetGid.md</a></li><li class="chapter-item "><a href="../10.Linux/wsl关闭提示音.html"><strong aria-hidden="true">3.30.</strong> wsl关闭提示音.md</a></li><li class="chapter-item "><a href="../10.Linux/yum本地包依赖.html"><strong aria-hidden="true">3.31.</strong> yum本地包依赖.md</a></li><li class="chapter-item "><a href="../10.Linux/内存管理.html"><strong aria-hidden="true">3.32.</strong> 内存管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.Linux/内存管理/RSS与VSZ.html"><strong aria-hidden="true">3.32.0.</strong> RSS与VSZ.md</a></li></ol></li><li class="chapter-item "><a href="../10.Linux/大端与小端.html"><strong aria-hidden="true">3.33.</strong> 大端与小端.md</a></li><li class="chapter-item "><a href="../10.Linux/确定Linux发行版本.html"><strong aria-hidden="true">3.34.</strong> 确定Linux发行版本.md</a></li><li class="chapter-item "><a href="../10.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">3.35.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li><li class="chapter-item "><a href="../10.Linux/零拷贝.html"><strong aria-hidden="true">3.36.</strong> 零拷贝.md</a></li><li class="chapter-item "><a href="../10.Linux/默认值语法糖.html"><strong aria-hidden="true">3.37.</strong> 默认值语法糖.md</a></li></ol></li><li class="chapter-item "><a href="../16.html"><strong aria-hidden="true">4.</strong> 杂项</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.杂项/DNS&DHCP.html"><strong aria-hidden="true">4.0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="../16.杂项/Linux烧录镜像.html"><strong aria-hidden="true">4.1.</strong> Linux烧录镜像.md</a></li><li class="chapter-item "><a href="../16.杂项/SSH代理.html"><strong aria-hidden="true">4.2.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="../16.杂项/在线FireFox.html"><strong aria-hidden="true">4.3.</strong> 在线FireFox.md</a></li></ol></li><li class="chapter-item expanded "><a href="../17.html"><strong aria-hidden="true">5.</strong> OpenWrt</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../17.OpenWrt/DHCP.html"><strong aria-hidden="true">5.0.</strong> DHCP.md</a></li><li class="chapter-item expanded "><a href="../17.OpenWrt/UCI.html" class="active"><strong aria-hidden="true">5.1.</strong> UCI.md</a></li></ol></li><li class="chapter-item "><a href="../5.html"><strong aria-hidden="true">6.</strong> 常用软件</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../5.常用软件/MakeFile.html"><strong aria-hidden="true">6.0.</strong> MakeFile.md</a></li><li class="chapter-item "><a href="../5.常用软件/MdBook.html"><strong aria-hidden="true">6.1.</strong> MdBook.md</a></li><li class="chapter-item "><a href="../5.常用软件/Multipass.html"><strong aria-hidden="true">6.2.</strong> Multipass.md</a></li><li class="chapter-item "><a href="../5.常用软件/v2rayN代理.html"><strong aria-hidden="true">6.3.</strong> v2rayN代理.md</a></li></ol></li><li class="chapter-item "><a href="../6.html"><strong aria-hidden="true">7.</strong> 生活事宜</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../6.生活事宜/个人清算汇缴.html"><strong aria-hidden="true">7.0.</strong> 个人清算汇缴.md</a></li></ol></li><li class="chapter-item "><a href="../8.html"><strong aria-hidden="true">8.</strong> 学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../8.学习/概率论与数理统计.html"><strong aria-hidden="true">8.0.</strong> 概率论与数理统计.md</a></li></ol></li><li class="chapter-item "><a href="../9.html"><strong aria-hidden="true">9.</strong> 数据格式</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/README.html"><strong aria-hidden="true">9.0.</strong> JSON</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../9.数据格式/JSON/JsonSchema.html"><strong aria-hidden="true">9.0.0.</strong> JsonSchema.md</a></li></ol></li><li class="chapter-item "><a href="../9.数据格式/XML.html"><strong aria-hidden="true">9.1.</strong> XML.md</a></li><li class="chapter-item "><a href="../9.数据格式/yaml.html"><strong aria-hidden="true">9.2.</strong> yaml.md</a></li></ol></li><li class="chapter-item "><a href="../11.algorithm/README.html"><strong aria-hidden="true">10.</strong> algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.algorithm/Base64编码.html"><strong aria-hidden="true">10.0.</strong> Base64编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/Huffman编码.html"><strong aria-hidden="true">10.1.</strong> Huffman编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/fnv-hash算法.html"><strong aria-hidden="true">10.2.</strong> fnv-hash算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/二叉搜索平衡树.html"><strong aria-hidden="true">10.3.</strong> 二叉搜索平衡树.md</a></li><li class="chapter-item "><a href="../11.algorithm/位运算.html"><strong aria-hidden="true">10.4.</strong> 位运算.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划-新.html"><strong aria-hidden="true">10.5.</strong> 动态规划-新.md</a></li><li class="chapter-item "><a href="../11.algorithm/动态规划.html"><strong aria-hidden="true">10.6.</strong> 动态规划.md</a></li><li class="chapter-item "><a href="../11.algorithm/字符编码.html"><strong aria-hidden="true">10.7.</strong> 字符编码.md</a></li><li class="chapter-item "><a href="../11.algorithm/布隆过滤器.html"><strong aria-hidden="true">10.8.</strong> 布隆过滤器.md</a></li><li class="chapter-item "><a href="../11.algorithm/浮点数.html"><strong aria-hidden="true">10.9.</strong> 浮点数.md</a></li><li class="chapter-item "><a href="../11.algorithm/红黑树.html"><strong aria-hidden="true">10.10.</strong> 红黑树.md</a></li><li class="chapter-item "><a href="../11.algorithm/贪心算法.html"><strong aria-hidden="true">10.11.</strong> 贪心算法.md</a></li><li class="chapter-item "><a href="../11.algorithm/逆波兰表达式.html"><strong aria-hidden="true">10.12.</strong> 逆波兰表达式.md</a></li></ol></li><li class="chapter-item "><a href="../15.音频/README.html"><strong aria-hidden="true">11.</strong> 音频</a></li><li class="chapter-item "><a href="../12.AutoHotKey/README.html"><strong aria-hidden="true">12.</strong> AutoHotKey</a></li><li class="chapter-item "><a href="../7.思考/README.html"><strong aria-hidden="true">13.</strong> 思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../7.思考/学习总结.html"><strong aria-hidden="true">13.0.</strong> 学习总结.md</a></li><li class="chapter-item "><a href="../7.思考/杂项.html"><strong aria-hidden="true">13.1.</strong> 杂项.md</a></li><li class="chapter-item "><a href="../7.思考/编程技巧.html"><strong aria-hidden="true">13.2.</strong> 编程技巧.md</a></li></ol></li><li class="chapter-item "><a href="../13.espanso/README.html"><strong aria-hidden="true">14.</strong> espanso</a></li><li class="chapter-item "><a href="../4.模板引擎/README.html"><strong aria-hidden="true">15.</strong> 模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../4.模板引擎/mustache/README.html"><strong aria-hidden="true">15.0.</strong> mustache</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/README.html"><strong aria-hidden="true">16.</strong> 驾照理论学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/README.html"><strong aria-hidden="true">16.0.</strong> 道路交通安全法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/1.总则.html"><strong aria-hidden="true">16.0.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/10.交通事故处理.html"><strong aria-hidden="true">16.0.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/11.执法监督.html"><strong aria-hidden="true">16.0.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/12.法律责任.html"><strong aria-hidden="true">16.0.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/13.附则.html"><strong aria-hidden="true">16.0.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/2.车辆和驾驶人-1.机动车&非机动车.html"><strong aria-hidden="true">16.0.5.</strong> 车辆和驾驶人-1.机动车&非机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/3.车辆和驾驶人-2.机动车驾驶人.html"><strong aria-hidden="true">16.0.6.</strong> 车辆和驾驶人-2.机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/4.道路通行条件.html"><strong aria-hidden="true">16.0.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.0.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.0.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.0.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/8.道路通行规定-行人和乘车通行规定.html"><strong aria-hidden="true">16.0.11.</strong> 道路通行规定-行人和乘车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/9.道路通行规定-高速公路特别规定.html"><strong aria-hidden="true">16.0.12.</strong> 道路通行规定-高速公路特别规定.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/地址类.html"><strong aria-hidden="true">16.1.</strong> 地址类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/学习盲点.html"><strong aria-hidden="true">16.2.</strong> 学习盲点.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/惩罚类.html"><strong aria-hidden="true">16.3.</strong> 惩罚类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/扣分类.html"><strong aria-hidden="true">16.4.</strong> 扣分类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/时间类.html"><strong aria-hidden="true">16.5.</strong> 时间类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定.html"><strong aria-hidden="true">16.6.</strong> 机动车驾驶证申领和使用规定</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定/1.总则.html"><strong aria-hidden="true">16.6.0.</strong> 总则.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/知乎笔记学习.html"><strong aria-hidden="true">16.7.</strong> 知乎笔记学习.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/英文缩写.html"><strong aria-hidden="true">16.8.</strong> 英文缩写.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/速度类.html"><strong aria-hidden="true">16.9.</strong> 速度类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例.html"><strong aria-hidden="true">16.10.</strong> 道路交通安全法实施条例</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/1.总则.html"><strong aria-hidden="true">16.10.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/10.交通事故处理.html"><strong aria-hidden="true">16.10.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/11.执法监督.html"><strong aria-hidden="true">16.10.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/12.法律责任.html"><strong aria-hidden="true">16.10.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/13.附则.html"><strong aria-hidden="true">16.10.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/2.车辆和驾驶人-机动车.html"><strong aria-hidden="true">16.10.5.</strong> 车辆和驾驶人-机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/3.车辆和驾驶人-机动车驾驶人.html"><strong aria-hidden="true">16.10.6.</strong> 车辆和驾驶人-机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/4.道路通行条件.html"><strong aria-hidden="true">16.10.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.10.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.10.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.10.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/8.道路通行规定-行人和乘车规定.html"><strong aria-hidden="true">16.10.11.</strong> 道路通行规定-行人和乘车规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/9.道路通行规定-高速公路的特别规定.html"><strong aria-hidden="true">16.10.12.</strong> 道路通行规定-高速公路的特别规定.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/README.html"><strong aria-hidden="true">17.</strong> MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/ER图.html"><strong aria-hidden="true">17.0.</strong> ER图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/时序图.html"><strong aria-hidden="true">17.1.</strong> 时序图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/流程图.html"><strong aria-hidden="true">17.2.</strong> 流程图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/类图.html"><strong aria-hidden="true">17.3.</strong> 类图.md</a></li><li class="chapter-item "><a href="../1.绘图与建模_MERMAID/语法总览.html"><strong aria-hidden="true">17.4.</strong> 语法总览.md</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="openwrt-basic-configuration"><a class="header" href="#openwrt-basic-configuration">openWrt Basic Configuration</a></h2>
+<h3 id="the-uci-system"><a class="header" href="#the-uci-system">The UCI system</a></h3>
+<ol>
+<li>
+<p>The abbreviation UCI stands for Unified Configuration Interface,(统一配置接口)，它是一种将OpenWrt服务的配置集中管理的系统。</p>
+</li>
+<li>
+<p>UCI是OpenWrt White Russian系列中基于NVRAM的配置的继任者。它是主要的配置用户界面，用于最重要的系统设置，包括主网络接口配置、无线设置、日志功能和远程访问配置。</p>
+</li>
+<li>
+<p>OpenWrt软件仓库中的许多软件包已与UCI系统兼容。只需根据相应的UCI文件中选择的设置编写原始配置文件（由程序读取），即可使应用程序与UCI兼容。这是在运行/etc/init.d/中的初始化脚本时完成的。有关更多信息，请参阅<a href="https://openwrt.org/docs/techref/initscripts">初始化脚本</a>。因此，当使用此类UCI兼容的初始化脚本启动守护程序时，您应该意识到程序的原始配置文件将被覆盖。例如，在<a href="https://openwrt.org/docs/guide-user/services/nas/cifs.server">Samba/CIFS</a>的场景下，运行/etc/init.d/samba start时，文件/etc/samba/smb.conf将被UCI配置文件/etc/config/samba中的UCI设置覆盖。</p>
+</li>
+<li>
+<p>此外，应用程序的配置文件通常存储在RAM中，而不是闪存中，因为它不需要存储在非易失性存储器中，并且根据UCI文件的每次更改进行重写。如果您希望调整原始配置文件中UCI不可用的设置，有办法禁用UCI，例如在<a href="https://openwrt.org/docs/guide-user/services/nas/cifs.server">cifs.server</a>中，您可以看到如何禁用Samba的UCI。</p>
+</li>
+<li>
+<p>这段内容指出了一些不兼容UCI的程序，提供了一份方便的<a href="https://openwrt.org/docs/guide-user/base-system/notuci.config">非UCI配置文件列表</a>，用户可以查看并进行相关设置。但对于大多数第三方程序，应该查阅其自身的文档以获取更准确的配置信息。</p>
+</li>
+</ol>
+<h3 id="common-principles"><a class="header" href="#common-principles">Common principles</a></h3>
+<p>OpenWrt的中央配置被分成几个文件，这些文件位于<code>/etc/config/</code>目录中。每个文件大致对应于它配置的系统部分。您可以使用文本编辑器编辑配置文件，也可以使用命令行实用程序uci修改它们。UCI配置文件也可以通过各种编程API（如Shell、Lua和C）进行修改，这也是Web界面（如<a href="https://openwrt.org/docs/guide-user/luci/luci.essentials">LuCI</a>）对UCI文件进行更改的方式。</p>
+<h4 id="initd-reload-uci"><a class="header" href="#initd-reload-uci">init.d reload UCI</a></h4>
+<p>在更改UCI配置文件时，无论是通过文本编辑器还是命令行，受影响的服务或可执行文件必须通过<a href="https://openwrt.org/docs/guide-user/base-system/uci#:~:text=reloaded">init.d</a>%20by%20an-,init.d%20call,-%2C%20such%20that%20the)调用(重新)启动(或在某些情况下仅重新加载)，以便将更新的UCI配置应用于它们。许多程序通过简单地使它们的init.d脚本首先基于/etc/config中更新的UCI配置  更新它们的标准程序特定配置文件，然后重新启动可执行文件来与UCI兼容。这意味着仅直接(重新)启动可执行文件，而不调用适当的init.d脚本，将无法按预期行事，因为它尚未将配置更新合并到程序的标准配置文件中。</p>
+<p>假设你想将设备的IP地址从默认的192.168.1.1更改为192.168.2.1。要做到这一点，修改 <code>/etc/config/network</code> 为 <code>option ipaddr	192.168.2.1</code></p>
+<p>然后重启 ：/etc/init.d/network restart</p>
+<h3 id="configuration-files"><a class="header" href="#configuration-files">Configuration files</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>File</th><th>Description</th></tr></thead><tbody>
+<tr><td>Basic</td><td>-</td></tr>
+<tr><td>/etc/config/dhcp</td><td>Dnsmasq and odhcpd settings: DNS, DHCP, DHCPv6</td></tr>
+<tr><td>/etc/config/dropbear</td><td>SSH server options</td></tr>
+<tr><td>/etc/config/firewall</td><td>NAT, packet filter, port forwarding, etc.</td></tr>
+<tr><td>/etc/config/network</td><td>Switch, interface and route configuration:   Basics, IPv4, IPv6, Routes, Rules, WAN, Aliases, Switches, VLAN, IPv4/IPv6 transitioning,Tunneling</td></tr>
+<tr><td>/etc/config/system</td><td>Misc. system settings, NTP, RNG, Watchcat</td></tr>
+<tr><td>/etc/config/wireless</td><td>Wireless settings and wifi network definition</td></tr>
+<tr><td>IPv6</td><td>-</td></tr>
+<tr><td>/etc/config/ahcpd</td><td>Ad-Hoc Configuration Protocol (AHCP) server and forwarder configuration</td></tr>
+<tr><td>/etc/config/dhcp6c</td><td>WIDE-DHCPv6 client</td></tr>
+<tr><td>/etc/config/dhcp6s</td><td>WIDE-DHCPv6 server</td></tr>
+<tr><td>/etc/config/gw6c</td><td>GW6c client configuration</td></tr>
+<tr><td>Other</td><td>-</td></tr>
+<tr><td>/etc/config/babeld</td><td>babeld configuration</td></tr>
+<tr><td>/etc/config/bbstored</td><td>BoxBackup server configuration</td></tr>
+<tr><td>/etc/config/ddns</td><td>Dynamic DNS configuration (ddns-scripts)</td></tr>
+<tr><td>/etc/config/dnscrypt-proxy</td><td>DNSCrypt proxy</td></tr>
+<tr><td>/etc/config/emailrelay</td><td>E-MailRelay: simple SMTP server and proxy with POP support. Package emailrelay</td></tr>
+<tr><td>/etc/config/etherwake</td><td>Wake-on-Lan: etherwake</td></tr>
+<tr><td>/etc/config/freifunk_p2pblock</td><td>Uses iptables layer7-, ipp2p- and recent-modules to block p2p/filesharing traffic</td></tr>
+<tr><td>/etc/config/fstab</td><td>Mount points and swap</td></tr>
+<tr><td>/etc/config/hd-idle</td><td>Another idle-daemon for attached hard drives</td></tr>
+<tr><td>/etc/config/httpd</td><td>Web server options (Busybox httpd, deprecated)</td></tr>
+<tr><td>/etc/config/ipset-dns</td><td>Configure ipset-dns</td></tr>
+<tr><td>/etc/config/luci</td><td>Base LuCI config</td></tr>
+<tr><td>/etc/config/luci_statistics</td><td>Configuration of Statistics packet</td></tr>
+<tr><td>/etc/config/mini_snmpd</td><td>mini_snmpd settings</td></tr>
+<tr><td>/etc/config/minidlna</td><td>MiniDLNA settings</td></tr>
+<tr><td>/etc/config/mjpg-streamer</td><td>Streaming application for Linux-UVC compatible webcams</td></tr>
+<tr><td>/etc/config/mountd</td><td>OpenWrt automount daemon</td></tr>
+<tr><td>/etc/config/mroute</td><td>Configuration files for multiple WAN routes</td></tr>
+<tr><td>/etc/config/multiwan</td><td>Simple multi WAN configuration</td></tr>
+<tr><td>/etc/config/mwan3</td><td>Multi-WAN config with load balancing and failover</td></tr>
+<tr><td>/etc/config/nodogsplash</td><td>nodogsplash configuration</td></tr>
+<tr><td>/etc/config/ntpclient</td><td>Getting the correct time</td></tr>
+<tr><td>/etc/config/nut_server</td><td>Controlling a UPS (Uninterruptible Power Supply) and/or sharing with other hosts</td></tr>
+<tr><td>/etc/config/nut_monitor</td><td>Monitoring a UPS (Uninterruptible Power Supply) from a remote host or local nut-server</td></tr>
+<tr><td>/etc/config/nut_cgi</td><td>Web UI for NUT (viewing only in UCI)</td></tr>
+<tr><td>/etc/config/p910nd</td><td>config for non-spooling Printer daemon p910nd.server</td></tr>
+<tr><td>/etc/config/pure-ftpd</td><td>Pure-FTPd server config</td></tr>
+<tr><td>/etc/config/qos</td><td>Implementing Quality of Service for the upload</td></tr>
+<tr><td>/etc/config/racoon</td><td>racoon IPsec daemon</td></tr>
+<tr><td>/etc/config/samba</td><td>settings for the Microsoft file and print services daemon</td></tr>
+<tr><td>/etc/config/snmpd</td><td>SNMPd settings</td></tr>
+<tr><td>/etc/config/sqm</td><td>SQM settings</td></tr>
+<tr><td>/etc/config/sshtunnel</td><td>Settings for the package sshtunnel</td></tr>
+<tr><td>/etc/config/stund</td><td>STUN server configuration</td></tr>
+<tr><td>/etc/config/tinc</td><td>tinc package configuration</td></tr>
+<tr><td>/etc/config/tor</td><td>Tor configuration</td></tr>
+<tr><td>/etc/config/tor-hs</td><td>Tor hidden services configuration</td></tr>
+<tr><td>/etc/config/transmission</td><td>BitTorrent configuration</td></tr>
+<tr><td>/etc/config/uhttpd</td><td>Web server options (uHTTPd)</td></tr>
+<tr><td>/etc/config/upnpd</td><td>miniupnpd UPnP server settings</td></tr>
+<tr><td>/etc/config/users</td><td>user database for different services</td></tr>
+<tr><td>/etc/config/ushare</td><td>uShare UPnP server settings</td></tr>
+<tr><td>/etc/config/vblade</td><td>vblade userspace AOE target</td></tr>
+<tr><td>/etc/config/vnstat</td><td>vnstat downloader settings</td></tr>
+<tr><td>/etc/config/wifitoggle</td><td>Toggle WiFi with a button</td></tr>
+<tr><td>/etc/config/wol</td><td>Wake-on-Lan: wol</td></tr>
+<tr><td>/etc/config/znc</td><td>ZNC bouncer configuration</td></tr>
+</tbody></table>
+</div>
+<h3 id="file-syntax"><a class="header" href="#file-syntax">File syntax</a></h3>
+<p>UCI（Unified Configuration Interface）配置文件的结构和语法。
+UCI配置文件通常由一个或多个config语句组成，这些语句被称为“sections”，每个section又包含一个或多个option语句来定义实际的值。
+在UCI配置文件中，以#开头的行被视为注释，即使在字符串字面值之外的#也是如此。如果一行中包含#字符，那么#及其后面的所有字符都被视为注释并被忽略。
+下面是一个简单配置文件的示例，可以参考uci_dataobject_model了解更多信息。</p>
+<p>config(sections) -&gt; options</p>
+<pre><code class="language-uci">package 'example'
+ 
+config 'example' 'test'
+        option   'string'      'some value'
+        option   'boolean'     '1'
+        list     'collection'  'first item'
+        list     'collection'  'second item'
+</code></pre>
+<ol>
+<li>config 'example' 'test'  语句定义了一个类型为example、名称为test的部分的开始。还可以有匿名部分，只有类型，没有名称标识符。类型对于处理程序来决定如何处理  enclosed options 很重要。</li>
+<li>option 'string' 'some value'和选项'boolean' '1'行在该部分中定义了简单的值。请注意，文本选项和布尔选项之间没有语法差异。按照惯例，布尔选项可以具有以下值之一来指定假值：'0'、'no'、'off'、'false'或'disabled'；或者具有以下值之一来指定真值：'1'、'yes'、'on'、'true'或'enabled'。</li>
+<li>在以列表关键字开头的行中定义了一个具有多个值的选项。所有具有相同名称的列表语句，例如我们的示例中的collection，将被合并为一个具有与配置文件中相同顺序的值的列表。在我们的示例中，collection选项将具有两个值：'first item'和'second item'。</li>
+<li>选项和列表语句的缩进是一种约定，用于提高配置文件的可读性，但在语法上并不是必需的。</li>
+<li>如果一个选项在使用时没有被指定，并且不是必需的，系统会默认使用一个值。但如果这个选项在使用时没有被指定且是必需的，可能会导致应用程序出错或产生其他不希望的行为。</li>
+<li>一种禁用配置部分的方法：当一个配置部分没有可禁用的选项时，可以通过将配置部分标识符（或类型，在这个例子中）重命名为不被使用这些值的进程识别的值来禁用它。通常，将配置部分类型/标识符命名为&quot;disabled_identifier&quot;就足够了</li>
+<li>使用引号的情况。一般情况下，不需要在标识符或值周围使用引号。只有当所包含的值中包含空格或制表符时，才需要使用引号。此外，在输入配置选项时，使用双引号代替单引号也是合法的。</li>
+<li>这段内容解释了在使用UCI标识符和配置文件名时的字符限制。UCI标识符和配置文件名只能包含小写字母a到z、数字0到9和下划线（_），不允许使用连字符（-）。而选项值可以包含任何字符，只要它们被正确引用（即用引号括起来）。</li>
+</ol>
+<h3 id="editor-plugins"><a class="header" href="#editor-plugins">Editor plugins</a></h3>
+<p><a href="https://github.com/cmcaine/vim-uci">vim-uci</a></p>
+<h3 id="command-line-utility"><a class="header" href="#command-line-utility">Command-line utility</a></h3>
+<p>这段内容讲述了在OpenWrt中，通常需要直接更改UCI配置文件来调整设置。但是，为了脚本编写的目的，也可以使用uci命令行工具来读取和更改UCI配置。对于需要自动解析UCI配置的开发人员来说，使用awk和grep解析OpenWrt的配置文件是多余、不明智和低效的。uci实用程序提供了所有与修改和解析UCI相关的功能。</p>
+<p>这段内容讲述了使用uci编写配置文件时的注意事项。使用uci编写配置文件时，文件总是被整体重写，不被识别的命令会被省略，包括注释等多余的行也会被删除。如果你想保留自己的注释和空行，就不应该使用命令行工具，而应该正常编辑文件。需要注意的是，一些文件在安装应用程序时已经包含了很多注释，例如uHTTPd配置文件。此外，一些应用程序如LuCI也使用uci实用程序，因此可能会重写UCI配置文件。</p>
+<p>这段内容解释了在配置文件中，如果存在多个相同类型的部分，UCI（Unified Configuration Interface）支持对它们进行类似数组的引用。例如，在/etc/config/system中定义了8个NTP服务器，UCI允许你通过system.@timeserver[0]引用第一个服务器，通过system.@timeserver[7]引用最后一个服务器。你还可以使用负索引，比如system.@timeserver[-1]表示最后一个服务器，system.@timeserver[-2]表示倒数第二个服务器，依此类推。这在向列表末尾追加新规则时非常方便。下面是一些示例。</p>
+<h4 id="uci"><a class="header" href="#uci">uci</a></h4>
+<p>Usage: uci [<options>] <command> [<arguments>]</p>
+<p>Commands:
+batch
+export     [<config>]
+import     [<config>]
+changes    [<config>]
+commit     [<config>]
+add        <config> <section-type>
+add_list   <config>.<section>.<option>=<string>
+del_list   <config>.<section>.<option>=<string>
+show       [<config>[.<section>[.<option>]]]
+get        <config>.<section>[.<option>]
+set        <config>.<section>[.<option>]=<value>
+delete     <config>.<section>[.<option>]
+rename     <config>.<section>[.<option>]=<name>
+revert     <config>[.<section>[.<option>]]
+reorder    <config>.<section>=<position></p>
+<p>Options:
+-c <path>  set the search path for config files (default: /etc/config)
+-d <str>   set the delimiter for list values in uci show
+-f <file>  use <file> as input instead of stdin
+-m         when importing, merge data into an existing package
+-n         name unnamed sections on export (default)
+-N         don't name unnamed sections
+-p <path>  add a search path for config change files
+-P <path>  add a search path for config change files and use as default
+-q         quiet mode (don't print error messages)
+-s         force strict mode (stop on parser errors, default)
+-S         disable strict mode
+-X         do not use extended syntax on 'show'</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><code>Command</code></th><th style="text-align: left">Target</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>show</code></td><td style="text-align: left"><code>[&lt;config&gt;[.&lt;section&gt;[.&lt;option&gt;]]]</code></td><td style="text-align: left">Show the given option, section or configuration in compressed notation.</td></tr>
+<tr><td style="text-align: left"><code>set</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;[.&lt;option&gt;]=&lt;value&gt;</code></td><td style="text-align: left">Set the value of the given option, or add a new section with the type set to the given value.</td></tr>
+<tr><td style="text-align: left"><code>revert</code></td><td style="text-align: left"><code>&lt;config&gt;[.&lt;section&gt;[.&lt;option&gt;]]</code></td><td style="text-align: left">Revert the given option, section or configuration file.</td></tr>
+<tr><td style="text-align: left"><code>reorder</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;=&lt;position&gt;</code></td><td style="text-align: left">Move a section to another position.</td></tr>
+<tr><td style="text-align: left"><code>rename</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;[.&lt;option&gt;]=&lt;name&gt;</code></td><td style="text-align: left">Rename the given option or section to the given name.</td></tr>
+<tr><td style="text-align: left"><code>import</code></td><td style="text-align: left"><code>[&lt;config&gt;]</code></td><td style="text-align: left">Imports configuration files in UCI syntax.</td></tr>
+<tr><td style="text-align: left"><code>get</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;[.&lt;option&gt;]</code></td><td style="text-align: left">Get the value of the given option or the type of the given section.</td></tr>
+<tr><td style="text-align: left"><code>export</code></td><td style="text-align: left"><code>[&lt;config&gt;]</code></td><td style="text-align: left">Exports the configuration in a machine readable format. It is used internally to evaluate configuration files as shell scripts.</td></tr>
+<tr><td style="text-align: left"><code>delete</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;[.&lt;option&gt;]</code></td><td style="text-align: left">Delete the given section or option.</td></tr>
+<tr><td style="text-align: left"><code>del_list</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;.&lt;option&gt;=&lt;string&gt;</code></td><td style="text-align: left">Remove the given string from an existing list option.</td></tr>
+<tr><td style="text-align: left"><code>commit</code></td><td style="text-align: left"><code>[&lt;config&gt;]</code></td><td style="text-align: left">Writes changes of the given configuration file, or if none is given, all configuration files, to the filesystem. All “uci set”, “uci add”, “uci rename” and “uci delete” commands are staged into a temporary location and written to flash at once with “uci commit”. This is not needed after editing configuration files with a text editor, but for scripts, GUIs and other programs working directly with UCI files.将给定的配置文件的更改写入文件系统，如果没有给定，则写入所有配置文件。所有“uci set”、“uci add”、“uci rename”和“uci delete”命令都被暂存到临时位置，并使用“uci commit”一次性写入闪存。这不是在使用文本编辑器编辑配置文件后所需的，但对于直接使用UCI文件的脚本、GUI和其他程序来说是必要的。</td></tr>
+<tr><td style="text-align: left"><code>changes</code></td><td style="text-align: left"><code>[&lt;config&gt;]</code></td><td style="text-align: left">List staged changes to the given configuration file or if none given, all configuration files.列出给定配置文件的已暂存更改，如果没有给定配置文件，则列出所有配置文件的已暂存更改。</td></tr>
+<tr><td style="text-align: left"><code>batch</code></td><td style="text-align: left">-</td><td style="text-align: left">Executes a multi-line UCI script which is typically wrapped into a <em>here</em> document syntax.</td></tr>
+<tr><td style="text-align: left"><code>add_list</code></td><td style="text-align: left"><code>&lt;config&gt;.&lt;section&gt;.&lt;option&gt;=&lt;string&gt;</code></td><td style="text-align: left">Add the given string to an existing list option.</td></tr>
+<tr><td style="text-align: left"><code>add</code></td><td style="text-align: left"><code>&lt;config&gt; &lt;section-type&gt;</code></td><td style="text-align: left">Add an anonymous section of type <code>section-type</code> to the given configuration.</td></tr>
+</tbody></table>
+</div>
+<p>这段内容解释了在uci（OpenWrt的配置管理工具）中，无法使用uci delete命令删除整个配置。例如，使用uci delete umdns命令无法删除整个umdns配置。如果确实确定要清除整个配置，可以使用这段shell代码片段来循环删除配置中的第一个条目，直到配置为空。</p>
+<pre><code>while uci -q delete umdns.@umdns[0]; do :; done
+</code></pre>
+<h3 id="uci-dataobject-model"><a class="header" href="#uci-dataobject-model">UCI data/object model</a></h3>
+<h4 id="elements"><a class="header" href="#elements">Elements</a></h4>
+<p>UCI模型中的一些元素：</p>
+<p>config：主要配置组，如网络、系统、防火墙。每个配置组在/etc/config目录下都有自己的文件。</p>
+<p>sections：config被分成了多个部分。一个部分可以是有名称的，也可以是没有名称的。</p>
+<p>types：一个部分可以有一个类型。比如，在网络配置中，通常有4个类型为“interface”的部分，它们是“lan”、“wan”、“loopback”和“wan6”。</p>
+<p>options：每个部分都有一些选项，您可以在选项中设置您的配置值。</p>
+<p>values：选项的值。</p>
+<h4 id="sections-naming"><a class="header" href="#sections-naming">Sections naming</a></h4>
+<p>关于Section命名的一些细节。一个Section可以有命名或未命名的情况。未命名的Section将被自动生成一个ID或CFGID（例如“cfg073777”），并以匿名名称（例如“@switch[0]”）显示。</p>
+<p>Example of <strong>anonymous-name</strong>:</p>
+<pre><code># uci show network
+...
+network.@switch[0]=switch
+network.@switch[0].name='switch0'
+network.@switch[0].reset='1'
+network.@switch[0].enable_vlan='1'
+...
+</code></pre>
+<p>Example of <strong>autogenerated ID/CFGID</strong>:</p>
+<pre><code># uci show network.@switch[0]
+network.cfg073777=switch
+network.cfg073777.name='switch0'
+network.cfg073777.reset='1'
+network.cfg073777.enable_vlan='1'
+</code></pre>
+<p><strong>Different presentation</strong></p>
+<p>The same config section can be presented in different ways:</p>
+<ul>
+<li>Human-friendly（人性化）: as presented in the config files or with the command “uci export <config>”</li>
+<li>Programmable（可编程）: as presented with the command “uci show <config>”</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Different model presentations</th><th></th><th></th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>Human-friendly</strong>, named section (“uci export network”)</td><td><strong>Human-friendly</strong>, unnamed section (“uci export network”)</td><td></td></tr>
+<tr><td style="text-align: left"><img src="https://openwrt.org/_media/media/doc/howtos/uci_hr_named.png" alt="img" /></td><td><img src="https://openwrt.org/_media/media/doc/howtos/uci_hr_unmaned.png" alt="img" /></td><td></td></tr>
+<tr><td style="text-align: left"><strong>Programmable</strong>, named section (“uci show network.wan”)</td><td><strong>Programmable</strong>, unnamed section, anonymous name (“uci show network”)</td><td><strong>Programmable</strong>, unnamed section, CFGID (“uci show network.@switch[0]”)</td></tr>
+<tr><td style="text-align: left"><img src="https://openwrt.org/_media/media/doc/howtos/uci_prg_named.png" alt="img" /></td><td><img src="https://openwrt.org/_media/media/doc/howtos/uci_prg_unmaned_an.png" alt="img" /></td><td><img src="https://openwrt.org/_media/media/doc/howtos/uci_prg_unmaned_cfgid.png" alt="img" /></td></tr>
+</tbody></table>
+</div>
+<h4 id="examples"><a class="header" href="#examples">Examples</a></h4>
+<h5 id="setting-a-value"><a class="header" href="#setting-a-value">Setting a value</a></h5>
+<p>If we want to change the listening port of the <a href="https://openwrt.org/docs/guide-user/services/webserver/http.uhttpd">uHTTPd Web Server</a> from 80 to 8080 we change the configuration in <code>/etc/config/uhttpd</code> :</p>
+<pre><code>uci set uhttpd.main.listen_http='8080'
+uci commit uhttpd
+/etc/init.d/uhttpd restart
+</code></pre>
+<h5 id="export-an-entire-configuration"><a class="header" href="#export-an-entire-configuration">Export an entire configuration</a></h5>
+<pre><code>uci export SUBSYSTEM_NAME
+</code></pre>
+<p>这段内容解释了可用的子系统，包括<strong>defaults</strong>默认子系统、dnsmasq子系统、dropbear子系统、<strong>firewall</strong>防火墙子系统、fstab子系统、<strong>qos</strong>网络子系统、QoS子系统、samba子系统、<strong>system</strong>系统子系统和<strong>wireless</strong>无线子系统。</p>
+<h5 id="show-a-subsystems-current-configuration"><a class="header" href="#show-a-subsystems-current-configuration">Show a subsystem's current configuration</a></h5>
+<pre><code>uci show SUBSYSTEM_NAME
+</code></pre>
+<p>Here an example:</p>
+<pre><code># uci show system 
+system.@system[0]=system 
+system.@system[0].hostname='OpenWrt' 
+system.@system[0].timezone='UTC' 
+system.ntp=timeserver 
+system.ntp.server='0.openwrt.pool.ntp.org' '1.openwrt.pool.ntp.org' '2.openwrt.pool.ntp.org' '3.openwrt.pool.ntp.org' 
+system.ntp.enabled='1' 
+system.ntp.enable_server='0'
+</code></pre>
+<h5 id="display-just-the-value-of-an-option"><a class="header" href="#display-just-the-value-of-an-option">Display just the value of an option</a></h5>
+<pre><code>uci get httpd.@httpd[0].port
+</code></pre>
+<h5 id="append-an-entry-to-a-list"><a class="header" href="#append-an-entry-to-a-list">Append an entry to a list</a></h5>
+<pre><code>uci add_list system.ntp.server='0.de.pool.ntp.org'
+</code></pre>
+<h5 id="replace-a-list-completely"><a class="header" href="#replace-a-list-completely">Replace a list completely</a></h5>
+<pre><code>uci delete system.ntp.server
+uci add_list system.ntp.server='0.de.pool.ntp.org'
+uci add_list system.ntp.server='1.de.pool.ntp.org'
+uci add_list system.ntp.server='2.de.pool.ntp.org'
+</code></pre>
+<h5 id="adding-a-new-section-to-subsystem-configuration"><a class="header" href="#adding-a-new-section-to-subsystem-configuration">Adding a new section to subsystem configuration</a></h5>
+<pre><code>uci add SUBSYSTEM_NAME SECTION_NAME
+</code></pre>
+<p>这段内容解释了一种操作，它将在名为SUBSYSTEM_NAME的子系统内生成一个名为SECTION_NAME的新部分。然后，您可以像正常情况下那样向该部分添加键。它还会打印一个包含字母和数字的代码，您可以将其用作进一步向该部分添加键的“section”。</p>
+<pre><code>uci add firewall rule
+uci set firewall.@rule[-1].src='wan'
+</code></pre>
+<h5 id="showing-the-not-yet-saved-modified-values"><a class="header" href="#showing-the-not-yet-saved-modified-values">Showing the not-yet-saved modified values</a></h5>
+<pre><code>uci changes
+</code></pre>
+<h5 id="saving-modified-values-of-a-single-subsystem"><a class="header" href="#saving-modified-values-of-a-single-subsystem">Saving modified values of a single subsystem</a></h5>
+<pre><code>uci commit SUBSYSTEM_NAME 
+reload_config
+</code></pre>
+<h5 id="saving-all-modified-values"><a class="header" href="#saving-all-modified-values">Saving all modified values</a></h5>
+<pre><code>uci commit
+reload_config
+</code></pre>
+<h5 id="generating-a-full-uci-section-with-a-simple-copy-paste"><a class="header" href="#generating-a-full-uci-section-with-a-simple-copy-paste">Generating a full UCI section with a simple copy-paste</a></h5>
+<p>这段代码会捕获添加新部分时uci打印的代码，并在之后的所有新键中重复使用它。这样可以自动化一个原本需要大量输入或复制粘贴的工作。你也可以在脚本中使用这种方法。</p>
+<pre><code>rule_name=$(uci add &lt;config&gt; &lt;section-type&gt;) 
+uci batch &lt;&lt; EOI
+set &lt;config&gt;.$rule_name.&lt;option1&gt;='value'
+set &lt;config&gt;.$rule_name.&lt;option2&gt;='value'
+set &lt;config&gt;.$rule_name.&lt;option3&gt;='value'
+...
+EOI
+uci commit
+</code></pre>
+<pre><code>rule_name=$(uci add firewall rule) 
+uci batch &lt;&lt; EOI
+set firewall.$rule_name.enabled='1'
+set firewall.$rule_name.target='ACCEPT'
+set firewall.$rule_name.src='wan'
+set firewall.$rule_name.proto='tcp udp'
+set firewall.$rule_name.dest_port='111'
+set firewall.$rule_name.name='NFS_share'
+EOI
+uci commit
+</code></pre>
+<h5 id="create-a-new-named-section-of-a-given-type"><a class="header" href="#create-a-new-named-section-of-a-given-type">Create a new named section of a given type</a></h5>
+<pre><code>uci add blah
+</code></pre>
+<pre><code># uci import playapp &lt; /dev/null
+# uci show playapp
+# uci add playapp blah
+# uci commit
+# uci show playapp
+playapp.@blah[0]=blah
+</code></pre>
+<p>If you actually want a named section of that type, for instance,</p>
+<pre><code>config blah this_name
+    option xxx yyy
+config blah other_name
+    option xxx zzz
+</code></pre>
+<p>Then <code>uci add</code> cannot be used, instead, use this syntax:</p>
+<pre><code># uci import playapp &lt; /dev/null
+# uci set playapp.myname=mysectiontype
+# uci set playapp.othername=mysectiontype
+# uci commit
+# uci show playapp
+playapp.myname=mysectiontype
+playapp.othername=mysectiontype
+</code></pre>
+<h5 id="uci-paths"><a class="header" href="#uci-paths">UCI paths</a></h5>
+<pre><code>config bar 'first'
+	option name	'Mr. First'
+config bar
+	option name	'Mr. Second'
+config bar 'third'
+	option name	'Mr. Third'
+</code></pre>
+<p>Then the paths below are equal in every group:</p>
+<pre><code># Mr. First
+uci get foo.@bar[0].name
+uci get foo.@bar[-0].name
+uci get foo.@bar[-3].name
+uci get foo.first.name
+ 
+# Mr. Second
+uci get foo.@bar[1].name
+uci get foo.@bar[-2].name
+# uci get foo.second.name won't work; label 'second' undefined
+ 
+# Mr. Third
+uci get foo.@bar[2].name
+uci get foo.@bar[-1].name
+uci get foo.third.name
+</code></pre>
+<h5 id="add-a-firewall-rule"><a class="header" href="#add-a-firewall-rule">Add a firewall rule</a></h5>
+<pre><code>uci add firewall rule
+uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].target='ACCEPT'
+uci set firewall.@rule[-1].proto='tcp'
+uci set firewall.@rule[-1].dest_port='22'
+uci commit firewall
+/etc/init.d/firewall restart
+</code></pre>
+<h5 id="get-ssid"><a class="header" href="#get-ssid">Get SSID</a></h5>
+<pre><code>uci get wireless.@wifi-iface[0].ssid
+</code></pre>
+<h3 id="porting-uci-to-a-different-linux-distribution"><a class="header" href="#porting-uci-to-a-different-linux-distribution">Porting UCI to a different Linux distribution</a></h3>
+<p>[<a href="https://openwrt.org/docs/techref/uci#usage_outside_of_openwrt">OpenWrt Wiki] UCI (Unified Configuration Interface) – Technical Reference</a></p>
+<h3 id="corrupted-configs"><a class="header" href="#corrupted-configs">Corrupted configs</a></h3>
+<p>See also: <a href="https://openwrt.org/docs/guide-user/advanced/uci_extras">UCI extras</a></p>
+<p>If you manually edited the configs in <code>/etc/config</code>, it is possible that some of them are corrupted due to typos.</p>
+<pre><code># uci show fstab
+uci: Parse error (invalid command) at line 20, byte 0
+</code></pre>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../17.OpenWrt/DHCP.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../17.OpenWrt/DHCP.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
