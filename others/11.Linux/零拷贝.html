@@ -1,0 +1,713 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>零拷贝.md - 杂项</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">绘图与建模</li><li class="chapter-item "><a href="../01.html"><strong aria-hidden="true">0.</strong> UML</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01.绘图与建模_UML/UML.html"><strong aria-hidden="true">0.0.</strong> UML.md</a></li></ol></li><li class="chapter-item "><a href="../03.html"><strong aria-hidden="true">1.</strong> Flowchart</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">flowchart</li><li><ol class="section"><li class="chapter-item "><a href="../03.绘图与建模_Flowchart/flowchart_fun.html"><strong aria-hidden="true">1.2.</strong> fun.md</a></li></ol></li><li class="chapter-item "><a href="../04.html"><strong aria-hidden="true">2.</strong> PlantUml</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../04.绘图与建模_PlantUml/plantUML语法.html"><strong aria-hidden="true">2.0.</strong> plantUML语法.md</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title"></li><li class="chapter-item "><a href="../06.html"><strong aria-hidden="true">3.</strong> 常用软件</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06.常用软件/MakeFile.html"><strong aria-hidden="true">3.0.</strong> MakeFile.md</a></li><li class="chapter-item "><a href="../06.常用软件/MdBook.html"><strong aria-hidden="true">3.1.</strong> MdBook.md</a></li><li class="chapter-item "><a href="../06.常用软件/Multipass.html"><strong aria-hidden="true">3.2.</strong> Multipass.md</a></li><li class="chapter-item "><a href="../06.常用软件/v2rayN代理.html"><strong aria-hidden="true">3.3.</strong> v2rayN代理.md</a></li></ol></li><li class="chapter-item "><a href="../07.html"><strong aria-hidden="true">4.</strong> 生活事宜</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../07.生活事宜/个人清算汇缴.html"><strong aria-hidden="true">4.0.</strong> 个人清算汇缴.md</a></li></ol></li><li class="chapter-item "><a href="../09.html"><strong aria-hidden="true">5.</strong> 学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../09.学习/概率论与数理统计.html"><strong aria-hidden="true">5.0.</strong> 概率论与数理统计.md</a></li></ol></li><li class="chapter-item "><a href="../10.html"><strong aria-hidden="true">6.</strong> 数据格式</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.数据格式/JSON/README.html"><strong aria-hidden="true">6.0.</strong> JSON</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../10.数据格式/JSON/JsonSchema.html"><strong aria-hidden="true">6.0.0.</strong> JsonSchema.md</a></li></ol></li><li class="chapter-item "><a href="../10.数据格式/XML.html"><strong aria-hidden="true">6.1.</strong> XML.md</a></li><li class="chapter-item "><a href="../10.数据格式/yaml.html"><strong aria-hidden="true">6.2.</strong> yaml.md</a></li></ol></li><li class="chapter-item expanded "><a href="../11.html"><strong aria-hidden="true">7.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.Linux/CFSBandwidthControl.html"><strong aria-hidden="true">7.0.</strong> CFSBandwidthControl.md</a></li><li class="chapter-item "><a href="../11.Linux/JQ语法.html"><strong aria-hidden="true">7.1.</strong> JQ语法.md</a></li><li class="chapter-item "><a href="../11.Linux/LinuxFor.html"><strong aria-hidden="true">7.2.</strong> LinuxFor.md</a></li><li class="chapter-item "><a href="../11.Linux/LinuxMount.html"><strong aria-hidden="true">7.3.</strong> LinuxMount.md</a></li><li class="chapter-item "><a href="../11.Linux/LinuxWOL设置.html"><strong aria-hidden="true">7.4.</strong> LinuxWOL设置.md</a></li><li class="chapter-item "><a href="../11.Linux/Linux条件测试.html"><strong aria-hidden="true">7.5.</strong> Linux条件测试.md</a></li><li class="chapter-item "><a href="../11.Linux/Seed.html"><strong aria-hidden="true">7.6.</strong> Seed.md</a></li><li class="chapter-item "><a href="../11.Linux/Sort.html"><strong aria-hidden="true">7.7.</strong> Sort.md</a></li><li class="chapter-item "><a href="../11.Linux/VIM.html"><strong aria-hidden="true">7.8.</strong> VIM.md</a></li><li class="chapter-item "><a href="../11.Linux/caseIn.html"><strong aria-hidden="true">7.9.</strong> caseIn.md</a></li><li class="chapter-item "><a href="../11.Linux/cgroup.html"><strong aria-hidden="true">7.10.</strong> cgroup.md</a></li><li class="chapter-item "><a href="../11.Linux/curl.html"><strong aria-hidden="true">7.11.</strong> curl.md</a></li><li class="chapter-item "><a href="../11.Linux/dd.html"><strong aria-hidden="true">7.12.</strong> dd.md</a></li><li class="chapter-item "><a href="../11.Linux/diffPatch.html"><strong aria-hidden="true">7.13.</strong> diffPatch.md</a></li><li class="chapter-item "><a href="../11.Linux/find.html"><strong aria-hidden="true">7.14.</strong> find.md</a></li><li class="chapter-item "><a href="../11.Linux/iptables.html"><strong aria-hidden="true">7.15.</strong> iptables.md</a></li><li class="chapter-item "><a href="../11.Linux/jq.html"><strong aria-hidden="true">7.16.</strong> jq.md</a></li><li class="chapter-item "><a href="../11.Linux/lsof.html"><strong aria-hidden="true">7.17.</strong> lsof.md</a></li><li class="chapter-item "><a href="../11.Linux/ps.html"><strong aria-hidden="true">7.18.</strong> ps.md</a></li><li class="chapter-item "><a href="../11.Linux/read.html"><strong aria-hidden="true">7.19.</strong> read.md</a></li><li class="chapter-item "><a href="../11.Linux/scp.html"><strong aria-hidden="true">7.20.</strong> scp.md</a></li><li class="chapter-item "><a href="../11.Linux/select.html"><strong aria-hidden="true">7.21.</strong> select.md</a></li><li class="chapter-item "><a href="../11.Linux/service脚本.html"><strong aria-hidden="true">7.22.</strong> service脚本.md</a></li><li class="chapter-item "><a href="../11.Linux/set.html"><strong aria-hidden="true">7.23.</strong> set.md</a></li><li class="chapter-item "><a href="../11.Linux/shell字符串.html"><strong aria-hidden="true">7.24.</strong> shell字符串.md</a></li><li class="chapter-item "><a href="../11.Linux/shell脚本参数.html"><strong aria-hidden="true">7.25.</strong> shell脚本参数.md</a></li><li class="chapter-item "><a href="../11.Linux/stat.html"><strong aria-hidden="true">7.26.</strong> stat.md</a></li><li class="chapter-item "><a href="../11.Linux/tar.html"><strong aria-hidden="true">7.27.</strong> tar.md</a></li><li class="chapter-item "><a href="../11.Linux/top命令.html"><strong aria-hidden="true">7.28.</strong> top命令.md</a></li><li class="chapter-item "><a href="../11.Linux/uidGidSetUidSetGid.html"><strong aria-hidden="true">7.29.</strong> uidGidSetUidSetGid.md</a></li><li class="chapter-item "><a href="../11.Linux/wsl关闭提示音.html"><strong aria-hidden="true">7.30.</strong> wsl关闭提示音.md</a></li><li class="chapter-item "><a href="../11.Linux/yum本地包依赖.html"><strong aria-hidden="true">7.31.</strong> yum本地包依赖.md</a></li><li class="chapter-item "><a href="../11.Linux/内存管理.html"><strong aria-hidden="true">7.32.</strong> 内存管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../11.Linux/内存管理/RSS与VSZ.html"><strong aria-hidden="true">7.32.0.</strong> RSS与VSZ.md</a></li></ol></li><li class="chapter-item "><a href="../11.Linux/大端与小端.html"><strong aria-hidden="true">7.33.</strong> 大端与小端.md</a></li><li class="chapter-item "><a href="../11.Linux/确定Linux发行版本.html"><strong aria-hidden="true">7.34.</strong> 确定Linux发行版本.md</a></li><li class="chapter-item "><a href="../11.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">7.35.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li><li class="chapter-item expanded "><a href="../11.Linux/零拷贝.html" class="active"><strong aria-hidden="true">7.36.</strong> 零拷贝.md</a></li><li class="chapter-item "><a href="../11.Linux/默认值语法糖.html"><strong aria-hidden="true">7.37.</strong> 默认值语法糖.md</a></li></ol></li><li class="chapter-item "><a href="../16.html"><strong aria-hidden="true">8.</strong> 杂项</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../16.杂项/DNS&DHCP.html"><strong aria-hidden="true">8.0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="../16.杂项/Linux烧录镜像.html"><strong aria-hidden="true">8.1.</strong> Linux烧录镜像.md</a></li><li class="chapter-item "><a href="../16.杂项/SSH代理.html"><strong aria-hidden="true">8.2.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="../16.杂项/在线FireFox.html"><strong aria-hidden="true">8.3.</strong> 在线FireFox.md</a></li></ol></li><li class="chapter-item "><a href="../17.html"><strong aria-hidden="true">9.</strong> OpenWrt</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../17.OpenWrt/DHCP.html"><strong aria-hidden="true">9.0.</strong> DHCP.md</a></li><li class="chapter-item "><a href="../17.OpenWrt/UCI.html"><strong aria-hidden="true">9.1.</strong> UCI.md</a></li></ol></li><li class="chapter-item "><a href="../08.思考/README.html"><strong aria-hidden="true">10.</strong> 思考</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../08.思考/学习总结.html"><strong aria-hidden="true">10.0.</strong> 学习总结.md</a></li><li class="chapter-item "><a href="../08.思考/杂项.html"><strong aria-hidden="true">10.1.</strong> 杂项.md</a></li><li class="chapter-item "><a href="../08.思考/编程技巧.html"><strong aria-hidden="true">10.2.</strong> 编程技巧.md</a></li></ol></li><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/README.html"><strong aria-hidden="true">11.</strong> MERMAID</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/ER图.html"><strong aria-hidden="true">11.0.</strong> ER图.md</a></li><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/时序图.html"><strong aria-hidden="true">11.1.</strong> 时序图.md</a></li><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/流程图.html"><strong aria-hidden="true">11.2.</strong> 流程图.md</a></li><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/类图.html"><strong aria-hidden="true">11.3.</strong> 类图.md</a></li><li class="chapter-item "><a href="../02.绘图与建模_MERMAID/语法总览.html"><strong aria-hidden="true">11.4.</strong> 语法总览.md</a></li></ol></li><li class="chapter-item "><a href="../15.音频/README.html"><strong aria-hidden="true">12.</strong> 音频</a></li><li class="chapter-item "><a href="../18.AutoHotKey/README.html"><strong aria-hidden="true">13.</strong> AutoHotKey</a></li><li class="chapter-item "><a href="../05.模板引擎/README.html"><strong aria-hidden="true">14.</strong> 模板引擎</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../05.模板引擎/mustache/README.html"><strong aria-hidden="true">14.0.</strong> mustache</a></li></ol></li><li class="chapter-item "><a href="../13.espanso/README.html"><strong aria-hidden="true">15.</strong> espanso</a></li><li class="chapter-item "><a href="../14.驾照理论学习/README.html"><strong aria-hidden="true">16.</strong> 驾照理论学习</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/README.html"><strong aria-hidden="true">16.0.</strong> 道路交通安全法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/1.总则.html"><strong aria-hidden="true">16.0.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/10.交通事故处理.html"><strong aria-hidden="true">16.0.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/11.执法监督.html"><strong aria-hidden="true">16.0.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/12.法律责任.html"><strong aria-hidden="true">16.0.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/13.附则.html"><strong aria-hidden="true">16.0.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/2.车辆和驾驶人-1.机动车&非机动车.html"><strong aria-hidden="true">16.0.5.</strong> 车辆和驾驶人-1.机动车&非机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/3.车辆和驾驶人-2.机动车驾驶人.html"><strong aria-hidden="true">16.0.6.</strong> 车辆和驾驶人-2.机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/4.道路通行条件.html"><strong aria-hidden="true">16.0.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.0.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.0.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.0.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/8.道路通行规定-行人和乘车通行规定.html"><strong aria-hidden="true">16.0.11.</strong> 道路通行规定-行人和乘车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法/9.道路通行规定-高速公路特别规定.html"><strong aria-hidden="true">16.0.12.</strong> 道路通行规定-高速公路特别规定.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/地址类.html"><strong aria-hidden="true">16.1.</strong> 地址类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/学习盲点.html"><strong aria-hidden="true">16.2.</strong> 学习盲点.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/惩罚类.html"><strong aria-hidden="true">16.3.</strong> 惩罚类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/扣分类.html"><strong aria-hidden="true">16.4.</strong> 扣分类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/时间类.html"><strong aria-hidden="true">16.5.</strong> 时间类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定.html"><strong aria-hidden="true">16.6.</strong> 机动车驾驶证申领和使用规定</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/机动车驾驶证申领和使用规定/1.总则.html"><strong aria-hidden="true">16.6.0.</strong> 总则.md</a></li></ol></li><li class="chapter-item "><a href="../14.驾照理论学习/知乎笔记学习.html"><strong aria-hidden="true">16.7.</strong> 知乎笔记学习.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/英文缩写.html"><strong aria-hidden="true">16.8.</strong> 英文缩写.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/速度类.html"><strong aria-hidden="true">16.9.</strong> 速度类.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例.html"><strong aria-hidden="true">16.10.</strong> 道路交通安全法实施条例</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/1.总则.html"><strong aria-hidden="true">16.10.0.</strong> 总则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/10.交通事故处理.html"><strong aria-hidden="true">16.10.1.</strong> 交通事故处理.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/11.执法监督.html"><strong aria-hidden="true">16.10.2.</strong> 执法监督.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/12.法律责任.html"><strong aria-hidden="true">16.10.3.</strong> 法律责任.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/13.附则.html"><strong aria-hidden="true">16.10.4.</strong> 附则.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/2.车辆和驾驶人-机动车.html"><strong aria-hidden="true">16.10.5.</strong> 车辆和驾驶人-机动车.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/3.车辆和驾驶人-机动车驾驶人.html"><strong aria-hidden="true">16.10.6.</strong> 车辆和驾驶人-机动车驾驶人.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/4.道路通行条件.html"><strong aria-hidden="true">16.10.7.</strong> 道路通行条件.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/5.道路通行规定-一般规定.html"><strong aria-hidden="true">16.10.8.</strong> 道路通行规定-一般规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/6.道路通行规定-机动车通行规定.html"><strong aria-hidden="true">16.10.9.</strong> 道路通行规定-机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/7.道路通行规定-非机动车通行规定.html"><strong aria-hidden="true">16.10.10.</strong> 道路通行规定-非机动车通行规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/8.道路通行规定-行人和乘车规定.html"><strong aria-hidden="true">16.10.11.</strong> 道路通行规定-行人和乘车规定.md</a></li><li class="chapter-item "><a href="../14.驾照理论学习/道路交通安全法实施条例/9.道路通行规定-高速公路的特别规定.html"><strong aria-hidden="true">16.10.12.</strong> 道路通行规定-高速公路的特别规定.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../12.algorithm/README.html"><strong aria-hidden="true">17.</strong> algorithm</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../12.algorithm/Base64编码.html"><strong aria-hidden="true">17.0.</strong> Base64编码.md</a></li><li class="chapter-item "><a href="../12.algorithm/Huffman编码.html"><strong aria-hidden="true">17.1.</strong> Huffman编码.md</a></li><li class="chapter-item "><a href="../12.algorithm/fnv-hash算法.html"><strong aria-hidden="true">17.2.</strong> fnv-hash算法.md</a></li><li class="chapter-item "><a href="../12.algorithm/二叉搜索平衡树.html"><strong aria-hidden="true">17.3.</strong> 二叉搜索平衡树.md</a></li><li class="chapter-item "><a href="../12.algorithm/位运算.html"><strong aria-hidden="true">17.4.</strong> 位运算.md</a></li><li class="chapter-item "><a href="../12.algorithm/动态规划-新.html"><strong aria-hidden="true">17.5.</strong> 动态规划-新.md</a></li><li class="chapter-item "><a href="../12.algorithm/动态规划.html"><strong aria-hidden="true">17.6.</strong> 动态规划.md</a></li><li class="chapter-item "><a href="../12.algorithm/字符编码.html"><strong aria-hidden="true">17.7.</strong> 字符编码.md</a></li><li class="chapter-item "><a href="../12.algorithm/布隆过滤器.html"><strong aria-hidden="true">17.8.</strong> 布隆过滤器.md</a></li><li class="chapter-item "><a href="../12.algorithm/浮点数.html"><strong aria-hidden="true">17.9.</strong> 浮点数.md</a></li><li class="chapter-item "><a href="../12.algorithm/红黑树.html"><strong aria-hidden="true">17.10.</strong> 红黑树.md</a></li><li class="chapter-item "><a href="../12.algorithm/贪心算法.html"><strong aria-hidden="true">17.11.</strong> 贪心算法.md</a></li><li class="chapter-item "><a href="../12.algorithm/逆波兰表达式.html"><strong aria-hidden="true">17.12.</strong> 逆波兰表达式.md</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">杂项</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/others/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="为什么要有-dma-技术"><a class="header" href="#为什么要有-dma-技术"><strong>为什么要有 DMA 技术?</strong></a></h1>
+<p>在没有 DMA 技术前，I/O 的过程是这样的：</p>
+<ul>
+<li>CPU 发出对应的指令给磁盘控制器，然后返回；</li>
+<li>磁盘控制器收到指令后，于是就开始准备数据，会把数据放入到磁盘控制器的内部缓冲区中，然后产生一个<strong>中断</strong>；</li>
+<li>CPU 收到中断信号后，停下手头的工作，接着把磁盘控制器的缓冲区的数据一次一个字节地读进自己的寄存器，然后再把寄存器里的数据写入到内存，而在数据传输的期间 CPU 是无法执行其他任务的。</li>
+</ul>
+<p>可以看到，整个数据的传输过程，都要需要 CPU 亲自参与搬运数据的过程，而且这个过程，CPU 是不能做其他事情的。</p>
+<p>简单的搬运几个字符数据那没问题，但是如果我们用千兆网卡或者硬盘传输大量数据的时候，都用 CPU 来搬运的话，肯定忙不过来。</p>
+<p>计算机科学家们发现了事情的严重性后，于是就发明了 DMA 技术，也就是<strong>直接内存访问（Direct Memory Access）</strong> 技术。</p>
+<p>什么是 DMA 技术？简单理解就是，<strong>在进行 I/O 设备和内存的数据传输的时候，数据搬运的工作全部交给 DMA 控制器，而 CPU 不再参与任何与数据搬运相关的事情，这样 CPU 就可以去处理别的事务。</strong></p>
+<p>那使用 DMA 控制器进行数据传输的过程究竟是什么样的呢？下面我们来具体看看。</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy.png" alt="" /></p>
+<p>具体过程：</p>
+<ul>
+<li>用户进程调用 read 方法，向操作系统发出 I/O 请求，请求读取数据到自己的内存缓冲区中，进程进入阻塞状态；</li>
+<li>操作系统收到请求后，进一步将 I/O 请求发送 DMA，然后让 CPU 执行其他任务；</li>
+<li>DMA 进一步将 I/O 请求发送给磁盘；</li>
+<li>磁盘收到 DMA 的 I/O 请求，把数据从磁盘读取到磁盘控制器的缓冲区中，当磁盘控制器的缓冲区被读满后，向 DMA 发起中断信号，告知自己缓冲区已满；</li>
+<li><strong>DMA 收到磁盘的信号，将磁盘控制器缓冲区中的数据拷贝到内核缓冲区中，此时不占用 CPU，CPU 可以执行其他任务；</strong></li>
+<li>当 DMA 读取了足够多的数据，就会发送中断信号给 CPU；</li>
+<li>CPU 收到 DMA 的信号，知道数据已经准备好，于是将数据从内核拷贝到用户空间，系统调用返回；</li>
+</ul>
+<h1 id="传统的文件传输有多糟糕"><a class="header" href="#传统的文件传输有多糟糕"><strong>传统的文件传输有多糟糕？</strong></a></h1>
+<p>如果服务端要提供文件传输的功能，我们能想到的最简单的方式是：将磁盘上的文件读取出来，然后通过网络协议发送给客户端。</p>
+<p>传统 I/O 的工作方式是，数据读取和写入是从用户空间到内核空间来回复制，而内核空间的数据是通过操作系统层面的 I/O 接口从磁盘读取或写入。</p>
+<p>代码通常如下，一般会需要两个系统调用：</p>
+<pre><code>read(file, tmp_buf, len);
+write(socket, tmp_buf, len);
+</code></pre>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_file_trans.png" alt="" /></p>
+<p>其次，还<strong>发生了 4 次数据拷贝</strong>，其中两次是 DMA 的拷贝，另外两次则是通过 CPU 拷贝的，下面说一下这个过程：</p>
+<ul>
+<li><strong>第一次拷贝</strong>，把磁盘上的数据拷贝到操作系统内核的缓冲区里，这个拷贝的过程是通过 DMA 搬运的。</li>
+<li><strong>第二次拷贝</strong>，把内核缓冲区的数据拷贝到用户的缓冲区里，于是我们应用程序就可以使用这部分数据了，这个拷贝到过程是由 CPU 完成的。</li>
+<li><strong>第三次拷贝</strong>，把刚才拷贝到用户的缓冲区里的数据，再拷贝到内核的 socket 的缓冲区里，这个过程依然还是由 CPU 搬运的。</li>
+<li><strong>第四次拷贝</strong>，把内核的 socket 缓冲区里的数据，拷贝到网卡的缓冲区里，这个过程又是由 DMA 搬运的。</li>
+</ul>
+<p>我们回过头看这个文件传输的过程，我们只是搬运一份数据，结果却搬运了 4 次，过多的数据拷贝无疑会消耗 CPU 资源，大大降低了系统性能。</p>
+<p>这种简单又传统的文件传输方式，存在冗余的上文切换和数据拷贝，在高并发系统里是非常糟糕的，多了很多不必要的开销，会严重影响系统性能。</p>
+<p>所以，<strong>要想提高文件传输的性能，就需要减少「用户态与内核态的上下文切换」和「内存拷贝」的次数。</strong></p>
+<h1 id="如何优化文件传输的性能"><a class="header" href="#如何优化文件传输的性能"><strong>如何优化文件传输的性能？</strong></a></h1>
+<blockquote>
+<p>先来看看，如何减少「用户态与内核态的上下文切换」的次数呢？</p>
+</blockquote>
+<p>读取磁盘数据的时候，之所以要发生上下文切换，这是因为用户空间没有权限操作磁盘或网卡，内核的权限最高，这些操作设备的过程都需要交由操作系统内核来完成，所以一般要通过内核去完成某些任务的时候，就需要使用操作系统提供的系统调用函数。</p>
+<p>而一次系统调用必然会发生 2 次上下文切换：首先从用户态切换到内核态，当内核执行完任务后，再切换回用户态交由进程代码执行。</p>
+<p>所以，<strong>要想减少上下文切换到次数，就要减少系统调用的次数。</strong></p>
+<blockquote>
+<p>再来看看，如何减少「数据拷贝」的次数？</p>
+</blockquote>
+<p>在前面我们知道了，传统的文件传输方式会历经 4 次数据拷贝，而且这里面，「从内核的读缓冲区拷贝到用户的缓冲区里，再从用户的缓冲区里拷贝到 socket 的缓冲区里」，这个过程是没有必要的。</p>
+<p>因为文件传输的应用场景中，在用户空间我们并不会对数据「再加工」，所以数据实际上可以不用搬运到用户空间，因此<strong>用户的缓冲区是没有必要存在的。</strong></p>
+<h1 id="如何实现零拷贝"><a class="header" href="#如何实现零拷贝"><strong>如何实现零拷贝？</strong></a></h1>
+<p>零拷贝技术实现的方式通常有 2 种：</p>
+<ul>
+<li>mmap + write</li>
+<li>sendfile</li>
+</ul>
+<p>下面就谈一谈，它们是如何减少「上下文切换」和「数据拷贝」的次数。</p>
+<h2 id="mmap--write"><a class="header" href="#mmap--write">mmap + write</a></h2>
+<p>在前面我们知道，<strong>read</strong>系统调用的过程中会把内核缓冲区的数据拷贝到用户的缓冲区里，于是为了减少这一步开销，我们可以用 <strong>mmap</strong> 替换 <strong>read</strong> 系统调用函数。</p>
+<pre><code>buf = mmap(file, len);write(sockfd, buf, len);
+</code></pre>
+<p><strong>mmap</strong> 系统调用函数会直接把内核缓冲区里的数据**「映射」**到用户空间，这样，操作系统内核与用户空间就不需要再进行任何的数据拷贝操作。</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_nmap.png" alt="" /></p>
+<p>具体过程如下：</p>
+<ul>
+<li>应用进程调用了 <strong>mmap</strong> 后，DMA 会把磁盘的数据拷贝到内核的缓冲区里。接着，应用进程跟操作系统内核「共享」这个缓冲区；</li>
+<li>应用进程再调用 <strong>write</strong>，操作系统直接将内核缓冲区的数据拷贝到 socket 缓冲区中，这一切都发生在内核态，由 CPU 来搬运数据；</li>
+<li>最后，把内核的 socket 缓冲区里的数据，拷贝到网卡的缓冲区里，这个过程是由 DMA 搬运的。</li>
+</ul>
+<p>我们可以得知，通过使用 <strong>mmap</strong> 来代替<strong>read</strong>， 可以减少一次数据拷贝的过程。</p>
+<p>但这还不是最理想的零拷贝，因为仍然需要通过 CPU 把内核缓冲区的数据拷贝到 socket 缓冲区里，而且仍然需要 4 次上下文切换，因为系统调用还是 2 次。</p>
+<h2 id="sendfile"><a class="header" href="#sendfile">sendfile</a></h2>
+<p>在 Linux 内核版本 2.1 中，提供了一个专门发送文件的系统调用函数 <strong>sendfile</strong>，函数形式如下：</p>
+<pre><code class="language-c++">#include &lt;sys/socket.h&gt;ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
+</code></pre>
+<p>它的前两个参数分别是目的端和源端的文件描述符，后面两个参数是源端的偏移量和复制数据的长度，返回值是实际复制数据的长度。</p>
+<p>首先，它可以替代前面的 <strong>read</strong>和<strong>write</strong>这两个系统调用，这样就可以减少一次系统调用，也就减少了 2 次上下文切换的开销。</p>
+<p>其次，该系统调用，可以直接把内核缓冲区里的数据拷贝到 socket 缓冲区里，不再拷贝到用户态，这样就只有 2 次上下文切换，和 3 次数据拷贝。如下图：</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_sendFile.png" alt="" /></p>
+<p>但是这还不是真正的零拷贝技术，如果网卡支持 SG-DMA（<em>The Scatter-Gather Direct Memory Access</em>）技术（和普通的 DMA 有所不同），我们可以进一步减少通过 CPU 把内核缓冲区里的数据拷贝到 socket 缓冲区的过程。</p>
+<p>你可以在你的 Linux 系统通过下面这个命令，查看网卡是否支持 scatter-gather 特性：</p>
+<pre><code>$ ethtool -k eth0 | grep scatter-gather
+scatter-gather: on
+</code></pre>
+<p>于是，从 Linux 内核 <strong>2.4</strong>版本开始起，对于支持网卡支持 SG-DMA 技术的情况下， <strong>sendfile</strong> 系统调用的过程发生了点变化，具体过程如下：</p>
+<ul>
+<li>第一步，通过 DMA 将磁盘上的数据拷贝到内核缓冲区里；</li>
+<li>第二步，缓冲区描述符和数据长度传到 socket 缓冲区，这样网卡的 SG-DMA 控制器就可以直接将内核缓存中的数据拷贝到网卡的缓冲区里，此过程不需要将数据从操作系统内核缓冲区拷贝到 socket 缓冲区中，这样就减少了一次数据拷贝；</li>
+</ul>
+<p>所以，这个过程之中，只进行了 2 次数据拷贝，如下图：</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_sgdma.png" alt="" /></p>
+<p>这就是所谓的零拷贝（<em>Zero-copy</em>）技术，因为我们没有在内存层面去拷贝数据，也就是说全程没有通过 CPU 来搬运数据，所有的数据都是通过 DMA 来进行传输的。</p>
+<p>零拷贝技术的文件传输方式相比传统文件传输的方式，减少了 2 次上下文切换和数据拷贝次数，<strong>只需要 2 次上下文切换和数据拷贝次数，就可以完成文件的传输，而且 2 次的数据拷贝过程，都不需要通过 CPU，2 次都是由 DMA 来搬运。</strong></p>
+<p>所以，总体来看，<strong>零拷贝技术可以把文件传输的性能提高至少一倍以上。</strong></p>
+<h1 id="使用零拷贝技术的项目"><a class="header" href="#使用零拷贝技术的项目">使用零拷贝技术的项目</a></h1>
+<h2 id="kafka"><a class="header" href="#kafka">Kafka</a></h2>
+<p>事实上，Kafka 这个开源项目，就利用了「零拷贝」技术，从而大幅提升了 I/O 的吞吐率，这也是 Kafka 在处理海量数据为什么这么快的原因之一。</p>
+<p>如果你追溯 Kafka 文件传输的代码，你会发现，最终它调用了 Java NIO 库里的 <strong>transferTo</strong>方法：</p>
+<pre><code class="language-java">@Overridepublic long transferFrom(FileChannel fileChannel, long position, long count) throws IOException {  
+return fileChannel.transferTo(position, count, socketChannel);
+}
+</code></pre>
+<p>如果 Linux 系统支持 <strong>sendfile</strong> 系统调用，那么 <strong>transferTo</strong> 实际上最后就会使用到 <strong>sendfile</strong> 系统调用函数。</p>
+<h2 id="nginx"><a class="header" href="#nginx">Nginx</a></h2>
+<p>另外，Nginx 也支持零拷贝技术，一般默认是开启零拷贝技术，这样有利于提高文件传输的效率，是否开启零拷贝技术的配置如下：</p>
+<pre><code>http {... sendfile on...}
+</code></pre>
+<p>sendfile 配置的具体意思:</p>
+<ul>
+<li>设置为 on 表示，使用零拷贝技术来传输文件：sendfile ，这样只需要 2 次上下文切换，和 2 次数据拷贝。</li>
+<li>设置为 off 表示，使用传统的文件传输技术：read + write，这时就需要 4 次上下文切换，和 4 次数据拷贝。</li>
+</ul>
+<p>当然，要使用 sendfile，Linux 内核版本必须要 2.1 以上的版本。</p>
+<h1 id="pagecache-有什么作用"><a class="header" href="#pagecache-有什么作用"><strong>PageCache 有什么作用？</strong></a></h1>
+<p>回顾前面说道文件传输过程，其中第一步都是先需要先把磁盘文件数据拷贝「内核缓冲区」里，这个「内核缓冲区」实际上是<strong>磁盘高速缓存（PageCache）</strong>。</p>
+<p>由于零拷贝使用了 PageCache 技术，可以使得零拷贝进一步提升了性能，我们接下来看看 PageCache 是如何做到这一点的。</p>
+<p>读写磁盘相比读写内存的速度慢太多了，所以我们应该想办法把「读写磁盘」替换成「读写内存」。于是，我们会通过 DMA 把磁盘里的数据搬运到内存里，这样就可以用读内存替换读磁盘。</p>
+<p>但是，内存空间远比磁盘要小，内存注定只能拷贝磁盘里的一小部分数据。</p>
+<p>那问题来了，选择哪些磁盘数据拷贝到内存呢？</p>
+<p>我们都知道程序运行的时候，具有「局部性」，所以通常，刚被访问的数据在短时间内再次被访问的概率很高，于是我们可以用 <strong>PageCache 来缓存最近被访问的数据</strong>，当空间不足时淘汰最久未被访问的缓存。</p>
+<p>所以，读磁盘数据的时候，优先在 PageCache 找，如果数据存在则可以直接返回；如果没有，则从磁盘中读取，然后缓存 PageCache 中。</p>
+<p>还有一点，读取磁盘数据的时候，需要找到数据所在的位置，但是对于机械磁盘来说，就是通过磁头旋转到数据所在的扇区，再开始「顺序」读取数据，但是旋转磁头这个物理动作是非常耗时的，为了降低它的影响，<strong>PageCache 使用了「预读功能」</strong>。</p>
+<p>比如，假设 read 方法每次只会读 <strong>32 KB</strong>的字节，虽然 read 刚开始只会读 0 ～ 32 KB 的字节，但内核会把其后面的 32～64 KB 也读取到 PageCache，这样后面读取 32～64 KB 的成本就很低，如果在 32～64 KB 淘汰出 PageCache 前，进程读取到它了，收益就非常大。</p>
+<p>所以，PageCache 的优点主要是两个：</p>
+<ul>
+<li>缓存最近被访问的数据；</li>
+<li>预读功能；</li>
+</ul>
+<p>这两个做法，将大大提高读写磁盘的性能。</p>
+<p><strong>但是，在传输大文件（GB 级别的文件）的时候，PageCache 会不起作用，那就白白浪费 DMA 多做的一次数据拷贝，造成性能的降低，即使使用了 PageCache 的零拷贝也会损失性能。</strong></p>
+<p>这是因为如果你有很多 GB 级别文件需要传输，每当用户访问这些大文件的时候，内核就会把它们载入 PageCache 中，于是 PageCache 空间很快被这些大文件占满。</p>
+<p>另外，由于文件太大，可能某些部分的文件数据被再次访问的概率比较低，这样就会带来 2 个问题：</p>
+<ul>
+<li>PageCache 由于长时间被大文件占据，其他「热点」的小文件可能就无法充分使用到 PageCache，于是这样磁盘读写的性能就会下降了；</li>
+<li>PageCache 中的大文件数据，由于没有享受到缓存带来的好处，但却耗费 DMA 多拷贝到 PageCache 一次；</li>
+</ul>
+<p>所以，针对大文件的传输，不应该使用 PageCache，也就是说不应该使用零拷贝技术，因为可能由于 PageCache 被大文件占据，而导致「热点」小文件无法利用到 PageCache，这样在高并发的环境下，会带来严重的性能问题。</p>
+<h1 id="大文件传输用什么方式实现"><a class="header" href="#大文件传输用什么方式实现"><strong>大文件传输用什么方式实现？</strong></a></h1>
+<p>那针对大文件的传输，我们应该使用什么方式呢？</p>
+<p>我们先来看看最初的例子，当调用 read 方法读取文件时，进程实际上会阻塞在 read 方法调用，因为要等待磁盘数据的返回，如下图：</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_normal_read.png" alt="" /></p>
+<p>具体过程：</p>
+<ul>
+<li>当调用 read 方法时，会阻塞着，此时内核会向磁盘发起 I/O 请求，磁盘收到请求后，便会寻址，当磁盘数据准备好后，就会向内核发起 I/O 中断，告知内核磁盘数据已经准备好；</li>
+<li>内核收到 I/O 中断后，就将数据从磁盘控制器缓冲区拷贝到 PageCache 里；</li>
+<li>最后，内核再把 PageCache 中的数据拷贝到用户缓冲区，于是 read 调用就正常返回了。</li>
+</ul>
+<p>对于阻塞的问题，可以用异步 I/O 来解决，它工作方式如下图：</p>
+<p><img src="https://weisanju.github.io/note-service/others/images/zero_copy_asynchronous.png" alt="" /></p>
+<p>它把读操作分为两部分：</p>
+<ul>
+<li>前半部分，内核向磁盘发起读请求，但是可以**不等待数据就位就可以返回，**于是进程此时可以处理其他任务；</li>
+<li>后半部分，当内核将磁盘中的数据拷贝到进程缓冲区后，进程将接收到内核的<strong>通知</strong>，再去处理数据；</li>
+</ul>
+<p>而且，我们可以发现，<strong>异步 I/O 并没有涉及到 PageCache</strong>，所以使用异步 I/O 就意味着要绕开 PageCache。</p>
+<p><strong>绕开 PageCache 的 I/O 叫直接 I/O，使用 PageCache 的 I/O 则叫缓存 I/O</strong>。<strong>通常，对于磁盘，异步 I/O 只支持直接 I/O。</strong></p>
+<p>前面也提到，大文件的传输不应该使用 PageCache，因为可能由于 PageCache 被大文件占据，而导致「热点」小文件无法利用到 PageCache。</p>
+<p>于是，<strong>在高并发的场景下，针对大文件的传输的方式，应该使用「异步 I/O + 直接 I/O」来替代零拷贝技术。</strong></p>
+<p>直接 I/O 应用场景常见的两种：</p>
+<ul>
+<li>应用程序已经实现了磁盘数据的缓存，那么可以不需要 PageCache 再次缓存，减少额外的性能损耗。在 MySQL 数据库中，可以通过参数设置开启直接 I/O，默认是不开启；</li>
+<li>传输大文件的时候，由于大文件难以命中 PageCache 缓存，而且会占满 PageCache 导致「热点」文件无法充分利用缓存，从而增大了性能开销，因此，这时应该使用直接 I/O。</li>
+</ul>
+<p>另外，由于直接 I/O 绕过了 PageCache，就无法享受内核的这两点的优化：</p>
+<ul>
+<li>内核的 I/O 调度算法会缓存尽可能多的 I/O 请求在 PageCache 中，最后**「合并」**成一个更大的 I/O 请求再发给磁盘，这样做是为了减少磁盘的寻址操作；</li>
+<li>内核也会**「预读」**后续的 I/O 请求放在 PageCache 中，一样是为了减少对磁盘的操作；</li>
+</ul>
+<p>于是，传输大文件的时候，使用「异步 I/O + 直接 I/O」了，就可以无阻塞地读取文件了。</p>
+<p>所以，传输文件的时候，我们要根据文件的大小来使用不同的方式：</p>
+<ul>
+<li>传输大文件的时候，使用「异步 I/O + 直接 I/O」；</li>
+<li>传输小文件的时候，则使用「零拷贝技术」；</li>
+</ul>
+<p>在 Nginx 中，我们可以用如下配置，来根据文件的大小来使用不同的方式：</p>
+<pre><code>location /video/ {  sendfile on;  aio on;  directio 1024m; }
+</code></pre>
+<p>当文件大小大于 <strong>directio</strong>值后，使用「异步 I/O + 直接 I/O」，否则使用「零拷贝技术」。</p>
+<h1 id="总结"><a class="header" href="#总结"><strong>总结</strong></a></h1>
+<h2 id="为了解放cpu而-发明了-dma"><a class="header" href="#为了解放cpu而-发明了-dma">为了解放CPU而 发明了 <em>DMA</em></a></h2>
+<p>早期 I/O 操作，内存与磁盘的数据传输的工作都是由 CPU 完成的，而此时 CPU 不能执行其他任务，会特别浪费 CPU 资源。</p>
+<p>于是，为了解决这一问题，DMA 技术就出现了，每个 I/O 设备都有自己的 DMA 控制器，通过这个 DMA 控制器，CPU 只需要告诉 DMA 控制器，我们要传输什么数据，从哪里来，到哪里去，就可以放心离开了。后续的实际数据传输工作，都会由 DMA 控制器来完成，CPU 不需要参与数据传输的工作。</p>
+<h2 id="如何减少文件copy中数据复制的次数"><a class="header" href="#如何减少文件copy中数据复制的次数">如何减少文件Copy中数据复制的次数</a></h2>
+<ol>
+<li>用户与内核共享一个缓冲区 (nmap，内存映射)</li>
+<li>将 内核缓冲区 直接写入到 <em>Socket</em> 缓冲区 （<em>sendFile</em>)</li>
+<li>网卡的 SG-DMA 控制器 直接将 内核缓冲区的数据 写入网卡缓冲区</li>
+</ol>
+<h2 id="零拷贝的局限"><a class="header" href="#零拷贝的局限">零拷贝的局限</a></h2>
+<p>需要注意的是，零拷贝技术是不允许进程对文件内容作进一步的加工的，比如压缩数据再发送。</p>
+<h2 id="内核缓冲区的实现pagecache"><a class="header" href="#内核缓冲区的实现pagecache">内核缓冲区的实现：PageCache</a></h2>
+<ul>
+<li>PageCache 会缓存最近访问的数据，提升了访问缓存数据的性能</li>
+<li>IO 合并</li>
+<li>数据预读</li>
+</ul>
+<h2 id="大文件传输的方法"><a class="header" href="#大文件传输的方法">大文件传输的方法</a></h2>
+<p>针对大文件使用异步 IO 和直接 IO，而对小文件使用零拷贝。</p>
+<p><a href="https://www.toutiao.com/i6879648629628502542/">CSDN零拷贝</a></p>
+<script src="/note-service/others/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/others/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/others/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title=""></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../11.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../11.Linux/默认值语法糖.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../11.Linux/路由器映射后公网能正常访问但局域网无法通过公网IP访问.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../11.Linux/默认值语法糖.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
