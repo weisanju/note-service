@@ -1,0 +1,862 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust库API设计文档规范.md - RUST学习笔记</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="10rust指针.html"><strong aria-hidden="true">0.</strong> rust指针.md</a></li><li class="chapter-item "><a href="11模式匹配.html"><strong aria-hidden="true">1.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="12ConstantsAndVariables.html"><strong aria-hidden="true">2.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="13newType模式.html"><strong aria-hidden="true">3.</strong> newType模式.md</a></li><li class="chapter-item "><a href="14Rust中的Sizedness.html"><strong aria-hidden="true">4.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="15依赖管理.html"><strong aria-hidden="true">5.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="16const类型与函数.html"><strong aria-hidden="true">6.</strong> const类型与函数.md</a></li><li class="chapter-item expanded "><a href="17Rust库API设计文档规范.html" class="active"><strong aria-hidden="true">7.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item "><a href="18rust执行shell命令.html"><strong aria-hidden="true">8.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="1常见编程概念.html"><strong aria-hidden="true">9.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="2所有权.html"><strong aria-hidden="true">10.</strong> 所有权.md</a></li><li class="chapter-item "><a href="3常见集合.html"><strong aria-hidden="true">11.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="4迭代与闭包.html"><strong aria-hidden="true">12.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="5泛型与trait.html"><strong aria-hidden="true">13.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="6函数式编程.html"><strong aria-hidden="true">14.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="7Rust数据类型.html"><strong aria-hidden="true">15.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="7宏.html"><strong aria-hidden="true">16.</strong> 宏.md</a></li><li class="chapter-item "><a href="8结构体.html"><strong aria-hidden="true">17.</strong> 结构体.md</a></li><li class="chapter-item "><a href="9rust面向对象特性.html"><strong aria-hidden="true">18.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="rfcs.html"><strong aria-hidden="true">19.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rfcs/0195-associated-items.html"><strong aria-hidden="true">19.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="rfcs/0911-const-fn.html"><strong aria-hidden="true">19.1.</strong> -const-fn.md</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">RUST学习笔记</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/rust/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h2 id="什么是优雅的-api"><a class="header" href="#什么是优雅的-api">什么是优雅的 API</a></h2>
+<ul>
+<li>
+<p>方法名清晰易懂，以让调用了这个 API 的代码易于阅读。</p>
+</li>
+<li>
+<p>有规律、可猜测的方法名在使用 API 时也很有用，可以减少阅读文档的需求。</p>
+</li>
+<li>
+<p>每个 API 都有至少要有文档和一小段示例代码。</p>
+</li>
+<li>
+<p>用户几乎不需要编写样板代码（boilerplate code）来使用这个 API，因为</p>
+<ul>
+<li>它广泛接受各种输入类型（当然类型转换是显式的）</li>
+<li>并且也有足以应付大部分常用情况的一键 API</li>
+</ul>
+</li>
+<li>
+<p>充分利用类型来防止逻辑错误，但不会太妨碍使用。</p>
+</li>
+<li>
+<p>返回有意义的错误，并且在文档中注明会导致 panic 的情况。</p>
+</li>
+</ul>
+<h2 id="技术"><a class="header" href="#技术">技术</a></h2>
+<blockquote>
+<p>有一些 Rust RFC 描述了标准库的命名方案。你也应该遵循它们，以让用户能迅速上手使用你的库。</p>
+</blockquote>
+<ul>
+<li>
+<p>RFC 199 解释说应该使用 mut、move 或 ref 作为后缀，来根据参数的可变性区分方法。</p>
+</li>
+<li>
+<p>RFC 344 定义了一些有意思的约定，比如：</p>
+<ul>
+<li>如何在方法名称中引用类型名称（如 &amp;mut [T] 变成 mut_slice、*mut T 变成 mut ptr），</li>
+<li>如何命名返回迭代器的方法，</li>
+<li>getter 方法应该被命名为 field_name 而 setter 方法应该被命名为 set_field_name，</li>
+<li>如何命名 trait：“优先选择（及物）动词、名词，然后是形容词；避免语法后缀（如 able）”，而且“如果这个 trait 只有一个主要方法，可以考虑用方法名称来命名 trait 本身”，</li>
+</ul>
+</li>
+<li>
+<p>RFC 430 描述了一些通用的大小写约定（总结：CamelCase 用于类型级别，snake_case 用于变量级别）。</p>
+</li>
+<li>
+<p>RFC 445 希望你为扩展 trait（extension trait）添加 Ext 后缀。</p>
+</li>
+</ul>
+<p>除了 RFC 199 和 RFC 344 （见上）规定的以外，还有一些其他的关于如何选择方法名称的约定，目前还没有在 RFC 中提及。这些约定大部分都在旧的 <a href="https://doc.rust-lang.org/1.12.0/style/style/naming/conversions.html">Rust 风格指南</a>和 @llogiq 的文章 Rustic Bits 以及 <a href="https://github.com/Manishearth/rust-clippy">clippy</a> 的 wrong_self_convention 检测项中提到了。这里总结一下。</p>
+<div class="table-wrapper"><table><thead><tr><th>方法名称</th><th>参数</th><th>备注</th><th>举例</th></tr></thead><tbody>
+<tr><td>new</td><td>无 self，通常 &gt;= 1 <sup class="footnote-reference"><a href="#1">1</a></sup></td><td>构造器，另参见 Default</td><td>Box::new、std::net::Ipv4Addr::new</td></tr>
+<tr><td>with_...</td><td>无 self，&gt;= 1</td><td>其他构造器</td><td>Vec::with_capacity、regex::Regex::with_size_limit</td></tr>
+<tr><td>from_...</td><td>1</td><td>参见转换 trait（conversion traits）</td><td>String::from_utf8_lossy</td></tr>
+<tr><td>as_...</td><td>&amp;self</td><td>无开销的转换，返回数据的一个视图（view）</td><td>str::as_bytes、uuid::Uuid::as_bytes</td></tr>
+<tr><td>to_...</td><td>&amp;self</td><td>昂贵的转换</td><td>str::to_string、std::path::Path::to_str</td></tr>
+<tr><td>into_...</td><td>self（消耗）</td><td>可能昂贵的转换，参见 转换 trait（conversion traits）</td><td>std::fs::File::into_raw_fd</td></tr>
+<tr><td>is_...</td><td>&amp;self（或无）</td><td>期望返回 bool</td><td>slice::is_empty、Result::is_ok、std::path::Path::is_file</td></tr>
+<tr><td>has_...</td><td>&amp;self （或无）</td><td>期望返回 bool</td><td>regex_syntax::Expr::has_bytes</td></tr>
+</tbody></table>
+</div>
+<h2 id="文档测试"><a class="header" href="#文档测试">文档测试</a></h2>
+<p>编写带有示例代码的文档可以展示 API 的用法而且还能获得自动测试
+详见第一版 TRPL（The Rust Programming Language）的[文档](详见第一版 TRPL（The Rust Programming Language）的文档一节。)一节。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// 使用魔法操作数字
+///
+/// # 示例
+///
+/// ```rust
+/// assert_eq!(min( 0,   14),    0);
+/// assert_eq!(min( 0, -127), -127);
+/// assert_eq!(min(42,  666),   42);
+/// ```(由于 hexo markdown 渲染辣鸡，此处加点文字避免被渲染为单独代码块）
+fn min(lhs: i32, rhs: i32) -&gt; i32 {
+	if lhs &lt; rhs { lhs } else { rhs }
+}
+
+<span class="boring">}</span></code></pre></pre>
+<p>你还可以使用 #![deny(missing_docs)] 来强制保证每个公开 API 都有文档。你可能也会对我的这篇提出了 <a href="https://deterministic.space/machine-readable-inline-markdown-code-cocumentation.html">Rust 文档格式化约定</a>的文章感兴趣。</p>
+<h2 id="不要在-api-中使用-字符串类型"><a class="header" href="#不要在-api-中使用-字符串类型">不要在 API 中使用 “字符串类型”</a></h2>
+<blockquote>
+<p>尽量使用枚举</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust">enum Color { Red, Green, Blue, LightGoldenRodYellow }
+
+fn color_me(input: &amp;str, color: Color) { /* ... */ }
+
+fn main() {
+    color_me(&quot;surprised&quot;, Color::Blue);
+}</code></pre></pre>
+<h2 id="全是常量的模块"><a class="header" href="#全是常量的模块">全是常量的模块</a></h2>
+<p>或者，如果你想表达更复杂的值的话，则可以定义一个新的 struct，然后定义一堆公共常量。然后把这些常量放到模块中，用户就可以使用与 enum 类似的语法来访问它们了。</p>
+<pre><pre class="playground"><code class="language-rust">pub mod output_options {
+    pub struct OutputOptions { /* ... */ }
+    
+    impl OutputOptions { fn new(/* ... */) -&gt; OutputOptions { /* ... */ } }
+    
+    pub const DEFAULT: OutputOptions = OutputOptions { /* ... */ };
+    pub const SLIM: OutputOptions = OutputOptions { /* ... */ };
+    pub const PRETTY: OutputOptions = OutputOptions { /* ... */ };
+}
+
+fn output(f: &amp;Foo, opts: OutputOptions) { /* ... */ }
+
+fn main() {
+    let foo = Foo::new();
+    
+    output(foo, output_options::PRETTY);
+}</code></pre></pre>
+<h2 id="使用-fromstr-来解析字符串"><a class="header" href="#使用-fromstr-来解析字符串">使用 FromStr 来解析字符串</a></h2>
+<p>在某些情况下，你的用户确实不得不使用字符串，比如：从环境变量中读取或者读取他们的用户的输入作为参数——也就是说，他们没办法在代码中编写（静态）字符串传递给你的 API（这个也是我们尝试阻止的）。这种情况下就需要使用 FromStr triat 了，它抽象了 “解析字符串到 Rust 数据类型” 的行为。</p>
+<pre><pre class="playground"><code class="language-rust">// 选择 A: 你来解析
+fn output_a(f: &amp;Foo, color: &amp;str) -&gt; Result&lt;Bar, ParseError&gt; {
+    // 这里使用解析后的类型遮蔽掉了原来的 `color`
+    let color: Color = try!(color.parse());
+
+    f.to_bar(&amp;color)
+}
+
+// 选择 B: 用户来解析
+fn output_b(f: &amp;Foo, color: &amp;Color) -&gt; Bar {
+    f.to_bar(color)
+}
+
+fn main() {
+    let foo = Foo::new();
+
+    // 选择 A: 你来解析，用户来处理 API 错误
+    output_a(foo, &quot;Green&quot;).expect(&quot;Error :(&quot;);
+
+    // 选择 B: 用户传入有效类型，所以不需要处理错误
+    output_b(foo, Color::Green);
+
+    // 选择 B: 用户使用字符串，需要自己解析并处理错误
+    output_b(foo, &quot;Green&quot;.parse().except(&quot;Parse error!&quot;));
+}</code></pre></pre>
+<h2 id="错误处理"><a class="header" href="#错误处理">错误处理</a></h2>
+<p>TRPL 中对于错误处理<a href="https://kaisery.gitbooks.io/rust-book-chinese/content/content/Error%20Handling%20%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.html">有一章</a>写得很不错。</p>
+<p>也有一些 crate 可以用来减少编写良好错误类型所需的样板代码，比如 <a href="https://crates.io/crates/quick-error">quick-error</a> 和 <a href="https://crates.io/crates/error-chain">error-chain</a>。</p>
+<h2 id="公共类型别名"><a class="header" href="#公共类型别名">公共类型别名</a></h2>
+<p>如果你的内部代码常常使用某个参数相同的泛型类型，此时可以使用类型别名。如果你想把这些类型公开给你的用户，你也应该把这些别名同样公开给用户（当然记得文档）。</p>
+<p>一个常见情况是 E 为固定值的 <code>Result&lt;T, E&gt;</code> 类型。比如 <code>std::io::Result&lt;T&gt; 是 Result&lt;T, std::io::Error&gt;</code> 的别名，<code>std::fmt::Result 是 Result&lt;(), std::fmt::Error&gt; </code>的别名，<code>serde_json::error::Result&lt;T&gt; 是 Result&lt;T, serde_json::error::Error&gt;</code> 的别名。</p>
+<h2 id="使用转换-trait"><a class="header" href="#使用转换-trait">使用转换 trait</a></h2>
+<p>一个良好实践是永远也不要在参数中使用 &amp;String 和 &amp;Vec<T>，取而代之使用 &amp;str 和 &amp;[T]，后者允许传入更多类型。（基本上是所有能 deref 到字符串或切片（slice）的类型）</p>
+<p>与其使用具体类型作为参数，不如使用拥有严格约束的泛型。这样做的缺点是文档的可读性会降低，因为它充满了大量复杂的泛型约束！</p>
+<p>std::convert 为提供了一些方便的工具：</p>
+<ul>
+<li>AsMut：一个便宜的（低消耗）、可变引用到可变引用的转换。</li>
+<li>AsRef：一个便宜的，引用到引用的转换。</li>
+<li>From： 通过转换来构造自身</li>
+<li>Into：一个消耗会自身的转换，可能会比较昂贵（高开销）。</li>
+<li>TryFrom：尝试通过转换来构造自身</li>
+<li>TryInto：尝试消耗自身转的换，可能会比较昂贵。</li>
+</ul>
+<p>你可能也会喜欢这篇关于<a href="https://ricardomartins.cc/2016/08/03/convenient_and_idiomatic_conversions_in_rust">如何在 Rust 中进行方便地道的转换的文章</a>.</p>
+<h2 id="cow"><a class="header" href="#cow">Cow</a></h2>
+<p>如果你需要处理很多不确定是否需要进行分配（allocate）的东西，你应该使用Cow&lt;'a, B&gt;，它可以让你抽象借用和拥有所有权的数据。</p>
+<div class="table-wrapper"><table><thead><tr><th>fn foo(p: PathBuf)</th><th>fn foo&lt;P: Into<PathBuf>&gt;(p: P)</th></tr></thead><tbody>
+<tr><td>用户需要把数据转为 PathBuf</td><td>由库来调用 .into() 进行转换</td></tr>
+<tr><td>用户进行分配</td><td>看不出：库可能进行分配</td></tr>
+<tr><td>用户需要关心 PathBuf 是什么、如何创建</td><td>用户可以传递 String 、OsString，或者 PathBuf 都行</td></tr>
+</tbody></table>
+</div>
+<h2 id="intooption_"><a class="header" href="#intooption_">Into&lt;Option&lt;_&gt;&gt;</a></h2>
+<p><a href="https://github.com/rust-lang/rust/pull/34828">这个 PR</a> 添加了一个 <code>impl&lt;T&gt; From&lt;T&gt; for Option&lt;T&gt;</code>，在 Rust 1.12 中正式实装。寥寥几行代码赋予了你编写可以被直接调用而不需要写一大堆 Some(...) 的 API 的能力。</p>
+<p><strong>之前</strong></p>
+<pre><pre class="playground"><code class="language-rust">// 对于 API 作者来说很容易编写，文档也很易于阅读
+fn foo(lorem: &amp;str, ipsum: Option&lt;i32&gt;, dolor: Option&lt;i32&gt;, sit: Option&lt;i32&gt;) {
+    println!(&quot;{}&quot;, lorem);
+}
+
+fn main() {
+    foo(&quot;bar&quot;, None, None, None);               // 看起来有些奇怪
+    foo(&quot;bar&quot;, Some(42), None, None);           // 还好
+    foo(&quot;bar&quot;, Some(42), Some(1337), Some(-1)); // 停！太多…… Some 了……
+}</code></pre></pre>
+<p><strong>现在</strong></p>
+<pre><pre class="playground"><code class="language-rust">// 对于 API 作者来说得多打点字
+// （而且遗憾的是，每个参数都需要被单独指定——否则 Rust 只会根据第一个参数推断类型。
+// 这种写法阅读来不是很方便，文档可能也没那么好看）
+fn foo&lt;I, D, S&gt;(lorem: &amp;str, ipsum: I, dolor: D, sit: S) where
+    I: Into&lt;Option&lt;i32&gt;&gt;,
+    D: Into&lt;Option&lt;i32&gt;&gt;,
+    S: Into&lt;Option&lt;i32&gt;&gt;,
+{
+    println!(&quot;{}&quot;, lorem);
+}
+
+fn main() {
+    foo(&quot;bar&quot;, None, None, None); // 仍然奇怪
+    foo(&quot;bar&quot;, 42, None, None);   // 不错
+    foo(&quot;bar&quot;, 42, 1337, -1);     // Wow，棒棒！请务必这样编写 API！
+}</code></pre></pre>
+<h2 id="关于可能较长的编译时间的说明"><a class="header" href="#关于可能较长的编译时间的说明">关于可能较长的编译时间的说明</a></h2>
+<p>如果你有：</p>
+<ul>
+<li>很多类型参数（比如用于转换 trait）</li>
+<li>用在一个很复杂/大型的函数上面</li>
+<li>这个函数用得还很多</li>
+</ul>
+<p>然后 rustc 将会根据不同参数编译这个函数的大量排列组合（泛型函数的单态化），这会导致很长的编译时间。</p>
+<p><a href="https://github.com/bluss">bluss</a> 在 <a href="https://www.reddit.com/r/rust/comments/556c0g/optional_arguments_in_rust_112/d8839pu?context=1">Reddit</a> 上提到可以使用 “去泛型” 技术来规避这个问题：你的（公共）泛型函数只简单地调用另一个（私有）非泛型函数，这样这个私有函数就只会被编译一次。</p>
+<p>bluss 给的例子是 std::fs::OpenOptions::open 的实现（来自 Rust 1.12 的<a href="https://doc.rust-lang.org/1.12.0/src/std/up/src/libstd/fs.rs.html#599-604">源码</a>）和 image crate 的 <a href="https://github.com/PistonDevelopers/image/pull/518">这个PR</a>，它将 open 函数修改成了这个样子：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn open&lt;P&gt;(path: P) -&gt; ImageResult&lt;DynamicImage&gt; where P: AsRef&lt;Path&gt; {
+    // 简单的包装函数，在调用 open_impl 之前去掉泛型
+    open_impl(path.as_ref())
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="惰性"><a class="header" href="#惰性">惰性</a></h2>
+<p>尽管 Rust 不能像 Haskell 一样对表达式进行惰性计算，但是你仍然可以使用一些技术来优雅地省略不必要的计算和分配。</p>
+<h3 id="使用迭代器iterator"><a class="header" href="#使用迭代器iterator">使用迭代器（Iterator）</a></h3>
+<p>标准库中最绝妙的构造之一是 Iterator，它是一个 trait，允许类似生成器的值迭代，而你只需要为此实现一个 next 方法<sup class="footnote-reference"><a href="#3">2</a></sup>。Rust 的迭代器是惰性的，你需要显式地调用一个消费函数才会开始迭代。只是编写 &quot;hello&quot;.chars().filter(char::is_white_space) 不会对数据进行任何操作，直到你对它调用像 .collect::<String>() 这样的方法。</p>
+<h3 id="迭代器作为参数"><a class="header" href="#迭代器作为参数">迭代器作为参数</a></h3>
+<p>使用迭代器作为输入可能会让你的 API 更加难以阅读（T: Iterator&lt;Item=Thingy&gt; vs &amp;[Thingy]），但是可以让用户避免内存分配。</p>
+<p>不过，事实上，你可能也并不想接受一个宽泛的 Iterator：而是使用 IntoIterator 。这样你就可以得到一个通过调用 .into_iter() 就能轻松转换为迭代器的类型。判断哪些类型实现了 IntoIterator 也很简单——就如文档中所说的：</p>
+<h3 id="类似-iterator-的-trait"><a class="header" href="#类似-iterator-的-trait">类似 Iterator 的 trait</a></h3>
+<p>futures::Stream：如 futures 教程所说，类似 Iterator::next 返回 Option<a href="Self::Item">Self::Item</a>，Stream::poll 返回一个 Option<a href="Self::Item">Self::Item</a> 的异步结果（或者返回一个错误）。</p>
+<h3 id="接受闭包"><a class="header" href="#接受闭包">接受闭包</a></h3>
+<p>如果有一个可能比较昂贵的值（暂称为类型 Value），而且它并不会在所有的分支中都被使用到，这时可以考虑使用一个返回这个值的闭包（Fn() -&gt; Value）。</p>
+<p>一个实际例子是 Result 中的 unwrap_or 和 unwrap_or_else：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let res: Result&lt;i32, &amp;str&gt; = Err(&quot;oh noes&quot;);
+res.unwrap_or(42); // 立即返回 `42`
+
+let res: Result&lt;i32, &amp;str&gt; = Err(&quot;oh noes&quot;);
+res.unwrap_or_else(|msg| msg.len() as i32); // 将会在需要的时候调用闭包计算
+<span class="boring">}</span></code></pre></pre>
+<h4 id="关于惰性的小技巧"><a class="header" href="#关于惰性的小技巧">关于惰性的小技巧</a></h4>
+<p>让 Deref 完成所有的工作：为你的类型实现 Deref，让它来完成实际的计算逻辑。这个<a href="https://crates.io/crates/lazy">crate lazy</a>实现了一个能为你完成这件事情的宏（不过需要 unstable 特性）。</p>
+<h2 id="提升易用性的-trait"><a class="header" href="#提升易用性的-trait">提升易用性的 trait</a></h2>
+<p>这里列举了一些你应该试着为你的类型实现的 trait，它们可以让你的类型更加易用：</p>
+<ul>
+<li>实现或者派生（derive）“常用” 的 trait 比如 Debug、Hash、PartialEq、PartialOrd、Eq、Ord</li>
+<li>实现或者派生Default，而不是编写一个不接受任何参数的 new 方法。</li>
+<li>如果你正在为一个类型实现一个可以将它的数据作为 Iterator 返回的方法，你也应该考虑为这个类型实现IntoIterator。（仅有一种迭代数据的主要方式时，才建议这么做。 另请参见上面有关迭代器的部分。）</li>
+<li>如果你的自定义数据类型和 std 中的基本类型 T 很相似，请考虑为它实现 Deref&lt;Target=T&gt;，不过请不要滥用——Deref 不是用来模拟继承的！</li>
+<li>不要编写一个接受字符串作为参数然后返回一个实例的构造方法，请使用FromStr</li>
+</ul>
+<h2 id="为输入参数实现自定义-trait"><a class="header" href="#为输入参数实现自定义-trait">为输入参数实现自定义 trait</a></h2>
+<p>例：str::find
+<code>str::find&lt;P: Pattern&gt;(p: P) </code>接受一个Pattern作为输入，<code>char、str、FnMut(char) -&gt; bool </code>等类型都实现了这个 trait</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>&quot;Lorem ipsum&quot;.find('L');
+&quot;Lorem ipsum&quot;.find(&quot;ipsum&quot;);
+&quot;Lorem ipsum&quot;.find(char::is_whitespace);
+<span class="boring">}</span></code></pre></pre>
+<h2 id="扩展-trait"><a class="header" href="#扩展-trait">扩展 trait</a></h2>
+<p>尽量使用标准库中定义的类型和 trait，因为大部分 Rust 程序员都了解它们，它们经过了充分的测试并且有良好的文档。不过，由于 Rust 标准库倾向于提供有语义含义的类型<sup class="footnote-reference"><a href="#4">3</a></sup>，这些类型包含的方法可能对你的 API 来说还不够。幸运的是，Rust 的 “孤儿规则（orphan rules）” 赋予了为任何类型实现任何 trait 的能力——前提是类型和 trait 中的任意一个是在当前 crate 中定义的。</p>
+<h2 id="装饰结果"><a class="header" href="#装饰结果">装饰结果</a></h2>
+<p>如 <a href="https://twitter.com/Argorak">Florian</a> 在 <a href="http://yakshav.es/decorating-results/">“Decorating Results”</a> 中写到的，你可以使用这种方法来编写并实现 trait 来为内置类型如 Result 实现自己的方法。举例：</p>
+<pre><pre class="playground"><code class="language-rust">pub trait GrandResultExt {
+    fn party(self) -&gt; Self;
+}
+
+impl GrandResultExt for Result&lt;String, Box&lt;Error&gt;&gt; {
+    fn party(self) -&gt; Result&lt;String, Box&lt;Error&gt;&gt; {
+        if self.is_ok() {
+          println!(&quot;Wooohoo! 🎉&quot;);
+        }
+        self
+    }
+}
+
+// 用户代码
+fn main() {
+    let fortune = library_function()
+        .method_returning_result()
+        .party()
+        .unwrap_or(&quot;Out of luck.&quot;.to_string());
+}</code></pre></pre>
+<p>Florian 在 lazers 的真实代码中使用了这样的模式装饰了 BoxFuture（来自 futures crate）以让代码更加可读：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let my_database = client
+    .find_database(&quot;might_not_exist&quot;)
+    .or_create();
+
+<span class="boring">}</span></code></pre></pre>
+<h2 id="扩展-trait-1"><a class="header" href="#扩展-trait-1">扩展 trait</a></h2>
+<p>到目前为止，我们已经通过定义并实现自己的 trait 扩展了类型上的可用方法。但你还可以定义扩展其他 trait 的 trait（trait MyTrait: BufRead + Debug {}）。最突出的例子是 <a href="https://crates.io/crates/itertools">itertools</a> crate，它为 std 的迭代器添加了一大堆方法。</p>
+<h2 id="建造者模式"><a class="header" href="#建造者模式">建造者模式</a></h2>
+<p>通过将一堆小方法串联在一起你可以让复杂的 API 更加易于调用。这个和 Session Type 非常搭（稍后会提到）。derive_builder crate 可以用来为自定义的 struct 自动生成（简单的）Builder</p>
+<p>例： std::fs::OpenOptions</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs::OpenOptions;
+let file = OpenOptions::new().read(true).write(true).open(&quot;foo.txt&quot;);
+<span class="boring">}</span></code></pre></pre>
+<h3 id="session-type"><a class="header" href="#session-type">Session Type</a></h3>
+<p>你可以在类型系统中编码一个状态机。</p>
+<ul>
+<li>每个状态都有不同的类型。</li>
+<li>每个状态类型都实现了不同的方法。</li>
+<li>一些方法会消耗这个状态类型（获取所有权）并且返回另一个状态类型。</li>
+</ul>
+<p>这个技巧在 Rust 中工作地非常良好，因为你的方法可以将数据移动到新的类型中，并且保证在之后你就无法访问旧状态了。</p>
+<p>这是一个关于邮寄包裹的小例子：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let p: OpenPackage = Package::new();
+let p: OpenPackage = package.insert([stuff, padding, padding]);
+
+let p: ClosedPackage = package.seal_up();
+
+// let p: OpenPackage = package.insert([more_stuff]);
+//~^ ERROR: No method named `insert` on `ClosedPackage`
+
+let p: DeliveryTracking = package.send(address, postage);
+
+<span class="boring">}</span></code></pre></pre>
+<p>一个很好的实际例子是 /u/ssokolow 在 <a href="https://www.reddit.com/r/rust/comments/568yvh/typesafe_unions_in_c_and_rust/d8hcwfs">/r/rust 的这个帖子 </a>中给出的：</p>
+<p>Hyper 使用这个方法来在编译时保证，你不可能做出诸如 “在请求/响应主体已经开始后又来设置 HTTP 头” 这种经常在 PHP 网站上看到的事。（编译器可以捕获这个错误，因为在该状态下的连接上没有 “set header” 方法，并且由于过时引用会失效，所以被引用的一定是正确的状态。）</p>
+<p><a href="http://hyper.rs/hyper/v0.9.10/hyper/server/index.html#an-aside-write-status">hyper::server 文档</a>中更详细地解释了这是如何实现的。另一个有趣的想法可以在<a href="https://github.com/skade/lazers/blob/96efff493be9312ffc70eac5a04b441952e089eb/lazers-replicator/src/lib.md#verify-peers"> lazers-replicator crate</a> 中找到：它使用 std::convert::From来在状态中转换。</p>
+<h2 id="更多信息"><a class="header" href="#更多信息">更多信息：</a></h2>
+<ul>
+<li>文章 “Beyond Memory Safety With Types” 描述了这项技术如何被用来实现一个漂亮并且类型安全的 IMAP 协议。</li>
+<li>论文 “Session types for Rust” (PDF)，作者 Thomas Bracht Laumann Jespersen, Philip Munksgaard, and Ken Friis Larsen (2015). DOI</li>
+<li>Andrew Hobden 的帖子 <a href="https://hoverbear.org/2016/10/12/rust-state-machine-pattern/">“Pretty State Machine Patterns in Rust”</a> 展示了一些在 Rust 的类型系统中实现状态机的方法。</li>
+</ul>
+<h2 id="使用生命周期"><a class="header" href="#使用生命周期">使用生命周期</a></h2>
+<p>在静态类型语言中，为你的 API 指定类型和 trait 约束是必不可少的，如前文所说的，它们可以帮助防止逻辑错误。此外，Rust 的类型系统还提供了另一个维度：你还可以描述你的数据的生命周期（并编写生命周期约束）。</p>
+<p>这可以让你（作为开发者）更轻松地对待借用的数据（而不是使用开销更大的拥有所有权的数据）。尽可能地使用引用在 Rust 中是一个良好实践，因为高性能和 “零分配” 的库也是语言的卖点之一。</p>
+<p>不过，你应该尽可能为此编写良好的文档，因为理解生命周期和处理引用对于你的库用户来说可能是个挑战，尤其是对于 Rust 新手来说。</p>
+<p>由于某些原因（可能是比较简短），很多生命周期都被命名为 'a、'b或类似的无意义字符，不过如果你了解引用的生命周期对应的资源的话，你可以找到更好的名称。举例来说，如果你将文件读入到内存并且处理对这块内存的引用，可以将它的生命周期命名为 'file，或者如果你在处理一个 TCP 请求并且解析它的数据，则可以将生命周期命名为 'req。</p>
+<h2 id="将析构代码放在-drop-中"><a class="header" href="#将析构代码放在-drop-中">将析构代码放在 drop 中</a></h2>
+<p>Rust 的所有权规则不仅能用于内存：如果你的数据类型表示着外部资源（比如 TCP 连接），则在超出作用域时，你可以使用 Drop trait 关闭、释放或清理该资源。你可以像在其他语言中使用析构函数（或者 try ... catch ... finally）一样使用它。
+实际的例子有：</p>
+<ul>
+<li>引用计数类型 Rc 和 Arc 使用 Drop 来减少引用计数（并且在计数归零的时候释放拥有的数据）。</li>
+<li>MutexGuard 使用 Drop 来释放它对 Mutex 的锁。</li>
+<li>diesel crate 用 Drop 来关闭数据库连接（比如 SQLite）。</li>
+</ul>
+<h2 id="案例学习"><a class="header" href="#案例学习">案例学习</a></h2>
+<p>在 API 设计中使用了一些不错的技巧的 Rust 库：</p>
+<ul>
+<li>hyper：Session Type（见上文）</li>
+<li>diesel：使用拥有复杂的关联类型的 trait 将 SQL 查询编码为类型</li>
+<li>futures：高度抽象并且拥有良好文档的 crate</li>
+</ul>
+<h2 id="其他设计模式"><a class="header" href="#其他设计模式">其他设计模式</a></h2>
+<p>我在这里介绍的是编写接口的设计模式，即面向用户的 API。虽然我认为其中的一些模式只适用于编写库，但许多模式也同样适用于编写通用应用程序的代码。</p>
+<p>你可以在 <a href="https://github.com/rust-unofficial/patterns">Rust Design Patterns</a> 仓库中找到更多信息</p>
+<p>Update 2017-04-27：这篇文章发布以来，Rust 库团队的 @brson 已经发布了一个相当全面的 <a href="https://github.com/brson/rust-api-guidelines">Rust API Guidelines</a> 文档，囊括了我的所有建议，并且内容更全面。</p>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">4</sup>
+<p>在其他强类型语言中有一句口号 “making illegal states unrepresentable”。我第一次听说这个是在人们谈论 Haskell 的时候，这也是 F# for fun and profit 的<a href="http://fsharpforfunandprofit.com/posts/designing-with-types-making-illegal-states-unrepresentable/">这篇文章</a>的标题，和 Richard Feldman 在 elm-conf 2016 上的这篇演讲。</p>
+</div>
+<p><a href="https://rustcc.cn/article?id=67cd8a70-8f32-4984-bdd5-4a8c6c969775">本文链接</a></p>
+<script src="/note-service/rust/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/rust/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/rust/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="16const类型与函数.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="18rust执行shell命令.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="16const类型与函数.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="18rust执行shell命令.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
