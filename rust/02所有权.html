@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>rust执行shell命令.md - RUST学习笔记</title>
+        <title>所有权.md - RUST学习笔记</title>
 
 
         <!-- Custom HTML head -->
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="02所有权.html"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="15依赖管理.html"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item expanded "><a href="18rust执行shell命令.html" class="active"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item "><a href="智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item "><a href="智能指针/2.Deref.html"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item "><a href="智能指针/5.RefCell.html"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item expanded "><a href="02所有权.html" class="active"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="15依赖管理.html"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item "><a href="18rust执行shell命令.html"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item "><a href="智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item "><a href="智能指针/2.Deref.html"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item "><a href="智能指针/5.RefCell.html"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -398,239 +398,183 @@
 /></p>
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
-<h2 id="struct-stdprocesscommand"><a class="header" href="#struct-stdprocesscommand">Struct <a href="https://doc.rust-lang.org/std/index.html">std</a>::<a href="https://doc.rust-lang.org/std/process/index.html">process</a>::[Command]</a></h2>
-<p>流程构建器，提供对应如何生成新流程的细粒度控制。</p>
-<p>可以使用<code>Command::new(program)</code>生成默认配置，其中</p>
+<h1 id="认识所有权"><a class="header" href="#认识所有权">认识所有权</a></h1>
+<blockquote>
+<p>所有权（系统）是 Rust 最为与众不同的特性，它让 Rust 无需垃圾回收（garbage collector）即可保障内存安全。因此，理解 Rust 中所有权如何工作是十分重要的。本章，我们将讲到所有权以及相关功能：借用、slice 以及 Rust 如何在内存中布局数据。</p>
+</blockquote>
+<p><strong>变量的所有权总是遵循相同的模式：将值赋给另一个变量时移动它</strong></p>
+<h1 id="所有权"><a class="header" href="#所有权">所有权</a></h1>
+<h2 id="规则"><a class="header" href="#规则"><strong>规则</strong></a></h2>
 <ol>
-<li>program 给出要执行的程序的路径。</li>
-<li>其他构建器方法允许在生成之前更改配置 (例如，通过添加参数):</li>
-<li>继承当前进程的环境</li>
-<li>继承当前进程的工作目录</li>
-<li>Inherit stdin/stdout/stderr for <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.spawn"><code>spawn</code></a> or <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.status"><code>status</code></a>, but create pipes for <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.output"><code>output</code></a></li>
+<li>Rust 中的每一个值都有一个被称为其 <strong>所有者</strong>（<em>owner</em>）的变量。</li>
+<li>值在任一时刻有且只有一个所有者。</li>
+<li>当所有者（变量）离开作用域，这个值将被丢弃。</li>
 </ol>
-<pre><code>use std::process::Command;
+<h2 id="变量作用域"><a class="header" href="#变量作用域"><strong>变量作用域</strong></a></h2>
+<blockquote>
+<p>变量 <code>s</code> 绑定到了一个字符串字面值，这个字符串值是硬编码进程序代码中的。这个变量从声明的点开始直到当前 <strong>作用域</strong> 结束时都是有效的</p>
+</blockquote>
+<pre><code>{                      // s 在这里无效, 它尚未声明
+    let s = &quot;hello&quot;;   // 从此处起，s 是有效的
 
-let output = if cfg!(target_os = &quot;windows&quot;) {
-    Command::new(&quot;cmd&quot;)
-            .args([&quot;/C&quot;, &quot;echo hello&quot;])
-            .output()
-            .expect(&quot;failed to execute process&quot;)
-} else {
-    Command::new(&quot;sh&quot;)
-            .arg(&quot;-c&quot;)
-            .arg(&quot;echo hello&quot;)
-            .output()
-            .expect(&quot;failed to execute process&quot;)
-};
-
-let hello = output.stdout;
+    // 使用 s
+}                      // 此作用域已结
 </code></pre>
-<p><strong>命令可以重复使用以产生多个进程</strong></p>
-<pre><code>use std::process::Command;
-
-let mut echo_hello = Command::new(&quot;sh&quot;);
-echo_hello.arg(&quot;-c&quot;)
-          .arg(&quot;echo hello&quot;);
-let hello_1 = echo_hello.output().expect(&quot;failed to execute process&quot;);
-let hello_2 = echo_hello.output().expect(&quot;failed to execute process&quot;);
+<h2 id="string类型"><a class="header" href="#string类型"><strong>String类型</strong></a></h2>
+<pre><code>// 这两个冒号（::）是运算符，允许将特定的 from 函数置于 String 类型的命名空间（namespace）
+let s = String::from(&quot;hello&quot;);
 </code></pre>
-<p><strong>生成进程后调用方法</strong></p>
-<pre><code>use std::process::Command;
-
-let mut list_dir = Command::new(&quot;ls&quot;);
-
-// Execute `ls` in the current directory of the program.
-list_dir.status().expect(&quot;process failed to execute&quot;);
-
-println!();
-
-// Change `ls` to execute in the root directory.
-list_dir.current_dir(&quot;/&quot;);
-
-// And then execute `ls` again but in the root directory.
-list_dir.status().expect(&quot;process failed to execute&quot;);
+<p>内存在拥有它的变量离开作用域后就被自动释放。下面是示例 4-1 中作用域例子的一个使用 <code>String</code> 而不是字符串字面值的版本：</p>
+<p>这是一个将 <code>String</code> 需要的内存返回给操作系统的很自然的位置：当 <code>s</code> 离开作用域的时候。当变量离开作用域，Rust 为我们调用一个特殊的函数。这个函数叫做 <code>drop</code>，在这里 <code>String</code> 的作者可以放置释放内存的代码。<strong>Rust 在结尾的 <code>}</code> 处自动调用 <code>drop</code>。</strong></p>
+<h2 id="变量与数据交互的方式"><a class="header" href="#变量与数据交互的方式">变量与数据交互的方式</a></h2>
+<h3 id="移动"><a class="header" href="#移动">移动</a></h3>
+<pre><code>//基础类型是 移动
+let x = 5;
+let y = x;
 </code></pre>
-<pre><code>use std::process::Command;
+<p>引用类型的<em>移动</em></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span>let s1 = String::from(&quot;hello&quot;);
+let s2 = s1; //赋值给s1之后s1不在有效,编译器禁止使用 s1
+<span class="boring">}</span></code></pre></pre>
+<h3 id="克隆"><a class="header" href="#克隆">克隆</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from(&quot;hello&quot;);
+let s2 = s1.clone();
 
-Command::new(&quot;sh&quot;)
-        .spawn()
-        .expect(&quot;sh command failed to start&quot;);
-</code></pre>
-<h2 id="api"><a class="header" href="#api">API</a></h2>
-<h3 id="new"><a class="header" href="#new">new</a></h3>
-<pre><code>pub fn new&lt;S: AsRef&lt;OsStr&gt;&gt;(program: S) -&gt; Command
-</code></pre>
-<h3 id="arg"><a class="header" href="#arg">arg</a></h3>
-<pre><code>.arg(&quot;-C /path/to/repo&quot;)
-
-.arg(&quot;-C&quot;)
-.arg(&quot;/path/to/repo&quot;)
-</code></pre>
-<h3 id="args"><a class="header" href="#args">args</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .args([&quot;-l&quot;, &quot;-a&quot;])
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="env"><a class="header" href="#env">env</a></h3>
-<p>插入或者更新环境变量</p>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env(&quot;PATH&quot;, &quot;/bin&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="envs"><a class="header" href="#envs">envs</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-use std::env;
-use std::collections::HashMap;
-
-let filtered_env : HashMap&lt;String, String&gt; =
-    env::vars().filter(|&amp;(ref k, _)|
-        k == &quot;TERM&quot; || k == &quot;TZ&quot; || k == &quot;LANG&quot; || k == &quot;PATH&quot;
-    ).collect();
-
-Command::new(&quot;printenv&quot;)
-        .stdin(Stdio::null())
-        .stdout(Stdio::inherit())
-        .env_clear()
-        .envs(&amp;filtered_env)
-        .spawn()
-        .expect(&quot;printenv failed to start&quot;);
-</code></pre>
-<h3 id="env_remove"><a class="header" href="#env_remove">env_remove</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env_remove(&quot;PATH&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="env_clear"><a class="header" href="#env_clear">Env_clear</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env_clear()
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="current_dir"><a class="header" href="#current_dir">current_dir</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .current_dir(&quot;/bin&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stdin"><a class="header" href="#stdin">stdin</a></h3>
-<p>子进程的标准输入 (stdin) 句柄的配置。</p>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stdin(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stdout"><a class="header" href="#stdout">stdout</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stdout(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stderr"><a class="header" href="#stderr">stderr</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stderr(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="spawn"><a class="header" href="#spawn">spawn</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<ol>
+println!(&quot;s1 = {}, s2 = {}&quot;, s1, s2);
+<span class="boring">}</span></code></pre></pre>
+<ul>
 <li>
-<p>将命令作为子进程执行，并返回一个句柄。</p>
+<p>Rust 有一个叫做 <code>Copy</code> trait 的特殊注解,可以用在类似整型这样的存储在栈上的类型上</p>
 </li>
 <li>
-<p>默认情况下，stdin、stdouts和stderr是从父级继承的。</p>
+<p>如果一个类型拥有 <code>Copy</code> trait，一个旧的变量在将其赋值给其他变量后仍然可用</p>
 </li>
-</ol>
-<h3 id="output"><a class="header" href="#output">output</a></h3>
-<p>将命令作为子进程执行，等待它完成并收集其所有输出。</p>
-<p>默认情况下，stdot和stderr被捕获 (并用于提供结果输出)。Stdin不会从父级继承，并且子进程尝试从stdin流读取的任何尝试都会导致流立即关闭。</p>
-<pre><code>use std::process::Command;
-use std::io::{self, Write};
-let output = Command::new(&quot;/bin/cat&quot;)
-                     .arg(&quot;file.txt&quot;)
-                     .output()
-                     .expect(&quot;failed to execute process&quot;);
-
-println!(&quot;status: {}&quot;, output.status);
-io::stdout().write_all(&amp;output.stdout).unwrap();
-io::stderr().write_all(&amp;output.stderr).unwrap();
-
-assert!(output.status.success());
-</code></pre>
-<h3 id="status"><a class="header" href="#status">status</a></h3>
-<ol>
-<li>作为子进程执行命令，等待它完成并收集其状态。</li>
-<li>默认情况下，stdin、stdouts和stderr是从父级继承的。</li>
-</ol>
-<pre><code>use std::process::Command;
-
-let status = Command::new(&quot;/bin/cat&quot;)
-                     .arg(&quot;file.txt&quot;)
-                     .status()
-                     .expect(&quot;failed to execute process&quot;);
-
-println!(&quot;process finished with: {status}&quot;);
-
-assert!(status.success());
-</code></pre>
-<h3 id="get_program"><a class="header" href="#get_program">get_program</a></h3>
-<p>返回给程序路径。</p>
-<pre><code>use std::process::Command;
-
-let cmd = Command::new(&quot;echo&quot;);
-assert_eq!(cmd.get_program(), &quot;echo&quot;);
-</code></pre>
-<h3 id="get_args"><a class="header" href="#get_args">get_args</a></h3>
-<ol>
-<li>返回参数迭代器</li>
-<li>这不包括程序的路径作为第一个参数; 它只包括  <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.arg"><code>Command::arg</code></a>  指定的参数</li>
-</ol>
-<h3 id="get_envs"><a class="header" href="#get_envs">get_envs</a></h3>
-<ol>
-<li>返回设置子进程的迭代器</li>
-<li>元素是(&amp;OsStr, Option&lt;&amp;OsStr&gt;)
-<ol>
-<li>其中第一个值是键，第二个值是值，</li>
-<li>如果要显式删除环境变量，则该值为None。</li>
-</ol>
+<li>
+<p>Rust 不允许自身或其任何部分实现了 <code>Drop</code> trait 的类型使用 <code>Copy</code> trait</p>
 </li>
-<li>这仅包括使用 Command::env，Command::envs和Command::env_remove显式设置的环境变量。</li>
-<li>它不包括将由子进程继承的环境变量。</li>
-</ol>
-<h3 id="get_current_dir"><a class="header" href="#get_current_dir">get_current_dir</a></h3>
-<pre><code>use std::path::Path;
-use std::process::Command;
+<li>
+<p>要学习如何为你的类型增加 <code>Copy</code> 注解，请阅读附录 C 中的 <a href="https://kaisery.github.io/trpl-zh-cn/appendix-03-derivable-traits.html">“可派生的 trait”</a>。</p>
+</li>
+</ul>
+<p>任何简单标量值的组合可以是 <code>Copy</code> 的，不需要分配内存或某种形式资源的类型是 <code>Copy</code> 的。如下是一些 <code>Copy</code> 的类型：</p>
+<ul>
+<li>所有整数类型，比如 <code>u32</code>。</li>
+<li>布尔类型，<code>bool</code>，它的值是 <code>true</code> 和 <code>false</code>。</li>
+<li>所有浮点数类型，比如 <code>f64</code>。</li>
+<li>字符类型，<code>char</code>。</li>
+<li>元组，当且仅当其包含的类型也都是 <code>Copy</code> 的时候。比如，<code>(i32, i32)</code> 是 <code>Copy</code> 的，但 <code>(i32, String)</code> 就不是。</li>
+</ul>
+<h2 id="所有权与函数"><a class="header" href="#所有权与函数">所有权与函数</a></h2>
+<blockquote>
+<p>将值传递给函数在语义上与给变量赋值相似。向函数传递值可能会移动或者复制，就像赋值语句一样。</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let s = String::from(&quot;hello&quot;);  // s 进入作用域
 
-let mut cmd = Command::new(&quot;ls&quot;);
-assert_eq!(cmd.get_current_dir(), None);
-cmd.current_dir(&quot;/bin&quot;);
-assert_eq!(cmd.get_current_dir(), Some(Path::new(&quot;/bin&quot;)));
+    takes_ownership(s);             // s 的值移动到函数里 ...
+                                    // ... 所以到这里不再有效
+
+    let x = 5;                      // x 进入作用域
+
+    makes_copy(x);                  // x 应该移动函数里，
+                                    // 但 i32 是 Copy 的，所以在后面可继续使用 x
+
+} // 这里, x 先移出了作用域，然后是 s。但因为 s 的值已被移走，
+  // 所以不会有特殊操作
+
+fn takes_ownership(some_string: String) { // some_string 进入作用域
+    println!(&quot;{}&quot;, some_string);
+} // 这里，some_string 移出作用域并调用 `drop` 方法。占用的内存被释放
+
+fn makes_copy(some_integer: i32) { // some_integer 进入作用域
+    println!(&quot;{}&quot;, some_integer);
+} // 这里，some_integer 移出作用域。不会有特殊操作
+</code></pre></pre>
+<h1 id="引用与借用"><a class="header" href="#引用与借用">引用与借用</a></h1>
+<h2 id="引用与借用-1"><a class="header" href="#引用与借用-1">引用与借用</a></h2>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let s1 = String::from(&quot;hello&quot;);
+
+    let len = calculate_length(&amp;s1);
+
+    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
+}
+
+fn calculate_length(s: &amp;String) -&gt; usize {
+    s.len()
+}</code></pre></pre>
+<p>其次，注意我们传递 <code>&amp;s1</code> 给 <code>calculate_length</code>，同时在函数定义中，我们获取 <code>&amp;String</code> 而不是 <code>String</code>。</p>
+<p>与使用 <code>&amp;</code> 引用相反的操作是 <strong>解引用</strong>（<em>dereferencing</em>），它使用解引用运算符，<code>*</code>。我们将会在第八章遇到一些解引用运算符，并在第十五章详细讨论解引用。</p>
+<p>同理，函数签名使用 <code>&amp;</code> 来表明参数 <code>s</code> 的类型是一个引用。让我们增加一些解释性的注释：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn calculate_length(s: &amp;String) -&gt; usize { // s 是对 String 的引用
+    s.len()
+} // 这里，s 离开了作用域。但因为它并不拥有引用值的所有权，
+  // 所以什么也不会发生
+<span class="boring">}</span></code></pre></pre>
+<p>我们将获取引用作为函数参数称为 <strong>借用</strong>（<em>borrowing</em>）。</p>
+<pre><code>正如变量默认是不可变的，引用也一样。（默认）不允许修改引用的值
 </code></pre>
-<p><a href="https://doc.rust-lang.org/std/process/struct.Command.html">参考链接</a></p>
+<h2 id="可变引用"><a class="header" href="#可变引用"><strong>可变引用</strong></a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn change(some_string: &amp;mut String) {
+    some_string.push_str(&quot;, world&quot;);
+}
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>当有可变引用时 只能存在一个,其他的都会失效,不可用</li>
+</ul>
+<h2 id="悬垂引用"><a class="header" href="#悬垂引用"><strong>悬垂引用</strong></a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>//报错 s已经被释放了
+fn dangle() -&gt; &amp;String {
+    let s = String::from(&quot;hello&quot;);
+
+    &amp;s
+}
+//正确,所有权被移动出去，所以没有值被释放
+fn no_dangle() -&gt; String {
+    let s = String::from(&quot;hello&quot;);
+
+    s
+}
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>在任意给定时间，<strong>要么</strong> 只能有一个可变引用，<strong>要么</strong> 只能有多个不可变引用。</li>
+<li>引用必须总是有效的。</li>
+</ul>
+<h2 id="slice引用"><a class="header" href="#slice引用"><strong>slice引用</strong></a></h2>
+<blockquote>
+<p>slice 允许你引用集合中一段连续的元素序列，而不用引用整个集合。</p>
+<p>拥有某值的不可变引用时，就不能再获取一个可变引用</p>
+</blockquote>
+<p><em>字符串slice</em></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span>let s = String::from(&quot;hello world&quot;);
+let hello = &amp;s[0..5];
+let world = &amp;s[6..11];
+<span class="boring">}</span></code></pre></pre>
+<p><strong>range 语法</strong></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from(&quot;hello&quot;);
+
+let slice = &amp;s[0..2];
+let slice = &amp;s[..2];
+
+let slice = &amp;s[0..len];
+let slice = &amp;s[..];
+<span class="boring">}</span></code></pre></pre>
 <script src="/note-service/rust/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/rust/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -696,11 +640,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="17Rust库API设计文档规范.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="01常见编程概念.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="19.线程间数据共享.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="03常见集合.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -710,11 +654,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="17Rust库API设计文档规范.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="01常见编程概念.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="19.线程间数据共享.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="03常见集合.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

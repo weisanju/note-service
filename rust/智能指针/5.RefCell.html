@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>依赖管理.md - RUST学习笔记</title>
+        <title>RefCell.md - RUST学习笔记</title>
 
 
         <!-- Custom HTML head -->
@@ -12,20 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,7 +36,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="02所有权.html"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item expanded "><a href="15依赖管理.html" class="active"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item "><a href="18rust执行shell命令.html"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item "><a href="智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item "><a href="智能指针/2.Deref.html"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item "><a href="智能指针/5.RefCell.html"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="../02所有权.html"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="../03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="../04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="../05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="../06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="../07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="../07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="../08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="../09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="../11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="../12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="../13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="../14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="../15依赖管理.html"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="../16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="../17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item "><a href="../18rust执行shell命令.html"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="../19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item expanded "><a href="../智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item "><a href="../智能指针/2.Deref.html"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="../智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="../智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item expanded "><a href="../智能指针/5.RefCell.html" class="active"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="../智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="../智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="../rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="../rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -398,220 +398,241 @@
 /></p>
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
-<h2 id="包和箱crate"><a class="header" href="#包和箱crate">包和箱(<em>crate</em>)</a></h2>
-<ul>
-<li>
-<p>crate 是一个二进制项或者库,例如某个第三方包</p>
-</li>
-<li>
-<p><em>crate root</em> 是一个源文件，Rust 编译器以它为起始点,并构成你的 crate 的根模块</p>
-</li>
-<li>
-<p><em>包</em>（<em>package</em>） 是提供一系列功能的一个或者多个 crate,整个项目工程</p>
-</li>
-<li>
-<p>一个包会包含有一个 <em>Cargo.toml</em> 文件，阐述如何去构建这些 crate。</p>
-</li>
-</ul>
-<h2 id="包规则"><a class="header" href="#包规则"><strong>包规则</strong></a></h2>
-<ul>
-<li>一个包中至多 <strong>只能</strong> 包含一个库 crate(library crate)；</li>
-<li>包中可以包含任意多个二进制 crate(binary crate)；</li>
-<li>包中至少包含一个 crate，无论是库的还是二进制的</li>
-</ul>
-<h3 id="示例"><a class="header" href="#示例"><strong>示例</strong></a></h3>
-<pre><code>//Cargo 会给我们的包创建一个 Cargo.toml 文件
-cargo new my-project
-</code></pre>
-<h2 id="cargo-遵循的一个约定"><a class="header" href="#cargo-遵循的一个约定"><strong>Cargo 遵循的一个约定</strong></a></h2>
-<ul>
-<li><em>src/main.rs</em> 就是一个与包同名的二进制 crate 的 crate 根</li>
-<li>如果包目录中包含 <em>src/lib.rs</em>，则包带有与其同名的库 crate，且 <em>src/lib.rs</em> 是 crate 根。</li>
-<li>crate 根文件将由 Cargo 传递给 <code>rustc</code> 来实际构建库或者二进制项目。</li>
-</ul>
-<p>在此，我们有了一个只包含 <em>src/main.rs</em> 的包，意味着它只含有一个名为 <code>my-project</code> 的二进制 crate。如果一个包同时含有 <em>src/main.rs</em> 和 <em>src/lib.rs</em>，则它有两个 crate：一个库和一个二进制项，且名字都与包相同。通过将文件放在 <em>src/bin</em> 目录下，一个包可以拥有多个二进制 crate：<strong>每个 <em>src/bin</em> 下的文件都会被编译成一个独立的二进制 crate。</strong></p>
-<p><code>src/main.rs</code> 和 <code>src/lib.rs</code> 叫做 crate 根。之所以这样叫它们是因为这两个文件的内容都分别在 crate 模块结构的根组成了一个名为 <code>crate</code> 的模块，该结构被称为 <em>模块树</em>（<em>module tree</em>）。</p>
-<p><strong>路径有两种形式</strong>：</p>
-<ul>
-<li><strong>绝对路径</strong>（<em>absolute path</em>）从 crate 根开始，以 crate 名或者字面值 <code>crate</code> 开头。</li>
-<li><strong>相对路径</strong>（<em>relative path</em>）从当前模块开始，以 <code>self</code>、<code>super</code> 或当前模块的标识符开头。</li>
-</ul>
-<h2 id="使用-use-关键字将名称引入作用域"><a class="header" href="#使用-use-关键字将名称引入作用域"><strong>使用 use 关键字将名称引入作用域</strong></a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-    }
-}
-
-use front_of_house::hosting;
-
-pub fn eat_at_restaurant() {
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
-}
-<span class="boring">}</span></code></pre></pre>
-<h2 id="创建惯用的-use-路径"><a class="header" href="#创建惯用的-use-路径"><strong>创建惯用的 use 路径</strong></a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-    }
-}
-
-use crate::front_of_house::hosting::add_to_waitlist;
-
-pub fn eat_at_restaurant() {
-    add_to_waitlist();
-    add_to_waitlist();
-    add_to_waitlist();
-}
-<span class="boring">}</span></code></pre></pre>
-<h2 id="使用父模块将两个具有相同名称的类型引入同一作用域"><a class="header" href="#使用父模块将两个具有相同名称的类型引入同一作用域"><strong>使用父模块将两个具有相同名称的类型引入同一作用域</strong></a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::fmt::Result;
-use std::io::Result as IoResult;
-
-fn function1() -&gt; Result {
-    // --snip--
-}
-
-fn function2() -&gt; IoResult&lt;()&gt; {
-    // --snip--
-}
-<span class="boring">}</span></code></pre></pre>
-<h2 id="使用as重命名"><a class="header" href="#使用as重命名"><strong>使用as重命名</strong></a></h2>
-<pre><pre class="playground"><code class="language-rust">
-#![allow(unused)]
-fn main() {
-use std::fmt::Result;
-use std::io::Result as IoResult;
-
-fn function1() -&gt; Result {
-    // --snip--
-    Ok(())
-}
-
-fn function2() -&gt; IoResult&lt;()&gt; {
-    // --snip--
-    Ok(())
-}
-}</code></pre></pre>
-<h2 id="使用-pub-use-重导出名称"><a class="header" href="#使用-pub-use-重导出名称"><strong>使用 pub use 重导出名称</strong></a></h2>
-<pre><pre class="playground"><code class="language-rust">mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-    }
-}
-
-pub use crate::front_of_house::hosting;
-
-pub fn eat_at_restaurant() {
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
-    hosting::add_to_waitlist();
-}
-fn main() {}
-</code></pre></pre>
-<p>使用<em>pub use</em>  可以使得使用该模块的 访问到内部的模块</p>
-<h2 id="使用外部包"><a class="header" href="#使用外部包">使用外部包</a></h2>
-<pre><pre class="playground"><code class="language-rust">[dependencies]
-rand = &quot;0.5.5&quot;
-
-//使用
-use rand::Rng;
-fn main() {
-    let secret_number = rand::thread_rng().gen_range(1, 101);
-}</code></pre></pre>
-<p><strong>标准库</strong></p>
-<pre><pre class="playground"><code class="language-rust">
-#![allow(unused)]
-fn main() {
-use std::collections::HashMap;
-}</code></pre></pre>
-<h2 id="嵌套路径来消除大量的-use-行"><a class="header" href="#嵌套路径来消除大量的-use-行">嵌套路径来消除大量的 use 行</a></h2>
-<pre><pre class="playground"><code class="language-rust">
-#![allow(unused)]
-fn main() {
-use std::{cmp::Ordering, io};
-// ---snip---
-}
-
-#![allow(unused)]
-fn main() {
-use std::io;
-use std::io::Write;
-}
-
-
-#![allow(unused)]
-fn main() {
-use std::io::{self, Write};
-}</code></pre></pre>
-<h2 id="通过-glob-运算符将所有的公有定义引入作用域"><a class="header" href="#通过-glob-运算符将所有的公有定义引入作用域">通过 glob 运算符将所有的公有定义引入作用域</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::collections::*;
-<span class="boring">}</span></code></pre></pre>
-<h2 id="将模块分割进不同文件"><a class="header" href="#将模块分割进不同文件">将模块分割进不同文件</a></h2>
-<ul>
-<li>每一个crate就是一个根模块。如：<code>exp, lip, lip1, lip2, lip3</code>。</li>
-<li>独立的一个文件就是一个mod,文件名就是mod名；但是main.rs, lib.rs, mod.rs除外，mod.rs的模块名就是其所在目录的名字； 而main.rs, lib.rs 的目录结构，如：<code>exp/src/main.rs</code>或 <code>lip/src/lib.rs</code> ;两者的mod名分别是exp和lip。</li>
-<li>文件和文件夹内的mod 及其内部定义的函数默认都是private的，除非pub声明公开。</li>
-<li>一个文件夹直接包含mod.rs ，如: <code>rust_mod_study/lip2/src/worker/mod.rs ;</code>则 worker就是模块名； 并且mod.rs为此模块的入口文件，此文件夹内的其他子模块都要在mod.rs中 <code>pub mod 模块名</code>，声明后，外部方可看到。</li>
-<li>如果一个元素是私有的，那么只有本模块内的元素以及它的子模块可以访问。</li>
-<li>如果一个元素是公开的，那么它上一层的模块就有权访问它。</li>
-<li>如果存在与文件同名的目录， 则在该目录下定义的模块都是该文件的子模块.（<code>2018 edition有效</code>）如：<code>rust_mod_study/lip3/src/caller.rs ;``rust_mod_study/lip3/src/caller/callerin.rs;</code></li>
-</ul>
-<p>特别注意，callerin这个mod必须在caller.rs中以<code>pub mod callerin;</code>形式声明，否则外部看不到； 最终模块路径为：<code>lip3::caller::callerin::call();</code></p>
-<ul>
-<li><code>rust 2018 edition</code> 不再需要在根模块中使用extern crate xxx;语法导入第三方包。如在文件<code>main.rs , lib.rs</code>中不再需要extern crate xxx语法导入第三方包, 如:<code>rust_mod_study/exp/src/main.rs</code> 中的extern crate xxx可以去掉了。只需在Cargo.toml中配置好， 然后在代码中以模块路径访问即可，如：modx::mody::modz::fnx()； 也可以use一下，缩短路径。</li>
-<li>rust 如何引用未发布的本地crate, 特别之处在<code>exp/Cargo.toml</code>中， 如：</li>
-</ul>
-<pre><code class="language-text">[package]
-name = &quot;exp&quot;
-version = &quot;0.1.0&quot;
-authors = [&quot;yujinliang &lt;285779289@qq.com&gt;&quot;]
-edition = &quot;2018&quot;
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[dependencies]
-lip = {path= &quot;../lip&quot; }
-lip1 = {path= &quot;../lip1&quot; }
-lip2 = {path= &quot;../lip2&quot; }
-lip3 = {path= &quot;../lip3&quot; } 
-
-</code></pre>
-<ul>
-<li>
-<p>目录结构：<code>Cargo.lock Cargo.toml exp lip lip1 lip2 lip3 target</code>在同一个父目录<code>rust_mod_study</code>中；其中<code>exp/src/main.rs</code>引用lip开头的所有模块。</p>
-</li>
-<li>
-<p>配置<code>rust workspace</code>, 在<code>rust_mod_study/Cargo.toml</code>中加入以下配置即可，如：
-```
-[workspace]
-members = [&quot;exp&quot;, &quot;lip&quot;, &quot;lip1&quot;, &quot;lip2&quot;, &quot;lip3&quot;]
-```</p>
-</li>
-<li>
-<p>在rust_mod_study/exp中给出一个例子用于说明：在同一个crate下各个子mod间的可见性和引用方法</p>
-</li>
-</ul>
+<h2 id="refcellt-和-内部可变性模式"><a class="header" href="#refcellt-和-内部可变性模式">RefCell&lt;T&gt; 和 内部可变性模式</a></h2>
 <ol>
-<li>首先各个子mod都需要在main.rs(属于crate顶级mod)中声明自己， 如： mod producer; mod consumer; mod switcher;等 ，只有这样各个子mod才能看到彼此，才能引用。</li>
-<li>每一个子mod可以用use crate::xxx形式引用在1.中声明的mod, 如：use crate::producer;等。</li>
-<li>每一个子mod自身默认都是自私的，除非以pub , pub use等打开为公用。</li>
-<li>对于pub struct 其field默认仍然是private的，需要pub声明为公用。</li>
+<li>
+<p><strong>内部可变性</strong>（<em>Interior mutability</em>）是 Rust 中的一个设计模式</p>
+</li>
+<li>
+<p>它允许你即使在有<strong>不可变引用时也可以改变数据</strong>，这通常是借用规则所不允许的</p>
+</li>
+<li>
+<p>为了改变数据，该模式在数据结构中使用 <code>unsafe</code> 代码来模糊 Rust 通常的可变性和借用规则</p>
+</li>
+<li>
+<p>我们还未讲到不安全代码；第十九章会学习它们</p>
+</li>
+<li>
+<p>当可以确保代码在运行时会遵守借用规则，即使编译器不能保证的情况，可以选择使用那些运用内部可变性模式的类型</p>
+</li>
+<li>
+<p>所涉及的 <code>unsafe</code> 代码将被封装进安全的 API 中，而外部类型仍然是不可变的。</p>
+</li>
 </ol>
-<p>总结： 父mod可以引用其子mod, 但是在父模块中仍然需要声明后方可应用子模块，如：<code>mod 子模块名</code> ；而每一个子模块，只可以看到在其父模块中声明过的子mod, 但是仍需<code>use crate::子模块名</code> 来引用一下后方可用。
-我是在rust 1.39中做的实验， 时间急促，水平有限，如有谬误，欢迎指正，感谢啦！</p>
+<h2 id="通过-refcellt-在运行时检查借用规则"><a class="header" href="#通过-refcellt-在运行时检查借用规则">通过 RefCell&lt;T&gt; 在运行时检查借用规则</a></h2>
+<p>如下为选择 <code>Box&lt;T&gt;</code>，<code>Rc&lt;T&gt;</code> 或 <code>RefCell&lt;T&gt;</code> 的理由：</p>
 <ul>
-<li>所有的例子代码都在rust_mod_study目录中 `</li>
+<li><code>Rc&lt;T&gt;</code> 允许相同数据有多个所有者；<code>Box&lt;T&gt;</code> 和 <code>RefCell&lt;T&gt;</code> 有单一所有者。</li>
+<li><code>Box&lt;T&gt;</code> 允许在编译时执行不可变或可变借用检查；<code>Rc&lt;T&gt;</code>仅允许在编译时执行不可变借用检查；<code>RefCell&lt;T&gt;</code> 允许在运行时执行不可变或可变借用检查。</li>
+<li>因为 <code>RefCell&lt;T&gt;</code> 允许在运行时执行可变借用检查，所以我们可以在即便 <code>RefCell&lt;T&gt;</code> 自身是不可变的情况下修改其内部的值。</li>
 </ul>
+<p>在不可变值内部改变值就是 <strong>内部可变性</strong> 模式。让我们看看何时内部可变性是有用的，并讨论这是如何成为可能的。</p>
+<h2 id="内部可变性不可变值的可变借用"><a class="header" href="#内部可变性不可变值的可变借用">内部可变性：不可变值的可变借用</a></h2>
+<ol>
+<li>借用规则的一个后果是，当你拥有一个不可变值时，你不能以可变的方式借用它。例如，这段代码将无法编译：</li>
+</ol>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 5;
+    let y = &amp;mut x;
+}</code></pre></pre>
+<ol>
+<li>
+<p>然而，在某些情况下，如果一个值能在其方法中自我变更，同时对其他代码保持不可变的外观，这会非常有用。</p>
+</li>
+<li>
+<p>值之外的代码将无法改变这个值。使用<code>RefCell&lt;T&gt;</code>是获得内部可变性的一种方式，但<code>RefCell&lt;T&gt;</code>并不能完全绕过借用规则：</p>
+<ol>
+<li>编译器中的借用检查器允许这种内部可变性，并且借用规则会在运行时进行检查。如果你违反了这些规则，你将得到一个<strong>运行时错误</strong>而不是编译错误。</li>
+</ol>
+</li>
+</ol>
+<p>让我们通过一个实际的例子来看看我们如何使用<code>RefCell&lt;T&gt;</code>来改变一个不可变的值，以及为什么这样做是有用的。</p>
+<h3 id="内部可变性示例"><a class="header" href="#内部可变性示例">内部可变性示例</a></h3>
+<p><strong>A Use Case for Interior Mutability: Mock Objects</strong></p>
+<ol>
+<li>
+<p>我们将创建一个库，这个库用于跟踪当前值 与 最大值的接近程度，不同的接近程度，发出不同的消息。（例如这个库可以用于 跟踪用户对API调用次数的消耗）</p>
+</li>
+<li>
+<p>我们的库只提供跟踪值与最大值接近程度的功能，以及在什么时候应该发送什么消息</p>
+</li>
+<li>
+<p>代码示例</p>
+</li>
+</ol>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+pub fn send_message() {
+    let mut tracker = Tracker::new(crate::tests::MockMessageSender::new(), 100);
+    tracker.set(76);
+    assert_eq!(tracker.sender.sent_messages.len(), 1);
+    tracker.set(90);
+    assert_eq!(tracker.sender.sent_messages.len(), 2);
+    tracker.set(100);
+    assert_eq!(tracker.sender.sent_messages.len(), 3);
+}
+
+struct MockMessageSender {
+    sent_messages: Vec&lt;String&gt;,
+}
+
+impl MockMessageSender {
+    fn new() -&gt; MockMessageSender {
+        MockMessageSender {
+            sent_messages: vec![],
+        }
+    }
+}
+
+impl MessageSender for MockMessageSender {
+    fn send_message(&amp;mut self, message: &amp;str) {
+        self.sent_messages.push(message.to_string());
+    }
+}
+
+trait MessageSender {
+    fn send_message(&amp;mut self, message: &amp;str);
+}
+
+struct Tracker&lt;T: MessageSender&gt; {
+    sender: T,
+    value: usize,
+    max: usize,
+}
+
+impl&lt;T: MessageSender&gt; Tracker&lt;T&gt; {
+    fn new(sender: T, max: usize) -&gt; Tracker&lt;T&gt; {
+        Tracker {
+            sender,
+            value: 0,
+            max,
+        }
+    }
+    fn set(&amp;mut self, value: usize) {
+        self.value = value;
+        let i = self.value as f64 / self.max as f64;
+        if i &gt;= 1.0 {
+            self.sender.send_message(&quot;Error: You are over the limit!&quot;);
+        } else if i &gt;= 0.9 {
+            self.sender.send_message(&quot;Warning: You've used up over 90% of your quota&quot;);
+        } else if i &gt;= 0.75 {
+            self.sender.send_message(&quot;Warning: You've used up over 75% of your quota&quot;);
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>上述代码中，实现了一个Tracker。以及一个 Mock MessageSender。但是上述代码有一个问题</p>
+<p>MessageSender 对外暴露了 可变引用。使得客户端可以随意修改内边可变变量。</p>
+<p>而这就到了 RefCell的使用场景了。 RefCell使得 不可变引用 能够 的借用。</p>
+<p>修改后的代码如下</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+pub fn send_message() {
+    let mut tracker = Tracker::new(crate::tests::MockMessageSender::new(), 100);
+    tracker.set(76);
+    assert_eq!(tracker.sender.sent_messages.borrow().len(), 1);
+    tracker.set(90);
+    assert_eq!(tracker.sender.sent_messages.borrow().len(), 2);
+    tracker.set(100);
+    assert_eq!(tracker.sender.sent_messages.borrow().len(), 3);
+}
+
+struct MockMessageSender {
+    sent_messages: RefCell&lt;Vec&lt;String&gt;&gt;,
+}
+
+impl MockMessageSender {
+    fn new() -&gt; MockMessageSender {
+        MockMessageSender {
+            sent_messages: RefCell::new(vec![])
+        }
+    }
+}
+
+impl MessageSender for MockMessageSender {
+    fn send_message(&amp; self, message: &amp;str) {
+        self.sent_messages.borrow_mut().push(message.to_string());
+    }
+}
+
+trait MessageSender {
+    fn send_message(&amp;self, message: &amp;str);
+}
+
+struct Tracker&lt;T: MessageSender&gt; {
+    sender: T,
+    value: usize,
+    max: usize,
+}
+
+impl&lt;T: MessageSender&gt; Tracker&lt;T&gt; {
+    fn new(sender: T, max: usize) -&gt; Tracker&lt;T&gt; {
+        Tracker {
+            sender,
+            value: 0,
+            max,
+        }
+    }
+    fn set(&amp;mut self, value: usize) {
+        self.value = value;
+        let i = self.value as f64 / self.max as f64;
+        if i &gt;= 1.0 {
+            self.sender.send_message(&quot;Error: You are over the limit!&quot;);
+        } else if i &gt;= 0.9 {
+            self.sender.send_message(&quot;Warning: You've used up over 90% of your quota&quot;);
+        } else if i &gt;= 0.75 {
+            self.sender.send_message(&quot;Warning: You've used up over 75% of your quota&quot;);
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p><strong>RefCell能够使得 我们在 结构体内部 通过不可变 引用 封装 可变性方法</strong></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let vec1 = vec![1, 2, 3];
+let cell = RefCell::new(vec1);
+
+{
+    let mut ref_mut1 = cell.borrow_mut();
+    ref_mut1.push(4);
+    println!(&quot;{:?}&quot;, ref_mut1);
+}
+let mut ref_mut2= cell.borrow_mut();
+<span class="boring">}</span></code></pre></pre>
+<h2 id="refcellt-在运行时记录借用"><a class="header" href="#refcellt-在运行时记录借用">RefCell&lt;T&gt; 在运行时记录借用</a></h2>
+<ul>
+<li>当创建不可变和可变引用时，我们分别使用 <code>&amp;</code> 和 <code>&amp;mut</code> 语法。对于 <code>RefCell&lt;T&gt;</code> 来说，则是 <code>borrow</code> 和 <code>borrow_mut</code> 方法，这属于 <code>RefCell&lt;T&gt;</code> 安全 API 的一部分</li>
+<li><code>borrow</code> 方法返回 <code>Ref&lt;T&gt;</code> 类型的智能指针，<code>borrow_mut</code> 方法返回 <code>RefMut</code> 类型的智能指针</li>
+<li>这两个类型都实现了 <code>Deref</code>，所以可以当作常规引用对待。</li>
+<li><code>RefCell&lt;T&gt;</code> 记录当前有多少个活动的 <code>Ref&lt;T&gt;</code> 和 <code>RefMut&lt;T&gt;</code> 智能指针</li>
+<li>每次调用 <code>borrow</code>，<code>RefCell&lt;T&gt;</code> 将活动的不可变借用计数加一，当 <code>Ref&lt;T&gt;</code> 值离开作用域时，不可变借用计数减一，就像编译时借用规则一样</li>
+<li><code>RefCell&lt;T&gt;</code> 在任何时候只允许有多个不可变借用或一个可变借用。</li>
+<li>如果我们尝试违反这些规则，相比引用时的编译时错误，<code>RefCell&lt;T&gt;</code> 的实现会在运行时出现 panic</li>
+</ul>
+<h2 id="结合-rct-和-refcellt-来拥有多个可变数据所有者"><a class="header" href="#结合-rct-和-refcellt-来拥有多个可变数据所有者">结合 Rc&lt;T&gt; 和 RefCell&lt;T&gt; 来拥有多个可变数据所有者</a></h2>
+<ul>
+<li><code>RefCell&lt;T&gt;</code> 的一个常见用法是与 <code>Rc&lt;T&gt;</code> 结合</li>
+<li><code>Rc&lt;T&gt;</code> 允许对相同数据有多个所有者，不过只能提供数据的不可变访问</li>
+<li>如果有一个储存了 <code>RefCell&lt;T&gt;</code> 的 <code>Rc&lt;T&gt;</code> 的话，就可以得到有多个所有者 <strong>并且</strong> 可以修改的值了！</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn test_ref_rc(){
+    let vec1 = vec![1, 2, 3];
+    let cell = RefCell::new(vec1);
+    let rc = Rc::new(cell);
+    let rc1 = rc.clone();
+    let rc2 = rc.clone();
+    rc1.borrow_mut().push(4);
+    rc2.borrow_mut().push(5);
+
+    println!(&quot;{:?}&quot;,rc);
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
+<p>RefCell 将  引用规则（可以存在多个不可变引用、或者一个可变引用） 从  编译时 转移到 运行时。</p>
 <script src="/note-service/rust/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/rust/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -677,11 +698,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="14Rust中的Sizedness.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../智能指针/4.Rc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="16const类型与函数.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../智能指针/6.ReferenceCycle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -691,11 +712,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="14Rust中的Sizedness.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../智能指针/4.Rc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="16const类型与函数.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../智能指针/6.ReferenceCycle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -711,9 +732,9 @@ if (window.location.search) {
 
 
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>rust执行shell命令.md - RUST学习笔记</title>
+        <title>Deref.md - RUST学习笔记</title>
 
 
         <!-- Custom HTML head -->
@@ -12,20 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,7 +36,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="02所有权.html"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="15依赖管理.html"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item expanded "><a href="18rust执行shell命令.html" class="active"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item "><a href="智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item "><a href="智能指针/2.Deref.html"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item "><a href="智能指针/5.RefCell.html"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../01常见编程概念.html"><strong aria-hidden="true">0.</strong> 常见编程概念.md</a></li><li class="chapter-item "><a href="../02所有权.html"><strong aria-hidden="true">1.</strong> 所有权.md</a></li><li class="chapter-item "><a href="../03常见集合.html"><strong aria-hidden="true">2.</strong> 常见集合.md</a></li><li class="chapter-item "><a href="../04迭代与闭包.html"><strong aria-hidden="true">3.</strong> 迭代与闭包.md</a></li><li class="chapter-item "><a href="../05泛型与trait.html"><strong aria-hidden="true">4.</strong> 泛型与trait.md</a></li><li class="chapter-item "><a href="../06函数式编程.html"><strong aria-hidden="true">5.</strong> 函数式编程.md</a></li><li class="chapter-item "><a href="../07Rust数据类型.html"><strong aria-hidden="true">6.</strong> Rust数据类型.md</a></li><li class="chapter-item "><a href="../07宏.html"><strong aria-hidden="true">7.</strong> 宏.md</a></li><li class="chapter-item "><a href="../08结构体.html"><strong aria-hidden="true">8.</strong> 结构体.md</a></li><li class="chapter-item "><a href="../09rust面向对象特性.html"><strong aria-hidden="true">9.</strong> rust面向对象特性.md</a></li><li class="chapter-item "><a href="../11模式匹配.html"><strong aria-hidden="true">10.</strong> 模式匹配.md</a></li><li class="chapter-item "><a href="../12ConstantsAndVariables.html"><strong aria-hidden="true">11.</strong> ConstantsAndVariables.md</a></li><li class="chapter-item "><a href="../13newType模式.html"><strong aria-hidden="true">12.</strong> newType模式.md</a></li><li class="chapter-item "><a href="../14Rust中的Sizedness.html"><strong aria-hidden="true">13.</strong> Rust中的Sizedness.md</a></li><li class="chapter-item "><a href="../15依赖管理.html"><strong aria-hidden="true">14.</strong> 依赖管理.md</a></li><li class="chapter-item "><a href="../16const类型与函数.html"><strong aria-hidden="true">15.</strong> const类型与函数.md</a></li><li class="chapter-item "><a href="../17Rust库API设计文档规范.html"><strong aria-hidden="true">16.</strong> Rust库API设计文档规范.md</a></li><li class="chapter-item "><a href="../18rust执行shell命令.html"><strong aria-hidden="true">17.</strong> rust执行shell命令.md</a></li><li class="chapter-item "><a href="../19.线程间数据共享.html"><strong aria-hidden="true">18.</strong> 线程间数据共享.md</a></li><li class="chapter-item expanded "><a href="../智能指针/README.html"><strong aria-hidden="true">19.</strong> 智能指针</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../智能指针/1.Box.html"><strong aria-hidden="true">19.0.</strong> Box.md</a></li><li class="chapter-item expanded "><a href="../智能指针/2.Deref.html" class="active"><strong aria-hidden="true">19.1.</strong> Deref.md</a></li><li class="chapter-item "><a href="../智能指针/3.Drop.html"><strong aria-hidden="true">19.2.</strong> Drop.md</a></li><li class="chapter-item "><a href="../智能指针/4.Rc.html"><strong aria-hidden="true">19.3.</strong> Rc.md</a></li><li class="chapter-item "><a href="../智能指针/5.RefCell.html"><strong aria-hidden="true">19.4.</strong> RefCell.md</a></li><li class="chapter-item "><a href="../智能指针/6.ReferenceCycle.html"><strong aria-hidden="true">19.5.</strong> ReferenceCycle.md</a></li><li class="chapter-item "><a href="../智能指针/7.总结.html"><strong aria-hidden="true">19.6.</strong> 总结.md</a></li></ol></li><li class="chapter-item "><a href="../rfcs.html"><strong aria-hidden="true">20.</strong> rfcs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../rfcs/0195-associated-items.html"><strong aria-hidden="true">20.0.</strong> -associated-items.md</a></li><li class="chapter-item "><a href="../rfcs/0911-const-fn.html"><strong aria-hidden="true">20.1.</strong> -const-fn.md</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -398,239 +398,147 @@
 /></p>
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
-<h2 id="struct-stdprocesscommand"><a class="header" href="#struct-stdprocesscommand">Struct <a href="https://doc.rust-lang.org/std/index.html">std</a>::<a href="https://doc.rust-lang.org/std/process/index.html">process</a>::[Command]</a></h2>
-<p>流程构建器，提供对应如何生成新流程的细粒度控制。</p>
-<p>可以使用<code>Command::new(program)</code>生成默认配置，其中</p>
+<h2 id="通过-deref-trait-将智能指针当作常规引用处理"><a class="header" href="#通过-deref-trait-将智能指针当作常规引用处理">通过 Deref trait 将智能指针当作常规引用处理</a></h2>
+<blockquote>
+<p>实现 <code>Deref</code> trait 允许我们重载 <strong>解引用运算符</strong>（<em>dereference operator</em>）<code>*</code>（与乘法运算符或通配符相区别）</p>
+</blockquote>
+<blockquote>
+<p>通过这种方式实现 <code>Deref</code> trait 的智能指针可以被当作常规引用来对待，</p>
+</blockquote>
 <ol>
-<li>program 给出要执行的程序的路径。</li>
-<li>其他构建器方法允许在生成之前更改配置 (例如，通过添加参数):</li>
-<li>继承当前进程的环境</li>
-<li>继承当前进程的工作目录</li>
-<li>Inherit stdin/stdout/stderr for <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.spawn"><code>spawn</code></a> or <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.status"><code>status</code></a>, but create pipes for <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.output"><code>output</code></a></li>
+<li>让我们首先看看解引用运算符如何处理常规引用</li>
+<li>接着尝试定义我们自己的类似 <code>Box&lt;T&gt;</code> 的类型并看看为何解引用运算符不能像引用一样工作</li>
+<li>我们会探索如何实现 <code>Deref</code> trait 使得智能指针以类似引用的方式工作变为可能</li>
+<li>最后，我们会讨论 Rust 的 <strong>Deref 强制转换</strong>（<em>deref coercions</em>）功能以及它是如何处理引用或智能指针的</li>
 </ol>
-<pre><code>use std::process::Command;
+<p>我们将要构建的 <code>MyBox&lt;T&gt;</code> 类型与真正的 <code>Box&lt;T&gt;</code> 有一个很大的区别</p>
+<ol>
+<li>我们的版本不会在堆上储存数据</li>
+<li>这个例子重点关注 <code>Deref</code>，所以其数据实际存放在何处，相比其类似指针的行为来说不算重要。</li>
+</ol>
+<h3 id="通过解引用运算符追踪指针的值"><a class="header" href="#通过解引用运算符追踪指针的值">通过解引用运算符追踪指针的值</a></h3>
+<blockquote>
+<p>常规引用是一个指针类型，一种理解指针的方式是将其看成指向储存在其他某处值的箭头</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 5;
+    let y = &amp;x;
 
-let output = if cfg!(target_os = &quot;windows&quot;) {
-    Command::new(&quot;cmd&quot;)
-            .args([&quot;/C&quot;, &quot;echo hello&quot;])
-            .output()
-            .expect(&quot;failed to execute process&quot;)
-} else {
-    Command::new(&quot;sh&quot;)
-            .arg(&quot;-c&quot;)
-            .arg(&quot;echo hello&quot;)
-            .output()
-            .expect(&quot;failed to execute process&quot;)
-};
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}</code></pre></pre>
+<p>不能 将 5 与 y比较 因为 y是 引用类型（指针类型）</p>
+<pre><code class="language-sh">6 |   assert_eq!(5, y);
 
-let hello = output.stdout;
+ |   ^^^^^^^^^^^^^^^^^ no implementation for `{integer} == &amp;{integer}`
 </code></pre>
-<p><strong>命令可以重复使用以产生多个进程</strong></p>
-<pre><code>use std::process::Command;
+<h3 id="像引用一样使用-boxt"><a class="header" href="#像引用一样使用-boxt">像引用一样使用 Box&lt;T&gt;</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 5;
+    let y = Box::new(x);
 
-let mut echo_hello = Command::new(&quot;sh&quot;);
-echo_hello.arg(&quot;-c&quot;)
-          .arg(&quot;echo hello&quot;);
-let hello_1 = echo_hello.output().expect(&quot;failed to execute process&quot;);
-let hello_2 = echo_hello.output().expect(&quot;failed to execute process&quot;);
-</code></pre>
-<p><strong>生成进程后调用方法</strong></p>
-<pre><code>use std::process::Command;
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}</code></pre></pre>
+<h3 id="自定义智能指针"><a class="header" href="#自定义智能指针">自定义智能指针</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::Deref;
 
-let mut list_dir = Command::new(&quot;ls&quot;);
 
-// Execute `ls` in the current directory of the program.
-list_dir.status().expect(&quot;process failed to execute&quot;);
+impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
+    type Target = T;
 
-println!();
+    fn deref(&amp;self) -&gt; &amp;T {
+        //返回内部数据的引用
+        &amp;self.0
+    }
+}
 
-// Change `ls` to execute in the root directory.
-list_dir.current_dir(&quot;/&quot;);
-
-// And then execute `ls` again but in the root directory.
-list_dir.status().expect(&quot;process failed to execute&quot;);
-</code></pre>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;sh&quot;)
-        .spawn()
-        .expect(&quot;sh command failed to start&quot;);
-</code></pre>
-<h2 id="api"><a class="header" href="#api">API</a></h2>
-<h3 id="new"><a class="header" href="#new">new</a></h3>
-<pre><code>pub fn new&lt;S: AsRef&lt;OsStr&gt;&gt;(program: S) -&gt; Command
-</code></pre>
-<h3 id="arg"><a class="header" href="#arg">arg</a></h3>
-<pre><code>.arg(&quot;-C /path/to/repo&quot;)
-
-.arg(&quot;-C&quot;)
-.arg(&quot;/path/to/repo&quot;)
-</code></pre>
-<h3 id="args"><a class="header" href="#args">args</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .args([&quot;-l&quot;, &quot;-a&quot;])
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="env"><a class="header" href="#env">env</a></h3>
-<p>插入或者更新环境变量</p>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env(&quot;PATH&quot;, &quot;/bin&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="envs"><a class="header" href="#envs">envs</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-use std::env;
-use std::collections::HashMap;
-
-let filtered_env : HashMap&lt;String, String&gt; =
-    env::vars().filter(|&amp;(ref k, _)|
-        k == &quot;TERM&quot; || k == &quot;TZ&quot; || k == &quot;LANG&quot; || k == &quot;PATH&quot;
-    ).collect();
-
-Command::new(&quot;printenv&quot;)
-        .stdin(Stdio::null())
-        .stdout(Stdio::inherit())
-        .env_clear()
-        .envs(&amp;filtered_env)
-        .spawn()
-        .expect(&quot;printenv failed to start&quot;);
-</code></pre>
-<h3 id="env_remove"><a class="header" href="#env_remove">env_remove</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env_remove(&quot;PATH&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="env_clear"><a class="header" href="#env_clear">Env_clear</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .env_clear()
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="current_dir"><a class="header" href="#current_dir">current_dir</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .current_dir(&quot;/bin&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stdin"><a class="header" href="#stdin">stdin</a></h3>
-<p>子进程的标准输入 (stdin) 句柄的配置。</p>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stdin(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stdout"><a class="header" href="#stdout">stdout</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stdout(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="stderr"><a class="header" href="#stderr">stderr</a></h3>
-<pre><code>use std::process::{Command, Stdio};
-
-Command::new(&quot;ls&quot;)
-        .stderr(Stdio::null())
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
-<h3 id="spawn"><a class="header" href="#spawn">spawn</a></h3>
-<pre><code>use std::process::Command;
-
-Command::new(&quot;ls&quot;)
-        .spawn()
-        .expect(&quot;ls command failed to start&quot;);
-</code></pre>
+//等价于
+*(y.deref()) 
+//等价于
+*(&amp;T)
+//等价于
+T
+<span class="boring">}</span></code></pre></pre>
 <ol>
 <li>
-<p>将命令作为子进程执行，并返回一个句柄。</p>
+<p><code>deref</code>方法返回值的引用，以及 <code>*(y.deref())</code> 括号外边的普通解引用仍为必须的原因在于<strong>所有权</strong>。</p>
 </li>
 <li>
-<p>默认情况下，stdin、stdouts和stderr是从父级继承的。</p>
+<p>如果 <code>deref</code> 方法直接返回值而不是值的引用，其值（的所有权）将被移出 <code>self</code></p>
+</li>
+<li>
+<p>在这里以及大部分使用解引用运算符的情况下我们并不希望获取 <code>MyBox&lt;T&gt;</code> 内部值的所有权</p>
+</li>
+<li>
+<p>每次当我们在代码中使用 <code>*</code> 时， <code>*</code> 运算符都被替换成了先调用 <code>deref</code> 方法再接着使用 <code>*</code> 解引用的操作，且只会发生一次，不会对 <code>*</code> 操作符无限递归替换</p>
+</li>
+<li>
+<p>解引用出上面 <code>i32</code> 类型的值就停止了</p>
 </li>
 </ol>
-<h3 id="output"><a class="header" href="#output">output</a></h3>
-<p>将命令作为子进程执行，等待它完成并收集其所有输出。</p>
-<p>默认情况下，stdot和stderr被捕获 (并用于提供结果输出)。Stdin不会从父级继承，并且子进程尝试从stdin流读取的任何尝试都会导致流立即关闭。</p>
-<pre><code>use std::process::Command;
-use std::io::{self, Write};
-let output = Command::new(&quot;/bin/cat&quot;)
-                     .arg(&quot;file.txt&quot;)
-                     .output()
-                     .expect(&quot;failed to execute process&quot;);
-
-println!(&quot;status: {}&quot;, output.status);
-io::stdout().write_all(&amp;output.stdout).unwrap();
-io::stderr().write_all(&amp;output.stderr).unwrap();
-
-assert!(output.status.success());
-</code></pre>
-<h3 id="status"><a class="header" href="#status">status</a></h3>
+<h3 id="函数和方法的隐式-deref-强制转换"><a class="header" href="#函数和方法的隐式-deref-强制转换">函数和方法的隐式 Deref 强制转换</a></h3>
+<blockquote>
+<p><strong>Deref 强制转换</strong>（<em>deref coercions</em>）是 Rust 在函数或方法传参上的一种便利</p>
+</blockquote>
 <ol>
-<li>作为子进程执行命令，等待它完成并收集其状态。</li>
-<li>默认情况下，stdin、stdouts和stderr是从父级继承的。</li>
+<li>将实现了 <code>Deref</code> 的类型的 一个引用  转换为另一个引用类型，通过 deref coercions</li>
+<li>当这种特定类型的引用作为实参传递给和形参类型不同的函数或方法时，Deref 强制转换将自动发生，这时会有一系列的 <code>deref</code> 方法被调用，把我们提供的类型转换成了参数所需的类型。</li>
+<li>Deref 强制转换的加入使得 Rust 程序员编写函数和方法调用时无需增加过多显式使用 <code>&amp;</code> 和 <code>*</code> 的引用和解引用。这个功能也使得我们可以编写更多同时作用于引用或智能指针的代码。</li>
 </ol>
-<pre><code>use std::process::Command;
+<h4 id="example"><a class="header" href="#example"><strong>example</strong></a></h4>
+<blockquote>
+<p><strong>对于 str的解引用</strong></p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust">mod smart_box;
+use smart_box::MyBox;
+fn main() {
+    let my_box = MyBox::new(1);
+    let my_box1 = MyBox::new(String::from(&quot;xjq&quot;));
+    //普通手动解引用
+		//*mybox1 为 String
+    	//**mybox1 为 str
+    	//&amp;**mybox1 为 &amp;str
+    print_str(&amp;**my_box1);
+    
+    //自动强制解引用
+    print_str(&amp;my_box1);
+}
 
-let status = Command::new(&quot;/bin/cat&quot;)
-                     .arg(&quot;file.txt&quot;)
-                     .status()
-                     .expect(&quot;failed to execute process&quot;);
+fn print_str(str: &amp;str){
+    print!(&quot;{}&quot;,str);
+}
+let my_box1 = MyBox::new(String::from(&quot;xjq&quot;));
 
-println!(&quot;process finished with: {status}&quot;);
-
-assert!(status.success());
-</code></pre>
-<h3 id="get_program"><a class="header" href="#get_program">get_program</a></h3>
-<p>返回给程序路径。</p>
-<pre><code>use std::process::Command;
-
-let cmd = Command::new(&quot;echo&quot;);
-assert_eq!(cmd.get_program(), &quot;echo&quot;);
-</code></pre>
-<h3 id="get_args"><a class="header" href="#get_args">get_args</a></h3>
+print_str(&amp;**my_box1);</code></pre></pre>
 <ol>
-<li>返回参数迭代器</li>
-<li>这不包括程序的路径作为第一个参数; 它只包括  <a href="https://doc.rust-lang.org/std/process/struct.Command.html#method.arg"><code>Command::arg</code></a>  指定的参数</li>
+<li>Rust 可以通过 <code>deref</code> 调用将 <code>&amp;MyBox&lt;String&gt;</code> 变为 <code>&amp;String</code></li>
+<li>Rust 再次调用 <code>deref</code> 将 <code>&amp;String</code> 变为 <code>&amp;str</code></li>
 </ol>
-<h3 id="get_envs"><a class="header" href="#get_envs">get_envs</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    hello(&amp;(*m)[..]);
+}</code></pre></pre>
+<h2 id="deref-强制转换如何与可变性交互"><a class="header" href="#deref-强制转换如何与可变性交互">Deref 强制转换如何与可变性交互</a></h2>
 <ol>
-<li>返回设置子进程的迭代器</li>
-<li>元素是(&amp;OsStr, Option&lt;&amp;OsStr&gt;)
-<ol>
-<li>其中第一个值是键，第二个值是值，</li>
-<li>如果要显式删除环境变量，则该值为None。</li>
-</ol>
+<li>
+<p>类似于如何使用 <code>Deref</code> trait 重载不可变引用的 <code>*</code> 运算符</p>
 </li>
-<li>这仅包括使用 Command::env，Command::envs和Command::env_remove显式设置的环境变量。</li>
-<li>它不包括将由子进程继承的环境变量。</li>
+<li>
+<p>Rust 提供了 <code>DerefMut</code> trait 用于重载可变引用的 <code>*</code> 运算符。</p>
+</li>
 </ol>
-<h3 id="get_current_dir"><a class="header" href="#get_current_dir">get_current_dir</a></h3>
-<pre><code>use std::path::Path;
-use std::process::Command;
-
-let mut cmd = Command::new(&quot;ls&quot;);
-assert_eq!(cmd.get_current_dir(), None);
-cmd.current_dir(&quot;/bin&quot;);
-assert_eq!(cmd.get_current_dir(), Some(Path::new(&quot;/bin&quot;)));
-</code></pre>
-<p><a href="https://doc.rust-lang.org/std/process/struct.Command.html">参考链接</a></p>
+<p>Rust 在发现类型和 trait 实现满足三种情况时会进行 Deref 强制转换：</p>
+<ol>
+<li>当 T: Deref&lt;Target=U&gt; 时从 &amp;T 到 &amp;U。</li>
+<li>当 T: DerefMut&lt;Target=U&gt; 时从 &amp;mut T 到 &amp;mut U。</li>
+<li>当 T: Deref&lt;Target=U&gt; 时从 &amp;mut T 到 &amp;U。</li>
+</ol>
+<p>将一个可变引用转换为不可变引用永远也不会打破借用规则。</p>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
+<p>实现了 Deref DerefMut trait 的 智能指针，会在 方法传参时，进行隐式强制 解引用 deref </p>
 <script src="/note-service/rust/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/rust/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -696,11 +604,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="17Rust库API设计文档规范.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../智能指针/1.Box.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="19.线程间数据共享.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../智能指针/3.Drop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -710,11 +618,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="17Rust库API设计文档规范.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../智能指针/1.Box.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="19.线程间数据共享.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../智能指针/3.Drop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -730,9 +638,9 @@ if (window.location.search) {
 
 
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
