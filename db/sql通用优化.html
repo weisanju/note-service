@@ -1,0 +1,803 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>sql通用优化.md - DB笔记</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="MongoDB/README.html"><strong aria-hidden="true">0.</strong> MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="MongoDB/mongodb基本操作.html"><strong aria-hidden="true">0.0.</strong> mongodb基本操作.md</a></li><li class="chapter-item "><a href="MongoDB/mongodb高级语法.html"><strong aria-hidden="true">0.1.</strong> mongodb高级语法.md</a></li><li class="chapter-item "><a href="MongoDB/权限管理.html"><strong aria-hidden="true">0.2.</strong> 权限管理.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/README.html"><strong aria-hidden="true">1.</strong> elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/9.html"><strong aria-hidden="true">1.0.</strong> 语义化检索</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/9.语义化检索/ES8.X语义检索.html"><strong aria-hidden="true">1.0.0.</strong> ES8.X语义检索.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/BackUpACluster.html"><strong aria-hidden="true">1.1.</strong> BackUpACluster.md</a></li><li class="chapter-item "><a href="elasticSearch/IngestPipeline.html"><strong aria-hidden="true">1.2.</strong> IngestPipeline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/IngestPipeline/1.IngestPipelines.html"><strong aria-hidden="true">1.2.0.</strong> IngestPipelines.md</a></li><li class="chapter-item "><a href="elasticSearch/IngestPipeline/2.pipeLineExample.html"><strong aria-hidden="true">1.2.1.</strong> pipeLineExample.md</a></li><li class="chapter-item "><a href="elasticSearch/IngestPipeline/3.EnrichYourData.html"><strong aria-hidden="true">1.2.2.</strong> EnrichYourData.md</a></li><li class="chapter-item "><a href="elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html"><strong aria-hidden="true">1.2.3.</strong> ExampleEnrichYourDataBasedOnGeolocation.md</a></li><li class="chapter-item "><a href="elasticSearch/IngestPipeline/5.IngestProcessorReference.html"><strong aria-hidden="true">1.2.4.</strong> IngestProcessorReference.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/KQL.html"><strong aria-hidden="true">1.3.</strong> KQL.md</a></li><li class="chapter-item "><a href="elasticSearch/安装/README.html"><strong aria-hidden="true">1.4.</strong> 安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/安装/1.InstallingFromRpm.html"><strong aria-hidden="true">1.4.0.</strong> InstallingFromRpm.md</a></li><li class="chapter-item "><a href="elasticSearch/安装/2.InstallFromDeb.html"><strong aria-hidden="true">1.4.1.</strong> InstallFromDeb.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/6.DataStreams/README.html"><strong aria-hidden="true">1.5.</strong> DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/6.DataStreams/1.setUpADataStream.html"><strong aria-hidden="true">1.5.0.</strong> setUpADataStream.md</a></li><li class="chapter-item "><a href="elasticSearch/6.DataStreams/2.UseADataStream.html"><strong aria-hidden="true">1.5.1.</strong> UseADataStream.md</a></li><li class="chapter-item "><a href="elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html"><strong aria-hidden="true">1.5.2.</strong> ChangeMappingsAndSettings.md</a></li><li class="chapter-item "><a href="elasticSearch/6.DataStreams/DataStreams.mm.html"><strong aria-hidden="true">1.5.3.</strong> DataStreams.mm.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/README.html"><strong aria-hidden="true">1.6.</strong> Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/Mapping.mm.html"><strong aria-hidden="true">1.6.0.</strong> Mapping.mm.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/README.html"><strong aria-hidden="true">1.6.1.</strong> FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html"><strong aria-hidden="true">1.6.1.0.</strong> AggregateMetric.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html"><strong aria-hidden="true">1.6.1.1.</strong> GeoPoint.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html"><strong aria-hidden="true">1.6.1.2.</strong> Geo-shape.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html"><strong aria-hidden="true">1.6.1.3.</strong> Histogram.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html"><strong aria-hidden="true">1.6.1.4.</strong> IP.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html"><strong aria-hidden="true">1.6.1.5.</strong> Join.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html"><strong aria-hidden="true">1.6.1.6.</strong> KeywordType.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html"><strong aria-hidden="true">1.6.1.7.</strong> Object.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html"><strong aria-hidden="true">1.6.1.8.</strong> Nested.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html"><strong aria-hidden="true">1.6.1.9.</strong> Numberic.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html"><strong aria-hidden="true">1.6.1.10.</strong> Percolator.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html"><strong aria-hidden="true">1.6.1.11.</strong> AliasFieldType.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html"><strong aria-hidden="true">1.6.1.12.</strong> Point.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html"><strong aria-hidden="true">1.6.1.13.</strong> Range.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html"><strong aria-hidden="true">1.6.1.14.</strong> RankFeature.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html"><strong aria-hidden="true">1.6.1.15.</strong> RankFeatures.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html"><strong aria-hidden="true">1.6.1.16.</strong> Search-as-you-type.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html"><strong aria-hidden="true">1.6.1.17.</strong> Shape.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html"><strong aria-hidden="true">1.6.1.18.</strong> Text.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html"><strong aria-hidden="true">1.6.1.19.</strong> TokenCount.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html"><strong aria-hidden="true">1.6.1.20.</strong> UnsignedLong.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html"><strong aria-hidden="true">1.6.1.21.</strong> Version.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html"><strong aria-hidden="true">1.6.1.22.</strong> Arrays.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html"><strong aria-hidden="true">1.6.1.23.</strong> Binary.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html"><strong aria-hidden="true">1.6.1.24.</strong> Boolean.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html"><strong aria-hidden="true">1.6.1.25.</strong> Date.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html"><strong aria-hidden="true">1.6.1.26.</strong> DateNanoseconds.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html"><strong aria-hidden="true">1.6.1.27.</strong> DenseVector.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html"><strong aria-hidden="true">1.6.1.28.</strong> Flattened.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/7.MappingLimitSettings/README.html"><strong aria-hidden="true">1.6.2.</strong> MappingLimitSettings</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/2.ExplicitMapping/README.html"><strong aria-hidden="true">1.6.3.</strong> ExplicitMapping</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/8.RemovalOfMappingTypes/README.html"><strong aria-hidden="true">1.6.4.</strong> RemovalOfMappingTypes</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/1.DynamicMapping/README.html"><strong aria-hidden="true">1.6.5.</strong> DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html"><strong aria-hidden="true">1.6.5.0.</strong> DynamicFieldMapping.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html"><strong aria-hidden="true">1.6.5.1.</strong> DynamicTemplates.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/README.html"><strong aria-hidden="true">1.6.6.</strong> MappingParameters</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Ignore</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html"><strong aria-hidden="true">1.6.6.2.</strong> above.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html"><strong aria-hidden="true">1.6.6.3.</strong> malformed.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Index</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html"><strong aria-hidden="true">1.6.6.6.</strong> options.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">index</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html"><strong aria-hidden="true">1.6.6.9.</strong> pharse.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html"><strong aria-hidden="true">1.6.6.10.</strong> prefixes.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">null</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html"><strong aria-hidden="true">1.6.6.13.</strong> value.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">position</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html"><strong aria-hidden="true">1.6.6.16.</strong> increment_gap.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">search</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html"><strong aria-hidden="true">1.6.6.19.</strong> analyzer.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">term</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html"><strong aria-hidden="true">1.6.6.22.</strong> vector.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Copy</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html"><strong aria-hidden="true">1.6.6.25.</strong> to.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">未分类</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html"><strong aria-hidden="true">1.6.6.28.</strong> Analyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/12.index.html"><strong aria-hidden="true">1.6.6.29.</strong> index.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/16.meta.html"><strong aria-hidden="true">1.6.6.30.</strong> meta.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html"><strong aria-hidden="true">1.6.6.31.</strong> multifileds.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html"><strong aria-hidden="true">1.6.6.32.</strong> normalizer.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/19.norms.html"><strong aria-hidden="true">1.6.6.33.</strong> norms.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/2.boost.html"><strong aria-hidden="true">1.6.6.34.</strong> boost.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/22.properties.html"><strong aria-hidden="true">1.6.6.35.</strong> properties.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html"><strong aria-hidden="true">1.6.6.36.</strong> similarity.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/25.store.html"><strong aria-hidden="true">1.6.6.37.</strong> store.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html"><strong aria-hidden="true">1.6.6.38.</strong> coerce.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html"><strong aria-hidden="true">1.6.6.39.</strong> DocValue.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html"><strong aria-hidden="true">1.6.6.40.</strong> dynamic.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html"><strong aria-hidden="true">1.6.6.41.</strong> eagerGlobalOrdinals.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html"><strong aria-hidden="true">1.6.6.42.</strong> enabled.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/6.MappingParameters/9.format.html"><strong aria-hidden="true">1.6.6.43.</strong> format.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/README.html"><strong aria-hidden="true">1.6.7.</strong> RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html"><strong aria-hidden="true">1.6.7.0.</strong> MapARuntimeField.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html"><strong aria-hidden="true">1.6.7.1.</strong> DefineRuntimeFieldsInASearchRequest.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html"><strong aria-hidden="true">1.6.7.2.</strong> OverrideFieldValuesAtQueryTime.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html"><strong aria-hidden="true">1.6.7.3.</strong> RetrieveARuntimeField.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html"><strong aria-hidden="true">1.6.7.4.</strong> IndexARuntimeField.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html"><strong aria-hidden="true">1.6.7.5.</strong> ExploreYourDataWithRuntimeFields.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/README.html"><strong aria-hidden="true">1.6.8.</strong> MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html"><strong aria-hidden="true">1.6.8.0.</strong> DocCount.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html"><strong aria-hidden="true">1.6.8.1.</strong> FiledNames.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html"><strong aria-hidden="true">1.6.8.2.</strong> Ignored.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/4.Id.html"><strong aria-hidden="true">1.6.8.3.</strong> Id.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/5.Index.html"><strong aria-hidden="true">1.6.8.4.</strong> Index.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html"><strong aria-hidden="true">1.6.8.5.</strong> Meta.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html"><strong aria-hidden="true">1.6.8.6.</strong> Routing.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/8.Source.html"><strong aria-hidden="true">1.6.8.7.</strong> Source.md</a></li><li class="chapter-item "><a href="elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html"><strong aria-hidden="true">1.6.8.8.</strong> Tier.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="elasticSearch/queryDSL/README.html"><strong aria-hidden="true">1.7.</strong> queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/queryDSL/1.QueryAndFilterContext.html"><strong aria-hidden="true">1.7.0.</strong> QueryAndFilterContext.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/2.CompoundQueries.html"><strong aria-hidden="true">1.7.1.</strong> CompoundQueries.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/Match中参数解析.html"><strong aria-hidden="true">1.7.2.</strong> Match中参数解析.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/FullTextQueries/README.html"><strong aria-hidden="true">1.7.3.</strong> FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html"><strong aria-hidden="true">1.7.3.0.</strong> IntervalsQuery.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html"><strong aria-hidden="true">1.7.3.1.</strong> MatchQuery.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/FullTextQueries/3.MultiMatch.html"><strong aria-hidden="true">1.7.3.2.</strong> MultiMatch.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/queryDSL/CompoundQueries/README.html"><strong aria-hidden="true">1.7.4.</strong> CompoundQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/queryDSL/CompoundQueries/BooleanQuery.html"><strong aria-hidden="true">1.7.4.0.</strong> BooleanQuery.md</a></li><li class="chapter-item "><a href="elasticSearch/queryDSL/CompoundQueries/FunctionScore.html"><strong aria-hidden="true">1.7.4.1.</strong> FunctionScore.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/queryDSL/SearchAfter.html"><strong aria-hidden="true">1.7.5.</strong> SearchAfter.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/7.ILM/README.html"><strong aria-hidden="true">1.8.</strong> ILM</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/7.ILM/FrozenIndices.html"><strong aria-hidden="true">1.8.0.</strong> FrozenIndices.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/ILM.html"><strong aria-hidden="true">1.8.1.</strong> ILM.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/2.Concepts/README.html"><strong aria-hidden="true">1.8.2.</strong> Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/7.ILM/2.Concepts/1.IndexLifecycle.html"><strong aria-hidden="true">1.8.2.0.</strong> IndexLifecycle.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/2.Concepts/2.Rollover.html"><strong aria-hidden="true">1.8.2.1.</strong> Rollover.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/2.Concepts/3.LifeCyclePolicyUpdates.html"><strong aria-hidden="true">1.8.2.2.</strong> LifeCyclePolicyUpdates.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/7.ILM/1.Overview/README.html"><strong aria-hidden="true">1.8.3.</strong> Overview</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/8.TroubleshootingIndexLifecycleManagementErrors/README.html"><strong aria-hidden="true">1.8.4.</strong> TroubleshootingIndexLifecycleManagementErrors</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/4.CustomizeBuiltInILMPolicy/README.html"><strong aria-hidden="true">1.8.5.</strong> CustomizeBuiltInILMPolicy</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/11.SkipRollover/README.html"><strong aria-hidden="true">1.8.6.</strong> SkipRollover</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/6.ConfigureALifecyclePolicy/README.html"><strong aria-hidden="true">1.8.7.</strong> ConfigureALifecyclePolicy</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/README.html"><strong aria-hidden="true">1.8.8.</strong> IndexLifecycleActions</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/1.Allocate.html"><strong aria-hidden="true">1.8.8.0.</strong> Allocate.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/10.Shrink.html"><strong aria-hidden="true">1.8.8.1.</strong> Shrink.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/11.Unfollow.html"><strong aria-hidden="true">1.8.8.2.</strong> Unfollow.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/12.WaitForSnapshot.html"><strong aria-hidden="true">1.8.8.3.</strong> WaitForSnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/2.Delete.html"><strong aria-hidden="true">1.8.8.4.</strong> Delete.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/3.ForceMerge.html"><strong aria-hidden="true">1.8.8.5.</strong> ForceMerge.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/4.Freeze.html"><strong aria-hidden="true">1.8.8.6.</strong> Freeze.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/5.Migrate.html"><strong aria-hidden="true">1.8.8.7.</strong> Migrate.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/6.ReadOnly.html"><strong aria-hidden="true">1.8.8.8.</strong> ReadOnly.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/7.Rollover.html"><strong aria-hidden="true">1.8.8.9.</strong> Rollover.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/8.SearchableSnapshot.html"><strong aria-hidden="true">1.8.8.10.</strong> SearchableSnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/5.IndexLifecycleActions/9.Setpriority.html"><strong aria-hidden="true">1.8.8.11.</strong> Setpriority.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/7.ILM/10.ManageExistingIndices/README.html"><strong aria-hidden="true">1.8.9.</strong> ManageExistingIndices</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/9.StartAndStopIndexLifecycleManagement/README.html"><strong aria-hidden="true">1.8.10.</strong> StartAndStopIndexLifecycleManagement</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/3.AutomateRolloverWithILM/README.html"><strong aria-hidden="true">1.8.11.</strong> AutomateRolloverWithILM</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/7.MigrateIndexAllocationFiltersToNodeRoles/README.html"><strong aria-hidden="true">1.8.12.</strong> MigrateIndexAllocationFiltersToNodeRoles</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/RolloverAPI.html"><strong aria-hidden="true">1.8.13.</strong> RolloverAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/7.ILM/ShrinkIndexAPI.html"><strong aria-hidden="true">1.8.14.</strong> ShrinkIndexAPI.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/Datamanagement/README.html"><strong aria-hidden="true">1.9.</strong> Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/Datamanagement/DataTier.html"><strong aria-hidden="true">1.9.0.</strong> DataTier.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/README.html"><strong aria-hidden="true">1.10.</strong> snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html"><strong aria-hidden="true">1.10.0.</strong> CleanUpSnapshotRepo.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/CloneSnapshot.html"><strong aria-hidden="true">1.10.1.</strong> CloneSnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html"><strong aria-hidden="true">1.10.2.</strong> CreateOrUpdateSnapshotAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/CreateSnapshot.html"><strong aria-hidden="true">1.10.3.</strong> CreateSnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/DeleteSnapShot.html"><strong aria-hidden="true">1.10.4.</strong> DeleteSnapShot.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html"><strong aria-hidden="true">1.10.5.</strong> DeleteSnapshotRepository.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/GetSnapshotAPI.html"><strong aria-hidden="true">1.10.6.</strong> GetSnapshotAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/RegisterASnapshot.html"><strong aria-hidden="true">1.10.7.</strong> RegisterASnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/RestoreSnapshot.html"><strong aria-hidden="true">1.10.8.</strong> RestoreSnapshot.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/SLM.html"><strong aria-hidden="true">1.10.9.</strong> SLM.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/SearchableSnapshots.html"><strong aria-hidden="true">1.10.10.</strong> SearchableSnapshots.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html"><strong aria-hidden="true">1.10.11.</strong> SearchableSnapshotsMountAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/repository-s3.html"><strong aria-hidden="true">1.10.12.</strong> repository-s3.md</a></li><li class="chapter-item "><a href="elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html"><strong aria-hidden="true">1.10.13.</strong> 使用OSS备份恢复集群实战.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/4.IndexTemplates/README.html"><strong aria-hidden="true">1.11.</strong> IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html"><strong aria-hidden="true">1.11.0.</strong> SimulateMultiComponentTemplates.md</a></li><li class="chapter-item "><a href="elasticSearch/4.IndexTemplates/Templates.mm.html"><strong aria-hidden="true">1.11.1.</strong> Templates.mm.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/README.html"><strong aria-hidden="true">1.12.</strong> 索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/索引分片分配/1.索引级别的分片分配控制.html"><strong aria-hidden="true">1.12.0.</strong> 索引级别的分片分配控制.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/2.节点离开延迟分配.html"><strong aria-hidden="true">1.12.1.</strong> 节点离开延迟分配.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/3.索引恢复优先级.html"><strong aria-hidden="true">1.12.2.</strong> 索引恢复优先级.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/4.每个节点的总分片.html"><strong aria-hidden="true">1.12.3.</strong> 每个节点的总分片.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html"><strong aria-hidden="true">1.12.4.</strong> 索引级别数据层分配过滤.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html"><strong aria-hidden="true">1.12.5.</strong> 手动分配分片clusterRerouteAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/索引分片分配/7.cluster-allocation-explain.html"><strong aria-hidden="true">1.12.6.</strong> cluster-allocation-explain.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/考纲解读/README.html"><strong aria-hidden="true">1.13.</strong> 考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/考纲解读/1.ClusterManagement.html"><strong aria-hidden="true">1.13.0.</strong> ClusterManagement.md</a></li><li class="chapter-item "><a href="elasticSearch/考纲解读/2.DataManagement.html"><strong aria-hidden="true">1.13.1.</strong> DataManagement.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/README.html"><strong aria-hidden="true">1.14.</strong> TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/README.html"><strong aria-hidden="true">1.14.0.</strong> Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html"><strong aria-hidden="true">1.14.0.0.</strong> StandardAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/10.OpenRefine指纹算法.html"><strong aria-hidden="true">1.14.0.1.</strong> OpenRefine指纹算法.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html"><strong aria-hidden="true">1.14.0.2.</strong> FingerprintAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html"><strong aria-hidden="true">1.14.0.3.</strong> KeywordAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html"><strong aria-hidden="true">1.14.0.4.</strong> LanguageAnalyzers.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html"><strong aria-hidden="true">1.14.0.5.</strong> PatternAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html"><strong aria-hidden="true">1.14.0.6.</strong> SimpleAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html"><strong aria-hidden="true">1.14.0.7.</strong> StopAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html"><strong aria-hidden="true">1.14.0.8.</strong> WhitespaceAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/9.Unicode文本分割算法.html"><strong aria-hidden="true">1.14.0.9.</strong> Unicode文本分割算法.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/README.html"><strong aria-hidden="true">1.14.1.</strong> TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html"><strong aria-hidden="true">1.14.1.0.</strong> ASCIIFoldingTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html"><strong aria-hidden="true">1.14.1.1.</strong> EdgeN-gramTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html"><strong aria-hidden="true">1.14.1.2.</strong> ElisionFokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html"><strong aria-hidden="true">1.14.1.3.</strong> FingerprintFokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html"><strong aria-hidden="true">1.14.1.4.</strong> FlattenGraphTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html"><strong aria-hidden="true">1.14.1.5.</strong> CJKBigramTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html"><strong aria-hidden="true">1.14.1.6.</strong> md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html"><strong aria-hidden="true">1.14.1.7.</strong> CJKWidthTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html"><strong aria-hidden="true">1.14.1.8.</strong> ClassicTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html"><strong aria-hidden="true">1.14.1.9.</strong> CommonGramsTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html"><strong aria-hidden="true">1.14.1.10.</strong> ConditionalTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html"><strong aria-hidden="true">1.14.1.11.</strong> DecimalDigitTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html"><strong aria-hidden="true">1.14.1.12.</strong> DelimitedPayloadTokenFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html"><strong aria-hidden="true">1.14.1.13.</strong> DictionaryDecompounderFokenFilter.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/README.html"><strong aria-hidden="true">1.14.2.</strong> CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html"><strong aria-hidden="true">1.14.2.0.</strong> HTMLStripCharacterFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html"><strong aria-hidden="true">1.14.2.1.</strong> MappingCharacterFilter.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html"><strong aria-hidden="true">1.14.2.2.</strong> PatternReplaceCharacterFilter.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/1.Concepts/README.html"><strong aria-hidden="true">1.14.3.</strong> Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html"><strong aria-hidden="true">1.14.3.0.</strong> AnatomyOfAnAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html"><strong aria-hidden="true">1.14.3.1.</strong> IndexAndSearchAnalysis.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html"><strong aria-hidden="true">1.14.3.2.</strong> Stemming.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html"><strong aria-hidden="true">1.14.3.3.</strong> TokenGraphs.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/README.html"><strong aria-hidden="true">1.14.4.</strong> TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html"><strong aria-hidden="true">1.14.4.0.</strong> Ng-gram.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html"><strong aria-hidden="true">1.14.4.1.</strong> PathHierarchyTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html"><strong aria-hidden="true">1.14.4.2.</strong> UAXURLEmailTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html"><strong aria-hidden="true">1.14.4.3.</strong> WhitespaceTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html"><strong aria-hidden="true">1.14.4.4.</strong> PatternTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html"><strong aria-hidden="true">1.14.4.5.</strong> EdgeN-gramTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html"><strong aria-hidden="true">1.14.4.6.</strong> Keyword.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html"><strong aria-hidden="true">1.14.4.7.</strong> SimplePattern.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html"><strong aria-hidden="true">1.14.4.8.</strong> SimplePatternSplitTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html"><strong aria-hidden="true">1.14.4.9.</strong> StandardTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html"><strong aria-hidden="true">1.14.4.10.</strong> CharacterGroupTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html"><strong aria-hidden="true">1.14.4.11.</strong> ClassicTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html"><strong aria-hidden="true">1.14.4.12.</strong> LetterTokenizer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html"><strong aria-hidden="true">1.14.4.13.</strong> LowercaseTokenizer.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/7.Normalizers/README.html"><strong aria-hidden="true">1.14.5.</strong> Normalizers</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/README.html"><strong aria-hidden="true">1.14.6.</strong> ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html"><strong aria-hidden="true">1.14.6.0.</strong> AnalyzeAPI.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html"><strong aria-hidden="true">1.14.6.1.</strong> TestAnAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html"><strong aria-hidden="true">1.14.6.2.</strong> ConfiguringBuilt-inAnalyzers.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html"><strong aria-hidden="true">1.14.6.3.</strong> CreateACustomAnalyzer.md</a></li><li class="chapter-item "><a href="elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html"><strong aria-hidden="true">1.14.6.4.</strong> SpecifyAnAnalyzer.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/README.html"><strong aria-hidden="true">1.15.</strong> IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/1.IndexModules/1.Analysis.html"><strong aria-hidden="true">1.15.0.</strong> Analysis.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/10.HistoryRetention.html"><strong aria-hidden="true">1.15.1.</strong> HistoryRetention.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/11.IndexSorting.html"><strong aria-hidden="true">1.15.2.</strong> IndexSorting.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/12.IndexPressure.html"><strong aria-hidden="true">1.15.3.</strong> IndexPressure.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/2.IndexShardAllocation.html"><strong aria-hidden="true">1.15.4.</strong> IndexShardAllocation.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/3.Indexblocks.html"><strong aria-hidden="true">1.15.5.</strong> Indexblocks.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/4.Mapper.html"><strong aria-hidden="true">1.15.6.</strong> Mapper.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/5.Merge.html"><strong aria-hidden="true">1.15.7.</strong> Merge.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/6.SimilarityModule.html"><strong aria-hidden="true">1.15.8.</strong> SimilarityModule.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/7.Slowlog.html"><strong aria-hidden="true">1.15.9.</strong> Slowlog.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/8.Store.html"><strong aria-hidden="true">1.15.10.</strong> Store.md</a></li><li class="chapter-item "><a href="elasticSearch/1.IndexModules/9.Translog.html"><strong aria-hidden="true">1.15.11.</strong> Translog.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/README.html"><strong aria-hidden="true">1.16.</strong> SearchYourData</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/1.CollapseSearchResults.html"><strong aria-hidden="true">1.16.0.</strong> CollapseSearchResults.md</a></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/2.FilterSearchResults.html"><strong aria-hidden="true">1.16.1.</strong> FilterSearchResults.md</a></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/3.Highlight.html"><strong aria-hidden="true">1.16.2.</strong> Highlight.md</a></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/4.LongRunningSearches.html"><strong aria-hidden="true">1.16.3.</strong> LongRunningSearches.md</a></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/5.NearReaTimeSearch.html"><strong aria-hidden="true">1.16.4.</strong> NearReaTimeSearch.md</a></li><li class="chapter-item "><a href="elasticSearch/8.SearchYourData/6.PaginateSearchResults.html"><strong aria-hidden="true">1.16.5.</strong> PaginateSearchResults.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/5.Aliases/README.html"><strong aria-hidden="true">1.17.</strong> Aliases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/5.Aliases/Aliases.mm.html"><strong aria-hidden="true">1.17.0.</strong> Aliases.mm.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/配置/README.html"><strong aria-hidden="true">1.18.</strong> 配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/配置/1.重要配置.html"><strong aria-hidden="true">1.18.0.</strong> 重要配置.md</a></li><li class="chapter-item "><a href="elasticSearch/配置/2.elasticsearch.yml核心配置.html"><strong aria-hidden="true">1.18.1.</strong> elasticsearch.yml核心配置.md</a></li><li class="chapter-item "><a href="elasticSearch/配置/3.es系统参数修改.html"><strong aria-hidden="true">1.18.2.</strong> es系统参数修改.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/dataStream.html"><strong aria-hidden="true">1.19.</strong> dataStream.md</a></li><li class="chapter-item "><a href="elasticSearch/elasticsearch-docker.html"><strong aria-hidden="true">1.20.</strong> elasticsearch-docker.md</a></li><li class="chapter-item "><a href="elasticSearch/es堆内存如何分配.html"><strong aria-hidden="true">1.21.</strong> es堆内存如何分配.md</a></li><li class="chapter-item "><a href="elasticSearch/scroll查询.html"><strong aria-hidden="true">1.22.</strong> scroll查询.md</a></li><li class="chapter-item "><a href="elasticSearch/乐观并发控制.html"><strong aria-hidden="true">1.23.</strong> 乐观并发控制.md</a></li><li class="chapter-item "><a href="elasticSearch/分布式检索.html"><strong aria-hidden="true">1.24.</strong> 分布式检索.md</a></li><li class="chapter-item "><a href="elasticSearch/分片内部原理.html"><strong aria-hidden="true">1.25.</strong> 分片内部原理.md</a></li><li class="chapter-item "><a href="elasticSearch/分词.html"><strong aria-hidden="true">1.26.</strong> 分词.md</a></li><li class="chapter-item "><a href="elasticSearch/慢日志.html"><strong aria-hidden="true">1.27.</strong> 慢日志.md</a></li><li class="chapter-item "><a href="elasticSearch/搜索引擎中的概念杂项.html"><strong aria-hidden="true">1.28.</strong> 搜索引擎中的概念杂项.md</a></li><li class="chapter-item "><a href="elasticSearch/数据分片.html"><strong aria-hidden="true">1.29.</strong> 数据分片.md</a></li><li class="chapter-item "><a href="elasticSearch/映射.html"><strong aria-hidden="true">1.30.</strong> 映射.md</a></li><li class="chapter-item "><a href="elasticSearch/杂项学习.html"><strong aria-hidden="true">1.31.</strong> 杂项学习.md</a></li><li class="chapter-item "><a href="elasticSearch/深入搜索.html"><strong aria-hidden="true">1.32.</strong> 深入搜索</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/深入搜索/全文搜索.html"><strong aria-hidden="true">1.32.0.</strong> 全文搜索.md</a></li><li class="chapter-item "><a href="elasticSearch/深入搜索/多字段搜索.html"><strong aria-hidden="true">1.32.1.</strong> 多字段搜索.md</a></li><li class="chapter-item "><a href="elasticSearch/深入搜索/结构化搜索.html"><strong aria-hidden="true">1.32.2.</strong> 结构化搜索.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/索引和分片.html"><strong aria-hidden="true">1.33.</strong> 索引和分片.md</a></li><li class="chapter-item "><a href="elasticSearch/索引管理.html"><strong aria-hidden="true">1.34.</strong> 索引管理.md</a></li><li class="chapter-item "><a href="elasticSearch/聚合.html"><strong aria-hidden="true">1.35.</strong> 聚合</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/聚合/RareTermsAggregation.html"><strong aria-hidden="true">1.35.0.</strong> RareTermsAggregation.md</a></li><li class="chapter-item "><a href="elasticSearch/聚合/Term.html"><strong aria-hidden="true">1.35.1.</strong> Term.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/评分标准与相关性.html"><strong aria-hidden="true">1.36.</strong> 评分标准与相关性.md</a></li><li class="chapter-item "><a href="elasticSearch/集群.html"><strong aria-hidden="true">1.37.</strong> 集群</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/集群/Health.html"><strong aria-hidden="true">1.37.0.</strong> Health.md</a></li></ol></li><li class="chapter-item "><a href="elasticSearch/集群内原理.html"><strong aria-hidden="true">1.38.</strong> 集群内原理.md</a></li><li class="chapter-item "><a href="elasticSearch/高可用专题.html"><strong aria-hidden="true">1.39.</strong> 高可用专题</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="elasticSearch/高可用专题/弹性设计.html"><strong aria-hidden="true">1.39.0.</strong> 弹性设计.md</a></li><li class="chapter-item "><a href="elasticSearch/高可用专题/跨集群复制.html"><strong aria-hidden="true">1.39.1.</strong> 跨集群复制.md</a></li><li class="chapter-item "><a href="elasticSearch/高可用专题/集群备份.html"><strong aria-hidden="true">1.39.2.</strong> 集群备份.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="mysql.html"><strong aria-hidden="true">2.</strong> mysql</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mysql/mysql日志/README.html"><strong aria-hidden="true">2.0.</strong> mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mysql/mysql日志/mysql日志及分类.html"><strong aria-hidden="true">2.0.0.</strong> mysql日志及分类.md</a></li><li class="chapter-item "><a href="mysql/mysql日志/二进制日志.html"><strong aria-hidden="true">2.0.1.</strong> 二进制日志.md</a></li><li class="chapter-item "><a href="mysql/mysql日志/慢sql日志.html"><strong aria-hidden="true">2.0.2.</strong> 慢sql日志.md</a></li><li class="chapter-item "><a href="mysql/mysql日志/通用日志.html"><strong aria-hidden="true">2.0.3.</strong> 通用日志.md</a></li><li class="chapter-item "><a href="mysql/mysql日志/错误日志.html"><strong aria-hidden="true">2.0.4.</strong> 错误日志.md</a></li></ol></li><li class="chapter-item "><a href="mysql/mysqlDataFile.html"><strong aria-hidden="true">2.1.</strong> mysqlDataFile.md</a></li><li class="chapter-item "><a href="mysql/mysqlfunction.html"><strong aria-hidden="true">2.2.</strong> mysqlfunction.md</a></li><li class="chapter-item "><a href="mysql/mysqlpdump.html"><strong aria-hidden="true">2.3.</strong> mysqlpdump.md</a></li><li class="chapter-item "><a href="mysql/mysqlzip安装.html"><strong aria-hidden="true">2.4.</strong> mysqlzip安装.md</a></li><li class="chapter-item "><a href="mysql/mysql公用表达式.html"><strong aria-hidden="true">2.5.</strong> mysql公用表达式.md</a></li><li class="chapter-item "><a href="mysql/mysql学习.html"><strong aria-hidden="true">2.6.</strong> mysql学习.md</a></li><li class="chapter-item "><a href="mysql/mysql官方文档.html"><strong aria-hidden="true">2.7.</strong> mysql官方文档</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mysql/mysql官方文档/mysql程序/README.html"><strong aria-hidden="true">2.7.0.</strong> mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="mysql/mysql官方文档/mysql程序/使用mysql相关程序.html"><strong aria-hidden="true">2.7.0.0.</strong> 使用mysql相关程序.md</a></li></ol></li><li class="chapter-item "><a href="mysql/mysql官方文档/mysql程序.html"><strong aria-hidden="true">2.7.1.</strong> mysql程序.md</a></li><li class="chapter-item "><a href="mysql/mysql官方文档/客户端.html"><strong aria-hidden="true">2.7.2.</strong> 客户端.md</a></li></ol></li><li class="chapter-item "><a href="mysql/mysql执行计划.html"><strong aria-hidden="true">2.8.</strong> mysql执行计划.md</a></li><li class="chapter-item "><a href="mysql/空值处理函数.html"><strong aria-hidden="true">2.9.</strong> 空值处理函数.md</a></li></ol></li><li class="chapter-item "><a href="oracle.html"><strong aria-hidden="true">3.</strong> oracle</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="oracle/Oracle小知识点.html"><strong aria-hidden="true">3.0.</strong> Oracle小知识点.md</a></li><li class="chapter-item "><a href="oracle/oracledocker快速搭建.html"><strong aria-hidden="true">3.1.</strong> oracledocker快速搭建.md</a></li><li class="chapter-item "><a href="oracle/oracle多表更新方法.html"><strong aria-hidden="true">3.2.</strong> oracle多表更新方法.md</a></li></ol></li><li class="chapter-item expanded "><a href="sql通用优化.html" class="active"><strong aria-hidden="true">4.</strong> sql通用优化.md</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">DB笔记</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/db/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="数据库命名规范"><a class="header" href="#数据库命名规范"><strong>数据库命名规范</strong></a></h1>
+<ul>
+<li>所有数据库对象名称必须使用小写字母并用下划线分割</li>
+<li>所有数据库对象名称禁止使用mysql保留关键字</li>
+<li>数据库对象的命名要能做到见名识意，并且最后不要超过32个字符</li>
+<li>临时库表必须以tmp_为前缀并以日期为后缀，备份表必须以bak_为前缀并以日期(时间戳)为后缀</li>
+<li>所有存储相同数据的列名和列类型必须一致</li>
+</ul>
+<h1 id="数据库设计规范"><a class="header" href="#数据库设计规范"><strong>数据库设计规范</strong></a></h1>
+<ul>
+<li>
+<p><strong>所有表必须使用Innodb存储引擎</strong></p>
+<p>Innodb 支持事务，支持行级锁，更好的恢复性，高并发下性能更好</p>
+</li>
+<li>
+<p><strong>数据库和表的字符集统一使用UTF8</strong></p>
+<p>兼容性更好，统一字符集可以避免由于字符集转换产生的乱码，不同的字符集进行比较前需要进行转换会造成索引失效</p>
+</li>
+<li>
+<p><strong>所有表和字段都需要添加注释</strong></p>
+</li>
+<li>
+<p><strong>尽量控制单表数据量的大小，建议控制在500万以内</strong></p>
+<ul>
+<li>500万并不是MySQL数据库的限制，过大会造成修改表结构，备份，恢复都会有很大的问题</li>
+</ul>
+</li>
+<li>
+<p>可以用历史数据归档（应用于日志数据）,分库分表（应用于业务数据）等手段来控制数据量大小</p>
+</li>
+<li>
+<p><strong>谨慎使用MySQL分区表</strong></p>
+<ul>
+<li>分区表在物理上表现为多个文件，在逻辑上表现为一个表 谨慎选择分区键，跨分区查询效率可能更低 建议采用物理分表的方式管理大数据</li>
+</ul>
+</li>
+<li>
+<p><strong>尽量做到冷热数据分离，减小表的宽度</strong></p>
+<p>MySQL限制每个表最多存储4096列，并且每一行数据的大小不能超过65535字节 减少磁盘IO,保证热数据的内存缓存命中率（表越宽，把表装载进内存缓冲池时所占用的内存也就越大,也会消耗更多的IO） 更有效的利用缓存，避免读入无用的冷数据 经常一起使用的列放到一个表中（避免更多的关联操作）</p>
+</li>
+<li>
+<p><strong>禁止在表中建立预留字段</strong></p>
+<p>预留字段的命名很难做到见名识义 预留字段无法确认存储的数据类型，所以无法选择合适的类型 对预留字段类型的修改，会对表进行锁定</p>
+</li>
+<li>
+<p><strong>禁止在数据库中存储图片，文件等大的二进制数据</strong></p>
+<p>通常文件很大，会短时间内造成数据量快速增长，数据库进行数据库读取时，通常会进行大量的随机IO操作，文件很大时，IO操作很耗时 通常存储于文件服务器，数据库只存储文件地址信息</p>
+</li>
+<li>
+<p><strong>禁止在线上做数据库压力测试</strong></p>
+</li>
+<li>
+<p><strong>禁止从开发环境，测试环境直接连接生成环境数据库</strong></p>
+</li>
+</ul>
+<h1 id="数据库字段设计规范"><a class="header" href="#数据库字段设计规范"><strong>数据库字段设计规范</strong></a></h1>
+<ul>
+<li>
+<p><strong>优先选择符合存储需要的最小的数据类型</strong></p>
+<ul>
+<li>空间</li>
+<li>索引</li>
+</ul>
+</li>
+<li>
+<p>IO</p>
+<p>例如 IP地址转换成整型</p>
+<pre><code>inet_aton 把ip转为无符号整型(4-8位)
+inet_ntoa 把整型的ip转为地址
+</code></pre>
+</li>
+<li>
+<p>对于非负型的数据（如自增ID、整型IP）来说，要优先使用无符号整型来存储</p>
+</li>
+<li>
+<p><strong>避免使用TEXT、BLOB数据类型，最常见的TEXT类型可以存储64k的数据</strong></p>
+<p>建议把BLOB或是TEXT列分离到单独的扩展表中</p>
+<p>Mysql内存临时表不支持TEXT、BLOB这样的大数据类型，如果查询中包含这样的数据，在排序等操作时，就不能使用内存临时表，必须使用磁盘临时表进行。</p>
+<p>而且对于这种数据，Mysql还是要进行二次查询，会使sql性能变得很差，但是不是说一定不能使用这样的数据类型。</p>
+<p>如果一定要使用，建议把BLOB或是TEXT列分离到单独的扩展表中，查询时一定不要使用select * 而只需要取出必要的列，不需要TEXT列的数据时不要对该列进行查询。</p>
+<p>TEXT或BLOB类型只能使用前缀索引</p>
+<p>因为MySQL对索引字段长度是有限制的，所以TEXT类型只能使用前缀索引，并且TEXT列上是不能有默认值的。</p>
+</li>
+<li>
+<p><strong>避免使用ENUM类型</strong></p>
+<p>1、修改ENUM值需要使用ALTER语句</p>
+<p>2、ENUM类型的ORDER BY操作效率低，需要额外操作</p>
+<p>3、禁止使用数值作为ENUM的枚举值</p>
+</li>
+<li>
+<p><strong>尽可能把所有列定义为NOT NULL</strong></p>
+<p>1、索引NULL列需要额外的空间来保存，所以要占用更多的空间；</p>
+<p>2、进行比较和计算时要对NULL值做特别的处理</p>
+</li>
+<li>
+<p><strong>使用TIMESTAMP（4个字节）或DATETIME类型（8个字节）存储时间</strong></p>
+<p>经常会有人用字符串存储日期型的数据（不正确的做法）：</p>
+<p>缺点1：无法用日期函数进行计算和比较</p>
+<p>缺点2：用字符串存储日期要占用更多的空间</p>
+</li>
+<li>
+<p><strong>同财务相关的金额类数据必须使用decimal类型</strong></p>
+<p>1、非精准浮点：float,double</p>
+<p>2、精准浮点：decimal</p>
+</li>
+<li>
+<p><strong>尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型</strong></p>
+</li>
+<li>
+<p>设计冗余列</p>
+</li>
+<li>
+<p>禁用外键</p>
+</li>
+<li>
+<p>分库分表</p>
+</li>
+<li>
+<p>外键</p>
+</li>
+</ul>
+<h1 id="索引设计规范"><a class="header" href="#索引设计规范"><strong>索引设计规范</strong></a></h1>
+<ul>
+<li><strong>限制每张表上的索引数量，建议单张表索引不超过5个</strong>
+<ul>
+<li>索引可以增加查询效率，但同样也会降低插入和更新的效率，甚至有些情况下会降低查询效率。</li>
+<li>因为mysql优化器在选择如何优化查询时，会根据统一信息，对每一个可以用到的索引来进行评估，以生成出一个最好的执行计划，如果同时有很多个索引都可以用于查询，就会增加mysql优化器生成执行计划的时间，同样会降低查询性能。</li>
+</ul>
+</li>
+<li><strong>每个Innodb表必须有个主键</strong>
+<ul>
+<li>不要使用更新频繁的列作为主键</li>
+<li>不适用多列主键（相当于联合索引）</li>
+<li>不要使用UUID、MD5、HASH、字符串列作为主键（无法保证数据的顺序增长）。</li>
+<li>主键建议使用自增ID值。</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何选择索引列的顺序</strong></p>
+<ul>
+<li><strong>复合索引，哪个字段放在最前面，需要根据哪个字段经常出现在where条件中，哪个字段的选择性最好来判断的</strong>,区分度最高的放在联合索引的最左侧（区分度=列中不同值的数量/列的总行数）</li>
+<li>尽量把字段长度小的列放在联合索引的最左侧（因为字段长度越小，一页能存储的数据量越大，IO性能也就越好）；</li>
+<li>使用最频繁的列放到联合索引的左侧（这样可以比较少的建立一些索引）</li>
+</ul>
+<p><strong>优先考虑覆盖索引</strong></p>
+<p>**覆盖索引：**就是包含了所有查询字段(where,select,ordery by,group by包含的字段)的索引</p>
+<p>覆盖索引的好处：</p>
+<p>避免Innodb表进行索引的二次查询</p>
+<p>Innodb是以聚集索引的顺序来存储的，对于Innodb来说，二级索引在叶子节点中所保存的是行的主键信息，</p>
+<p>如果是用二级索引查询数据的话，在查找到相应的键值后，还要通过主键进行二次查询才能获取我们真实所需要的数据。而在覆盖索引中，二级索引的键值中可以获取所有的数据，避免了对主键的二次查询 ，减少了IO操作，提升了查询效率。</p>
+<p><strong>索引SET规范</strong></p>
+<ul>
+<li>
+<p><strong>尽量避免使用外键约束</strong></p>
+<p>1、不建议使用外键约束（foreign key），但一定要在表与表之间的关联键上建立索引；</p>
+<p>2、外键可用于保证数据的参照完整性，但建议在业务端实现；</p>
+<p>3、外键会影响父表和子表的写操作从而降低性能。</p>
+</li>
+</ul>
+<h1 id="数据库sql开发规范"><a class="header" href="#数据库sql开发规范"><strong>数据库SQL开发规范</strong></a></h1>
+<h2 id="索引查询优化"><a class="header" href="#索引查询优化"><strong>索引查询优化</strong></a></h2>
+<ul>
+<li>
+<p><strong>避免数据类型的隐式转换导致的索引失效</strong></p>
+</li>
+<li>
+<p><strong>充分利用表上已经存在的索引</strong></p>
+</li>
+<li>
+<p><strong>WHERE从句中禁止对列进行函数转换和计算</strong></p>
+</li>
+<li>
+<p><strong>对应同一列进行or判断时，使用in代替or</strong></p>
+</li>
+<li>
+<p><strong>like语句</strong> 使用的是前缀索引</p>
+</li>
+<li>
+<p><strong>尽量避免在索引列上使用 MySQL 的内置函数或者表达式操作</strong></p>
+<pre><code class="language-sql">-- 优化前
+select userId,loginTime from loginuser where Date_ADD(loginTime,Interval 7 DAY) &gt;=now();
+
+-- 优化后
+explain  select userId,loginTime from loginuser where  loginTime &gt;= Date_ADD(NOW(),INTERVAL - 7 DAY); 
+</code></pre>
+</li>
+<li>
+<p>避免使用 &lt;&gt; !=操作符</p>
+<p>反例：</p>
+<pre><code>select age,name from user where age &lt;&gt;18; 
+</code></pre>
+<p>正例：</p>
+<pre><code>//可以考虑分开两条sql写
+select age,name  from user where age &lt;18;
+select age,name  from user where age &gt;18;
+</code></pre>
+</li>
+<li>
+<p>联合索引时,遵循最左匹配原则</p>
+</li>
+<li>
+<p><strong>使用覆盖索引</strong></p>
+<p>覆盖索引能够使得你的 SQL 语句不需要回表，仅仅访问索引就能够得到所有需要的数据，大大提高了查询效率。</p>
+</li>
+</ul>
+<h2 id="减少查询数据量"><a class="header" href="#减少查询数据量"><strong>减少查询数据量</strong></a></h2>
+<ul>
+<li>
+<p>查询 SQL 尽量不要使用 select *，而是 select 具体字段</p>
+<ul>
+<li>只取需要的字段，节省资源、减少网络开销。</li>
+<li>select * 进行查询时，很可能就不会使用到覆盖索引了，就会造成回表查询</li>
+</ul>
+</li>
+<li>
+<p><strong>如果知道查询结果只有一条或者只要最大/最小一条记录，建议用 limit 1</strong></p>
+<p>只要找到了对应的一条记录,就不会继续向下扫描了，效率将会大大提高。</p>
+</li>
+</ul>
+<h2 id="书写规范"><a class="header" href="#书写规范">书写规范</a></h2>
+<ul>
+<li>
+<p><strong>建议使用预编译语句进行数据库操作</strong></p>
+</li>
+<li>
+<p><strong>禁止使用不含字段列表的INSERT语句</strong></p>
+</li>
+<li>
+<p><strong>在明显不会有重复值时使用UNION ALL而不是UNION</strong></p>
+</li>
+<li>
+<p><strong>程序连接不同的数据库使用不同的账号，禁止跨库查询</strong></p>
+</li>
+<li>
+<p><strong>避免使用子查询，可以把子查询优化为join操作</strong></p>
+<ul>
+<li>子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响；</li>
+<li>特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大；</li>
+<li>由于子查询会产生大量的临时表也没有索引，所以会消耗过多的CPU和IO资源，产生大量的慢查询。</li>
+</ul>
+</li>
+<li>
+<p><strong>减少同数据库的交互次数</strong></p>
+</li>
+<li>
+<p><strong>拆分复杂的大SQL为多个小SQL</strong></p>
+</li>
+<li>
+<p>查询优化时, 考虑对 where, order by 建立索引</p>
+</li>
+<li>
+<p><strong>慎用 distinct 关键字</strong></p>
+</li>
+<li>
+<p><strong>如果数据量较大，优化你的修改/删除语句</strong></p>
+<p>分批插入或者分批删除</p>
+</li>
+<li>
+<p><strong>where 子句中考虑使用默认值代替 null</strong></p>
+</li>
+<li>
+<p><strong>不要有超过 5 个以上的表连接</strong></p>
+</li>
+<li>
+<p><strong>exist&amp;in 的合理利用</strong></p>
+<p>小表驱动大表</p>
+</li>
+<li>
+<p><strong>尽量用 union all 替换 union</strong></p>
+</li>
+</ul>
+<h1 id="数据库操作行为规范"><a class="header" href="#数据库操作行为规范"><strong>数据库操作行为规范</strong></a></h1>
+<ul>
+<li>
+<p><strong>超100万行的批量写（UPDATE、DELETE、INSERT）操作，要分批多次进行操作。</strong></p>
+</li>
+<li>
+<p><strong>对于大表使用pt-online-schema-change修改表结构</strong></p>
+<pre><code>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作，尤其是生产环境，是不能容忍的。
+
+pt-online-schema-change它会首先建立一个与原表结构相同的新表，并且在新表上进行表结构的修改，然后再把原表中的数据复制到新表中，并在原表中增加一些触发器。
+
+把原表中新增的数据也复制到新表中，在行所有数据复制完成之后，把新表命名成原表，并把原来的表删除掉。
+
+把原来一个DDL操作，分解成多个小的批次进行。
+</code></pre>
+</li>
+<li>
+<p><strong>禁止为程序使用的账号赋予super权限</strong></p>
+<pre><code>当达到最大连接数限制时，还运行1个有super权限的用户连接super权限只能留给DBA处理问题的账号使用。
+</code></pre>
+</li>
+<li>
+<p><strong>对于程序连接数据库账号，遵循权限最小原则</strong></p>
+</li>
+</ul>
+<script src="/note-service/db/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/db/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/db/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+<p><span data-infisearch-part-title="未分类"></span></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="oracle/oracle多表更新方法.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="oracle/oracle多表更新方法.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

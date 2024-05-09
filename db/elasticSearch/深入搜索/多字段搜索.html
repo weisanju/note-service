@@ -1,38 +1,38 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>多字段搜索 - 数据库</title>
+        <title>多字段搜索.md - DB笔记</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,42 +62,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">数据库</a></li><li class="chapter-item affix "><li class="part-title"></li><li class="chapter-item "><div>oracle</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../oracle/Oracle小知识点.html">Oracle小知识点</a></li><li class="chapter-item "><a href="../../oracle/oracledocker快速搭建.html">oracledocker快速搭建</a></li><li class="chapter-item "><a href="../../oracle/oracle多表更新方法.html">oracle多表更新方法</a></li></ol></li><li class="chapter-item "><a href="../../MongoDB/index.html">MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../MongoDB/mongodb基本操作.html">mongodb基本操作</a></li><li class="chapter-item "><a href="../../MongoDB/mongodb高级语法.html">mongodb高级语法</a></li><li class="chapter-item "><a href="../../MongoDB/权限管理.html">权限管理</a></li></ol></li><li class="chapter-item "><div>mysql</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysqlfunction.html">mysqlfunction</a></li><li class="chapter-item "><a href="../../mysql/mysqlpdump.html">mysqlpdump</a></li><li class="chapter-item "><a href="../../mysql/mysqlzip安装.html">mysqlzip安装</a></li><li class="chapter-item "><a href="../../mysql/mysql公用表达式.html">mysql公用表达式</a></li><li class="chapter-item "><a href="../../mysql/mysql学习.html">mysql学习</a></li><li class="chapter-item "><a href="../../mysql/mysql执行计划.html">mysql执行计划</a></li><li class="chapter-item "><a href="../../mysql/空值处理函数.html">空值处理函数</a></li><li class="chapter-item "><div>mysql官方文档</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序.html">mysql程序</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/客户端.html">客户端</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/index.html">mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/使用mysql相关程序.html">使用mysql相关程序</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../mysql/mysql日志/index.html">mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql日志/mysql日志及分类.html">mysql日志及分类</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/二进制日志.html">二进制日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/慢sql日志.html">慢sql日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/通用日志.html">通用日志</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/错误日志.html">错误日志</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../elasticSearch/index.html">elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/BackUpACluster.html">BackUpACluster</a></li><li class="chapter-item "><a href="../../elasticSearch/KQL.html">KQL</a></li><li class="chapter-item "><a href="../../elasticSearch/dataStream.html">dataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/es堆内存如何分配.html">es堆内存如何分配</a></li><li class="chapter-item "><a href="../../elasticSearch/scroll查询.html">scroll查询</a></li><li class="chapter-item "><a href="../../elasticSearch/乐观并发控制.html">乐观并发控制</a></li><li class="chapter-item "><a href="../../elasticSearch/分布式检索.html">分布式检索</a></li><li class="chapter-item "><a href="../../elasticSearch/分片内部原理.html">分片内部原理</a></li><li class="chapter-item "><a href="../../elasticSearch/分词.html">分词</a></li><li class="chapter-item "><a href="../../elasticSearch/慢日志.html">慢日志</a></li><li class="chapter-item "><a href="../../elasticSearch/搜索引擎中的概念杂项.html">搜索引擎中的概念杂项</a></li><li class="chapter-item "><a href="../../elasticSearch/数据分片.html">数据分片</a></li><li class="chapter-item "><a href="../../elasticSearch/映射.html">映射</a></li><li class="chapter-item "><a href="../../elasticSearch/杂项学习.html">杂项学习</a></li><li class="chapter-item "><a href="../../elasticSearch/索引和分片.html">索引和分片</a></li><li class="chapter-item "><a href="../../elasticSearch/索引管理.html">索引管理</a></li><li class="chapter-item "><a href="../../elasticSearch/评分标准与相关性.html">评分标准与相关性</a></li><li class="chapter-item "><a href="../../elasticSearch/集群内原理.html">集群内原理</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/index.html">1.IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/1.Analysis.html">Analysis</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/2.IndexShardAllocation.html">IndexShardAllocation</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/3.Indexblocks.html">Indexblocks</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/4.Mapper.html">Mapper</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/5.Merge.html">Merge</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/6.SimilarityModule.html">SimilarityModule</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/7.Slowlog.html">Slowlog</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/8.Store.html">Store</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/9.Translog.html">Translog</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/10.HistoryRetention.html">HistoryRetention</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/11.IndexSorting.html">IndexSorting</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/12.IndexPressure.html">IndexPressure</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/index.html">2.TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/index.html">1.Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html">AnatomyOfAnAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html">IndexAndSearchAnalysis</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html">Stemming</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html">TokenGraphs</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/index.html">2.ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html">AnalyzeAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html">TestAnAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html">ConfiguringBuilt-inAnalyzers</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html">CreateACustomAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html">SpecifyAnAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/index.html">3.Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html">StandardAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html">FingerprintAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html">KeywordAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html">LanguageAnalyzers</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html">PatternAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html">SimpleAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html">StopAnalyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html">WhitespaceAnalyzer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/index.html">4.TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html">Ng-gram</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html">Keyword</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html">SimplePattern</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html">SimplePatternSplitTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html">StandardTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html">CharacterGroupTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html">ClassicTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html">LetterTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html">LowercaseTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html">PathHierarchyTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html">UAXURLEmailTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html">WhitespaceTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html">PatternTokenizer</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html">EdgeN-gramTokenizer</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/index.html">5.TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html">ASCIIFoldingTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html">CJKBigramTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html">CJKWidthTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html">ClassicTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html">CommonGramsTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html">ConditionalTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html">DecimalDigitTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html">DelimitedPayloadTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html">DictionaryDecompounderFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html">EdgeN-gramTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html">ElisionFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html">FingerprintFokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html">FlattenGraphTokenFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html">20</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/index.html">6.CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html">HTMLStripCharacterFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html">MappingCharacterFilter</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html">PatternReplaceCharacterFilter</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/7.Normalizers/index.html">7.Normalizers</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/index.html">3.Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/index.html">1.DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html">DynamicFieldMapping</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html">DynamicTemplates</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/2.ExplicitMapping/index.html">2.ExplicitMapping</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/index.html">3.RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html">MapARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html">DefineRuntimeFieldsInASearchRequest</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html">OverrideFieldValuesAtQueryTime</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html">RetrieveARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html">IndexARuntimeField</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html">ExploreYourDataWithRuntimeFields</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/index.html">4.FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html">AggregateMetric</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html">AliasFieldType</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html">Arrays</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html">Binary</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html">Boolean</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html">Date</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html">DateNanoseconds</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html">DenseVector</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html">Flattened</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html">GeoPoint</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html">Geo-shape</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html">Histogram</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html">IP</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html">Join</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html">KeywordType</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html">Object</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html">Nested</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html">Numberic</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html">Percolator</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html">Point</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html">Range</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html">RankFeature</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html">RankFeatures</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html">Search-as-you-type</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html">Shape</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html">Text</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html">TokenCount</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html">UnsignedLong</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html">Version</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/index.html">5.MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html">DocCount</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html">FiledNames</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html">Ignored</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/4.Id.html">Id</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/5.Index.html">Index</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html">Meta</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html">Routing</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/8.Source.html">Source</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html">Tier</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/index.html">6.MappingParameters</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html">Analyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/2.boost.html">boost</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html">coerce</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html">Copy_to</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html">DocValue</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html">dynamic</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html">eagerGlobalOrdinals</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html">enabled</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/9.format.html">format</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html">Ignore_above</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html">Ignore_malformed</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/12.index.html">index</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html">Index_options</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html">index_pharse</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html">index_prefixes</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/16.meta.html">meta</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html">multifileds</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html">normalizer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/19.norms.html">norms</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html">null_value</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html">position_increment_gap</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/22.properties.html">properties</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html">search_analyzer</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html">similarity</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/25.store.html">store</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html">term_vector</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/7.MappingLimitSettings/index.html">7.MappingLimitSettings</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/8.RemovalOfMappingTypes/index.html">8.RemovalOfMappingTypes</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/index.html">4.IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html">SimulateMultiComponentTemplates</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/5.Aliases/index.html">5.Aliases</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/index.html">6.DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/1.setUpADataStream.html">setUpADataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/2.UseADataStream.html">UseADataStream</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html">ChangeMappingsAndSettings</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/index.html">Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/DataTier.html">DataTier</a></li></ol></li><li class="chapter-item "><div>IngestPipeline</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/1.IngestPipelines.html">IngestPipelines</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/2.pipeLineExample.html">pipeLineExample</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/3.EnrichYourData.html">EnrichYourData</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html">ExampleEnrichYourDataBasedOnGeolocation</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/5.IngestProcessorReference.html">IngestProcessorReference</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/index.html">queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/1.QueryAndFilterContext.html">QueryAndFilterContext</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/2.CompoundQueries.html">CompoundQueries</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/SearchAfter.html">SearchAfter</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/index.html">FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html">IntervalsQuery</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html">MatchQuery</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/index.html">snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html">CleanUpSnapshotRepo</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CloneSnapshot.html">CloneSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html">CreateOrUpdateSnapshotAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateSnapshot.html">CreateSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapShot.html">DeleteSnapShot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html">DeleteSnapshotRepository</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/GetSnapshotAPI.html">GetSnapshotAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RegisterASnapshot.html">RegisterASnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RestoreSnapshot.html">RestoreSnapshot</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SLM.html">SLM</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshots.html">SearchableSnapshots</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html">SearchableSnapshotsMountAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/repository-s3.html">repository-s3</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html">使用OSS备份恢复集群实战</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/安装/index.html">安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/安装/1.InstallingFromRpm.html">InstallingFromRpm</a></li><li class="chapter-item "><a href="../../elasticSearch/安装/2.InstallFromDeb.html">InstallFromDeb</a></li></ol></li><li class="chapter-item expanded "><div>深入搜索</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/深入搜索/全文搜索.html">全文搜索</a></li><li class="chapter-item expanded "><a href="../../elasticSearch/深入搜索/多字段搜索.html" class="active">多字段搜索</a></li><li class="chapter-item "><a href="../../elasticSearch/深入搜索/结构化搜索.html">结构化搜索</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/index.html">索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/1.索引级别的分片分配控制.html">索引级别的分片分配控制</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/2.节点离开延迟分配.html">节点离开延迟分配</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/3.索引恢复优先级.html">索引恢复优先级</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/4.每个节点的总分片.html">每个节点的总分片</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html">索引级别数据层分配过滤</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html">手动分配分片clusterRerouteAPI</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/7.cluster-allocation-explain.html">cluster-allocation-explain</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/index.html">考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/考纲解读/1.ClusterManagement.html">ClusterManagement</a></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/2.DataManagement.html">DataManagement</a></li></ol></li><li class="chapter-item "><div>聚合</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/聚合/RareTermsAggregation.html">RareTermsAggregation</a></li><li class="chapter-item "><a href="../../elasticSearch/聚合/Term.html">Term</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/配置/index.html">配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/配置/1.重要配置.html">重要配置</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/2.elasticsearch.yml核心配置.html">elasticsearch.yml核心配置</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/3.es系统参数修改.html">es系统参数修改</a></li></ol></li><li class="chapter-item "><div>集群</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/集群/Health.html">Health</a></li></ol></li><li class="chapter-item "><div>高可用专题</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/高可用专题/弹性设计.html">弹性设计</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/跨集群复制.html">跨集群复制</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/集群备份.html">集群备份</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../MongoDB/README.html"><strong aria-hidden="true">0.</strong> MongoDB</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../MongoDB/mongodb基本操作.html"><strong aria-hidden="true">0.0.</strong> mongodb基本操作.md</a></li><li class="chapter-item "><a href="../../MongoDB/mongodb高级语法.html"><strong aria-hidden="true">0.1.</strong> mongodb高级语法.md</a></li><li class="chapter-item "><a href="../../MongoDB/权限管理.html"><strong aria-hidden="true">0.2.</strong> 权限管理.md</a></li></ol></li><li class="chapter-item expanded "><a href="../../elasticSearch/README.html"><strong aria-hidden="true">1.</strong> elasticSearch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/9.html"><strong aria-hidden="true">1.0.</strong> 语义化检索</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/9.语义化检索/ES8.X语义检索.html"><strong aria-hidden="true">1.0.0.</strong> ES8.X语义检索.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/BackUpACluster.html"><strong aria-hidden="true">1.1.</strong> BackUpACluster.md</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline.html"><strong aria-hidden="true">1.2.</strong> IngestPipeline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/1.IngestPipelines.html"><strong aria-hidden="true">1.2.0.</strong> IngestPipelines.md</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/2.pipeLineExample.html"><strong aria-hidden="true">1.2.1.</strong> pipeLineExample.md</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/3.EnrichYourData.html"><strong aria-hidden="true">1.2.2.</strong> EnrichYourData.md</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/4.ExampleEnrichYourDataBasedOnGeolocation.html"><strong aria-hidden="true">1.2.3.</strong> ExampleEnrichYourDataBasedOnGeolocation.md</a></li><li class="chapter-item "><a href="../../elasticSearch/IngestPipeline/5.IngestProcessorReference.html"><strong aria-hidden="true">1.2.4.</strong> IngestProcessorReference.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/KQL.html"><strong aria-hidden="true">1.3.</strong> KQL.md</a></li><li class="chapter-item "><a href="../../elasticSearch/安装/README.html"><strong aria-hidden="true">1.4.</strong> 安装</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/安装/1.InstallingFromRpm.html"><strong aria-hidden="true">1.4.0.</strong> InstallingFromRpm.md</a></li><li class="chapter-item "><a href="../../elasticSearch/安装/2.InstallFromDeb.html"><strong aria-hidden="true">1.4.1.</strong> InstallFromDeb.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/README.html"><strong aria-hidden="true">1.5.</strong> DataStreams</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/1.setUpADataStream.html"><strong aria-hidden="true">1.5.0.</strong> setUpADataStream.md</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/2.UseADataStream.html"><strong aria-hidden="true">1.5.1.</strong> UseADataStream.md</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/3.ChangeMappingsAndSettings.html"><strong aria-hidden="true">1.5.2.</strong> ChangeMappingsAndSettings.md</a></li><li class="chapter-item "><a href="../../elasticSearch/6.DataStreams/DataStreams.mm.html"><strong aria-hidden="true">1.5.3.</strong> DataStreams.mm.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/README.html"><strong aria-hidden="true">1.6.</strong> Mapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/Mapping.mm.html"><strong aria-hidden="true">1.6.0.</strong> Mapping.mm.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/README.html"><strong aria-hidden="true">1.6.1.</strong> FieldDataTypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/1.AggregateMetric.html"><strong aria-hidden="true">1.6.1.0.</strong> AggregateMetric.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/10.GeoPoint.html"><strong aria-hidden="true">1.6.1.1.</strong> GeoPoint.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/11.Geo-shape.html"><strong aria-hidden="true">1.6.1.2.</strong> Geo-shape.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/12.Histogram.html"><strong aria-hidden="true">1.6.1.3.</strong> Histogram.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/13.IP.html"><strong aria-hidden="true">1.6.1.4.</strong> IP.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/14.Join.html"><strong aria-hidden="true">1.6.1.5.</strong> Join.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/15.KeywordType.html"><strong aria-hidden="true">1.6.1.6.</strong> KeywordType.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/16.Object.html"><strong aria-hidden="true">1.6.1.7.</strong> Object.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/17.Nested.html"><strong aria-hidden="true">1.6.1.8.</strong> Nested.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/18.Numberic.html"><strong aria-hidden="true">1.6.1.9.</strong> Numberic.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/19.Percolator.html"><strong aria-hidden="true">1.6.1.10.</strong> Percolator.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/2.AliasFieldType.html"><strong aria-hidden="true">1.6.1.11.</strong> AliasFieldType.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/20.Point.html"><strong aria-hidden="true">1.6.1.12.</strong> Point.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/21.Range.html"><strong aria-hidden="true">1.6.1.13.</strong> Range.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/22.RankFeature.html"><strong aria-hidden="true">1.6.1.14.</strong> RankFeature.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/23.RankFeatures.html"><strong aria-hidden="true">1.6.1.15.</strong> RankFeatures.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/24.Search-as-you-type.html"><strong aria-hidden="true">1.6.1.16.</strong> Search-as-you-type.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/25.Shape.html"><strong aria-hidden="true">1.6.1.17.</strong> Shape.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/26.Text.html"><strong aria-hidden="true">1.6.1.18.</strong> Text.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/27.TokenCount.html"><strong aria-hidden="true">1.6.1.19.</strong> TokenCount.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/28.UnsignedLong.html"><strong aria-hidden="true">1.6.1.20.</strong> UnsignedLong.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/29.Version.html"><strong aria-hidden="true">1.6.1.21.</strong> Version.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/3.Arrays.html"><strong aria-hidden="true">1.6.1.22.</strong> Arrays.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/4.Binary.html"><strong aria-hidden="true">1.6.1.23.</strong> Binary.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/5.Boolean.html"><strong aria-hidden="true">1.6.1.24.</strong> Boolean.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/6.Date.html"><strong aria-hidden="true">1.6.1.25.</strong> Date.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/7.DateNanoseconds.html"><strong aria-hidden="true">1.6.1.26.</strong> DateNanoseconds.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/8.DenseVector.html"><strong aria-hidden="true">1.6.1.27.</strong> DenseVector.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/4.FieldDataTypes/9.Flattened.html"><strong aria-hidden="true">1.6.1.28.</strong> Flattened.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/7.MappingLimitSettings/README.html"><strong aria-hidden="true">1.6.2.</strong> MappingLimitSettings</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/2.ExplicitMapping/README.html"><strong aria-hidden="true">1.6.3.</strong> ExplicitMapping</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/8.RemovalOfMappingTypes/README.html"><strong aria-hidden="true">1.6.4.</strong> RemovalOfMappingTypes</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/README.html"><strong aria-hidden="true">1.6.5.</strong> DynamicMapping</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/1.DynamicFieldMapping.html"><strong aria-hidden="true">1.6.5.0.</strong> DynamicFieldMapping.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/1.DynamicMapping/2.DynamicTemplates.html"><strong aria-hidden="true">1.6.5.1.</strong> DynamicTemplates.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/README.html"><strong aria-hidden="true">1.6.6.</strong> MappingParameters</a><a class="toggle"><div>❱</div></a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Ignore</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/10.Ignore_above.html"><strong aria-hidden="true">1.6.6.2.</strong> above.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/11.Ignore_malformed.html"><strong aria-hidden="true">1.6.6.3.</strong> malformed.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Index</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/13.Index_options.html"><strong aria-hidden="true">1.6.6.6.</strong> options.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">index</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/14.index_pharse.html"><strong aria-hidden="true">1.6.6.9.</strong> pharse.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/15.index_prefixes.html"><strong aria-hidden="true">1.6.6.10.</strong> prefixes.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">null</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/20.null_value.html"><strong aria-hidden="true">1.6.6.13.</strong> value.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">position</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/21.position_increment_gap.html"><strong aria-hidden="true">1.6.6.16.</strong> increment_gap.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">search</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/23.search_analyzer.html"><strong aria-hidden="true">1.6.6.19.</strong> analyzer.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">term</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/26.term_vector.html"><strong aria-hidden="true">1.6.6.22.</strong> vector.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Copy</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/4.Copy_to.html"><strong aria-hidden="true">1.6.6.25.</strong> to.md</a></li><li class="spacer"></li></ol></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">未分类</li><li><ol class="section"><li><ol class="section"><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/1.Analyzer.html"><strong aria-hidden="true">1.6.6.28.</strong> Analyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/12.index.html"><strong aria-hidden="true">1.6.6.29.</strong> index.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/16.meta.html"><strong aria-hidden="true">1.6.6.30.</strong> meta.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/17.multifileds.html"><strong aria-hidden="true">1.6.6.31.</strong> multifileds.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/18.normalizer.html"><strong aria-hidden="true">1.6.6.32.</strong> normalizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/19.norms.html"><strong aria-hidden="true">1.6.6.33.</strong> norms.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/2.boost.html"><strong aria-hidden="true">1.6.6.34.</strong> boost.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/22.properties.html"><strong aria-hidden="true">1.6.6.35.</strong> properties.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/24.similarity.html"><strong aria-hidden="true">1.6.6.36.</strong> similarity.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/25.store.html"><strong aria-hidden="true">1.6.6.37.</strong> store.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/3.coerce.html"><strong aria-hidden="true">1.6.6.38.</strong> coerce.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/5.DocValue.html"><strong aria-hidden="true">1.6.6.39.</strong> DocValue.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/6.dynamic.html"><strong aria-hidden="true">1.6.6.40.</strong> dynamic.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/7.eagerGlobalOrdinals.html"><strong aria-hidden="true">1.6.6.41.</strong> eagerGlobalOrdinals.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/8.enabled.html"><strong aria-hidden="true">1.6.6.42.</strong> enabled.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/6.MappingParameters/9.format.html"><strong aria-hidden="true">1.6.6.43.</strong> format.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/README.html"><strong aria-hidden="true">1.6.7.</strong> RuntimeFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/1.MapARuntimeField.html"><strong aria-hidden="true">1.6.7.0.</strong> MapARuntimeField.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/2.DefineRuntimeFieldsInASearchRequest.html"><strong aria-hidden="true">1.6.7.1.</strong> DefineRuntimeFieldsInASearchRequest.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/3.OverrideFieldValuesAtQueryTime.html"><strong aria-hidden="true">1.6.7.2.</strong> OverrideFieldValuesAtQueryTime.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/4.RetrieveARuntimeField.html"><strong aria-hidden="true">1.6.7.3.</strong> RetrieveARuntimeField.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/5.IndexARuntimeField.html"><strong aria-hidden="true">1.6.7.4.</strong> IndexARuntimeField.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/3.RuntimeFields/6.ExploreYourDataWithRuntimeFields.html"><strong aria-hidden="true">1.6.7.5.</strong> ExploreYourDataWithRuntimeFields.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/README.html"><strong aria-hidden="true">1.6.8.</strong> MetadataFields</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/1.DocCount.html"><strong aria-hidden="true">1.6.8.0.</strong> DocCount.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/2.FiledNames.html"><strong aria-hidden="true">1.6.8.1.</strong> FiledNames.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/3.Ignored.html"><strong aria-hidden="true">1.6.8.2.</strong> Ignored.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/4.Id.html"><strong aria-hidden="true">1.6.8.3.</strong> Id.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/5.Index.html"><strong aria-hidden="true">1.6.8.4.</strong> Index.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/6.Meta.html"><strong aria-hidden="true">1.6.8.5.</strong> Meta.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/7.Routing.html"><strong aria-hidden="true">1.6.8.6.</strong> Routing.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/8.Source.html"><strong aria-hidden="true">1.6.8.7.</strong> Source.md</a></li><li class="chapter-item "><a href="../../elasticSearch/3.Mapping/5.MetadataFields/9.Tier.html"><strong aria-hidden="true">1.6.8.8.</strong> Tier.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/README.html"><strong aria-hidden="true">1.7.</strong> queryDSL</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/1.QueryAndFilterContext.html"><strong aria-hidden="true">1.7.0.</strong> QueryAndFilterContext.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/2.CompoundQueries.html"><strong aria-hidden="true">1.7.1.</strong> CompoundQueries.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/Match中参数解析.html"><strong aria-hidden="true">1.7.2.</strong> Match中参数解析.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/README.html"><strong aria-hidden="true">1.7.3.</strong> FullTextQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/1.IntervalsQuery.html"><strong aria-hidden="true">1.7.3.0.</strong> IntervalsQuery.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/2.MatchQuery.html"><strong aria-hidden="true">1.7.3.1.</strong> MatchQuery.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/FullTextQueries/3.MultiMatch.html"><strong aria-hidden="true">1.7.3.2.</strong> MultiMatch.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/CompoundQueries/README.html"><strong aria-hidden="true">1.7.4.</strong> CompoundQueries</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/queryDSL/CompoundQueries/BooleanQuery.html"><strong aria-hidden="true">1.7.4.0.</strong> BooleanQuery.md</a></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/CompoundQueries/FunctionScore.html"><strong aria-hidden="true">1.7.4.1.</strong> FunctionScore.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/queryDSL/SearchAfter.html"><strong aria-hidden="true">1.7.5.</strong> SearchAfter.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/README.html"><strong aria-hidden="true">1.8.</strong> ILM</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/7.ILM/FrozenIndices.html"><strong aria-hidden="true">1.8.0.</strong> FrozenIndices.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/ILM.html"><strong aria-hidden="true">1.8.1.</strong> ILM.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/2.Concepts/README.html"><strong aria-hidden="true">1.8.2.</strong> Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/7.ILM/2.Concepts/1.IndexLifecycle.html"><strong aria-hidden="true">1.8.2.0.</strong> IndexLifecycle.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/2.Concepts/2.Rollover.html"><strong aria-hidden="true">1.8.2.1.</strong> Rollover.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/2.Concepts/3.LifeCyclePolicyUpdates.html"><strong aria-hidden="true">1.8.2.2.</strong> LifeCyclePolicyUpdates.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/1.Overview/README.html"><strong aria-hidden="true">1.8.3.</strong> Overview</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/8.TroubleshootingIndexLifecycleManagementErrors/README.html"><strong aria-hidden="true">1.8.4.</strong> TroubleshootingIndexLifecycleManagementErrors</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/4.CustomizeBuiltInILMPolicy/README.html"><strong aria-hidden="true">1.8.5.</strong> CustomizeBuiltInILMPolicy</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/11.SkipRollover/README.html"><strong aria-hidden="true">1.8.6.</strong> SkipRollover</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/6.ConfigureALifecyclePolicy/README.html"><strong aria-hidden="true">1.8.7.</strong> ConfigureALifecyclePolicy</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/README.html"><strong aria-hidden="true">1.8.8.</strong> IndexLifecycleActions</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/1.Allocate.html"><strong aria-hidden="true">1.8.8.0.</strong> Allocate.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/10.Shrink.html"><strong aria-hidden="true">1.8.8.1.</strong> Shrink.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/11.Unfollow.html"><strong aria-hidden="true">1.8.8.2.</strong> Unfollow.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/12.WaitForSnapshot.html"><strong aria-hidden="true">1.8.8.3.</strong> WaitForSnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/2.Delete.html"><strong aria-hidden="true">1.8.8.4.</strong> Delete.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/3.ForceMerge.html"><strong aria-hidden="true">1.8.8.5.</strong> ForceMerge.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/4.Freeze.html"><strong aria-hidden="true">1.8.8.6.</strong> Freeze.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/5.Migrate.html"><strong aria-hidden="true">1.8.8.7.</strong> Migrate.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/6.ReadOnly.html"><strong aria-hidden="true">1.8.8.8.</strong> ReadOnly.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/7.Rollover.html"><strong aria-hidden="true">1.8.8.9.</strong> Rollover.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/8.SearchableSnapshot.html"><strong aria-hidden="true">1.8.8.10.</strong> SearchableSnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/5.IndexLifecycleActions/9.Setpriority.html"><strong aria-hidden="true">1.8.8.11.</strong> Setpriority.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/10.ManageExistingIndices/README.html"><strong aria-hidden="true">1.8.9.</strong> ManageExistingIndices</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/9.StartAndStopIndexLifecycleManagement/README.html"><strong aria-hidden="true">1.8.10.</strong> StartAndStopIndexLifecycleManagement</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/3.AutomateRolloverWithILM/README.html"><strong aria-hidden="true">1.8.11.</strong> AutomateRolloverWithILM</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/7.MigrateIndexAllocationFiltersToNodeRoles/README.html"><strong aria-hidden="true">1.8.12.</strong> MigrateIndexAllocationFiltersToNodeRoles</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/RolloverAPI.html"><strong aria-hidden="true">1.8.13.</strong> RolloverAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/7.ILM/ShrinkIndexAPI.html"><strong aria-hidden="true">1.8.14.</strong> ShrinkIndexAPI.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/README.html"><strong aria-hidden="true">1.9.</strong> Datamanagement</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/Datamanagement/DataTier.html"><strong aria-hidden="true">1.9.0.</strong> DataTier.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/README.html"><strong aria-hidden="true">1.10.</strong> snapshotAndRestore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CleanUpSnapshotRepo.html"><strong aria-hidden="true">1.10.0.</strong> CleanUpSnapshotRepo.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CloneSnapshot.html"><strong aria-hidden="true">1.10.1.</strong> CloneSnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateOrUpdateSnapshotAPI.html"><strong aria-hidden="true">1.10.2.</strong> CreateOrUpdateSnapshotAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/CreateSnapshot.html"><strong aria-hidden="true">1.10.3.</strong> CreateSnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapShot.html"><strong aria-hidden="true">1.10.4.</strong> DeleteSnapShot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/DeleteSnapshotRepository.html"><strong aria-hidden="true">1.10.5.</strong> DeleteSnapshotRepository.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/GetSnapshotAPI.html"><strong aria-hidden="true">1.10.6.</strong> GetSnapshotAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RegisterASnapshot.html"><strong aria-hidden="true">1.10.7.</strong> RegisterASnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/RestoreSnapshot.html"><strong aria-hidden="true">1.10.8.</strong> RestoreSnapshot.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SLM.html"><strong aria-hidden="true">1.10.9.</strong> SLM.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshots.html"><strong aria-hidden="true">1.10.10.</strong> SearchableSnapshots.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/SearchableSnapshotsMountAPI.html"><strong aria-hidden="true">1.10.11.</strong> SearchableSnapshotsMountAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/repository-s3.html"><strong aria-hidden="true">1.10.12.</strong> repository-s3.md</a></li><li class="chapter-item "><a href="../../elasticSearch/snapshotAndRestore/使用OSS备份恢复集群实战.html"><strong aria-hidden="true">1.10.13.</strong> 使用OSS备份恢复集群实战.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/README.html"><strong aria-hidden="true">1.11.</strong> IndexTemplates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/SimulateMultiComponentTemplates.html"><strong aria-hidden="true">1.11.0.</strong> SimulateMultiComponentTemplates.md</a></li><li class="chapter-item "><a href="../../elasticSearch/4.IndexTemplates/Templates.mm.html"><strong aria-hidden="true">1.11.1.</strong> Templates.mm.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/README.html"><strong aria-hidden="true">1.12.</strong> 索引分片分配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/1.索引级别的分片分配控制.html"><strong aria-hidden="true">1.12.0.</strong> 索引级别的分片分配控制.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/2.节点离开延迟分配.html"><strong aria-hidden="true">1.12.1.</strong> 节点离开延迟分配.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/3.索引恢复优先级.html"><strong aria-hidden="true">1.12.2.</strong> 索引恢复优先级.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/4.每个节点的总分片.html"><strong aria-hidden="true">1.12.3.</strong> 每个节点的总分片.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/5.索引级别数据层分配过滤.html"><strong aria-hidden="true">1.12.4.</strong> 索引级别数据层分配过滤.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/6.手动分配分片clusterRerouteAPI.html"><strong aria-hidden="true">1.12.5.</strong> 手动分配分片clusterRerouteAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引分片分配/7.cluster-allocation-explain.html"><strong aria-hidden="true">1.12.6.</strong> cluster-allocation-explain.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/README.html"><strong aria-hidden="true">1.13.</strong> 考纲解读</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/考纲解读/1.ClusterManagement.html"><strong aria-hidden="true">1.13.0.</strong> ClusterManagement.md</a></li><li class="chapter-item "><a href="../../elasticSearch/考纲解读/2.DataManagement.html"><strong aria-hidden="true">1.13.1.</strong> DataManagement.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/README.html"><strong aria-hidden="true">1.14.</strong> TextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/README.html"><strong aria-hidden="true">1.14.0.</strong> Built-inAnalyzerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/1.StandardAnalyzer.html"><strong aria-hidden="true">1.14.0.0.</strong> StandardAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/10.OpenRefine指纹算法.html"><strong aria-hidden="true">1.14.0.1.</strong> OpenRefine指纹算法.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/2.FingerprintAnalyzer.html"><strong aria-hidden="true">1.14.0.2.</strong> FingerprintAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/3.KeywordAnalyzer.html"><strong aria-hidden="true">1.14.0.3.</strong> KeywordAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/4.LanguageAnalyzers.html"><strong aria-hidden="true">1.14.0.4.</strong> LanguageAnalyzers.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/5.PatternAnalyzer.html"><strong aria-hidden="true">1.14.0.5.</strong> PatternAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/6.SimpleAnalyzer.html"><strong aria-hidden="true">1.14.0.6.</strong> SimpleAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/7.StopAnalyzer.html"><strong aria-hidden="true">1.14.0.7.</strong> StopAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/8.WhitespaceAnalyzer.html"><strong aria-hidden="true">1.14.0.8.</strong> WhitespaceAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/3.Built-inAnalyzerReference/9.Unicode文本分割算法.html"><strong aria-hidden="true">1.14.0.9.</strong> Unicode文本分割算法.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/README.html"><strong aria-hidden="true">1.14.1.</strong> TokenFilterReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/1.ASCIIFoldingTokenFilter.html"><strong aria-hidden="true">1.14.1.0.</strong> ASCIIFoldingTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/10.EdgeN-gramTokenFilter.html"><strong aria-hidden="true">1.14.1.1.</strong> EdgeN-gramTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/11.ElisionFokenFilter.html"><strong aria-hidden="true">1.14.1.2.</strong> ElisionFokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/12.FingerprintFokenFilter.html"><strong aria-hidden="true">1.14.1.3.</strong> FingerprintFokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/13.FlattenGraphTokenFilter.html"><strong aria-hidden="true">1.14.1.4.</strong> FlattenGraphTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/2.CJKBigramTokenFilter.html"><strong aria-hidden="true">1.14.1.5.</strong> CJKBigramTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/20.html"><strong aria-hidden="true">1.14.1.6.</strong> md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/3.CJKWidthTokenFilter.html"><strong aria-hidden="true">1.14.1.7.</strong> CJKWidthTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/4.ClassicTokenFilter.html"><strong aria-hidden="true">1.14.1.8.</strong> ClassicTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/5.CommonGramsTokenFilter.html"><strong aria-hidden="true">1.14.1.9.</strong> CommonGramsTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/6.ConditionalTokenFilter.html"><strong aria-hidden="true">1.14.1.10.</strong> ConditionalTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/7.DecimalDigitTokenFilter.html"><strong aria-hidden="true">1.14.1.11.</strong> DecimalDigitTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/8.DelimitedPayloadTokenFilter.html"><strong aria-hidden="true">1.14.1.12.</strong> DelimitedPayloadTokenFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/5.TokenFilterReference/9.DictionaryDecompounderFokenFilter.html"><strong aria-hidden="true">1.14.1.13.</strong> DictionaryDecompounderFokenFilter.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/README.html"><strong aria-hidden="true">1.14.2.</strong> CharacterFiltersReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/1.HTMLStripCharacterFilter.html"><strong aria-hidden="true">1.14.2.0.</strong> HTMLStripCharacterFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/2.MappingCharacterFilter.html"><strong aria-hidden="true">1.14.2.1.</strong> MappingCharacterFilter.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/6.CharacterFiltersReference/3.PatternReplaceCharacterFilter.html"><strong aria-hidden="true">1.14.2.2.</strong> PatternReplaceCharacterFilter.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/README.html"><strong aria-hidden="true">1.14.3.</strong> Concepts</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/1.AnatomyOfAnAnalyzer.html"><strong aria-hidden="true">1.14.3.0.</strong> AnatomyOfAnAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/2.IndexAndSearchAnalysis.html"><strong aria-hidden="true">1.14.3.1.</strong> IndexAndSearchAnalysis.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/3.Stemming.html"><strong aria-hidden="true">1.14.3.2.</strong> Stemming.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/1.Concepts/4.TokenGraphs.html"><strong aria-hidden="true">1.14.3.3.</strong> TokenGraphs.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/README.html"><strong aria-hidden="true">1.14.4.</strong> TokenizerReference</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/1.Ng-gram.html"><strong aria-hidden="true">1.14.4.0.</strong> Ng-gram.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/10.PathHierarchyTokenizer.html"><strong aria-hidden="true">1.14.4.1.</strong> PathHierarchyTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/11.UAXURLEmailTokenizer.html"><strong aria-hidden="true">1.14.4.2.</strong> UAXURLEmailTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/12.WhitespaceTokenizer.html"><strong aria-hidden="true">1.14.4.3.</strong> WhitespaceTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/13.PatternTokenizer.html"><strong aria-hidden="true">1.14.4.4.</strong> PatternTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/14.EdgeN-gramTokenizer.html"><strong aria-hidden="true">1.14.4.5.</strong> EdgeN-gramTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/2.Keyword.html"><strong aria-hidden="true">1.14.4.6.</strong> Keyword.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/3.SimplePattern.html"><strong aria-hidden="true">1.14.4.7.</strong> SimplePattern.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/4.SimplePatternSplitTokenizer.html"><strong aria-hidden="true">1.14.4.8.</strong> SimplePatternSplitTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/5.StandardTokenizer.html"><strong aria-hidden="true">1.14.4.9.</strong> StandardTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/6.CharacterGroupTokenizer.html"><strong aria-hidden="true">1.14.4.10.</strong> CharacterGroupTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/7.ClassicTokenizer.html"><strong aria-hidden="true">1.14.4.11.</strong> ClassicTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/8.LetterTokenizer.html"><strong aria-hidden="true">1.14.4.12.</strong> LetterTokenizer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/4.TokenizerReference/9.LowercaseTokenizer.html"><strong aria-hidden="true">1.14.4.13.</strong> LowercaseTokenizer.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/7.Normalizers/README.html"><strong aria-hidden="true">1.14.5.</strong> Normalizers</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/README.html"><strong aria-hidden="true">1.14.6.</strong> ConfigureTextAnalysis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/0.AnalyzeAPI.html"><strong aria-hidden="true">1.14.6.0.</strong> AnalyzeAPI.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/1.TestAnAnalyzer.html"><strong aria-hidden="true">1.14.6.1.</strong> TestAnAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/2.ConfiguringBuilt-inAnalyzers.html"><strong aria-hidden="true">1.14.6.2.</strong> ConfiguringBuilt-inAnalyzers.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/3.CreateACustomAnalyzer.html"><strong aria-hidden="true">1.14.6.3.</strong> CreateACustomAnalyzer.md</a></li><li class="chapter-item "><a href="../../elasticSearch/2.TextAnalysis/2.ConfigureTextAnalysis/4.SpecifyAnAnalyzer.html"><strong aria-hidden="true">1.14.6.4.</strong> SpecifyAnAnalyzer.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/README.html"><strong aria-hidden="true">1.15.</strong> IndexModules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/1.Analysis.html"><strong aria-hidden="true">1.15.0.</strong> Analysis.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/10.HistoryRetention.html"><strong aria-hidden="true">1.15.1.</strong> HistoryRetention.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/11.IndexSorting.html"><strong aria-hidden="true">1.15.2.</strong> IndexSorting.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/12.IndexPressure.html"><strong aria-hidden="true">1.15.3.</strong> IndexPressure.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/2.IndexShardAllocation.html"><strong aria-hidden="true">1.15.4.</strong> IndexShardAllocation.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/3.Indexblocks.html"><strong aria-hidden="true">1.15.5.</strong> Indexblocks.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/4.Mapper.html"><strong aria-hidden="true">1.15.6.</strong> Mapper.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/5.Merge.html"><strong aria-hidden="true">1.15.7.</strong> Merge.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/6.SimilarityModule.html"><strong aria-hidden="true">1.15.8.</strong> SimilarityModule.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/7.Slowlog.html"><strong aria-hidden="true">1.15.9.</strong> Slowlog.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/8.Store.html"><strong aria-hidden="true">1.15.10.</strong> Store.md</a></li><li class="chapter-item "><a href="../../elasticSearch/1.IndexModules/9.Translog.html"><strong aria-hidden="true">1.15.11.</strong> Translog.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/README.html"><strong aria-hidden="true">1.16.</strong> SearchYourData</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/1.CollapseSearchResults.html"><strong aria-hidden="true">1.16.0.</strong> CollapseSearchResults.md</a></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/2.FilterSearchResults.html"><strong aria-hidden="true">1.16.1.</strong> FilterSearchResults.md</a></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/3.Highlight.html"><strong aria-hidden="true">1.16.2.</strong> Highlight.md</a></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/4.LongRunningSearches.html"><strong aria-hidden="true">1.16.3.</strong> LongRunningSearches.md</a></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/5.NearReaTimeSearch.html"><strong aria-hidden="true">1.16.4.</strong> NearReaTimeSearch.md</a></li><li class="chapter-item "><a href="../../elasticSearch/8.SearchYourData/6.PaginateSearchResults.html"><strong aria-hidden="true">1.16.5.</strong> PaginateSearchResults.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/5.Aliases/README.html"><strong aria-hidden="true">1.17.</strong> Aliases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/5.Aliases/Aliases.mm.html"><strong aria-hidden="true">1.17.0.</strong> Aliases.mm.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/配置/README.html"><strong aria-hidden="true">1.18.</strong> 配置</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/配置/1.重要配置.html"><strong aria-hidden="true">1.18.0.</strong> 重要配置.md</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/2.elasticsearch.yml核心配置.html"><strong aria-hidden="true">1.18.1.</strong> elasticsearch.yml核心配置.md</a></li><li class="chapter-item "><a href="../../elasticSearch/配置/3.es系统参数修改.html"><strong aria-hidden="true">1.18.2.</strong> es系统参数修改.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/dataStream.html"><strong aria-hidden="true">1.19.</strong> dataStream.md</a></li><li class="chapter-item "><a href="../../elasticSearch/elasticsearch-docker.html"><strong aria-hidden="true">1.20.</strong> elasticsearch-docker.md</a></li><li class="chapter-item "><a href="../../elasticSearch/es堆内存如何分配.html"><strong aria-hidden="true">1.21.</strong> es堆内存如何分配.md</a></li><li class="chapter-item "><a href="../../elasticSearch/scroll查询.html"><strong aria-hidden="true">1.22.</strong> scroll查询.md</a></li><li class="chapter-item "><a href="../../elasticSearch/乐观并发控制.html"><strong aria-hidden="true">1.23.</strong> 乐观并发控制.md</a></li><li class="chapter-item "><a href="../../elasticSearch/分布式检索.html"><strong aria-hidden="true">1.24.</strong> 分布式检索.md</a></li><li class="chapter-item "><a href="../../elasticSearch/分片内部原理.html"><strong aria-hidden="true">1.25.</strong> 分片内部原理.md</a></li><li class="chapter-item "><a href="../../elasticSearch/分词.html"><strong aria-hidden="true">1.26.</strong> 分词.md</a></li><li class="chapter-item "><a href="../../elasticSearch/慢日志.html"><strong aria-hidden="true">1.27.</strong> 慢日志.md</a></li><li class="chapter-item "><a href="../../elasticSearch/搜索引擎中的概念杂项.html"><strong aria-hidden="true">1.28.</strong> 搜索引擎中的概念杂项.md</a></li><li class="chapter-item "><a href="../../elasticSearch/数据分片.html"><strong aria-hidden="true">1.29.</strong> 数据分片.md</a></li><li class="chapter-item "><a href="../../elasticSearch/映射.html"><strong aria-hidden="true">1.30.</strong> 映射.md</a></li><li class="chapter-item "><a href="../../elasticSearch/杂项学习.html"><strong aria-hidden="true">1.31.</strong> 杂项学习.md</a></li><li class="chapter-item expanded "><a href="../../elasticSearch/深入搜索.html"><strong aria-hidden="true">1.32.</strong> 深入搜索</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/深入搜索/全文搜索.html"><strong aria-hidden="true">1.32.0.</strong> 全文搜索.md</a></li><li class="chapter-item expanded "><a href="../../elasticSearch/深入搜索/多字段搜索.html" class="active"><strong aria-hidden="true">1.32.1.</strong> 多字段搜索.md</a></li><li class="chapter-item "><a href="../../elasticSearch/深入搜索/结构化搜索.html"><strong aria-hidden="true">1.32.2.</strong> 结构化搜索.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/索引和分片.html"><strong aria-hidden="true">1.33.</strong> 索引和分片.md</a></li><li class="chapter-item "><a href="../../elasticSearch/索引管理.html"><strong aria-hidden="true">1.34.</strong> 索引管理.md</a></li><li class="chapter-item "><a href="../../elasticSearch/聚合.html"><strong aria-hidden="true">1.35.</strong> 聚合</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/聚合/RareTermsAggregation.html"><strong aria-hidden="true">1.35.0.</strong> RareTermsAggregation.md</a></li><li class="chapter-item "><a href="../../elasticSearch/聚合/Term.html"><strong aria-hidden="true">1.35.1.</strong> Term.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/评分标准与相关性.html"><strong aria-hidden="true">1.36.</strong> 评分标准与相关性.md</a></li><li class="chapter-item "><a href="../../elasticSearch/集群.html"><strong aria-hidden="true">1.37.</strong> 集群</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/集群/Health.html"><strong aria-hidden="true">1.37.0.</strong> Health.md</a></li></ol></li><li class="chapter-item "><a href="../../elasticSearch/集群内原理.html"><strong aria-hidden="true">1.38.</strong> 集群内原理.md</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题.html"><strong aria-hidden="true">1.39.</strong> 高可用专题</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../elasticSearch/高可用专题/弹性设计.html"><strong aria-hidden="true">1.39.0.</strong> 弹性设计.md</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/跨集群复制.html"><strong aria-hidden="true">1.39.1.</strong> 跨集群复制.md</a></li><li class="chapter-item "><a href="../../elasticSearch/高可用专题/集群备份.html"><strong aria-hidden="true">1.39.2.</strong> 集群备份.md</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../mysql.html"><strong aria-hidden="true">2.</strong> mysql</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql日志/README.html"><strong aria-hidden="true">2.0.</strong> mysql日志</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql日志/mysql日志及分类.html"><strong aria-hidden="true">2.0.0.</strong> mysql日志及分类.md</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/二进制日志.html"><strong aria-hidden="true">2.0.1.</strong> 二进制日志.md</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/慢sql日志.html"><strong aria-hidden="true">2.0.2.</strong> 慢sql日志.md</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/通用日志.html"><strong aria-hidden="true">2.0.3.</strong> 通用日志.md</a></li><li class="chapter-item "><a href="../../mysql/mysql日志/错误日志.html"><strong aria-hidden="true">2.0.4.</strong> 错误日志.md</a></li></ol></li><li class="chapter-item "><a href="../../mysql/mysqlDataFile.html"><strong aria-hidden="true">2.1.</strong> mysqlDataFile.md</a></li><li class="chapter-item "><a href="../../mysql/mysqlfunction.html"><strong aria-hidden="true">2.2.</strong> mysqlfunction.md</a></li><li class="chapter-item "><a href="../../mysql/mysqlpdump.html"><strong aria-hidden="true">2.3.</strong> mysqlpdump.md</a></li><li class="chapter-item "><a href="../../mysql/mysqlzip安装.html"><strong aria-hidden="true">2.4.</strong> mysqlzip安装.md</a></li><li class="chapter-item "><a href="../../mysql/mysql公用表达式.html"><strong aria-hidden="true">2.5.</strong> mysql公用表达式.md</a></li><li class="chapter-item "><a href="../../mysql/mysql学习.html"><strong aria-hidden="true">2.6.</strong> mysql学习.md</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档.html"><strong aria-hidden="true">2.7.</strong> mysql官方文档</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/README.html"><strong aria-hidden="true">2.7.0.</strong> mysql程序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序/使用mysql相关程序.html"><strong aria-hidden="true">2.7.0.0.</strong> 使用mysql相关程序.md</a></li></ol></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/mysql程序.html"><strong aria-hidden="true">2.7.1.</strong> mysql程序.md</a></li><li class="chapter-item "><a href="../../mysql/mysql官方文档/客户端.html"><strong aria-hidden="true">2.7.2.</strong> 客户端.md</a></li></ol></li><li class="chapter-item "><a href="../../mysql/mysql执行计划.html"><strong aria-hidden="true">2.8.</strong> mysql执行计划.md</a></li><li class="chapter-item "><a href="../../mysql/空值处理函数.html"><strong aria-hidden="true">2.9.</strong> 空值处理函数.md</a></li></ol></li><li class="chapter-item "><a href="../../oracle.html"><strong aria-hidden="true">3.</strong> oracle</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../oracle/Oracle小知识点.html"><strong aria-hidden="true">3.0.</strong> Oracle小知识点.md</a></li><li class="chapter-item "><a href="../../oracle/oracledocker快速搭建.html"><strong aria-hidden="true">3.1.</strong> oracledocker快速搭建.md</a></li><li class="chapter-item "><a href="../../oracle/oracle多表更新方法.html"><strong aria-hidden="true">3.2.</strong> oracle多表更新方法.md</a></li></ol></li><li class="chapter-item "><a href="../../sql通用优化.html"><strong aria-hidden="true">4.</strong> sql通用优化.md</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +139,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">数据库</h1>
+                    <h1 class="menu-title">DB笔记</h1>
 
                     <div class="right-buttons">
 
@@ -379,11 +408,11 @@
 <p>如果我们知道 <em>War and Peace</em> 是标题，Leo Tolstoy 是作者，很容易就能把两个条件用 <code>match</code> 语句表示，并将它们用 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/bool-query.html"><code>bool</code> 查询</a> 组合起来：</p>
 <pre><code class="language-sense">GET /_search
 {
-  &quot;query&quot;: {
-    &quot;bool&quot;: {
-      &quot;should&quot;: [
-        { &quot;match&quot;: { &quot;title&quot;:  &quot;War and Peace&quot; }},
-        { &quot;match&quot;: { &quot;author&quot;: &quot;Leo Tolstoy&quot;   }}
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "title":  "War and Peace" }},
+        { "match": { "author": "Leo Tolstoy"   }}
       ]
     }
   }
@@ -394,15 +423,15 @@
 <p>当然，并不是只能使用 <code>match</code> 语句：可以用 <code>bool</code> 查询来包裹组合任意其他类型的查询，甚至包括其他的 <code>bool</code> 查询。我们可以在上面的示例中添加一条语句来指定译者版本的偏好：.</p>
 <pre><code class="language-sense">GET /_search
 {
-  &quot;query&quot;: {
-    &quot;bool&quot;: {
-      &quot;should&quot;: [
-        { &quot;match&quot;: { &quot;title&quot;:  &quot;War and Peace&quot; }},
-        { &quot;match&quot;: { &quot;author&quot;: &quot;Leo Tolstoy&quot;   }},
-        { &quot;bool&quot;:  {
-          &quot;should&quot;: [
-            { &quot;match&quot;: { &quot;translator&quot;: &quot;Constance Garnett&quot; }},
-            { &quot;match&quot;: { &quot;translator&quot;: &quot;Louise Maude&quot;      }}
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "title":  "War and Peace" }},
+        { "match": { "author": "Leo Tolstoy"   }},
+        { "bool":  {
+          "should": [
+            { "match": { "translator": "Constance Garnett" }},
+            { "match": { "translator": "Louise Maude"      }}
           ]
         }}
       ]
@@ -417,23 +446,23 @@
 <p>在武器库中，最容易使用的就是 <code>boost</code> 参数。为了提升 <code>title</code> 和 <code>author</code> 字段的权重，为它们分配的 <code>boost</code> 值大于 <code>1</code> ：</p>
 <pre><code class="language-sense">GET /_search
 {
-  &quot;query&quot;: {
-    &quot;bool&quot;: {
-      &quot;should&quot;: [
-        { &quot;match&quot;: { 
-            &quot;title&quot;:  {
-              &quot;query&quot;: &quot;War and Peace&quot;,
-              &quot;boost&quot;: 2
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { 
+            "title":  {
+              "query": "War and Peace",
+              "boost": 2
         }}},
-        { &quot;match&quot;: { 
-            &quot;author&quot;:  {
-              &quot;query&quot;: &quot;Leo Tolstoy&quot;,
-              &quot;boost&quot;: 2
+        { "match": { 
+            "author":  {
+              "query": "Leo Tolstoy",
+              "boost": 2
         }}},
-        { &quot;bool&quot;:  { 
-            &quot;should&quot;: [
-              { &quot;match&quot;: { &quot;translator&quot;: &quot;Constance Garnett&quot; }},
-              { &quot;match&quot;: { &quot;translator&quot;: &quot;Louise Maude&quot;      }}
+        { "bool":  { 
+            "should": [
+              { "match": { "translator": "Constance Garnett" }},
+              { "match": { "translator": "Louise Maude"      }}
             ]
         }}
       ]
@@ -468,23 +497,23 @@
 <p>假设有个网站允许用户搜索博客的内容，以下面两篇博客内容文档为例：</p>
 <pre><code class="language-sense">PUT /my_index/my_type/1
 {
-    &quot;title&quot;: &quot;Quick brown rabbits&quot;,
-    &quot;body&quot;:  &quot;Brown rabbits are commonly seen.&quot;
+    "title": "Quick brown rabbits",
+    "body":  "Brown rabbits are commonly seen."
 }
 
 PUT /my_index/my_type/2
 {
-    &quot;title&quot;: &quot;Keeping pets healthy&quot;,
-    &quot;body&quot;:  &quot;My quick brown fox eats rabbits on a regular basis.&quot;
+    "title": "Keeping pets healthy",
+    "body":  "My quick brown fox eats rabbits on a regular basis."
 }
 </code></pre>
 <p>用户输入词组 “Brown fox” 然后点击搜索按钮。事先，我们并不知道用户的搜索项是会在 <code>title</code> 还是在 <code>body</code> 字段中被找到，但是，用户很有可能是想搜索相关的词组。用肉眼判断，文档 2 的匹配度更高，因为它同时包括要查找的两个词：</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;bool&quot;: {
-            &quot;should&quot;: [
-                { &quot;match&quot;: { &quot;title&quot;: &quot;Brown fox&quot; }},
-                { &quot;match&quot;: { &quot;body&quot;:  &quot;Brown fox&quot; }}
+    "query": {
+        "bool": {
+            "should": [
+                { "match": { "title": "Brown fox" }},
+                { "match": { "body":  "Brown fox" }}
             ]
         }
     }
@@ -506,32 +535,32 @@ PUT /my_index/my_type/2
 <p>分离（Disjunction）的意思是 <em>或（or）</em> ，这与可以把结合（conjunction）理解成 <em>与（and）</em> 相对应</p>
 <p>分离最大化查询（Disjunction Max Query）指的是： <em>将任何与任一查询匹配的文档作为结果返回，但只将最佳匹配的评分作为查询的评分结果返回</em> ：</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;dis_max&quot;: {
-            &quot;queries&quot;: [
-                { &quot;match&quot;: { &quot;title&quot;: &quot;Brown fox&quot; }},
-                { &quot;match&quot;: { &quot;body&quot;:  &quot;Brown fox&quot; }}
+    "query": {
+        "dis_max": {
+            "queries": [
+                { "match": { "title": "Brown fox" }},
+                { "match": { "body":  "Brown fox" }}
             ]
         }
     }
 }
 </code></pre>
 <pre><code class="language-js">{
-  &quot;hits&quot;: [
+  "hits": [
      {
-        &quot;_id&quot;:      &quot;2&quot;,
-        &quot;_score&quot;:   0.21509302,
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Keeping pets healthy&quot;,
-           &quot;body&quot;:  &quot;My quick brown fox eats rabbits on a regular basis.&quot;
+        "_id":      "2",
+        "_score":   0.21509302,
+        "_source": {
+           "title": "Keeping pets healthy",
+           "body":  "My quick brown fox eats rabbits on a regular basis."
         }
      },
      {
-        &quot;_id&quot;:      &quot;1&quot;,
-        &quot;_score&quot;:   0.12713557,
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Quick brown rabbits&quot;,
-           &quot;body&quot;:  &quot;Brown rabbits are commonly seen.&quot;
+        "_id":      "1",
+        "_score":   0.12713557,
+        "_source": {
+           "title": "Quick brown rabbits",
+           "body":  "Brown rabbits are commonly seen."
         }
      }
   ]
@@ -540,32 +569,32 @@ PUT /my_index/my_type/2
 <h2 id="最佳字段查询调优"><a class="header" href="#最佳字段查询调优">最佳字段查询调优</a></h2>
 <p>当用户搜索 “quick pets” 时会发生什么呢？在前面的例子中，两个文档都包含词 <code>quick</code> ，但是只有文档 2 包含词 <code>pets</code> ，两个文档中都不具有同时包含 <em>两个词</em> 的 <em>相同字段</em> 。</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;dis_max&quot;: {
-            &quot;queries&quot;: [
-                { &quot;match&quot;: { &quot;title&quot;: &quot;Quick pets&quot; }},
-                { &quot;match&quot;: { &quot;body&quot;:  &quot;Quick pets&quot; }}
+    "query": {
+        "dis_max": {
+            "queries": [
+                { "match": { "title": "Quick pets" }},
+                { "match": { "body":  "Quick pets" }}
             ]
         }
     }
 }
 </code></pre>
 <pre><code class="language-js">{
-  &quot;hits&quot;: [
+  "hits": [
      {
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 0.12713557, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Quick brown rabbits&quot;,
-           &quot;body&quot;: &quot;Brown rabbits are commonly seen.&quot;
+        "_id": "1",
+        "_score": 0.12713557, 
+        "_source": {
+           "title": "Quick brown rabbits",
+           "body": "Brown rabbits are commonly seen."
         }
      },
      {
-        &quot;_id&quot;: &quot;2&quot;,
-        &quot;_score&quot;: 0.12713557, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Keeping pets healthy&quot;,
-           &quot;body&quot;: &quot;My quick brown fox eats rabbits on a regular basis.&quot;
+        "_id": "2",
+        "_score": 0.12713557, 
+        "_source": {
+           "title": "Keeping pets healthy",
+           "body": "My quick brown fox eats rabbits on a regular basis."
         }
      }
    ]
@@ -574,33 +603,33 @@ PUT /my_index/my_type/2
 <h3 id="tie_breaker-参数"><a class="header" href="#tie_breaker-参数">tie_breaker 参数</a></h3>
 <p>可以通过指定 <code>tie_breaker</code> 这个参数将其他匹配语句的评分也考虑其中：</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;dis_max&quot;: {
-            &quot;queries&quot;: [
-                { &quot;match&quot;: { &quot;title&quot;: &quot;Quick pets&quot; }},
-                { &quot;match&quot;: { &quot;body&quot;:  &quot;Quick pets&quot; }}
+    "query": {
+        "dis_max": {
+            "queries": [
+                { "match": { "title": "Quick pets" }},
+                { "match": { "body":  "Quick pets" }}
             ],
-            &quot;tie_breaker&quot;: 0.3
+            "tie_breaker": 0.3
         }
     }
 }
 </code></pre>
 <pre><code class="language-js">{
-  &quot;hits&quot;: [
+  "hits": [
      {
-        &quot;_id&quot;: &quot;2&quot;,
-        &quot;_score&quot;: 0.14757764, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Keeping pets healthy&quot;,
-           &quot;body&quot;: &quot;My quick brown fox eats rabbits on a regular basis.&quot;
+        "_id": "2",
+        "_score": 0.14757764, 
+        "_source": {
+           "title": "Keeping pets healthy",
+           "body": "My quick brown fox eats rabbits on a regular basis."
         }
      },
      {
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 0.124275915, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Quick brown rabbits&quot;,
-           &quot;body&quot;: &quot;Brown rabbits are commonly seen.&quot;
+        "_id": "1",
+        "_score": 0.124275915, 
+        "_source": {
+           "title": "Quick brown rabbits",
+           "body": "Brown rabbits are commonly seen."
         }
      }
    ]
@@ -619,55 +648,55 @@ PUT /my_index/my_type/2
 <p><code>multi_match</code> 多匹配查询的类型有多种，其中的三种恰巧与 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/_single_query_string.html#know-your-data">了解我们的数据</a> 中介绍的三个场景对应，即： <code>best_fields</code> 、 <code>most_fields</code> 和 <code>cross_fields</code> （最佳字段、多数字段、跨字段）。</p>
 <p>默认情况下，查询的类型是 <code>best_fields</code> ，这表示它会为每个字段生成一个 <code>match</code> 查询，然后将它们组合到 <code>dis_max</code> 查询的内部，如下：</p>
 <pre><code class="language-js">{
-  &quot;dis_max&quot;: {
-    &quot;queries&quot;:  [
+  "dis_max": {
+    "queries":  [
       {
-        &quot;match&quot;: {
-          &quot;title&quot;: {
-            &quot;query&quot;: &quot;Quick brown fox&quot;,
-            &quot;minimum_should_match&quot;: &quot;30%&quot;
+        "match": {
+          "title": {
+            "query": "Quick brown fox",
+            "minimum_should_match": "30%"
           }
         }
       },
       {
-        &quot;match&quot;: {
-          &quot;body&quot;: {
-            &quot;query&quot;: &quot;Quick brown fox&quot;,
-            &quot;minimum_should_match&quot;: &quot;30%&quot;
+        "match": {
+          "body": {
+            "query": "Quick brown fox",
+            "minimum_should_match": "30%"
           }
         }
       },
     ],
-    &quot;tie_breaker&quot;: 0.3
+    "tie_breaker": 0.3
   }
 }
 </code></pre>
 <p>上面这个查询用 <code>multi_match</code> 重写成更简洁的形式：</p>
 <pre><code class="language-sense">{
-    &quot;multi_match&quot;: {
-        &quot;query&quot;:                &quot;Quick brown fox&quot;,
-        &quot;type&quot;:                 &quot;best_fields&quot;,  //best_fields 类型是默认值，可以不指定。
-        &quot;fields&quot;:               [ &quot;title&quot;, &quot;body&quot; ],
-        &quot;tie_breaker&quot;:          0.3,
-        &quot;minimum_should_match&quot;: &quot;30%&quot; //如 minimum_should_match 或 operator 这样的参数会被传递到生成的 match 查询中。
+    "multi_match": {
+        "query":                "Quick brown fox",
+        "type":                 "best_fields",  //best_fields 类型是默认值，可以不指定。
+        "fields":               [ "title", "body" ],
+        "tie_breaker":          0.3,
+        "minimum_should_match": "30%" //如 minimum_should_match 或 operator 这样的参数会被传递到生成的 match 查询中。
     }
 }
 </code></pre>
 <h3 id="查询字段名称的模糊匹配"><a class="header" href="#查询字段名称的模糊匹配">查询字段名称的模糊匹配</a></h3>
 <p>字段名称可以用模糊匹配的方式给出：<strong>任何与模糊模式正则匹配的字段都会被包括在搜索条件中</strong>，例如可以使用以下方式同时匹配 <code>book_title</code> 、 <code>chapter_title</code> 和 <code>section_title</code> （书名、章名、节名）这三个字段：</p>
 <pre><code class="language-js">{
-    &quot;multi_match&quot;: {
-        &quot;query&quot;:  &quot;Quick brown fox&quot;,
-        &quot;fields&quot;: &quot;*_title&quot;
+    "multi_match": {
+        "query":  "Quick brown fox",
+        "fields": "*_title"
     }
 }
 </code></pre>
 <h3 id="提升单个字段的权重"><a class="header" href="#提升单个字段的权重">提升单个字段的权重</a></h3>
 <p>可以使用 <code>^</code> 字符语法为单个字段提升权重，在字段名称的末尾添加 <code>^boost</code> ，其中 <code>boost</code> 是一个浮点数：</p>
 <pre><code class="language-js">{
-    &quot;multi_match&quot;: {
-        &quot;query&quot;:  &quot;Quick brown fox&quot;,
-        &quot;fields&quot;: [ &quot;*_title&quot;, &quot;chapter_title^2&quot; ] 
+    "multi_match": {
+        "query":  "Quick brown fox",
+        "fields": [ "*_title", "chapter_title^2" ] 
     }
 }
 </code></pre>
@@ -696,17 +725,17 @@ PUT /my_index/my_type/2
 
 PUT /my_index
 {
-    &quot;settings&quot;: { &quot;number_of_shards&quot;: 1 }, 
-    &quot;mappings&quot;: {
-        &quot;my_type&quot;: {
-            &quot;properties&quot;: {
-                &quot;title&quot;: { 
-                    &quot;type&quot;:     &quot;string&quot;,
-                    &quot;analyzer&quot;: &quot;english&quot;, //title 字段使用 english 英语分析器来提取词干。
-                    &quot;fields&quot;: {
-                        &quot;std&quot;:   { 
-                            &quot;type&quot;:     &quot;string&quot;,
-                            &quot;analyzer&quot;: &quot;standard&quot; //title.std 字段使用 standard 标准分析器，所以没有词干提取。
+    "settings": { "number_of_shards": 1 }, 
+    "mappings": {
+        "my_type": {
+            "properties": {
+                "title": { 
+                    "type":     "string",
+                    "analyzer": "english", //title 字段使用 english 英语分析器来提取词干。
+                    "fields": {
+                        "std":   { 
+                            "type":     "string",
+                            "analyzer": "standard" //title.std 字段使用 standard 标准分析器，所以没有词干提取。
                         }
                     }
                 }
@@ -716,35 +745,35 @@ PUT /my_index
 }
 </code></pre>
 <pre><code class="language-sense">PUT /my_index/my_type/1
-{ &quot;title&quot;: &quot;My rabbit jumps&quot; }
+{ "title": "My rabbit jumps" }
 
 PUT /my_index/my_type/2
-{ &quot;title&quot;: &quot;Jumping jack rabbits&quot; }
+{ "title": "Jumping jack rabbits" }
 </code></pre>
 <pre><code class="language-sense">GET /my_index/_search
 {
-   &quot;query&quot;: {
-        &quot;match&quot;: {
-            &quot;title&quot;: &quot;jumping rabbits&quot;
+   "query": {
+        "match": {
+            "title": "jumping rabbits"
         }
     }
 }
 </code></pre>
 <p>因为有了 <code>english</code> 分析器，这个查询是在查找以 <code>jump</code> 和 <code>rabbit</code> 这两个被提取词的文档。两个文档的 <code>title</code> 字段都同时包括这两个词，所以两个文档得到的评分也相同：</p>
 <pre><code class="language-js">{
-  &quot;hits&quot;: [
+  "hits": [
      {
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 0.42039964,
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;My rabbit jumps&quot;
+        "_id": "1",
+        "_score": 0.42039964,
+        "_source": {
+           "title": "My rabbit jumps"
         }
      },
      {
-        &quot;_id&quot;: &quot;2&quot;,
-        &quot;_score&quot;: 0.42039964,
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Jumping jack rabbits&quot;
+        "_id": "2",
+        "_score": 0.42039964,
+        "_source": {
+           "title": "Jumping jack rabbits"
         }
      }
   ]
@@ -753,29 +782,29 @@ PUT /my_index/my_type/2
 <p>如果同时查询两个字段，然后使用 <code>bool</code> 查询将评分结果 <em>合并</em> ，那么两个文档都是匹配的（ <code>title</code> 字段的作用），而且文档 2 的相关度评分更高（ <code>title.std</code> 字段的作用）：</p>
 <pre><code class="language-sense">GET /my_index/_search
 {
-   &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:  &quot;jumping rabbits&quot;,
-            &quot;type&quot;:   &quot;most_fields&quot;, 
-            &quot;fields&quot;: [ &quot;title&quot;, &quot;title.std&quot; ]
+   "query": {
+        "multi_match": {
+            "query":  "jumping rabbits",
+            "type":   "most_fields", 
+            "fields": [ "title", "title.std" ]
         }
     }
 }
 </code></pre>
 <pre><code class="language-js">{
-  &quot;hits&quot;: [
+  "hits": [
      {
-        &quot;_id&quot;: &quot;2&quot;,
-        &quot;_score&quot;: 0.8226396, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;Jumping jack rabbits&quot;
+        "_id": "2",
+        "_score": 0.8226396, 
+        "_source": {
+           "title": "Jumping jack rabbits"
         }
      },
      {
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 0.10741998, 
-        &quot;_source&quot;: {
-           &quot;title&quot;: &quot;My rabbit jumps&quot;
+        "_id": "1",
+        "_score": 0.10741998, 
+        "_source": {
+           "title": "My rabbit jumps"
         }
      }
   ]
@@ -786,11 +815,11 @@ PUT /my_index/my_type/2
 <p>每个字段对于最终评分的贡献可以通过自定义值 <code>boost</code> 来控制。比如，使 <code>title</code> 字段更为重要，这样同时也降低了其他信号字段的作用：</p>
 <pre><code class="language-sense">GET /my_index/_search
 {
-   &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;jumping rabbits&quot;,
-            &quot;type&quot;:        &quot;most_fields&quot;,
-            &quot;fields&quot;:      [ &quot;title^10&quot;, &quot;title.std&quot; ] 
+   "query": {
+        "multi_match": {
+            "query":       "jumping rabbits",
+            "type":        "most_fields",
+            "fields":      [ "title^10", "title.std" ] 
         }
     }
 }
@@ -799,29 +828,29 @@ PUT /my_index/my_type/2
 <p>现在讨论一种普遍的搜索模式：跨字段实体搜索（cross-fields entity search）</p>
 <p>如 <code>person</code> 、 <code>product</code> 或 <code>address</code> （人、产品或地址）这样的实体中，需要使用多个字段来唯一标识它的信息。 <code>person</code> 实体可能是这样索引的：</p>
 <pre><code class="language-js">{
-    &quot;firstname&quot;:  &quot;Peter&quot;,
-    &quot;lastname&quot;:   &quot;Smith&quot;
+    "firstname":  "Peter",
+    "lastname":   "Smith"
 }
 </code></pre>
 <p>或地址：</p>
 <pre><code class="language-js">{
-    &quot;street&quot;:   &quot;5 Poland Street&quot;,
-    &quot;city&quot;:     &quot;London&quot;,
-    &quot;country&quot;:  &quot;United Kingdom&quot;,
-    &quot;postcode&quot;: &quot;W1V 3DG&quot;
+    "street":   "5 Poland Street",
+    "city":     "London",
+    "country":  "United Kingdom",
+    "postcode": "W1V 3DG"
 }
 </code></pre>
 <p>在本例中，我们想使用 <em>单个</em> 字符串在多个字段中进行搜索。</p>
 <h3 id="简单的方式"><a class="header" href="#简单的方式">简单的方式</a></h3>
 <p>依次查询每个字段并将每个字段的匹配评分结果相加，听起来真像是 <code>bool</code> 查询：</p>
 <pre><code class="language-js">{
-  &quot;query&quot;: {
-    &quot;bool&quot;: {
-      &quot;should&quot;: [
-        { &quot;match&quot;: { &quot;street&quot;:    &quot;Poland Street W1V&quot; }},
-        { &quot;match&quot;: { &quot;city&quot;:      &quot;Poland Street W1V&quot; }},
-        { &quot;match&quot;: { &quot;country&quot;:   &quot;Poland Street W1V&quot; }},
-        { &quot;match&quot;: { &quot;postcode&quot;:  &quot;Poland Street W1V&quot; }}
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "street":    "Poland Street W1V" }},
+        { "match": { "city":      "Poland Street W1V" }},
+        { "match": { "country":   "Poland Street W1V" }},
+        { "match": { "postcode":  "Poland Street W1V" }}
       ]
     }
   }
@@ -829,11 +858,11 @@ PUT /my_index/my_type/2
 </code></pre>
 <p>为每个字段重复查询字符串会使查询瞬间变得冗长，可以采用 <code>multi_match</code> 查询，将 <code>type</code> 设置成 <code>most_fields</code> 然后告诉 Elasticsearch 合并所有匹配字段的评分：</p>
 <pre><code class="language-js">{
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;:       &quot;Poland Street W1V&quot;,
-      &quot;type&quot;:        &quot;most_fields&quot;,
-      &quot;fields&quot;:      [ &quot;street&quot;, &quot;city&quot;, &quot;country&quot;, &quot;postcode&quot; ]
+  "query": {
+    "multi_match": {
+      "query":       "Poland Street W1V",
+      "type":        "most_fields",
+      "fields":      [ "street", "city", "country", "postcode" ]
     }
   }
 }
@@ -854,11 +883,11 @@ PUT /my_index/my_type/2
 <p>可以通过 <code>validate-query</code> API 查看：</p>
 <pre><code class="language-sense">GET /_validate/query?explain
 {
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;:   &quot;Poland Street W1V&quot;,
-      &quot;type&quot;:    &quot;most_fields&quot;,
-      &quot;fields&quot;:  [ &quot;street&quot;, &quot;city&quot;, &quot;country&quot;, &quot;postcode&quot; ]
+  "query": {
+    "multi_match": {
+      "query":   "Poland Street W1V",
+      "type":    "most_fields",
+      "fields":  [ "street", "city", "country", "postcode" ]
     }
   }
 }
@@ -872,12 +901,12 @@ PUT /my_index/my_type/2
 <h3 id="问题-2-剪掉长尾"><a class="header" href="#问题-2-剪掉长尾">问题 2 ：剪掉长尾</a></h3>
 <p>在 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/match-multi-word.html#match-precision">匹配精度</a> 中，我们讨论过使用 <code>and</code> 操作符或设置 <code>minimum_should_match</code> 参数来消除结果中几乎不相关的长尾，或许可以尝试以下方式：</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;Poland Street W1V&quot;,
-            &quot;type&quot;:        &quot;most_fields&quot;,
-            &quot;operator&quot;:    &quot;and&quot;, 
-            &quot;fields&quot;:      [ &quot;street&quot;, &quot;city&quot;, &quot;country&quot;, &quot;postcode&quot; ]
+    "query": {
+        "multi_match": {
+            "query":       "Poland Street W1V",
+            "type":        "most_fields",
+            "operator":    "and", 
+            "fields":      [ "street", "city", "country", "postcode" ]
         }
     }
 }
@@ -903,11 +932,11 @@ PUT /my_index/my_type/2
 <p>想想用字段 <code>first_name</code> 和 <code>last_name</code> 查询 “Peter Smith” 的例子， Peter 是个平常的名 Smith 也是平常的姓，这两者都具有较低的 IDF 值。但当索引中有另外一个人的名字是 “Smith Williams” 时， Smith 作为名来说很不平常，以致它有一个较高的 IDF 值！</p>
 <p>下面这个简单的查询可能会在结果中将 “Smith Williams” 置于 “Peter Smith” 之上，尽管事实上是第二个人比第一个人更为匹配。</p>
 <pre><code class="language-sense">{
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;Peter Smith&quot;,
-            &quot;type&quot;:        &quot;most_fields&quot;,
-            &quot;fields&quot;:      [ &quot;*_name&quot; ]
+    "query": {
+        "multi_match": {
+            "query":       "Peter Smith",
+            "type":        "most_fields",
+            "fields":      [ "*_name" ]
         }
     }
 }
@@ -916,9 +945,9 @@ PUT /my_index/my_type/2
 <h3 id="解决方案"><a class="header" href="#解决方案">解决方案</a></h3>
 <p>存在这些问题仅仅是因为我们在处理着多个字段，如果将所有这些字段组合成单个字段，问题就会消失。可以为 <code>person</code> 文档添加 <code>full_name</code> 字段来解决这个问题：</p>
 <pre><code class="language-js">{
-    &quot;first_name&quot;:  &quot;Peter&quot;,
-    &quot;last_name&quot;:   &quot;Smith&quot;,
-    &quot;full_name&quot;:   &quot;Peter Smith&quot;
+    "first_name":  "Peter",
+    "last_name":   "Smith",
+    "full_name":   "Peter Smith"
 }
 </code></pre>
 <p>当查询 <code>full_name</code> 字段时：</p>
@@ -932,19 +961,19 @@ PUT /my_index/my_type/2
 <p>Elasticsearch 在字段映射中为我们提供 <code>copy_to</code> 参数来实现这个功能：</p>
 <pre><code class="language-sense">PUT /my_index
 {
-    &quot;mappings&quot;: {
-        &quot;person&quot;: {
-            &quot;properties&quot;: {
-                &quot;first_name&quot;: {
-                    &quot;type&quot;:     &quot;string&quot;,
-                    &quot;copy_to&quot;:  &quot;full_name&quot; 
+    "mappings": {
+        "person": {
+            "properties": {
+                "first_name": {
+                    "type":     "string",
+                    "copy_to":  "full_name" 
                 },
-                &quot;last_name&quot;: {
-                    &quot;type&quot;:     &quot;string&quot;,
-                    &quot;copy_to&quot;:  &quot;full_name&quot; 
+                "last_name": {
+                    "type":     "string",
+                    "copy_to":  "full_name" 
                 },
-                &quot;full_name&quot;: {
-                    &quot;type&quot;:     &quot;string&quot;
+                "full_name": {
+                    "type":     "string"
                 }
             }
         }
@@ -963,11 +992,11 @@ PUT /my_index/my_type/2
 <p><strong>字段中心式：为每个字段 生成一个 match查询</strong></p>
 <pre><code class="language-json">GET /_validate/query?explain
 {
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;:   &quot;Poland Street W1V&quot;,
-      &quot;type&quot;:    &quot;most_fields&quot;,
-      &quot;fields&quot;:  [ &quot;street&quot;, &quot;city&quot;, &quot;country&quot;, &quot;postcode&quot; ]
+  "query": {
+    "multi_match": {
+      "query":   "Poland Street W1V",
+      "type":    "most_fields",
+      "fields":  [ "street", "city", "country", "postcode" ]
     }
   }
 }
@@ -980,7 +1009,7 @@ PUT /my_index/my_type/2
 <p><strong>词中心式</strong>：为每个词在所有 的字段中 查找匹配的文档，每个文档都要包含该词</p>
 <p><strong>出现的问题</strong></p>
 <ul>
-<li>多词匹配：多个字段匹配多个词项导致的相关度计算有误，场景：两个字段 同时匹配 poland 比 一个 字段匹配 poland street 的相关度要高 </li>
+<li>多词匹配：多个字段匹配多个词项导致的相关度计算有误，场景：两个字段 同时匹配 poland 比 一个 字段匹配 poland street 的相关度要高</li>
 <li>长尾：多个字段匹配多个词项导致许多细小的匹配</li>
 <li>反向文档词频：搜索 <strong>Peter Smith</strong>  可能会在结果中将 “Smith Williams” 置于 “Peter Smith” 之上，因为 Smith作为lastName 的IDF过高会拉低分数
 <ul>
@@ -996,12 +1025,12 @@ PUT /my_index/my_type/2
 <p>为了说明字段中心式（field-centric）与词中心式（term-centric）这两种查询方式的不同，先看看以下字段中心式的 <code>most_fields</code> 查询的 <code>explanation</code> 解释：</p>
 <pre><code class="language-sense">GET /_validate/query?explain
 {
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;peter smith&quot;,
-            &quot;type&quot;:        &quot;most_fields&quot;,
-            &quot;operator&quot;:    &quot;and&quot;, 
-            &quot;fields&quot;:      [ &quot;first_name&quot;, &quot;last_name&quot; ]
+    "query": {
+        "multi_match": {
+            "query":       "peter smith",
+            "type":        "most_fields",
+            "operator":    "and", 
+            "fields":      [ "first_name", "last_name" ]
         }
     }
 }
@@ -1018,28 +1047,28 @@ PUT /my_index/my_type/2
 <p><code>cross_fields</code> 类型首先分析查询字符串并生成一个词列表，然后它从所有字段中依次搜索每个词</p>
 <pre><code class="language-sense">GET /_validate/query?explain
 {
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;peter smith&quot;,
-            &quot;type&quot;:        &quot;cross_fields&quot;, 
-            &quot;operator&quot;:    &quot;and&quot;,
-            &quot;fields&quot;:      [ &quot;first_name&quot;, &quot;last_name&quot; ]
+    "query": {
+        "multi_match": {
+            "query":       "peter smith",
+            "type":        "cross_fields", 
+            "operator":    "and",
+            "fields":      [ "first_name", "last_name" ]
         }
     }
 }
 </code></pre>
 <p>用 <code>cross_fields</code> 词中心式匹配。</p>
 <p>它通过 <em>混合</em> 不同字段逆向索引文档频率的方式解决了词频的问题：</p>
-<pre><code>+blended(&quot;peter&quot;, fields: [first_name, last_name])
-+blended(&quot;smith&quot;, fields: [first_name, last_name])
+<pre><code>+blended("peter", fields: [first_name, last_name])
++blended("smith", fields: [first_name, last_name])
 </code></pre>
 <p>换句话说，它会同时在 <code>first_name</code> 和 <code>last_name</code> 两个字段中查找 <code>smith</code> 的 IDF ，然后用两者的最小值作为两个字段的 IDF 。结果实际上就是 <code>smith</code> 会被认为既是个平常的姓，也是平常的名。</p>
 <p>为了让 <code>cross_fields</code> 查询以最优方式工作，所有的字段都须使用相同的分析器，具有相同分析器的字段会被分组在一起作为混合字段使用。</p>
 <p>如果包括了不同分析链的字段，它们会以 <code>best_fields</code> 的相同方式被加入到查询结果中。例如：我们将 <code>title</code> 字段加到之前的查询中（假设它们使用的是不同的分析器）， explanation 的解释结果如下：</p>
 <pre><code>(+title:peter +title:smith)
 (
-  +blended(&quot;peter&quot;, fields: [first_name, last_name])
-  +blended(&quot;smith&quot;, fields: [first_name, last_name])
+  +blended("peter", fields: [first_name, last_name])
+  +blended("smith", fields: [first_name, last_name])
 )
 </code></pre>
 <p>当在使用 <code>minimum_should_match</code> 和 <code>operator</code> 参数时，这点尤为重要。</p>
@@ -1048,11 +1077,11 @@ PUT /my_index/my_type/2
 <p>这对像 <code>first_name</code> 和 <code>last_name</code> 具有相同值的字段并不是必须的，但如果要用 <code>title</code> 和 <code>description</code> 字段搜索图书，可能希望为 <code>title</code> 分配更多的权重，这同样可以使用前面介绍过的 <code>^</code> 符号语法来实现：</p>
 <pre><code class="language-js">GET /books/_search
 {
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;peter smith&quot;,
-            &quot;type&quot;:        &quot;cross_fields&quot;,
-            &quot;fields&quot;:      [ &quot;title^2&quot;, &quot;description&quot; ] 
+    "query": {
+        "multi_match": {
+            "query":       "peter smith",
+            "type":        "cross_fields",
+            "fields":      [ "title^2", "description" ] 
         }
     }
 }
@@ -1063,11 +1092,11 @@ PUT /my_index/my_type/2
 <p>原因可以通过查看查询的 explanation 解释得到，设想将 <code>title</code> 字段设置成 <code>not_analyzed</code> ：</p>
 <pre><code class="language-sense">GET /_validate/query?explain
 {
-    &quot;query&quot;: {
-        &quot;multi_match&quot;: {
-            &quot;query&quot;:       &quot;peter smith&quot;,
-            &quot;type&quot;:        &quot;cross_fields&quot;,
-            &quot;fields&quot;:      [ &quot;title&quot;, &quot;first_name&quot;, &quot;last_name&quot; ]
+    "query": {
+        "multi_match": {
+            "query":       "peter smith",
+            "type":        "cross_fields",
+            "fields":      [ "title", "first_name", "last_name" ]
         }
     }
 }
@@ -1075,8 +1104,8 @@ PUT /my_index/my_type/2
 <p>因为 <code>title</code> 字段是未分析过的，Elasticsearch 会将 “peter smith” 这个完整的字符串作为查询条件来搜索！</p>
 <pre><code>title:peter smith
 (
-    blended(&quot;peter&quot;, fields: [first_name, last_name])
-    blended(&quot;smith&quot;, fields: [first_name, last_name])
+    blended("peter", fields: [first_name, last_name])
+    blended("smith", fields: [first_name, last_name])
 )
 </code></pre>
 <p>显然这个项不在 <code>title</code> 的倒排索引中，所以需要在 <code>multi_match</code> 查询中避免使用 <code>not_analyzed</code> 字段。</p>
@@ -1141,7 +1170,7 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title=""></span></p>
+<p><span data-infisearch-part-title="未分类"></span></p>
 
                     </main>
 
@@ -1151,7 +1180,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../elasticSearch/深入搜索/结构化搜索.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../elasticSearch/深入搜索/结构化搜索.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -1165,7 +1194,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../elasticSearch/深入搜索/结构化搜索.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../elasticSearch/深入搜索/结构化搜索.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -1181,9 +1210,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
