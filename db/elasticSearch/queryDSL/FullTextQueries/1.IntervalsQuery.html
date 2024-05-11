@@ -401,13 +401,9 @@
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
 <h2 id="intervals-query"><a class="header" href="#intervals-query">Intervals query</a></h2>
-<p>Returns documents based on the order and proximity of matching terms.</p>
-<p>The <code>intervals</code> query uses <strong>matching rules</strong>, constructed from a small set of definitions.</p>
-<p>These rules are then applied to terms from a specified <code>field</code>.</p>
-<p>The definitions produce sequences of minimal intervals that span terms in a body of text. These intervals can be further combined and filtered by parent sources.</p>
+<p>根据匹配 <code>term</code> 的顺序 (order)和接近程度 （proximity） 返回文档。</p>
 <h2 id="example-request"><a class="header" href="#example-request">Example request</a></h2>
-<p>The following <code>intervals</code> search returns documents containing <code>my favorite food</code> without any gap, followed by <code>hot water</code> or <code>cold porridge</code> in the <code>my_text</code> field.</p>
-<p>This search would match a <code>my_text</code> value of <code>my favorite food is cold porridge</code> but not <code>when it's cold my favorite food is porridge</code>.</p>
+<p>下面的quey 匹配序列  "my favorite food" 。后面接着 hot water 或者 cold porridge</p>
 <pre><code class="language-json">POST _search
 {
   "query": { 
@@ -438,7 +434,7 @@
   }
 }
 </code></pre>
-<h2 id="top-level-parameters-for-intervals"><a class="header" href="#top-level-parameters-for-intervals">Top-level parameters for <code>intervals</code></a></h2>
+<h2 id="intervals参数"><a class="header" href="#intervals参数"><code>intervals</code>参数</a></h2>
 <ul>
 <li>
 <p><strong><code>&lt;field&gt;</code></strong></p>
@@ -455,10 +451,11 @@
 <li>
 <p><strong><code>max_gaps</code></strong></p>
 <p>(Optional, integer) Maximum number of positions between the matching terms. Terms further apart than this are not considered matches. Defaults to <code>-1</code>.If unspecified or set to <code>-1</code>, there is no width restriction on the match. If set to <code>0</code>, the terms must appear next to each other.</p>
+<p>(可选，整数) 匹配项之间的最大位置数。除此之外的 <code>term</code> 不被视为匹配项。默认为 <code>-1</code>。如果未指定或设置为 <code>-1</code>，则对匹配没有宽度限制。如果设置为 “0”，则术语必须彼此相邻。</p>
 </li>
 <li>
 <p><strong><code>ordered</code></strong></p>
-<p>(Optional, Boolean) If <code>true</code>, matching terms must appear in their specified order. Defaults to <code>false</code>.</p>
+<p>(Optional, Boolean) If <code>true</code>, 匹配的<code> term</code> 必须以其指定的顺序出现. Defaults to <code>false</code>.</p>
 </li>
 <li>
 <p><strong><code>analyzer</code></strong></p>
@@ -466,19 +463,20 @@
 </li>
 <li>
 <p><strong><code>filter</code></strong></p>
-<p>(Optional, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/query-dsl-intervals-query.html#interval_filter">interval filter</a> rule object) An optional interval filter.</p>
+<p>(Optional, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/query-dsl-intervals-query.html#interval_filter">interval filter</a> rule object) An optional interval filter. 过滤匹配的Query</p>
 </li>
 <li>
 <p><strong><code>use_field</code></strong></p>
-<p>(Optional, string) If specified, then match intervals from this field rather than the top-level <code>&lt;field&gt;</code>. Terms are analyzed using the search analyzer from this field. This allows you to search across multiple fields as if they were all the same field; for example, you could index the same text into stemmed and unstemmed fields, and search for stemmed tokens near unstemmed ones.</p>
+<p>(Optional, string)  如果指定，则匹配此字段中的 intervals ，而不是顶级 <code>&lt;field&gt;</code>。使用搜索分析器从该字段分析术语。这允许您在多个字段中进行搜索，就好像它们都是相同的字段一样; 例如，您可以将相同的文本索引到有词根和无词根字段中，并在无词根的附近搜索有词根的标记。</p>
 </li>
 </ul>
 <h3 id="prefix-rule-parameters"><a class="header" href="#prefix-rule-parameters"><code>prefix</code> rule parameters</a></h3>
 <p>The <code>prefix</code> rule matches terms that start with a specified set of characters. This prefix can expand to match at most 128 terms. If the prefix matches more than 128 terms, Elasticsearch returns an error. You can use the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index-prefixes.html"><code>index-prefixes</code></a> option in the field mapping to avoid this limit.</p>
+<p><code>prefix</code> 规则匹配以指定字符串开头的术语。此前缀最多可以扩展到匹配128 term。如果前缀与128个以上的术语匹配，Elasticsearch将返回错误。您可以在字段映射中使用 ['索引前缀'](https:// www.elastic.co/guide/en/elasticsearch/reference/7.17/index-prefixes.html) 选项来避免此限制。</p>
 <ul>
 <li>
 <p><strong><code>prefix</code></strong></p>
-<p>(Required, string) Beginning characters of terms you wish to find in the top-level <code>&lt;field&gt;</code>.</p>
+<p>(Required, string) 您希望在顶级 “<field>” 中找到的术语的开始字符。</p>
 </li>
 <li>
 <p><strong><code>analyzer</code></strong></p>
@@ -507,6 +505,8 @@
 </ul>
 <h3 id="fuzzy-rule-parameters"><a class="header" href="#fuzzy-rule-parameters"><code>fuzzy</code> rule parameters</a></h3>
 <p>The <code>fuzzy</code> rule matches terms that are similar to the provided term, within an edit distance defined by <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/common-options.html#fuzziness">Fuzziness</a>. If the fuzzy expansion matches more than 128 terms, Elasticsearch returns an error.</p>
+<p>“Fuzzy” 规则在由 [Fuzziness](https:// www.elastic.co/guide/en/elasticsearch/reference/7.17/common-options.html # fuzziness) 定义的编辑距离内匹配与提供的术语相似的术语。如果模糊扩展匹配超过128个术语，Elasticsearch将返回错误。</p>
+<p>编辑距离量化了将一个字符串转换为另一个字符串需要的单个字符更改数量。</p>
 <ul>
 <li>
 <p><strong><code>term</code></strong></p>
@@ -515,6 +515,7 @@
 <li>
 <p><strong><code>prefix_length</code></strong></p>
 <p>(Optional, integer) Number of beginning characters left unchanged when creating expansions. Defaults to <code>0</code>.</p>
+<p><strong>保持前缀不变的的长度</strong></p>
 </li>
 <li>
 <p><strong><code>transpositions</code></strong></p>
