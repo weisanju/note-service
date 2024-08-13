@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>DNS&amp;DHCP.md - 计算机网络</title>
+        <title>xl2tpd配置详解.md - 计算机网络</title>
 
 
         <!-- Custom HTML head -->
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="DNS&DHCP.html" class="active"><strong aria-hidden="true">0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="SSH代理.html"><strong aria-hidden="true">1.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="Socks5协议.html"><strong aria-hidden="true">2.</strong> Socks5协议.md</a></li><li class="chapter-item "><a href="dns-searchdomain.html"><strong aria-hidden="true">3.</strong> dns-searchdomain.md</a></li><li class="chapter-item "><a href="ipsec-l2tpd.html"><strong aria-hidden="true">4.</strong> ipsec-l2tpd.md</a></li><li class="chapter-item "><a href="strongSwan.html"><strong aria-hidden="true">5.</strong> strongSwan.md</a></li><li class="chapter-item "><a href="systemd&rsolved.html"><strong aria-hidden="true">6.</strong> systemd&rsolved.md</a></li><li class="chapter-item "><a href="tcpdump.html"><strong aria-hidden="true">7.</strong> tcpdump.md</a></li><li class="chapter-item "><a href="v2rayN代理.html"><strong aria-hidden="true">8.</strong> v2rayN代理.md</a></li><li class="chapter-item "><a href="xl2tpd配置详解.html"><strong aria-hidden="true">9.</strong> xl2tpd配置详解.md</a></li><li class="chapter-item "><a href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">10.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="DNS&DHCP.html"><strong aria-hidden="true">0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="SSH代理.html"><strong aria-hidden="true">1.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="Socks5协议.html"><strong aria-hidden="true">2.</strong> Socks5协议.md</a></li><li class="chapter-item "><a href="dns-searchdomain.html"><strong aria-hidden="true">3.</strong> dns-searchdomain.md</a></li><li class="chapter-item "><a href="ipsec-l2tpd.html"><strong aria-hidden="true">4.</strong> ipsec-l2tpd.md</a></li><li class="chapter-item "><a href="strongSwan.html"><strong aria-hidden="true">5.</strong> strongSwan.md</a></li><li class="chapter-item "><a href="systemd&rsolved.html"><strong aria-hidden="true">6.</strong> systemd&rsolved.md</a></li><li class="chapter-item "><a href="tcpdump.html"><strong aria-hidden="true">7.</strong> tcpdump.md</a></li><li class="chapter-item "><a href="v2rayN代理.html"><strong aria-hidden="true">8.</strong> v2rayN代理.md</a></li><li class="chapter-item expanded "><a href="xl2tpd配置详解.html" class="active"><strong aria-hidden="true">9.</strong> xl2tpd配置详解.md</a></li><li class="chapter-item "><a href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">10.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -400,186 +400,187 @@
 /></p>
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
-<h2 id="dns配置"><a class="header" href="#dns配置">DNS配置</a></h2>
-<h3 id="etchosts"><a class="header" href="#etchosts">/etc/hosts</a></h3>
-<p>在Linux系统，主机配置文件为/etc/hosts，这是主机名的静态查找表。这个文件是简单的文本文件，用于保存主机名称和IP之间对应关系。
-其格式为一个 IP 地址占用一行， 每一个主机关联一个IP地址（各个域之间用空格或制表字符分开）。格式如下：
-127.0.0.1 localhost [aliases...]</p>
-<h3 id="etchosts文件的作用"><a class="header" href="#etchosts文件的作用">/etc/hosts文件的作用</a></h3>
+<h2 id="简介"><a class="header" href="#简介">简介</a></h2>
+<p>xl2tpd的配置文件xl2tpd.conf一共有3种区块类型:</p>
 <ol>
-<li>
-<p>包含本地网络上的信息主机信息表</p>
-</li>
-<li>
-<p>DNS 输入：使用主机表作为 DNS 服务主机数据库的输入，或 者使用主机表作为备用配置。</p>
-</li>
-<li>
-<p>加快域名解析，节省网络流量
-hosts 文件在主机上配置具有加快域名解析的作用， 对于经常访问的网站和主机，我们可以在 hosts 文件中配置域名和 IP 的对应关系。由于有 了映射关系，当我们访问域名时，可以直接从 hosts 文件中解析得出，而不用访问网络上 的域名服务器，不用消耗网络流量。</p>
-</li>
-<li>
-<p>屏蔽网站（域名重定向）
-屏蔽广告网站，有很多网站带有广告，但广告和网站 本身域名不同，因此如果能屏蔽一些众所周知的广告网站域名，这样我们利用 hosts 把这 些广告的网站的域名映射到本机 IP 或非法目的 IP，这样就不会看到这些广告图片了,也不 会浪费网络流量。</p>
-</li>
-<li>
-<p>防止 DNS 污染和 DNS 劫持</p>
-<ol>
-<li>DNS 劫持就是攻破了 DNS 服务器防护，从而获得 域名解析记录的控制权，进而修改域名解析的结果。这将导致对原始域名的访问转到另外 的 IP 地址。</li>
-<li>DNS 污染是因为 DNS 查询没有任何认证机制，而且 DNS 查询通常采用的 UDP 是无 连接不可靠的协议，因此 DNS 的查询非常容易被篡改：通过对 UDP 端口 53 上的 DNS 查 询报文进行分析，一旦发现与关键词相匹配的请求则立即伪装成目标域名的解析服务器给 查询者返回虚假结果。</li>
-<li>如果我们已知服务器的 IP 地址，就可以在 hosts 文件中设置正确的 IP 地址，从而避 免 DNS 劫持和污染。</li>
+<li>global 全局配置章节</li>
+<li>lns LNS(L2TP Network Server网络服务器)配置章节，作为服务器时</li>
+<li>lac LAC(L2TP Access Concentrator接入汇聚点)配置章节，作为客户端时</li>
 </ol>
-</li>
-</ol>
-<h3 id="广域网上的dns"><a class="header" href="#广域网上的dns">广域网上的DNS</a></h3>
-<ol>
-<li>在因特网中，主机地址非常庞大，并且主 机的IP地址经常改变，因此使用域名系统 DNS 代替主机系统。</li>
-<li>DNS 可以被视为一种用于 TCP/IP 应用程序的分布式数据库，它提供主机名字和 IP 地址间的相互转换</li>
-<li>这里提到的分布式是指在因特网上的单个站点不能拥有所有的信息</li>
-<li>每个站点（如大学中的系、校园、公司或公司的部门）保留它自己的信息数据库，并运行一 个服务器程序供因特网上的其他系统查询。</li>
-</ol>
-<h3 id="域名结构"><a class="header" href="#域名结构">域名结构</a></h3>
-<ul>
-<li>未命名跟节点
-<ul>
-<li>net</li>
-</ul>
-<ul>
-<li>bjbook
-<ul>
-<li>www</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>com</li>
-</ul>
-<ul>
-<li>cctv</li>
-</ul>
-<ul>
-<li>gov</li>
-<li>org</li>
-<li>openwrt
-www
-dev
-wiki</li>
-<li>ietf</li>
-<li>cn、sg、us</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>其最顶端有一个未命名的根节点，然后其下分为几个基本类别名称（称 为顶层域名），例如 com、org、net 和 gov 等 3字符域名，还有 cn、sg、jp 和 us 等两个字 符国家地区域名。</li>
-<li>每个节点有一个至多 63 个字符长的标识，域名总长度则不能超过 253 个字符。</li>
-<li>命名标识中不区分大写和小写。</li>
-<li>命名树上任何一个节点的域名就是将从该节点到 最高层的域名串连起来，中间使用一个点“.”分隔这些节点。例如，一个完整的域名为 www.bjbook.net。</li>
-<li>域名树中的每个节点必须有一个唯一的名称，但域名树中的不同层级节 点可使用相同的标识，只要在不同的父节点下即可。</li>
-</ol>
-<h3 id="dns报文格式"><a class="header" href="#dns报文格式">DNS报文格式</a></h3>
-<ol>
-<li>DNS默认使用TCP和UDP端口53。CS模型。DNS的请求和应答封装在UDP报文中。</li>
-<li></li>
-</ol>
-<p>| 会话标识                          | flags                    |
-| 问题数目(2字节)                   | 回答资源记录数(2字节)        |
-| 授权资源记录数(2字节)             | 额外资源记录数(2字节)         |
-|                   问题（可变长度）              |
-|            回答资源记录（可变长度）            |
-|           授权资源记录 （可变长度）          |
-|           附加信息资源 （可变长度）           |</p>
-<h4 id="会话标识"><a class="header" href="#会话标识">会话标识</a></h4>
-<p>报文头部的会话标识字段由客户端生成随机值填充并由服务器原样 返回。客户端通过该字段来匹配请求和响应。</p>
-<h4 id="flags"><a class="header" href="#flags">flags</a></h4>
-<p>flags部分非常复杂
-- 如果是请求一般为0x0100。
-- 如果为响应，通常有两种情况：
-- 0x8182表示服务器失败；
-- 0x8180表示服务器 成功响应。</p>
-<p>问题数目、回答资源记录数、授权资源记录数目、额外资源记录数目
-对于查询报文，问题数目通常是1，而其他3项则均为0。对于应答报文，问题数目还是1，回答数至少是1。</p>
-<h4 id="问题"><a class="header" href="#问题">问题</a></h4>
-<ol>
-<li>
-<p>问题部分中每个问题的格式由3部分顺序组成：</p>
-<ul>
-<li>查询内容</li>
-<li>类型（Type）</li>
-<li>类（Class）。 类型和类均为固定的两个字节长度。</li>
-</ul>
-</li>
-<li>
-<p>查询内容长度不定，它是一个或多个标识符的序列。每个标识符以首字节的计数值来 说明随后字符串的字节长度，每个名字的最后字节为 0 表示结束。计数字节的值必须是 0～ 63 的数字，因为标识符的最大长度为 63。高位字节为二进制 11000000 时，用于压缩格式，指向 报文的查询字符串位置，字符串位置是从 DNS 报文头部开始计算的。</p>
-</li>
-</ol>
-<h4 id="回答资源记录授权资源记录附加信息资源记录"><a class="header" href="#回答资源记录授权资源记录附加信息资源记录">回答资源记录、授权资源记录、附加信息资源记录</a></h4>
-<ol>
-<li>DNS 报文中最后 3 个字段分别为回答字段、授权字段和附加信息字段，均采用资源记录（Resource Record，RR）格式</li>
-<li>资源记录格式内容顺序包含   域名、类型、类、生存时间、数据长度和数据6部分。
-<ol>
-<li>Name:域名是记录中资源数据对应的名字</li>
-<li>Type: 与问题域内容格式相同</li>
-<li>Class: 与问题域内容格式相同</li>
-<li>TimeToLive: 生存时间字段占4个字节，是客户程序保留该资源记录的 秒数</li>
-<li>DataLength: 数据长度字段占2个字节，指明资源数据的长度</li>
-<li>Address: 数据字段占4个字节，指明资源数据的内容。数据部分的格式依赖于类型字段的值</li>
-</ol>
-</li>
-</ol>
-<h3 id="域名解析过程"><a class="header" href="#域名解析过程">域名解析过程</a></h3>
-<p>client -&gt;
-/etc/hosts -&gt;
-/etc/resolv.conf
--&gt; DNS服务器1、DNS服务器2</p>
-<h4 id="etcresolvconf配置文件"><a class="header" href="#etcresolvconf配置文件">/etc/resolv.conf配置文件</a></h4>
-<p>常见的配置如下:</p>
+<pre><code>[section_type section_name]
+attribute1_key = attribute1_value
+attribute2_key = attribute2_value
+;this is a comments line
+</code></pre>
+<p>章节类型为上面提到的global，lns， lac，章节可以取一个名字，在章节下面有由<code>key = value</code>组成的参数。值可以是字符，数字，boolean值，其中boolean值用yes,no表示。也可以用范围，例如192.168.0.1-192.168.0.20表示这个范围的IP。更多细节可以通过阅读源码里面的file.c文件了解。</p>
+<p>如果章节名指定为<strong>default</strong>，则这个章节下面的参数会应用到所有同类型的章节。</p>
+<h2 id="global-section"><a class="header" href="#global-section"><strong>GLOBAL SECTION</strong></a></h2>
 <ul>
 <li>
-<p>nameserver: 域名服务器地址。最多可以设置 3 个名字服务器，每一行一个
-将按照列表顺序查询。若第一个域名服务器查询超 时，再顺序查询下面的域名服务器，直到所有的域名服务器都尝试一遍。如果没有域名服务器地址或者这个配置文件不存在，则默认使用本机（127.0.0.1）作为名字服务器 地址</p>
+<p><strong>auth file</strong></p>
+<p>指定身份验证文件，此文件用于l2tp隧道的身份验证。默认为/etc/xl2tpd/l2tp-secrets</p>
 </li>
 <li>
-<p>domain
-可以使用相对于本地域名的短名来查询。如果域名没有配置，则返回主机名。
-如果域名中不包含点。则认为是短域名。会附加此域名后缀</p>
+<p><strong>listen-addr</strong></p>
+<p>守护进程监听的拥有此IP的网络接口。默认监听INADDR_ANY (0.0.0.0)，即所有网络接口。</p>
 </li>
 <li>
-<p>search
-定义短域名时的附加列表。
-假设search参数设置为"example.com, company.com"，系统会按照顺序在这两个域名后面依次进行搜索。首先，系统会尝试解析"webserver.example.com"，如果找到了对应的IP地址，就会进行通信。如果没有找到，系统会继续尝试解析"webserver.company.com"。如果还是没有找到，最终会返回一个域名解析失败的错误。通过这种方式，search参数可以方便地进行域名搜索，省去了每次都要完整输入域名的麻烦。这对于在局域网或企业内部使用的内部域名解析非常有用。</p>
+<p><strong>ipsec saref</strong></p>
+<p>使用IPsec安全关联跟踪</p>
+</li>
+<li>
+<p><strong>saref refinfo</strong></p>
+</li>
+<li>
+<p><strong>port</strong></p>
+<p>UDP监听端口，默认1701。</p>
+</li>
+<li>
+<p><strong>access control</strong></p>
+<p>boolean值，如果设置为yes,xl2tpd进程只接受下面区块 里面peers adresses指定的连接。默认为no。</p>
+</li>
+<li>
+<p><strong>debug avp</strong></p>
+<p>是否开启L2TP AVP调试信息。AVP（Attribute-Value Pair)是一种用于在 L2TP 控制消息中传递信息的格式。</p>
+</li>
+<li>
+<p><strong>debug network</strong></p>
+<p>是否开启网络调试信息。</p>
+</li>
+<li>
+<p><strong>debug packet</strong></p>
+<p>是否开启打印L2TP数据包的调试信息。</p>
+</li>
+<li>
+<p><strong>debug state</strong></p>
+<p>是否打开FSM调试信息。（FSM有限状态机，指L2TP状态装换过程)</p>
+</li>
+<li>
+<p><strong>debug tunnel</strong></p>
+<p>是否开启隧道调试信息</p>
+</li>
+<li>
+<p><strong>max retries</strong></p>
+<p>指定隧道关闭前重试次数。如果当前没建立隧道，则停止重发。默认值为5。</p>
 </li>
 </ul>
-<h2 id="dhcp简介"><a class="header" href="#dhcp简介">DHCP简介</a></h2>
-<ol>
-<li>在 TCP/IP 网络上，每台主机在访问网络及其资源之前，都必须进行基本的网络信息 配置，包含 IP 地址、子网掩码、默认网关和 DNS 等</li>
-<li>在大型网络中，如果每台终端主 机的地址都由不同的使用者来分配，那么就很容易出现地址相同的情况</li>
-<li>对于经常移动 的终端，重新配置可能需要很长时间，并且容易出错，如果 IP 配置错误将会导致不能访问网络。因此需要一种机制来简化主机 IP 地址的配置。动态主机配置协议 DHCP 应运而生。</li>
-<li>采用 DHCP 的好处在于减少了网络管理员和用户的负担。这将可以减少手工配置 IP 地址导致的地址冲突，以及网关地址或 DNS 地址错误导致的不能访问网络等问题。</li>
-</ol>
-<h3 id="dhcp原理"><a class="header" href="#dhcp原理">DHCP原理</a></h3>
-<ol>
-<li>DHCP 服务器拥有一个 IP 地址池，当任何启用 DHCP 的客户机连接到网络时，可 从服务器那里租借一个 IP 地址，不再使用的 IP 地址自动回收到地址池中，供再次分配 使用。</li>
-<li>DHCP 保证同一时刻的任何 IP 地址只能分给一个客户机使用。当 DHCP 客户机重新 启动时，应配置为相同的 IP 地址。在 DHCP 服务器重启的情况下，也应当给每一个客户机分配相同的 IP 地址，并且和手动分配的 IP 地址共存。这要求 DHCP 服务器对已分配的 地址进行保存，并且在客户端不使用时进行回收。</li>
-<li>DHCP 是一种动态地向网络终端提供配置参数的协议。在终端提出申请之后，DHCP 服务器可以向终端提供 IP 地址及子网掩码、网关和 DNS 服务器地址等参数。</li>
-<li>DHCP 协议基于 UDP 协议，客户端的端口号是68，服务器的端口号是67。</li>
-</ol>
-<h3 id="dhcp报文"><a class="header" href="#dhcp报文">DHCP报文</a></h3>
-<ol>
-<li>DHCP的请求和应答封装在UDP报文中。</li>
-<li>IP层在请求 IP 地址时采用链路层广播，链路层广播地址为<code>FF:FF:FF:FF:FF:FF</code></li>
-<li>网络层目的IP使用广播地址255.255.255.255，源地址采用 0.0.0.0，这是因为请求时自身没有 IP 地址，并且不知道服务器的 IP 地址。</li>
-</ol>
-<h3 id="dhcp工作流程"><a class="header" href="#dhcp工作流程">DHCP工作流程</a></h3>
-<ol>
-<li>DHCP 通常由客户端发起广播请求，服务器收到请求后在配置文件中查询，如果符合 要求则向客户端提供服务。
-<ol>
-<li>客户端在以太网上广播“DHCP Discover”报文来发现 DHCP 服务器。</li>
-<li>IP 为 10.0.2.2 的服务器收到广播请求后，向客户端回应请求，发出单播“DHCP Offer”报文，并且目的 IP 为 10.0.2.15。</li>
-<li>客户端再次以广播形式发出“DHCP Request”报文。这是因为客户端可能收到多个服务器“DHCP Offer”报文，客户端会根据报文的内容来选择一个给予响应，采用广播 形式可以让多个服务器均可收到。</li>
-<li>当服务器收到“DHCP Request”报文后，服务器在将客户端的 MAC 地址同分配的IP地址绑定后，将IP信息（IP、掩码、网关地址和 DNS 等）发送给客户机。</li>
-<li>客户机收到“DHCP ACK”报文后，将 IP 信息设置到主机系统上。这时 IP 设置 就完成了，客户机就可使用 IP 来访问网络了。</li>
-</ol>
+<h2 id="lns-section"><a class="header" href="#lns-section"><strong>LNS SECTION</strong></a></h2>
+<ul>
+<li>
+<p><strong>exclusive</strong></p>
+<p>如果设置为yes，表示两端仅允许建立一条控制隧道。LNS这端可以和多个host建立隧道，但是对同一个host仅允许建立一个。</p>
 </li>
-</ol>
+<li>
+<p><strong>(no) ip range</strong></p>
+<p>指定LNS分配给LAC的端分配的ip地址范围，可以指定多个范围。如果以<code>no</code>开头表示非的意思，即不分配指定范围的ip。IP范围的格式为IP-IP(例如:1.1.1.1 - 1.1.1.10)。注意，至少分配一个IP范围，或者设置下面的参数<code>assign ip</code>为no 。</p>
+</li>
+<li>
+<p><strong>assign ip</strong></p>
+<p>是否让xl2tpd来分配ip。如果你想用其他方式来分配ip，例如ppp如果支持RADIUS AAA。</p>
+</li>
+<li>
+<p><strong>(no) lac</strong></p>
+<p>指定允许作为LNS连接xl2tpd的LAC的ip地址。格式与<code>ip range</code>选项相同。</p>
+</li>
+<li>
+<p><strong>hidden bit</strong></p>
+<p>开启L2TP的AVP hiding特性，AVP（Attribute-Value Pair)是一种用于在 L2TP 控制消息中传递信息的格式。</p>
+</li>
+<li>
+<p><strong>local ip</strong></p>
+<p>指定xl2tpd自己这端使用的ip地址</p>
+</li>
+<li>
+<p><strong>length bit</strong></p>
+<p>是否在l2tp包的payload里面加入长度字段。</p>
+</li>
+<li>
+<p><strong>(refuse | require) chap</strong></p>
+<p>是否拒绝或者启用对端ppp的CHAP身份验证方式</p>
+</li>
+<li>
+<p><strong>(refuse | require) pap</strong></p>
+<p>是否拒绝或者启用对端ppp的PAP身份验证方式</p>
+</li>
+<li>
+<p><strong>(refuse | require) authentication</strong></p>
+<p>是否需要对端开启身份验证</p>
+</li>
+<li>
+<p><strong>unix authentication</strong></p>
+<p>是否使用/etc/passwd作为对端ppp验证方式</p>
+</li>
+<li>
+<p><strong>hostname</strong></p>
+<p>xl2tpd协商时，上报的hostname。如果不指定，默认使用系统hostname</p>
+</li>
+<li>
+<p><strong>ppp debug</strong></p>
+<p>开启pppd的debug信息</p>
+</li>
+<li>
+<p><strong>pass peer</strong></p>
+<p>将对端IP地址传递给pppd作为ipparam.默认开启</p>
+</li>
+<li>
+<p><strong>pppoptfile</strong></p>
+<p>指定给pppd使用的配置文件路径</p>
+</li>
+<li>
+<p><strong>call rws</strong></p>
+<p>废弃选项，不解释。</p>
+</li>
+<li>
+<p><strong>tunnel rws</strong></p>
+<p>定义控制通道的窗口大小。窗口大小定义为未确认数据包的数量，而不是字节数。</p>
+</li>
+<li>
+<p><strong>flow bits</strong></p>
+<p>如果设置为yes，则在通信中将包含序列号。在会话中使用序列号的功能目前已被停用并且不起作用。</p>
+</li>
+<li>
+<p><strong>challenge</strong></p>
+<p>如果设置为yes，使用挑战认证方式进行认证</p>
+</li>
+<li>
+<p><strong>rx bps</strong></p>
+<p>设置最大接收带宽</p>
+</li>
+<li>
+<p><strong>tx bps</strong></p>
+<p>设置最大发送带宽</p>
+</li>
+</ul>
+<h2 id="lac-section"><a class="header" href="#lac-section"><strong>LAC SECTION</strong></a></h2>
+<p>下列选项是LAC特定的选项。上面LNS章节结束的大多数选项都可以用于LAC，特别是l2tp协议微调选项或者认证/ppp相关的选项。</p>
+<ul>
+<li>
+<p><strong>lns</strong></p>
+<p>设置LNS的域名或者IP，LAC这端会用这个去连接LNS</p>
+</li>
+<li>
+<p><strong>autodial</strong></p>
+<p>是否开机自动拨号</p>
+</li>
+<li>
+<p><strong>redial</strong></p>
+<p>是否重拨，例如发现断连，自动重拨</p>
+</li>
+<li>
+<p><strong>redial timeout</strong></p>
+<p>重拨超时时间，单位秒。默认30秒。</p>
+</li>
+<li>
+<p><strong>max redials</strong></p>
+<p>重拨最大尝试次数。</p>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>local ip</strong></p>
+<p>本地IP</p>
+</li>
+</ul>
 <script src="/note-service/network/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/network/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -645,8 +646,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="v2rayN代理.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="SSH代理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -656,8 +660,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="v2rayN代理.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="SSH代理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="DNS&DHCP.html"><strong aria-hidden="true">0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="SSH代理.html"><strong aria-hidden="true">1.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="Socks5协议.html"><strong aria-hidden="true">2.</strong> Socks5协议.md</a></li><li class="chapter-item expanded "><a href="dns-searchdomain.html" class="active"><strong aria-hidden="true">3.</strong> dns-searchdomain.md</a></li><li class="chapter-item "><a href="ipsec-l2tpd.html"><strong aria-hidden="true">4.</strong> ipsec-l2tpd.md</a></li><li class="chapter-item "><a href="strongSwan.html"><strong aria-hidden="true">5.</strong> strongSwan.md</a></li><li class="chapter-item "><a href="systemd&rsolved.html"><strong aria-hidden="true">6.</strong> systemd&rsolved.md</a></li><li class="chapter-item "><a href="tcpdump.html"><strong aria-hidden="true">7.</strong> tcpdump.md</a></li><li class="chapter-item "><a href="v2rayN代理.html"><strong aria-hidden="true">8.</strong> v2rayN代理.md</a></li><li class="chapter-item "><a href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">9.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="DNS&DHCP.html"><strong aria-hidden="true">0.</strong> DNS&DHCP.md</a></li><li class="chapter-item "><a href="SSH代理.html"><strong aria-hidden="true">1.</strong> SSH代理.md</a></li><li class="chapter-item "><a href="Socks5协议.html"><strong aria-hidden="true">2.</strong> Socks5协议.md</a></li><li class="chapter-item expanded "><a href="dns-searchdomain.html" class="active"><strong aria-hidden="true">3.</strong> dns-searchdomain.md</a></li><li class="chapter-item "><a href="ipsec-l2tpd.html"><strong aria-hidden="true">4.</strong> ipsec-l2tpd.md</a></li><li class="chapter-item "><a href="strongSwan.html"><strong aria-hidden="true">5.</strong> strongSwan.md</a></li><li class="chapter-item "><a href="systemd&rsolved.html"><strong aria-hidden="true">6.</strong> systemd&rsolved.md</a></li><li class="chapter-item "><a href="tcpdump.html"><strong aria-hidden="true">7.</strong> tcpdump.md</a></li><li class="chapter-item "><a href="v2rayN代理.html"><strong aria-hidden="true">8.</strong> v2rayN代理.md</a></li><li class="chapter-item "><a href="xl2tpd配置详解.html"><strong aria-hidden="true">9.</strong> xl2tpd配置详解.md</a></li><li class="chapter-item "><a href="路由器映射后公网能正常访问但局域网无法通过公网IP访问.html"><strong aria-hidden="true">10.</strong> 路由器映射后公网能正常访问但局域网无法通过公网IP访问.md</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -406,6 +406,27 @@
 <p>当用户在浏览器中输入主机名而不是完全限定域名(FQDN: Fully qualified domain name)时，Search Domain可以帮助自动补全域名。</p>
 <pre><code>例如，搜索域设置为public1.114dns.com，请求的域名为example时，系统会将其补全为example.public1.114dns.com。
 </code></pre>
+<h2 id="dns记录类型"><a class="header" href="#dns记录类型">DNS记录类型</a></h2>
+<h3 id="a"><a class="header" href="#a">A</a></h3>
+<p>将域名指向一个IPV4地址</p>
+<h3 id="cname"><a class="header" href="#cname">CNAME</a></h3>
+<p>将域名指向另外一个域名</p>
+<h3 id="aaaa"><a class="header" href="#aaaa">AAAA</a></h3>
+<p>将域名指向另一个IPV6地址</p>
+<h4 id="ns"><a class="header" href="#ns">NS</a></h4>
+<p>将子域名指定其他DNS服务器解析</p>
+<h3 id="mx"><a class="header" href="#mx">MX</a></h3>
+<p>将域名指向邮件服务器地址</p>
+<h3 id="srv"><a class="header" href="#srv">SRV</a></h3>
+<p>记录提供特定的服务的服务器</p>
+<h3 id="txt"><a class="header" href="#txt">TXT</a></h3>
+<p>文本长度限制512，通常做SPF记录</p>
+<h3 id="caa"><a class="header" href="#caa">CAA</a></h3>
+<p>CA证书颁发机构授权校验</p>
+<h3 id="显性url"><a class="header" href="#显性url">显性URL</a></h3>
+<p>将域名重定向到另外一个地址</p>
+<h3 id="隐形url"><a class="header" href="#隐形url">隐形URL</a></h3>
+<p>与显性类似，但是会隐藏真实目的地址</p>
 <script src="/note-service/network/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/network/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
