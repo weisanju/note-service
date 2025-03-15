@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Python3字符串 - Python</title>
+        <title>Python3字符串.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/6.Python3字符串.html" class="active">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -372,7 +380,7 @@
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
 <h1 id="python3-字符串"><a class="header" href="#python3-字符串">Python3 字符串</a></h1>
-<p>字符串是 Python 中最常用的数据类型。我们可以使用引号( <strong>'</strong> 或 <strong>&quot;</strong> )来创建字符串。</p>
+<p>字符串是 Python 中最常用的数据类型。我们可以使用引号( <strong>'</strong> 或 <strong>"</strong> )来创建字符串。</p>
 <p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
 <h2 id="python-访问字符串中的值"><a class="header" href="#python-访问字符串中的值">Python 访问字符串中的值</a></h2>
 <pre><code class="language-python">变量[头下标:尾下标]
@@ -380,25 +388,25 @@
 <h2 id="python转义字符"><a class="header" href="#python转义字符">Python转义字符</a></h2>
 <p>在需要在字符中使用特殊字符时，python 用反斜杠 *<em>*</em> 转义字符。如下表：</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">转义字符</th><th style="text-align: left">描述</th><th style="text-align: left">实例</th></tr></thead><tbody>
-<tr><td style="text-align: left">\(在行尾时)</td><td style="text-align: left">续行符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;line1 \ ... line2 \ ... line3&quot;) line1 line2 line3 &gt;&gt;&gt; </code></td></tr>
-<tr><td style="text-align: left">\\</td><td style="text-align: left">反斜杠符号</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\\&quot;) \</code></td></tr>
+<tr><td style="text-align: left">\(在行尾时)</td><td style="text-align: left">续行符</td><td style="text-align: left"><code>&gt;&gt;&gt; print("line1 \ ... line2 \ ... line3") line1 line2 line3 &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\\</td><td style="text-align: left">反斜杠符号</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\\") \</code></td></tr>
 <tr><td style="text-align: left">\'</td><td style="text-align: left">单引号</td><td style="text-align: left"><code>&gt;&gt;&gt; print('\'') '</code></td></tr>
-<tr><td style="text-align: left">\&quot;</td><td style="text-align: left">双引号</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\&quot;&quot;) &quot;</code></td></tr>
-<tr><td style="text-align: left">\a</td><td style="text-align: left">响铃</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\a&quot;)</code>执行后电脑有响声。</td></tr>
-<tr><td style="text-align: left">\b</td><td style="text-align: left">退格(Backspace)</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \b World!&quot;) Hello World!</code></td></tr>
-<tr><td style="text-align: left">\000</td><td style="text-align: left">空</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\000&quot;) &gt;&gt;&gt; </code></td></tr>
-<tr><td style="text-align: left">\n</td><td style="text-align: left">换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\n&quot;)  &gt;&gt;&gt;</code></td></tr>
-<tr><td style="text-align: left">\v</td><td style="text-align: left">纵向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \v World!&quot;) Hello        World! &gt;&gt;&gt;</code></td></tr>
-<tr><td style="text-align: left">\t</td><td style="text-align: left">横向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \t World!&quot;) Hello    World! &gt;&gt;&gt;</code></td></tr>
-<tr><td style="text-align: left">\r</td><td style="text-align: left">回车，将 <strong>\r</strong> 后面的内容移到字符串开头，并逐一替换开头部分的字符，直至将 <strong>\r</strong> 后面的内容完全替换完成。</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello\rWorld!&quot;) World! &gt;&gt;&gt; print('google runoob taobao\r123456') 123456 runoob taobao</code></td></tr>
-<tr><td style="text-align: left">\f</td><td style="text-align: left">换页</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;Hello \f World!&quot;) Hello        World! &gt;&gt;&gt; </code></td></tr>
-<tr><td style="text-align: left">\yyy</td><td style="text-align: left">八进制数，y 代表 0~7 的字符，例如：\012 代表换行。</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\110\145\154\154\157\40\127\157\162\154\144\41&quot;) Hello World!</code></td></tr>
-<tr><td style="text-align: left">\xyy</td><td style="text-align: left">十六进制数，以 \x 开头，y 代表的字符，例如：\x0a 代表换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print(&quot;\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21&quot;) Hello World!</code></td></tr>
+<tr><td style="text-align: left">\"</td><td style="text-align: left">双引号</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\"") "</code></td></tr>
+<tr><td style="text-align: left">\a</td><td style="text-align: left">响铃</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\a")</code>执行后电脑有响声。</td></tr>
+<tr><td style="text-align: left">\b</td><td style="text-align: left">退格(Backspace)</td><td style="text-align: left"><code>&gt;&gt;&gt; print("Hello \b World!") Hello World!</code></td></tr>
+<tr><td style="text-align: left">\000</td><td style="text-align: left">空</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\000") &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\n</td><td style="text-align: left">换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\n")  &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\v</td><td style="text-align: left">纵向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print("Hello \v World!") Hello        World! &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\t</td><td style="text-align: left">横向制表符</td><td style="text-align: left"><code>&gt;&gt;&gt; print("Hello \t World!") Hello    World! &gt;&gt;&gt;</code></td></tr>
+<tr><td style="text-align: left">\r</td><td style="text-align: left">回车，将 <strong>\r</strong> 后面的内容移到字符串开头，并逐一替换开头部分的字符，直至将 <strong>\r</strong> 后面的内容完全替换完成。</td><td style="text-align: left"><code>&gt;&gt;&gt; print("Hello\rWorld!") World! &gt;&gt;&gt; print('google runoob taobao\r123456') 123456 runoob taobao</code></td></tr>
+<tr><td style="text-align: left">\f</td><td style="text-align: left">换页</td><td style="text-align: left"><code>&gt;&gt;&gt; print("Hello \f World!") Hello        World! &gt;&gt;&gt; </code></td></tr>
+<tr><td style="text-align: left">\yyy</td><td style="text-align: left">八进制数，y 代表 0~7 的字符，例如：\012 代表换行。</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\110\145\154\154\157\40\127\157\162\154\144\41") Hello World!</code></td></tr>
+<tr><td style="text-align: left">\xyy</td><td style="text-align: left">十六进制数，以 \x 开头，y 代表的字符，例如：\x0a 代表换行</td><td style="text-align: left"><code>&gt;&gt;&gt; print("\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21") Hello World!</code></td></tr>
 <tr><td style="text-align: left">\other</td><td style="text-align: left">其它的字符以普通格式输出</td><td style="text-align: left"></td></tr>
 </tbody></table>
 </div>
 <h2 id="python字符串运算符"><a class="header" href="#python字符串运算符">Python字符串运算符</a></h2>
-<p>下表实例变量 a 值为字符串 &quot;Hello&quot;，b 变量值为 &quot;Python&quot;：</p>
+<p>下表实例变量 a 值为字符串 "Hello"，b 变量值为 "Python"：</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">操作符</th><th style="text-align: left">描述</th><th style="text-align: left">实例</th></tr></thead><tbody>
 <tr><td style="text-align: left">+</td><td style="text-align: left">字符串连接</td><td style="text-align: left">a + b 输出结果： HelloPython</td></tr>
 <tr><td style="text-align: left">*</td><td style="text-align: left">重复输出字符串</td><td style="text-align: left">a*2 输出结果：HelloHello</td></tr>
@@ -412,7 +420,7 @@
 </div>
 <h2 id="python-字符串格式化"><a class="header" href="#python-字符串格式化">Python 字符串格式化</a></h2>
 <p>Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。</p>
-<pre><code class="language-python">print (&quot;我叫 %s 今年 %d 岁!&quot; % ('小明', 10))
+<pre><code class="language-python">print ("我叫 %s 今年 %d 岁!" % ('小明', 10))
 </code></pre>
 <p>python字符串格式化符号:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">符  号</th><th style="text-align: left">描述</th></tr></thead><tbody>
@@ -449,11 +457,11 @@
 <p>python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符。实例如下</p>
 <pre><code class="language-python">#!/usr/bin/python3
  
-para_str = &quot;&quot;&quot;这是一个多行字符串的实例
+para_str = """这是一个多行字符串的实例
 多行字符串可以使用制表符
 TAB ( \t )。
 也可以使用换行符 [ \n ]。
-&quot;&quot;&quot;
+"""
 print (para_str)
 </code></pre>
 <h2 id="f-string"><a class="header" href="#f-string">f-string</a></h2>
@@ -469,7 +477,7 @@ print (para_str)
 '3'
 
 &gt;&gt;&gt; w = {'name': 'Runoob', 'url': 'www.runoob.com'}
-&gt;&gt;&gt; f'{w[&quot;name&quot;]}: {w[&quot;url&quot;]}'
+&gt;&gt;&gt; f'{w["name"]}: {w["url"]}'
 'Runoob: www.runoob.com'
 </code></pre>
 <p>用了这种方式明显更简单了，不用再去判断使用 %s，还是 %d。</p>
@@ -491,7 +499,7 @@ x+1=2
 <tr><td style="text-align: left">1</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-capitalize.html">capitalize()</a> 将字符串的第一个字符转换为大写</td></tr>
 <tr><td style="text-align: left">2</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-center.html">center(width, fillchar)</a>返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。</td></tr>
 <tr><td style="text-align: left">3</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-count.html">count(str, beg= 0,end=len(string))</a> 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td></tr>
-<tr><td style="text-align: left">4</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-decode.html">bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</a> Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。</td></tr>
+<tr><td style="text-align: left">4</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-decode.html">bytes.decode(encoding="utf-8", errors="strict")</a> Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。</td></tr>
 <tr><td style="text-align: left">5</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-encode.html">encode(encoding='UTF-8',errors='strict')</a> 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是'ignore'或者'replace'</td></tr>
 <tr><td style="text-align: left">6</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-endswith.html">endswith(suffix, beg=0, end=len(string))</a> 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False.</td></tr>
 <tr><td style="text-align: left">7</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-expandtabs.html">expandtabs(tabsize=8)</a> 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。</td></tr>
@@ -518,13 +526,13 @@ x+1=2
 <tr><td style="text-align: left">28</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-rindex.html">rindex( str, beg=0, end=len(string))</a> 类似于 index()，不过是从右边开始.</td></tr>
 <tr><td style="text-align: left">29</td><td style="text-align: left">[rjust(width,<a href="https://www.runoob.com/python3/python3-string-rjust.html">, fillchar])</a> 返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串</td></tr>
 <tr><td style="text-align: left">30</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-rstrip.html">rstrip()</a> 删除字符串末尾的空格或指定字符。</td></tr>
-<tr><td style="text-align: left">31</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-split.html">split(str=&quot;&quot;, num=string.count(str))</a> 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串</td></tr>
+<tr><td style="text-align: left">31</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-split.html">split(str="", num=string.count(str))</a> 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串</td></tr>
 <tr><td style="text-align: left">32</td><td style="text-align: left">[splitlines(<a href="https://www.runoob.com/python3/python3-string-splitlines.html">keepends])</a> 按照行('\r', '\r\n', \n')分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td></tr>
 <tr><td style="text-align: left">33</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-startswith.html">startswith(substr, beg=0,end=len(string))</a> 检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。</td></tr>
 <tr><td style="text-align: left">34</td><td style="text-align: left">[strip(<a href="https://www.runoob.com/python3/python3-string-strip.html">chars])</a> 在字符串上执行 lstrip()和 rstrip()</td></tr>
 <tr><td style="text-align: left">35</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-swapcase.html">swapcase()</a> 将字符串中大写转换为小写，小写转换为大写</td></tr>
-<tr><td style="text-align: left">36</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-title.html">title()</a> 返回&quot;标题化&quot;的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</td></tr>
-<tr><td style="text-align: left">37</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-translate.html">translate(table, deletechars=&quot;&quot;)</a> 根据 table 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中</td></tr>
+<tr><td style="text-align: left">36</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-title.html">title()</a> 返回"标题化"的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</td></tr>
+<tr><td style="text-align: left">37</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-translate.html">translate(table, deletechars="")</a> 根据 table 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中</td></tr>
 <tr><td style="text-align: left">38</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-upper.html">upper()</a> 转换字符串中的小写字母为大写</td></tr>
 <tr><td style="text-align: left">39</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-zfill.html">zfill (width)</a> 返回长度为 width 的字符串，原字符串右对齐，前面填充0</td></tr>
 <tr><td style="text-align: left">40</td><td style="text-align: left"><a href="https://www.runoob.com/python3/python3-string-isdecimal.html">isdecimal()</a> 检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。</td></tr>
@@ -590,8 +598,6 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python基础"></span></p>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -600,7 +606,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../python基础_1_python基础/7.python3列表.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../python基础_1_python基础/7.python3列表.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -614,7 +620,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../python基础_1_python基础/7.python3列表.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../python基础_1_python基础/7.python3列表.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -630,9 +636,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

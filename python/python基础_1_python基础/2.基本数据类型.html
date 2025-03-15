@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>基本数据类型 - Python</title>
+        <title>基本数据类型.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/2.基本数据类型.html" class="active">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -373,13 +381,13 @@
 <div id="infisearch-mdbook-target"></div>
 <h1 id="python3-基本数据类型"><a class="header" href="#python3-基本数据类型">Python3 基本数据类型</a></h1>
 <p>Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。</p>
-<p>在 Python 中，变量就是变量，它没有类型，我们所说的&quot;类型&quot;是变量所指的内存中对象的类型。</p>
+<p>在 Python 中，变量就是变量，它没有类型，我们所说的"类型"是变量所指的内存中对象的类型。</p>
 <p>等号（=）用来给变量赋值。</p>
 <p>等号（=）运算符左边是一个变量名,等号（=）运算符右边是存储在变量中的值。例如：</p>
 <pre><code class="language-python">
 counter = 100          # 整型变量
 miles   = 1000.0       # 浮点型变量
-name    = &quot;runoob&quot;     # 字符串
+name    = "runoob"     # 字符串
 
 print (counter)
 print (miles)
@@ -390,7 +398,7 @@ print (name)
 </code></pre>
 <p>以上实例，创建一个整型对象，值为 1，从后向前赋值，三个变量被赋予相同的数值。</p>
 <p>您也可以为多个对象指定多个变量。例如：</p>
-<pre><code class="language-python">a, b, c = 1, 2, &quot;runoob&quot;
+<pre><code class="language-python">a, b, c = 1, 2, "runoob"
 
 </code></pre>
 <h2 id="标准数据类型"><a class="header" href="#标准数据类型">标准数据类型</a></h2>
@@ -477,11 +485,11 @@ var2 = 10
 </div>
 <p>Python还支持复数，复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型</p>
 <h2 id="string字符串"><a class="header" href="#string字符串">String（字符串）</a></h2>
-<p>Python中的字符串用单引号 <strong>'</strong> 或双引号 <strong>&quot;</strong> 括起来，同时使用反斜杠 *<em>*</em> 转义特殊字符。</p>
+<p>Python中的字符串用单引号 <strong>'</strong> 或双引号 <strong>"</strong> 括起来，同时使用反斜杠 *<em>*</em> 转义特殊字符。</p>
 <ul>
 <li>加号 <strong>+</strong> 是字符串的连接符， 星号 ***** 表示复制当前字符串，与之结合的数字为复制的次数。实例如下：</li>
 <li>Python 使用反斜杠 *<em>*</em> 转义特殊字符，如果你不想让反斜杠发生转义，可以在字符串前面添加一个 <strong>r</strong>，表示原始字符串：</li>
-<li>另外，反斜杠()可以作为续行符，表示下一行是上一行的延续。也可以使用 <strong>&quot;&quot;&quot;...&quot;&quot;&quot;</strong> 或者 <strong>'''...'''</strong> 跨越多行。</li>
+<li>另外，反斜杠()可以作为续行符，表示下一行是上一行的延续。也可以使用 <strong>"""..."""</strong> 或者 <strong>'''...'''</strong> 跨越多行。</li>
 <li>注意，Python 没有单独的字符类型，一个字符就是长度为1的字符串。</li>
 <li>与 C 字符串不同的是，Python 字符串不能被改变。向一个索引位置赋值，比如word[0] = 'm'会导致错误。</li>
 </ul>
@@ -532,7 +540,7 @@ print (list + tinylist) # 连接列表
 <pre><code class="language-python">def reverseWords(input):
      
     # 通过空格将字符串分隔符，把各个单词分隔为列表
-    inputWords = input.split(&quot; &quot;)
+    inputWords = input.split(" ")
  
     # 翻转字符串
     # 假设列表 list = [1,2,3,4],  
@@ -548,7 +556,7 @@ print (list + tinylist) # 连接列表
      
     return output
  
-if __name__ == &quot;__main__&quot;:
+if __name__ == "__main__":
     input = 'I like runoob'
     rw = reverseWords(input)
     print(rw)
@@ -619,8 +627,8 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 <pre><code class="language-python">#!/usr/bin/python3
 
 dict = {}
-dict['one'] = &quot;1 - 菜鸟教程&quot;
-dict[2]     = &quot;2 - 菜鸟工具&quot;
+dict['one'] = "1 - 菜鸟教程"
+dict[2]     = "2 - 菜鸟工具"
 
 tinydict = {'name': 'runoob','code':1, 'site': 'www.runoob.com'}
 
@@ -729,17 +737,15 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python基础"></span></p>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../python基础_1_python基础/1.python3基础语法.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../python基础_1_python基础/19.装饰器.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../python基础_1_python基础/3.Python3数据类型转换.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../python基础_1_python基础/20.JsonDictObject互转.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -749,11 +755,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../python基础_1_python基础/1.python3基础语法.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../python基础_1_python基础/19.装饰器.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../python基础_1_python基础/3.Python3数据类型转换.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../python基础_1_python基础/20.JsonDictObject互转.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -769,9 +775,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

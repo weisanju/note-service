@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Configuration - Python</title>
+        <title>Configuration.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item "><a href="../../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item expanded "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/Configuration.html" class="active">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -424,7 +432,7 @@
 <p><code>tasks.auto_dash_names</code> 控制任务名称和集合名称是否已将下划线转到CLI上的破折号。 Default: <code>True</code>. See also <a href="https://docs.pyinvoke.org/en/latest/concepts/namespaces.html#dashes-vs-underscores">Dashes vs underscores</a>.</p>
 </li>
 <li>
-<p><code>tasks.collection_name</code> controls the Python import name sought out by <a href="https://docs.pyinvoke.org/en/latest/concepts/loading.html#collection-discovery">collection discovery</a>, and defaults to <code>&quot;tasks&quot;</code>.</p>
+<p><code>tasks.collection_name</code> controls the Python import name sought out by <a href="https://docs.pyinvoke.org/en/latest/concepts/loading.html#collection-discovery">collection discovery</a>, and defaults to <code>"tasks"</code>.</p>
 </li>
 <li>
 <p><code>tasks.executor_class</code> allows users to override the class instantiated and used for task execution.</p>
@@ -490,9 +498,9 @@ run:
 <li>
 <p><strong>JSON</strong></p>
 <pre><code>{
-    &quot;debug&quot;: true,
-    &quot;run&quot;: {
-        &quot;echo&quot;: true
+    "debug": true,
+    "run": {
+        "echo": true
     }
 }
 </code></pre>
@@ -501,7 +509,7 @@ run:
 <p><strong>Python</strong>:</p>
 <pre><code>debug = True
 run = {
-    &quot;echo&quot;: True
+    "echo": True
 }
 </code></pre>
 </li>
@@ -542,7 +550,7 @@ run = {
 <p>All other types - integers, longs, floats, etc - are simply used as constructors for the incoming value.</p>
 <blockquote>
 <ul>
-<li>For example, a <code>foobar</code> setting whose default value is the integer <code>1</code> will run all env var inputs through <a href="https://docs.python.org/2.7/library/functions.html#int"><code>int</code></a>, and thus <code>FOOBAR=5</code> will result in the Python value <code>5</code>, not <code>&quot;5&quot;</code>.</li>
+<li>For example, a <code>foobar</code> setting whose default value is the integer <code>1</code> will run all env var inputs through <a href="https://docs.python.org/2.7/library/functions.html#int"><code>int</code></a>, and thus <code>FOOBAR=5</code> will result in the Python value <code>5</code>, not <code>"5"</code>.</li>
 </ul>
 </blockquote>
 </li>
@@ -583,48 +591,48 @@ override value
 
 @task
 def clean(c):
-    c.run(&quot;rm -rf docs/_build&quot;)
+    c.run("rm -rf docs/_build")
 
 @task
 def build(c):
-    c.run(&quot;sphinx-build docs docs/_build&quot;)
+    c.run("sphinx-build docs docs/_build")
 </code></pre>
 <p>Then maybe you refactor the build target:</p>
-<pre><code>target = &quot;docs/_build&quot;
+<pre><code>target = "docs/_build"
 
 @task
 def clean(c):
-    c.run(&quot;rm -rf {}&quot;.format(target))
+    c.run("rm -rf {}".format(target))
 
 @task
 def build(c):
-    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+    c.run("sphinx-build docs {}".format(target))
 </code></pre>
 <p>We can also allow runtime parameterization:</p>
-<pre><code>default_target = &quot;docs/_build&quot;
+<pre><code>default_target = "docs/_build"
 
 @task
 def clean(c, target=default_target):
-    c.run(&quot;rm -rf {}&quot;.format(target))
+    c.run("rm -rf {}".format(target))
 
 @task
 def build(c, target=default_target):
-    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+    c.run("sphinx-build docs {}".format(target))
 </code></pre>
 <p>This task module works for a single set of users, but what if we want to allow reuse? Somebody may want to use this module with a different default target. Using the configuration data (made available via the context arg) to configure these settings is usually the better solution [<a href="https://docs.pyinvoke.org/en/latest/concepts/configuration.html#id3">1]</a>.</p>
 <h3 id="configuring-via-task-collection"><a class="header" href="#configuring-via-task-collection">Configuring via task collection</a></h3>
 <p>The configuration <a href="https://docs.pyinvoke.org/en/latest/api/collection.html#invoke.collection.Collection.configure"><code>setting</code></a> and <a href="https://docs.pyinvoke.org/en/latest/api/context.html#invoke.context.Context.config"><code>getting</code></a> APIs enable moving otherwise ‘hardcoded’ default values into a config structure which downstream users are free to redefine. Let’s apply this to our example. First we add an explicit namespace object:</p>
 <pre><code>from invoke import Collection, task
 
-default_target = &quot;docs/_build&quot;
+default_target = "docs/_build"
 
 @task
 def clean(c, target=default_target):
-    c.run(&quot;rm -rf {}&quot;.format(target))
+    c.run("rm -rf {}".format(target))
 
 @task
 def build(c, target=default_target):
-    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+    c.run("sphinx-build docs {}".format(target))
 
 ns = Collection(clean, build)
 </code></pre>
@@ -633,16 +641,16 @@ ns = Collection(clean, build)
 def clean(c, target=None):
     if target is None:
         target = c.sphinx.target
-    c.run(&quot;rm -rf {}&quot;.format(target))
+    c.run("rm -rf {}".format(target))
 
 @task
 def build(c, target=None):
     if target is None:
         target = c.sphinx.target
-    c.run(&quot;sphinx-build docs {}&quot;.format(target))
+    c.run("sphinx-build docs {}".format(target))
 
 ns = Collection(clean, build)
-ns.configure({'sphinx': {'target': &quot;docs/_build&quot;}})
+ns.configure({'sphinx': {'target': "docs/_build"}})
 </code></pre>
 <p>The result isn’t significantly more complex than what we began with, and as we’ll see next, it’s now trivial for users to override your defaults in various ways.</p>
 <h3 id="configuration-overriding"><a class="header" href="#configuration-overriding">Configuration overriding</a></h3>
@@ -660,7 +668,7 @@ ns = Collection(mylocaltask, docs)
 </code></pre>
 <p>And then they can add this to the bottom:</p>
 <pre><code># Our docs live in 'built_docs', not 'docs/_build'
-ns.configure({'sphinx': {'target': &quot;built_docs&quot;}})
+ns.configure({'sphinx': {'target': "built_docs"}})
 </code></pre>
 <p>Now we have a <code>docs</code> sub-namespace whose build target defaults to <code>built_docs</code> instead of <code>docs/_build</code>. Runtime users can still override this via flags (e.g. <code>inv docs.build --target='some/other/dir'</code>) just as before.</p>
 <p>If you prefer configuration files over in-Python tweaking of your namespace tree, that works just as well; instead of adding the line above to the previous snippet, instead drop this into a file next to <code>tasks.py</code> named <code>invoke.yaml</code>:</p>
@@ -735,11 +743,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../python三方库_2_fabric/fabric/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../python三方库_2_fabric/fabric/README.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -749,11 +757,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../python三方库_2_fabric/fabric/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../python三方库_2_fabric/fabric/README.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../python三方库_2_fabric/fabric/README_1.x.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -769,9 +777,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 

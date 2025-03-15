@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>README_1.x - Python</title>
+        <title>x.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item "><a href="../../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item expanded "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item expanded "><a href="../../python三方库_2_fabric/fabric/README_1.x.html" class="active">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -378,7 +386,7 @@
 </blockquote>
 <h2 id="hello-fab"><a class="header" href="#hello-fab">Hello, <code>fab</code></a></h2>
 <pre><code class="language-python">def hello():
-    print(&quot;Hello world!&quot;)
+    print("Hello world!")
 </code></pre>
 <p>把上述代码放在你当前的工作目录中一个名为 <code>fabfile.py</code> 的 Python 模块文件中。</p>
 <p>然后这个 <code>hello</code> 函数就可以用 <code>fab</code> 工具（随 Fabric 一并安装的命令）来执行了，输出的结果会是这样：</p>
@@ -391,8 +399,8 @@ Done.
 <p><code>fab</code> 工具所做的只是导入 fabfile 并执行了相应一个或多个的函数，这里并没有任何魔法——任何你能在一个普通 Python 模块中做的事情同样可以在一个 fabfile 中完成。</p>
 <h2 id="任务参数"><a class="header" href="#任务参数">任务参数</a></h2>
 <p>和你平时的 Python 编程一样，给任务函数传递参数很有必要``。Fabric 支持 Shell 兼容的参数用法： <code>&lt;任务名&gt;:&lt;参数&gt;, &lt;关键字参数名&gt;=&lt;参数值&gt;,...</code> 用起来就是这样，下面我们用一个 say hello 的实例来展开说明一下：</p>
-<pre><code>def hello(name=&quot;world&quot;):
-    print(&quot;Hello %s!&quot; % name)
+<pre><code>def hello(name="world"):
+    print("Hello %s!" % name)
 </code></pre>
 <pre><code class="language-python">$ fab hello:name=Jeff
 Hello Jeff!
@@ -423,9 +431,9 @@ Done.
 <pre><code class="language-python">from fabric.api import local
 
 def prepare_deploy():
-    local(&quot;./manage.py test my_app&quot;)
-    local(&quot;git add -p &amp;&amp; git commit&quot;)
-    local(&quot;git push&quot;)
+    local("./manage.py test my_app")
+    local("git add -p &amp;&amp; git commit")
+    local("git push")
 </code></pre>
 <p>这段代码很简单，导入一个 Fabric API： <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> ，然后用它执行本地 Shell 命令并与之交互，剩下的 Fabric API 也都类似——它们都只是 Python。</p>
 <h2 id="用你的方式来组织"><a class="header" href="#用你的方式来组织">用你的方式来组织</a></h2>
@@ -433,13 +441,13 @@ def prepare_deploy():
 <pre><code class="language-Python">from fabric.api import local
 
 def test():
-    local(&quot;./manage.py test my_app&quot;)
+    local("./manage.py test my_app")
 
 def commit():
-    local(&quot;git add -p &amp;&amp; git commit&quot;)
+    local("git add -p &amp;&amp; git commit")
 
 def push():
-    local(&quot;git push&quot;)
+    local("git push")
 
 def prepare_deploy():
     test()
@@ -481,8 +489,8 @@ from fabric.contrib.console import confirm
 def test():
     with settings(warn_only=True):
         result = local('./manage.py test my_app', capture=True)
-    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
-        abort(&quot;Aborting at user request.&quot;)
+    if result.failed and not confirm("Tests failed. Continue anyway?"):
+        abort("Aborting at user request.")
 
 [...]
 </code></pre>
@@ -493,8 +501,8 @@ from fabric.contrib.console import confirm
 def test():
     with settings(warn_only=True):
         result = local('./manage.py test my_app', capture=True)
-    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
-        abort(&quot;Aborting at user request.&quot;)
+    if result.failed and not confirm("Tests failed. Continue anyway?"):
+        abort("Aborting at user request.")
 
 [...]
 </code></pre>
@@ -511,8 +519,8 @@ def test():
 <pre><code class="language-python">def deploy():
     code_dir = '/srv/django/myproject'
     with cd(code_dir):
-        run(&quot;git pull&quot;)
-        run(&quot;touch app.wsgi&quot;)
+        run("git pull")
+        run("touch app.wsgi")
 </code></pre>
 <p>这里再次引入了一些新的概念：</p>
 <ul>
@@ -540,11 +548,11 @@ Done.
 <pre><code class="language-python">def deploy():
     code_dir = '/srv/django/myproject'
     with settings(warn_only=True):
-        if run(&quot;test -d %s&quot; % code_dir).failed:
-            run(&quot;git clone user@vcshost:/path/to/repo/.git %s&quot; % code_dir)
+        if run("test -d %s" % code_dir).failed:
+            run("git clone user@vcshost:/path/to/repo/.git %s" % code_dir)
     with cd(code_dir):
-        run(&quot;git pull&quot;)
-        run(&quot;touch app.wsgi&quot;)
+        run("git pull")
+        run("touch app.wsgi")
 </code></pre>
 <p>和上面调用 <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.local"><code>local</code></a> 一样， <a href="https://fabric-chs.readthedocs.io/zh_CN/chs/api/core/operations.html#fabric.operations.run"><code>run</code></a> 也提供基于 Shell 命令构建干净的 Python 逻辑。</p>
 <p><strong>git交互</strong></p>
@@ -604,14 +612,14 @@ env.hosts = ['my_server']
 def test():
     with settings(warn_only=True):
         result = local('./manage.py test my_app', capture=True)
-    if result.failed and not confirm(&quot;Tests failed. Continue anyway?&quot;):
-        abort(&quot;Aborting at user request.&quot;)
+    if result.failed and not confirm("Tests failed. Continue anyway?"):
+        abort("Aborting at user request.")
 
 def commit():
-    local(&quot;git add -p &amp;&amp; git commit&quot;)
+    local("git add -p &amp;&amp; git commit")
 
 def push():
-    local(&quot;git push&quot;)
+    local("git push")
 
 def prepare_deploy():
     test()
@@ -621,11 +629,11 @@ def prepare_deploy():
 def deploy():
     code_dir = '/srv/django/myproject'
     with settings(warn_only=True):
-        if run(&quot;test -d %s&quot; % code_dir).failed:
-            run(&quot;git clone user@vcshost:/path/to/repo/.git %s&quot; % code_dir)
+        if run("test -d %s" % code_dir).failed:
+            run("git clone user@vcshost:/path/to/repo/.git %s" % code_dir)
     with cd(code_dir):
-        run(&quot;git pull&quot;)
-        run(&quot;touch app.wsgi&quot;)
+        run("git pull")
+        run("touch app.wsgi")
 </code></pre>
 <p>但它已经涉及到了 Fabric 中的很多功能：</p>
 <ul>
@@ -697,7 +705,7 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python三方库"></span></p>
+<p><span data-infisearch-part-title="README"></span></p>
 
                     </main>
 
@@ -707,7 +715,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../python三方库_2_fabric/invoke/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../python三方库_2_fabric/invoke/README.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -721,7 +729,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../python三方库_2_fabric/invoke/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../python三方库_2_fabric/invoke/README.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -737,9 +745,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 

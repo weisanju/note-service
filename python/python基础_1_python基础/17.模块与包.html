@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>模块与包 - Python</title>
+        <title>模块与包.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/17.模块与包.html" class="active">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -392,7 +400,7 @@ import graphics.formats.jpg as jpg
 </code></pre>
 <h3 id="讨论"><a class="header" href="#讨论">讨论</a></h3>
 <ol>
-<li>定义模块的层次结构就像在文件系统上建立目录结构一样容易。 </li>
+<li>定义模块的层次结构就像在文件系统上建立目录结构一样容易。</li>
 <li>文件__init__.py的目的是要包含不同运行级别的包的可选的初始化代码。</li>
 <li>举个例子，如果你执行了语句import graphics， 文件graphics/<strong>init</strong>.py将被导入,建立graphics命名空间的内容。</li>
 <li>像import graphics.format.jpg这样导入，文件graphics/<strong>init</strong>.py和文件graphics/formats/<strong>init</strong>.py将在文件graphics/formats/jpg.py导入之前导入。</li>
@@ -429,7 +437,7 @@ blah = 42
 __all__ = ['spam', 'grok']
 </code></pre>
 <h3 id="讨论-1"><a class="header" href="#讨论-1">讨论</a></h3>
-<p>尽管强烈反对使用 ‘from module import <a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c10/p02_control_the_import_of_everything.html#id7">*</a>’, 但是在定义了大量变量名的模块中频繁使用。 如果你不做任何事, 这样的导入将会导入所有不以下划线开头的。 </p>
+<p>尽管强烈反对使用 ‘from module import <a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c10/p02_control_the_import_of_everything.html#id7">*</a>’, 但是在定义了大量变量名的模块中频繁使用。 如果你不做任何事, 这样的导入将会导入所有不以下划线开头的。</p>
 <p>另一方面,如果定义了 <strong>all</strong> , 那么只有被列举出的东西会被导出。</p>
 <p>如果你将 <strong>all</strong> 定义成一个空列表, 没有东西将被导入。 如果 <strong>all</strong> 包含未定义的名字, 在导入时引起AttributeError。</p>
 <h2 id="使用相对路径名导入包中子模块"><a class="header" href="#使用相对路径名导入包中子模块">使用相对路径名导入包中子模块</a></h2>
@@ -465,7 +473,7 @@ import grok # Error (not found)
 </code></pre>
 <ul>
 <li>
-<p>像mypackage.A这样使用绝对路径名的不利之处是这将顶层包名硬编码到你的源码中。如果你想重新组织它，你的代码将更脆，很难工作。 </p>
+<p>像mypackage.A这样使用绝对路径名的不利之处是这将顶层包名硬编码到你的源码中。如果你想重新组织它，你的代码将更脆，很难工作。</p>
 </li>
 <li>
 <p>举个例子，如果你改变了包名，你就必须检查所有文件来修正源码。</p>
@@ -627,7 +635,7 @@ _NamespacePath(['foo-package/spam', 'bar-package/spam'])
 <p>一个包是否被作为一个包命名空间的主要方法是检查其__file__属性。如果没有，那包是个命名空间。这也可以由其字符表现形式中的“namespace”这个词体现出来。</p>
 <pre><code>&gt;&gt;&gt; spam.__file__
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 AttributeError: 'module' object has no attribute '__file__'
 &gt;&gt;&gt; spam
 &lt;module 'spam' (namespace)&gt;
@@ -747,7 +755,7 @@ data = pkgutil.get_data(__package__, 'somedata.dat')
 <pre><code>bash % env PYTHONPATH=/some/dir:/other/dir python3
 Python 3.3.0 (default, Oct 4 2012, 10:17:33)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt; import sys
 &gt;&gt;&gt; sys.path
 ['', '/some/dir', '/other/dir', ...]
@@ -811,13 +819,13 @@ b = importlib.import_module('.b', __package__)
 </code></pre>
 <p>这些文件的内容并不重要，不过我们在每个文件中放入了少量的简单语句和函数， 这样你可以测试它们并查看当它们被导入时的输出。例如：</p>
 <pre><code># spam.py
-print(&quot;I'm spam&quot;)
+print("I'm spam")
 
 def hello(name):
     print('Hello %s' % name)
 
 # fib.py
-print(&quot;I'm fib&quot;)
+print("I'm fib")
 
 def fib(n):
     if n &lt; 2:
@@ -826,10 +834,10 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 # grok/__init__.py
-print(&quot;I'm grok.__init__&quot;)
+print("I'm grok.__init__")
 
 # grok/blah.py
-print(&quot;I'm grok.blah&quot;)
+print("I'm grok.blah")
 </code></pre>
 <p>这里的目的是允许这些文件作为模块被远程访问。 也许最简单的方式就是将它们发布到一个web服务器上面。在testcode目录中像下面这样运行Python：</p>
 <pre><code>bash % cd testcode
@@ -842,7 +850,7 @@ Serving HTTP on 0.0.0.0 port 15000 ...
 &gt;&gt;&gt; data = u.read().decode('utf-8')
 &gt;&gt;&gt; print(data)
 # fib.py
-print(&quot;I'm fib&quot;)
+print("I'm fib")
 
 def fib(n):
     if n &lt; 2:
@@ -1008,7 +1016,7 @@ class UrlModuleLoader(importlib.abc.SourceLoader):
             return source
         except (HTTPError, URLError) as e:
             log.debug('loader: %r failed. %s', filename, e)
-            raise ImportError(&quot;Can't load %s&quot; % filename)
+            raise ImportError("Can't load %s" % filename)
 
     def is_package(self, fullname):
         return False
@@ -1045,7 +1053,7 @@ def remove_meta(address):
 <pre><code class="language-python">&gt;&gt;&gt; # importing currently fails
 &gt;&gt;&gt; import fib
 Traceback (most recent call last):
-File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 &gt;&gt;&gt; # Load the importer and retry (it works)
 &gt;&gt;&gt; import urlimport
@@ -1137,7 +1145,7 @@ def remove_path_hook():
 <pre><code>&gt;&gt;&gt; # Initial import fails
 &gt;&gt;&gt; import fib
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 
 &gt;&gt;&gt; # Install the path hook
@@ -1147,7 +1155,7 @@ ImportError: No module named 'fib'
 &gt;&gt;&gt; # Imports still fail (not on path)
 &gt;&gt;&gt; import fib
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 
 &gt;&gt;&gt; # Add an entry to sys.path and watch it work
@@ -1173,7 +1181,7 @@ I'm grok.blah
 &gt;&gt;&gt; import inspect
 &gt;&gt;&gt; print(inspect.getsource(fib))
 # fib.py
-print(&quot;I'm fib&quot;)
+print("I'm fib")
 
 def fib(n):
     if n &lt; 2:
@@ -1268,12 +1276,12 @@ Looking for ElementC14N None
 <pre><code>&gt;&gt;&gt; import fib
 Looking for fib None
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 &gt;&gt;&gt; import xml.superfast
 Looking for xml.superfast ['/usr/local/lib/python3.3/xml']
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'xml.superfast'
 &gt;&gt;&gt;
 </code></pre>
@@ -1311,9 +1319,9 @@ ImportError: No module named 'xml.superfast'
 ...     return (None, [])
 ...
 &gt;&gt;&gt; import sys
-&gt;&gt;&gt; # Add a &quot;debug&quot; entry to the importer cache
+&gt;&gt;&gt; # Add a "debug" entry to the importer cache
 &gt;&gt;&gt; sys.path_importer_cache['debug'] = Finder()
-&gt;&gt;&gt; # Add a &quot;debug&quot; directory to sys.path
+&gt;&gt;&gt; # Add a "debug" directory to sys.path
 &gt;&gt;&gt; sys.path.insert(0, 'debug')
 &gt;&gt;&gt; import threading
 Looking for threading
@@ -1343,7 +1351,7 @@ Checking /Users/beazley/.local/lib/python3.3/site-packages
 Checking /usr/local/lib/python3.3/site-packages
 Looking for fib
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 &gt;&gt;&gt;
 </code></pre>
@@ -1360,7 +1368,7 @@ ImportError: No module named 'fib'
 &gt;&gt;&gt; import fib
 Looking for fib # Finder output!
 Traceback (most recent call last):
-    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+    File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 
 &gt;&gt;&gt; # Notice installation of Finder in sys.path_importer_cache
@@ -1398,7 +1406,7 @@ DEBUG:urlimport:Installing handle_url
 &gt;&gt;&gt; import fib
 DEBUG:urlimport:Handle path? /usr/local/lib/python33.zip. [No]
 Traceback (most recent call last):
-File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ImportError: No module named 'fib'
 &gt;&gt;&gt; import sys
 &gt;&gt;&gt; sys.path.append('http://localhost:15000')
@@ -1532,7 +1540,7 @@ bash %
 <pre><code>bash % Spam/bin/python3
 Python 3.3.0 (default, Oct 6 2012, 15:45:22)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt; from pprint import pprint
 &gt;&gt;&gt; import sys
 &gt;&gt;&gt; pprint(sys.path)
@@ -1608,14 +1616,14 @@ recursive-include Doc *
 <h3 id="讨论-14"><a class="header" href="#讨论-14">讨论</a></h3>
 <ul>
 <li>
-<p>对于纯Python代码，编写一个普通的 <code>setup.py</code> 文件通常很简单。 一个可能的问题是你必须手动列出所有构成包源码的子目录。 一个常见错误就是仅仅只列出一个包的最顶级目录，忘记了包含包的子组件。 </p>
+<p>对于纯Python代码，编写一个普通的 <code>setup.py</code> 文件通常很简单。 一个可能的问题是你必须手动列出所有构成包源码的子目录。 一个常见错误就是仅仅只列出一个包的最顶级目录，忘记了包含包的子组件。</p>
 </li>
 <li>
 <p>这也是为什么在 <code>setup.py</code> 中对于包的说明包含了列表 <code>packages=['projectname', 'projectname.utils']</code></p>
 </li>
 </ul>
 <p>大部分Python程序员都知道，有很多第三方包管理器供选择，包括setuptools、distribute等等。 有些是为了替代标准库中的distutils。</p>
-<p>注意如果你依赖这些包， 用户可能不能安装你的软件，除非他们已经事先安装过所需要的包管理器。 正因如此，你更应该时刻记住越简单越好的道理。 </p>
+<p>注意如果你依赖这些包， 用户可能不能安装你的软件，除非他们已经事先安装过所需要的包管理器。 正因如此，你更应该时刻记住越简单越好的道理。</p>
 <p>最好让你的代码使用标准的Python 3安装。 如果其他包也需要的话，可以通过一个可选项来支持。</p>
 <p>对于涉及到C扩展的代码打包与分发就更复杂点了。 第15章对关于C扩展的这方面知识有一些详细讲解，特别是在15.2小节中。</p>
 <script src="/note-service/python/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
@@ -1679,8 +1687,6 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python基础"></span></p>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -1689,7 +1695,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../python基础_1_python基础/With关键字.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../python基础_1_python基础/18.枚举.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -1703,7 +1709,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../python基础_1_python基础/With关键字.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../python基础_1_python基础/18.枚举.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -1719,9 +1725,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

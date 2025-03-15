@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Python3运算符 - Python</title>
+        <title>Python3运算符.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/5.Python3运算符.html" class="active">Python3运算符</a></li><li class="chapter-item "><a href="../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item "><a href="../python基础_1_python基础/16.Python3面向对象.html">Python3面向对象</a></li><li class="chapter-item "><a href="../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -415,7 +423,7 @@
 <tr><td style="text-align: left">%=</td><td style="text-align: left">取模赋值运算符</td><td style="text-align: left">c %= a 等效于 c = c % a</td></tr>
 <tr><td style="text-align: left">**=</td><td style="text-align: left">幂赋值运算符</td><td style="text-align: left">c **= a 等效于 c = c ** a</td></tr>
 <tr><td style="text-align: left">//=</td><td style="text-align: left">取整除赋值运算符</td><td style="text-align: left">c //= a 等效于 c = c // a</td></tr>
-<tr><td style="text-align: left">:=</td><td style="text-align: left">海象运算符，可在表达式内部为变量赋值。<strong>Python3.8 版本新增运算符</strong>。</td><td style="text-align: left">在这个示例中，赋值表达式可以避免调用 len() 两次:<code>if (n := len(a)) &gt; 10:    print(f&quot;List is too long ({n} elements, expected &lt;= 10)&quot;)</code></td></tr>
+<tr><td style="text-align: left">:=</td><td style="text-align: left">海象运算符，可在表达式内部为变量赋值。<strong>Python3.8 版本新增运算符</strong>。</td><td style="text-align: left">在这个示例中，赋值表达式可以避免调用 len() 两次:<code>if (n := len(a)) &gt; 10:    print(f"List is too long ({n} elements, expected &lt;= 10)")</code></td></tr>
 </tbody></table>
 </div>
 <h2 id="python位运算符"><a class="header" href="#python位运算符">Python位运算符</a></h2>
@@ -424,16 +432,16 @@
 <tr><td style="text-align: left">|</td><td style="text-align: left">按位或运算符：只要对应的二个二进位有一个为1时，结果位就为1。</td><td style="text-align: left">(a | b) 输出结果 61 ，二进制解释： 0011 1101</td></tr>
 <tr><td style="text-align: left">^</td><td style="text-align: left">按位异或运算符：当两对应的二进位相异时，结果为1</td><td style="text-align: left">(a ^ b) 输出结果 49 ，二进制解释： 0011 0001</td></tr>
 <tr><td style="text-align: left">~</td><td style="text-align: left">按位取反运算符：对数据的每个二进制位取反,即把1变为0,把0变为1。<strong>~x</strong> 类似于 <strong>-x-1</strong></td><td style="text-align: left">(~a ) 输出结果 -61 ，二进制解释： 1100 0011， 在一个有符号二进制数的补码形式。</td></tr>
-<tr><td style="text-align: left">&lt;&lt;</td><td style="text-align: left">左移动运算符：运算数的各二进位全部左移若干位，由&quot;&lt;&lt;&quot;右边的数指定移动的位数，高位丢弃，低位补0。</td><td style="text-align: left">a &lt;&lt; 2 输出结果 240 ，二进制解释： 1111 0000</td></tr>
-<tr><td style="text-align: left">&gt;&gt;</td><td style="text-align: left">右移动运算符：把&quot;&gt;&gt;&quot;左边的运算数的各二进位全部右移若干位，&quot;&gt;&gt;&quot;右边的数指定移动的位数</td><td style="text-align: left">a &gt;&gt; 2 输出结果 15 ，二进制解释： 0000 1111</td></tr>
+<tr><td style="text-align: left">&lt;&lt;</td><td style="text-align: left">左移动运算符：运算数的各二进位全部左移若干位，由"&lt;&lt;"右边的数指定移动的位数，高位丢弃，低位补0。</td><td style="text-align: left">a &lt;&lt; 2 输出结果 240 ，二进制解释： 1111 0000</td></tr>
+<tr><td style="text-align: left">&gt;&gt;</td><td style="text-align: left">右移动运算符：把"&gt;&gt;"左边的运算数的各二进位全部右移若干位，"&gt;&gt;"右边的数指定移动的位数</td><td style="text-align: left">a &gt;&gt; 2 输出结果 15 ，二进制解释： 0000 1111</td></tr>
 </tbody></table>
 </div>
 <h2 id="python逻辑运算符"><a class="header" href="#python逻辑运算符">Python逻辑运算符</a></h2>
 <p>Python语言支持逻辑运算符，以下假设变量 a 为 10, b为 20:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">运算符</th><th style="text-align: left">逻辑表达式</th><th style="text-align: left">描述</th><th style="text-align: left">实例</th></tr></thead><tbody>
-<tr><td style="text-align: left">and</td><td style="text-align: left">x and y</td><td style="text-align: left">布尔&quot;与&quot; - 如果 x 为 False，x and y 返回 x 的值，否则返回 y 的计算值。</td><td style="text-align: left">(a and b) 返回 20。</td></tr>
-<tr><td style="text-align: left">or</td><td style="text-align: left">x or y</td><td style="text-align: left">布尔&quot;或&quot; - 如果 x 是 True，它返回 x 的值，否则它返回 y 的计算值。</td><td style="text-align: left">(a or b) 返回 10。</td></tr>
-<tr><td style="text-align: left">not</td><td style="text-align: left">not x</td><td style="text-align: left">布尔&quot;非&quot; - 如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。</td><td style="text-align: left">not(a and b) 返回 False</td></tr>
+<tr><td style="text-align: left">and</td><td style="text-align: left">x and y</td><td style="text-align: left">布尔"与" - 如果 x 为 False，x and y 返回 x 的值，否则返回 y 的计算值。</td><td style="text-align: left">(a and b) 返回 20。</td></tr>
+<tr><td style="text-align: left">or</td><td style="text-align: left">x or y</td><td style="text-align: left">布尔"或" - 如果 x 是 True，它返回 x 的值，否则它返回 y 的计算值。</td><td style="text-align: left">(a or b) 返回 10。</td></tr>
+<tr><td style="text-align: left">not</td><td style="text-align: left">not x</td><td style="text-align: left">布尔"非" - 如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。</td><td style="text-align: left">not(a and b) 返回 False</td></tr>
 </tbody></table>
 </div>
 <h2 id="python成员运算符"><a class="header" href="#python成员运算符">Python成员运算符</a></h2>
@@ -528,8 +536,6 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python基础"></span></p>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -538,7 +544,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../python基础_1_python基础/6.Python3字符串.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../python基础_1_python基础/6.Python3字符串.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -552,7 +558,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../python基础_1_python基础/6.Python3字符串.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../python基础_1_python基础/6.Python3字符串.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -568,9 +574,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

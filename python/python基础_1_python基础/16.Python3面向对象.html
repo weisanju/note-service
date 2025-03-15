@@ -1,45 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="zh_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Python3面向对象 - Python</title>
+        <title>Python3面向对象.md - Python笔记库</title>
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="/note-service/favicon.svg">
-        <link rel="shortcut icon" href="/note-service/favicon.png">
-        <link rel="stylesheet" href="/note-service/css/variables.css">
-        <link rel="stylesheet" href="/note-service/css/general.css">
-        <link rel="stylesheet" href="/note-service/css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/tomorrow-night.css">
-        <link rel="stylesheet" href="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    </head>
-    <body>
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,43 +63,49 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
+            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Python笔记库</a></li><li class="chapter-item affix "><li class="part-title">python基础</li><li class="chapter-item expanded "><a href="../python基础_1_python基础/index.html">python基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python基础_1_python基础/1.python3基础语法.html">python3基础语法</a></li><li class="chapter-item "><a href="../python基础_1_python基础/2.基本数据类型.html">基本数据类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/3.Python3数据类型转换.html">Python3数据类型转换</a></li><li class="chapter-item "><a href="../python基础_1_python基础/4.Python推导式.html">Python推导式</a></li><li class="chapter-item "><a href="../python基础_1_python基础/5.Python3运算符.html">Python3运算符</a></li><li class="chapter-item "><a href="../python基础_1_python基础/6.Python3字符串.html">Python3字符串</a></li><li class="chapter-item "><a href="../python基础_1_python基础/7.python3列表.html">python3列表</a></li><li class="chapter-item "><a href="../python基础_1_python基础/8.元祖.html">元祖</a></li><li class="chapter-item "><a href="../python基础_1_python基础/9.Python3字典.html">Python3字典</a></li><li class="chapter-item "><a href="../python基础_1_python基础/10.Python3集合.html">Python3集合</a></li><li class="chapter-item "><a href="../python基础_1_python基础/11.Number类型.html">Number类型</a></li><li class="chapter-item "><a href="../python基础_1_python基础/12.python3流程控制.html">python3流程控制</a></li><li class="chapter-item "><a href="../python基础_1_python基础/13.Python3迭代器与生成器.html">Python3迭代器与生成器</a></li><li class="chapter-item "><a href="../python基础_1_python基础/14.函数.html">函数</a></li><li class="chapter-item "><a href="../python基础_1_python基础/15.Python3JSON数据解析.html">Python3JSON数据解析</a></li><li class="chapter-item expanded "><a href="../python基础_1_python基础/16.Python3面向对象.html" class="active">Python3面向对象</a></li><li class="chapter-item "><a href="../python基础_1_python基础/17.模块与包.html">模块与包</a></li><li class="chapter-item "><a href="../python基础_1_python基础/With关键字.html">With关键字</a></li><li class="chapter-item "><a href="../python基础_1_python基础/杂项.html">杂项</a></li></ol></li><li class="chapter-item "><li class="part-title">python三方库</li><li class="chapter-item "><div>fabric</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/index.html">fabric</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/fabric/README_1.x.html">README_1.x</a></li></ol></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/index.html">invoke</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/1.DefiningAndRunningTask.html">DefiningAndRunningTask</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/2.InvokeCoreUsage.html">InvokeCoreUsage</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/3.Configuration.html">Configuration</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/4.loadingCollections.html">loadingCollections</a></li><li class="chapter-item "><a href="../python三方库_2_fabric/invoke/5.UsingInvokeAslibrary.html">UsingInvokeAslibrary</a></li></ol></li></ol></li></ol>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +118,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="menu-title">Python</h1>
+                    <h1 class="menu-title">Python笔记库</h1>
 
                     <div class="right-buttons">
 
@@ -384,7 +392,7 @@
 <li>**方法重写：**如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
 <li>**局部变量：**定义在方法中的变量，只作用于当前实例的类。</li>
 <li>**实例变量：**在类的声明中，属性是用变量来表示的，这种变量就称为实例变量，实例变量就是一个用 self 修饰的变量。</li>
-<li>**继承：**即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&quot;是一个（is-a）&quot;关系（例图，Dog是一个Animal）。</li>
+<li>**继承：**即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟"是一个（is-a）"关系（例图，Dog是一个Animal）。</li>
 <li>**实例化：**创建一个类的实例，类的具体对象。</li>
 <li>**对象：**通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
 </ul>
@@ -421,14 +429,14 @@
 <p><strong>实例(Python 3.0+)</strong></p>
 <pre><code class="language-python">#!/usr/bin/python3  
 class MyClass:    
-  &quot;&quot;&quot;一个简单的类实例&quot;&quot;&quot;    
+  """一个简单的类实例"""    
   i = 12345    
   def f(self): return 'hello world'  
 # 实例化类 
 x = MyClass()  
 # 访问类的属性和方法 
-print(&quot;MyClass 类的属性 i 为：&quot;, x.i) 
-print(&quot;MyClass 类的方法 f 输出为：&quot;, x.f())
+print("MyClass 类的属性 i 为：", x.i) 
+print("MyClass 类的方法 f 输出为：", x.f())
 </code></pre>
 <p>以上创建了一个新的类实例并将该对象赋给局部变量 x，x 为空的对象。</p>
 <p>执行以上程序输出结果为：</p>
@@ -501,7 +509,7 @@ def __init__(self,n,a,w):
   self.__weight = w    
   
 def speak(self):        
-  print(&quot;%s 说: 我 %d 岁。&quot; %(self.name,self.age))  
+  print("%s 说: 我 %d 岁。" %(self.name,self.age))  
  # 实例化类 
 p = people('runoob',10,30) 
 p.speak()
@@ -533,7 +541,7 @@ def __init__(self,n,a,w):
   self.age = a        
   self.__weight = w    
 def speak(self):        
-  print(&quot;%s 说: 我 %d 岁。&quot; %(self.name,self.age))  
+  print("%s 说: 我 %d 岁。" %(self.name,self.age))  
 #单继承示例 
 class student(people):    
   grade = ''    
@@ -543,7 +551,7 @@ class student(people):
   self.grade = g    
 #覆写父类的方法    
 	def speak(self):        
-  print(&quot;%s 说: 我 %d 岁了，我在读 %d 年级&quot;%(self.name,self.age,self.grade))    
+  print("%s 说: 我 %d 岁了，我在读 %d 年级"%(self.name,self.age,self.grade))    
   
 s = student('ken',10,60,3) 
 s.speak()
@@ -571,7 +579,7 @@ def __init__(self,n,a,w):
   self.age = a        
   self.__weight = w    
 def speak(self):        
-  print(&quot;%s 说: 我 %d 岁。&quot; %(self.name,self.age))  
+  print("%s 说: 我 %d 岁。" %(self.name,self.age))  
 #单继承示例 
 class student(people):    
   grade = ''    
@@ -581,7 +589,7 @@ class student(people):
     self.grade = g    
 #覆写父类的方法    
 	def speak(self):        
-    print(&quot;%s 说: 我 %d 岁了，我在读 %d 年级&quot;%(self.name,self.age,self.grade))  
+    print("%s 说: 我 %d 岁了，我在读 %d 年级"%(self.name,self.age,self.grade))  
 #另一个类，多重继承之前的准备 
 class speaker():    
   topic = ''    
@@ -590,14 +598,14 @@ class speaker():
     self.name = n        
     self.topic = t    
 def speak(self):        
-  print(&quot;我叫 %s，我是一个演说家，我演讲的主题是 %s&quot;%(self.name,self.topic))  
+  print("我叫 %s，我是一个演说家，我演讲的主题是 %s"%(self.name,self.topic))  
 #多重继承 
 class sample(speaker,student):    
 	a =''    def __init__(self,n,a,w,g,t):        
 	student.__init__(self,n,a,w,g)        
   speaker.__init__(self,n,t)  
   
-test = sample(&quot;Tim&quot;,25,80,4,&quot;Python&quot;) 
+test = sample("Tim",25,80,4,"Python") 
 test.speak()   #方法名同，默认调用的是在括号中参数位置排前父类的方法
 </code></pre>
 <p>执行以上程序输出结果为：</p>
@@ -663,7 +671,7 @@ print (counter.__secretCount)  # 报错，实例不能访问私有变量
 2
 2
 Traceback (most recent call last):
-  File &quot;test.py&quot;, line 16, in &lt;module&gt;
+  File "test.py", line 16, in &lt;module&gt;
     print (counter.__secretCount)  # 报错，实例不能访问私有变量
 AttributeError: 'JustCounter' object has no attribute '__secretCount'
 </code></pre>
@@ -739,7 +747,7 @@ class Vector:
 <p>Python 使用了引用计数这一简单技术来跟踪和回收垃圾。</p>
 <p>在 Python 内部记录着所有使用中的对象各有多少引用。</p>
 <p>一个内部跟踪变量，称为一个引用计数器。</p>
-<p>当对象被创建时， 就创建了一个引用计数， 当这个对象不再需要时， 也就是说， 这个对象的引用计数变为0 时， 它被垃圾回收。但是回收不是&quot;立即&quot;的， 由解释器在适当的时机，将垃圾对象占用的内存空间回收。</p>
+<p>当对象被创建时， 就创建了一个引用计数， 当这个对象不再需要时， 也就是说， 这个对象的引用计数变为0 时， 它被垃圾回收。但是回收不是"立即"的， 由解释器在适当的时机，将垃圾对象占用的内存空间回收。</p>
 <pre><code class="language-python">a = 40      # 创建对象  &lt;40&gt;
 b = a       # 增加引用， &lt;40&gt; 的计数
 c = [b]     # 增加引用.  &lt;40&gt; 的计数
@@ -820,8 +828,6 @@ if (window.location.search) {
   doSearchOrMarkFromUrl();
 }
 </script>
-<p><span data-infisearch-part-title="python基础"></span></p>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -830,7 +836,7 @@ if (window.location.search) {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../python基础_1_python基础/17.模块与包.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../python基础_1_python基础/17.模块与包.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -844,7 +850,7 @@ if (window.location.search) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../python基础_1_python基础/17.模块与包.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../python基础_1_python基础/17.模块与包.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -860,9 +866,9 @@ if (window.location.search) {
 
 
 
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/clipboard.min.js"></script>
-        <script src="https://xjq-note.oss-cn-hangzhou.aliyuncs.com/highlight.js"></script>
-        <script src="/note-service/book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
