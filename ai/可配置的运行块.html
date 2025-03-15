@@ -1,0 +1,712 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>可配置的运行块.md - AI笔记</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">AI笔记</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="/note-service/ai/infisearch_assets/search-ui-light.css">
+<style>.light .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-shadow: none;
+    --infi-border: 3px solid var(--table-header-bg);
+    --infi-bg: var(--bg);
+    --infi-triangle-bg: var(--table-header-bg);
+    --infi-item-box-shadow: 0 1px 5px rgba(196, 192, 187, 0.8);
+    --infi-title-fg: var(--fg);
+    --infi-title-hover-fg: var(--fg);
+    --infi-title-hover-bg: var(--table-header-bg);
+    --infi-title-border-bottom-hover: 2px solid var(--table-header-bg);
+    --infi-heading-fg: var(--fg);
+    --infi-heading-hover-fg: var(--fg);
+    --infi-body-fg: var(--fg);
+    --infi-body-hover-fg: var(--fg);
+    --infi-sub-bg: var(--bg);
+    --infi-highlight: var(--search-mark-bg);
+    --infi-highlight-bg: none;
+    --infi-header-fg: var(--fg);
+    --infi-checkbox-bg: #f8f8f8;
+    --infi-checkbox-checked-bg: #fff;
+    --infi-checkbox-border: #414141;
+    --infi-filter-header-active: var(--infi-title-bg);
+    --infi-error-fg: var(--fg);
+    --infi-fine-print-fg: var(--fg);
+    --infi-loading-bg: var(--fg);
+    --infi-loading-secondary-bg: var(--fg);
+    --infi-load-more-fg: var(--infi-title-fg);
+    --infi-load-more-bg: var(--infi-title-bg);
+    --infi-load-more-hover-fg: var(--infi-title-hover-fg);
+    --infi-load-more-hover-bg: var(--infi-title-hover-bg);
+    --infi-scrollbar-bg: none;
+    --infi-scrollbar-thumb-bg: var(--sidebar-non-existant);
+    --infi-fs-button-input-fg: var(--searchbar-shadow-color);
+    --infi-fs-border: 3px solid var(--sidebar-bg);
+    --infi-fs-box-shadow: none;
+    --infi-fs-header-bg: var(--sidebar-bg);
+    --infi-fs-header-box-shadow: none;
+    --infi-tip-table-header-border: var(--table-border-color);
+    --infi-tip-table-border: transparent;
+    --infi-tip-table-alternate: var(--table-alternate-bg);
+    --infi-tip-bg: var(--sidebar-bg);
+    --infi-tip-fg: var(--sidebar-fg);
+    --infi-tip-code-fg: var(--inline-code-color);
+    --infi-tip-code-bg: transparent;
+    --infi-tip-icon-bg: rgb(230, 230, 230);
+    --infi-tip-icon-fg: rgb(80, 80, 80);
+}
+
+.light .infi-root {
+    --infi-fs-header-close-fg: var(--searchresults-header-fg);
+    --infi-fs-header-close-hover-fg: var(--fg);
+}
+
+.ayu .infi-root,
+.rust .infi-root,
+.coal .infi-root,
+.navy .infi-root {
+    --infi-fs-header-close-fg: var(--sidebar-fg);
+    --infi-fs-header-close-hover-fg: white;
+}
+
+.ayu .infi-root,
+.rust .infi-root {
+    --infi-tip-code-fg: var(--search-mark-bg) !important;
+    --infi-tip-icon-bg: rgb(200, 200, 200);
+    --infi-tip-icon-fg: rgb(50, 50, 50);
+}
+
+.light .infi-root .infi-list-item.focus,
+.rust .infi-root .infi-list-item.focus,
+.coal .infi-root .infi-list-item.focus,
+.navy .infi-root .infi-list-item.focus,
+.ayu .infi-root .infi-list-item.focus {
+    outline: 2px solid grey;
+}
+
+.light .infi-root,
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-title-bg: var(--theme-hover);
+    --infi-sub-hover-bg: var(--table-alternate-bg);
+    --infi-title-border-bottom: 2px solid var(--theme-hover);
+}
+
+.light .infi-root {
+    --infi-highlight: #82a6c4;
+    --infi-sub-hover-bg: #ebebeb;
+}
+
+.rust .infi-root {
+    --infi-highlight: #bc8e6a;
+
+    --infi-tip-table-alternate: var(--sidebar-bg);
+    --infi-title-bg: var(--table-header-bg);
+    --infi-title-border-bottom: 2px solid var(--table-header-bg);
+
+    --infi-sub-hover-bg: #c6bbb1;
+    --infi-title-bg: #bbada1;
+    --infi-title-border-bottom: 2px solid #bbada1;
+    --infi-title-hover-fg: #000;
+    --infi-title-hover-bg: #a19488;
+    --infi-title-border-bottom-hover: 2px solid #a19488;
+    --infi-body-hover-fg: #1e1e1e;
+    --infi-heading-hover-fg: #1e1e1e;
+}
+
+.coal .infi-root {
+    --infi-highlight: #496c8a;
+    --infi-sub-hover-bg: #272a2b;
+}
+
+.infi-theme .infi-root .infi-tip-item code,
+.rust .infi-root .infi-tip-item code {
+    color: var(--infi-tip-code-fg) !important;;
+}
+
+.coal .infi-root,
+.navy .infi-root,
+.ayu .infi-root {
+    --infi-item-box-shadow: 0 1px 5px rgb(50, 50, 50);
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-key-fg: #fff;
+    --infi-key-bg: #7d7d7d;
+    --infi-checkbox-bg: #313233;
+    --infi-checkbox-checked-bg: #424243;
+    --infi-checkbox-border: #525354;
+}
+
+.rust .infi-root {
+    --infi-fs-input-fg: var(--sidebar-fg);
+    --infi-fs-input-bg: #29201d;
+    --infi-fs-input-border: 2px solid #584d4a;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+}
+
+.coal .infi-root {
+    --infi-fs-input-bg: #1d1f21;
+    --infi-fs-input-border: 2px solid #3e4144;
+}
+
+.navy .infi-root {
+    --infi-fs-input-bg: #1e222f;
+    --infi-fs-input-border: 2px solid #3d4252;
+    --infi-sub-hover-bg: #242734;
+}
+
+.ayu .infi-root {
+    --infi-fs-input-fg: var(--fg);
+    --infi-fs-input-bg: #2b3035;
+    --infi-fs-input-border: 2px solid #43474c;
+    --infi-fs-input-focus-border: 2px solid #4f95cc;
+    --infi-fs-input-focus-box-shadow: 0 0 5px -1px #63baff;
+    --infi-sub-hover-bg: #282e35;
+}
+
+#infi-search {
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid var(--searchbar-border-color);
+    background: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#infi-search:focus:not(.infi-button-input) {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+#infi-search.infi-button-input {
+    width: 100px;
+}
+
+#infi-search.infi-button-input::placeholder {
+    position: relative;
+    left: 14px;
+}
+
+#infi-search.infi-button-input:hover {
+    transition: 0.3s ease-out;
+    background: var(--infi-fs-button-input-bg) !important;
+    outline: 2px solid var(--infi-fs-button-input-bg);
+}
+
+#infi-search.infi-button-input:hover::placeholder {
+    color: var(--infi-fs-button-input-fg) !important;
+}
+
+@media print {
+    #infi-search {
+        display: none;
+    }
+}
+
+#infisearch-mdbook-target {
+    position: relative;
+}
+
+/*
+ * For this plugin, don't show the controls until there is a query.
+ */
+#infisearch-mdbook-target.infi-empty-input > * {
+    display: none;
+}
+
+.infi-root:not(.infi-fs-root) {
+    display: block;
+}
+
+.light .infi-root .infi-title::after,
+.rust .infi-root .infi-title::after,
+.coal .infi-root .infi-title::after,
+.navy .infi-root .infi-title::after,
+.ayu .infi-root .infi-title::after {
+    content: none;
+    display: none;
+}
+
+.infi-header {
+    padding-bottom: 9px;
+}
+
+.infi-load-more {
+    padding: 7px 15px;
+}
+</style>
+<p><input
+    type="search"
+    id="infi-search"
+    placeholder="Search this book ..."
+/></p>
+<p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
+<div id="infisearch-mdbook-target"></div>
+<h1 id="可配置的runnables"><a class="header" href="#可配置的runnables">可配置的Runnables</a></h1>
+<p>[TOC]</p>
+<p>Runnable接口是使用LangChain组件的基础，它在许多组件中都有实现，例如<a href="https://python.langchain.com/docs/concepts/chat_models/">语言模型</a>、<a href="https://python.langchain.com/docs/concepts/output_parsers/">输出解析器</a>、<a href="https://python.langchain.com/docs/concepts/retrievers/">检索器</a>、<a href="https://langchain-ai.github.io/langgraph/concepts/low_level/#compiling-your-graph">编译后的LangGraph图</a>等。</p>
+<p>本指南涵盖了Runnable接口的主要概念和方法，它允许开发者以一致和可预测的方式与各种LangChain组件进行交互。</p>
+<p>相关资源：</p>
+<ul>
+<li><a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable">Runnable接口API参考</a>提供了Runnable接口及其方法的详细概述。</li>
+<li>内置的<code>Runnables</code>列表可以在<a href="https://python.langchain.com/api_reference/core/runnables.html">LangChain Core API参考</a>中找到。这些Runnables在使用<a href="https://python.langchain.com/docs/concepts/lcel/">LangChain表达式语言(LCEL)</a>组合自定义"链"时非常有用。</li>
+</ul>
+<h2 id="runnable接口概述"><a class="header" href="#runnable接口概述">Runnable接口概述</a></h2>
+<p>Runnable方式定义了一个标准接口，使Runnable组件可以：</p>
+<ul>
+<li><a href="https://python.langchain.com/docs/how_to/lcel_cheatsheet/#invoke-a-runnable">调用</a>：将单个输入转换为输出。</li>
+<li><a href="https://python.langchain.com/docs/how_to/lcel_cheatsheet/#batch-a-runnable">批处理</a>：高效地将多个输入转换为输出。</li>
+<li><a href="https://python.langchain.com/docs/how_to/lcel_cheatsheet/#stream-a-runnable">流式处理</a>：输出在生成时进行流式传输。</li>
+<li>检查：可以访问Runnable的输入、输出和配置的模式信息。</li>
+<li>组合：多个Runnables可以使用<a href="https://python.langchain.com/docs/concepts/lcel/">LangChain表达式语言(LCEL)</a>组合在一起，创建复杂的管道。</li>
+</ul>
+<p>请查看<a href="https://python.langchain.com/docs/how_to/lcel_cheatsheet/">LCEL速查表</a>了解一些涉及Runnable接口和LCEL表达式的常见模式。</p>
+<h3 id="优化的并行执行批处理"><a class="header" href="#优化的并行执行批处理">优化的并行执行(批处理)</a></h3>
+<p>LangChain Runnables提供了内置的<code>batch</code>（和<code>batch_as_completed</code>）API，允许你并行处理多个输入。</p>
+<p>当需要处理多个独立输入时，使用这些方法可以显著提高性能，因为处理可以并行进行而不是顺序进行。</p>
+<p>两种批处理选项是：</p>
+<ul>
+<li><code>batch</code>：并行处理多个输入，返回结果的顺序与输入相同。</li>
+<li><code>batch_as_completed</code>：并行处理多个输入，按完成顺序返回结果。结果可能会乱序到达，但每个结果都包含输入索引以便匹配。</li>
+</ul>
+<p><code>batch</code>和<code>batch_as_completed</code>的默认实现使用线程池执行器并行运行<code>invoke</code>方法。这允许高效的并行执行，而无需用户管理线程，并加速I/O绑定的代码（例如，发出API请求、读取文件等）。对于CPU绑定的操作，它的效果不会那么明显，因为Python中的GIL（全局解释器锁）会阻止真正的并行执行。</p>
+<p>一些Runnables可能会提供自己的<code>batch</code>和<code>batch_as_completed</code>实现，这些实现针对其特定用例进行了优化（例如，依赖于模型提供商提供的<code>batch</code> API）。</p>
+<blockquote>
+<p>注意：异步版本的<code>abatch</code>和<code>abatch_as_completed</code>依赖于asyncio的<a href="https://docs.python.org/3/library/asyncio-task.html#asyncio.gather">gather</a>和<a href="https://docs.python.org/3/library/asyncio-task.html#asyncio.as_completed">as_completed</a>函数来并行运行<code>ainvoke</code>方法。</p>
+</blockquote>
+<blockquote>
+<p>提示：当使用<code>batch</code>或<code>batch_as_completed</code>处理大量输入时，用户可能想要控制并行调用的最大数量。这可以通过在<code>RunnableConfig</code>字典中设置<code>max_concurrency</code>属性来实现。更多信息请参见<a href="https://python.langchain.com/docs/concepts/runnables/#runnableconfig">RunnableConfig</a>。聊天模型也有一个内置的<a href="https://python.langchain.com/docs/concepts/chat_models/#rate-limiting">速率限制器</a>，可用于控制请求的速率。</p>
+</blockquote>
+<h3 id="异步支持"><a class="header" href="#异步支持">异步支持</a></h3>
+<p>Runnables暴露了一个异步API，允许使用Python的<code>await</code>语法调用它们。异步方法可以通过"a"前缀识别（例如，<code>ainvoke</code>、<code>abatch</code>、<code>astream</code>、<code>abatch_as_completed</code>）。</p>
+<p>请参阅<a href="https://python.langchain.com/docs/concepts/async/">使用LangChain进行异步编程</a>指南了解更多详情。</p>
+<h2 id="流式api"><a class="header" href="#流式api">流式API</a></h2>
+<p>流式处理对于使基于LLM的应用程序对最终用户感觉响应迅速至关重要。</p>
+<p>Runnables暴露了以下三个流式API：</p>
+<ol>
+<li>同步<a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable.stream">stream</a>和异步<a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable.astream">astream</a>：在生成Runnable输出时产生输出。</li>
+<li>异步<code>astream_events</code>：一个更高级的流式API，允许流式传输中间步骤和最终输出</li>
+<li><strong>遗留的</strong>异步<code>astream_log</code>：一个遗留的流式API，用于流式传输中间步骤和最终输出</li>
+</ol>
+<p>请参阅<a href="https://python.langchain.com/docs/concepts/streaming/">流式概念指南</a>了解更多关于如何在LangChain中进行流式处理的详情。</p>
+<h2 id="输入和输出类型"><a class="header" href="#输入和输出类型">输入和输出类型</a></h2>
+<p>每个<code>Runnable</code>都由输入和输出类型来表征。这些输入和输出类型可以是任何Python对象，并由Runnable本身定义。</p>
+<p>导致Runnable执行的方法（例如，<code>invoke</code>、<code>batch</code>、<code>stream</code>、<code>astream_events</code>）使用这些输入和输出类型。</p>
+<ul>
+<li>invoke：接受一个输入并返回一个输出。</li>
+<li>batch：接受输入列表并返回输出列表。</li>
+<li>stream：接受一个输入并返回一个产生输出的生成器。</li>
+</ul>
+<p><strong>输入类型</strong>和<strong>输出类型</strong>因组件而异：</p>
+<div class="table-wrapper"><table><thead><tr><th>组件</th><th>输入类型</th><th>输出类型</th></tr></thead><tbody>
+<tr><td>Prompt</td><td>字典</td><td>PromptValue</td></tr>
+<tr><td>ChatModel</td><td>字符串、聊天消息列表或PromptValue</td><td>ChatMessage</td></tr>
+<tr><td>LLM</td><td>字符串、聊天消息列表或PromptValue</td><td>字符串</td></tr>
+<tr><td>OutputParser</td><td>LLM或ChatModel的输出</td><td>取决于解析器</td></tr>
+<tr><td>Retriever</td><td>字符串</td><td>文档列表</td></tr>
+<tr><td>Tool</td><td>字符串或字典，取决于工具</td><td>取决于工具</td></tr>
+</tbody></table>
+</div>
+<p>请参阅各个组件的文档以了解更多关于输入和输出类型及其使用方法的信息。</p>
+<h3 id="检查模式"><a class="header" href="#检查模式">检查模式</a></h3>
+<blockquote>
+<p>注意：这是一个高级功能，大多数用户不需要。除非你有特定需求要检查Runnable的模式，否则你应该跳过这一节。</p>
+</blockquote>
+<p>在更高级的用例中，你可能想要以编程方式<strong>检查</strong>Runnable并确定Runnable期望的输入和输出类型。</p>
+<p>Runnable接口提供了获取Runnable输入和输出类型的<a href="https://json-schema.org/">JSON Schema</a>的方法，以及输入和输出类型的<a href="https://docs.pydantic.dev/latest/">Pydantic模式</a>。</p>
+<p>这些API主要在内部用于单元测试，并由<a href="https://python.langchain.com/docs/concepts/architecture/#langserve">LangServe</a>使用，后者使用这些API进行输入验证和生成<a href="https://www.openapis.org/">OpenAPI文档</a>。</p>
+<p>除了输入和输出类型外，一些Runnables还设置了额外的运行时配置选项。
+有相应的API来获取Runnable的配置选项的Pydantic模式和JSON模式。
+请参见<a href="#configurable-runnables">可配置的Runnables</a>部分了解更多信息。</p>
+<div class="table-wrapper"><table><thead><tr><th>方法</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>get_input_schema</code></td><td>给出Runnable的输入模式的Pydantic模式。</td></tr>
+<tr><td><code>get_output_schema</code></td><td>给出Runnable的输出模式的Pydantic模式。</td></tr>
+<tr><td><code>config_schema</code></td><td>给出Runnable的配置模式的Pydantic模式。</td></tr>
+<tr><td><code>get_input_jsonschema</code></td><td>给出Runnable的输入模式的JSONSchema。</td></tr>
+<tr><td><code>get_output_jsonschema</code></td><td>给出Runnable的输出模式的JSONSchema。</td></tr>
+<tr><td><code>get_config_jsonschema</code></td><td>给出Runnable的配置模式的JSONSchema。</td></tr>
+</tbody></table>
+</div>
+<h4 id="with_types"><a class="header" href="#with_types">With_types</a></h4>
+<p>LangChain将自动尝试根据可用信息推断Runnable的输入和输出类型。</p>
+<p>目前，这种推断对于使用<a href="https://python.langchain.com/docs/concepts/lcel/">LCEL</a>组合构建的更复杂的Runnables效果不太好，推断出的输入和/或输出类型可能不正确。在这些情况下，我们建议用户使用<code>with_types</code>方法(<a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable.with_types">API参考</a>)覆盖推断的输入和输出类型。</p>
+<h2 id="runnableconfig"><a class="header" href="#runnableconfig">RunnableConfig</a></h2>
+<p>任何用于执行runnable的方法（例如，<code>invoke</code>、<code>batch</code>、<code>stream</code>、<code>astream_events</code>）都接受第二个参数，称为<code>RunnableConfig</code>(<a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html#RunnableConfig">API参考</a>)。这个参数是一个字典，包含将在runnable执行期间在运行时使用的配置。</p>
+<p><code>RunnableConfig</code>可以具有以下任何已定义的属性：</p>
+<div class="table-wrapper"><table><thead><tr><th>属性</th><th>描述</th></tr></thead><tbody>
+<tr><td>run_name</td><td>用于给定Runnable的名称（不继承）。</td></tr>
+<tr><td>run_id</td><td>此调用的唯一标识符。子调用将获得自己的唯一运行ID。</td></tr>
+<tr><td>tags</td><td>此调用和任何子调用的标签。</td></tr>
+<tr><td>metadata</td><td>此调用和任何子调用的元数据。</td></tr>
+<tr><td>callbacks</td><td>此调用和任何子调用的回调。</td></tr>
+<tr><td>max_concurrency</td><td>要进行的最大并行调用数（例如，由batch使用）。</td></tr>
+<tr><td>recursion_limit</td><td>调用可以递归的最大次数（例如，由返回Runnables的Runnables使用）</td></tr>
+<tr><td>configurable</td><td>Runnable的可配置属性的运行时值。</td></tr>
+</tbody></table>
+</div>
+<p>向<code>invoke</code>方法传递<code>config</code>的方式如下：</p>
+<pre><code class="language-python">some_runnable.invoke(  
+   some_input,   
+   config={  
+      'run_name': 'my_run',   
+      'tags': ['tag1', 'tag2'],   
+      'metadata': {'key': 'value'}  
+   }  
+)
+</code></pre>
+<h3 id="runnableconfig的传播"><a class="header" href="#runnableconfig的传播">RunnableConfig的传播</a></h3>
+<p>许多<code>Runnables</code>由其他Runnables组成，重要的是<code>RunnableConfig</code>要传播到Runnable进行的所有子调用。这允许向父Runnable提供运行时配置值，这些值由所有子调用继承。</p>
+<p>如果不是这样，就不可能设置和传播<a href="/docs/concepts/callbacks/">callbacks</a>或其他配置值，如<code>tags</code>和<code>metadata</code>，这些值预期会被所有子调用继承。</p>
+<p>创建新的<code>Runnables</code>主要有两种模式：</p>
+<ol>
+<li>
+<p>使用<a href="/docs/concepts/lcel/">LangChain表达式语言(LCEL)</a>声明式创建：</p>
+<pre><code class="language-python">chain = prompt | chat_model | output_parser
+</code></pre>
+</li>
+<li>
+<p>使用<a href="#custom-runnables">自定义Runnable</a>（例如，<code>RunnableLambda</code>）或使用<code>@tool</code>装饰器：</p>
+<pre><code class="language-python">def foo(input):
+    # 注意这里直接使用.invoke()
+    return bar_runnable.invoke(input)
+foo_runnable = RunnableLambda(foo)
+</code></pre>
+</li>
+</ol>
+<p>LangChain将尝试自动传播这两种模式的<code>RunnableConfig</code>。</p>
+<p>对于处理第二种模式，LangChain依赖于Python的<a href="https://docs.python.org/3/library/contextvars.html">contextvars</a>。</p>
+<p>在Python 3.11及以上版本中，这是开箱即用的，你不需要做任何特殊操作来将<code>RunnableConfig</code>传播到子调用。</p>
+<p>在Python 3.9和3.10中，如果你使用<strong>异步代码</strong>，你需要在调用Runnable时手动传递<code>RunnableConfig</code>。</p>
+<p>这是由于Python 3.9和3.10中<a href="https://docs.python.org/3/library/asyncio-task.html#asyncio.create_task">asyncio的任务</a>的限制（不接受<code>context</code>参数）。</p>
+<p>手动传播<code>RunnableConfig</code>的方式如下：</p>
+<pre><code class="language-python">async def foo(input, config): # &lt;-- 注意config参数
+    return await bar_runnable.ainvoke(input, config=config)
+      
+foo_runnable = RunnableLambda(foo)
+</code></pre>
+<blockquote>
+<p>警告：当使用Python 3.10或更低版本并编写异步代码时，<code>RunnableConfig</code>无法自动传播，你需要手动传播！这是在尝试使用<code>astream_events</code>和<code>astream_log</code>流式传输数据时的一个常见陷阱，因为这些方法依赖于正确传播定义在<code>RunnableConfig</code>内的<a href="https://python.langchain.com/docs/concepts/callbacks/">callbacks</a>。</p>
+</blockquote>
+<h3 id="设置自定义运行名称标签和元数据"><a class="header" href="#设置自定义运行名称标签和元数据">设置自定义运行名称、标签和元数据</a></h3>
+<p><code>RunnableConfig</code>字典的<code>run_name</code>、<code>tags</code>和<code>metadata</code>属性可用于为给定的Runnable设置自定义值。</p>
+<p><code>run_name</code>是一个字符串，可用于为运行设置自定义名称。此名称将在日志和其他地方用于标识运行。它不会被子调用继承。</p>
+<p><code>tags</code>和<code>metadata</code>属性分别是列表和字典，可用于为运行设置自定义标签和元数据。这些值会被子调用继承。</p>
+<p>使用这些属性对于跟踪和调试运行很有用，因为它们将在<a href="https://docs.smith.langchain.com/">LangSmith</a>中作为跟踪属性显示，你可以对其进行过滤和搜索。</p>
+<p>这些属性还将传播到<a href="https://python.langchain.com/docs/concepts/callbacks/">callbacks</a>，并将在流式API（如<a href="https://python.langchain.com/docs/concepts/streaming/">astream_events</a>）中作为流中每个事件的一部分出现。</p>
+<h3 id="设置运行id"><a class="header" href="#设置运行id">设置运行ID</a></h3>
+<blockquote>
+<p>注意：这是一个高级功能，大多数用户不需要。</p>
+</blockquote>
+<p>你可能需要为给定的运行设置自定义<code>run_id</code>，以便以后引用它或将其与其他系统关联。</p>
+<p><code>run_id</code>必须是有效的UUID字符串，并且对每次运行都是<strong>唯一的</strong>。它用于标识父运行，子类将自动获得自己的唯一运行ID。</p>
+<p>要设置自定义<code>run_id</code>，你可以在调用Runnable时在<code>config</code>字典中将其作为键值对传递：</p>
+<pre><code class="language-python">import uuid
+  
+run_id = uuid.uuid4()
+  
+some_runnable.invoke(
+   some_input,   
+   config={
+      'run_id': run_id
+   }
+)
+  
+# 使用run_id做一些事情
+</code></pre>
+<h3 id="设置递归限制"><a class="header" href="#设置递归限制">设置递归限制</a></h3>
+<blockquote>
+<p>注意：这是一个高级功能，大多数用户不需要。</p>
+</blockquote>
+<p>一些Runnables可能会返回其他Runnables，如果处理不当，这可能导致无限递归。为防止这种情况，你可以在<code>RunnableConfig</code>字典中设置<code>recursion_limit</code>。这将限制Runnable可以递归的次数。</p>
+<h3 id="设置最大并发数"><a class="header" href="#设置最大并发数">设置最大并发数</a></h3>
+<p>如果使用<code>batch</code>或<code>batch_as_completed</code>方法，你可以在<code>RunnableConfig</code>字典中设置<code>max_concurrency</code>属性来控制要进行的最大并行调用数。当你想要限制并行调用的数量以防止服务器或API过载时，这很有用。</p>
+<blockquote>
+<p>提示：如果你试图限制<strong>聊天模型</strong>的请求数量，你可以使用内置的<a href="https://python.langchain.com/docs/concepts/chat_models/#rate-limiting">速率限制器</a>而不是设置<code>max_concurrency</code>，这将更有效。</p>
+<p>参见<a href="https://python.langchain.com/docs/how_to/chat_model_rate_limiting/">如何处理速率限制</a>指南了解更多信息。</p>
+</blockquote>
+<h3 id="设置可配置项"><a class="header" href="#设置可配置项">设置可配置项</a></h3>
+<p><code>configurable</code>字段用于为Runnable的可配置属性传递运行时值。</p>
+<p>它在<a href="https://python.langchain.com/docs/concepts/architecture/#langgraph">LangGraph</a>中与<a href="https://langchain-ai.github.io/langgraph/concepts/persistence/">LangGraph持久性</a>和<a href="https://langchain-ai.github.io/langgraph/concepts/memory/">内存</a>一起经常使用。</p>
+<p>它在<a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html#langchain_core.runnables.history.RunnableWithMessageHistory">RunnableWithMessageHistory</a>中用于类似的目的，以指定<code>session_id</code>/<code>conversation_id</code>来跟踪对话历史。</p>
+<p>此外，你可以使用它来指定要传递给他们创建的任何<a href="#configurable-runnables">可配置Runnable</a>的任何自定义配置选项。</p>
+<h3 id="设置回调"><a class="header" href="#设置回调">设置回调</a></h3>
+<p>使用此选项在运行时为runnable配置<a href="https://python.langchain.com/docs/concepts/callbacks/">callbacks</a>。回调将传递给runnable进行的所有子调用。</p>
+<pre><code class="language-python">some_runnable.invoke(
+   some_input,
+   {
+      "callbacks": [
+         SomeCallbackHandler(),
+         AnotherCallbackHandler(),
+      ]
+   }
+)
+</code></pre>
+<p>请阅读<a href="https://python.langchain.com/docs/concepts/callbacks/">回调概念指南</a>了解更多关于如何在LangChain中使用回调的信息。</p>
+<blockquote>
+<p>重要提示：如果你在异步环境中使用Python 3.9或3.10，在某些情况下你必须手动将<code>RunnableConfig</code>传播到子调用。请参见<a href="#propagation-of-runnableconfig">传播RunnableConfig</a>部分了解更多信息。</p>
+</blockquote>
+<h2 id="从函数创建runnable"><a class="header" href="#从函数创建runnable">从函数创建runnable</a></h2>
+<p>你可能需要创建一个运行任意逻辑的自定义Runnable。如果使用<a href="/docs/concepts/lcel/">LangChain表达式语言(LCEL)</a>组合多个Runnables，并且需要在其中一个步骤中添加自定义处理逻辑，这特别有用。</p>
+<p>有两种方法可以从函数创建自定义Runnable：</p>
+<ul>
+<li><code>RunnableLambda</code>：用于不需要流式处理的简单转换。</li>
+<li><code>RunnableGenerator</code>：用于需要流式处理的更复杂转换。</li>
+</ul>
+<p>参见<a href="/docs/how_to/functions/">如何运行自定义函数</a>指南了解更多关于如何使用<code>RunnableLambda</code>和<code>RunnableGenerator</code>的信息。</p>
+<blockquote>
+<p>重要提示：用户不应尝试子类化Runnables来创建新的自定义Runnable。这比简单地使用<code>RunnableLambda</code>或<code>RunnableGenerator</code>要复杂得多，也更容易出错。</p>
+</blockquote>
+<h2 id="可配置的runnables-1"><a class="header" href="#可配置的runnables-1">可配置的runnables</a></h2>
+<p>有时你可能想要尝试，甚至向最终用户公开使用Runnable的多种不同方式。这可能涉及调整聊天模型中的温度等参数，甚至在不同的聊天模型之间切换。</p>
+<p>为了简化这个过程，Runnable接口提供了两种在运行时创建可配置Runnables的方法：</p>
+<ul>
+<li><code>configurable_fields</code>：此方法允许你配置Runnable中的特定<strong>属性</strong>。例如，聊天模型的<code>temperature</code>属性。</li>
+<li><code>configurable_alternatives</code>：此方法使你能够指定可以在运行时运行的<strong>替代</strong>Runnables。例如，你可以指定可以使用的不同聊天模型列表。</li>
+</ul>
+<p>参见<a href="https://python.langchain.com/docs/how_to/configure/">如何配置运行时链内部</a>指南了解更多关于如何配置运行时链内部的信息。</p>
+<script src="/note-service/ai/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
+<script src="/note-service/ai/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+const base_url = '/note-service/ai/';
+const mode = 'target';
+infisearch.init({
+  searcherOptions: {
+    url: base_url + 'infisearch_output/',
+  },
+  uiOptions: {
+    mode,
+    dropdownAlignment: 'bottom-start',
+    target: document.getElementById('infisearch-mdbook-target'),
+    fsButtonPlaceholder: 'Search',
+    sourceFilesUrl: base_url,
+    resultsRenderOpts: {
+      searchedTermsParam: 'search',
+    },
+    multiSelectFilters: [
+      { fieldName: 'partTitle', displayName: 'Section', defaultOptName: 'None' },
+    ],
+  },
+});
+
+document.getElementById('infi-search').addEventListener('keydown', (ev) => {
+  if (['ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+    ev.stopPropagation(); // used in global listener to change pages
+    return;
+  }
+});
+
+if (window.location.search) {
+  // Adapted from the original searcher.js for mdbook
+  // https://github.com/rust-lang/mdBook/blob/master/src/theme/searcher/searcher.js
+  const target = document.getElementById('content');
+  const marker = new Mark(target);
+
+  function doSearchOrMarkFromUrl() {
+    // Check current URL for search request
+    var url = new URL(window.location.href);
+    var urlParams = new URLSearchParams(url.search);
+
+    if (urlParams.has('search')) {
+      var words = JSON.parse(decodeURIComponent(urlParams.get('search')));
+      marker.mark(words);
+
+      var markers = document.querySelectorAll('mark');
+      function hide() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].classList.add('fade-out');
+          window.setTimeout(function () { marker.unmark(); }, 300);
+        }
+      }
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].addEventListener('click', hide);
+      }
+    }
+  }
+  doSearchOrMarkFromUrl();
+}
+</script>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="languagechain/2.memory.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="大模型技术点梳理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="languagechain/2.memory.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="大模型技术点梳理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

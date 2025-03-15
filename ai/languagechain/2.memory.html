@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>prompts.md - AI笔记</title>
+        <title>memory.md - AI笔记</title>
 
 
         <!-- Custom HTML head -->
@@ -379,359 +379,9 @@
 /></p>
 <p><span style="font-weight: 600;"><!--preload weight 600--></span></p>
 <div id="infisearch-mdbook-target"></div>
-<h1 id="langchain-提示模板"><a class="header" href="#langchain-提示模板">LangChain 提示模板</a></h1>
+<h1 id="记忆模块"><a class="header" href="#记忆模块">记忆模块</a></h1>
 <p>[TOC]</p>
-<p><a href="https://python.langchain.com/docs/concepts/prompt_templates/">LangChain 提示模板</a></p>
-<h2 id="1-基本模板创建与使用"><a class="header" href="#1-基本模板创建与使用">1. 基本模板创建与使用</a></h2>
-<p>PromptTemplate支持多种创建方式，方便灵活构建提示模板：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-
-# 直接从模板字符串创建
-template = PromptTemplate.from_template("你是一位{role}，请{action}关于{topic}的内容。")
-
-# 完整构造方式
-prompt = PromptTemplate(
-    template="为{product}写一个{word_count}字的广告文案，强调其{feature}特性。",
-    input_variables=["product", "word_count", "feature"]
-)
-
-# 使用模板
-formatted_prompt = prompt.format(
-    product="智能手表",
-    word_count="100",
-    feature="健康监测"
-)
-</code></pre>
-<h2 id="2-部分格式化partial-formatting"><a class="header" href="#2-部分格式化partial-formatting">2. 部分格式化(Partial Formatting)</a></h2>
-<p>支持分阶段设置变量，类似于函数的部分应用：</p>
-<h3 id="21-字符串部分格式化"><a class="header" href="#21-字符串部分格式化">2.1 字符串部分格式化</a></h3>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-
-# 创建带有两个变量的模板
-template = PromptTemplate.from_template("为{product}写一个关于{feature}的广告语")
-
-# 部分格式化，只设置一个变量
-partial_prompt = template.partial(product="智能手表")
-
-# 稍后设置其他变量
-final_prompt = partial_prompt.format(feature="健康监测")
-</code></pre>
-<h3 id="22-函数式变量"><a class="header" href="#22-函数式变量">2.2 函数式变量</a></h3>
-<p>支持使用函数作为变量值，在格式化时动态生成内容：</p>
-<pre><code class="language-python">from datetime import datetime
-
-# 定义返回当前时间的函数
-def get_time():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-# 使用函数作为变量值
-prompt = PromptTemplate(
-    template="当前时间是: {time}\n分析以下数据: {data}",
-    input_variables=["data"],
-    partial_variables={"time": get_time}
-)
-</code></pre>
-<h2 id="3-聊天模板chatprompttemplate"><a class="header" href="#3-聊天模板chatprompttemplate">3. 聊天模板(ChatPromptTemplate)</a></h2>
-<p>专为对话模型设计的模板，支持构建多轮对话：</p>
-<pre><code class="language-python">from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.messages import SystemMessage, HumanMessage
-
-# 从消息列表创建聊天模板
-chat_prompt = ChatPromptTemplate.fromMessages([
-    ["system", "你是一位专业的{profession}，擅长{expertise}。"],
-    ["human", "请回答关于{topic}的问题：{question}"]
-])
-
-# 格式化聊天模板
-messages = chat_prompt.format_messages(
-    profession="AI研究员",
-    expertise="机器学习",
-    topic="大语言模型",
-    question="什么是提示工程？"
-)
-</code></pre>
-<h2 id="4-消息占位符messagesplaceholder"><a class="header" href="#4-消息占位符messagesplaceholder">4. 消息占位符(MessagesPlaceholder)</a></h2>
-<p>允许在模板特定位置插入一组消息，特别适用于聊天历史：</p>
-<pre><code class="language-python">from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import HumanMessage, AIMessage
-
-# 创建带有消息占位符的聊天模板
-chat_prompt = ChatPromptTemplate.fromMessages([
-    ["system", "你是一位专业助手"],
-    MessagesPlaceholder("chat_history"),  # 会被一组消息替换
-    ["human", "回答关于{topic}的问题"]
-])
-
-# 使用模板
-formatted_prompt = chat_prompt.invoke({
-    "topic": "人工智能",
-    "chat_history": [
-        HumanMessage(content="什么是机器学习？"),
-        AIMessage(content="机器学习是AI的一个分支，研究如何让计算机从数据中学习")
-    ]
-})
-</code></pre>
-<h2 id="5-少样本学习模板fewshotprompttemplate"><a class="header" href="#5-少样本学习模板fewshotprompttemplate">5. 少样本学习模板(FewShotPromptTemplate)</a></h2>
-<p>支持在提示中包含示例，帮助模型理解任务：</p>
-<pre><code class="language-python">from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
-
-# 定义示例
-examples = [
-    {"input": "我感觉很难过", "output": "听起来你正在经历一些困难的情绪。能告诉我更多吗？"},
-    {"input": "我不知道如何解决这个问题", "output": "让我们一步步思考这个问题。能详细描述一下吗？"}
-]
-
-# 创建示例格式化模板
-example_prompt = PromptTemplate(
-    input_variables=["input", "output"],
-    template="用户: {input}\n助手: {output}"
-)
-
-# 创建少样本学习模板
-few_shot_prompt = FewShotPromptTemplate(
-    examples=examples,
-    example_prompt=example_prompt,
-    prefix="你是一个有帮助的助手。以下是一些对话示例：",
-    suffix="用户: {input}\n助手:",
-    input_variables=["input"],
-    example_separator="\n\n"
-)
-
-# 使用模板
-response = few_shot_prompt.format(input="我最近工作压力很大")
-</code></pre>
-<h2 id="6-示例选择器exampleselectors"><a class="header" href="#6-示例选择器exampleselectors">6. 示例选择器(ExampleSelectors)</a></h2>
-<p>智能选择最相关的示例以优化少样本学习效果：</p>
-<h3 id="61-相似度选择器"><a class="header" href="#61-相似度选择器">6.1 相似度选择器</a></h3>
-<pre><code class="language-python">from langchain.prompts.example_selector import SemanticSimilarityExampleSelector
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
-
-# 创建基于相似度的选择器
-example_selector = SemanticSimilarityExampleSelector.from_examples(
-    examples,
-    OpenAIEmbeddings(),
-    FAISS,
-    k=2  # 选择2个最相似的示例
-)
-
-# 使用选择器创建少样本模板
-similarity_prompt = FewShotPromptTemplate(
-    example_selector=example_selector,
-    example_prompt=example_prompt,
-    prefix="你是一位顾问，请根据以下示例回答问题:",
-    suffix="问题: {question}\n回答:",
-    input_variables=["question"]
-)
-</code></pre>
-<h3 id="62-长度选择器"><a class="header" href="#62-长度选择器">6.2 长度选择器</a></h3>
-<pre><code class="language-python">from langchain.prompts.example_selector import LengthBasedExampleSelector
-
-# 基于长度选择示例
-length_selector = LengthBasedExampleSelector(
-    examples=examples,
-    example_prompt=example_prompt,
-    max_length=1000  # 总示例长度不超过1000字符
-)
-
-length_prompt = FewShotPromptTemplate(
-    example_selector=length_selector,
-    example_prompt=example_prompt,
-    prefix="以下是一些例子：",
-    suffix="新问题: {question}\n回答:",
-    input_variables=["question"]
-)
-</code></pre>
-<h3 id="63-最大边际相关性mmr选择器"><a class="header" href="#63-最大边际相关性mmr选择器">6.3 最大边际相关性(MMR)选择器</a></h3>
-<pre><code class="language-python">from langchain.prompts.example_selector import MaximalMarginalRelevanceExampleSelector
-
-# 使用MMR算法选择多样化且相关的示例
-mmr_selector = MaximalMarginalRelevanceExampleSelector.from_examples(
-    examples,
-    OpenAIEmbeddings(),
-    FAISS,
-    k=2
-)
-</code></pre>
-<h2 id="7-管道提示模板pipelineprompttemplate"><a class="header" href="#7-管道提示模板pipelineprompttemplate">7. 管道提示模板(PipelinePromptTemplate)</a></h2>
-<p>组合多个模板组件，构建复杂提示流程：</p>
-<pre><code class="language-python">from langchain_core.prompts import PipelinePromptTemplate, PromptTemplate
-
-# 定义多个模板组件
-full_template = """
-{introduction}
-
-{examples}
-
-{question}
-"""
-
-introduction_template = PromptTemplate.from_template(
-    "你是一位专业的{profession}。你的任务是{task}。"
-)
-examples_template = PromptTemplate.from_template(
-    "这里有一些例子:\n{examples_text}"
-)
-question_template = PromptTemplate.from_template(
-    "现在，请回答以下问题:\n{question_text}"
-)
-
-# 创建管道模板
-pipeline_prompts = [
-    ("introduction", introduction_template),
-    ("examples", examples_template),
-    ("question", question_template)
-]
-
-pipeline_prompt = PipelinePromptTemplate(
-    final_prompt=PromptTemplate.from_template(full_template),
-    pipeline_prompts=pipeline_prompts
-)
-
-# 使用管道模板
-formatted_prompt = pipeline_prompt.format(
-    profession="数学教师",
-    task="解释复杂的数学概念",
-    examples_text="例子1: ...\n例子2: ...",
-    question_text="请解释线性代数的基本概念"
-)
-</code></pre>
-<h2 id="8-与llm链集成"><a class="header" href="#8-与llm链集成">8. 与LLM链集成</a></h2>
-<p>将提示模板无缝集成到LLM处理链中：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-from langchain_core.output_parsers import StrOutputParser
-from langchain_openai import ChatOpenAI
-
-# 创建提示模板
-prompt = PromptTemplate.from_template("为{product}写一个广告语，强调{feature}特性。")
-
-# 创建LLM链
-model = ChatOpenAI()
-chain = prompt | model | StrOutputParser()
-
-# 使用链
-result = chain.invoke({
-    "product": "智能手表",
-    "feature": "健康监测"
-})
-</code></pre>
-<h2 id="9-输出解析器集成"><a class="header" href="#9-输出解析器集成">9. 输出解析器集成</a></h2>
-<p>与输出解析器结合，将LLM输出转换为结构化数据：</p>
-<pre><code class="language-python">from langchain_core.output_parsers import JsonOutputParser
-from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
-
-# 定义输出架构
-parser = JsonOutputParser(pydantic_object={
-    "properties": {
-        "name": {"type": "string"},
-        "age": {"type": "integer"},
-        "interests": {"type": "array", "items": {"type": "string"}}
-    }
-})
-
-# 创建带解析器的模板
-prompt = PromptTemplate(
-    template="生成一个关于{topic}的人物资料\n{format_instructions}",
-    input_variables=["topic"],
-    partial_variables={"format_instructions": parser.get_format_instructions()}
-)
-
-# 使用模板和解析器
-model = ChatOpenAI()
-chain = prompt | model | parser
-result = chain.invoke({"topic": "人工智能研究员"})
-</code></pre>
-<h2 id="10-异步支持和事件流"><a class="header" href="#10-异步支持和事件流">10. 异步支持和事件流</a></h2>
-<p>支持异步处理和流式响应：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
-
-# 异步格式化
-async def async_format():
-    template = PromptTemplate.from_template("分析{query}的结果")
-    return await template.aformat(query="市场数据")
-
-# 流式响应处理
-async def stream_response():
-    prompt = PromptTemplate.from_template("详细解释{topic}")
-    model = ChatOpenAI(streaming=True)
-    chain = prompt | model
-    
-    async for chunk in chain.astream({"topic": "量子计算"}):
-        print(chunk.content, end="", flush=True)
-</code></pre>
-<h2 id="11-模板保存和加载"><a class="header" href="#11-模板保存和加载">11. 模板保存和加载</a></h2>
-<p>支持将模板保存到文件和从文件加载：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-
-# 创建模板
-prompt = PromptTemplate.from_template("为{product}写一个广告语")
-
-# 保存模板到文件
-prompt.save("product_ad_prompt.json")
-
-# 从文件加载模板
-loaded_prompt = PromptTemplate.from_file("product_ad_prompt.json")
-</code></pre>
-<h2 id="12-模板验证"><a class="header" href="#12-模板验证">12. 模板验证</a></h2>
-<p>自动验证模板中的变量与声明的输入变量一致性：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-
-# 创建带验证的模板
-try:
-    # 这会失败，因为模板中有未声明的变量
-    invalid_prompt = PromptTemplate(
-        template="Hello {name}, welcome to {platform}!",
-        input_variables=["name"],
-        validate_template=True
-    )
-except ValueError as e:
-    print(f"验证错误: {e}")
-
-# 正确的模板
-valid_prompt = PromptTemplate(
-    template="Hello {name}, welcome to {platform}!",
-    input_variables=["name", "platform"],
-    validate_template=True
-)
-</code></pre>
-<h2 id="13-可配置字段和替代项"><a class="header" href="#13-可配置字段和替代项">13. 可配置字段和替代项</a></h2>
-<p>支持定义可配置字段和替代实现：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-
-# 创建带可配置字段的模板
-template = PromptTemplate.from_template("你是一位{role}")
-
-# 定义可配置字段
-configurable_template = template.configurable_fields(
-    role={"type": "string", "description": "助手的角色"}
-)
-
-# 定义替代实现
-alternative_templates = {
-    "医生": PromptTemplate.from_template("你是一位专业医生，擅长诊断和治疗疾病"),
-    "教师": PromptTemplate.from_template("你是一位有经验的教师，擅长解释复杂概念")
-}
-
-configurable_with_alternatives = template.configurable_alternatives(
-    role=alternative_templates
-)
-</code></pre>
-<h2 id="14-与runnable接口集成"><a class="header" href="#14-与runnable接口集成">14. 与Runnable接口集成</a></h2>
-<p>支持与LangChain的Runnable接口无缝集成，便于组合和流程控制：</p>
-<pre><code class="language-python">from langchain_core.prompts import PromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-
-# 创建基本提示模板
-template = PromptTemplate.from_template("分析以下数据: {data}")
-
-# 使用Runnable接口构建处理流程
-chain = {"data": RunnablePassthrough()} | template
-
-# 运行链
-result = chain.invoke("这是一些需要分析的数据")
-</code></pre>
+<p><a href="https://python.langchain.com/docs/modules/memory/">LangChain 记忆模块</a></p>
 <script src="/note-service/ai/infisearch_assets/search-ui.chinese.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="/note-service/ai/infisearch_assets/mark.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -797,11 +447,11 @@ if (window.location.search) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../languagechain/README.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../languagechain/1.prompts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../languagechain/2.memory.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../可配置的运行块.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -811,11 +461,11 @@ if (window.location.search) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../languagechain/README.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../languagechain/1.prompts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../languagechain/2.memory.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../可配置的运行块.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
